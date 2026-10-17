@@ -124,6 +124,9 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
         "provenance": PROVENANCE,
         "docs": "docs/API.md",
         "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+        # reconciliation between a headline derived here and the publisher's own series, so a consumer
+        # can see that the published figure is quoted and how far the derived one sits from it
+        "cross_checks": payload.get("cross_checks", []),
     }
 
     # ---- per-indicator documents -------------------------------------------------------------
@@ -215,6 +218,7 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
                      "history": t.get("history", [])} for t in payload["tiles"]]},
         "snapshot": payload.get("snapshot", []),
         "definitions": defs,
+        "cross_checks": payload.get("cross_checks", []),
     }
     write_json(out / "dataset.json", dataset)
 

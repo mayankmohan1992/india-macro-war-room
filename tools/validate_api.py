@@ -152,6 +152,17 @@ def main() -> int:
         print(f"  consistency: {len(index['indicators'])} indicators cross-checked "
               f"(index/latest/series/CSV/payload)")
 
+        # the reconciliation block must survive publishing (it disappeared once: it lived only in the
+        # dashboard payload, not in the API documents)
+        cc = index["meta"].get("cross_checks")
+        if not cc:
+            problems.append("index.json meta carries no cross_checks block")
+        else:
+            for c in cc:
+                if c.get("max_abs_diff_pp", 0) > c.get("tolerance_pp", 0):
+                    problems.append(f"cross-check {c.get('indicator')} exceeds its tolerance")
+            print(f"  reconciliation: {[(c['indicator'], c['max_abs_diff_pp'], c['tolerance_pp']) for c in cc]}")
+
         # 3. integrity: manifest hashes + dataset hash
         manifest = json.loads((API / "manifest.json").read_text())
         for f in manifest["files"]:

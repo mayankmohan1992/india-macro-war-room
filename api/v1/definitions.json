@@ -201,6 +201,20 @@
  },
  "meta": {
   "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
   "dataset_as_of": "2026-10-15",
   "dataset_as_of_by_frequency": {
    "daily": "2026-10-11",
@@ -212,7 +226,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T19:27:45Z",
+  "retrieved_at": "2026-10-17T19:36:36Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
