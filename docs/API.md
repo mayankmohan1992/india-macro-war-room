@@ -142,6 +142,11 @@ date,value
 `as_published` is the newest row of the source table that repeats the setting;
 **`effective_from` is when the value actually took effect** — use that one for any “since when?” logic.
 
+If `unchanged_in_window` is `true`, the setting did not change anywhere inside the fetched history, so
+`effective_from` is the **earliest observation held** (the window's start) rather than a change date —
+for example SLR has been 18.00% throughout. Treat the true change date as "earlier than that". The flag
+exists precisely so a consumer never reads the window start as a policy event.
+
 ### `GET /snapshot.json` — point-in-time key rates and market prices
 
 The portal's own key-rates set plus the weekly market prices, each row carrying its own date and

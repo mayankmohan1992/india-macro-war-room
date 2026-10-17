@@ -150,7 +150,8 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
         }
         if t.get("effective_from"):
             indicator["setting"] = {"effective_from": t["effective_from"], "previous": t.get("prev"),
-                                    "change_bp": t.get("bp")}
+                                    "change_bp": t.get("bp"),
+                                    "unchanged_in_window": bool(t.get("unchanged_in_window"))}
         indicator["points"] = pts
         indicator["history"] = t.get("history", [])
         indicator["history_kind"] = t.get("history_kind")

@@ -869,7 +869,11 @@ def tiles(S: dict) -> list[dict]:
             else:
                 reason = f"unchanged at {si['value']:.2f}% in every weekly row since {si['first']}"
             out[-1].update({"step": True, "effective_from": si["effective_from"], "prev": si["prev"],
-                            "bp": si["bp"], "reason": reason})
+                            "bp": si["bp"], "reason": reason,
+                            # no change inside the fetched window: effective_from is then the window's
+                            # first observation, NOT a date the setting actually changed. Consumers must
+                            # be able to tell those apart, so the flag travels with the value.
+                            "unchanged_in_window": si["prev"] is None})
 
     # ---- new: external / curve ----------------------------------------------------------
     pts = S["inr_usd"]["points"]; v = pts[-1][1]; v3 = value_near(pts, 3) or v

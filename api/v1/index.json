@@ -86,7 +86,8 @@
    "setting": {
     "change_bp": 25.0,
     "effective_from": "2026-10-09",
-    "previous": 5.25
+    "previous": 5.25,
+    "unchanged_in_window": false
    },
    "source": "RBI r10 (weekly WSS)",
    "stale": false,
@@ -901,7 +902,8 @@
    "setting": {
     "change_bp": -25.0,
     "effective_from": "2025-12-05",
-    "previous": 3.25
+    "previous": 3.25,
+    "unchanged_in_window": false
    },
    "source": "RBI r10",
    "stale": false,
@@ -936,7 +938,8 @@
    "setting": {
     "change_bp": null,
     "effective_from": "2021-10-22",
-    "previous": null
+    "previous": null,
+    "unchanged_in_window": true
    },
    "source": "RBI r10",
    "stale": false,
@@ -1163,7 +1166,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:33:01Z",
+  "retrieved_at": "2026-10-17T16:41:27Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
