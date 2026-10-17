@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**38 indicators** · dataset as-of **2026-10-11** · generated 2026-10-17 23:18 IST
+**38 indicators** · dataset as-of **2026-10-15** · generated 2026-10-18 00:57 IST
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -28,7 +28,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 | `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 5 | 2026-10-09 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
 | `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 15.17 | 2026-09-30 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `gold` | RBI gold holdings | % | reading | weekly | 11.96 | 2026-10-09 | RBI r39 | [RBI gold holdings (gold component of the reserves)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `usdinr` | USD/INR | ₹ | reading | weekly | 96.61 | 2026-10-09 | RBI r10 (weekly WSS) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
+| `usdinr` | USD/INR | ₹ | reading | weekly | 95.07 | 2026-10-15 | RBI r10 (weekly) + DBIE key rates (daily) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
 
 ## Fiscal
 
@@ -79,7 +79,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `cpi` | CPI inflation | % | reading | monthly | 5.59 | 2026-09-30 | RBI r11 (CPI 2024=100) | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
+| `cpi` | CPI inflation | % | reading | monthly | 5.54 | 2026-09-30 | RBI DBIE indicator series (RBIB18) | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `cpirural` | CPI rural | % | reading | monthly | 6.07 | 2026-09-30 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `cpiurban` | CPI urban | % | reading | monthly | 4.82 | 2026-09-30 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `wpi` | WPI inflation | % | reading | monthly | 11.39 | 2026-09-30 | RBI r11 (WPI 2023=100) | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |

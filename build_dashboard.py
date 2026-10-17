@@ -31,6 +31,9 @@ from typing import Any
 logging.basicConfig(level=logging.INFO, format="%(message)s", stream=sys.stderr)
 log = logging.getLogger("build")
 
+# Portal timestamps are midnight IST; reading them as UTC dates them one day early (2026-09-30 IST
+# midnight is 2026-09-29T18:30Z). Every portal timestamp here is read in IST.
+IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 ROOT = pathlib.Path(__file__).resolve().parent
 RAW = ROOT / "raw"
 OUT = ROOT / "dashboard"
@@ -242,6 +245,15 @@ def build() -> dict:
     r12 = load("12")      # Average daily turnover, money markets
 
     kr = json.loads((RAW / "key_rates.json").read_text())["body"]["result"]
+    named = {}
+    named_path = RAW / "named_series.json"
+    if named_path.exists():
+        try:
+            named = json.loads(named_path.read_text())
+        except Exception:
+            log.error("[ERROR] [Named] raw/named_series.json is unreadable:\n%s", traceback.format_exc())
+    else:
+        log.warning("[WARN] [Named] no raw/named_series.json - the published CPI figure will be absent")
 
     S: dict[str, dict] = {}
 
@@ -262,6 +274,17 @@ def build() -> dict:
                     "points": trim(yoy(wpi), 240)}
     S["cpi_iw_yoy"] = {"label": "CPI-IW inflation, y-o-y", "unit": "%", "source": "RBI r11",
                        "points": trim(yoy(cpi_iw), 240)}
+    # The OFFICIALLY PUBLISHED inflation series (portal indicator route, reportName RBIB18). A y-o-y
+    # computed from the published index differs from it by up to ~0.05pp because the index is rounded to
+    # one decimal - so the headline shows the published figure and the computed series is kept as an
+    # auditable cross-check (see cross_checks in the payload and the assertion in verify_dashboard.py).
+    cpi_off = (named.get("cpi_inflation_combined") or {}).get("points") or []
+    if cpi_off:
+        S["cpi_yoy_official"] = {"label": "CPI inflation, y-o-y (as published)", "unit": "%",
+                                 "source": "RBI DBIE indicator series (RBIB18)",
+                                 "points": trim([list(p) for p in cpi_off], 60)}
+        log.info("[INFO] [Named] published CPI inflation series: %s points, newest %s = %s%%",
+                 len(cpi_off), cpi_off[-1][0], cpi_off[-1][1])
 
     # ---- money -------------------------------------------------------------
     m3 = series(r13, "MSO38")
@@ -355,6 +378,19 @@ def build() -> dict:
                             ("44", "fwd6m", "US$ 6-month forward premia (annualised)")):
         S[sid] = {"label": label, "unit": "%" if sid.startswith(("yld", "fwd")) else "₹",
                   "source": "RBI r10 (weekly WSS)", "points": trim(series(r10, col), 260)}
+    # The weekly table's INR-US$ row lags by up to a week; the portal's key-rates set carries the daily
+    # FBIL rate. Append it to the same series (the same pattern used for the policy rate announcement)
+    # so the tile shows the freshest available rate while the chart keeps the weekly history.
+    kr_usd = next((k for k in kr if k["name"].replace("\xa0", " ").strip() == "Exchange Rate"), None)
+    if kr_usd and kr_usd.get("rate"):
+        d_usd = dt.datetime.fromtimestamp(kr_usd["timeDate"] / 1000, IST).strftime("%Y-%m-%d")
+        pts = S["inr_usd"]["points"]
+        if not pts or d_usd > pts[-1][0]:
+            S["inr_usd"] = {"label": "USD/INR (weekly table + latest daily rate)", "unit": "₹",
+                            "source": "RBI r10 (weekly) + DBIE key rates (daily)",
+                            "points": pts + [[d_usd, float(kr_usd["rate"])]]}
+            log.info("[INFO] [FX] appended the daily key-rates exchange rate %.4f dated %s to the weekly "
+                     "INR-US$ series", float(kr_usd["rate"]), d_usd)
 
     # --- standing facilities (the liquidity instruments themselves) ----------------------------
     S["sdf_level"] = {"label": "Standing Deposit Facility balances (absorption)", "unit": "₹ crore",
@@ -465,7 +501,7 @@ def build() -> dict:
         k = krate.get(name)
         if not k:
             continue
-        d = dt.datetime.fromtimestamp(k["timeDate"] / 1000, dt.timezone.utc).strftime("%Y-%m-%d")
+        d = dt.datetime.fromtimestamp(k["timeDate"] / 1000, IST).strftime("%Y-%m-%d")
         pts = S[key]["points"] if key in S else []
         if not pts or d > pts[-1][0]:
             pts = pts + [[d, float(k["rate"])]]
@@ -481,7 +517,7 @@ def build() -> dict:
         if not k:
             return None
         return {"value": float(k["rate"]),
-                "date": dt.datetime.fromtimestamp(k["timeDate"] / 1000, dt.timezone.utc).strftime("%Y-%m-%d"),
+                "date": dt.datetime.fromtimestamp(k["timeDate"] / 1000, IST).strftime("%Y-%m-%d"),
                 "src": "key rates"}
 
     def wss_of(code: str, scale: float = 1.0):
@@ -515,10 +551,13 @@ def build() -> dict:
         v = wss_step(code)
         if v:
             snap.append({"name": label, "unit": "%", "kind": "setting", **v})
-    for label, code in (("Call money (wtd avg)", "34"), ("USD/INR", "40")):
+    for label, code in (("Call money (wtd avg)", "34"),):
         v = wss_of(code)
         if v:
-            snap.append({"name": label, "unit": "%" if code != "40" else "₹/US$", "kind": "reading", **v})
+            snap.append({"name": label, "unit": "%", "kind": "reading", **v})
+    k_usd = kr_of("Exchange Rate")
+    if k_usd:                      # daily, fresher than the weekly table's INR-US$ row
+        snap.append({"name": "USD/INR", "unit": "₹/US$", "kind": "reading", **k_usd})
     # CRR/SLR: value from the portal's key-rates set, EFFECTIVE DATE from the published weekly series
     # (the two agree on the value; the series is the authority on when it took effect).
     for label, key, code in (("CRR", "Cash Reserve Ratio", "19"),
@@ -527,7 +566,10 @@ def build() -> dict:
         if k and w:
             snap.append({"name": label, "unit": "%", "kind": "setting", "value": k["value"],
                          "date": w["date"], "src": "key rates + WSS setting in force",
-                         "since": w["since"], "prev": w["prev"], "bp": w["bp"]})
+                         "since": w["since"], "prev": w["prev"], "bp": w["bp"],
+                         # two defensible notions of "when": RBI's own effective date (key rates) and
+                         # the first weekly statement that reflects it
+                         "announced_from": k["date"]})
         elif k:
             snap.append({"name": label, "unit": "%", "kind": "setting", **k})
     for label, key in (("CPI inflation (released)", "CPI Inflation"), ("WACR", "WACR")):
@@ -581,15 +623,30 @@ def tiles(S: dict) -> list[dict]:
                     "change": change, "spark": spark(pts), "chart": chart})
 
     # inflation ------------------------------------------------------------
-    cy = S["cpi_yoy"]["points"]; cv = cy[-1][1]
+    # HEADLINE = the figure the publisher actually prints (MoSPI/NSO via the portal's indicator route),
+    # not a number this project derived, because that is the one quoted in the news and compared against
+    # the RBI's target. The index-derived series remains the long history on the chart, and the two are
+    # reconciled in cross_checks (tolerance 0.1pp).
+    cpi_tile_key = "cpi_yoy_official" if "cpi_yoy_official" in S else "cpi_yoy"
+    cy = S[cpi_tile_key]["points"]; cv = cy[-1][1]
     st, why = band_status(cv, [
         (-99, 1.5, "bad", "below the 2% floor - deflation risk"),
         (1.5, 2.0, "watch", "under target floor"),
         (2.0, 4.5, "good", "inside the 2-6% tolerance band, near the 4% target"),
         (4.5, 6.0, "watch", "inside the band but above target"),
         (6.0, 99, "bad", "above the 6% upper tolerance limit")])
-    add("cpi", "CPI inflation", "Prices", "cpi_yoy", "%", "pct", "y-o-y",
-        st, f"{cv:.2f}% - {why}", "RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6.",
+    gap = ""
+    if "cpi_yoy_official" in S:
+        comp = dict(S["cpi_yoy"]["points"]).get(cy[-1][0])
+        if comp is not None:
+            gap = (f" (an index-derived y-o-y for the same month gives {comp:.2f}%; the two differ because "
+                   f"the published index is rounded to one decimal)")
+    add("cpi", "CPI inflation", "Prices", cpi_tile_key, "%", "pct", "y-o-y",
+        st, f"{cv:.2f}% - {why}{gap}",
+        ("The figure the publisher prints (MoSPI/NSO, via the portal's indicator series), not a figure "
+         "derived here. RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, "
+         "red <1.5 or >6. The chart draws the longer index-derived history, reconciled against this "
+         "series to within 0.1pp (see cross_checks)."),
         change=delta(cy))
 
     wy = S["wpi_yoy"]["points"]; wv = wy[-1][1]
@@ -1008,6 +1065,28 @@ def main() -> int:
             t["history"] = list(reversed(rows))             # newest first
             t["history_note"] = f"last {len(rows)} published observations of {len(pts)} stored"
 
+    # ---- cross-checks between a computed series and the publisher's own figure ------------------
+    cross_checks = []
+    if "cpi_yoy_official" in S:
+        comp = {d: v for d, v in S["cpi_yoy"]["points"]}
+        pairs = [(d, v, comp[d]) for d, v in S["cpi_yoy_official"]["points"] if d in comp]
+        if pairs:
+            worst = max(pairs, key=lambda p: abs(p[1] - p[2]))
+            state = "within tolerance" if abs(worst[1] - worst[2]) <= 0.1 else "BEYOND TOLERANCE"
+            log.info("[INFO] [CrossCheck] CPI: published vs index-derived over %s months, largest gap "
+                     "%.3fpp (%s: published %.2f vs computed %.2f) - %s", len(pairs),
+                     abs(worst[1] - worst[2]), worst[0], worst[1], worst[2], state)
+            if abs(worst[1] - worst[2]) > 0.1:
+                log.error("[ERROR] [CrossCheck] the index-derived CPI has drifted more than 0.1pp from "
+                          "the published series - the derivation needs re-checking")
+            cross_checks.append({
+                "indicator": "cpi", "computed_series": "cpi_yoy", "published_series": "cpi_yoy_official",
+                "months_compared": len(pairs), "max_abs_diff_pp": round(abs(worst[1] - worst[2]), 3),
+                "worst_month": worst[0], "published": worst[1], "computed": worst[2],
+                "tolerance_pp": 0.1,
+                "note": ("The published figure is quoted on the headline; the index-derived series is the "
+                         "long history drawn on the chart. The index is published rounded to one decimal, "
+                         "so a computed y-o-y carries a quantisation of about +/-0.05pp.")})
     counts = {k: sum(1 for t in T if t["status"] == k) for k in ("good", "watch", "bad")}
     core = [t for t in T if t["id"] in ("cpi", "wpi", "m3", "credit", "liquidity", "repo", "callmoney")]
     bad_core = sum(1 for t in core if t["status"] == "bad")
@@ -1075,6 +1154,7 @@ def main() -> int:
         "generated": dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M %Z"),
         "as_of": asof,
         "as_of_by_frequency": as_of_by_freq,
+        "cross_checks": cross_checks,
         "verdict": verdict,
         "counts": counts,
         "tiles": T,

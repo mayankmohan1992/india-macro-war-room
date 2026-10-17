@@ -10,6 +10,12 @@
   "group": "External",
   "history": [
    {
+    "change": -1.541,
+    "date": "2026-10-15",
+    "prev": 96.61,
+    "value": 95.0691
+   },
+   {
     "change": 0.62,
     "date": "2026-10-09",
     "prev": 95.99,
@@ -122,23 +128,17 @@
     "date": "2026-06-05",
     "prev": 95.38,
     "value": 95.4
-   },
-   {
-    "change": -0.58,
-    "date": "2026-05-29",
-    "prev": 95.96,
-    "value": 95.38
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 20 published observations of 260 stored",
+  "history_note": "last 20 published observations of 261 stored",
   "id": "usdinr",
   "kind": "reading",
   "label": "USD/INR",
   "latest": {
-   "change": 0.62,
-   "date": "2026-10-09",
-   "value": 96.61
+   "change": -1.541,
+   "date": "2026-10-15",
+   "value": 95.0691
   },
   "links": {
    "csv": "series/usdinr.csv",
@@ -1184,31 +1184,35 @@
    [
     "2026-10-09",
     96.61
+   ],
+   [
+    "2026-10-15",
+    95.0691
    ]
   ],
   "scoring_rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
   "series": "inr_usd",
-  "source": "RBI r10 (weekly WSS)",
+  "source": "RBI r10 (weekly) + DBIE key rates (daily)",
   "stale": false,
-  "stale_days": 2,
-  "status": "watch",
-  "status_reason": "96.61 (+1.36% over 3m) - rupee depreciating",
+  "stale_days": 0,
+  "status": "good",
+  "status_reason": "95.07 (-1.35% over 3m) - rupee appreciating",
   "unit": "₹"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-11",
+  "dataset_as_of": "2026-10-15",
   "dataset_as_of_by_frequency": {
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-15"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T17:48:15Z",
+  "retrieved_at": "2026-10-17T19:27:45Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

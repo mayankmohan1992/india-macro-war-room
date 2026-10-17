@@ -4,6 +4,28 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.4] — 2026-10-17
+
+### Fixed
+- **Portal timestamps were being read in UTC.** They are midnight **IST**, so every date taken from a
+  portal timestamp was one day early: the October policy announcement read 2026-10-06 instead of
+  **2026-10-07**, CRR 2025-11-28 instead of 2025-11-29, the monthly CPI series 2026-09-29 instead of
+  2026-09-30. All conversions now use IST, and the gate asserts a monthly point lands on a month end.
+- **The CPI headline was a figure derived here (5.59%) rather than the publisher's own (5.54%).** The
+  portal's indicator route (`dbie_getWSSReport`, `reportName: RBIB18`, `level3Code: ["Inflation"]`) publishes
+  the official inflation series; the headline now uses it, the derived index-based series stays as the
+  chart's long history, and the build publishes a `cross_checks` block (largest gap 0.05pp over 9 months,
+  tolerance 0.1pp) which the gate enforces.
+
+### Added
+- **The portal's named-series route** is now a source (`fetch_series.py` → `raw/named_series.json`),
+  documented in `docs/SOURCES.md` including the two traps: the response nests as `body.Result` (the report
+  gateway uses `body.response.Result`), and portal timestamps are midnight IST.
+- **A fresher USD/INR**: the daily FBIL rate from the portal's key-rates set (95.07 on 15 Oct) is appended
+  to the weekly series, replacing the week-old 96.61 as the headline.
+- **Both "when" dates for CRR/SLR** are now reported: RBI's effective date (key rates) and the first weekly
+  statement reflecting it.
+
 ## [1.0.3] — 2026-10-17
 
 ### Changed

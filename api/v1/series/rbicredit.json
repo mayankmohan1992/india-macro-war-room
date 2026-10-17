@@ -1110,25 +1110,25 @@
   "series": "rbi_govt_level",
   "source": "RBI r39",
   "stale": true,
-  "stale_days": 177,
+  "stale_days": 181,
   "status": "watch",
   "status_reason": "₹93,392 cr as last reported on 2026-04-17; the RBI table carries no value for this line on any later date (a nil balance is published as a blank cell)",
   "unit": "₹ crore"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-11",
+  "dataset_as_of": "2026-10-15",
   "dataset_as_of_by_frequency": {
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-15"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T17:48:15Z",
+  "retrieved_at": "2026-10-17T19:27:45Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

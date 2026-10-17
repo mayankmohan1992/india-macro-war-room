@@ -1,36 +1,36 @@
 {
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-11",
+  "dataset_as_of": "2026-10-15",
   "dataset_as_of_by_frequency": {
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-15"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T17:48:15Z",
+  "retrieved_at": "2026-10-17T19:27:45Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
  "snapshot": [
   {
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "kind": "setting",
    "name": "Policy repo rate",
-   "since": "2026-10-06",
+   "since": "2026-10-07",
    "src": "key rates",
    "unit": "%",
    "value": 5.5
   },
   {
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "kind": "setting",
    "name": "SDF rate",
-   "since": "2026-10-06",
+   "since": "2026-10-07",
    "src": "key rates",
    "unit": "%",
    "value": 5.25
@@ -66,14 +66,15 @@
    "value": 5.23
   },
   {
-   "date": "2026-10-09",
+   "date": "2026-10-15",
    "kind": "reading",
    "name": "USD/INR",
-   "src": "weekly WSS",
+   "src": "key rates",
    "unit": "₹/US$",
-   "value": 96.61
+   "value": 95.0691
   },
   {
+   "announced_from": "2025-11-29",
    "bp": -25.0,
    "date": "2026-10-09",
    "kind": "setting",
@@ -85,6 +86,7 @@
    "value": 3.0
   },
   {
+   "announced_from": "2020-04-11",
    "bp": -25.0,
    "date": "2026-10-09",
    "kind": "setting",
@@ -96,7 +98,7 @@
    "value": 18.0
   },
   {
-   "date": "2026-09-29",
+   "date": "2026-09-30",
    "kind": "reading",
    "name": "CPI inflation (released)",
    "src": "key rates",
@@ -104,7 +106,7 @@
    "value": 5.54
   },
   {
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "kind": "reading",
    "name": "WACR",
    "src": "key rates",

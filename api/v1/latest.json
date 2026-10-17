@@ -37,13 +37,13 @@
    "value": 80.98
   },
   "cpi": {
-   "change": 0.77,
+   "change": 0.71,
    "date": "2026-09-30",
    "kind": "reading",
    "label": "CPI inflation",
    "status": "watch",
    "unit": "%",
-   "value": 5.59
+   "value": 5.54
   },
   "cpirural": {
    "change": 0.77,
@@ -289,13 +289,13 @@
    "value": 1547650.0
   },
   "usdinr": {
-   "change": 0.62,
-   "date": "2026-10-09",
+   "change": -1.541,
+   "date": "2026-10-15",
    "kind": "reading",
    "label": "USD/INR",
-   "status": "watch",
+   "status": "good",
    "unit": "₹",
-   "value": 96.61
+   "value": 95.0691
   },
   "wpi": {
    "change": 1.47,
@@ -345,18 +345,18 @@
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-11",
+  "dataset_as_of": "2026-10-15",
   "dataset_as_of_by_frequency": {
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-15"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T17:48:15Z",
+  "retrieved_at": "2026-10-17T19:27:45Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

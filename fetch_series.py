@@ -9,6 +9,7 @@ STETP: [INFO]/[WARN]/[ERROR] logs, granular try/except; a report that fails is r
 """
 from __future__ import annotations
 
+import datetime as dt
 import json
 import logging
 import os
@@ -29,6 +30,16 @@ ROOT = pathlib.Path(__file__).resolve().parent
 RAW = ROOT / "raw"
 RAW.mkdir(parents=True, exist_ok=True)
 LOCK = RAW / ".fetch.lock"
+
+# The portal encodes dates as milliseconds at MIDNIGHT IST (UTC+05:30). Formatting those in UTC renders
+# them one day early - a September figure stamped 2026-09-30T00:00+05:30 became "2026-09-29". Every
+# portal timestamp in this project is therefore read in IST.
+IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
+
+
+def ist_date(ms: int | float) -> str:
+    """Portal epoch-milliseconds -> the calendar date the portal means (IST, not UTC)."""
+    return dt.datetime.fromtimestamp(ms / 1000, IST).strftime("%Y-%m-%d")
 
 # Reports the portal serves as a PARTIAL subset (rows << totalCount) and which are therefore
 # NOT used by the dashboard. Listed explicitly so the completeness gate below can still fail
@@ -85,6 +96,48 @@ WANT = {
 }
 
 
+# Named series served by the RBIDATA gateway (the "Indicators" pages of the portal, e.g.
+# https://data.rbi.org.in/#/dbie/ind1). This is a DIFFERENT surface from the report tables: requests
+# are built from reportName + level codes, and the response nests as body.Result (NOT
+# body.response.Result, which is what cost a probe cycle here). It carries the figures the portal's own
+# headline strip shows, including the OFFICIALLY PUBLISHED inflation series - which differs from a
+# y-o-y computed on the published index by up to ~0.05pp, because the index is rounded to one decimal.
+NAMED_SERIES = [
+    {"name": "cpi_inflation_combined",
+     "vo": {"currencyCode": "", "itemCode": ["27"], "fromDate": "2024-01-01 00:00:00",
+            "toDate": "2099-01-01 00:00:00", "frequency": "Annual", "reportName": "RBIB18",
+            "level1Code": ["Combined"], "level2Code": ["CPI-2024 = 100"], "level3Code": ["Inflation"]},
+     "why": "CPI inflation, Combined (as published by MoSPI/NSO via the portal)"},
+]
+
+
+def fetch_named_series(c: "DBieClient") -> dict:
+    """Fetch the portal's named indicator series; each entry keeps its own metadata + points."""
+    out: dict = {}
+    for spec in NAMED_SERIES:
+        try:
+            r = c.call("dbie_getWSSReport", {"body": {"requestVO": spec["vo"]}}, gateway="RBIDATA")
+            rows = (r.get("body") or {}).get("Result") or []
+            pts = []
+            for row in rows:
+                try:
+                    d = ist_date(row["time_date"])
+                    pts.append([d, float(row["wss_amount"])])
+                except Exception:
+                    continue
+            pts.sort()
+            out[spec["name"]] = {"why": spec["why"], "points": pts,
+                                 "desc": (rows[0].get("wss_desc") if rows else None),
+                                 "version": (rows[0].get("version_desc") if rows else None),
+                                 "source": (rows[0].get("addressPath", "").replace("\xa0", " ") if rows else ""),
+                                 "rows": len(pts)}
+            log.info("[INFO] [Named] %s: %s points %s..%s", spec["name"], len(pts),
+                     pts[0][0] if pts else "-", pts[-1][0] if pts else "-")
+        except Exception:
+            log.error("[ERROR] [Named] %s failed:\n%s", spec["name"], traceback.format_exc())
+    return out
+
+
 def main() -> int:
     acquire_lock()
     try:
@@ -131,6 +184,12 @@ def _main_locked() -> int:
             log.error("[ERROR] [Fetch] %s failed:\n%s", name, traceback.format_exc())
 
     (RAW / "survey.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1))
+    named = fetch_named_series(c)
+    if named:
+        (RAW / "named_series.json").write_text(json.dumps(named, ensure_ascii=False, indent=1))
+    else:
+        # a missing named series must not silently fall back to a computed figure without saying so
+        log.warning("[WARN] [Named] no named series fetched - the published CPI figure will be absent")
     print(json.dumps(summary, indent=1, ensure_ascii=False)[:1500])
 
     # COMPLETENESS GATE: every report the dashboard is allowed to use must have arrived whole.

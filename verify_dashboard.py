@@ -715,6 +715,67 @@ def check_axes_and_latest(pw, problems):
         browser.close()
 
 
+def check_source_reconciliation(problems):
+    """The headline figure must be the publisher's own, and the derived series must agree with it.
+
+    Three classes of defect this guards, all found by comparing the portal's indicator route with the
+    report tables:
+      * a headline derived here when the publisher prints the number (they differed by 0.05pp, and the
+        published one is what the news quotes),
+      * a >0.1pp divergence between the derived and published series (a real error, not quantisation),
+      * portal timestamps read in UTC: they are midnight IST, so every such date was a day early
+        (a September figure became "2026-09-29", the repo hike "2026-10-06" instead of 2026-10-07).
+    """
+    import datetime as dt
+    tiles = {t["id"]: t for t in DATA["tiles"]}
+
+    checks = DATA.get("cross_checks") or []
+    print(f"  cross-checks: {[(c['indicator'], c['max_abs_diff_pp']) for c in checks]}")
+    if not checks:
+        problems.append("no cross-check between the published and derived series was published")
+    for c in checks:
+        if c["max_abs_diff_pp"] > c["tolerance_pp"]:
+            problems.append(f"{c['indicator']}: derived series drifted {c['max_abs_diff_pp']}pp from the "
+                            f"published one (tolerance {c['tolerance_pp']}pp)")
+        if c["months_compared"] < 3:
+            problems.append(f"{c['indicator']}: only {c['months_compared']} months compared")
+
+    cpi = tiles.get("cpi")
+    if cpi and cpi.get("series_key") == "cpi_yoy_official":
+        off = DATA["series"]["cpi_yoy_official"]["points"]
+        comp = dict(DATA["series"]["cpi_yoy"]["points"])
+        print(f"  cpi headline: {cpi['value']}% for {cpi['period']} (published) "
+              f"| index-derived for the same month: {comp.get(cpi['period'])}%")
+        if cpi["period"] != off[-1][0] or abs(cpi["value"] - off[-1][1]) > 1e-9:
+            problems.append("the CPI headline is not the publisher's latest figure")
+        if cpi["period"] not in comp:
+            problems.append(f"the index-derived series has no observation for {cpi['period']}, so the "
+                            f"two cannot be compared")
+        if "index-derived" not in (cpi.get("reason") or ""):
+            problems.append("the CPI tile does not disclose the index-derived comparison")
+    else:
+        problems.append("the CPI headline is not using the published series")
+
+    # portal timestamps are midnight IST: a monthly point must land on a month end, never a day early
+    for key in ("cpi_yoy_official",):
+        pts = DATA["series"][key]["points"]
+        last = dt.date.fromisoformat(pts[-1][0])
+        month_end = (last.replace(day=28) + dt.timedelta(days=4)).replace(day=1) - dt.timedelta(days=1)
+        if last != month_end:
+            problems.append(f"{key}: newest point {pts[-1][0]} is not a month end - portal timestamps are "
+                            f"midnight IST and must not be read as UTC")
+    # the FX tile must carry the fresher daily rate, not the weekly table's lagging row
+    usd = tiles.get("usdinr")
+    if usd:
+        pts = DATA["series"]["inr_usd"]["points"]
+        dated = [p[0] for p in pts]
+        print(f"  usd/inr tile: {usd['value']} for {usd['period']} | series newest {dated[-1]}")
+        if usd["period"] != dated[-1]:
+            problems.append("the USD/INR tile is not on the newest observation of its series")
+        if dated[-1] <= dated[-2]:
+            problems.append("the USD/INR series did not gain a fresher point from the daily key rates")
+
+
 def check_step_series(pw, problems):
     """Policy SETTINGS (CRR, SLR, the repo rate) must be dated by when they took effect.
 
@@ -937,6 +998,9 @@ def main() -> int:
 
             print("policy settings vs readings (effective-from dating)")
             check_step_series(pw, problems)
+
+            print("published vs derived reconciliation")
+            check_source_reconciliation(problems)
 
             print("per-card history tables")
             check_history_modal(pw, problems)

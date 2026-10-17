@@ -27,6 +27,34 @@ reachable, and which traps the client encodes — so the data path can be audite
 | **6** | Cash Balances of SCBs with RBI | *fetched but not used* — the endpoint returns a partial, non-chronological subset (≈524 of 7,379 rows). Listed as a known exception so the completeness gate still fails loudly on anything else |
 | **—** | key-rates snapshot | the portal's own policy-rate set (repo, SDF, CRR, SLR, bank rate, WACR, latest CPI release), used for the freshest announced values and the snapshot strip |
 
+## The portal's indicator route (a second data surface)
+
+The `#/dbie/indN` pages ("Indicators" in the portal menu) are **not** served by the report tables above.
+They call `dbie_getWSSReport` on the **RBIDATA** gateway with a request built from named-series codes:
+
+```json
+{"body": {"requestVO": {
+  "currencyCode": "", "itemCode": ["27"], "fromDate": "2024-01-01 00:00:00",
+  "toDate": "2099-01-01 00:00:00", "frequency": "Annual", "reportName": "RBIB18",
+  "level1Code": ["Combined"], "level2Code": ["CPI-2024 = 100"], "level3Code": ["Inflation"]}}}
+```
+
+Two things about this route cost a probe cycle and are worth recording:
+
+* the response nests as **`body.Result`** — *not* `body.response.Result`, which is the shape the report
+  gateway uses;
+* it carries the **officially published** series, e.g. CPI inflation, Combined, as printed in
+  "Home > Publication > Time-Series Publications > Monthly RBI Bulletin > Prices and Production >
+  19 Consumer Price Index". That published figure is the one quoted in the press and compared with the
+  RBI's target, so it is the headline here (`cpi_yoy_official`), while the series derived from the
+  published index remains the long history on the chart.
+
+**Timestamp encoding:** every date the portal stores is midnight **IST** (UTC+05:30). Read as UTC, each
+such date lands one day early — a September observation stamped `2026-09-30T00:00+05:30` became
+`2026-09-29`, and the October policy announcement became 6 Oct instead of 7 Oct. The pipeline converts
+every portal timestamp in IST (`ist_date()` in `fetch_series.py`), and the verification gate asserts that
+a monthly point lands on a month end.
+
 ## How the portal is read
 
 The portal is an Angular application over six gateways on `data.rbi.org.in`; the client speaks to them

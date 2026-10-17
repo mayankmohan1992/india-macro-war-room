@@ -233,199 +233,120 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-17 23:18 IST",
- "as_of": "2026-10-11",
+ "generated": "2026-10-18 00:57 IST",
+ "as_of": "2026-10-15",
  "as_of_by_frequency": {
   "daily": "2026-10-11",
-  "weekly": "2026-10-09",
+  "weekly": "2026-10-15",
   "fortnightly": "2026-09-30",
   "monthly": "2026-09-30"
  },
+ "cross_checks": [
+  {
+   "indicator": "cpi",
+   "computed_series": "cpi_yoy",
+   "published_series": "cpi_yoy_official",
+   "months_compared": 9,
+   "max_abs_diff_pp": 0.05,
+   "worst_month": "2026-02-28",
+   "published": 3.21,
+   "computed": 3.26,
+   "tolerance_pp": 0.1,
+   "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp."
+  }
+ ],
  "verdict": "Stress signals in core indicators",
  "counts": {
-  "good": 11,
-  "watch": 17,
+  "good": 12,
+  "watch": 16,
   "bad": 10
  },
  "tiles": [
   {
    "id": "cpi",
    "def_key": "cpi",
-   "series_key": "cpi_yoy",
+   "series_key": "cpi_yoy_official",
    "label": "CPI inflation",
    "group": "Prices",
-   "value": 5.59,
+   "value": 5.54,
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
    "status": "watch",
-   "reason": "5.59% - inside the band but above target",
-   "rule": "RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6.",
-   "change": 0.77,
+   "reason": "5.54% - inside the band but above target (an index-derived y-o-y for the same month gives 5.59%; the two differ because the published index is rounded to one decimal)",
+   "rule": "The figure the publisher prints (MoSPI/NSO, via the portal's indicator series), not a figure derived here. RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6. The chart draws the longer index-derived history, reconciled against this series to within 0.1pp (see cross_checks).",
+   "change": 0.71,
    "spark": [
-    4.83,
-    5.48,
-    5.73,
-    5.05,
-    5.16,
-    4.93,
-    4.8,
-    4.88,
-    5.14,
-    3.67,
-    3.67,
-    5.46,
-    6.25,
-    5.5,
-    5.21,
-    4.09,
-    3.47,
-    3.58,
-    3.36,
-    3.03,
-    2.3,
-    1.67,
-    1.97,
-    1.37,
-    0.0,
-    0.48,
-    1.17,
-    2.75,
-    3.26,
-    3.35,
-    3.44,
+    2.74,
+    3.21,
+    3.4,
+    3.48,
     3.93,
-    4.39,
+    4.38,
     4.45,
-    4.82,
-    5.59
+    4.83,
+    5.54
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
      "date": "2026-09-30",
-     "value": 5.59,
-     "prev": 4.82,
-     "change": 0.77
+     "value": 5.54,
+     "prev": 4.83,
+     "change": 0.71
     },
     {
      "date": "2026-08-31",
-     "value": 4.82,
+     "value": 4.83,
      "prev": 4.45,
-     "change": 0.37
+     "change": 0.38
     },
     {
      "date": "2026-07-31",
      "value": 4.45,
-     "prev": 4.39,
-     "change": 0.06
+     "prev": 4.38,
+     "change": 0.07
     },
     {
      "date": "2026-06-30",
-     "value": 4.39,
+     "value": 4.38,
      "prev": 3.93,
-     "change": 0.46
+     "change": 0.45
     },
     {
      "date": "2026-05-31",
      "value": 3.93,
-     "prev": 3.44,
-     "change": 0.49
+     "prev": 3.48,
+     "change": 0.45
     },
     {
      "date": "2026-04-30",
-     "value": 3.44,
-     "prev": 3.35,
-     "change": 0.09
+     "value": 3.48,
+     "prev": 3.4,
+     "change": 0.08
     },
     {
      "date": "2026-03-31",
-     "value": 3.35,
-     "prev": 3.26,
-     "change": 0.09
+     "value": 3.4,
+     "prev": 3.21,
+     "change": 0.19
     },
     {
      "date": "2026-02-28",
-     "value": 3.26,
-     "prev": 2.75,
-     "change": 0.51
+     "value": 3.21,
+     "prev": 2.74,
+     "change": 0.47
     },
     {
      "date": "2026-01-31",
-     "value": 2.75,
-     "prev": 1.17,
-     "change": 1.58
-    },
-    {
-     "date": "2025-12-31",
-     "value": 1.17,
-     "prev": 0.48,
-     "change": 0.69
-    },
-    {
-     "date": "2025-11-30",
-     "value": 0.48,
-     "prev": 0.0,
-     "change": 0.48
-    },
-    {
-     "date": "2025-10-31",
-     "value": 0.0,
-     "prev": 1.37,
-     "change": -1.37
-    },
-    {
-     "date": "2025-09-30",
-     "value": 1.37,
-     "prev": 1.97,
-     "change": -0.6
-    },
-    {
-     "date": "2025-08-31",
-     "value": 1.97,
-     "prev": 1.67,
-     "change": 0.3
-    },
-    {
-     "date": "2025-07-31",
-     "value": 1.67,
-     "prev": 2.3,
-     "change": -0.63
-    },
-    {
-     "date": "2025-06-30",
-     "value": 2.3,
-     "prev": 3.03,
-     "change": -0.73
-    },
-    {
-     "date": "2025-05-31",
-     "value": 3.03,
-     "prev": 3.36,
-     "change": -0.33
-    },
-    {
-     "date": "2025-04-30",
-     "value": 3.36,
-     "prev": 3.58,
-     "change": -0.22
-    },
-    {
-     "date": "2025-03-31",
-     "value": 3.58,
-     "prev": 3.47,
-     "change": 0.11
-    },
-    {
-     "date": "2025-02-28",
-     "value": 3.47,
-     "prev": 4.09,
-     "change": -0.62
+     "value": 2.74,
+     "prev": null,
+     "change": null
     }
    ],
-   "history_note": "last 20 published observations of 153 stored",
-   "stale_days": 11,
+   "history_note": "last 9 published observations of 9 stored",
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -600,7 +521,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -737,7 +658,7 @@
     }
    ],
    "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -918,7 +839,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -1099,7 +1020,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "weekly"
   },
@@ -1280,7 +1201,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -1461,7 +1382,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -1642,7 +1563,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -1823,7 +1744,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 0,
+   "stale_days": 4,
    "stale": false,
    "freq": "daily"
   },
@@ -2004,7 +1925,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -2185,7 +2106,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -2366,7 +2287,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -2547,7 +2468,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -2728,7 +2649,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -2909,7 +2830,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -3090,7 +3011,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -3271,7 +3192,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -3452,7 +3373,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -3633,7 +3554,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -3808,7 +3729,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -3983,7 +3904,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -4158,7 +4079,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -4339,7 +4260,7 @@
     }
    ],
    "history_note": "last 20 published observations of 153 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -4520,7 +4441,7 @@
     }
    ],
    "history_note": "last 20 published observations of 153 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "monthly"
   },
@@ -4701,7 +4622,7 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -4882,7 +4803,7 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -5063,7 +4984,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -5244,7 +5165,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 177,
+   "stale_days": 181,
    "stale": true,
    "freq": "weekly"
   },
@@ -5425,7 +5346,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -5539,7 +5460,7 @@
     }
    ],
    "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -5611,7 +5532,7 @@
     }
    ],
    "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -5621,16 +5542,15 @@
    "series_key": "inr_usd",
    "label": "USD/INR",
    "group": "External",
-   "value": 96.61,
+   "value": 95.0691,
    "unit": "₹",
    "fmt": "num",
-   "period": "2026-10-09",
-   "status": "watch",
-   "reason": "96.61 (+1.36% over 3m) - rupee depreciating",
+   "period": "2026-10-15",
+   "status": "good",
+   "reason": "95.07 (-1.35% over 3m) - rupee appreciating",
    "rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
-   "change": 0.62,
+   "change": -1.541,
    "spark": [
-    90.42,
     90.74,
     90.95,
     90.95,
@@ -5665,11 +5585,18 @@
     95.79,
     95.89,
     95.99,
-    96.61
+    96.61,
+    95.069
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-15",
+     "value": 95.0691,
+     "prev": 96.61,
+     "change": -1.541
+    },
     {
      "date": "2026-10-09",
      "value": 96.61,
@@ -5783,16 +5710,10 @@
      "value": 95.4,
      "prev": 95.38,
      "change": 0.02
-    },
-    {
-     "date": "2026-05-29",
-     "value": 95.38,
-     "prev": 95.96,
-     "change": -0.58
     }
    ],
-   "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "history_note": "last 20 published observations of 261 stored",
+   "stale_days": 0,
    "stale": false,
    "freq": "weekly"
   },
@@ -5973,7 +5894,7 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -6154,7 +6075,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   },
@@ -6335,7 +6256,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -6516,7 +6437,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -6697,7 +6618,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 11,
+   "stale_days": 15,
    "stale": false,
    "freq": "fortnightly"
   },
@@ -6878,7 +6799,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 2,
+   "stale_days": 6,
    "stale": false,
    "freq": "weekly"
   }
@@ -6886,7 +6807,7 @@
  "dead_series": {
   "tbcmb": {
    "last": "2020-08-14",
-   "days": 2249,
+   "days": 2253,
    "label": "Cash Management Bills outstanding"
   }
  },
@@ -8548,6 +8469,49 @@
     [
      "2026-08-31",
      4.96
+    ]
+   ]
+  },
+  "cpi_yoy_official": {
+   "label": "CPI inflation, y-o-y (as published)",
+   "unit": "%",
+   "source": "RBI DBIE indicator series (RBIB18)",
+   "points": [
+    [
+     "2026-01-31",
+     2.74
+    ],
+    [
+     "2026-02-28",
+     3.21
+    ],
+    [
+     "2026-03-31",
+     3.4
+    ],
+    [
+     "2026-04-30",
+     3.48
+    ],
+    [
+     "2026-05-31",
+     3.93
+    ],
+    [
+     "2026-06-30",
+     4.38
+    ],
+    [
+     "2026-07-31",
+     4.45
+    ],
+    [
+     "2026-08-31",
+     4.83
+    ],
+    [
+     "2026-09-30",
+     5.54
     ]
    ]
   },
@@ -33214,9 +33178,9 @@
    ]
   },
   "inr_usd": {
-   "label": "INR-US$ spot rate",
+   "label": "USD/INR (weekly table + latest daily rate)",
    "unit": "₹",
-   "source": "RBI r10 (weekly WSS)",
+   "source": "RBI r10 (weekly) + DBIE key rates (daily)",
    "points": [
     [
      "2021-10-22",
@@ -34257,6 +34221,10 @@
     [
      "2026-10-09",
      96.61
+    ],
+    [
+     "2026-10-15",
+     95.0691
     ]
    ]
   },
@@ -61674,7 +61642,7 @@
    "source": "DBIE key rates",
    "points": [
     [
-     "2026-10-06",
+     "2026-10-07",
      5.25
     ]
    ]
@@ -61749,18 +61717,18 @@
    "name": "Policy repo rate",
    "unit": "%",
    "kind": "setting",
-   "since": "2026-10-06",
+   "since": "2026-10-07",
    "value": 5.5,
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "src": "key rates"
   },
   {
    "name": "SDF rate",
    "unit": "%",
    "kind": "setting",
-   "since": "2026-10-06",
+   "since": "2026-10-07",
    "value": 5.25,
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "src": "key rates"
   },
   {
@@ -61797,9 +61765,9 @@
    "name": "USD/INR",
    "unit": "₹/US$",
    "kind": "reading",
-   "value": 96.61,
-   "date": "2026-10-09",
-   "src": "weekly WSS"
+   "value": 95.0691,
+   "date": "2026-10-15",
+   "src": "key rates"
   },
   {
    "name": "CRR",
@@ -61810,7 +61778,8 @@
    "src": "key rates + WSS setting in force",
    "since": "2025-12-05",
    "prev": 3.25,
-   "bp": -25.0
+   "bp": -25.0,
+   "announced_from": "2025-11-29"
   },
   {
    "name": "SLR",
@@ -61821,14 +61790,15 @@
    "src": "key rates + WSS setting in force",
    "since": "2020-04-17",
    "prev": 18.25,
-   "bp": -25.0
+   "bp": -25.0,
+   "announced_from": "2020-04-11"
   },
   {
    "name": "CPI inflation (released)",
    "unit": "%",
    "kind": "reading",
    "value": 5.54,
-   "date": "2026-09-29",
+   "date": "2026-09-30",
    "src": "key rates"
   },
   {
@@ -61836,7 +61806,7 @@
    "unit": "%",
    "kind": "reading",
    "value": 5.116586,
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "src": "key rates"
   }
  ],

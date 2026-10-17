@@ -74,6 +74,28 @@ enforced by the build and asserted by the verifier:
    dropped from any chart and the reason is stated in the caption. The Cash Management Bills line, last
    published in Aug-2020, is the live example.
 
+### The headline is the publisher's figure; derived series are cross-checked against it
+
+For CPI the portal publishes an inflation series directly (`cpi_yoy_official`). It is the headline because
+it is the number quoted publicly and compared with the RBI's target, and because a y-o-y recomputed from
+the published index differs from it by up to ~0.05pp: the index is released rounded to one decimal, so a
+computed y-o-y carries a quantisation of about ±0.05pp. The derived series (`cpi_yoy`, ~150 months) is
+what the chart draws, and the build publishes a `cross_checks` block with the largest gap over the
+overlapping months — currently 0.05pp over 9 months, tolerance 0.1pp. A gap beyond tolerance fails the
+verification gate, so a genuine derivation error cannot hide behind "rounding".
+
+The same principle applies to freshness: the weekly table's INR–US$ row lags up to a week, while the
+portal's key-rates set carries the daily FBIL rate, so the daily rate is appended to that series and the
+tile shows 95.07 for 15 Oct rather than the weekly 96.61 for 9 Oct.
+
+### Two defensible "when" dates for a policy setting
+
+For CRR and SLR the portal's key-rates set carries RBI's own **effective** date (the setting's own stamp),
+while the weekly statement is the first published row *reflecting* it. Both are reported: the tile and the
+history table use the weekly-series change date, the snapshot strip carries both (`announced_from` from key
+rates, `since` from the series). For CRR that is 29 Nov 2025 (effective, key rates) and 5 Dec 2025 (first
+weekly statement) — a one-week difference that is a fact about publication, not a disagreement.
+
 ### Scoring bands — conventional readings, not official verdicts
 
 Each indicator gets `good` / `watch` / `bad` from explicit thresholds. They are published on the

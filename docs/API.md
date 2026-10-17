@@ -155,6 +155,25 @@ The portal's own key-rates set plus the weekly market prices, each row carrying 
 source label (`key rates` / `weekly WSS`), because the two are different vintages and must not be
 silently compared. Settings carry `in force since` semantics via `since`.
 
+### `GET /dataset.json` — everything in one document
+
+(see below) It also carries **`cross_checks`** at the top level: for each indicator whose headline is
+derived rather than published, the largest divergence between the derived and the published series, the
+month it occurred, and the tolerance the build enforces. Example:
+
+```json
+"cross_checks": [{ "indicator": "cpi", "computed_series": "cpi_yoy",
+                   "published_series": "cpi_yoy_official", "months_compared": 9,
+                   "max_abs_diff_pp": 0.05, "worst_month": "2026-02-28",
+                   "published": 3.21, "computed": 3.26, "tolerance_pp": 0.1,
+                   "note": "The published figure is quoted on the headline; the index-derived series is
+                            the long history drawn on the chart..." }]
+```
+
+The CPI indicator (`series/cpi.json`) also carries `series` = `cpi_yoy_official` (the published series,
+which the headline uses) while `series/cpi_yoy` remains available in `dataset.json` as the longer derived
+history.
+
 ### `GET /definitions.json` — sourced definitions
 
 33 terms, each with the publisher's own wording and a source URL. Nothing here is written from memory.
