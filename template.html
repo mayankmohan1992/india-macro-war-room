@@ -7,15 +7,18 @@
 <script>
   /* THEME, applied before first paint so a dark-mode user never sees a light flash.
      Exactly two token blocks exist: :root = light, :root[data-theme="dark"] = dark. The stored choice
-     wins; otherwise the operating-system preference is used. (The page is JS-rendered anyway, so there
-     is no no-JS fallback to preserve.) */
+     wins; otherwise the theme is LIGHT on every machine. (The page is JS-rendered anyway, so there is
+     no no-JS fallback to preserve.) */
   (function(){
     var t='light';
     try{
       var saved=null;
       try{ saved=localStorage.getItem('warroom-theme'); }catch(e){ saved=null; }
-      var sysDark=!!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      t=(saved==='light'||saved==='dark')?saved:(sysDark?'dark':'light');
+      // LIGHT IS THE DEFAULT, always: a stored Light/Dark choice wins, otherwise every visitor gets
+      // light regardless of what their operating system reports. The dashboard's design is specified
+      // in light, so nobody should meet a different default than the reviewer did just because their
+      // machine is in dark mode. (Dark remains one click away, and a click is remembered.)
+      t=(saved==='light'||saved==='dark')?saved:'light';
     }catch(e){ t='light'; }
     document.documentElement.setAttribute('data-theme', t);
   })();
@@ -49,8 +52,8 @@
     --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
     --rail:clamp(320px,25vw,412px);
   }
-  /* dark variant — same tokens, switched by [data-theme="dark"] on <html> (set by the head script
-     from the stored choice or the OS preference, and by the Light/Dark toggle in the header) */
+  /* dark variant — same tokens, switched by [data-theme="dark"] on <html>. Set by the head script from
+     the stored choice only (light by default on every machine), and by the Light/Dark toggle. */
   :root[data-theme="dark"]{
       --paper:#121316; --raised:#101014; --sunken:#060607; --ink:#f2f1ee; --ink2:#a8a6a0; --ink3:#7a7973;
       --line:rgba(242,241,238,.17); --line2:rgba(242,241,238,.40);
@@ -1132,12 +1135,9 @@ function repaint(){
 document.getElementById('t-light').addEventListener('click', ()=>setTheme('light', true));
 document.getElementById('t-dark').addEventListener('click', ()=>setTheme('dark', true));
 setTheme(document.documentElement.getAttribute('data-theme') || 'light', false);   // sync the buttons
-/* follow the OS only while the user has made no explicit choice */
-if(window.matchMedia){
-  const mq=window.matchMedia('(prefers-color-scheme: dark)');
-  const onScheme=e=>{ if(!storedTheme()) setTheme(e.matches?'dark':'light', false); };
-  mq.addEventListener ? mq.addEventListener('change', onScheme) : mq.addListener(onScheme);
-}
+/* NO operating-system listener on purpose: the default is light on every machine, so a visitor whose
+   OS switches to dark mid-session must not have the page switched underneath them. Only an explicit
+   click on Light/Dark changes the theme, and that choice is stored. */
 
 /* ---------- header, strip, footer ---------- */
 function renderHead(){

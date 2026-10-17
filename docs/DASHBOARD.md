@@ -190,10 +190,13 @@ survives offline; micro-labels are uppercase at `.14em`, headings at `-.02em`, b
 
 A **Light / Dark** switch sits at the top right of the header, next to the density control.
 
+- **Light is the default on every machine**, regardless of the operating system's own preference: the
+  dashboard's design is specified in light, so a visitor should not meet a different default just because
+  their laptop is in dark mode. Dark is one click away.
 - The choice is stored in `localStorage` (`warroom-theme`) and reapplied **before first paint** by a small
-  inline script in `<head>`, so a dark-mode user never sees a light flash.
-- With no stored choice the page follows the operating system, and keeps following it if the OS switches.
-  Choosing Light or Dark pins it from then on.
+  inline script in `<head>`, so a returning visitor never sees their choice flash to the other theme.
+- A stored Light/Dark choice always wins over the default. There is deliberately **no operating-system
+  listener**, so a mid-session OS switch cannot move the page underneath the visitor.
 - Exactly two token blocks exist — `:root` (light) and `:root[data-theme="dark"]` — so the palette has one
   source of truth, and the chart colours are read from those CSS properties at render time.
 - Switching themes **repaints instead of re-rendering**: the palette is re-read, the legend swatches and

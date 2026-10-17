@@ -130,6 +130,8 @@ Details: [METHODOLOGY.md](docs/METHODOLOGY.md) · [DEPLOYMENT.md](docs/DEPLOYMEN
 - **The colour verdicts are conventional readings, not RBI verdicts.** Every threshold is published on
   the dashboard (`How each colour is decided`) and in [docs/METHODOLOGY.md](docs/METHODOLOGY.md), so
   you can disagree with them explicitly rather than silently.
+- **Theme:** light by default on every machine, including dark-mode systems; Dark is one click away and
+  the choice is remembered.
 - **Known limits, stated rather than hidden:** figures are provisional and get revised by the
   publisher; the WPI series carries an unusual step in Apr-2026 and is flagged on its tile; some RBI
   lines are published only when non-zero, so such a series is marked `stale` with its last reported

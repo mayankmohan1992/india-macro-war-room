@@ -4,6 +4,14 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.2] — 2026-10-17
+
+### Changed
+- **The dashboard now defaults to the light theme on every machine**, instead of following the operating
+  system. A visitor on a dark-mode laptop meets the same default as everyone else (the design is specified
+  in light), Dark remains one click away, and an explicit choice is still stored and restored before first
+  paint. The operating-system listener was removed, so a mid-session OS switch cannot change the page.
+
 ## [1.0.1] — 2026-10-17
 
 ### Fixed

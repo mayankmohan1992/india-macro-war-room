@@ -506,22 +506,43 @@ def check_theme(pw, problems):
             visible: document.getElementById('t-dark').offsetWidth > 0
         })""")
 
-    # (1) a system-dark machine with no stored choice must START dark, before any click
+    # (1) a system-DARK machine with no stored choice must still START LIGHT: light is the default on
+    #     every machine, whatever the visitor's OS reports. Dark stays one click away.
     browser = pw.chromium.launch()
     pg = browser.new_page(viewport={"width": 1440, "height": 900}, color_scheme="dark")
     pg.goto(PAGE.as_uri()); pg.wait_for_timeout(600)
     dark0 = probe(pg)
-    dark_lines = dark0["cpiLine"]
+    if dark0["theme"] != "light" or dark0["bg"] != "rgb(242, 241, 238)":
+        problems.append(f"a dark-mode system with no saved choice did not start LIGHT "
+                        f"(theme={dark0['theme']!r}, bg={dark0['bg']!r}) - light is the required default")
+    if dark0["lightOn"] is not True or dark0["darkOn"] is not False:
+        problems.append("the toggle buttons do not show Light as active on a fresh visit")
+    # a stored choice still wins over the default
+    pg.click("#t-dark"); pg.wait_for_timeout(400)
+    dark_lines = probe(pg)["cpiLine"]
+    pg.reload(); pg.wait_for_timeout(600)
+    if probe(pg)["theme"] != "dark":
+        problems.append("an explicit dark choice was not restored on reload")
     pg.close()
 
     # (2) system-light: starts light; the toggle must flip everything, persist, and flip back
     pg = browser.new_page(viewport={"width": 1440, "height": 900}, color_scheme="light")
     pg.goto(PAGE.as_uri()); pg.wait_for_timeout(600)
     light0 = probe(pg)
-    print(f"  theme: system-dark start={dark0['theme']} ({dark0['bg']}) | "
-          f"system-light start={light0['theme']} ({light0['bg']})")
-    if dark0["theme"] != "dark":
-        problems.append(f"a dark-mode system with no saved choice started in {dark0['theme']!r}")
+    # the OS must not be able to move the theme: no listener is installed by design, so the attribute
+    # can only change on a click
+    stable = pg.evaluate("""() => {
+        const before = document.documentElement.getAttribute('data-theme');
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        mq.dispatchEvent(new Event('change'));          // would fire any listener that existed
+        return {before, after: document.documentElement.getAttribute('data-theme')};
+    }""")
+    if stable["before"] != stable["after"]:
+        problems.append("the theme changed without a click - an OS listener is still installed")
+
+    print(f"  theme: system-dark start={dark0['theme']} ({dark0['bg']}) [light required] | "
+          f"system-light start={light0['theme']} ({light0['bg']}) | OS cannot override: "
+          f"{stable['before'] == stable['after']}")
     if light0["theme"] != "light":
         problems.append(f"a light-mode system started in {light0['theme']!r}")
     if not (light0["visible"] and light0["rightSide"]):
