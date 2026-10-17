@@ -10,6 +10,12 @@
   "group": "Fiscal",
   "history": [
    {
+    "change": -0.2,
+    "date": "2026-10-09",
+    "prev": 23.67,
+    "value": 23.47
+   },
+   {
     "change": -2.2,
     "date": "2026-10-02",
     "prev": 25.87,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 24.51,
     "value": 24.94
-   },
-   {
-    "change": -0.19,
-    "date": "2026-05-22",
-    "prev": 24.7,
-    "value": 24.51
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "RBI rupee securities",
   "latest": {
-   "change": -2.2,
-   "date": "2026-10-02",
-   "value": 23.67
+   "change": -0.2,
+   "date": "2026-10-09",
+   "value": 23.47
   },
   "links": {
    "csv": "series/rupeesec.csv",
    "self": "series/rupeesec.json"
   },
   "points": [
-   [
-    "2022-03-11",
-    11.82
-   ],
    [
     "2022-03-18",
     11.73
@@ -1104,25 +1100,29 @@
    [
     "2026-10-02",
     23.67
+   ],
+   [
+    "2026-10-09",
+    23.47
    ]
   ],
   "scoring_rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
   "series": "rupeesec_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 4,
+  "stale_days": 2,
   "status": "watch",
-  "status_reason": "23.7% - fast growth - heavy government paper absorption",
+  "status_reason": "23.5% - fast growth - heavy government paper absorption",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

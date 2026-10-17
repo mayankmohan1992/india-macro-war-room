@@ -11,7 +11,7 @@
   "history": [
    {
     "change": 25.0,
-    "date": "2026-10-06",
+    "date": "2026-10-09",
     "prev": 5.25,
     "value": 5.5
    },
@@ -77,19 +77,19 @@
    },
    {
     "change": null,
-    "date": "2021-10-15",
+    "date": "2021-10-22",
     "prev": null,
     "value": 4.0
    }
   ],
   "history_kind": "setting",
-  "history_note": "261 published rows in the source table; the setting changed 12 time(s) in that window",
+  "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
   "id": "repo",
   "kind": "setting",
   "label": "Policy repo rate",
   "latest": {
    "change": 0.25,
-   "date": "2026-10-06",
+   "date": "2026-10-09",
    "value": 5.5
   },
   "links": {
@@ -97,10 +97,6 @@
    "self": "series/repo.json"
   },
   "points": [
-   [
-    "2021-10-15",
-    4.0
-   ],
    [
     "2021-10-22",
     4.0
@@ -1138,7 +1134,7 @@
     5.25
    ],
    [
-    "2026-10-06",
+    "2026-10-09",
     5.5
    ]
   ],
@@ -1146,24 +1142,24 @@
   "series": "repo",
   "setting": {
    "change_bp": 25.0,
-   "effective_from": "2026-10-06",
+   "effective_from": "2026-10-09",
    "previous": 5.25
   },
-  "source": "DBIE key rates",
+  "source": "RBI r10 (weekly WSS)",
   "stale": false,
-  "stale_days": 0,
+  "stale_days": 2,
   "status": "bad",
-  "status_reason": "a 25bp hike on 2026-10-06 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
+  "status_reason": "a 25bp hike on 2026-10-09 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

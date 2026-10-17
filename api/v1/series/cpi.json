@@ -10,6 +10,12 @@
   "group": "Prices",
   "history": [
    {
+    "change": 0.77,
+    "date": "2026-09-30",
+    "prev": 4.82,
+    "value": 5.59
+   },
+   {
     "change": 0.37,
     "date": "2026-08-31",
     "prev": 4.45,
@@ -122,23 +128,17 @@
     "date": "2025-02-28",
     "prev": 4.09,
     "value": 3.47
-   },
-   {
-    "change": -1.12,
-    "date": "2025-01-31",
-    "prev": 5.21,
-    "value": 4.09
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 20 published observations of 152 stored",
+  "history_note": "last 20 published observations of 153 stored",
   "id": "cpi",
   "kind": "reading",
   "label": "CPI inflation",
   "latest": {
-   "change": 0.37,
-   "date": "2026-08-31",
-   "value": 4.82
+   "change": 0.77,
+   "date": "2026-09-30",
+   "value": 5.59
   },
   "links": {
    "csv": "series/cpi.csv",
@@ -752,25 +752,29 @@
    [
     "2026-08-31",
     4.82
+   ],
+   [
+    "2026-09-30",
+    5.59
    ]
   ],
   "scoring_rule": "RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6.",
   "series": "cpi_yoy",
   "source": "RBI r11 (CPI 2024=100)",
   "stale": false,
-  "stale_days": 36,
+  "stale_days": 11,
   "status": "watch",
-  "status_reason": "4.82% - inside the band but above target",
+  "status_reason": "5.59% - inside the band but above target",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

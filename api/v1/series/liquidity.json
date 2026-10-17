@@ -10,6 +10,48 @@
   "group": "Liquidity",
   "history": [
    {
+    "change": -2317.136,
+    "date": "2026-10-11",
+    "prev": -260324.864,
+    "value": -262642.0
+   },
+   {
+    "change": 11038.863,
+    "date": "2026-10-10",
+    "prev": -271363.727,
+    "value": -260324.864
+   },
+   {
+    "change": 4721.728,
+    "date": "2026-10-09",
+    "prev": -276085.455,
+    "value": -271363.727
+   },
+   {
+    "change": 1533.772,
+    "date": "2026-10-08",
+    "prev": -277619.227,
+    "value": -276085.455
+   },
+   {
+    "change": 11068.318,
+    "date": "2026-10-07",
+    "prev": -288687.545,
+    "value": -277619.227
+   },
+   {
+    "change": -5358.954,
+    "date": "2026-10-06",
+    "prev": -283328.591,
+    "value": -288687.545
+   },
+   {
+    "change": -5020.591,
+    "date": "2026-10-05",
+    "prev": -278308.0,
+    "value": -283328.591
+   },
+   {
     "change": 3534.045,
     "date": "2026-10-04",
     "prev": -281842.045,
@@ -86,48 +128,6 @@
     "date": "2026-09-22",
     "prev": -487321.0,
     "value": -468296.091
-   },
-   {
-    "change": 1344.818,
-    "date": "2026-09-21",
-    "prev": -488665.818,
-    "value": -487321.0
-   },
-   {
-    "change": 7746.364,
-    "date": "2026-09-20",
-    "prev": -496412.182,
-    "value": -488665.818
-   },
-   {
-    "change": 14209.591,
-    "date": "2026-09-19",
-    "prev": -510621.773,
-    "value": -496412.182
-   },
-   {
-    "change": -4205.909,
-    "date": "2026-09-18",
-    "prev": -506415.864,
-    "value": -510621.773
-   },
-   {
-    "change": -9573.455,
-    "date": "2026-09-17",
-    "prev": -496842.409,
-    "value": -506415.864
-   },
-   {
-    "change": -5887.318,
-    "date": "2026-09-16",
-    "prev": -490955.091,
-    "value": -496842.409
-   },
-   {
-    "change": -13520.227,
-    "date": "2026-09-15",
-    "prev": -477434.864,
-    "value": -490955.091
    }
   ],
   "history_kind": "reading",
@@ -136,43 +136,15 @@
   "kind": "reading",
   "label": "Liquidity (1-month avg net ops)",
   "latest": {
-   "change": 3534.045,
-   "date": "2026-10-04",
-   "value": -278308.0
+   "change": -2317.136,
+   "date": "2026-10-11",
+   "value": -262642.0
   },
   "links": {
    "csv": "series/liquidity.csv",
    "self": "series/liquidity.json"
   },
   "points": [
-   [
-    "2026-03-19",
-    -321962.818
-   ],
-   [
-    "2026-03-20",
-    -313907.091
-   ],
-   [
-    "2026-03-21",
-    -300356.182
-   ],
-   [
-    "2026-03-22",
-    -289397.545
-   ],
-   [
-    "2026-03-23",
-    -284870.818
-   ],
-   [
-    "2026-03-24",
-    -276126.591
-   ],
-   [
-    "2026-03-25",
-    -271455.591
-   ],
    [
     "2026-03-26",
     -264100.182
@@ -944,25 +916,53 @@
    [
     "2026-10-04",
     -278308.0
+   ],
+   [
+    "2026-10-05",
+    -283328.591
+   ],
+   [
+    "2026-10-06",
+    -288687.545
+   ],
+   [
+    "2026-10-07",
+    -277619.227
+   ],
+   [
+    "2026-10-08",
+    -276085.455
+   ],
+   [
+    "2026-10-09",
+    -271363.727
+   ],
+   [
+    "2026-10-10",
+    -260324.864
+   ],
+   [
+    "2026-10-11",
+    -262642.0
    ]
   ],
   "scoring_rule": "Direction read: improving > +₹25k cr = green, within +/-₹25k cr = watch, deteriorating > ₹25k cr = red. A negative level alone is not scored as stress (SDF-era absorption is normal).",
   "series": "laf_net_30d",
   "source": "RBI r8",
   "stale": false,
-  "stale_days": 2,
+  "stale_days": 0,
   "status": "bad",
-  "status_reason": "-278,308 cr (-2.8 lakh cr), -146,287 cr vs 3 months ago - liquidity draining - the 1-month average absorbed over ₹25k cr more than a quarter ago",
+  "status_reason": "-262,642 cr (-2.6 lakh cr), -129,177 cr vs 3 months ago - liquidity draining - the 1-month average absorbed over ₹25k cr more than a quarter ago",
   "unit": "₹ crore"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

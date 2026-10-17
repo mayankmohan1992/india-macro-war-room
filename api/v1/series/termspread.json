@@ -10,6 +10,12 @@
   "group": "Markets",
   "history": [
    {
+    "change": 0.09,
+    "date": "2026-10-09",
+    "prev": 1.71,
+    "value": 1.8
+   },
+   {
     "change": -0.04,
     "date": "2026-10-02",
     "prev": 1.75,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 1.54,
     "value": 1.43
-   },
-   {
-    "change": -0.14,
-    "date": "2026-05-22",
-    "prev": 1.68,
-    "value": 1.54
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "Term spread (10y − 91d)",
   "latest": {
-   "change": -0.04,
-   "date": "2026-10-02",
-   "value": 1.71
+   "change": 0.09,
+   "date": "2026-10-09",
+   "value": 1.8
   },
   "links": {
    "csv": "series/termspread.csv",
    "self": "series/termspread.json"
   },
   "points": [
-   [
-    "2021-08-27",
-    3.0
-   ],
    [
     "2021-09-03",
     2.88
@@ -1184,25 +1180,29 @@
    [
     "2026-10-02",
     1.71
+   ],
+   [
+    "2026-10-09",
+    1.8
    ]
   ],
   "scoring_rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
   "series": "term_spread",
   "source": "derived (r10)",
   "stale": false,
-  "stale_days": 4,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "+1.71pp - normally sloped",
+  "status_reason": "+1.80pp - normally sloped",
   "unit": "pp"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

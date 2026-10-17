@@ -10,6 +10,12 @@
   "group": "Markets",
   "history": [
    {
+    "change": 0.14,
+    "date": "2026-10-09",
+    "prev": 7.23,
+    "value": 7.37
+   },
+   {
     "change": 0.09,
     "date": "2026-10-02",
     "prev": 7.14,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 7.06,
     "value": 6.99
-   },
-   {
-    "change": 0.04,
-    "date": "2026-05-22",
-    "prev": 7.02,
-    "value": 7.06
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "10-year G-sec yield",
   "latest": {
-   "change": 0.09,
-   "date": "2026-10-02",
-   "value": 7.23
+   "change": 0.14,
+   "date": "2026-10-09",
+   "value": 7.37
   },
   "links": {
    "csv": "series/gsec.csv",
    "self": "series/gsec.json"
   },
   "points": [
-   [
-    "2021-10-15",
-    6.35
-   ],
    [
     "2021-10-22",
     6.4
@@ -1184,25 +1180,29 @@
    [
     "2026-10-02",
     7.23
+   ],
+   [
+    "2026-10-09",
+    7.37
    ]
   ],
   "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
   "series": "gsec10y",
   "source": "RBI r10",
   "stale": false,
-  "stale_days": 4,
+  "stale_days": 2,
   "status": "bad",
-  "status_reason": "7.23% (+51 bp over 3m) - yields rising, tightening conditions",
+  "status_reason": "7.37% (+65 bp over 3m) - yields rising, tightening conditions",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

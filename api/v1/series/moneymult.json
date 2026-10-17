@@ -1030,19 +1030,19 @@
   "series": "money_mult",
   "source": "derived (r13 ÷ r7)",
   "stale": false,
-  "stale_days": 6,
+  "stale_days": 11,
   "status": "watch",
   "status_reason": "6.40x (+0.45 vs a year ago) - multiplier rising - banks creating money faster",
   "unit": "x"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

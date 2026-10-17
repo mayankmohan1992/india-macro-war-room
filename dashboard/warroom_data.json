@@ -233,13 +233,13 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-17 21:47 IST",
- "as_of": "2026-10-06",
+ "generated": "2026-10-17 16:29 UTC",
+ "as_of": "2026-10-11",
  "verdict": "Stress signals in core indicators",
  "counts": {
-  "good": 14,
-  "watch": 16,
-  "bad": 8
+  "good": 11,
+  "watch": 17,
+  "bad": 10
  },
  "tiles": [
   {
@@ -248,16 +248,15 @@
    "series_key": "cpi_yoy",
    "label": "CPI inflation",
    "group": "Prices",
-   "value": 4.82,
+   "value": 5.59,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-08-31",
+   "period": "2026-09-30",
    "status": "watch",
-   "reason": "4.82% - inside the band but above target",
+   "reason": "5.59% - inside the band but above target",
    "rule": "RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6.",
-   "change": 0.37,
+   "change": 0.77,
    "spark": [
-    5.09,
     4.83,
     5.48,
     5.73,
@@ -292,11 +291,18 @@
     3.93,
     4.39,
     4.45,
-    4.82
+    4.82,
+    5.59
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-09-30",
+     "value": 5.59,
+     "prev": 4.82,
+     "change": 0.77
+    },
     {
      "date": "2026-08-31",
      "value": 4.82,
@@ -410,16 +416,10 @@
      "value": 3.47,
      "prev": 4.09,
      "change": -0.62
-    },
-    {
-     "date": "2025-01-31",
-     "value": 4.09,
-     "prev": 5.21,
-     "change": -1.12
     }
    ],
-   "history_note": "last 20 published observations of 152 stored",
-   "stale_days": 36,
+   "history_note": "last 20 published observations of 153 stored",
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -593,7 +593,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -605,9 +605,9 @@
    "value": 5.5,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-06",
+   "period": "2026-10-09",
    "status": "bad",
-   "reason": "a 25bp hike on 2026-10-06 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
+   "reason": "a 25bp hike on 2026-10-09 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
    "rule": "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.",
    "change": 0.25,
    "spark": [
@@ -650,13 +650,13 @@
    ],
    "chart": "spark",
    "step": true,
-   "effective_from": "2026-10-06",
+   "effective_from": "2026-10-09",
    "prev": 5.25,
    "bp": 25.0,
    "history_kind": "setting",
    "history": [
     {
-     "date": "2026-10-06",
+     "date": "2026-10-09",
      "value": 5.5,
      "prev": 5.25,
      "change": 25.0
@@ -722,14 +722,14 @@
      "change": 40.0
     },
     {
-     "date": "2021-10-15",
+     "date": "2021-10-22",
      "value": 4.0,
      "prev": null,
      "change": null
     }
    ],
-   "history_note": "261 published rows in the source table; the setting changed 12 time(s) in that window",
-   "stale_days": 0,
+   "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -909,7 +909,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -1089,7 +1089,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -1269,7 +1269,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -1449,7 +1449,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -1629,7 +1629,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -1638,22 +1638,15 @@
    "series_key": "laf_net_30d",
    "label": "Liquidity (1-month avg net ops)",
    "group": "Liquidity",
-   "value": -278308.0,
+   "value": -262642.0,
    "unit": "₹ crore",
    "fmt": "crore",
-   "period": "2026-10-04",
+   "period": "2026-10-11",
    "status": "bad",
-   "reason": "-278,308 cr (-2.8 lakh cr), -146,287 cr vs 3 months ago - liquidity draining - the 1-month average absorbed over ₹25k cr more than a quarter ago",
+   "reason": "-262,642 cr (-2.6 lakh cr), -129,177 cr vs 3 months ago - liquidity draining - the 1-month average absorbed over ₹25k cr more than a quarter ago",
    "rule": "Direction read: improving > +₹25k cr = green, within +/-₹25k cr = watch, deteriorating > ₹25k cr = red. A negative level alone is not scored as stress (SDF-era absorption is normal).",
-   "change": 3534.045,
+   "change": -2317.136,
    "spark": [
-    -265043.5,
-    -285384.136,
-    -299848.455,
-    -321582.091,
-    -347639.909,
-    -375133.227,
-    -372931.909,
     -373694.182,
     -400907.182,
     -414015.182,
@@ -1682,11 +1675,60 @@
     -327033.636,
     -303375.182,
     -281842.045,
-    -278308.0
+    -278308.0,
+    -283328.591,
+    -288687.545,
+    -277619.227,
+    -276085.455,
+    -271363.727,
+    -260324.864,
+    -262642.0
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-11",
+     "value": -262642.0,
+     "prev": -260324.864,
+     "change": -2317.136
+    },
+    {
+     "date": "2026-10-10",
+     "value": -260324.864,
+     "prev": -271363.727,
+     "change": 11038.863
+    },
+    {
+     "date": "2026-10-09",
+     "value": -271363.727,
+     "prev": -276085.455,
+     "change": 4721.728
+    },
+    {
+     "date": "2026-10-08",
+     "value": -276085.455,
+     "prev": -277619.227,
+     "change": 1533.772
+    },
+    {
+     "date": "2026-10-07",
+     "value": -277619.227,
+     "prev": -288687.545,
+     "change": 11068.318
+    },
+    {
+     "date": "2026-10-06",
+     "value": -288687.545,
+     "prev": -283328.591,
+     "change": -5358.954
+    },
+    {
+     "date": "2026-10-05",
+     "value": -283328.591,
+     "prev": -278308.0,
+     "change": -5020.591
+    },
     {
      "date": "2026-10-04",
      "value": -278308.0,
@@ -1764,52 +1806,10 @@
      "value": -468296.091,
      "prev": -487321.0,
      "change": 19024.909
-    },
-    {
-     "date": "2026-09-21",
-     "value": -487321.0,
-     "prev": -488665.818,
-     "change": 1344.818
-    },
-    {
-     "date": "2026-09-20",
-     "value": -488665.818,
-     "prev": -496412.182,
-     "change": 7746.364
-    },
-    {
-     "date": "2026-09-19",
-     "value": -496412.182,
-     "prev": -510621.773,
-     "change": 14209.591
-    },
-    {
-     "date": "2026-09-18",
-     "value": -510621.773,
-     "prev": -506415.864,
-     "change": -4205.909
-    },
-    {
-     "date": "2026-09-17",
-     "value": -506415.864,
-     "prev": -496842.409,
-     "change": -9573.455
-    },
-    {
-     "date": "2026-09-16",
-     "value": -496842.409,
-     "prev": -490955.091,
-     "change": -5887.318
-    },
-    {
-     "date": "2026-09-15",
-     "value": -490955.091,
-     "prev": -477434.864,
-     "change": -13520.227
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 2,
+   "stale_days": 0,
    "stale": false
   },
   {
@@ -1818,16 +1818,15 @@
    "series_key": "call_rate",
    "label": "Call money rate",
    "group": "Policy",
-   "value": 5.12,
+   "value": 5.23,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
-   "status": "good",
-   "reason": "5.12% vs the same week's repo 5.25% (spread -0.13pp) - anchored to the repo rate",
+   "period": "2026-10-09",
+   "status": "watch",
+   "reason": "5.23% vs the same week's repo 5.50% (spread -0.27pp) - drifting away from the policy rate",
    "rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
-   "change": -0.07,
+   "change": 0.11,
    "spark": [
-    5.34,
     5.07,
     5.03,
     5.08,
@@ -1862,11 +1861,18 @@
     4.97,
     5.05,
     5.19,
-    5.12
+    5.12,
+    5.23
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 5.23,
+     "prev": 5.12,
+     "change": 0.11
+    },
     {
      "date": "2026-10-02",
      "value": 5.12,
@@ -1980,16 +1986,10 @@
      "value": 5.38,
      "prev": 5.25,
      "change": 0.13
-    },
-    {
-     "date": "2026-05-22",
-     "value": 5.25,
-     "prev": 5.24,
-     "change": 0.01
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -1998,16 +1998,15 @@
    "series_key": "gsec10y",
    "label": "10-year G-sec yield",
    "group": "Markets",
-   "value": 7.23,
+   "value": 7.37,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "bad",
-   "reason": "7.23% (+51 bp over 3m) - yields rising, tightening conditions",
+   "reason": "7.37% (+65 bp over 3m) - yields rising, tightening conditions",
    "rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
-   "change": 0.09,
+   "change": 0.14,
    "spark": [
-    6.77,
     6.82,
     6.75,
     6.78,
@@ -2042,11 +2041,18 @@
     7.05,
     7.08,
     7.14,
-    7.23
+    7.23,
+    7.37
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 7.37,
+     "prev": 7.23,
+     "change": 0.14
+    },
     {
      "date": "2026-10-02",
      "value": 7.23,
@@ -2160,16 +2166,10 @@
      "value": 6.99,
      "prev": 7.06,
      "change": -0.07
-    },
-    {
-     "date": "2026-05-22",
-     "value": 7.06,
-     "prev": 7.02,
-     "change": 0.04
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -2349,7 +2349,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -2358,16 +2358,15 @@
    "series_key": "fca_yoy",
    "label": "RBI foreign currency assets",
    "group": "External",
-   "value": 13.37,
+   "value": 13.77,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "good",
-   "reason": "13.4% - foreign currency assets building",
+   "reason": "13.8% - foreign currency assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": -0.74,
+   "change": 0.4,
    "spark": [
-    10.88,
     8.4,
     10.76,
     10.26,
@@ -2402,11 +2401,18 @@
     18.88,
     16.97,
     14.11,
-    13.37
+    13.37,
+    13.77
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 13.77,
+     "prev": 13.37,
+     "change": 0.4
+    },
     {
      "date": "2026-10-02",
      "value": 13.37,
@@ -2520,16 +2526,10 @@
      "value": 3.67,
      "prev": 4.0,
      "change": -0.33
-    },
-    {
-     "date": "2026-05-22",
-     "value": 4.0,
-     "prev": 5.21,
-     "change": -1.21
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -2538,16 +2538,15 @@
    "series_key": "tbill",
    "label": "T-bill outstanding",
    "group": "Fiscal",
-   "value": 819581.0,
+   "value": 818107.0,
    "unit": "₹ crore",
    "fmt": "crore",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "watch",
-   "reason": "819,581 cr (-0.1% over 3m) - stable short-term borrowing",
+   "reason": "818,107 cr (+1.0% over 3m) - stable short-term borrowing",
    "rule": "Green if 3-month change <= -5%, watch -5%..+10%, watch/red above +10% (more short-term borrowing).",
-   "change": 9495.0,
+   "change": -1474.0,
    "spark": [
-    736335.0,
     743696.0,
     754209.0,
     759814.0,
@@ -2582,11 +2581,18 @@
     801665.0,
     802182.0,
     810086.0,
-    819581.0
+    819581.0,
+    818107.0
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 818107.0,
+     "prev": 819581.0,
+     "change": -1474.0
+    },
     {
      "date": "2026-10-02",
      "value": 819581.0,
@@ -2700,16 +2706,10 @@
      "value": 783798.0,
      "prev": 779158.0,
      "change": 4640.0
-    },
-    {
-     "date": "2026-05-22",
-     "value": 779158.0,
-     "prev": 776939.0,
-     "change": 2219.0
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -2889,7 +2889,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -3069,7 +3069,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -3078,16 +3078,15 @@
    "series_key": "turnover",
    "label": "Money-market turnover",
    "group": "Markets",
-   "value": 1850297.0,
+   "value": 1547650.0,
    "unit": "₹ crore",
    "fmt": "crore",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "good",
-   "reason": "1,850,297 cr/day (+7% y-o-y) - money-market turnover in line with last year",
+   "reason": "1,547,650 cr/day (+5% y-o-y) - money-market turnover in line with last year",
    "rule": "Green within +/-20% y-o-y or expanding; watch on a >20% contraction.",
-   "change": 292213.0,
+   "change": -302647.0,
    "spark": [
-    1865777.0,
     1433386.0,
     1425829.0,
     1723628.0,
@@ -3122,11 +3121,18 @@
     1456446.0,
     1820124.0,
     1558084.0,
-    1850297.0
+    1850297.0,
+    1547650.0
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 1547650.0,
+     "prev": 1850297.0,
+     "change": -302647.0
+    },
     {
      "date": "2026-10-02",
      "value": 1850297.0,
@@ -3240,16 +3246,10 @@
      "value": 1848316.0,
      "prev": 1554569.0,
      "change": 293747.0
-    },
-    {
-     "date": "2026-05-22",
-     "value": 1554569.0,
-     "prev": 1863671.0,
-     "change": -309102.0
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -3258,16 +3258,15 @@
    "series_key": "yld91",
    "label": "91-day T-bill yield",
    "group": "Markets",
-   "value": 5.52,
+   "value": 5.57,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "bad",
-   "reason": "5.52% (+27 bp over 3 months) - short-end yields rising, tighter funding conditions",
+   "reason": "5.57% (+27 bp over 3 months) - short-end yields rising, tighter funding conditions",
    "rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
-   "change": 0.13,
+   "change": 0.05,
    "spark": [
-    5.34,
     5.49,
     5.5,
     5.34,
@@ -3302,11 +3301,18 @@
     5.21,
     5.28,
     5.39,
-    5.52
+    5.52,
+    5.57
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 5.57,
+     "prev": 5.52,
+     "change": 0.05
+    },
     {
      "date": "2026-10-02",
      "value": 5.52,
@@ -3420,16 +3426,10 @@
      "value": 5.56,
      "prev": 5.52,
      "change": 0.04
-    },
-    {
-     "date": "2026-05-22",
-     "value": 5.52,
-     "prev": 5.34,
-     "change": 0.18
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -3438,16 +3438,15 @@
    "series_key": "fwd3m",
    "label": "3-month US$ forward premia",
    "group": "External",
-   "value": 4.31,
+   "value": 5.0,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
-   "status": "good",
-   "reason": "4.31% - premia in the customary range, no depreciation pressure priced in",
+   "period": "2026-10-09",
+   "status": "watch",
+   "reason": "5.00% - premia elevated - hedging demand or depreciation expectations building",
    "rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
-   "change": 0.7,
+   "change": 0.69,
    "spark": [
-    2.83,
     2.51,
     2.53,
     2.54,
@@ -3482,11 +3481,18 @@
     3.41,
     3.4,
     3.61,
-    4.31
+    4.31,
+    5.0
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 5.0,
+     "prev": 4.31,
+     "change": 0.69
+    },
     {
      "date": "2026-10-02",
      "value": 4.31,
@@ -3600,16 +3606,10 @@
      "value": 3.52,
      "prev": 3.81,
      "change": -0.29
-    },
-    {
-     "date": "2026-05-22",
-     "value": 3.81,
-     "prev": 3.36,
-     "change": 0.45
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -3783,7 +3783,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -3957,7 +3957,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4131,7 +4131,7 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4140,16 +4140,15 @@
    "series_key": "cpi_rural_yoy",
    "label": "CPI rural",
    "group": "Prices",
-   "value": 5.3,
+   "value": 6.07,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-08-31",
-   "status": "watch",
-   "reason": "5.30% - above target",
+   "period": "2026-09-30",
+   "status": "bad",
+   "reason": "6.07% - above the upper tolerance limit",
    "rule": "Same 2-6% tolerance band as headline CPI.",
-   "change": 0.46,
+   "change": 0.77,
    "spark": [
-    5.32,
     5.17,
     5.93,
     5.95,
@@ -4184,11 +4183,18 @@
     4.22,
     4.69,
     4.84,
-    5.3
+    5.3,
+    6.07
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-09-30",
+     "value": 6.07,
+     "prev": 5.3,
+     "change": 0.77
+    },
     {
      "date": "2026-08-31",
      "value": 5.3,
@@ -4302,16 +4308,10 @@
      "value": 3.47,
      "prev": 4.09,
      "change": -0.62
-    },
-    {
-     "date": "2025-01-31",
-     "value": 4.09,
-     "prev": 5.71,
-     "change": -1.62
     }
    ],
-   "history_note": "last 20 published observations of 152 stored",
-   "stale_days": 36,
+   "history_note": "last 20 published observations of 153 stored",
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4320,16 +4320,15 @@
    "series_key": "cpi_urban_yoy",
    "label": "CPI urban",
    "group": "Prices",
-   "value": 4.34,
+   "value": 4.82,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-08-31",
-   "status": "good",
-   "reason": "4.34% - inside the tolerance band",
+   "period": "2026-09-30",
+   "status": "watch",
+   "reason": "4.82% - above target",
    "rule": "Same 2-6% tolerance band as headline CPI.",
-   "change": 0.37,
+   "change": 0.48,
    "spark": [
-    4.64,
     4.61,
     5.26,
     5.51,
@@ -4364,11 +4363,18 @@
     3.53,
     3.89,
     3.97,
-    4.34
+    4.34,
+    4.82
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-09-30",
+     "value": 4.82,
+     "prev": 4.34,
+     "change": 0.48
+    },
     {
      "date": "2026-08-31",
      "value": 4.34,
@@ -4482,16 +4488,10 @@
      "value": 3.47,
      "prev": 4.0,
      "change": -0.53
-    },
-    {
-     "date": "2025-01-31",
-     "value": 4.0,
-     "prev": 4.5,
-     "change": -0.5
     }
    ],
-   "history_note": "last 20 published observations of 152 stored",
-   "stale_days": 36,
+   "history_note": "last 20 published observations of 153 stored",
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4671,7 +4671,7 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4851,7 +4851,7 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -4860,16 +4860,15 @@
    "series_key": "bankers_dep_yoy",
    "label": "Bankers' deposits with RBI",
    "group": "Liquidity",
-   "value": 2.87,
+   "value": -6.04,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
-   "status": "watch",
-   "reason": "2.9% - broadly flat",
+   "period": "2026-10-09",
+   "status": "bad",
+   "reason": "-6.0% - bank reserves with RBI shrinking",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": 11.34,
+   "change": -8.91,
    "spark": [
-    -17.16,
     -14.57,
     -24.58,
     -12.37,
@@ -4904,11 +4903,18 @@
     -12.42,
     -7.09,
     -8.47,
-    2.87
+    2.87,
+    -6.04
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": -6.04,
+     "prev": 2.87,
+     "change": -8.91
+    },
     {
      "date": "2026-10-02",
      "value": 2.87,
@@ -5022,16 +5028,10 @@
      "value": -14.16,
      "prev": -16.03,
      "change": 1.87
-    },
-    {
-     "date": "2026-05-22",
-     "value": -16.03,
-     "prev": -18.26,
-     "change": 2.23
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5211,7 +5211,7 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 172,
+   "stale_days": 177,
    "stale": true
   },
   {
@@ -5220,16 +5220,15 @@
    "series_key": "rupeesec_yoy",
    "label": "RBI rupee securities",
    "group": "Fiscal",
-   "value": 23.67,
+   "value": 23.47,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "watch",
-   "reason": "23.7% - fast growth - heavy government paper absorption",
+   "reason": "23.5% - fast growth - heavy government paper absorption",
    "rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
-   "change": -2.2,
+   "change": -0.2,
    "spark": [
-    56.58,
     60.24,
     55.83,
     51.34,
@@ -5264,11 +5263,18 @@
     28.35,
     24.79,
     25.87,
-    23.67
+    23.67,
+    23.47
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 23.47,
+     "prev": 23.67,
+     "change": -0.2
+    },
     {
      "date": "2026-10-02",
      "value": 23.67,
@@ -5382,16 +5388,10 @@
      "value": 24.94,
      "prev": 24.51,
      "change": 0.43
-    },
-    {
-     "date": "2026-05-22",
-     "value": 24.51,
-     "prev": 24.7,
-     "change": -0.19
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5403,9 +5403,9 @@
    "value": 3.0,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "good",
-   "reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 44 weekly rows published since",
+   "reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 45 weekly rows published since",
    "rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "change": 0.0,
    "spark": [
@@ -5496,14 +5496,14 @@
      "change": 50.0
     },
     {
-     "date": "2021-10-15",
+     "date": "2021-10-22",
      "value": 4.0,
      "prev": null,
      "change": null
     }
    ],
    "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5515,9 +5515,9 @@
    "value": 18.0,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "watch",
-   "reason": "unchanged at 18.00% in every weekly row since 2021-10-15",
+   "reason": "unchanged at 18.00% in every weekly row since 2021-10-22",
    "rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "change": 0.0,
    "spark": [
@@ -5560,20 +5560,20 @@
    ],
    "chart": "spark",
    "step": true,
-   "effective_from": "2021-10-15",
+   "effective_from": "2021-10-22",
    "prev": null,
    "bp": null,
    "history_kind": "setting",
    "history": [
     {
-     "date": "2021-10-15",
+     "date": "2021-10-22",
      "value": 18.0,
      "prev": null,
      "change": null
     }
    ],
    "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5582,16 +5582,15 @@
    "series_key": "inr_usd",
    "label": "USD/INR",
    "group": "External",
-   "value": 95.99,
+   "value": 96.61,
    "unit": "₹",
    "fmt": "num",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "watch",
-   "reason": "95.99 (+0.79% over 3m) - rupee broadly stable",
+   "reason": "96.61 (+1.36% over 3m) - rupee depreciating",
    "rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
-   "change": 0.1,
+   "change": 0.62,
    "spark": [
-    91.9,
     90.42,
     90.74,
     90.95,
@@ -5626,11 +5625,18 @@
     95.72,
     95.79,
     95.89,
-    95.99
+    95.99,
+    96.61
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 96.61,
+     "prev": 95.99,
+     "change": 0.62
+    },
     {
      "date": "2026-10-02",
      "value": 95.99,
@@ -5744,16 +5750,10 @@
      "value": 95.38,
      "prev": 95.96,
      "change": -0.58
-    },
-    {
-     "date": "2026-05-22",
-     "value": 95.96,
-     "prev": 95.93,
-     "change": 0.03
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5762,16 +5762,15 @@
    "series_key": "term_spread",
    "label": "Term spread (10y − 91d)",
    "group": "Markets",
-   "value": 1.71,
+   "value": 1.8,
    "unit": "pp",
    "fmt": "num",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "good",
-   "reason": "+1.71pp - normally sloped",
+   "reason": "+1.80pp - normally sloped",
    "rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
-   "change": -0.04,
+   "change": 0.09,
    "spark": [
-    1.41,
     1.25,
     1.27,
     1.48,
@@ -5806,11 +5805,18 @@
     1.84,
     1.8,
     1.75,
-    1.71
+    1.71,
+    1.8
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 1.8,
+     "prev": 1.71,
+     "change": 0.09
+    },
     {
      "date": "2026-10-02",
      "value": 1.71,
@@ -5924,16 +5930,10 @@
      "value": 1.43,
      "prev": 1.54,
      "change": -0.11
-    },
-    {
-     "date": "2026-05-22",
-     "value": 1.54,
-     "prev": 1.68,
-     "change": -0.14
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -5942,16 +5942,15 @@
    "series_key": "gold_growth",
    "label": "RBI gold holdings",
    "group": "External",
-   "value": 16.85,
+   "value": 11.96,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "good",
-   "reason": "16.9% - RBI building its gold reserve",
+   "reason": "12.0% - RBI building its gold reserve",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
-   "change": -6.74,
+   "change": -4.89,
    "spark": [
-    106.26,
     77.3,
     80.87,
     79.38,
@@ -5986,11 +5985,18 @@
     30.25,
     30.54,
     23.59,
-    16.85
+    16.85,
+    11.96
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 11.96,
+     "prev": 16.85,
+     "change": -4.89
+    },
     {
      "date": "2026-10-02",
      "value": 16.85,
@@ -6104,16 +6110,10 @@
      "value": 48.33,
      "prev": 54.29,
      "change": -5.96
-    },
-    {
-     "date": "2026-05-22",
-     "value": 54.29,
-     "prev": 64.83,
-     "change": -10.54
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   },
   {
@@ -6293,7 +6293,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -6473,7 +6473,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -6653,7 +6653,7 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
-   "stale_days": 6,
+   "stale_days": 11,
    "stale": false
   },
   {
@@ -6662,16 +6662,15 @@
    "series_key": "notes_yoy",
    "label": "Notes in circulation growth",
    "group": "Money",
-   "value": 13.4,
+   "value": 13.82,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-02",
+   "period": "2026-10-09",
    "status": "watch",
-   "reason": "13.4% - elevated cash preference",
+   "reason": "13.8% - elevated cash preference",
    "rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
-   "change": -0.24,
+   "change": 0.42,
    "spark": [
-    11.0,
     10.73,
     11.04,
     11.01,
@@ -6706,11 +6705,18 @@
     12.91,
     13.14,
     13.64,
-    13.4
+    13.4,
+    13.82
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-09",
+     "value": 13.82,
+     "prev": 13.4,
+     "change": 0.42
+    },
     {
      "date": "2026-10-02",
      "value": 13.4,
@@ -6824,23 +6830,17 @@
      "value": 12.07,
      "prev": 11.81,
      "change": 0.26
-    },
-    {
-     "date": "2026-05-22",
-     "value": 11.81,
-     "prev": 11.45,
-     "change": 0.36
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 4,
+   "stale_days": 2,
    "stale": false
   }
  ],
  "dead_series": {
   "tbcmb": {
    "last": "2020-08-14",
-   "days": 2244,
+   "days": 2249,
    "label": "Cash Management Bills outstanding"
   }
  },
@@ -7505,6 +7505,10 @@
     [
      "2026-08-31",
      108.7
+    ],
+    [
+     "2026-09-30",
+     109.5
     ]
    ]
   },
@@ -8120,6 +8124,10 @@
     [
      "2026-08-31",
      4.82
+    ],
+    [
+     "2026-09-30",
+     5.59
     ]
    ]
   },
@@ -17053,10 +17061,6 @@
    "source": "RBI r10 (weekly WSS)",
    "points": [
     [
-     "2021-10-15",
-     4.0
-    ],
-    [
      "2021-10-22",
      4.0
     ],
@@ -18091,18 +18095,18 @@
     [
      "2026-10-02",
      5.25
+    ],
+    [
+     "2026-10-09",
+     5.5
     ]
    ]
   },
   "repo": {
-   "label": "Policy Repo Rate (latest announcement)",
+   "label": "RBI policy repo rate",
    "unit": "%",
-   "source": "DBIE key rates",
+   "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     4.0
-    ],
     [
      "2021-10-22",
      4.0
@@ -19140,7 +19144,7 @@
      5.25
     ],
     [
-     "2026-10-06",
+     "2026-10-09",
      5.5
     ]
    ]
@@ -19150,10 +19154,6 @@
    "unit": "%",
    "source": "RBI r10",
    "points": [
-    [
-     "2021-10-15",
-     3.25
-    ],
     [
      "2021-10-22",
      3.31
@@ -20189,6 +20189,10 @@
     [
      "2026-10-02",
      5.12
+    ],
+    [
+     "2026-10-09",
+     5.23
     ]
    ]
   },
@@ -20197,10 +20201,6 @@
    "unit": "%",
    "source": "RBI r10",
    "points": [
-    [
-     "2021-10-15",
-     6.35
-    ],
     [
      "2021-10-22",
      6.4
@@ -21236,6 +21236,10 @@
     [
      "2026-10-02",
      7.23
+    ],
+    [
+     "2026-10-09",
+     7.37
     ]
    ]
   },
@@ -21244,34 +21248,6 @@
    "unit": "₹ crore",
    "source": "RBI r8",
    "points": [
-    [
-     "2025-08-31",
-     -129069.0
-    ],
-    [
-     "2025-09-01",
-     -162547.0
-    ],
-    [
-     "2025-09-02",
-     -127147.0
-    ],
-    [
-     "2025-09-03",
-     -119921.0
-    ],
-    [
-     "2025-09-04",
-     -293564.0
-    ],
-    [
-     "2025-09-05",
-     -145340.0
-    ],
-    [
-     "2025-09-06",
-     -108172.0
-    ],
     [
      "2025-09-07",
      -103762.0
@@ -22843,6 +22819,34 @@
     [
      "2026-10-04",
      -203127.0
+    ],
+    [
+     "2026-10-05",
+     -391084.0
+    ],
+    [
+     "2026-10-06",
+     -359704.0
+    ],
+    [
+     "2026-10-07",
+     -427594.0
+    ],
+    [
+     "2026-10-08",
+     -392129.0
+    ],
+    [
+     "2026-10-09",
+     -297456.0
+    ],
+    [
+     "2026-10-10",
+     -138979.0
+    ],
+    [
+     "2026-10-11",
+     -140490.0
     ]
    ]
   },
@@ -22851,34 +22855,6 @@
    "unit": "₹ crore",
    "source": "RBI r8",
    "points": [
-    [
-     "2026-03-19",
-     -321962.818
-    ],
-    [
-     "2026-03-20",
-     -313907.091
-    ],
-    [
-     "2026-03-21",
-     -300356.182
-    ],
-    [
-     "2026-03-22",
-     -289397.545
-    ],
-    [
-     "2026-03-23",
-     -284870.818
-    ],
-    [
-     "2026-03-24",
-     -276126.591
-    ],
-    [
-     "2026-03-25",
-     -271455.591
-    ],
     [
      "2026-03-26",
      -264100.182
@@ -23650,6 +23626,34 @@
     [
      "2026-10-04",
      -278308.0
+    ],
+    [
+     "2026-10-05",
+     -283328.591
+    ],
+    [
+     "2026-10-06",
+     -288687.545
+    ],
+    [
+     "2026-10-07",
+     -277619.227
+    ],
+    [
+     "2026-10-08",
+     -276085.455
+    ],
+    [
+     "2026-10-09",
+     -271363.727
+    ],
+    [
+     "2026-10-10",
+     -260324.864
+    ],
+    [
+     "2026-10-11",
+     -262642.0
     ]
    ]
   },
@@ -23658,10 +23662,6 @@
    "unit": "₹ crore",
    "source": "RBI r2",
    "points": [
-    [
-     "2021-09-24",
-     792856.0
-    ],
     [
      "2021-10-01",
      790584.0
@@ -24697,6 +24697,10 @@
     [
      "2026-10-02",
      819581.0
+    ],
+    [
+     "2026-10-09",
+     818107.0
     ]
    ]
   },
@@ -26320,10 +26324,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-11",
-     8.94
-    ],
-    [
      "2022-03-18",
      9.73
     ],
@@ -27278,6 +27278,10 @@
     [
      "2026-10-02",
      13.4
+    ],
+    [
+     "2026-10-09",
+     13.82
     ]
    ]
   },
@@ -27286,10 +27290,6 @@
    "unit": "₹ crore",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-03-11",
-     4271164.0
-    ],
     [
      "2022-03-18",
      4225997.0
@@ -28245,6 +28245,10 @@
     [
      "2026-10-02",
      5849446.0
+    ],
+    [
+     "2026-10-09",
+     5806867.0
     ]
    ]
   },
@@ -28253,10 +28257,6 @@
    "unit": "%",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-03-11",
-     7.73
-    ],
     [
      "2022-03-18",
      6.92
@@ -29212,6 +29212,10 @@
     [
      "2026-10-02",
      13.37
+    ],
+    [
+     "2026-10-09",
+     13.77
     ]
    ]
   },
@@ -29220,10 +29224,6 @@
    "unit": "₹ crore",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-12-16",
-     336282.0
-    ],
     [
      "2022-12-23",
      339492.0
@@ -30019,6 +30019,10 @@
     [
      "2026-10-02",
      1024611.0
+    ],
+    [
+     "2026-10-09",
+     1016520.0
     ]
    ]
   },
@@ -30027,10 +30031,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-08-27",
-     3.3
-    ],
     [
      "2021-09-03",
      3.29
@@ -31066,6 +31066,10 @@
     [
      "2026-10-02",
      5.52
+    ],
+    [
+     "2026-10-09",
+     5.57
     ]
    ]
   },
@@ -31074,10 +31078,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-08-27",
-     3.45
-    ],
     [
      "2021-09-03",
      3.42
@@ -32113,6 +32113,10 @@
     [
      "2026-10-02",
      5.96
+    ],
+    [
+     "2026-10-09",
+     6.1
     ]
    ]
   },
@@ -32121,10 +32125,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-09-03",
-     3.62
-    ],
     [
      "2021-09-10",
      3.56
@@ -33160,6 +33160,10 @@
     [
      "2026-10-02",
      6.18
+    ],
+    [
+     "2026-10-09",
+     6.29
     ]
    ]
   },
@@ -33168,10 +33172,6 @@
    "unit": "₹",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     75.3
-    ],
     [
      "2021-10-22",
      74.78
@@ -34207,6 +34207,10 @@
     [
      "2026-10-02",
      95.99
+    ],
+    [
+     "2026-10-09",
+     96.61
     ]
    ]
   },
@@ -34215,10 +34219,6 @@
    "unit": "₹",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     87.32
-    ],
     [
      "2021-10-22",
      87.01
@@ -35254,6 +35254,10 @@
     [
      "2026-10-02",
      108.62
+    ],
+    [
+     "2026-10-09",
+     108.47
     ]
    ]
   },
@@ -35262,10 +35266,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     3.82
-    ],
     [
      "2021-10-22",
      4.01
@@ -36301,6 +36301,10 @@
     [
      "2026-10-02",
      4.07
+    ],
+    [
+     "2026-10-09",
+     5.21
     ]
    ]
   },
@@ -36309,10 +36313,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     3.9
-    ],
     [
      "2021-10-22",
      4.23
@@ -37348,6 +37348,10 @@
     [
      "2026-10-02",
      4.31
+    ],
+    [
+     "2026-10-09",
+     5.0
     ]
    ]
   },
@@ -37356,10 +37360,6 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
-    [
-     "2021-10-15",
-     4.34
-    ],
     [
      "2021-10-22",
      4.61
@@ -38395,6 +38395,10 @@
     [
      "2026-10-02",
      3.75
+    ],
+    [
+     "2026-10-09",
+     4.38
     ]
    ]
   },
@@ -38403,34 +38407,6 @@
    "unit": "₹ crore",
    "source": "RBI r8 (daily)",
    "points": [
-    [
-     "2025-08-31",
-     129849.0
-    ],
-    [
-     "2025-09-01",
-     118298.0
-    ],
-    [
-     "2025-09-02",
-     127443.0
-    ],
-    [
-     "2025-09-03",
-     118742.0
-    ],
-    [
-     "2025-09-04",
-     149334.0
-    ],
-    [
-     "2025-09-05",
-     149276.0
-    ],
-    [
-     "2025-09-06",
-     109040.0
-    ],
     [
      "2025-09-07",
      104586.0
@@ -40002,6 +39978,34 @@
     [
      "2026-10-04",
      203605.0
+    ],
+    [
+     "2026-10-05",
+     181091.0
+    ],
+    [
+     "2026-10-06",
+     167822.0
+    ],
+    [
+     "2026-10-07",
+     172267.0
+    ],
+    [
+     "2026-10-08",
+     151441.0
+    ],
+    [
+     "2026-10-09",
+     139623.0
+    ],
+    [
+     "2026-10-10",
+     139360.0
+    ],
+    [
+     "2026-10-11",
+     141354.0
     ]
    ]
   },
@@ -40010,34 +40014,6 @@
    "unit": "₹ crore",
    "source": "RBI r8 (daily)",
    "points": [
-    [
-     "2025-08-31",
-     780.0
-    ],
-    [
-     "2025-09-01",
-     4571.0
-    ],
-    [
-     "2025-09-02",
-     1510.0
-    ],
-    [
-     "2025-09-03",
-     1952.0
-    ],
-    [
-     "2025-09-04",
-     4644.0
-    ],
-    [
-     "2025-09-05",
-     3936.0
-    ],
-    [
-     "2025-09-06",
-     868.0
-    ],
     [
      "2025-09-07",
      824.0
@@ -41609,6 +41585,34 @@
     [
      "2026-10-04",
      478.0
+    ],
+    [
+     "2026-10-05",
+     199.0
+    ],
+    [
+     "2026-10-06",
+     475.0
+    ],
+    [
+     "2026-10-07",
+     500.0
+    ],
+    [
+     "2026-10-08",
+     187.0
+    ],
+    [
+     "2026-10-09",
+     184.0
+    ],
+    [
+     "2026-10-10",
+     381.0
+    ],
+    [
+     "2026-10-11",
+     864.0
     ]
    ]
   },
@@ -44039,10 +44043,6 @@
    "source": "RBI r2",
    "points": [
     [
-     "2021-09-24",
-     207098.0
-    ],
-    [
      "2021-10-01",
      204468.0
     ],
@@ -45077,6 +45077,10 @@
     [
      "2026-10-02",
      233950.0
+    ],
+    [
+     "2026-10-09",
+     232550.0
     ]
    ]
   },
@@ -45085,10 +45089,6 @@
    "unit": "₹ crore",
    "source": "RBI r2",
    "points": [
-    [
-     "2021-09-24",
-     277028.0
-    ],
     [
      "2021-10-01",
      273379.0
@@ -46124,6 +46124,10 @@
     [
      "2026-10-02",
      224223.0
+    ],
+    [
+     "2026-10-09",
+     226823.0
     ]
    ]
   },
@@ -46132,10 +46136,6 @@
    "unit": "₹ crore",
    "source": "RBI r2",
    "points": [
-    [
-     "2021-09-24",
-     308730.0
-    ],
     [
      "2021-10-01",
      312737.0
@@ -47171,6 +47171,10 @@
     [
      "2026-10-02",
      361408.0
+    ],
+    [
+     "2026-10-09",
+     358734.0
     ]
    ]
   },
@@ -47706,10 +47710,6 @@
    "unit": "%",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-03-11",
-     33.48
-    ],
     [
      "2022-03-18",
      26.85
@@ -48665,6 +48665,10 @@
     [
      "2026-10-02",
      16.85
+    ],
+    [
+     "2026-10-09",
+     11.96
     ]
    ]
   },
@@ -51275,6 +51279,10 @@
     [
      "2026-08-31",
      5.3
+    ],
+    [
+     "2026-09-30",
+     6.07
     ]
    ]
   },
@@ -51890,6 +51898,10 @@
     [
      "2026-08-31",
      4.34
+    ],
+    [
+     "2026-09-30",
+     4.82
     ]
    ]
   },
@@ -54767,10 +54779,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-11",
-     45.08
-    ],
-    [
      "2022-03-18",
      37.31
     ],
@@ -55725,6 +55733,10 @@
     [
      "2026-10-02",
      2.87
+    ],
+    [
+     "2026-10-09",
+     -6.04
     ]
    ]
   },
@@ -56701,10 +56713,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-11",
-     11.82
-    ],
-    [
      "2022-03-18",
      11.73
     ],
@@ -57659,6 +57667,10 @@
     [
      "2026-10-02",
      23.67
+    ],
+    [
+     "2026-10-09",
+     23.47
     ]
    ]
   },
@@ -57667,10 +57679,6 @@
    "unit": "%",
    "source": "RBI r10",
    "points": [
-    [
-     "2021-10-15",
-     4.0
-    ],
     [
      "2021-10-22",
      4.0
@@ -58705,6 +58713,10 @@
     ],
     [
      "2026-10-02",
+     3.0
+    ],
+    [
+     "2026-10-09",
      3.0
     ]
    ]
@@ -58715,10 +58727,6 @@
    "source": "RBI r10",
    "points": [
     [
-     "2021-10-15",
-     18.0
-    ],
-    [
      "2021-10-22",
      18.0
     ],
@@ -59753,6 +59761,10 @@
     [
      "2026-10-02",
      18.0
+    ],
+    [
+     "2026-10-09",
+     18.0
     ]
    ]
   },
@@ -59761,10 +59773,6 @@
    "unit": "pp",
    "source": "derived (r10)",
    "points": [
-    [
-     "2021-08-27",
-     3.0
-    ],
     [
      "2021-09-03",
      2.88
@@ -60800,6 +60808,10 @@
     [
      "2026-10-02",
      1.71
+    ],
+    [
+     "2026-10-09",
+     1.8
     ]
    ]
   },
@@ -60808,10 +60820,6 @@
    "unit": "₹ crore",
    "source": "RBI r12",
    "points": [
-    [
-     "2022-12-09",
-     1036880.0
-    ],
     [
      "2022-12-16",
      1270519.0
@@ -61607,6 +61615,10 @@
     [
      "2026-10-02",
      1850297.0
+    ],
+    [
+     "2026-10-09",
+     1547650.0
     ]
    ]
   },
@@ -61709,19 +61721,19 @@
    "name": "MSF rate",
    "unit": "%",
    "kind": "setting",
-   "value": 5.5,
-   "date": "2026-10-02",
+   "value": 5.75,
+   "date": "2026-10-09",
    "src": "weekly WSS",
-   "since": "2025-12-05",
-   "prev": 5.75,
-   "bp": -25.0
+   "since": "2026-10-09",
+   "prev": 5.5,
+   "bp": 25.0
   },
   {
    "name": "Bank rate",
    "unit": "%",
    "kind": "setting",
    "value": 5.5,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "src": "weekly WSS",
    "since": "2025-12-05",
    "prev": 5.75,
@@ -61731,16 +61743,16 @@
    "name": "Call money (wtd avg)",
    "unit": "%",
    "kind": "reading",
-   "value": 5.12,
-   "date": "2026-10-02",
+   "value": 5.23,
+   "date": "2026-10-09",
    "src": "weekly WSS"
   },
   {
    "name": "USD/INR",
    "unit": "₹/US$",
    "kind": "reading",
-   "value": 95.99,
-   "date": "2026-10-02",
+   "value": 96.61,
+   "date": "2026-10-09",
    "src": "weekly WSS"
   },
   {
@@ -61748,7 +61760,7 @@
    "unit": "%",
    "kind": "setting",
    "value": 3.0,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "src": "key rates + WSS setting in force",
    "since": "2025-12-05",
    "prev": 3.25,
@@ -61759,7 +61771,7 @@
    "unit": "%",
    "kind": "setting",
    "value": 18.0,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "src": "key rates + WSS setting in force",
    "since": "2020-04-17",
    "prev": 18.25,

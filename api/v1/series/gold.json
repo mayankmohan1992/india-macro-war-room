@@ -10,6 +10,12 @@
   "group": "External",
   "history": [
    {
+    "change": -4.89,
+    "date": "2026-10-09",
+    "prev": 16.85,
+    "value": 11.96
+   },
+   {
     "change": -6.74,
     "date": "2026-10-02",
     "prev": 23.59,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 54.29,
     "value": 48.33
-   },
-   {
-    "change": -10.54,
-    "date": "2026-05-22",
-    "prev": 64.83,
-    "value": 54.29
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "RBI gold holdings",
   "latest": {
-   "change": -6.74,
-   "date": "2026-10-02",
-   "value": 16.85
+   "change": -4.89,
+   "date": "2026-10-09",
+   "value": 11.96
   },
   "links": {
    "csv": "series/gold.csv",
    "self": "series/gold.json"
   },
   "points": [
-   [
-    "2022-03-11",
-    33.48
-   ],
    [
     "2022-03-18",
     26.85
@@ -1104,25 +1100,29 @@
    [
     "2026-10-02",
     16.85
+   ],
+   [
+    "2026-10-09",
+    11.96
    ]
   ],
   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
   "series": "gold_growth",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 4,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "16.9% - RBI building its gold reserve",
+  "status_reason": "12.0% - RBI building its gold reserve",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

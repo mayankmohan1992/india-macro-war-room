@@ -10,6 +10,12 @@
   "group": "Policy",
   "history": [
    {
+    "change": 0.11,
+    "date": "2026-10-09",
+    "prev": 5.12,
+    "value": 5.23
+   },
+   {
     "change": -0.07,
     "date": "2026-10-02",
     "prev": 5.19,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 5.25,
     "value": 5.38
-   },
-   {
-    "change": 0.01,
-    "date": "2026-05-22",
-    "prev": 5.24,
-    "value": 5.25
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "Call money rate",
   "latest": {
-   "change": -0.07,
-   "date": "2026-10-02",
-   "value": 5.12
+   "change": 0.11,
+   "date": "2026-10-09",
+   "value": 5.23
   },
   "links": {
    "csv": "series/callmoney.csv",
    "self": "series/callmoney.json"
   },
   "points": [
-   [
-    "2021-10-15",
-    3.25
-   ],
    [
     "2021-10-22",
     3.31
@@ -1184,25 +1180,29 @@
    [
     "2026-10-02",
     5.12
+   ],
+   [
+    "2026-10-09",
+    5.23
    ]
   ],
   "scoring_rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
   "series": "call_rate",
   "source": "RBI r10",
   "stale": false,
-  "stale_days": 4,
-  "status": "good",
-  "status_reason": "5.12% vs the same week's repo 5.25% (spread -0.13pp) - anchored to the repo rate",
+  "stale_days": 2,
+  "status": "watch",
+  "status_reason": "5.23% vs the same week's repo 5.50% (spread -0.27pp) - drifting away from the policy rate",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

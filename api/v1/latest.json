@@ -1,22 +1,22 @@
 {
  "latest": {
   "bankdep": {
-   "change": 11.34,
-   "date": "2026-10-02",
+   "change": -8.91,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "Bankers' deposits with RBI",
-   "status": "watch",
+   "status": "bad",
    "unit": "%",
-   "value": 2.87
+   "value": -6.04
   },
   "callmoney": {
-   "change": -0.07,
-   "date": "2026-10-02",
+   "change": 0.11,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "Call money rate",
-   "status": "good",
+   "status": "watch",
    "unit": "%",
-   "value": 5.12
+   "value": 5.23
   },
   "cdout": {
    "change": 14521.0,
@@ -37,31 +37,31 @@
    "value": 80.98
   },
   "cpi": {
-   "change": 0.37,
-   "date": "2026-08-31",
+   "change": 0.77,
+   "date": "2026-09-30",
    "kind": "reading",
    "label": "CPI inflation",
    "status": "watch",
    "unit": "%",
-   "value": 4.82
+   "value": 5.59
   },
   "cpirural": {
-   "change": 0.46,
-   "date": "2026-08-31",
+   "change": 0.77,
+   "date": "2026-09-30",
    "kind": "reading",
    "label": "CPI rural",
-   "status": "watch",
+   "status": "bad",
    "unit": "%",
-   "value": 5.3
+   "value": 6.07
   },
   "cpiurban": {
-   "change": 0.37,
-   "date": "2026-08-31",
+   "change": 0.48,
+   "date": "2026-09-30",
    "kind": "reading",
    "label": "CPI urban",
-   "status": "good",
+   "status": "watch",
    "unit": "%",
-   "value": 4.34
+   "value": 4.82
   },
   "cpout": {
    "change": -31349.0,
@@ -83,7 +83,7 @@
   },
   "crr": {
    "change": 0.0,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "kind": "setting",
    "label": "Cash Reserve Ratio",
    "status": "good",
@@ -100,13 +100,13 @@
    "value": 17.83
   },
   "fca": {
-   "change": -0.74,
-   "date": "2026-10-02",
+   "change": 0.4,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "RBI foreign currency assets",
    "status": "good",
    "unit": "%",
-   "value": 13.37
+   "value": 13.77
   },
   "food": {
    "change": -16.59,
@@ -118,13 +118,13 @@
    "value": 125.71
   },
   "fwd3m": {
-   "change": 0.7,
-   "date": "2026-10-02",
+   "change": 0.69,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "3-month US$ forward premia",
-   "status": "good",
+   "status": "watch",
    "unit": "%",
-   "value": 4.31
+   "value": 5.0
   },
   "fxa": {
    "change": -5.58,
@@ -136,22 +136,22 @@
    "value": 15.17
   },
   "gold": {
-   "change": -6.74,
-   "date": "2026-10-02",
+   "change": -4.89,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "RBI gold holdings",
    "status": "good",
    "unit": "%",
-   "value": 16.85
+   "value": 11.96
   },
   "gsec": {
-   "change": 0.09,
-   "date": "2026-10-02",
+   "change": 0.14,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "10-year G-sec yield",
    "status": "bad",
    "unit": "%",
-   "value": 7.23
+   "value": 7.37
   },
   "invest": {
    "change": 1.79,
@@ -163,13 +163,13 @@
    "value": 8.64
   },
   "liquidity": {
-   "change": 3534.045,
-   "date": "2026-10-04",
+   "change": -2317.136,
+   "date": "2026-10-11",
    "kind": "reading",
    "label": "Liquidity (1-month avg net ops)",
    "status": "bad",
    "unit": "₹ crore",
-   "value": -278308.0
+   "value": -262642.0
   },
   "m1": {
    "change": 2.41,
@@ -208,13 +208,13 @@
    "value": 19.15
   },
   "notes": {
-   "change": -0.24,
-   "date": "2026-10-02",
+   "change": 0.42,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "Notes in circulation growth",
    "status": "watch",
    "unit": "%",
-   "value": 13.4
+   "value": 13.82
   },
   "rbicredit": {
    "change": 0.0,
@@ -227,7 +227,7 @@
   },
   "repo": {
    "change": 0.25,
-   "date": "2026-10-06",
+   "date": "2026-10-09",
    "kind": "setting",
    "label": "Policy repo rate",
    "status": "bad",
@@ -244,17 +244,17 @@
    "value": 8.69
   },
   "rupeesec": {
-   "change": -2.2,
-   "date": "2026-10-02",
+   "change": -0.2,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "RBI rupee securities",
    "status": "watch",
    "unit": "%",
-   "value": 23.67
+   "value": 23.47
   },
   "slr": {
    "change": 0.0,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "kind": "setting",
    "label": "Statutory Liquidity Ratio",
    "status": "watch",
@@ -262,40 +262,40 @@
    "value": 18.0
   },
   "tbill": {
-   "change": 9495.0,
-   "date": "2026-10-02",
+   "change": -1474.0,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "T-bill outstanding",
    "status": "watch",
    "unit": "₹ crore",
-   "value": 819581.0
+   "value": 818107.0
   },
   "termspread": {
-   "change": -0.04,
-   "date": "2026-10-02",
+   "change": 0.09,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "Term spread (10y − 91d)",
    "status": "good",
    "unit": "pp",
-   "value": 1.71
+   "value": 1.8
   },
   "turnover": {
-   "change": 292213.0,
-   "date": "2026-10-02",
+   "change": -302647.0,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "Money-market turnover",
    "status": "good",
    "unit": "₹ crore",
-   "value": 1850297.0
+   "value": 1547650.0
   },
   "usdinr": {
-   "change": 0.1,
-   "date": "2026-10-02",
+   "change": 0.62,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "USD/INR",
    "status": "watch",
    "unit": "₹",
-   "value": 95.99
+   "value": 96.61
   },
   "wpi": {
    "change": 1.47,
@@ -334,23 +334,23 @@
    "value": 8.67
   },
   "yld91": {
-   "change": 0.13,
-   "date": "2026-10-02",
+   "change": 0.05,
+   "date": "2026-10-09",
    "kind": "reading",
    "label": "91-day T-bill yield",
    "status": "bad",
    "unit": "%",
-   "value": 5.52
+   "value": 5.57
   }
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -10,6 +10,12 @@
   "group": "External",
   "history": [
    {
+    "change": 0.69,
+    "date": "2026-10-09",
+    "prev": 4.31,
+    "value": 5.0
+   },
+   {
     "change": 0.7,
     "date": "2026-10-02",
     "prev": 3.61,
@@ -122,12 +128,6 @@
     "date": "2026-05-29",
     "prev": 3.81,
     "value": 3.52
-   },
-   {
-    "change": 0.45,
-    "date": "2026-05-22",
-    "prev": 3.36,
-    "value": 3.81
    }
   ],
   "history_kind": "reading",
@@ -136,19 +136,15 @@
   "kind": "reading",
   "label": "3-month US$ forward premia",
   "latest": {
-   "change": 0.7,
-   "date": "2026-10-02",
-   "value": 4.31
+   "change": 0.69,
+   "date": "2026-10-09",
+   "value": 5.0
   },
   "links": {
    "csv": "series/fwd3m.csv",
    "self": "series/fwd3m.json"
   },
   "points": [
-   [
-    "2021-10-15",
-    3.9
-   ],
    [
     "2021-10-22",
     4.23
@@ -1184,25 +1180,29 @@
    [
     "2026-10-02",
     4.31
+   ],
+   [
+    "2026-10-09",
+    5.0
    ]
   ],
   "scoring_rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
   "series": "fwd3m",
   "source": "RBI r10 (weekly WSS)",
   "stale": false,
-  "stale_days": 4,
-  "status": "good",
-  "status_reason": "4.31% - premia in the customary range, no depreciation pressure priced in",
+  "stale_days": 2,
+  "status": "watch",
+  "status_reason": "5.00% - premia elevated - hedging demand or depreciation expectations building",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

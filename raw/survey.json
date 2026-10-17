@@ -37,47 +37,47 @@
  },
  "2": {
   "why": "GoI Treasury Bills Outstanding",
-  "rows": 1063,
+  "rows": 1064,
   "cols": 21,
-  "total": 1063,
+  "total": 1064,
   "complete": true,
-  "newest": "2026-10-02",
+  "newest": "2026-10-09",
   "oldest": "2006-05-12"
  },
  "8": {
   "why": "Liquidity Operations by RBI (daily LAF)",
-  "rows": 4382,
+  "rows": 4389,
   "cols": 18,
-  "total": 4382,
+  "total": 4389,
   "complete": true,
-  "newest": "2026-10-04",
+  "newest": "2026-10-11",
   "oldest": "2012-11-01"
  },
  "10": {
   "why": "Ratios and Rates (CRR/SLR/policy rates)",
-  "rows": 810,
+  "rows": 811,
   "cols": 22,
-  "total": 810,
+  "total": 811,
   "complete": true,
-  "newest": "2026-10-02",
+  "newest": "2026-10-09",
   "oldest": "2011-04-01"
  },
  "12": {
   "why": "Average Daily Turnover, money markets",
-  "rows": 966,
+  "rows": 967,
   "cols": 6,
-  "total": 966,
+  "total": 967,
   "complete": true,
-  "newest": "2026-10-02",
+  "newest": "2026-10-09",
   "oldest": "2008-04-04"
  },
  "39": {
   "why": "RBI - Liabilities and Assets",
-  "rows": 1163,
+  "rows": 1164,
   "cols": 31,
-  "total": 1163,
+  "total": 1164,
   "complete": true,
-  "newest": "2026-10-02",
+  "newest": "2026-10-09",
   "oldest": "2004-07-02"
  },
  "4": {
@@ -102,7 +102,7 @@
   "why": "Cash Balances of SCBs with RBI",
   "rows": 524,
   "cols": 5,
-  "total": 7379,
+  "total": 7386,
   "complete": false,
   "newest": null,
   "oldest": null

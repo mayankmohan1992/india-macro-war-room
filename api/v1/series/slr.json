@@ -11,7 +11,7 @@
   "history": [
    {
     "change": null,
-    "date": "2021-10-15",
+    "date": "2021-10-22",
     "prev": null,
     "value": 18.0
    }
@@ -23,7 +23,7 @@
   "label": "Statutory Liquidity Ratio",
   "latest": {
    "change": 0.0,
-   "date": "2026-10-02",
+   "date": "2026-10-09",
    "value": 18.0
   },
   "links": {
@@ -31,10 +31,6 @@
    "self": "series/slr.json"
   },
   "points": [
-   [
-    "2021-10-15",
-    18.0
-   ],
    [
     "2021-10-22",
     18.0
@@ -1070,30 +1066,34 @@
    [
     "2026-10-02",
     18.0
+   ],
+   [
+    "2026-10-09",
+    18.0
    ]
   ],
   "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
   "series": "slr",
   "setting": {
    "change_bp": null,
-   "effective_from": "2021-10-15",
+   "effective_from": "2021-10-22",
    "previous": null
   },
   "source": "RBI r10",
   "stale": false,
-  "stale_days": 4,
+  "stale_days": 2,
   "status": "watch",
-  "status_reason": "unchanged at 18.00% in every weekly row since 2021-10-15",
+  "status_reason": "unchanged at 18.00% in every weekly row since 2021-10-22",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
-  "dataset_as_of": "2026-10-06",
+  "dataset_as_of": "2026-10-11",
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:23:00Z",
+  "retrieved_at": "2026-10-17T16:29:38Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
