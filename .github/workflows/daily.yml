@@ -100,6 +100,19 @@ jobs:
             git push
           fi
 
+      # WHY THE ARTIFACT IS UPLOADED HERE and not in a later job: a second job runs
+      # `actions/checkout` at the SHA of the triggering event, i.e. the commit from BEFORE this run
+      # committed its refresh. A later job therefore deployed the previous dashboard while the
+      # repository's API already carried the new data - the site and the API disagreed about the
+      # as-of date. Only the workspace that built the data is guaranteed to hold it.
+      - name: Assemble the Pages artifact
+        run: bash scripts/build-public.sh
+
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
       - name: Report
         run: |
           python -c "
@@ -108,22 +121,9 @@ jobs:
                 f\"{s['series_points']} data points · {s['bytes']//1024} KB of API JSON\")
           print('verdict:', s['verdict'], s['counts'])"
 
-  build-site:
-    name: Assemble the Pages artifact
-    needs: refresh
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Assemble public/ (dashboard at /, API at /api/v1/)
-        run: bash scripts/build-public.sh
-      - name: Upload the Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
   deploy:
     name: Deploy to GitHub Pages
-    needs: build-site
+    needs: refresh
     runs-on: ubuntu-latest
     environment:
       name: github-pages
