@@ -7,7 +7,7 @@ The whole project runs on GitHub's free tier: **GitHub Actions** for the daily r
 
 | piece | host | refreshed by |
 |---|---|---|
-| Dashboard (`/`) | GitHub Pages | `daily.yml` → `actions/upload-pages-artifact` + `actions/deploy-pages` |
+| Dashboard (`/`) | GitHub Pages | `daily.yml`: the **refresh job** assembles and uploads the artifact, then `actions/deploy-pages` publishes it |
 | API (`/api/v1/`) | GitHub Pages (mirror) and `raw.githubusercontent.com` (primary, CORS-enabled) | committed by `daily.yml` |
 | Dataset (`raw/`, `api/`) | the repository itself | committed by `daily.yml` |
 
@@ -93,4 +93,6 @@ the `cron` line; if you only want the API and not the site, delete the `build-si
 | HTTP 418 on `/download/*` endpoints | those export routes sit behind the CIMS WAF; this project does not depend on them |
 | the site 404s but the workflow succeeded | Settings → Pages → Source must be **GitHub Actions**, and the deploy job must have run (check the `github-pages` environment) |
 | the dashboard shows a "refresh is due" note | the newest observation is over six weeks old — check the daily workflow's recent runs |
+| **the site shows an older as-of date than the API** | the Pages artifact was built from a checkout of the *triggering* commit rather than the one the run just committed. The artifact is therefore assembled and uploaded **inside the refresh job** (a separate job's `actions/checkout` lands on the pre-refresh SHA); if you restructure the workflow, keep it that way |
+| the refresh job logs "nothing to commit" | correct behaviour: `status.json`'s `dataset_sha256` was unchanged, so RBI has published nothing new and the job discards its rebuild instead of committing a timestamp |
 | CI fails "committed API is not reproducible" | the artefacts were edited by hand or the pipeline changed without re-running it: run build → publish → gen_docs locally and commit the result |

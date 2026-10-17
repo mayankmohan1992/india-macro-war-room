@@ -4,6 +4,19 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.1] — 2026-10-17
+
+### Fixed
+- **API:** `latest.json` took `change` from the raw tile, so a policy *setting* published a week-on-week
+  number (the repo rate showed `+0.25`) while `index.json` published `null` for the same field. Both
+  documents now take it from the indicator document, and `tools/validate_api.py` asserts that a setting
+  reports `change: null` in both.
+- **Deployment:** the Pages artifact was assembled in a separate job, which checks out the SHA of the
+  triggering event — i.e. the commit from *before* the run committed its refresh. The deployed dashboard
+  therefore kept the previous as-of date while the repository's API already carried the new data. The
+  artifact is now assembled and uploaded by the refresh job itself, and the live site and API are
+  asserted to agree.
+
 ## [1.0.0] — 2026-10-17
 
 Initial public release.
