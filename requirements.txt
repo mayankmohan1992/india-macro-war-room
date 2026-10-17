@@ -1,0 +1,6 @@
+# Runtime + CI dependencies for the RBI macro pipeline.
+# Everything the fetch/build steps need is `requests`; `playwright` powers the headless verification
+# gate, and `pyyaml` lets CI sanity-check the workflow files.
+requests>=2.31,<3
+playwright>=1.44
+pyyaml>=6.0

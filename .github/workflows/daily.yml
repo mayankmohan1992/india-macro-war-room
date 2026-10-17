@@ -1,0 +1,133 @@
+name: Daily data refresh
+
+# Fetches the latest published tables from RBI's Database on Indian Economy, rebuilds the dataset,
+# the dashboard and the static API, re-verifies everything in headless Chromium, commits the result
+# and redeploys the GitHub Pages site.
+#
+# Scheduling notes:
+#   * GitHub cron is UTC and can be delayed by a few minutes under load - the job is idempotent, so a
+#     late run is harmless.
+#   * 06:00 UTC = 11:30 IST. RBI publishes the weekly statement on Friday evening IST and monthly
+#     releases on the 12th/14th, so a daily run picks changes up the next morning.
+#   * If RBI has published nothing new, the job detects it (dataset hash unchanged), discards the
+#     rebuild and skips the commit - so no empty "refresh" commits accumulate.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Print extra diagnostics"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write        # commit the refreshed data
+  pages: write           # deploy the site
+  id-token: write        # OIDC for the Pages deployment
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Fetch, build, verify, commit
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+
+      - name: Fetch the latest tables from RBI DBIE
+        run: python fetch_series.py
+
+      - name: Build the dataset and the dashboard
+        run: python build_dashboard.py
+
+      - name: Publish the static API
+        run: python publish_api.py
+
+      - name: Generate the data dictionary from the fresh payload
+        run: python tools/gen_docs.py
+
+      - name: Verify the rendered dashboard
+        run: |
+          python -m playwright install --with-deps chromium
+          python verify_dashboard.py
+
+      - name: Validate the published API
+        run: python tools/validate_api.py
+
+      - name: Commit only when the data actually changed
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          NEW=$(python -c "import json;print(json.load(open('api/v1/status.json'))['dataset_sha256'])")
+          OLD=$(git show HEAD:api/v1/status.json 2>/dev/null \
+                | python -c "import json,sys;print(json.load(sys.stdin)['dataset_sha256'])" || echo none)
+          echo "committed dataset=$OLD"
+          echo "rebuilt   dataset=$NEW"
+          if [ "$NEW" = "$OLD" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            git checkout -- . || true      # discard the timestamp-only churn
+            echo "RBI has published nothing new since the last run - nothing to commit."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git add -A api dashboard raw docs
+            git commit -m "data: refresh from RBI DBIE ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Report
+        run: |
+          python -c "
+          import json; s=json.load(open('api/v1/status.json')); m=s['meta']
+          print(f\"dataset as-of {m['dataset_as_of']} · {s['indicators'] if 'indicators' in s else m['indicators']} indicators · \"
+                f\"{s['series_points']} data points · {s['bytes']//1024} KB of API JSON\")
+          print('verdict:', s['verdict'], s['counts'])"
+
+  build-site:
+    name: Assemble the Pages artifact
+    needs: refresh
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble public/ (dashboard at /, API at /api/v1/)
+        run: bash scripts/build-public.sh
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build-site
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

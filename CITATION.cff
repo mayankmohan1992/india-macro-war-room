@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: India Macro War Room — RBI DBIE dataset and dashboard
+message: If you use this dataset or dashboard in research or a product, please cite it as below.
+type: dataset
+authors:
+  - family-names: Mohan
+    given-names: Mayank
+    alias: mayankmohan1992
+repository-code: https://github.com/mayankmohan1992/india-macro-war-room
+license: MIT
+keywords:
+  - macroeconomics
+  - india
+  - reserve-bank-of-india
+  - monetary-policy
+  - open-data
+abstract: >-
+  A daily-refreshed dataset, static JSON/CSV API and dashboard for 38 widely-watched Indian
+  macroeconomic indicators, compiled from the Reserve Bank of India's public Database on Indian
+  Economy (DBIE) publications, with every derived figure computed in an auditable build step.

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Pipeline scratch
+logs/
+raw/.fetch.lock
+*.log
+
+# Playwright
+test-results/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Generated Pages artifact (rebuilt by scripts/build-public.sh in CI, never committed)
+public/
+
+# Verification screenshots (regenerated on every run; the README uses docs/assets/)
+dashboard/*.png

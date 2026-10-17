@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>India Macro War Room · RBI DBIE</title>
+<script>
+  /* THEME, applied before first paint so a dark-mode user never sees a light flash.
+     Exactly two token blocks exist: :root = light, :root[data-theme="dark"] = dark. The stored choice
+     wins; otherwise the operating-system preference is used. (The page is JS-rendered anyway, so there
+     is no no-JS fallback to preserve.) */
+  (function(){
+    var t='light';
+    try{
+      var saved=null;
+      try{ saved=localStorage.getItem('warroom-theme'); }catch(e){ saved=null; }
+      var sysDark=!!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      t=(saved==='light'||saved==='dark')?saved:(sysDark?'dark':'light');
+    }catch(e){ t='light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<style>
+  /* ---------------------------------------------------------------------------------------------
+     DESIGN SYSTEM
+     Lifted from getartcraft.com, which the user asked to follow. Measured from that site's own
+     stylesheet (/_next/static/chunks/*.css) rather than eyeballed:
+       paper #f2f1ee · raised #faf9f7 · sunken #e9e8e4 · ink #101014   (dark: #121316/#101014/#060607)
+       one accent, blue #2d81ff  ·  BORDER-RADIUS 0 (every corner is square)
+       1px hairline rules (--line)  ·  Archivo, thin weights for big numbers
+       micro-labels: uppercase, 10px, letter-spacing .14em
+       headlines: letter-spacing -.02em
+     Status colours are the site's own app palette (green/amber/red), used ONLY for status.
+  --------------------------------------------------------------------------------------------- */
+  @font-face{
+    font-family:'Archivo'; src:url(data:font/woff2;base64,/*__FONT_B64__*/) format('woff2-variations');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
+  :root{
+    --paper:#f2f1ee; --raised:#faf9f7; --sunken:#e9e8e4; --ink:#101014; --ink2:#5c5b57; --ink3:#8a8880;
+    --line:rgba(16,16,20,.16); --line2:rgba(16,16,20,.42);
+    --accent:#2d81ff; --accent-ink:#1659c4;
+    --good:#1f9d55; --watch:#f2a516; --bad:#e8573f;
+    --good-soft:rgba(31,157,85,.09); --watch-soft:rgba(242,165,22,.11); --bad-soft:rgba(232,87,63,.09);
+    --c-accent:#2d81ff; --c-accent2:#7c5cff; --c-teal:#14a3c7; --c-pink:#e0368f;
+    --c-grid:#e4e3df; --c-axis:#c9c7c0; --c-zero:#b4b2ab; --c-cross:#9a9891;
+    --c-band:rgba(31,157,85,.10); --c-pos:rgba(31,157,85,.55); --c-neg:rgba(232,87,63,.55);
+    --sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
+    --rail:clamp(320px,25vw,412px);
+  }
+  /* dark variant — same tokens, switched by [data-theme="dark"] on <html> (set by the head script
+     from the stored choice or the OS preference, and by the Light/Dark toggle in the header) */
+  :root[data-theme="dark"]{
+      --paper:#121316; --raised:#101014; --sunken:#060607; --ink:#f2f1ee; --ink2:#a8a6a0; --ink3:#7a7973;
+      --line:rgba(242,241,238,.17); --line2:rgba(242,241,238,.40);
+      --accent:#74aaff; --accent-ink:#a9c9ff;
+      --good:#4cd58a; --watch:#ffc14d; --bad:#ff8a70;
+      --good-soft:rgba(76,213,138,.10); --watch-soft:rgba(255,193,77,.11); --bad-soft:rgba(255,138,112,.10);
+      --c-accent:#74aaff; --c-accent2:#b69cff; --c-teal:#52d1ea; --c-pink:#ff7ab8;
+      --c-grid:#24252a; --c-axis:#33353c; --c-zero:#3f4148; --c-cross:#6a6c73;
+      --c-band:rgba(76,213,138,.11); --c-pos:rgba(76,213,138,.55); --c-neg:rgba(255,138,112,.55);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.42;
+    -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+  body.modal-open{overflow:hidden}
+  button{font-family:inherit;color:inherit}
+  h1,h2,h3{margin:0;letter-spacing:-.02em;font-weight:600}
+  .micro{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+
+  /* ---------------- app shell: fixed viewport, two independently scrolling panes ---------------- */
+  body{display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+  header.bar{flex:none;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    padding:11px 16px;border-bottom:1px solid var(--line);background:var(--paper);z-index:30}
+  .brand{display:flex;align-items:baseline;gap:10px;min-width:0}
+  .brand h1{font-size:15px;white-space:nowrap}
+  .brand .meta{font-size:11px;color:var(--ink3);white-space:nowrap}
+  .brand .meta b{color:var(--ink2);font-weight:600}
+  .vd{display:flex;align-items:center;gap:7px;padding:0 12px;border-left:1px solid var(--line)}
+  .vd i{width:8px;height:8px;background:var(--ink3);flex:none}
+  .vd b{font-size:12.5px;font-weight:600}
+  .counts{display:flex;gap:14px;font-size:11.5px;color:var(--ink2)}
+  .counts span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .counts i{width:8px;height:8px;flex:none}
+  .controls{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .seg{display:flex;border:1px solid var(--line);background:var(--raised)}
+  .seg button{border:0;background:transparent;padding:5px 10px;font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600;color:var(--ink3);cursor:pointer}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button.on{background:var(--ink);color:var(--paper)}
+  .seg button:hover:not(.on){color:var(--accent)}
+  .burger{display:none;border:1px solid var(--line);background:var(--raised);width:34px;height:30px;
+    cursor:pointer;font-size:14px;line-height:1}
+  .backdrop{position:fixed;inset:0;background:rgba(16,16,20,.42);z-index:35}
+  .backdrop[hidden]{display:none}
+
+  main.shell{flex:1;min-height:0;display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
+  aside.rail{min-height:0;overflow-y:auto;overscroll-behavior:contain;border-right:1px solid var(--line);
+    padding:12px 12px 40px;background:var(--raised)}
+  section.panes{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:12px 14px 60px}
+  .rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 9px}
+  .rail-head .hint{font-size:10.5px;color:var(--ink3)}
+  .sec{display:flex;align-items:baseline;gap:8px;grid-column:1/-1;margin:14px 0 7px;
+    padding-bottom:5px;border-bottom:1px solid var(--line)}
+  .sec:first-of-type{margin-top:0}
+  .sec .no{font-family:var(--mono);font-size:10px;color:var(--ink3)}
+  .sec h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+  .sec .note{margin-left:auto;font-size:10.5px;color:var(--ink3);text-align:right}
+
+  /* ---------------- tiles: compact cards, 2 per row, every row full ---------------- */
+  .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tile{position:relative;background:var(--paper);border:1px solid var(--line);padding:8px 9px 7px;
+    display:flex;flex-direction:column;gap:5px;min-width:0}
+  .tile .edge{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ink3)}
+  .tile.good .edge{background:var(--good)} .tile.watch .edge{background:var(--watch)} .tile.bad .edge{background:var(--bad)}
+  .tile.good{background:linear-gradient(90deg,var(--good-soft),transparent 42%)}
+  .tile.bad{background:linear-gradient(90deg,var(--bad-soft),transparent 42%)}
+  .t-head{display:flex;align-items:flex-start;gap:6px}
+  .t-label{font-size:10.5px;line-height:1.25;color:var(--ink2);flex:1;min-width:0}
+  .t-body{display:flex;align-items:flex-end;justify-content:space-between;gap:6px}
+  .t-val{font-size:23px;font-weight:300;letter-spacing:-.03em;line-height:1;white-space:nowrap}
+  .t-val small{font-size:11px;font-weight:400;color:var(--ink3);margin-left:2px}
+  .t-val.wide{font-size:19px}
+  .t-side{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:none}
+  .t-delta{font-family:var(--mono);font-size:10px;padding:1px 4px;border:1px solid var(--line);color:var(--ink2)}
+  .t-delta.stale{border-style:dashed;color:var(--watch);cursor:help}
+  .up{color:var(--good)} .down{color:var(--bad)}
+  .t-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:9.5px;
+    color:var(--ink3);font-family:var(--mono)}
+  .st-g{color:var(--good);font-weight:600} .st-w{color:var(--watch);font-weight:600} .st-b{color:var(--bad);font-weight:600}
+  .spark{display:block}
+
+  /* ---------------- charts: 2 columns, sectioned ---------------- */
+  .charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{background:var(--raised);border:1px solid var(--line);padding:10px 11px 8px;position:relative;
+    cursor:zoom-in;display:flex;flex-direction:column;min-width:0}
+  .card:hover{border-color:var(--line2)}
+  .card:focus-visible,.chartwrap:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .card.wide{grid-column:1/-1}
+  .chart-head{display:flex;align-items:flex-start;gap:8px}
+  .chart-head .hgroup{min-width:0;flex:1}
+  .chart-head h3{font-size:12.5px;line-height:1.25}
+  .chart-head .cap{margin:2px 0 0;font-size:10px;color:var(--ink3);font-family:var(--mono);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .head-tools{display:flex;align-items:center;gap:5px;flex:none}
+  .expand{border:1px solid var(--line);background:var(--paper);color:var(--ink3);font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:3px 7px;cursor:pointer}
+  .card:hover .expand,.expand:hover,.expand:focus{border-color:var(--accent);color:var(--accent)}
+  .help{width:17px;height:17px;border:1px solid var(--line);background:var(--paper);color:var(--ink3);
+    font:600 10px/1 var(--mono);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+  .help:hover,.help:focus{border-color:var(--accent);color:var(--accent)}
+  .tile .help{flex:none;margin-top:-1px}
+  .histbtn{width:17px;height:17px;border:1px solid var(--line);background:var(--paper);color:var(--ink3);
+    font:600 10px/1 var(--mono);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+    padding:0;flex:none;margin-top:-1px}
+  .histbtn:hover,.histbtn:focus{border-color:var(--accent);color:var(--accent)}
+  .tile{cursor:pointer}
+  .tile:hover{border-color:var(--line2)}
+  .tile:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .hist-body{padding:2px 16px 16px;overflow:auto}
+  .hist-sum{border-left:2px solid var(--accent);background:var(--raised);padding:8px 11px;margin:8px 0 12px;
+    font-size:12.5px;color:var(--ink2)}
+  .hist-sum b{color:var(--ink);font-weight:600}
+  table.hist{width:100%;border-collapse:collapse;font-size:12px}
+  table.hist th,table.hist td{text-align:right;padding:6px 9px;border-bottom:1px solid var(--line)}
+  table.hist th{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+  table.hist th:first-child,table.hist td:first-child{text-align:left}
+  table.hist td.d{color:var(--ink2);font-family:var(--mono);font-size:11px;text-align:left}
+  table.hist td.v{font-weight:600}
+  table.hist td.c{font-family:var(--mono);font-size:11px}
+  table.hist tr.now td{background:var(--sunken)}
+  table.hist tr.now td.v{color:var(--accent-ink)}
+  .hist-note{margin-top:10px;font-size:11px;color:var(--ink3);font-family:var(--mono)}
+  .modal-panel.hist{width:min(720px,96vw);max-height:86vh}
+  .chartwrap{position:relative;margin-top:6px}
+  svg{display:block;width:100%;height:auto}
+  .legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10px;color:var(--ink2);
+    margin-top:6px;padding-top:5px;border-top:1px solid var(--line)}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:-1px}
+  .legend .hint{margin-left:auto;color:var(--ink3);font-family:var(--mono);white-space:nowrap}
+  .tip{position:absolute;top:4px;z-index:5;pointer-events:none;background:var(--ink);color:var(--paper);
+    padding:5px 7px;font-family:var(--mono);font-size:10.5px;white-space:nowrap;display:none;
+    box-shadow:0 6px 18px rgba(16,16,20,.24)}
+  .tip .d{opacity:.68;font-size:9.5px;margin-bottom:3px}
+  .tip .r{display:flex;align-items:center;gap:6px;line-height:1.5}
+  .tip .r i{width:8px;height:8px;display:inline-block;flex:none}
+  .tip .r b{margin-left:auto;font-weight:600}
+  .tip .r span{opacity:.72}
+  .warnbar{border:1px solid var(--line);border-left:2px solid var(--watch);background:var(--raised);
+    padding:8px 11px;font-size:11.5px;color:var(--ink2);margin-bottom:12px}
+  .warnbar b{color:var(--ink)}
+  /* 10 chips: 5x2 on desktop, 2x5 on narrow — both divide 10, so no row is ever short */
+  .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .kv{border:1px solid var(--line);background:var(--raised);padding:7px 9px}
+  .kv .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+  .kv .v{font-size:16px;font-weight:300;margin-top:2px;letter-spacing:-.02em}
+  .kv .d{font-size:9.5px;color:var(--ink3);font-family:var(--mono)}
+  table.rules{width:100%;border-collapse:collapse;font-size:11.5px}
+  table.rules th,table.rules td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.rules th{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+  table.rules td.mono{font-family:var(--mono);color:var(--ink2);font-size:11px}
+  footer.foot{grid-column:1/-1;border-top:1px solid var(--line);margin-top:18px;padding-top:10px;
+    color:var(--ink3);font-size:10.5px;font-family:var(--mono);line-height:1.6}
+
+  /* ---------------- modals (chart + definition) ---------------- */
+  .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+    background:rgba(16,16,20,.55);padding:18px}
+  .modal[hidden]{display:none}
+  .modal-panel{background:var(--paper);border:1px solid var(--line2);width:min(1680px,97vw);max-height:94vh;
+    display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(16,16,20,.3)}
+  .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:11px 14px;
+    border-bottom:1px solid var(--line)}
+  .modal-head h3{font-size:14px}
+  .modal-head .cap{margin:3px 0 0;font-size:10.5px;color:var(--ink3);font-family:var(--mono)}
+  .modal-tools{display:flex;align-items:center;gap:6px;flex:none}
+  .modal-tools button{font:11px/1 var(--mono);background:var(--raised);border:1px solid var(--line);
+    min-width:30px;height:27px;cursor:pointer;color:var(--ink)}
+  .modal-tools button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .modal-tools button:disabled{opacity:.35;cursor:not-allowed}
+  .modal-tools .readout{font-family:var(--mono);font-size:10.5px;color:var(--ink3);min-width:150px;text-align:right}
+  .modal-body{padding:10px 14px 2px;overflow:hidden;flex:1;min-height:0}
+  .modal-body svg{cursor:grab} .modal-body svg.dragging{cursor:grabbing}
+  .modal-foot{padding:7px 14px 11px;color:var(--ink3);font-size:10.5px;font-family:var(--mono);
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .def-body{padding:4px 16px 16px;overflow:auto}
+  .def-body h4{margin:14px 0 4px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+  .def-body h4:first-child{margin-top:8px}
+  .def-body p{margin:0 0 7px;font-size:12.5px;line-height:1.55}
+  .def-body .src{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-bottom:5px}
+  .def-body .src a{color:var(--accent-ink);word-break:break-all}
+  .def-body .pending{border:1px dashed var(--line2);padding:9px 11px;color:var(--ink2);font-size:11.5px;font-family:var(--mono)}
+  .def-body .meta{border-top:1px solid var(--line);margin-top:11px;padding-top:9px;font-size:12px;color:var(--ink2)}
+  .def-body .meta b{color:var(--ink);font-weight:600}
+  .modal-panel.def{width:min(940px,96vw);max-height:88vh}
+
+  /* ---------------- responsive: mobile = hamburger rail + scrolling charts ---------------- */
+  @media (max-width:1180px){ .charts{grid-template-columns:minmax(0,1fr)} .card.wide{grid-column:auto} }
+  @media (max-width:980px){
+    body{height:auto;overflow:auto}
+    main.shell{display:block}
+    aside.rail{position:fixed;top:0;bottom:0;left:0;width:min(88vw,392px);transform:translateX(-102%);
+      transition:transform .18s ease;z-index:40;border-right:1px solid var(--line2);
+      box-shadow:8px 0 30px rgba(16,16,20,.18);padding-top:14px}
+    aside.rail.open{transform:none}
+    section.panes{overflow:visible;padding:12px 12px 48px}
+    .burger{display:inline-flex;align-items:center;justify-content:center}
+    header.bar{gap:8px 12px;padding:9px 12px}
+    .brand{margin-right:auto;min-width:0;overflow:hidden}
+    .brand h1{white-space:normal}
+    .counts{display:none}
+    .controls{margin-left:0;width:100%;flex-wrap:wrap;gap:6px}
+    .seg button{padding:4px 7px;font-size:9px;letter-spacing:.06em}
+    .vd{padding:0;border-left:0;min-width:0}
+    .vd b{font-weight:600}
+    .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .modal{padding:8px}
+  }
+  @media (max-width:620px){
+    .brand .meta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand">
+    <h1>India Macro War Room</h1>
+    <div class="meta">RBI Database on Indian Economy · latest data <b id="asof">–</b> · built <span id="built">–</span></div>
+  </div>
+  <div class="vd"><i id="vdot"></i><b id="verdict">–</b></div>
+  <div class="counts" id="counts"></div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Tile order">
+      <button id="sort-theme" class="on">By theme</button><button id="sort-worst">Worst first</button>
+    </div>
+    <div class="seg" role="group" aria-label="Chart density">
+      <button id="d-comfy" class="on">Comfort</button><button id="d-compact">Compact</button><button id="d-dense">Fit all</button>
+    </div>
+    <div class="seg" role="group" aria-label="Colour theme">
+      <button id="t-light" title="Light theme" aria-label="Light theme">&#9728; Light</button>
+      <button id="t-dark" title="Dark theme" aria-label="Dark theme">&#9789; Dark</button>
+    </div>
+    <button id="burger" class="burger" aria-label="Show indicators" aria-expanded="false">&#9776;</button>
+  </div>
+</header>
+<div class="backdrop" id="backdrop" hidden></div>
+
+<main class="shell">
+  <aside class="rail" id="rail" aria-label="Indicator tiles">
+    <div class="rail-head"><span class="micro">Indicators</span>
+      <span class="hint" id="rail-count"></span></div>
+    <div id="rail-groups"></div>
+  </aside>
+  <section class="panes" id="panes">
+    <div class="warnbar" id="caveat"></div>
+    <div id="chart-sections"></div>
+  </section>
+</main>
+
+<!-- chart modal: opened by the expand button or anywhere on a chart card -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div><h3 id="m-title">chart</h3><p class="cap" id="m-cap"></p></div>
+      <div class="modal-tools">
+        <span class="readout" id="m-window"></span>
+        <button id="m-out" title="Zoom out" aria-label="Zoom out">&minus;</button>
+        <button id="m-in" title="Zoom in" aria-label="Zoom in">+</button>
+        <button id="m-reset" title="Reset zoom">reset</button>
+        <button id="m-close" title="Close (Esc)" aria-label="Close chart">&#10005;</button>
+      </div>
+    </div>
+    <div class="modal-body" id="m-body"></div>
+    <div class="modal-foot"><span id="m-range"></span><span>drag to pan · scroll to zoom · Esc to close</span></div>
+  </div>
+</div>
+
+<!-- history modal: opened by clicking a tile (or its &#8801;), listing what value prevailed when -->
+<div class="modal" id="histmodal" hidden role="dialog" aria-modal="true" aria-labelledby="h-title">
+  <div class="modal-panel hist">
+    <div class="modal-head">
+      <div><h3 id="h-title">history</h3><p class="cap" id="h-sub"></p></div>
+      <div class="modal-tools"><button id="h-close" title="Close (Esc)" aria-label="Close history">&#10005;</button></div>
+    </div>
+    <div class="modal-body hist-body" id="h-body"></div>
+  </div>
+</div>
+
+<!-- definition modal: opened by the ? on any tile or chart -->
+<div class="modal" id="defmodal" hidden role="dialog" aria-modal="true" aria-labelledby="d-title">
+  <div class="modal-panel def">
+    <div class="modal-head">
+      <div><h3 id="d-title">definition</h3><p class="cap" id="d-sub"></p></div>
+      <div class="modal-tools"><button id="d-close" title="Close (Esc)" aria-label="Close definition">&#10005;</button></div>
+    </div>
+    <div class="modal-body def-body" id="d-body"></div>
+  </div>
+</div>
+
+<script>
+const DATA = /*__WARROOM_DATA__*/;
+const S = DATA.series, T = DATA.tiles, DEF = DATA.definitions || {};
+
+/* Chart colours are READ FROM CSS, not hardcoded, so the dark-mode palette stays one source of truth. */
+function readC(){
+  const cs = getComputedStyle(document.documentElement), g = n => cs.getPropertyValue(n).trim();
+  return {good:g('--good'), watch:g('--watch'), bad:g('--bad'), accent:g('--c-accent'), accent2:g('--c-accent2'),
+          teal:g('--c-teal'), pink:g('--c-pink'), dim:g('--ink2'), dim2:g('--ink3'), grid:g('--c-grid'),
+          axis:g('--c-axis'), zero:g('--c-zero'), cross:g('--c-cross'), band:g('--c-band'),
+          pos:g('--c-pos'), neg:g('--c-neg'), ink:g('--ink')};
+}
+let C = readC();
+
+/* ---------- formatting ---------- */
+function fmtVal(v, unit){
+  if(v===null||v===undefined||isNaN(v)) return '–';
+  if(unit==='%') return v.toFixed(2);
+  if(unit==='₹ crore'){ const a=Math.abs(v); return a>=1e5 ? (v/1e5).toFixed(2)+' lakh cr' : Math.round(v).toLocaleString('en-IN'); }
+  return (Math.round(v*100)/100).toLocaleString('en-IN');
+}
+function fmtDelta(d, unit){
+  if(d===null||d===undefined||isNaN(d)) return '';
+  const a=Math.abs(d);
+  if(unit==='₹ crore') return (d>0?'+':'')+(a>=1e5?(d/1e5).toFixed(2)+'L':Math.round(d).toLocaleString('en-IN'));
+  return (d>0?'+':'')+d.toFixed(a<1?2:2)+(unit==='%'?' pp':'');
+}
+function axisLabel(v, unit){
+  if(unit==='₹ crore'){ const a=Math.abs(v); return a>=10000 ? (v/1000).toFixed(0)+'k' : v.toFixed(0); }
+  if(unit==='₹') return v.toFixed(1);
+  if(unit==='%'){ const a=Math.abs(v); return (a>=10||a===0) ? v.toFixed(0) : v.toFixed(1); }
+  if(unit==='x') return v.toFixed(1)+'x';
+  return v>=100||v<=-100 ? v.toFixed(0) : v.toFixed(1);
+}
+function tipValue(v, unit){
+  if(unit==='₹ crore') return Math.round(v).toLocaleString('en-IN')+' cr';
+  if(unit==='₹') return v.toFixed(2);
+  if(unit==='x') return v.toFixed(2)+'x';
+  if(unit==='pp') return (v>0?'+':'')+v.toFixed(2)+'pp';
+  return v.toFixed(2)+'%';
+}
+function yAxisTitle(cfg){
+  if(cfg.unit==='₹ crore') return '₹ crore';
+  if(cfg.unit==='₹') return '₹ per US$ / EUR';
+  if(cfg.unit==='x') return 'ratio (x)';
+  if(cfg.unit==='pp') return 'percentage points';
+  if(cfg.opts&&cfg.opts.band) return '% y-o-y vs target';
+  return cfg.yTitle || '%';
+}
+function tickLabel(iso, n){
+  const dt=new Date(iso+'T00:00:00Z');
+  const m=dt.toLocaleString('en-GB',{month:'short',timeZone:'UTC'});
+  return n>150 ? (m+" '"+String(dt.getUTCFullYear()).slice(2))
+       : n>60  ? (m+' '+String(dt.getUTCFullYear()).slice(2))
+               : (dt.getUTCDate()+' '+m);
+}
+
+/* ---------- chart registry (26 charts) ---------- */
+const CHARTS = [
+  /* prices */
+  {id:'cpi', section:'prices', title:'CPI inflation vs the 4% target', unit:'%',
+   cap:'y-o-y % · CPI base year 2024=100 · shaded 2–6% tolerance band, dashed 4% target',
+   kind:'line', initial:60, defKeys:['cpi'], band:[2,6,4],
+   keys:[{key:'cpi_yoy', color:'accent', fill:true}], legend:[['CPI y-o-y','accent']]},
+  {id:'wpi', section:'prices', title:'Wholesale (WPI) vs retail (CPI) inflation', unit:'%',
+   cap:'y-o-y % · WPI base year 2022-23 · the gap is pipeline vs consumer pressure',
+   kind:'line', initial:60, defKeys:['cpi','wpi'], zeroLine:true,
+   keys:[{key:'cpi_yoy', color:'accent'},{key:'wpi_yoy', color:'accent2'}],
+   legend:[['CPI','accent'],['WPI','accent2']]},
+  {id:'wpimix', section:'prices', title:'What is driving wholesale prices: the three WPI groups', unit:'%',
+   cap:'y-o-y % · primary articles, fuel & power and manufactured products — the parts behind the WPI headline',
+   kind:'line', initial:72, defKeys:['wpi'], zeroLine:true,
+   keys:[{key:'wpi_primary_yoy', color:'accent'},{key:'wpi_fuel_yoy', color:'bad'},
+         {key:'wpi_manu_yoy', color:'accent2'}],
+   legend:[['primary articles','accent'],['fuel & power','bad'],['manufactured','accent2']]},
+  {id:'cpiregion', section:'prices', title:'Retail inflation: rural vs urban', unit:'%',
+   cap:'y-o-y % · CPI rural and urban against the 2–6% tolerance band',
+   kind:'line', initial:72, defKeys:['cpi'], band:[2,6,4],
+   keys:[{key:'cpi_rural_yoy', color:'accent'},{key:'cpi_urban_yoy', color:'teal'}],
+   legend:[['rural','accent'],['urban','teal']]},
+  /* policy & money */
+  {id:'rates', section:'policy', title:'Policy rate, call money and the 10-year G-sec', unit:'%',
+   cap:'% · the repo line carries the latest announced rate as its final point · call money and the G-sec ' +
+       'are from the same weekly table as each other',
+   kind:'line', initial:104, defKeys:['repo','callmoney','gsec10y'],
+   keys:[{key:'repo', color:'good'},{key:'call_rate', color:'accent'},{key:'gsec10y', color:'accent2'}],
+   legend:[['policy repo rate (incl. latest announcement)','good'],['call money (weekly)','accent'],
+           ['10-yr G-sec (weekly)','accent2']]},
+  {id:'yields', section:'policy', title:'The yield curve: T-bill yields and the 10-year G-sec', unit:'%',
+   cap:'% per annum · weekly · short end (91/182/364-day) versus the 10-year benchmark',
+   kind:'line', initial:104, defKeys:['treasury_bills','gsec10y'],
+   keys:[{key:'yld91', color:'accent'},{key:'yld182', color:'teal'},{key:'yld364', color:'accent2'},
+         {key:'gsec10y', color:'good'}],
+   legend:[['91-day','accent'],['182-day','teal'],['364-day','accent2'],['10-yr G-sec','good']]},
+  {id:'termspread', section:'policy', title:'Term spread: 10-year G-sec minus 91-day T-bill', unit:'pp',
+   cap:'percentage points · the shape of the curve · below zero = inverted',
+   kind:'line', initial:104, defKeys:['term_spread'], zeroLine:true,
+   keys:[{key:'term_spread', color:'accent2', fill:true}], legend:[['term spread','accent2']]},
+  {id:'money', section:'policy', title:'Money supply: M3 and reserve money growth', unit:'%',
+   cap:'y-o-y % · M3 = broad money · reserve money = RBI base money',
+   kind:'line', initial:72, defKeys:['m3','reserve_money'], zeroLine:true,
+   keys:[{key:'m3_yoy', color:'accent'},{key:'rm_yoy', color:'accent2'}],
+   legend:[['M3','accent'],['reserve money','accent2']]},
+  {id:'moneymix', section:'policy', title:'Money stock: M3, M1 and reserve money', unit:'%',
+   cap:'y-o-y % · M1 = narrow money (transactions), M3 = broad (with savings), reserve money = base',
+   kind:'line', initial:72, defKeys:['m3','m1','reserve_money'], zeroLine:true,
+   keys:[{key:'m3_yoy', color:'accent'},{key:'m1_yoy', color:'teal'},{key:'rm_yoy', color:'accent2'}],
+   legend:[['M3','accent'],['M1','teal'],['reserve money','accent2']]},
+  {id:'mult', section:'policy', title:'Money multiplier (M3 ÷ reserve money)', unit:'x',
+   cap:'ratio · how many rupees of broad money each rupee of base money supports',
+   kind:'line', initial:104, defKeys:['money_multiplier'],
+   keys:[{key:'money_mult', color:'accent'}], legend:[['money multiplier','accent']]},
+  {id:'laf', section:'policy', title:'Daily liquidity operations — net injection(+) / absorption(–)', unit:'₹ crore',
+   cap:'₹ crore · bars are daily net operations, the line is the 1-month rolling average',
+   kind:'bar', initial:120, defKeys:['liquidity'], barKey:'laf_net', avgKey:'laf_net_30d',
+   legend:[['daily net ops','bad'],['1-month average','accent']]},
+  {id:'lafmix', section:'policy', title:'Standing facilities: SDF absorption vs MSF borrowing', unit:'₹ crore',
+   cap:'₹ crore · SDF takes surplus cash in, MSF lends against securities — the two ends of the corridor',
+   kind:'line', initial:120, defKeys:['liquidity'],
+   keys:[{key:'sdf_level', color:'accent'},{key:'msf_level', color:'watch'}],
+   legend:[['SDF balances','accent'],['MSF borrowing','watch']]},
+  {id:'cic', section:'policy', title:'Reserve money and currency with the public', unit:'%',
+   cap:'y-o-y % · currency in circulation growth is the cash-preference read',
+   kind:'line', initial:72, defKeys:['reserve_money','currency_in_circulation'], zeroLine:true,
+   keys:[{key:'rm_yoy', color:'accent'},{key:'cic_yoy', color:'accent2'}],
+   legend:[['reserve money','accent'],['currency in circulation','accent2']]},
+  /* credit & banking */
+  {id:'credit', section:'credit', title:'Bank credit vs deposit growth', unit:'%',
+   cap:'y-o-y % · credit persistently above deposits = funding pressure',
+   kind:'line', initial:72, defKeys:['bank_credit','aggregate_deposits'], zeroLine:true,
+   keys:[{key:'credit_yoy', color:'accent'},{key:'deposit_yoy', color:'good'}],
+   legend:[['bank credit','accent'],['aggregate deposits','good']]},
+  {id:'creditmix', section:'credit', title:'Credit mix: total, non-food and food credit', unit:'%',
+   cap:'y-o-y % · food credit is procurement lending, non-food is the rest of the book',
+   kind:'line', initial:72, defKeys:['bank_credit','food_credit'], zeroLine:true,
+   keys:[{key:'credit_yoy', color:'accent'},{key:'nonfood_yoy', color:'teal'},{key:'food_yoy', color:'watch'}],
+   legend:[['total credit','accent'],['non-food credit','teal'],['food credit','watch']]},
+  {id:'invest', section:'credit', title:'Where bank money went: credit vs investments', unit:'%',
+   cap:'y-o-y % · investments = government and other approved securities',
+   kind:'line', initial:72, defKeys:['bank_investments','bank_credit'], zeroLine:true,
+   keys:[{key:'invest_yoy', color:'accent2'},{key:'credit_yoy', color:'accent'}],
+   legend:[['SCB investments','accent2'],['bank credit','accent']]},
+  {id:'cdr', section:'credit', title:'Credit-to-deposit ratio', unit:'%',
+   cap:'% · SCBs, system level · share of the deposit base deployed as loans',
+   kind:'line', initial:72, defKeys:['credit_deposit_ratio'],
+   keys:[{key:'cd_ratio', color:'accent2', fill:true}], legend:[['credit-to-deposit','accent2']]},
+  /* external, fiscal & markets */
+  {id:'reserveassets', section:'external', title:'RBI reserve assets: foreign currency assets and gold', unit:'₹ crore',
+   cap:'₹ crore, balance-sheet values · the rupee value of the reserves pile',
+   kind:'line', initial:120, defKeys:['fca','gold'],
+   keys:[{key:'fca_level', color:'accent'},{key:'gold_level', color:'watch'}],
+   legend:[['foreign currency assets','accent'],['gold','watch']]},
+  {id:'rupee', section:'external', title:'The rupee: USD/INR and EUR/INR', unit:'₹',
+   cap:'₹ per unit of foreign currency · rising = weaker rupee',
+   kind:'line', initial:104, defKeys:['exchange_rate'],
+   keys:[{key:'inr_usd', color:'accent'},{key:'inr_eur', color:'accent2'}],
+   legend:[['USD/INR','accent'],['EUR/INR','accent2']]},
+  {id:'premia', section:'external', title:'US$ forward premia: 1, 3 and 6 months', unit:'%',
+   cap:'% annualised · how much more rupees cost for future dollars — a depreciation-pressure gauge',
+   kind:'line', initial:104, defKeys:['forward_premia'],
+   keys:[{key:'fwd1m', color:'accent'},{key:'fwd3m', color:'teal'},{key:'fwd6m', color:'accent2'}],
+   legend:[['1-month','accent'],['3-month','teal'],['6-month','accent2']]},
+  {id:'tbill', section:'external', title:'Treasury bills outstanding', unit:'₹ crore',
+   cap:'₹ crore · 91+182+364-day + CMB · a fast build-up means heavier short-term borrowing',
+   kind:'line', initial:120, defKeys:['treasury_bills'],
+   keys:[{key:'tbill', color:'watch', fill:true}], legend:[['T-bill outstanding','watch']]},
+  {id:'tbillmix', section:'external', title:'T-bill outstanding by tenor', unit:'₹ crore',
+   cap:'₹ crore · which maturity the government is leaning on · no CMBs have been issued since Aug-2020, ' +
+       'so that dead line is not plotted',
+   kind:'line', initial:120, defKeys:['treasury_bills'],
+   keys:[{key:'tb91', color:'accent'},{key:'tb182', color:'teal'},{key:'tb364', color:'accent2'}],
+   legend:[['91-day','accent'],['182-day','teal'],['364-day','accent2']]},
+  {id:'rbibook', section:'external', title:'RBI balance sheet: bankers\' deposits and rupee securities', unit:'%',
+   cap:'y-o-y % · what banks keep at the RBI, and the government paper the RBI is holding',
+   kind:'line', initial:104, defKeys:['bankers_deposits','rupee_securities'], zeroLine:true,
+   keys:[{key:'bankers_dep_yoy', color:'accent'},{key:'rupeesec_yoy', color:'accent2'}],
+   legend:[["bankers' deposits",'accent'],['rupee securities','accent2']]},
+  {id:'rbicredit', section:'external', title:'RBI lending to the Central Government', unit:'₹ crore',
+   cap:'₹ crore · Ways and Means Advances and overdrafts · the RBI table reports a nil balance as a ' +
+       'blank cell, so this line ends at its last reported date (Apr-2026)',
+   kind:'line', initial:120, defKeys:['rbi_credit_to_govt'],
+   keys:[{key:'rbi_govt_level', color:'bad', fill:true}], legend:[['loans & advances to the Centre','bad']]},
+  {id:'cdcp', section:'external', title:'Money-market issuance: CD vs CP', unit:'₹ crore',
+   cap:'₹ crore outstanding · banks (CD) and corporates (CP)',
+   kind:'line', initial:60, defKeys:['certificate_of_deposit','commercial_paper'],
+   keys:[{key:'cd_out', color:'accent'},{key:'cp_out', color:'accent2'}],
+   legend:[['CD','accent'],['CP','accent2']]},
+  {id:'cdcprate', section:'external', title:'CD and CP issuance rates (maximum)', unit:'%',
+   cap:'% per annum · the top of the published issuance-rate range each fortnight',
+   kind:'line', initial:80, defKeys:['certificate_of_deposit','commercial_paper'],
+   keys:[{key:'cd_rate', color:'accent'},{key:'cp_rate', color:'accent2'}],
+   legend:[['CD max rate','accent'],['CP max rate','accent2']]}
+];
+
+/* ---------- windowing ---------- */
+function sliceWin(key, n, pan){
+  const pts=S[key].points;
+  return pts.slice(Math.max(0, pts.length - pan - n), pts.length - pan);
+}
+function builtSeries(cfg, n, pan){
+  return cfg.keys.map(s=>({key:s.key, label:(cfg.legend.find(l=>l[1]===s.color)||['',''])[0]||s.key,
+                           color:C[s.color]||C.accent, fill:!!s.fill, points:sliceWin(s.key, n, pan)}));
+}
+function chartKeys(cfg){ return cfg.kind==='line' ? cfg.keys.map(k=>k.key) : [cfg.barKey, cfg.avgKey]; }
+function chartMaxLen(cfg){ return Math.max(...chartKeys(cfg).map(k=>S[k].points.length)); }
+
+/* ---------- drawing ---------- */
+function drawChart(wrap, cfg, n, pan, W, H){
+  const bars  = cfg.kind==='bar' ? sliceWin(cfg.barKey, n, pan) : null;
+  const avg   = cfg.kind==='bar' ? sliceWin(cfg.avgKey, n, pan) : null;
+  const series= cfg.kind==='line' ? builtSeries(cfg, n, pan) : [];
+  const all   = cfg.kind==='line' ? series.flatMap(s=>s.points.map(p=>p[1])) : bars.map(p=>p[1]).concat(avg.map(p=>p[1]));
+  if(!all.length){ wrap.innerHTML='<div class="cap">no data in this window</div>'; return; }
+
+  const dates = cfg.kind==='line'
+    ? Array.from(new Set(series.flatMap(s=>s.points.map(p=>p[0])))).sort()
+    : bars.map(p=>p[0]);
+  const pos = new Map(dates.map((d,i)=>[d,i]));
+  const nD = dates.length;
+  let lo=Math.min(...all), hi=Math.max(...all);
+  if(cfg.band){ lo=Math.min(lo,cfg.band[0]); hi=Math.max(hi,cfg.band[1]); }
+  if(cfg.zeroLine){ lo=Math.min(lo,0); hi=Math.max(hi,0); }
+  if(cfg.kind==='bar'){ lo=Math.min(lo,0); hi=Math.max(hi,0); }
+  const pv=(hi-lo)*0.10||1; lo-=pv; hi+=pv;
+
+  /* paddings scale with H, so the flat "fit all" density stays legible instead of crushing labels */
+  const L=Math.max(34, Math.round(W*0.098)), R=14, TP=Math.max(18, Math.round(H*0.085)),
+        B=Math.max(34, Math.round(H*0.24));   // room for the tick row AND the axis title row
+  const xD=d=> L+(pos.get(d)/(nD-1||1))*(W-L-R);
+  const xI=i=> L+(i+0.5)/nD*(W-L-R);
+  const y =v=> TP+(1-(v-lo)/(hi-lo||1))*(H-TP-B);
+  const fs = H<130 ? 10 : 11;                       // axis text (viewBox units)
+  let g='';
+
+  for(let k=0;k<=4;k++){
+    const val=lo+(hi-lo)*k/4, yy=y(val);
+    g+=`<line x1="${L}" y1="${yy.toFixed(1)}" x2="${W-R}" y2="${yy.toFixed(1)}" stroke="${C.grid}" stroke-width="1"/>`;
+    g+=`<text x="${L-6}" y="${(yy+3.4).toFixed(1)}" fill="${C.dim2}" font-size="${fs}" text-anchor="end">${axisLabel(val,cfg.unit)}</text>`;
+  }
+  // axis unit sits ABOVE the plot, left-aligned with its left edge - never on the tick-label column
+  g+=`<text x="${L}" y="${Math.max(10,TP-7)}" fill="${C.dim}" font-size="${fs-0.5}" text-anchor="start">${yAxisTitle(cfg)}</text>`;
+
+  const maxTicks = Math.max(3, Math.round((W-L-R)/110));
+  const stepT = Math.max(1, Math.ceil(nD/maxTicks));
+  const ticks = [];
+  for(let i=0;i<nD;i+=stepT) ticks.push(i);
+  /* ALWAYS label the NEWEST observation: the regular grid can stop a whole interval short of the end,
+     which is exactly how "the latest data point isn't on the chart" happens. If that last label lands
+     too close to the previous one, it replaces it instead of overlapping. */
+  if(nD>1 && ticks[ticks.length-1] !== nD-1){
+    const gapPx = ((nD-1) - ticks[ticks.length-1]) * ((W-L-R)/(nD-1||1));
+    if(gapPx < 54) ticks.pop();
+    ticks.push(nD-1);
+  }
+  ticks.forEach(i=>{
+    const xx = cfg.kind==='line' ? xD(dates[i]) : xI(i);
+    g+=`<line x1="${xx.toFixed(1)}" y1="${(H-B).toFixed(1)}" x2="${xx.toFixed(1)}" y2="${(H-B+3).toFixed(1)}" stroke="${C.axis}"/>`;
+    g+=`<text x="${xx.toFixed(1)}" y="${(H-B+fs+5).toFixed(1)}" fill="${C.dim2}" font-size="${fs}" text-anchor="middle">${tickLabel(dates[i], nD)}</text>`;
+  });
+  g+=`<line x1="${L}" y1="${(H-B).toFixed(1)}" x2="${W-R}" y2="${(H-B).toFixed(1)}" stroke="${C.axis}"/>`;
+  // the x-axis title lives on its OWN row under the tick labels - at the right edge it collided with
+  // the last tick label, which is now pinned to the newest data point
+  g+=`<text x="${L}" y="${(H-B+fs*2+7).toFixed(1)}" fill="${C.dim}" font-size="${fs-0.5}" text-anchor="start">date</text>`;
+
+  if(cfg.band){
+    g+=`<rect x="${L}" y="${y(cfg.band[1]).toFixed(1)}" width="${W-L-R}" height="${Math.max(0,y(cfg.band[0])-y(cfg.band[1])).toFixed(1)}" fill="${C.band}"/>`;
+    g+=`<line x1="${L}" y1="${y(cfg.band[2]).toFixed(1)}" x2="${W-R}" y2="${y(cfg.band[2]).toFixed(1)}" stroke="${C.good}" stroke-dasharray="5 4" stroke-width="1"/>`;
+    g+=`<text x="${W-R-3}" y="${(y(cfg.band[2])-4).toFixed(1)}" fill="${C.good}" font-size="${fs-0.5}" text-anchor="end">target ${cfg.band[2]}</text>`;
+  }
+  if(cfg.zeroLine){
+    g+=`<line x1="${L}" y1="${y(0).toFixed(1)}" x2="${W-R}" y2="${y(0).toFixed(1)}" stroke="${C.zero}" stroke-width="1.2"/>`;
+    g+=`<text x="${W-R-3}" y="${(y(0)-4).toFixed(1)}" fill="${C.dim2}" font-size="${fs-0.5}" text-anchor="end">0</text>`;
+  }
+
+  if(cfg.kind==='bar'){
+    const bw=Math.max(1.2,(W-L-R)/nD*0.66);
+    bars.forEach((p,i)=>{
+      const y0=y(0), y1=y(p[1]);
+      g+=`<rect x="${(xI(i)-bw/2).toFixed(1)}" y="${Math.min(y0,y1).toFixed(1)}" width="${bw.toFixed(1)}"
+           height="${Math.abs(y1-y0).toFixed(1)}" fill="${p[1]>=0?C.pos:C.neg}"/>`;
+    });
+    // mark the NEWEST bar as well: a small bar is easy to miss, and "where does this series end"
+    // must be answerable at a glance on every chart type
+    if(bars.length){
+      const lb=bars[bars.length-1];
+      g+=`<circle class="lastdot" cx="${xI(bars.length-1).toFixed(1)}" cy="${y(lb[1]).toFixed(1)}" r="2.7"
+             fill="${lb[1]>=0?C.pos:C.neg}" stroke="${C.ink}" stroke-width=".9"/>`;
+    }
+    const idx=new Map(bars.map((p,i)=>[p[0],i]));
+    const al=avg.filter(p=>idx.has(p[0]));
+    if(al.length){
+      if(al.length>1){
+        const d=al.map((p,i)=>`${i?'L':'M'}${xI(idx.get(p[0])).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+        g+=`<path d="${d}" fill="none" stroke="${C.accent}" stroke-width="2"/>`;
+      }
+      const lp=al[al.length-1], lx=xI(idx.get(lp[0]));
+      g+=`<circle class="lastdot" cx="${lx.toFixed(1)}" cy="${y(lp[1]).toFixed(1)}" r="2.7" fill="${C.accent}"/>`;
+    }
+  } else {
+    const base=y(cfg.zeroLine?0:lo).toFixed(1);
+    series.forEach(s=>{
+      if(!s.points.length) return;
+      const d=s.points.map(p=>`${p[0]===s.points[0][0]?'M':'L'}${xD(p[0]).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+      if(s.fill) g+=`<path d="${d} L${xD(s.points[s.points.length-1][0]).toFixed(1)},${base} L${xD(s.points[0][0]).toFixed(1)},${base} Z" fill="${s.color}" opacity=".10"/>`;
+      g+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="1.8" stroke-linejoin="round"/>`;
+      const lp=s.points[s.points.length-1];
+      g+=`<circle class="lastdot" cx="${xD(lp[0]).toFixed(1)}" cy="${y(lp[1]).toFixed(1)}" r="2.7" fill="${s.color}"/>`;
+    });
+  }
+
+  g+=`<g class="xh" style="display:none"><line x1="0" y1="${TP}" x2="0" y2="${H-B}" stroke="${C.cross}" stroke-width="1" stroke-dasharray="3 3"/>`;
+  const nCir = cfg.kind==='line' ? series.length : 2;
+  for(let i=0;i<nCir;i++) g+=`<circle class="xhc" r="3.2" fill="none" stroke-width="2"/>`;
+  g+=`</g>`;
+
+  wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${cfg.title}">${g}</svg><div class="tip"></div>`;
+  wrap._meta = {cfg, W, H, L, R, TP, B, dates, pos, xD, xI, y, series, bars, avg,
+                vals: cfg.kind==='line'
+                  ? series.map(s=>({label:s.label, color:s.color, byDate:new Map(s.points.map(p=>[p[0],p[1]]))}))
+                  : [{label:cfg.legend[0][0], color:C[cfg.legend[0][1]], byDate:new Map(bars.map(p=>[p[0],p[1]]))},
+                     {label:cfg.legend[1][0], color:C[cfg.legend[1][1]], byDate:new Map(avg.map(p=>[p[0],p[1]]))}]};
+  if(!wrap._hover){
+    wrap._hover=true;
+    const move=(ev)=>{
+      const m=wrap._meta; if(!m) return;
+      const svg=wrap.querySelector('svg'); if(!svg) return;
+      const rect=svg.getBoundingClientRect();
+      const cv=ev.touches? ev.touches[0] : ev;
+      const xv=(cv.clientX-rect.left)/rect.width*m.W;
+      if(xv<m.L-2 || xv>m.W-m.R+8){ hideTip(wrap); return; }   // wider at the right end: the newest
+                                                              // point sits ON the right edge
+      const frac=(xv-m.L)/(m.W-m.L-m.R);
+      let i=Math.max(0, Math.min(m.dates.length-1, Math.round(frac*(m.dates.length-1))));
+      if(m.cfg.kind==='bar') i=Math.max(0, Math.min(m.bars.length-1, Math.floor(frac*m.bars.length)));
+      const date=m.dates[i];
+      const xx=(m.cfg.kind==='line'? m.xD(date) : m.xI(i));
+      const rows=m.vals.map(v=>({label:v.label, color:v.color, val:v.byDate.get(date)})).filter(r=>r.val!==undefined);
+      if(!rows.length){ hideTip(wrap); return; }
+      const gx=wrap.querySelector('.xh');
+      if(gx){
+        gx.style.display='';
+        gx.querySelector('line').setAttribute('x1',xx.toFixed(1));
+        gx.querySelector('line').setAttribute('x2',xx.toFixed(1));
+        const cs=gx.querySelectorAll('circle');
+        rows.forEach((r,k)=>{ if(cs[k]){ cs[k].setAttribute('cx',xx.toFixed(1));
+          cs[k].setAttribute('cy',m.y(r.val).toFixed(1)); cs[k].setAttribute('stroke',r.color); cs[k].style.display=''; }});
+        for(let k=rows.length;k<cs.length;k++) cs[k].style.display='none';
+      }
+      const tip=wrap.querySelector('.tip');
+      tip.innerHTML=`<div class="d">${date}</div>`+rows.map(r=>
+        `<div class="r"><i style="background:${r.color}"></i><span>${r.label}</span><b>${tipValue(r.val,m.cfg.unit)}</b></div>`).join('');
+      const px=(xx/m.W)*rect.width;
+      tip.style.display='block';
+      tip.style.left=Math.max(2, Math.min(rect.width-tip.offsetWidth-2, px-tip.offsetWidth/2))+'px';
+    };
+    wrap.addEventListener('pointermove', move);
+    wrap.addEventListener('touchmove', move, {passive:true});
+    wrap.addEventListener('pointerleave', ()=>hideTip(wrap));
+  }
+}
+function hideTip(wrap){
+  const t=wrap.querySelector('.tip'); if(t) t.style.display='none';
+  const g=wrap.querySelector('.xh'); if(g) g.style.display='none';
+}
+
+/* ---------- density ---------- */
+const DENSITY = {comfy:{H:206,fs:11}, compact:{H:150,fs:11}, dense:{H:104,fs:10}};
+let density='comfy';
+function chartH(){ return DENSITY[density].H; }
+
+/* ---------- tiles (left rail) ----------
+   Groups carry an explicit order and a one-line note. Spans are packed so EVERY row of the
+   2-column rail is full: if a group's span total is odd, its first tile (the headline of the
+   group) takes both columns. */
+const GROUPS = [
+  {id:'prices',  no:'01', name:'Prices',              note:'RBI target: CPI 4% ±2%',
+   ids:['cpi','wpi','wpifuel','wpimanu','wpiprim','cpirural','cpiurban']},
+  {id:'policy',  no:'02', name:'Policy rates',        note:'direction read: cut = supportive',
+   ids:['repo','callmoney','crr','slr']},
+  {id:'money',   no:'03', name:'Money & currency',    note:'M3 broad · M1 transactions',
+   ids:['m3','rm','m1','notes','moneymult']},
+  {id:'liquidity',no:'04', name:'Liquidity',           note:'SDF-era absorption is normal',
+   ids:['liquidity','bankdep']},
+  {id:'credit',  no:'05', name:'Credit & banking',     note:'credit needs deposits to fund it',
+   ids:['credit','deposit','cdr','invest','nonfood','food']},
+  {id:'markets', no:'06', name:'Markets',              note:'yields, spreads, issuance',
+   ids:['gsec','yld91','termspread','turnover','cdout','cpout']},
+  {id:'external',no:'07', name:'External',             note:'reserves and the rupee',
+   ids:['fxa','fca','gold','fwd3m','usdinr']},
+  {id:'fiscal',  no:'08', name:'Fiscal & government paper', note:'who the government borrows from',
+   ids:['tbill','rbicredit','rupeesec']}
+];
+let sortMode='theme';
+function packSpans(n){
+  const spans = new Array(n).fill(1);
+  if(n % 2) spans[0] = 2;                 // odd group: headline tile spans both columns
+  return spans;
+}
+function sparkline(vals, status, w=54, h=18){
+  if(!vals || vals.length<2) return '';
+  const [lo,hi]=[Math.min(...vals),Math.max(...vals)], span=(hi-lo)||1;
+  const x=i=>(i/(vals.length-1))*w, y=v=>h-1.5-((v-lo)/span)*(h-3);
+  const d=vals.map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const col=C[status]||C.dim;
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true">
+    <path d="${d}" fill="none" stroke="${col}" stroke-width="1.4"/>
+    <circle cx="${x(vals.length-1).toFixed(1)}" cy="${y(vals[vals.length-1]).toFixed(1)}" r="2" fill="${col}"/></svg>`;
+}
+const STW = {good:['going well','st-g'], watch:['watch','st-w'], bad:['stress','st-b']};
+function tileHTML(t, span){
+  const [word,cls] = STW[t.status] || STW.watch;
+  const delta = fmtDelta(t.change, t.unit);
+  const longVal = String(fmtVal(t.value, t.unit)).length > 7;
+  return `<div class="tile ${t.status}" data-id="${t.id}" data-status="${t.status}" style="grid-column:span ${span}"
+       role="button" tabindex="0" title="${t.reason.replace(/"/g,'&quot;')}">
+    <span class="edge"></span>
+    <div class="t-head">
+      <div class="t-label">${t.label}</div>
+      <button class="histbtn" data-hist="${t.id}" title="History — which value prevailed on which date"
+              aria-label="Value history of ${t.label}">&#8801;</button>
+      <button class="help" data-def="${t.def_key}" data-deftitle="${t.label}"
+              title="What is this?" aria-label="Definition of ${t.label}">?</button>
+    </div>
+    <div class="t-body">
+      <div class="t-val${longVal?' wide':''}">${fmtVal(t.value,t.unit)}<small>${t.unit==='%'?'%':(t.unit==='x'?'x':(t.unit==='pp'?'pp':(t.unit==='₹'?'₹/US$':'')))}</small></div>
+      <div class="t-side">
+        ${t.stale ? `<span class="t-delta stale" title="No newer observation in the source table - ${t.stale_days} days before the newest data on this page">stale ${t.stale_days}d</span>`
+          : (t.bp ? `<span class="t-delta ${t.bp<0?'up':'down'}" title="${t.bp<0?'cut':'hike'} of ${Math.abs(t.bp)}bp on ${t.effective_from}, from ${t.prev}%">${t.bp>0?'+':''}${t.bp}bp</span>`
+          : (delta?`<span class="t-delta ${t.change>0?'up':'down'}">${delta}</span>`:''))}
+        ${sparkline(t.spark, t.status)}
+      </div>
+    </div>
+    <div class="t-foot"><span class="${cls}">${word}</span><span>${
+      t.effective_from ? 'in force since ' + t.effective_from : t.period.slice(0,10)}${
+      t.stale ? ' · last reported' : ''}</span></div>
+  </div>`;
+}
+function renderTiles(){
+  const byId=Object.fromEntries(T.map(t=>[t.id,t]));
+  const order={bad:0, watch:1, good:2};
+  document.getElementById('rail-groups').innerHTML = GROUPS.map(g=>{
+    let ids=g.ids.filter(id=>byId[id]);
+    if(sortMode==='worst') ids=[...ids].sort((a,b)=>order[byId[a].status]-order[byId[b].status]);
+    const spans=packSpans(ids.length);
+    return `<div class="sec"><span class="no">${g.no}</span><h2>${g.name}</h2><span class="note">${g.note}</span></div>
+      <div class="tiles">${ids.map((id,i)=>tileHTML(byId[id], spans[i])).join('')}</div>`;
+  }).join('');
+  document.getElementById('rail-count').textContent =
+    `${T.length} indicators · ${sortMode==='worst'?'worst first':'by theme'}`;
+}
+
+/* ---------- chart cards ---------- */
+const SECTIONS = [
+  {id:'prices',   no:'01', name:'Prices',                    note:'what is moving, and by how much'},
+  {id:'policy',   no:'02', name:'Policy, money & liquidity', note:'rate direction and system liquidity'},
+  {id:'credit',   no:'03', name:'Credit & banking',          note:'credit growth and how it is funded'},
+  {id:'external', no:'04', name:'External, fiscal & markets',note:'reserves, government paper, market rates'}
+];
+function drawAll(){
+  document.querySelectorAll('.card[data-chart] .chartwrap').forEach(w=>{
+    const cfg=CHARTS.find(c=>c.id===w.closest('.card').dataset.chart);
+    if(cfg) drawChart(w, cfg, cfg.initial, 0, 620, chartH());
+  });
+}
+function renderCharts(){
+  const host=document.getElementById('chart-sections');
+  host.innerHTML = SECTIONS.map(sec=>{
+    const cards=CHARTS.filter(c=>c.section===sec.id);
+    const wide = cards.length % 2 ? ' wide' : '';
+    return `<div class="sec"><span class="no">${sec.no}</span><h2>${sec.name}</h2><span class="note">${sec.note}</span></div>
+      <div class="charts" id="charts-${sec.id}">${cards.map((c,i)=>
+        `<div class="card${(wide&&i===cards.length-1)?' wide':''}" data-chart="${c.id}" tabindex="0"
+              aria-label="Expand ${c.title}">
+           <div class="chart-head">
+             <div class="hgroup"><h3>${c.title}</h3><p class="cap">${c.cap}</p></div>
+             <div class="head-tools">
+               <button class="help" data-def="${c.defKeys[0]}" data-defkeys="${c.defKeys.join(',')}"
+                       data-deftitle="${c.title}" title="What is this?" aria-label="Definition of ${c.title}">?</button>
+               <button class="expand" data-expand="${c.id}" title="Open full size with zoom"
+                       aria-label="Expand ${c.title}">&#10530; expand</button>
+             </div>
+           </div>
+           <div class="chartwrap zoomable" role="button" tabindex="0" aria-label="Open ${c.title} full size"></div>
+           <div class="legend">${c.legend.map(([lbl,col])=>`<span><i style="background:${C[col]||C.accent}"></i>${lbl}</span>`).join('')}
+             <span class="hint">click chart to expand · hover for values</span></div>
+         </div>`).join('')}
+      </div>
+      ${sec.id==='external' ? `<div class="sec"><span class="no">05</span><h2>Policy settings &amp; market prices</h2>
+        <span class="note">point-in-time · each value carries its own date and source</span></div>
+        <div class="strip" id="strip"></div>
+        <div class="sec"><span class="no">06</span><h2>How each colour is decided</h2>
+        <span class="note">conventional market/RBI readings, not official verdicts</span></div>
+        <div class="card wide"><table class="rules"><thead><tr><th>Indicator</th><th>Rule used</th></tr></thead>
+        <tbody id="rules-body"></tbody></table></div>
+        <footer class="foot" id="foot"></footer>` : ''}`;
+  }).join('');
+  document.querySelectorAll('.card[data-chart]').forEach(card=>{
+    const cfg=CHARTS.find(c=>c.id===card.dataset.chart);
+    const wrap=card.querySelector('.chartwrap');
+    drawChart(wrap, cfg, cfg.initial, 0, 620, chartH());
+    card.addEventListener('click', e=>{ if(e.target.closest('.help')) return; openChartModal(cfg); });
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openChartModal(cfg); }});
+  });
+}
+function renderRules(){
+  document.getElementById('rules-body').innerHTML=T.map(t=>
+    `<tr><td>${t.label}</td><td class="mono">${t.rule}</td></tr>`).join('');
+}
+
+/* ---------- chart modal: full size, zoom + pan ---------- */
+const modal=document.getElementById('modal');
+let mState=null;
+const MIN_WIN=6;
+function drawModal(){
+  if(!mState) return;
+  const {cfg,n,pan}=mState;
+  const body=document.getElementById('m-body');
+  body.innerHTML='';
+  const wrap=document.createElement('div');
+  wrap.className='chartwrap';
+  body.appendChild(wrap);
+  drawChart(wrap, cfg, n, pan, 1400, 540);
+  const shown = cfg.kind==='line' ? sliceWin(cfg.keys[0].key,n,pan) : sliceWin(cfg.barKey,n,pan);
+  const d=shown.map(p=>p[0]);
+  document.getElementById('m-window').textContent =
+    `${d.length} pts shown${pan>0?` · ${pan} back`:''} · ${mState.max} stored`;
+  document.getElementById('m-range').textContent =
+    d.length ? `${d[0]} → ${d[d.length-1]}  ·  point value shown on hover` : '';
+  document.getElementById('m-in').disabled = n <= MIN_WIN;
+  document.getElementById('m-out').disabled = (n >= mState.max && pan === 0);
+}
+function openChartModal(cfg){
+  const max=chartMaxLen(cfg);
+  mState={cfg, max, n:Math.min(cfg.initial,max), pan:0, initial:Math.min(cfg.initial,max),
+          lastFocus:document.activeElement};
+  document.getElementById('m-title').textContent=cfg.title;
+  document.getElementById('m-cap').textContent=cfg.cap;
+  drawModal();
+  modal.hidden=false; document.body.classList.add('modal-open');
+  document.getElementById('m-close').focus();
+}
+function closeChartModal(){
+  if(!modal.hidden){
+    modal.hidden=true; document.body.classList.remove('modal-open');
+    document.getElementById('m-body').innerHTML='';
+    const back=mState && mState.lastFocus; mState=null;
+    if(back && back.focus) back.focus();
+  }
+}
+function zoomBy(f){ if(!mState) return;
+  mState.n=Math.max(MIN_WIN, Math.min(mState.max, Math.round(mState.n*f)));
+  mState.pan=Math.max(0, Math.min(mState.max-mState.n, mState.pan)); drawModal(); }
+function panBy(p){ if(!mState) return;
+  mState.pan=Math.max(0, Math.min(mState.max-mState.n, mState.pan+p)); drawModal(); }
+document.getElementById('m-in').addEventListener('click', e=>{e.stopPropagation(); zoomBy(1/1.6);});
+document.getElementById('m-out').addEventListener('click', e=>{e.stopPropagation(); zoomBy(1.6);});
+document.getElementById('m-reset').addEventListener('click', e=>{
+  e.stopPropagation(); if(!mState) return; mState.n=mState.initial; mState.pan=0; drawModal(); });
+document.getElementById('m-close').addEventListener('click', e=>{e.stopPropagation(); closeChartModal();});
+modal.addEventListener('click', e=>{ if(e.target===modal) closeChartModal(); });
+modal.addEventListener('wheel', e=>{ if(!modal.hidden){ e.preventDefault(); zoomBy(e.deltaY>0?1.25:1/1.25);} }, {passive:false});
+(function(){
+  let dragging=false, startX=0, startPan=0;
+  modal.addEventListener('pointerdown', e=>{
+    if(modal.hidden || !e.target.closest('#m-body')) return;
+    dragging=true; startX=e.clientX; startPan=mState.pan;
+    const s=document.querySelector('#m-body svg'); if(s) s.classList.add('dragging');
+  });
+  modal.addEventListener('pointermove', e=>{
+    if(!dragging || !mState) return;
+    const w=Math.max(1, document.getElementById('m-body').clientWidth);
+    const perPx=mState.n/w*1.5;
+    panBy(Math.round((startX-e.clientX)*perPx) + startPan - mState.pan);
+  });
+  const stop=()=>{ dragging=false; const s=document.querySelector('#m-body svg'); if(s) s.classList.remove('dragging'); };
+  modal.addEventListener('pointerup', stop);
+  modal.addEventListener('pointercancel', stop);
+})();
+
+/* ---------- history modal: which value prevailed on which date ----------
+   SETTINGS (CRR, SLR, the repo rate) show their change log: the rate, the date it took effect, the date
+   it was superseded and the size of the move. READINGS show the last 20 published observations with the
+   step from the previous one. Both tables are built from rows computed at build time. */
+const histModal=document.getElementById('histmodal');
+let hLastFocus=null;
+function fmtHistVal(v, unit){
+  if(v===null||v===undefined) return '—';
+  if(unit==='%') return v.toFixed(2)+'%';
+  if(unit==='₹ crore') return Math.round(v).toLocaleString('en-IN');
+  if(unit==='₹') return v.toFixed(2);
+  if(unit==='x') return v.toFixed(2)+'x';
+  if(unit==='pp') return (v>0?'+':'')+v.toFixed(2)+'pp';
+  return String(v);
+}
+function openHist(t){
+  if(!t) return;
+  hLastFocus=document.activeElement;
+  const rows=t.history||[];
+  const isSet=t.history_kind==='setting';
+  const unit=t.unit;
+  document.getElementById('h-title').textContent=t.label;
+  document.getElementById('h-sub').textContent =
+    (isSet ? 'Policy setting — the rate in force on each date'
+           : 'Published observations — the value on each date')
+    + ` · ${unit} · ${t.history_note||''}`;
+  let html='';
+  if(isSet){
+    const cur=t.effective_from||rows[0].date;
+    html+=`<div class="hist-sum">In force now: <b>${fmtHistVal(t.value,unit)}</b> since <b>${cur}</b>`
+        + (t.prev!=null?` · previous setting ${fmtHistVal(t.prev,unit)} (${t.bp>0?'+':''}${t.bp}bp)`:'')
+        + `</div>`;
+    html+=`<table class="hist"><thead><tr><th>In force from</th><th>Rate</th><th>Until</th><th>Move</th></tr></thead><tbody>`;
+    rows.forEach((r,i)=>{
+      const until = i===0 ? 'in force now' : rows[i-1].date;
+      const mv = (r.change===null||r.change===undefined) ? '—' : `${r.change>0?'+':''}${r.change}bp`;
+      html+=`<tr class="${i===0?'now':''}"><td class="d">${r.date}</td><td class="v">${fmtHistVal(r.value,unit)}</td>`
+          + `<td class="d">${until}</td><td class="c">${mv}</td></tr>`;
+    });
+    html+='</tbody></table>';
+  } else {
+    html+=`<div class="hist-sum">Latest: <b>${fmtHistVal(t.value,unit)}</b> as at <b>${t.period.slice(0,10)}</b>`
+        + (t.change!=null?` · change vs previous reading ${t.change>0?'+':''}${fmtHistVal(t.change,unit)}`:'')
+        + `</div>`;
+    html+=`<table class="hist"><thead><tr><th>Date</th><th>Value</th><th>Change vs previous</th></tr></thead><tbody>`;
+    rows.forEach((r,i)=>{
+      const mv = (r.change===null||r.change===undefined) ? '—'
+               : ((r.change>0?'+':'') + fmtHistVal(r.change,unit));
+      html+=`<tr class="${i===0?'now':''}"><td class="d">${r.date}</td><td class="v">${fmtHistVal(r.value,unit)}</td>`
+          + `<td class="c ${r.change>0?'up':(r.change<0?'down':'')}">${mv}</td></tr>`;
+    });
+    html+='</tbody></table>';
+  }
+  html+=`<div class="hist-note">Source: ${(S[t.series_key]||{}).source||'RBI DBIE'} · values as published · `
+      + `${t.history_note||''}</div>`;
+  document.getElementById('h-body').innerHTML=html;
+  histModal.hidden=false; document.body.classList.add('modal-open');
+  document.getElementById('h-close').focus();
+}
+function closeHist(){
+  if(!histModal.hidden){
+    histModal.hidden=true;
+    if(modal.hidden && defModal.hidden) document.body.classList.remove('modal-open');
+    if(hLastFocus && hLastFocus.focus) hLastFocus.focus();
+    hLastFocus=null;
+  }
+}
+document.getElementById('h-close').addEventListener('click', e=>{e.stopPropagation(); closeHist();});
+histModal.addEventListener('click', e=>{ if(e.target===histModal) closeHist(); });
+/* a whole TILE opens its history (the &#8801; does the same); ? still opens the definition */
+document.addEventListener('click', e=>{
+  const b=e.target.closest('.histbtn');
+  if(b){ e.stopPropagation(); openHist(T.find(x=>x.id===b.dataset.hist)); return; }
+  if(e.target.closest('.help')) return;
+  const tile=e.target.closest('.tile');
+  if(tile) openHist(T.find(x=>x.id===tile.dataset.id));
+}, true);
+document.addEventListener('keydown', e=>{
+  if(e.key!=='Enter' && e.key!==' ') return;
+  const tile=e.target.closest && e.target.closest('.tile');
+  if(tile && !e.target.closest('.help') && !e.target.closest('.histbtn')){
+    e.preventDefault(); openHist(T.find(x=>x.id===tile.dataset.id));
+  }
+});
+
+/* ---------- definition modal ---------- */
+const defModal=document.getElementById('defmodal');
+let defLastFocus=null;
+function defBlock(key){
+  const d=DEF[key];
+  if(!d){
+    return `<h4>${key.replace(/_/g,' ')}</h4>
+      <div class="pending">Definition pending. This build has no sourced wording for “${key}”. Definitions are
+      carried from RBI / MoSPI / FBIL pages and stored in definitions.json — nothing is written from memory.</div>`;
+  }
+  return `<h4>${d.term||key}</h4><p>${d.definition||''}</p>
+    <div class="src">Source: ${d.source_name||'—'}${d.source_url?` · <a href="${d.source_url}" target="_blank" rel="noopener">${d.source_url}</a>`:''}</div>`;
+}
+function openDef(keys, title, extra){
+  defLastFocus=document.activeElement;
+  document.getElementById('d-title').textContent=title||'Definition';
+  document.getElementById('d-sub').textContent='Official definition · published by the Reserve Bank of India or a Government of India agency';
+  let html=keys.map(defBlock).join('');
+  if(extra && extra.tile){
+    const t=extra.tile;
+    const unit = t.unit==='₹ crore' ? ' cr' : (t.unit==='%' ? '%' : (t.unit==='x' ? 'x' : (t.unit==='pp' ? ' pp' : '')));
+    const val = fmtVal(t.value,t.unit) + unit;
+    /* A policy SETTING is dated by when it took effect. "latest reading 3.00% for 2026-10-02" was
+       nonsense for CRR: nothing has happened to CRR since Dec-2025; 2026-10-02 is just the newest
+       weekly row repeating it. */
+    const reading = t.effective_from
+      ? `<b>${val}</b> — in force since ${t.effective_from}${t.prev!=null?` (previous setting ${t.prev}${unit})`:''}
+         · newest published row repeating it: ${t.period.slice(0,10)}`
+      : `<b>${val}</b> — as at ${t.period.slice(0,10)}${t.stale?` (no newer observation in the source table)`:''}`;
+    // drop a leading repeat of the value from the reason ("4.82% - inside the band" -> "inside the band")
+    const lead = new RegExp('^' + val.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '\\s*[-–—]\\s*');
+    const why = String(t.reason||'').replace(lead,'');
+    html+=`<div class="meta"><b>On this dashboard:</b> ${reading}<br><br>${why?`<b>Why this colour:</b> ${why}<br><br>`:''}<b>Scoring rule:</b> ${t.rule}</div>`;
+  }
+  if(extra && extra.chart){
+    html+=`<div class="meta"><b>What the chart shows:</b> ${extra.chart.cap}<br><br>
+      <b>Series plotted:</b> ${extra.chart.legend.map(l=>l[0]).join(', ')} ·
+      hover any point to read the exact value for that date; click the chart to open it full size with zoom.<br><br>
+      <b>Source table:</b> ${extra.chart.sources||'RBI Database on Indian Economy (DBIE) weekly/fortnightly statements'}.</div>`;
+  }
+  document.getElementById('d-body').innerHTML=html;
+  defModal.hidden=false; document.body.classList.add('modal-open');
+  document.getElementById('d-close').focus();
+}
+function closeDef(){
+  if(!defModal.hidden){
+    defModal.hidden=true; document.body.classList.remove('modal-open');
+    if(defLastFocus && defLastFocus.focus) defLastFocus.focus();
+    defLastFocus=null;
+  }
+}
+document.getElementById('d-close').addEventListener('click', e=>{e.stopPropagation(); closeDef();});
+defModal.addEventListener('click', e=>{ if(e.target===defModal) closeDef(); });
+document.addEventListener('click', e=>{
+  const b=e.target.closest('.help'); if(!b) return;
+  e.stopPropagation(); e.preventDefault();
+  const keys=(b.dataset.defkeys||b.dataset.def||'').split(',').filter(Boolean);
+  const key=keys[0];
+  const tile=T.find(t=>t.id===key);
+  openDef(keys, b.dataset.deftitle || (tile && tile.label) || 'Definition',
+          tile ? {tile} : {chart:CHARTS.find(c=>c.defKeys[0]===key)});
+}, true);
+document.addEventListener('keydown', e=>{
+  if(e.key!=='Escape') return;
+  if(!histModal.hidden){ closeHist(); return; }
+  if(!defModal.hidden){ closeDef(); return; }
+  if(!modal.hidden) closeChartModal();
+  else closeRail();
+});
+document.addEventListener('keydown', e=>{
+  if(modal.hidden || defModal.hidden===false) return;
+  if(e.key==='ArrowLeft') panBy(Math.round(mState.n/4));
+  if(e.key==='ArrowRight') panBy(-Math.round(mState.n/4));
+  if(e.key==='+'||e.key==='=') zoomBy(1/1.6);
+  if(e.key==='-') zoomBy(1.6);
+});
+
+/* ---------- controls: hamburger, sort, density ---------- */
+const rail=document.getElementById('rail'), backdrop=document.getElementById('backdrop'),
+      burger=document.getElementById('burger');
+function openRail(){ rail.classList.add('open'); backdrop.hidden=false; burger.setAttribute('aria-expanded','true'); }
+function closeRail(){ rail.classList.remove('open'); backdrop.hidden=true; burger.setAttribute('aria-expanded','false'); }
+burger.addEventListener('click', ()=>{ rail.classList.contains('open') ? closeRail() : openRail(); });
+backdrop.addEventListener('click', closeRail);
+document.getElementById('sort-theme').addEventListener('click', ()=>{
+  sortMode='theme'; document.getElementById('sort-theme').classList.add('on');
+  document.getElementById('sort-worst').classList.remove('on'); renderTiles(); });
+document.getElementById('sort-worst').addEventListener('click', ()=>{
+  sortMode='worst'; document.getElementById('sort-worst').classList.add('on');
+  document.getElementById('sort-theme').classList.remove('on'); renderTiles(); });
+[['d-comfy','comfy'],['d-compact','compact'],['d-dense','dense']].forEach(([id,d])=>{
+  document.getElementById(id).addEventListener('click', ()=>{
+    density=d;
+    [['d-comfy','comfy'],['d-compact','compact'],['d-dense','dense']].forEach(([i2,d2])=>
+      document.getElementById(i2).classList.toggle('on', d2===d));
+    drawAll();                                   // redraw every card at the new height
+  });
+});
+/* ---------- theme: light / dark toggle ----------
+   Chart colours live in CSS custom properties, so a theme change means: re-read the palette, re-tint
+   the inline swatches/dots that were painted from it, and redraw the charts. repaint() deliberately
+   does NOT rebuild the DOM — rebuilding would throw away the scroll position of both panes. */
+function storedTheme(){
+  try{ const v=localStorage.getItem('warroom-theme'); return (v==='light'||v==='dark')?v:null; }catch(e){ return null; }
+}
+function setTheme(t, persist){
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('t-light').classList.toggle('on', t==='light');
+  document.getElementById('t-dark').classList.toggle('on', t==='dark');
+  if(persist){ try{ localStorage.setItem('warroom-theme', t); }catch(e){ /* private mode: session-only */ } }
+  repaint();
+}
+function repaint(){
+  C = readC();
+  document.querySelectorAll('.card[data-chart]').forEach(card=>{
+    const cfg = CHARTS.find(c=>c.id===card.dataset.chart);
+    if(!cfg) return;
+    card.querySelectorAll('.legend span:not(.hint)').forEach((sp,i)=>{
+      const sw = sp.querySelector('i');
+      if(sw && cfg.legend[i]) sw.style.background = C[cfg.legend[i][1]] || C.accent;
+    });
+  });
+  renderHead();                       // idempotent: re-tints the verdict/count dots from the palette
+  drawAll();                          // every chart redrawn with the new tokens
+  if(mState) drawModal();
+}
+document.getElementById('t-light').addEventListener('click', ()=>setTheme('light', true));
+document.getElementById('t-dark').addEventListener('click', ()=>setTheme('dark', true));
+setTheme(document.documentElement.getAttribute('data-theme') || 'light', false);   // sync the buttons
+/* follow the OS only while the user has made no explicit choice */
+if(window.matchMedia){
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  const onScheme=e=>{ if(!storedTheme()) setTheme(e.matches?'dark':'light', false); };
+  mq.addEventListener ? mq.addEventListener('change', onScheme) : mq.addListener(onScheme);
+}
+
+/* ---------- header, strip, footer ---------- */
+function renderHead(){
+  document.getElementById('asof').textContent=DATA.as_of;
+  document.getElementById('built').textContent=DATA.generated;
+  document.getElementById('verdict').textContent=DATA.verdict;
+  const vc=DATA.counts.bad?getComputedStyle(document.documentElement).getPropertyValue('--bad').trim()
+        :(DATA.counts.watch?getComputedStyle(document.documentElement).getPropertyValue('--watch').trim()
+        :getComputedStyle(document.documentElement).getPropertyValue('--good').trim());
+  document.getElementById('vdot').style.background=vc;
+  document.getElementById('counts').innerHTML=
+    `<span><i style="background:${C.good}"></i>${DATA.counts.good} going well</span>
+     <span><i style="background:${C.watch}"></i>${DATA.counts.watch} to watch</span>
+     <span><i style="background:${C.bad}"></i>${DATA.counts.bad} in stress</span>`;
+  const stale=DATA.as_of < new Date(Date.now()-1000*60*60*24*45).toISOString().slice(0,10);
+  document.getElementById('caveat').innerHTML=
+    `Colours are a rule-based read of the published series — they describe <b>direction and distance from normal</b>, not a forecast. `+
+    `Click the <b>?</b> on any tile or chart for the official RBI / Government of India definition. Hover any chart to read the value for a date; `+
+    `click it (or the <b>expand</b> button) to open it full size with zoom and pan.`+
+    (stale?` <b>Note:</b> the newest data point is ${DATA.as_of} — older than six weeks, so a refresh is due.`:'');
+  const stripEl=document.getElementById('strip'), footEl=document.getElementById('foot');
+  if(stripEl) stripEl.innerHTML=(DATA.snapshot||[]).map(k=>{
+    const unit = k.unit==='₹/US$' ? '/US$' : '%';
+    const raw = k.value;
+    const val = k.unit==='₹/US$' ? raw.toFixed(2)+unit
+              : (Math.abs(raw)>=100 ? raw.toFixed(0) : (Number.isInteger(raw)? raw : raw.toFixed(2))) + unit;
+    // a policy setting reads "in force since <date>"; a reading carries its own observation date
+    const when = (k.kind==='setting' && k.since) ? `in force since ${k.since}` : k.date;
+    return `<div class="kv"><div class="k">${k.name}</div><div class="v">${val}</div>
+      <div class="d">${when} · ${k.src}</div></div>`;
+  }).join('');   /* end snapshot strip */
+  if(footEl) footEl.innerHTML=
+    `Built from RBI DBIE public data · tables used: ${DATA.sources.reports} · fetched by fetch_series.py, analysed and rendered by build_dashboard.py.<br>`+
+    `All percentages, growth rates, spreads and moving averages are computed at build time; this page only draws them. `+
+    `Definitions are carried from RBI / MoSPI / FBIL published pages. Typeface: Archivo (SIL Open Font License), embedded so the page works offline.`;
+}
+
+/* ---------- go ----------
+   ORDER MATTERS: renderCharts() injects the snapshot strip and the footer into the last section,
+   so it must run BEFORE renderHead() (which fills them). The first build threw
+   "Cannot set properties of null" because renderHead ran first. */
+renderCharts(); renderHead(); renderTiles(); renderRules();
+</script>
+</body>
+</html>

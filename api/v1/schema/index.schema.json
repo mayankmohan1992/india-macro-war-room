@@ -1,0 +1,48 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "indicators": {
+   "items": {
+    "required": [
+     "id",
+     "label",
+     "links"
+    ],
+    "type": "object"
+   },
+   "minItems": 1,
+   "type": "array"
+  },
+  "meta": {
+   "properties": {
+    "api_version": {
+     "const": "v1"
+    },
+    "dataset_as_of": {
+     "type": "string"
+    },
+    "provenance": {
+     "type": "string"
+    },
+    "retrieved_at": {
+     "type": "string"
+    },
+    "source": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "api_version",
+    "dataset_as_of",
+    "source"
+   ],
+   "type": "object"
+  }
+ },
+ "required": [
+  "meta",
+  "indicators"
+ ],
+ "title": "Indicator catalogue (API v1)",
+ "type": "object"
+}

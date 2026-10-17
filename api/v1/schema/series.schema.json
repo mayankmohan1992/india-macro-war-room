@@ -1,0 +1,104 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "indicator": {
+   "properties": {
+    "frequency": {
+     "type": "string"
+    },
+    "history": {
+     "type": "array"
+    },
+    "id": {
+     "type": "string"
+    },
+    "kind": {
+     "enum": [
+      "setting",
+      "reading"
+     ]
+    },
+    "label": {
+     "type": "string"
+    },
+    "latest": {
+     "properties": {
+      "date": {
+       "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+       "type": "string"
+      },
+      "value": {
+       "type": "number"
+      }
+     },
+     "required": [
+      "date",
+      "value"
+     ],
+     "type": "object"
+    },
+    "points": {
+     "items": {
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+     },
+     "minItems": 1,
+     "type": "array"
+    },
+    "status": {
+     "enum": [
+      "good",
+      "watch",
+      "bad"
+     ]
+    },
+    "unit": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "id",
+    "label",
+    "unit",
+    "kind",
+    "frequency",
+    "series",
+    "latest",
+    "points"
+   ],
+   "type": "object"
+  },
+  "meta": {
+   "properties": {
+    "api_version": {
+     "const": "v1"
+    },
+    "dataset_as_of": {
+     "type": "string"
+    },
+    "provenance": {
+     "type": "string"
+    },
+    "retrieved_at": {
+     "type": "string"
+    },
+    "source": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "api_version",
+    "dataset_as_of",
+    "source"
+   ],
+   "type": "object"
+  }
+ },
+ "required": [
+  "meta",
+  "indicator"
+ ],
+ "title": "Indicator series (API v1)",
+ "type": "object"
+}

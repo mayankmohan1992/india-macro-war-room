@@ -1,0 +1,200 @@
+{
+ "exchange_rate": {
+  "term": "USD/INR and EUR/INR spot exchange rates (Reference Rate)",
+  "definition": "The reference rate is the official daily benchmark spot rate of the rupee, quoted as rupees per unit of foreign currency (INR per 1 USD; INR per 1 EUR). The Reserve Bank of India compiled and published it on Mumbai business days until 9 July 2018; since 10 July 2018 the benchmark has been computed and disseminated by Financial Benchmarks India Pvt. Ltd. (FBIL), an RBI-recognised benchmark administrator, and RBI reproduces the FBIL rates in the Weekly Statistical Supplement ('Ratios and Rates' table, rows 'INR-US$ Spot Rate' and 'INR-Euro Spot Rate'). FBIL's USD/INR rate is a volume-weighted average of actual spot USD/INR transactions on the Refinitiv and CCIL electronic trading platforms within a randomly selected 15-minute window between 11:30 and 12:30 hours, with trades beyond ±3 standard deviations excluded; the EUR/INR cross rate is derived by crossing that USD/INR rate with EUR/USD.",
+  "source_name": "Financial Benchmarks India Pvt. Ltd. (FBIL) — Reference Rate (RBI-recognised benchmark administrator)",
+  "source_url": "https://www.fbil.org.in/securities?mq=o&op=referencerate"
+ },
+ "forward_premia": {
+  "term": "US dollar forward premia (1, 3 and 6 months), per cent per annum",
+  "definition": "Forward premia measure the annualised percentage by which the forward USD/INR rate exceeds the spot rate for a given tenor — the cost of buying dollars forward rather than spot. A positive premium means the rupee is at a forward discount to the dollar. They are computed from matched inter-bank USD/INR swap pairs (near leg = spot, far leg = forward) reported on the CCIL platform: the premium is the difference between the far-leg and near-leg rate as a percentage of the near-leg rate, annualised over the actual number of days between the two settlement dates. FBIL, the RBI-recognised benchmark administrator, publishes the premia curve, and RBI reproduces the 1-, 3- and 6-month rates in the Weekly Statistical Supplement ('Ratios and Rates' table, 'Inter-Bank Forward Premia of US Dollar'). A rise means dollars have become more expensive forward — typically a wider India-US interest-rate differential (covered interest parity), firmer expectations of rupee depreciation and/or stronger forward dollar demand from importers and hedgers.",
+  "source_name": "FBIL — Methodology Document for the FBIL Forward Premia Curve and MIFOR Curve; reproduced in RBI's Weekly Statistical Supplement",
+  "source_url": "https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf"
+ },
+ "credit_deposit_ratio": {
+  "term": "Credit-deposit ratio (outstanding and incremental)",
+  "definition": "RBI publishes the credit-deposit ratio in the 'Ratios and Rates' table of its Weekly Statistical Supplement (and in the Monthly Bulletin); its compilation is described in the Guide to the RBI Monthly Bulletin and the Handbook on the WSS rather than in a statutory instrument. The outstanding ratio = total bank credit divided by aggregate deposits (demand plus time), expressed as a percentage — the share of the deposit base deployed as loans. The incremental credit-deposit ratio = incremental advances divided by incremental deposits, where the increments relate to the financial year so far, so a reading above 100 per cent means new lending exceeds fresh deposit mobilisation and the gap must be funded from non-deposit sources. RBI's September 2026 Bulletin article records the outstanding ratio rising from 68.6 per cent (September 2021) to 82.2 per cent (March 2026) and cautions that the ratio alone is not an appropriate measure of a banking system's funding vulnerability.",
+  "source_name": "Reserve Bank of India — Guide to the RBI Monthly Bulletin; Weekly Statistical Supplement 'Ratios'; RBI Bulletin, September 2026",
+  "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618"
+ },
+ "incremental_cd_ratio": {
+  "term": "Incremental credit-deposit ratio",
+  "definition": "Incremental credit-deposit ratio = incremental bank credit divided by incremental aggregate deposits, where the increments relate to the financial year so far. RBI publishes it alongside the outstanding ratio in the 'Ratios' table of the Weekly Statistical Supplement, using '**' or '&' markers where incremental deposits are negative and the ratio is undefined. A reading above 100 per cent means new lending exceeds fresh deposit mobilisation, so the gap must be funded from non-deposit sources; a low, zero or negative figure means deposit growth is keeping pace with or exceeding credit growth.",
+  "source_name": "Reserve Bank of India — Weekly Statistical Supplement, 'Ratios' table",
+  "source_url": "https://rbi.org.in/Scripts/WSSView.aspx?Id=28747"
+ },
+ "cpi": {
+  "term": "Consumer Price Index (CPI) inflation, combined",
+  "definition": "CPI measures the average change over time in retail prices of a fixed basket of goods and services consumed by households. All-India CPI for Rural, Urban and Combined is compiled and released monthly (with a one-month lag) by the National Statistical Office, MoSPI; the Combined series (CPI-C) is the headline retail-inflation measure used for RBI's flexible inflation-targeting framework. The base year was revised from 2012=100 to 2024=100 by MoSPI (weights drawn from the Household Consumption Expenditure Survey 2023-24; 358 weighted items; COICOP 2018 classification). The dashboard computes y-o-y inflation from the 2024=100 Combined index.",
+  "source_name": "MoSPI / National Statistical Office — PIB press release on the revised CPI base year",
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48"
+ },
+ "wpi": {
+  "term": "Wholesale Price Index (WPI) inflation",
+  "definition": "WPI measures the average change in prices of commodities sold in bulk at the early stage of transactions; it covers goods only (no services) in three Major Groups — Primary Articles, Fuel and Power, and Manufactured Products. It is compiled and released monthly by the Office of the Economic Adviser, DPIIT, Ministry of Commerce and Industry. The current series has base year 2022-23 (released June 2026, replacing the 2011-12 series and expanding the item basket); the dashboard uses the 2022-23-based index and computes y-o-y inflation from it.",
+  "source_name": "Office of the Economic Adviser, DPIIT, Ministry of Commerce & Industry — PIB press release on the new WPI series",
+  "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48"
+ },
+ "repo": {
+  "term": "Policy repo rate",
+  "definition": "The policy repo rate is the rate at which the Reserve Bank provides liquidity under the Liquidity Adjustment Facility to LAF participants against collateral of government and other approved securities. It is the single policy rate signalling the stance of monetary policy and is set by the six-member Monetary Policy Committee constituted under Section 45ZB of the Reserve Bank of India Act, 1934 (three RBI members, three external members; the Governor has a casting vote). The MPC's statutory mandate is the medium-term CPI inflation target of 4 per cent within a tolerance band of +/- 2 per cent, notified by the Central Government under Section 45ZA.",
+  "source_name": "Reserve Bank of India — Monetary Policy framework; RBI Act, 1934, ss. 45ZA and 45ZB",
+  "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc202566565201.pdf"
+ },
+ "callmoney": {
+  "term": "Call money rate (weighted average)",
+  "definition": "The call money rate is the interest rate on uncollateralised overnight lending and borrowing in the interbank call money market. The figure published in RBI's Weekly Statistical Supplement ('Ratios and Rates') is the weighted average of call money market rates during the week, the week running from Saturday to Friday. The weighted average call money rate is the operating target of monetary policy and also appears in RBI's daily 'Money Market Operations' release.",
+  "source_name": "Reserve Bank of India — Weekly Statistical Supplement, 'Ratios and Rates'; Handbook on the WSS",
+  "source_url": "https://rbi.org.in/scripts/publicationsView.aspx?id=15762"
+ },
+ "liquidity": {
+  "term": "Liquidity Adjustment Facility: net injection (+) / absorption (-), SDF and MSF",
+  "definition": "The Liquidity Adjustment Facility covers the Reserve Bank's operations that inject liquidity into, or absorb liquidity from, the banking system: overnight and term repo/reverse repo (fixed and variable rate), the Standing Deposit Facility and the Marginal Standing Facility. Net injection (+)/absorption (-) is the net liquidity position — Repo + MSF + SLF less Reverse Repo less SDF — published daily in the 'Money Market Operations' release and weekly in the WSS 'Liquidity Operations by RBI' table. The SDF, at which RBI accepts uncollateralised overnight deposits from LAF participants, is the floor of the corridor (25 basis points below the repo rate) and replaced the fixed reverse repo as the floor in April 2022; the MSF, at which banks may borrow overnight by dipping into their SLR portfolio up to a limit, is the ceiling (25 basis points above the repo rate).",
+  "source_name": "Reserve Bank of India — 'Money Market Operations' release; WSS 'Liquidity Operations by RBI' (item 8)",
+  "source_url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62917"
+ },
+ "m3": {
+  "term": "M3 / broad money",
+  "definition": "M3, or broad money, is the RBI's principal measure of money supply, described as aggregate monetary resources: M3 = currency with the public + demand deposits with banks + time deposits with banks + 'other' deposits with the Reserve Bank. Currency with the public is currency in circulation less cash held by banks; demand deposits are liabilities payable on demand and time deposits are liabilities payable otherwise than on demand (both excluding inter-bank items); 'other' deposits with the RBI comprise deposits of foreign central banks, multilateral institutions and financial institutions plus sundry deposits, net of IMF Account No. 1. It is published weekly in the WSS 'Money Stock: Components and Sources' (item 6).",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'Money Stock: Components and Sources'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "reserve_money": {
+  "term": "Reserve money / base money (M0)",
+  "definition": "Reserve money, also called base money or high-powered money, is the highly liquid component of the money stock and broadly reflects the total monetary liabilities of the Reserve Bank; monetary policy actions that change the size of RBI's balance sheet change reserve money. By RBI's definition, Reserve money = currency in circulation + bankers' deposits with the RBI + 'other' deposits with the RBI. Bankers' deposits are banks' current-account balances with RBI held mainly for the Cash Reserve Ratio and as working funds for clearing. It is published weekly in the WSS (item 7).",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'Reserve Money: Components and Sources'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "notes_in_circulation": {
+  "term": "Notes in circulation",
+  "definition": "Notes in circulation comprises currency notes issued by the Government of India up to 1935 and by the Reserve Bank since then, less notes held in the Banking Department of the Bank — that is, notes held outside the RBI by the public, banks and treasuries (Government of India one-rupee notes issued since July 1940 are treated as rupee coins and excluded from this head). It is a liability of the Issue Department, where total notes issued = notes in circulation + notes held in the Banking Department, and is published weekly in the WSS 'Reserve Bank of India — Liabilities and Assets' table (item 1).",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'RBI – Liabilities and Assets'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "currency_in_circulation": {
+  "term": "Currency in circulation",
+  "definition": "Currency in circulation includes notes in circulation, rupee coins and small coins, and is a component of reserve money. Banknotes are issued by the Reserve Bank of India while coins are issued by the Government of India and put into circulation by the RBI; in value terms banknotes account for roughly 99 per cent of currency in circulation. It is published weekly in the WSS; currency with the public is derived as currency in circulation less cash held by banks.",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'Reserve Money: Components and Sources'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "gsec10y": {
+  "term": "10-year Government of India benchmark G-Sec par yield (FBIL)",
+  "definition": "The 10-year G-Sec par yield is the semi-annual par yield — the yield a hypothetical Government of India security would carry if priced at par — at the 10-year point of the daily FBIL G-Sec Par Yield Curve. FBIL, designated the RBI's benchmark administrator for government securities with effect from 31 March 2018, derives the curve from transaction-level data on the RBI's NDS-OM platform using a cubic-spline model and publishes G-Sec prices, yields-to-maturity and the par yield curve every Mumbai business day. RBI republishes the figure as '10-Year G-Sec Par Yield (FBIL)' in the WSS/Bulletin, where it is the benchmark long-term sovereign yield.",
+  "source_name": "FBIL — G-Sec Par Yield Curve (FBIL newsletter/explanatory notes); RBI circular FMRD.DIRD.7/14.03.025/2017-18",
+  "source_url": "https://www.fbil.org.in/uploads/Newsletter_for_the_month_of_April_2024_ea8fe6cc8f.pdf"
+ },
+ "treasury_bills": {
+  "term": "Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills",
+  "definition": "Treasury bills are short-term money-market instruments issued by the Government of India and sold through auctions conducted by the RBI in three tenors — 91-day, 182-day and 364-day. They are zero-coupon securities issued at a discount and redeemed at face value, so the return is the difference between face value and issue price; the cut-off (primary) yield is set in a multiple-price auction, normally held on Wednesdays on the RBI's NDS platform with T+1 settlement. Cash Management Bills, introduced in 2010 by the Government in consultation with the RBI, are discounted instruments with the generic character of T-bills issued to bridge temporary cash-flow mismatches of the Government, with maturities shorter than 91 days.",
+  "source_name": "Reserve Bank of India — Government Securities Market in India: A Primer (FAQs)",
+  "source_url": "https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79"
+ },
+ "certificate_of_deposit": {
+  "term": "Certificate of Deposit (CD)",
+  "definition": "RBI defines a certificate of deposit as a negotiable, unsecured money-market instrument issued by a bank as a usance promissory note against funds deposited at the bank for a maturity of up to one year. CDs may be issued only by Scheduled Commercial Banks, Regional Rural Banks and Small Finance Banks, to residents in India, and only in dematerialised form held with a SEBI-registered depository. Minimum denomination is ₹5 lakh and multiples of ₹5 lakh thereafter, and the tenor at issuance must be not less than seven days and not more than one year. These rules sit in the Master Direction — RBI (Certificate of Deposit) Directions, 2021, issued under sections 45W/45U of the RBI Act, 1934.",
+  "source_name": "RBI Master Direction — Reserve Bank of India (Certificate of Deposit) Directions, 2021",
+  "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12108"
+ },
+ "commercial_paper": {
+  "term": "Commercial Paper (CP)",
+  "definition": "RBI defines commercial paper as an unsecured money-market instrument issued in the form of a promissory note. It may be issued by companies, NBFCs (including housing finance companies), InvITs, REITs, All India Financial Institutions and other bodies corporate with a minimum net worth of ₹100 crore, provided all fund-based facilities availed by the issuer are classified as Standard at the time of issue. CPs are issued at a discount to face value in dematerialised form, in minimum denominations of ₹5 lakh and multiples thereafter, with a tenor of not less than seven days and not more than one year, and must carry a minimum credit rating of A3. These rules are set out in the Master Direction — RBI (Commercial Paper and Non-Convertible Debentures of original or initial maturity up to one year) Directions, 2024.",
+  "source_name": "RBI Master Direction — Commercial Paper and Non-Convertible Debentures Directions, 2024",
+  "source_url": "https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12592"
+ },
+ "money_market_turnover": {
+  "term": "Money-market turnover (call, notice/term money, triparty repo, market repo)",
+  "definition": "RBI publishes money-market turnover as 'Average Daily Turnover in Select Money Markets' in the Weekly Statistical Supplement, covering call money, notice/term money, triparty repo, market repo and repo in corporate bonds; it also appears daily in the 'Money Market Operations' release as volume measured on one leg, alongside the weighted average rate and rate range. Call money is unsecured borrowing or lending overnight; notice money covers tenors up to and including 14 days; term money covers periods over 14 days and up to one year. Turnover counts both sides of a transaction — twice the single-leg volume for call/notice/term money and triparty repo, and four times for market repo and repo in corporate bonds. The erstwhile Collateralised Borrowing and Lending Obligation segment was replaced by triparty repo with effect from 5 November 2018.",
+  "source_name": "RBI Weekly Statistical Supplement — Average Daily Turnover in Select Money Markets (item 12)",
+  "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379"
+ },
+ "fca": {
+  "term": "Foreign Currency Assets (FCA) and India's foreign exchange reserves",
+  "definition": "Foreign currency assets are the largest component of India's foreign exchange reserves; the reserves comprise FCA, gold, Special Drawing Rights and the Reserve Bank's reserve position in the IMF. FCA are maintained in major currencies and invested in multi-currency, multi-asset portfolios including US Treasury bonds, bonds and treasury bills of other selected governments and deposits with foreign central banks and commercial banks, although the reserves are denominated and expressed in US dollars only. Movements occur mainly on account of RBI purchases and sales of foreign exchange, income from deployment of the reserves, external aid receipts of the Central Government and revaluation of assets. RBI publishes the weekly FCA level in the WSS.",
+  "source_name": "RBI — A Handbook on RBI's Weekly Statistical Supplement: Concepts, Definitions and Methodologies",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "gold": {
+  "term": "RBI gold holdings (gold component of the reserves)",
+  "definition": "Gold is the second component of India's foreign exchange reserves and represents gold coin and bullion held by the Reserve Bank in both the Issue Department and the Banking Department. RBI values this gold close to international market prices, revaluing it at the end of each month at 90 per cent of the daily average price quoted by the London Bullion Market Association, and publishes the resulting value weekly in the WSS. The published figure therefore moves with both the quantity of gold held and international gold prices — a rise does not necessarily mean the RBI bought gold.",
+  "source_name": "RBI — A Handbook on RBI's Weekly Statistical Supplement: Concepts, Definitions and Methodologies",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "bank_credit": {
+  "term": "Bank credit of scheduled commercial banks",
+  "definition": "Bank credit of scheduled commercial banks is the aggregate outstanding loans and advances (in India) of SCBs. In RBI's fortnightly statement it is the sum of food credit and non-food credit — Bank credit = food credit + non-food credit — so food credit is included and non-food credit is bank credit less food credit. RBI compiles it from the fortnightly Form A return furnished by all SCBs under Section 42(2) of the RBI Act, 1934, and publishes it as item 7 'Bank Credit' in the 'Scheduled Commercial Banks — Business in India' statement in the WSS/RBI Bulletin, in rupees crore, provisionally and fortnightly.",
+  "source_name": "RBI — A Handbook on RBI's Weekly Statistical Supplement, Section 4: Scheduled Commercial Banks – Business in India",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "aggregate_deposits": {
+  "term": "Aggregate deposits with scheduled commercial banks",
+  "definition": "Aggregate deposits with scheduled commercial banks is the aggregation of demand and time deposits of branches in and outside India. Demand deposits are liabilities payable on demand (current deposits, the demand-liability portion of savings deposits, credit balances in overdrafts and cash credit), while time deposits are liabilities payable otherwise than on demand (fixed deposits, cash certificates, cumulative and recurring deposits, the time-liability portion of savings deposits). RBI's CRR/SLR Master Direction states that 'aggregate deposits' means the aggregation of demand and time deposits. It is compiled from the fortnightly Form A return of SCBs under Section 42(2) of the RBI Act, 1934, and published as item 2.1 'Aggregate Deposits' in the WSS/RBI Bulletin.",
+  "source_name": "RBI Master Direction — Cash Reserve Ratio and Statutory Liquidity Ratio Directions, 2021 (definition of aggregate deposits)",
+  "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131"
+ },
+ "bank_investments": {
+  "term": "Bank investments in government and other approved securities",
+  "definition": "In the SCB fortnightly statement, 'Investments' is the outstanding total investment by scheduled commercial banks in government and other approved (SLR) securities. Investments in government securities include Central and State Government securities (including treasury bills) and postal obligations such as national savings certificates; 'other approved securities' are securities of state-associated bodies (electricity boards, housing boards, corporation bonds), land development bank debentures and Regional Rural Bank shares treated as approved securities under Section 5(a) of the Banking Regulation Act, 1949. RBI compiles it from the fortnightly Form A return and publishes it as item 6 'Investments' (with 6.1 Government Securities and 6.2 Other Approved Securities) in the WSS/RBI Bulletin.",
+  "source_name": "RBI — A Handbook on RBI's Weekly Statistical Supplement, Section 4 (Investments)",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "net_fx_assets": {
+  "term": "Net foreign exchange assets of the banking sector",
+  "definition": "Net foreign exchange assets of the banking sector is a source of money stock (M3) in RBI's monetary survey: the total of the RBI's net foreign exchange assets and those of other banks, the latter being authorised dealers' net foreign currency balances after credit and debit foreign-currency balances. RBI's own net foreign exchange assets are its holdings of foreign currency assets and gold adjusted for foreign liabilities (net of non-monetary foreign exchange liabilities such as IMF Account No. 1). RBI compiles and publishes it fortnightly in the WSS 'Money Stock: Components and Sources' and the corresponding monetary survey, in rupees crore.",
+  "source_name": "RBI — Guide to the RBI Monthly Bulletin, Table 7 'Sources of Money Stock (M3)'; WSS 'Money Stock: Components and Sources'",
+  "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618"
+ },
+ "food_credit": {
+  "term": "Food credit (procurement credit to FCI and state agencies)",
+  "definition": "Food credit is a category of bank credit comprising advances by scheduled commercial banks to the Food Corporation of India, State Governments and State Co-operative agencies for food procurement operations; together with non-food credit it adds up to total bank credit. RBI compiles it from the fortnightly Form A return of all SCBs under Section 42(2) of the RBI Act, 1934, and publishes it as item 7a.1 'Food Credit' of the 'Scheduled Commercial Banks — Business in India' statement in the WSS/RBI Bulletin, in rupees crore. It is seasonal, moving with the procurement calendar, so its y-o-y growth swings widely.",
+  "source_name": "RBI — A Handbook on RBI's Weekly Statistical Supplement, Section 4: SCB – Business in India (item 7a.1 Food Credit)",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "m1": {
+  "term": "M1 / narrow money",
+  "definition": "M1, or narrow money, is the most liquid measure of money supply: M1 = currency with the public + demand deposits with banks + 'other' deposits with the Reserve Bank. It is published alongside M2 and M3 in RBI's 'Money Stock: Components and Sources' (item 6 of the Weekly Statistical Supplement) and in the Monthly Bulletin. M1 tracks transactions demand for money — it excludes time deposits, so it moves with spending and cash preference rather than savings behaviour, which is why it is read together with M3.",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'Money Stock: Components and Sources'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "money_multiplier": {
+  "term": "Money multiplier (M3 ÷ reserve money)",
+  "definition": "The money multiplier is the ratio of broad money to reserve money — how many rupees of M3 the banking system creates per rupee of base money — computed here as M3 divided by reserve money on the nearest matching weekly observation. RBI publishes both components (M3 in 'Money Stock: Components and Sources', reserve money in 'Reserve Money: Components and Sources') but does not publish this ratio as a series, so the figure shown is derived by this dashboard. A rising multiplier means banks are converting base money into deposits and credit more efficiently; a falling multiplier means liquidity is being absorbed into reserves that are not being lent on.",
+  "source_name": "Derived in this dashboard from RBI WSS 'Money Stock' (M3) and 'Reserve Money' — components published by RBI, ratio is not an RBI series",
+  "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618"
+ },
+ "bankers_deposits": {
+  "term": "Bankers' deposits with the Reserve Bank",
+  "definition": "Bankers' deposits are the current-account balances that banks hold with the Reserve Bank, held mainly to satisfy the Cash Reserve Ratio (CRR) and as working funds for clearing and settlement. They are one of the three components of reserve money (reserve money = currency in circulation + bankers' deposits with the RBI + 'other' deposits with the RBI) and appear as item 2.4 'Scheduled Commercial Banks' within the 'Deposits' block of the WSS 'RBI — Liabilities and Assets' table. Because they are the balance the banking system keeps at the central bank, their growth is a direct read on system liquidity and the reserves banks are putting to work.",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'Reserve Money: Components and Sources' and 'RBI – Liabilities and Assets'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "rbi_credit_to_govt": {
+  "term": "RBI loans and advances to the Central Government",
+  "definition": "These are the Reserve Bank's direct loans and advances to the Central Government — Ways and Means Advances and any overdue WMA that becomes an overdraft — reported as item 4.1 'Central Government' under 'Loans and Advances' in the WSS 'RBI — Liabilities and Assets' table. Ways and Means Advances are provided by the RBI under Section 17(5) of the Reserve Bank of India Act, 1934, to bridge temporary mismatches between the government's receipts and payments; the limit is set in agreement with the Government, and they are meant to be temporary, so persistent borrowing here is read as a sign of fiscal pressure. This item covers the Central Government only; the State Government counterpart is a separate line.",
+  "source_name": "RBI Act, 1934, s. 17(5) (per RBI's published WMA documentation); RBI — Handbook on the WSS, 'RBI – Liabilities and Assets'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "rupee_securities": {
+  "term": "RBI rupee securities (including treasury bills)",
+  "definition": "Rupee securities held by the Reserve Bank are its holdings of Government of India dated securities and treasury bills, reported as item 3 'Rupee Securities (including Treasury Bills)' in the WSS 'RBI — Liabilities and Assets' table. They rise when the RBI absorbs government paper (through primary-market devolvement, outright open-market operations, or its liquidity operations) and fall when it sells securities back. Growth in this line therefore shows the central bank financing or absorbing government borrowing, which matters for both liquidity conditions and the fiscal-monetary interface.",
+  "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'RBI – Liabilities and Assets'",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf"
+ },
+ "crr": {
+  "term": "Cash Reserve Ratio (CRR)",
+  "definition": "The Cash Reserve Ratio is the share of a bank's net demand and time liabilities (aggregate deposits) that it must hold as a cash balance with the Reserve Bank. It is imposed under Section 42 of the Reserve Bank of India Act, 1934, and the operative rules are set out in the Master Direction — RBI (Cash Reserve Ratio and Statutory Liquidity Ratio) Directions, 2021, issued under Section 35A of the Banking Regulation Act, 1949 and pursuant to Section 42 of the RBI Act. RBI publishes the rate in force week by week in the WSS 'Ratios and Rates' table. A CRR cut releases lendable funds and raises the money multiplier; a hike absorbs them, so a change here is itself policy news.",
+  "source_name": "RBI Master Direction — Cash Reserve Ratio and Statutory Liquidity Ratio Directions, 2021",
+  "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131"
+ },
+ "slr": {
+  "term": "Statutory Liquidity Ratio (SLR)",
+  "definition": "The Statutory Liquidity Ratio is the minimum share of a bank's net demand and time liabilities it must hold in approved liquid assets — cash, gold, and unencumbered government and other approved securities, including Treasury Bills of the Government of India. It is governed by the same Master Direction as the CRR (issued under Section 35A of the Banking Regulation Act, 1949 and pursuant to Section 42 of the RBI Act, 1934) and published in the WSS 'Ratios and Rates' table. A reduction frees banks to lend; it also lowers the demand for government securities, so an SLR change is watched on both the credit and the bond-market side.",
+  "source_name": "RBI Master Direction — Cash Reserve Ratio and Statutory Liquidity Ratio Directions, 2021",
+  "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131"
+ },
+ "term_spread": {
+  "term": "Term spread (10-year G-sec par yield − 91-day T-bill yield)",
+  "definition": "The term spread is the 10-year Government of India par yield minus the 91-day Treasury bill primary yield, computed here from two columns of the same RBI weekly 'Ratios and Rates' table so both legs share one vintage. It is derived by this dashboard and is not published as a series by RBI. A positive, normally-sloped curve is the usual state and reflects term and liquidity premia; a flattening or inverted curve (spread at or below zero) signals tight monetary conditions or expected slowdown; a very steep curve reflects easing expectations, heavy long-end government supply or inflation risk. It is used here as a compact read on the shape of the yield curve.",
+  "source_name": "Derived in this dashboard from RBI WSS 'Ratios and Rates' — 10-Year G-Sec Par Yield (FBIL) and 91-Day Treasury Bill Primary Yield; the ratio/spread is not an RBI series",
+  "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379"
+ }
+}

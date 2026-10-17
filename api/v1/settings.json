@@ -1,0 +1,183 @@
+{
+ "meta": {
+  "api_version": "v1",
+  "dataset_as_of": "2026-10-06",
+  "docs": "docs/API.md",
+  "indicators": 38,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-10-17T16:23:00Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ },
+ "settings": [
+  {
+   "as_published": "2026-10-02",
+   "change_bp": -25.0,
+   "effective_from": "2025-12-05",
+   "history": [
+    {
+     "change": -25.0,
+     "date": "2025-12-05",
+     "prev": 3.25,
+     "value": 3.0
+    },
+    {
+     "change": -25.0,
+     "date": "2025-11-07",
+     "prev": 3.5,
+     "value": 3.25
+    },
+    {
+     "change": -25.0,
+     "date": "2025-10-10",
+     "prev": 3.75,
+     "value": 3.5
+    },
+    {
+     "change": -25.0,
+     "date": "2025-09-12",
+     "prev": 4.0,
+     "value": 3.75
+    },
+    {
+     "change": -25.0,
+     "date": "2025-01-03",
+     "prev": 4.25,
+     "value": 4.0
+    },
+    {
+     "change": -25.0,
+     "date": "2024-12-20",
+     "prev": 4.5,
+     "value": 4.25
+    },
+    {
+     "change": 50.0,
+     "date": "2022-05-27",
+     "prev": 4.0,
+     "value": 4.5
+    },
+    {
+     "change": null,
+     "date": "2021-10-15",
+     "prev": null,
+     "value": 4.0
+    }
+   ],
+   "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
+   "id": "crr",
+   "label": "Cash Reserve Ratio",
+   "previous": 3.25,
+   "source": "RBI r10",
+   "unit": "%",
+   "value": 3.0
+  },
+  {
+   "as_published": "2026-10-06",
+   "change_bp": 25.0,
+   "effective_from": "2026-10-06",
+   "history": [
+    {
+     "change": 25.0,
+     "date": "2026-10-06",
+     "prev": 5.25,
+     "value": 5.5
+    },
+    {
+     "change": -25.0,
+     "date": "2025-12-05",
+     "prev": 5.5,
+     "value": 5.25
+    },
+    {
+     "change": -50.0,
+     "date": "2025-06-06",
+     "prev": 6.0,
+     "value": 5.5
+    },
+    {
+     "change": -25.0,
+     "date": "2025-04-11",
+     "prev": 6.25,
+     "value": 6.0
+    },
+    {
+     "change": -25.0,
+     "date": "2025-02-07",
+     "prev": 6.5,
+     "value": 6.25
+    },
+    {
+     "change": 25.0,
+     "date": "2023-02-10",
+     "prev": 6.25,
+     "value": 6.5
+    },
+    {
+     "change": 35.0,
+     "date": "2022-12-09",
+     "prev": 5.9,
+     "value": 6.25
+    },
+    {
+     "change": 50.0,
+     "date": "2022-09-30",
+     "prev": 5.4,
+     "value": 5.9
+    },
+    {
+     "change": 50.0,
+     "date": "2022-08-05",
+     "prev": 4.9,
+     "value": 5.4
+    },
+    {
+     "change": 50.0,
+     "date": "2022-06-10",
+     "prev": 4.4,
+     "value": 4.9
+    },
+    {
+     "change": 40.0,
+     "date": "2022-05-06",
+     "prev": 4.0,
+     "value": 4.4
+    },
+    {
+     "change": null,
+     "date": "2021-10-15",
+     "prev": null,
+     "value": 4.0
+    }
+   ],
+   "history_note": "261 published rows in the source table; the setting changed 12 time(s) in that window",
+   "id": "repo",
+   "label": "Policy repo rate",
+   "previous": 5.25,
+   "source": "DBIE key rates",
+   "unit": "%",
+   "value": 5.5
+  },
+  {
+   "as_published": "2026-10-02",
+   "change_bp": null,
+   "effective_from": "2021-10-15",
+   "history": [
+    {
+     "change": null,
+     "date": "2021-10-15",
+     "prev": null,
+     "value": 18.0
+    }
+   ],
+   "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
+   "id": "slr",
+   "label": "Statutory Liquidity Ratio",
+   "previous": null,
+   "source": "RBI r10",
+   "unit": "%",
+   "value": 18.0
+  }
+ ]
+}

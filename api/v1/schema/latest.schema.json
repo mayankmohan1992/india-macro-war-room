@@ -1,0 +1,39 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "properties": {
+  "latest": {
+   "type": "object"
+  },
+  "meta": {
+   "properties": {
+    "api_version": {
+     "const": "v1"
+    },
+    "dataset_as_of": {
+     "type": "string"
+    },
+    "provenance": {
+     "type": "string"
+    },
+    "retrieved_at": {
+     "type": "string"
+    },
+    "source": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "api_version",
+    "dataset_as_of",
+    "source"
+   ],
+   "type": "object"
+  }
+ },
+ "required": [
+  "meta",
+  "latest"
+ ],
+ "title": "Latest values (API v1)",
+ "type": "object"
+}

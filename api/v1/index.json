@@ -1,0 +1,1170 @@
+{
+ "indicators": [
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48",
+    "term": "Consumer Price Index (CPI) inflation, combined"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 152 stored",
+   "id": "cpi",
+   "kind": "reading",
+   "label": "CPI inflation",
+   "latest": {
+    "change": 0.37,
+    "date": "2026-08-31",
+    "value": 4.82
+   },
+   "links": {
+    "csv": "series/cpi.csv",
+    "self": "series/cpi.json"
+   },
+   "scoring_rule": "RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6.",
+   "series": "cpi_yoy",
+   "source": "RBI r11 (CPI 2024=100)",
+   "stale": false,
+   "stale_days": 36,
+   "status": "watch",
+   "status_reason": "4.82% - inside the band but above target",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48",
+    "term": "Wholesale Price Index (WPI) inflation"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 30 stored",
+   "id": "wpi",
+   "kind": "reading",
+   "label": "WPI inflation",
+   "latest": {
+    "change": 1.47,
+    "date": "2026-09-30",
+    "value": 11.39
+   },
+   "links": {
+    "csv": "series/wpi.csv",
+    "self": "series/wpi.json"
+   },
+   "scoring_rule": "No formal target. Green 0-3, watch <0 or 3-6, red >6.",
+   "series": "wpi_yoy",
+   "source": "RBI r11 (WPI 2023=100)",
+   "stale": false,
+   "stale_days": 6,
+   "status": "bad",
+   "status_reason": "11.39% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc202566565201.pdf",
+    "term": "Policy repo rate"
+   },
+   "frequency": "weekly",
+   "group": "Policy",
+   "history_kind": "setting",
+   "history_note": "261 published rows in the source table; the setting changed 12 time(s) in that window",
+   "id": "repo",
+   "kind": "setting",
+   "label": "Policy repo rate",
+   "latest": {
+    "change": null,
+    "date": "2026-10-06",
+    "value": 5.5
+   },
+   "links": {
+    "csv": "series/repo.csv",
+    "self": "series/repo.json"
+   },
+   "scoring_rule": "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.",
+   "series": "repo",
+   "setting": {
+    "change_bp": 25.0,
+    "effective_from": "2026-10-06",
+    "previous": 5.25
+   },
+   "source": "DBIE key rates",
+   "stale": false,
+   "stale_days": 0,
+   "status": "bad",
+   "status_reason": "a 25bp hike on 2026-10-06 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "M3 / broad money"
+   },
+   "frequency": "fortnightly",
+   "group": "Money",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "m3",
+   "kind": "reading",
+   "label": "M3 (broad money) growth",
+   "latest": {
+    "change": 0.22,
+    "date": "2026-09-30",
+    "value": 16.86
+   },
+   "links": {
+    "csv": "series/m3.csv",
+    "self": "series/m3.json"
+   },
+   "scoring_rule": "Green 9-15%, watch 7-9 / >15, red <7 (no developed band exists; these are the customary read).",
+   "series": "m3_yoy",
+   "source": "RBI r13",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "16.9% - very fast money growth - inflation risk",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Reserve money / base money (M0)"
+   },
+   "frequency": "weekly",
+   "group": "Money",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "rm",
+   "kind": "reading",
+   "label": "Reserve money growth",
+   "latest": {
+    "change": 0.2,
+    "date": "2026-09-30",
+    "value": 8.69
+   },
+   "links": {
+    "csv": "series/rm.csv",
+    "self": "series/rm.json"
+   },
+   "scoring_rule": "Green 8-14%, watch 5-8 / >14, red <5.",
+   "series": "rm_yoy",
+   "source": "RBI r7",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "8.7% - ample base-money expansion",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Bank credit of scheduled commercial banks"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "credit",
+   "kind": "reading",
+   "label": "Bank credit growth",
+   "latest": {
+    "change": 1.25,
+    "date": "2026-09-30",
+    "value": 19.38
+   },
+   "links": {
+    "csv": "series/credit.csv",
+    "self": "series/credit.json"
+   },
+   "scoring_rule": "Green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
+   "series": "credit_yoy",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "19.4% - very fast credit growth",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131",
+    "term": "Aggregate deposits with scheduled commercial banks"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "deposit",
+   "kind": "reading",
+   "label": "Aggregate deposit growth",
+   "latest": {
+    "change": 0.52,
+    "date": "2026-09-30",
+    "value": 17.83
+   },
+   "links": {
+    "csv": "series/deposit.csv",
+    "self": "series/deposit.json"
+   },
+   "scoring_rule": "Green 10-14%, watch 8-10 / >14, red <8.",
+   "series": "deposit_yoy",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "17.8% - deposit surge - could signal risk aversion",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618",
+    "term": "Credit-deposit ratio (outstanding and incremental)"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "cdr",
+   "kind": "reading",
+   "label": "Credit-to-deposit ratio",
+   "latest": {
+    "change": 0.14,
+    "date": "2026-09-30",
+    "value": 80.98
+   },
+   "links": {
+    "csv": "series/cdr.csv",
+    "self": "series/cdr.json"
+   },
+   "scoring_rule": "Green 70-85%, watch 65-70 / 85-95, red <65 or >95.",
+   "series": "cd_ratio",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "81.0% - credit deployment in the usual range",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62917",
+    "term": "Liquidity Adjustment Facility: net injection (+) / absorption (-), SDF and MSF"
+   },
+   "frequency": "daily",
+   "group": "Liquidity",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "liquidity",
+   "kind": "reading",
+   "label": "Liquidity (1-month avg net ops)",
+   "latest": {
+    "change": 3534.045,
+    "date": "2026-10-04",
+    "value": -278308.0
+   },
+   "links": {
+    "csv": "series/liquidity.csv",
+    "self": "series/liquidity.json"
+   },
+   "scoring_rule": "Direction read: improving > +₹25k cr = green, within +/-₹25k cr = watch, deteriorating > ₹25k cr = red. A negative level alone is not scored as stress (SDF-era absorption is normal).",
+   "series": "laf_net_30d",
+   "source": "RBI r8",
+   "stale": false,
+   "stale_days": 2,
+   "status": "bad",
+   "status_reason": "-278,308 cr (-2.8 lakh cr), -146,287 cr vs 3 months ago - liquidity draining - the 1-month average absorbed over ₹25k cr more than a quarter ago",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbi.org.in/scripts/publicationsView.aspx?id=15762",
+    "term": "Call money rate (weighted average)"
+   },
+   "frequency": "weekly",
+   "group": "Policy",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "callmoney",
+   "kind": "reading",
+   "label": "Call money rate",
+   "latest": {
+    "change": -0.07,
+    "date": "2026-10-02",
+    "value": 5.12
+   },
+   "links": {
+    "csv": "series/callmoney.csv",
+    "self": "series/callmoney.json"
+   },
+   "scoring_rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
+   "series": "call_rate",
+   "source": "RBI r10",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "5.12% vs the same week's repo 5.25% (spread -0.13pp) - anchored to the repo rate",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.fbil.org.in/uploads/Newsletter_for_the_month_of_April_2024_ea8fe6cc8f.pdf",
+    "term": "10-year Government of India benchmark G-Sec par yield (FBIL)"
+   },
+   "frequency": "weekly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "gsec",
+   "kind": "reading",
+   "label": "10-year G-sec yield",
+   "latest": {
+    "change": 0.09,
+    "date": "2026-10-02",
+    "value": 7.23
+   },
+   "links": {
+    "csv": "series/gsec.csv",
+    "self": "series/gsec.json"
+   },
+   "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
+   "series": "gsec10y",
+   "source": "RBI r10",
+   "stale": false,
+   "stale_days": 4,
+   "status": "bad",
+   "status_reason": "7.23% (+51 bp over 3m) - yields rising, tightening conditions",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618",
+    "term": "Net foreign exchange assets of the banking sector"
+   },
+   "frequency": "fortnightly",
+   "group": "External",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "fxa",
+   "kind": "reading",
+   "label": "Net FX assets (banking sector)",
+   "latest": {
+    "change": -5.58,
+    "date": "2026-09-30",
+    "value": 15.17
+   },
+   "links": {
+    "csv": "series/fxa.csv",
+    "self": "series/fxa.json"
+   },
+   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
+   "series": "fxa_yoy",
+   "source": "RBI r13",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "15.2% - net FX assets building",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Foreign Currency Assets (FCA) and India's foreign exchange reserves"
+   },
+   "frequency": "weekly",
+   "group": "External",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "fca",
+   "kind": "reading",
+   "label": "RBI foreign currency assets",
+   "latest": {
+    "change": -0.74,
+    "date": "2026-10-02",
+    "value": 13.37
+   },
+   "links": {
+    "csv": "series/fca.csv",
+    "self": "series/fca.json"
+   },
+   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
+   "series": "fca_yoy",
+   "source": "RBI r39",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "13.4% - foreign currency assets building",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79",
+    "term": "Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills"
+   },
+   "frequency": "weekly",
+   "group": "Fiscal",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "tbill",
+   "kind": "reading",
+   "label": "T-bill outstanding",
+   "latest": {
+    "change": 9495.0,
+    "date": "2026-10-02",
+    "value": 819581.0
+   },
+   "links": {
+    "csv": "series/tbill.csv",
+    "self": "series/tbill.json"
+   },
+   "scoring_rule": "Green if 3-month change <= -5%, watch -5%..+10%, watch/red above +10% (more short-term borrowing).",
+   "series": "tbill",
+   "source": "RBI r2",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "819,581 cr (-0.1% over 3m) - stable short-term borrowing",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12108",
+    "term": "Certificate of Deposit (CD)"
+   },
+   "frequency": "fortnightly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "cdout",
+   "kind": "reading",
+   "label": "CD outstanding",
+   "latest": {
+    "change": 14521.0,
+    "date": "2026-09-30",
+    "value": 574064.0
+   },
+   "links": {
+    "csv": "series/cdout.csv",
+    "self": "series/cdout.json"
+   },
+   "scoring_rule": "Green -20%..+30% y-o-y; sharp rises flag deposit competition (watch).",
+   "series": "cd_out",
+   "source": "RBI r4",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "574,064 cr (+15% y-o-y) - CD market functioning normally",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12592",
+    "term": "Commercial Paper (CP)"
+   },
+   "frequency": "fortnightly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "cpout",
+   "kind": "reading",
+   "label": "Commercial paper outstanding",
+   "latest": {
+    "change": -31349.0,
+    "date": "2026-09-30",
+    "value": 621596.0
+   },
+   "links": {
+    "csv": "series/cpout.csv",
+    "self": "series/cpout.json"
+   },
+   "scoring_rule": "Green -20%..+30% y-o-y, watch outside that.",
+   "series": "cp_out",
+   "source": "RBI r5",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "621,596 cr (+27% y-o-y) - CP market functioning normally",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379",
+    "term": "Money-market turnover (call, notice/term money, triparty repo, market repo)"
+   },
+   "frequency": "weekly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "turnover",
+   "kind": "reading",
+   "label": "Money-market turnover",
+   "latest": {
+    "change": 292213.0,
+    "date": "2026-10-02",
+    "value": 1850297.0
+   },
+   "links": {
+    "csv": "series/turnover.csv",
+    "self": "series/turnover.json"
+   },
+   "scoring_rule": "Green within +/-20% y-o-y or expanding; watch on a >20% contraction.",
+   "series": "turnover",
+   "source": "RBI r12",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "1,850,297 cr/day (+7% y-o-y) - money-market turnover in line with last year",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79",
+    "term": "Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills"
+   },
+   "frequency": "weekly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "yld91",
+   "kind": "reading",
+   "label": "91-day T-bill yield",
+   "latest": {
+    "change": 0.13,
+    "date": "2026-10-02",
+    "value": 5.52
+   },
+   "links": {
+    "csv": "series/yld91.csv",
+    "self": "series/yld91.json"
+   },
+   "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
+   "series": "yld91",
+   "source": "RBI r10 (weekly WSS)",
+   "stale": false,
+   "stale_days": 4,
+   "status": "bad",
+   "status_reason": "5.52% (+27 bp over 3 months) - short-end yields rising, tighter funding conditions",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf",
+    "term": "US dollar forward premia (1, 3 and 6 months), per cent per annum"
+   },
+   "frequency": "weekly",
+   "group": "External",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "fwd3m",
+   "kind": "reading",
+   "label": "3-month US$ forward premia",
+   "latest": {
+    "change": 0.7,
+    "date": "2026-10-02",
+    "value": 4.31
+   },
+   "links": {
+    "csv": "series/fwd3m.csv",
+    "self": "series/fwd3m.json"
+   },
+   "scoring_rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
+   "series": "fwd3m",
+   "source": "RBI r10 (weekly WSS)",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "4.31% - premia in the customary range, no depreciation pressure priced in",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48",
+    "term": "Wholesale Price Index (WPI) inflation"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 30 stored",
+   "id": "wpifuel",
+   "kind": "reading",
+   "label": "WPI fuel & power",
+   "latest": {
+    "change": 2.92,
+    "date": "2026-09-30",
+    "value": 25.85
+   },
+   "links": {
+    "csv": "series/wpifuel.csv",
+    "self": "series/wpifuel.json"
+   },
+   "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
+   "series": "wpi_fuel_yoy",
+   "source": "RBI r11",
+   "stale": false,
+   "stale_days": 6,
+   "status": "bad",
+   "status_reason": "25.85% - very high - pushes the headline up",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48",
+    "term": "Wholesale Price Index (WPI) inflation"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 30 stored",
+   "id": "wpimanu",
+   "kind": "reading",
+   "label": "WPI manufactured products",
+   "latest": {
+    "change": 1.39,
+    "date": "2026-09-30",
+    "value": 9.76
+   },
+   "links": {
+    "csv": "series/wpimanu.csv",
+    "self": "series/wpimanu.json"
+   },
+   "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-5%, red >5%.",
+   "series": "wpi_manu_yoy",
+   "source": "RBI r11",
+   "stale": false,
+   "stale_days": 6,
+   "status": "bad",
+   "status_reason": "9.76% - very high - pushes the headline up",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48",
+    "term": "Wholesale Price Index (WPI) inflation"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 30 stored",
+   "id": "wpiprim",
+   "kind": "reading",
+   "label": "WPI primary articles",
+   "latest": {
+    "change": 0.91,
+    "date": "2026-09-30",
+    "value": 8.67
+   },
+   "links": {
+    "csv": "series/wpiprim.csv",
+    "self": "series/wpiprim.json"
+   },
+   "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
+   "series": "wpi_primary_yoy",
+   "source": "RBI r11",
+   "stale": false,
+   "stale_days": 6,
+   "status": "bad",
+   "status_reason": "8.67% - very high - pushes the headline up",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48",
+    "term": "Consumer Price Index (CPI) inflation, combined"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 152 stored",
+   "id": "cpirural",
+   "kind": "reading",
+   "label": "CPI rural",
+   "latest": {
+    "change": 0.46,
+    "date": "2026-08-31",
+    "value": 5.3
+   },
+   "links": {
+    "csv": "series/cpirural.csv",
+    "self": "series/cpirural.json"
+   },
+   "scoring_rule": "Same 2-6% tolerance band as headline CPI.",
+   "series": "cpi_rural_yoy",
+   "source": "RBI r11",
+   "stale": false,
+   "stale_days": 36,
+   "status": "watch",
+   "status_reason": "5.30% - above target",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48",
+    "term": "Consumer Price Index (CPI) inflation, combined"
+   },
+   "frequency": "monthly",
+   "group": "Prices",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 152 stored",
+   "id": "cpiurban",
+   "kind": "reading",
+   "label": "CPI urban",
+   "latest": {
+    "change": 0.37,
+    "date": "2026-08-31",
+    "value": 4.34
+   },
+   "links": {
+    "csv": "series/cpiurban.csv",
+    "self": "series/cpiurban.json"
+   },
+   "scoring_rule": "Same 2-6% tolerance band as headline CPI.",
+   "series": "cpi_urban_yoy",
+   "source": "RBI r11",
+   "stale": false,
+   "stale_days": 36,
+   "status": "good",
+   "status_reason": "4.34% - inside the tolerance band",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "M1 / narrow money"
+   },
+   "frequency": "fortnightly",
+   "group": "Money",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 220 stored",
+   "id": "m1",
+   "kind": "reading",
+   "label": "M1 (narrow money) growth",
+   "latest": {
+    "change": 2.41,
+    "date": "2026-09-30",
+    "value": 17.01
+   },
+   "links": {
+    "csv": "series/m1.csv",
+    "self": "series/m1.json"
+   },
+   "scoring_rule": "Green 9-16%, watch 5-9 / >16, red <5%. M1 tracks transactions demand; M3 tracks savings too.",
+   "series": "m1_yoy",
+   "source": "RBI r13",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "17.0% - very fast - inflation risk",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618",
+    "term": "Money multiplier (M3 ÷ reserve money)"
+   },
+   "frequency": "fortnightly",
+   "group": "Money",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 220 stored",
+   "id": "moneymult",
+   "kind": "reading",
+   "label": "Money multiplier",
+   "latest": {
+    "change": 0.13,
+    "date": "2026-09-30",
+    "value": 6.4
+   },
+   "links": {
+    "csv": "series/moneymult.csv",
+    "self": "series/moneymult.json"
+   },
+   "scoring_rule": "Derived as M3 ÷ reserve money. Green +/-0.15 of a year ago, watch outside that.",
+   "series": "money_mult",
+   "source": "derived (r13 ÷ r7)",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "6.40x (+0.45 vs a year ago) - multiplier rising - banks creating money faster",
+   "unit": "x"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Bankers' deposits with the Reserve Bank"
+   },
+   "frequency": "weekly",
+   "group": "Liquidity",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "bankdep",
+   "kind": "reading",
+   "label": "Bankers' deposits with RBI",
+   "latest": {
+    "change": 11.34,
+    "date": "2026-10-02",
+    "value": 2.87
+   },
+   "links": {
+    "csv": "series/bankdep.csv",
+    "self": "series/bankdep.json"
+   },
+   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
+   "series": "bankers_dep_yoy",
+   "source": "RBI r39",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "2.9% - broadly flat",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "RBI loans and advances to the Central Government"
+   },
+   "frequency": "weekly",
+   "group": "Fiscal",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "rbicredit",
+   "kind": "reading",
+   "label": "RBI credit to the Centre",
+   "latest": {
+    "change": 0.0,
+    "date": "2026-04-17",
+    "value": 93392.0
+   },
+   "links": {
+    "csv": "series/rbicredit.csv",
+    "self": "series/rbicredit.json"
+   },
+   "scoring_rule": "Loans and advances to the Central Government (Ways and Means Advances and overdrafts). Direction read: falling = green, rising = watch.",
+   "series": "rbi_govt_level",
+   "source": "RBI r39",
+   "stale": true,
+   "stale_days": 172,
+   "status": "watch",
+   "status_reason": "₹93,392 cr as last reported on 2026-04-17; the RBI table carries no value for this line on any later date (a nil balance is published as a blank cell)",
+   "unit": "₹ crore"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "RBI rupee securities (including treasury bills)"
+   },
+   "frequency": "weekly",
+   "group": "Fiscal",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "rupeesec",
+   "kind": "reading",
+   "label": "RBI rupee securities",
+   "latest": {
+    "change": -2.2,
+    "date": "2026-10-02",
+    "value": 23.67
+   },
+   "links": {
+    "csv": "series/rupeesec.csv",
+    "self": "series/rupeesec.json"
+   },
+   "scoring_rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
+   "series": "rupeesec_yoy",
+   "source": "RBI r39",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "23.7% - fast growth - heavy government paper absorption",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131",
+    "term": "Cash Reserve Ratio (CRR)"
+   },
+   "frequency": "weekly",
+   "group": "Policy",
+   "history_kind": "setting",
+   "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
+   "id": "crr",
+   "kind": "setting",
+   "label": "Cash Reserve Ratio",
+   "latest": {
+    "change": null,
+    "date": "2026-10-02",
+    "value": 3.0
+   },
+   "links": {
+    "csv": "series/crr.csv",
+    "self": "series/crr.json"
+   },
+   "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
+   "series": "crr",
+   "setting": {
+    "change_bp": -25.0,
+    "effective_from": "2025-12-05",
+    "previous": 3.25
+   },
+   "source": "RBI r10",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 44 weekly rows published since",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131",
+    "term": "Statutory Liquidity Ratio (SLR)"
+   },
+   "frequency": "weekly",
+   "group": "Policy",
+   "history_kind": "setting",
+   "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
+   "id": "slr",
+   "kind": "setting",
+   "label": "Statutory Liquidity Ratio",
+   "latest": {
+    "change": null,
+    "date": "2026-10-02",
+    "value": 18.0
+   },
+   "links": {
+    "csv": "series/slr.csv",
+    "self": "series/slr.json"
+   },
+   "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
+   "series": "slr",
+   "setting": {
+    "change_bp": null,
+    "effective_from": "2021-10-15",
+    "previous": null
+   },
+   "source": "RBI r10",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "unchanged at 18.00% in every weekly row since 2021-10-15",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.fbil.org.in/securities?mq=o&op=referencerate",
+    "term": "USD/INR and EUR/INR spot exchange rates (Reference Rate)"
+   },
+   "frequency": "weekly",
+   "group": "External",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "usdinr",
+   "kind": "reading",
+   "label": "USD/INR",
+   "latest": {
+    "change": 0.1,
+    "date": "2026-10-02",
+    "value": 95.99
+   },
+   "links": {
+    "csv": "series/usdinr.csv",
+    "self": "series/usdinr.json"
+   },
+   "scoring_rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
+   "series": "inr_usd",
+   "source": "RBI r10 (weekly WSS)",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "95.99 (+0.79% over 3m) - rupee broadly stable",
+   "unit": "₹"
+  },
+  {
+   "definition": {
+    "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379",
+    "term": "Term spread (10-year G-sec par yield − 91-day T-bill yield)"
+   },
+   "frequency": "weekly",
+   "group": "Markets",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 260 stored",
+   "id": "termspread",
+   "kind": "reading",
+   "label": "Term spread (10y − 91d)",
+   "latest": {
+    "change": -0.04,
+    "date": "2026-10-02",
+    "value": 1.71
+   },
+   "links": {
+    "csv": "series/termspread.csv",
+    "self": "series/termspread.json"
+   },
+   "scoring_rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
+   "series": "term_spread",
+   "source": "derived (r10)",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "+1.71pp - normally sloped",
+   "unit": "pp"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "RBI gold holdings (gold component of the reserves)"
+   },
+   "frequency": "weekly",
+   "group": "External",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "gold",
+   "kind": "reading",
+   "label": "RBI gold holdings",
+   "latest": {
+    "change": -6.74,
+    "date": "2026-10-02",
+    "value": 16.85
+   },
+   "links": {
+    "csv": "series/gold.csv",
+    "self": "series/gold.json"
+   },
+   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
+   "series": "gold_growth",
+   "source": "RBI r39",
+   "stale": false,
+   "stale_days": 4,
+   "status": "good",
+   "status_reason": "16.9% - RBI building its gold reserve",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Bank investments in government and other approved securities"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "invest",
+   "kind": "reading",
+   "label": "SCB investments growth",
+   "latest": {
+    "change": 1.79,
+    "date": "2026-09-30",
+    "value": 8.64
+   },
+   "links": {
+    "csv": "series/invest.csv",
+    "self": "series/invest.json"
+   },
+   "scoring_rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
+   "series": "invest_yoy",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "good",
+   "status_reason": "8.6% - banks funding government borrowing at a normal pace",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Bank credit of scheduled commercial banks"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "nonfood",
+   "kind": "reading",
+   "label": "Non-food credit growth",
+   "latest": {
+    "change": 1.32,
+    "date": "2026-09-30",
+    "value": 19.15
+   },
+   "links": {
+    "csv": "series/nonfood.csv",
+    "self": "series/nonfood.json"
+   },
+   "scoring_rule": "Same bands as total bank credit: green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
+   "series": "nonfood_yoy",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "19.1% - very fast non-food credit growth",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Food credit (procurement credit to FCI and state agencies)"
+   },
+   "frequency": "fortnightly",
+   "group": "Credit",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 200 stored",
+   "id": "food",
+   "kind": "reading",
+   "label": "Food credit growth",
+   "latest": {
+    "change": -16.59,
+    "date": "2026-09-30",
+    "value": 125.71
+   },
+   "links": {
+    "csv": "series/food.csv",
+    "self": "series/food.json"
+   },
+   "scoring_rule": "Loose bands because this series is volatile and seasonal: green 0-20%, watch <0 or >20%.",
+   "series": "food_yoy",
+   "source": "RBI r9",
+   "stale": false,
+   "stale_days": 6,
+   "status": "watch",
+   "status_reason": "125.7% - food credit surging - heavy procurement financing",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
+    "term": "Notes in circulation"
+   },
+   "frequency": "weekly",
+   "group": "Money",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 240 stored",
+   "id": "notes",
+   "kind": "reading",
+   "label": "Notes in circulation growth",
+   "latest": {
+    "change": -0.24,
+    "date": "2026-10-02",
+    "value": 13.4
+   },
+   "links": {
+    "csv": "series/notes.csv",
+    "self": "series/notes.json"
+   },
+   "scoring_rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
+   "series": "notes_yoy",
+   "source": "RBI r39",
+   "stale": false,
+   "stale_days": 4,
+   "status": "watch",
+   "status_reason": "13.4% - elevated cash preference",
+   "unit": "%"
+  }
+ ],
+ "meta": {
+  "api_version": "v1",
+  "dataset_as_of": "2026-10-06",
+  "docs": "docs/API.md",
+  "indicators": 38,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-10-17T16:23:00Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

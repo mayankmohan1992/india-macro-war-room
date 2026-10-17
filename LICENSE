@@ -1,0 +1,35 @@
+MIT License
+
+Copyright (c) 2026 Mayank Mohan and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--- DATA NOTICE ---
+
+The MIT licence above covers the SOFTWARE (the fetch/build/verify pipeline and the dashboard code).
+
+The DATA published in api/ and dashboard/ is compiled from public Reserve Bank of India publications
+and is reproduced here with attribution, for research and educational use. It is:
+  * NOT an official Reserve Bank of India product and is not endorsed by or affiliated with the RBI;
+  * NOT warranted to be accurate, complete or current - the publisher revises figures without notice;
+  * NOT a substitute for the primary source. Verify anything you rely on at https://data.rbi.org.in/.
+
+If you reuse the data, attribute the Reserve Bank of India as the source and link to the relevant
+publication. Definitions reproduced in api/v1/definitions.json remain the words of their publishers
+(RBI, MoSPI/NSO, DPIIT and FBIL) and are quoted for identification only.
