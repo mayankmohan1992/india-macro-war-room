@@ -114,6 +114,13 @@ def main() -> int:
                 problems.append(f"{iid}: not present in the dashboard payload")
                 continue
             doc = json.loads(sf.read_text())["indicator"]
+            if ind["kind"] == "setting":
+                if latest["latest"][iid]["change"] is not None:
+                    problems.append(f"{iid}: a setting must carry change=null in latest.json "
+                                    f"(got {latest['latest'][iid]['change']!r}) - the bp move lives in "
+                                    f"`setting.change_bp`")
+                if ind["latest"]["change"] is not None:
+                    problems.append(f"{iid}: a setting must carry change=null in index.json")
             for label, a, b in (("index vs payload", ind["latest"]["value"], t["value"]),
                                 ("series vs payload", doc["latest"]["value"], t["value"]),
                                 ("latest vs payload", latest["latest"][iid]["value"], t["value"]),

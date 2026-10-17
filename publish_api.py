@@ -168,8 +168,12 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
         catalogue.append(cat)
         latest_rows.append([t["id"], t["label"], t["value"], t["unit"], t["period"], t["status"],
                             t["change"] if t["change"] is not None else ""])
-        latest_map[t["id"]] = {"value": t["value"], "unit": t["unit"], "date": t["period"],
-                               "status": t["status"], "change": t["change"],
+        # take `change` from the indicator document, not the raw tile: for a SETTING it is deliberately
+        # null (a rate that holds for months has no weekly change - the bp move is in `setting`), and
+        # latest.json must not disagree with index.json about that
+        latest_map[t["id"]] = {"value": indicator["latest"]["value"], "unit": t["unit"],
+                               "date": indicator["latest"]["date"], "status": t["status"],
+                               "change": indicator["latest"]["change"],
                                "kind": indicator["kind"], "label": t["label"]}
 
     write_json(out / "index.json", {"meta": meta, "indicators": catalogue})
