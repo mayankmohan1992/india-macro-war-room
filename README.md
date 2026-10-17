@@ -130,6 +130,11 @@ Details: [METHODOLOGY.md](docs/METHODOLOGY.md) · [DEPLOYMENT.md](docs/DEPLOYMEN
 - **The colour verdicts are conventional readings, not RBI verdicts.** Every threshold is published on
   the dashboard (`How each colour is decided`) and in [docs/METHODOLOGY.md](docs/METHODOLOGY.md), so
   you can disagree with them explicitly rather than silently.
+- **Freshness is per table, not per site.** The tables publish on different calendars — daily (liquidity
+  operations), weekly (the statistical supplement), fortnightly (SCB returns), monthly (CPI/WPI and the
+  money aggregates, with about a month's lag) — so the header states the newest observation **for each
+  calendar**, and every tile carries its own period. A weekly figure dated a week back is the newest one
+  that exists, not a stale one.
 - **Theme:** light by default on every machine, including dark-mode systems; Dark is one click away and
   the choice is remembered.
 - **Known limits, stated rather than hidden:** figures are provisional and get revised by the

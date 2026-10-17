@@ -4,6 +4,16 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.3] — 2026-10-17
+
+### Changed
+- **The header now states the newest observation per publication calendar** (`latest data: daily
+  2026-10-11 · weekly 2026-10-09 · fortnightly 2026-09-30 · monthly 2026-09-30`) instead of a single
+  maximum date. One bare date made the page look a week stale when it was just the fastest table's last
+  row: the weekly statement for the week ended 9 Oct was published on 16 Oct, so 9 Oct *was* the newest
+  weekly figure in existence. The same breakdown is exposed as `dataset_as_of_by_frequency` in every API
+  document, documented in the methodology, and asserted by the verification gate.
+
 ## [1.0.2] — 2026-10-17
 
 ### Changed

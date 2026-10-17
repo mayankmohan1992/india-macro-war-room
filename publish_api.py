@@ -116,6 +116,7 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
     meta = {
         "api_version": API_VERSION,
         "dataset_as_of": as_of,
+        "dataset_as_of_by_frequency": payload.get("as_of_by_frequency", {}),
         "retrieved_at": generated,
         "indicators": len(payload["tiles"]),
         "source": SOURCE_NAME,
@@ -136,7 +137,7 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
             "unit": t["unit"],
             "group": t["group"],
             "kind": "setting" if t.get("step") else "reading",
-            "frequency": freq_of(pts),
+            "frequency": t.get("freq") or freq_of(pts),
             "status": t["status"],
             "status_reason": t["reason"],
             "scoring_rule": t["rule"],

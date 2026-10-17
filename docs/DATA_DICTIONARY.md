@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**38 indicators** · dataset as-of **2026-10-11** · generated 2026-10-17 23:01 IST
+**38 indicators** · dataset as-of **2026-10-11** · generated 2026-10-17 23:18 IST
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 

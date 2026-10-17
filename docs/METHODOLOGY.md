@@ -41,6 +41,20 @@ tools/validate_api.py validates the API end to end
 | **staleness** | `newest observation anywhere on the page − this series' last observation`, in days. |
 | **frequency** | Median gap between consecutive observations, bucketed (≤3 daily, ≤9 weekly, ≤20 fortnightly, ≤45 monthly, ≤120 quarterly). |
 
+### Publication calendars (why "latest data" is not one date)
+
+| calendar | indicators | typical lag when you read the page |
+|---|---|---|
+| daily | liquidity operations (net LFO, SDF/MSF balances) | a few days |
+| weekly | policy rates, call money, G-Sec/T-bill yields, forward premia, T-bill outstanding, turnover, RBI balance sheet, money stock | up to a week — the supplement is published weekly |
+| fortnightly | SCB credit and deposits, credit-deposit ratio, CD/CP outstanding | up to two weeks |
+| monthly | CPI, WPI, M3/M1/reserve money | about a month (prices are released with a one-month lag) |
+
+The build therefore records `dataset_as_of_by_frequency` alongside the overall newest observation, the
+header renders that breakdown, and each tile carries its own period. The daily refresh re-checks the
+portal every morning; if a table has not been republished, the dataset hash is unchanged and nothing is
+committed — which is the correct outcome, not a failure.
+
 ### Freshness policy: settings, readings, stale and dead series
 
 RBI does not always report every line: **a nil balance is published as a blank cell**, so a column can

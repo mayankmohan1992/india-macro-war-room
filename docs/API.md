@@ -29,7 +29,9 @@ to its full history. Points and change logs are **not** included, to keep this f
 {
   "meta": {
     "api_version": "v1",
-    "dataset_as_of": "2026-10-06",
+    "dataset_as_of": "2026-10-11",
+    "dataset_as_of_by_frequency": { "daily": "2026-10-11", "weekly": "2026-10-09",
+                                    "fortnightly": "2026-09-30", "monthly": "2026-09-30" },
     "retrieved_at": "2026-10-17T16:17:15Z",
     "indicators": 38,
     "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
@@ -171,6 +173,12 @@ one-shot fetch or an offline cache; ~1 MB, so prefer the smaller endpoints for f
   "counts": { "good": 14, "watch": 16, "bad": 8 },
   "verdict": "Stress signals in core indicators" }
 ```
+
+`dataset_as_of` is the newest **observation** in the dataset, not the time it was fetched, and
+`dataset_as_of_by_frequency` breaks that down by publication calendar. A single date is misleading here:
+the tables publish daily (liquidity operations), weekly (the statistical supplement), fortnightly (SCB
+returns) and monthly (prices), so the newest observation always belongs to the fastest table. Use the
+per-frequency map — or an individual indicator's `latest.date` — when "how fresh is this number?" matters.
 
 `dataset_sha256` hashes the data-bearing content **excluding timestamps**, so a client (or the
 workflow itself) can tell whether anything actually changed by polling this one small file.

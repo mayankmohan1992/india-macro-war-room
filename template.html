@@ -270,7 +270,7 @@
 <header class="bar">
   <div class="brand">
     <h1>India Macro War Room</h1>
-    <div class="meta">RBI Database on Indian Economy · latest data <b id="asof">–</b> · built <span id="built">–</span></div>
+    <div class="meta">RBI Database on Indian Economy · <span id="asof">–</span> · built <span id="built">–</span></div>
   </div>
   <div class="vd"><i id="vdot"></i><b id="verdict">–</b></div>
   <div class="counts" id="counts"></div>
@@ -1141,7 +1141,14 @@ setTheme(document.documentElement.getAttribute('data-theme') || 'light', false);
 
 /* ---------- header, strip, footer ---------- */
 function renderHead(){
-  document.getElementById('asof').textContent=DATA.as_of;
+  /* The newest OBSERVATION, not the build time - and broken down by publication calendar, because the
+     tables publish on different ones (daily operations, weekly statements, fortnightly SCB returns,
+     monthly prices). One bare maximum date made the page look a week stale when it was simply the
+     fastest table's last row. */
+  const byf = DATA.as_of_by_frequency || {};
+  const parts = Object.entries(byf).map(([f,d])=>`${f} <b>${d}</b>`);
+  document.getElementById('asof').innerHTML =
+    `latest data: ${parts.length ? parts.join(' · ') : '<b>' + DATA.as_of + '</b>'}`;
   document.getElementById('built').textContent=DATA.generated;
   document.getElementById('verdict').textContent=DATA.verdict;
   const vc=DATA.counts.bad?getComputedStyle(document.documentElement).getPropertyValue('--bad').trim()

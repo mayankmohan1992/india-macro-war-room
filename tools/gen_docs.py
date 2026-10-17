@@ -67,7 +67,7 @@ def main() -> int:
                           "| id | indicator | unit | kind | frequency | latest | as at | source table | definition |",
                           "|---|---|---|---|---|---:|---|---|---|"]
             d = defs.get(t["def_key"]) or {}
-            freq = freq_of(series[t["series_key"]]["points"])
+            freq = t.get("freq") or freq_of(series[t["series_key"]]["points"])
             val = t["value"]
             val_s = f"{val:,.2f}".rstrip("0").rstrip(".") if isinstance(val, float) else str(val)
             stale = " *(stale)*" if t.get("stale") else ""

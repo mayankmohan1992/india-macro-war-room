@@ -173,6 +173,27 @@ def spark(pts: list[list[Any]], n: int = 36) -> list[float]:
     return [round(v, 3) for _d, v in pts[-n:]]
 
 
+def freq_of(points: list[list[Any]]) -> str:
+    """Publication frequency from the median gap between observations (daily .. quarterly).
+
+    WHY: tables publish on different calendars (daily operations, weekly statements, fortnightly SCB
+    returns, monthly prices). A single "latest data" date therefore reads as stale when it is simply
+    the newest observation of whatever table is fastest, so the dashboard and the API report the
+    newest date per class as well as the overall maximum.
+    """
+    try:
+        ds = sorted(dt.date.fromisoformat(p[0]) for p in points)
+        if len(ds) < 3:
+            return "unknown"
+        gaps = sorted((ds[i + 1] - ds[i]).days for i in range(len(ds) - 1))
+        med = gaps[len(gaps) // 2]
+        return ("daily" if med <= 3 else "weekly" if med <= 9 else "fortnightly" if med <= 20
+                else "monthly" if med <= 45 else "quarterly" if med <= 120 else "irregular")
+    except Exception:
+        log.warning("[WARN] [Freq] could not derive a frequency:\n%s", traceback.format_exc())
+        return "unknown"
+
+
 def step_info(pts: list[list[Any]]) -> dict | None:
     """For a policy-setting STEP series: when the value in force took effect, from what, how big.
 
@@ -1008,6 +1029,15 @@ def main() -> int:
         except Exception:
             t["stale_days"] = None
         t["stale"] = bool(t["stale_days"] is not None and t["stale_days"] > 60)
+    for t in T:
+        t["freq"] = freq_of(S[t["series_key"]]["points"])
+    by_freq: dict[str, str] = {}
+    for t in T:
+        if t["period"] and t["period"] > by_freq.get(t["freq"], ""):
+            by_freq[t["freq"]] = t["period"]
+    freq_rank = {"daily": 0, "weekly": 1, "fortnightly": 2, "monthly": 3, "quarterly": 4,
+                 "irregular": 5, "unknown": 6}
+    as_of_by_freq = dict(sorted(by_freq.items(), key=lambda kv: freq_rank.get(kv[0], 9)))
     dead = {}
     for k, v in S.items():
         pts = v.get("points") or []
@@ -1044,6 +1074,7 @@ def main() -> int:
         "def_keys": DEF_KEYS,
         "generated": dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M %Z"),
         "as_of": asof,
+        "as_of_by_frequency": as_of_by_freq,
         "verdict": verdict,
         "counts": counts,
         "tiles": T,

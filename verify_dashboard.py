@@ -904,6 +904,18 @@ def main() -> int:
             check_definitions(page, problems)
             check_density_and_sort(page, problems)
             check_font(page, problems)
+            # the header must state the newest observation per publication calendar, matching the
+            # payload - a single max date reads as staleness when the fastest table simply lags
+            head = page.inner_text(".brand .meta")
+            byf = DATA.get("as_of_by_frequency", {})
+            print(f"  header as-of line: {head.replace(chr(10), ' ')}")
+            if len(byf) < 2:
+                problems.append("the payload carries no per-frequency as-of breakdown")
+            for freq, d in byf.items():
+                if d not in head:
+                    problems.append(f"the header does not show the {freq} as-of date {d}")
+            if DATA["as_of"] not in head:
+                problems.append(f"the header omits the overall newest observation {DATA['as_of']}")
             verdict = page.inner_text("#verdict")
             print(f"  verdict: {verdict!r}")
             if verdict.strip() in ("", "–"):

@@ -233,8 +233,14 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-17 23:01 IST",
+ "generated": "2026-10-17 23:18 IST",
  "as_of": "2026-10-11",
+ "as_of_by_frequency": {
+  "daily": "2026-10-11",
+  "weekly": "2026-10-09",
+  "fortnightly": "2026-09-30",
+  "monthly": "2026-09-30"
+ },
  "verdict": "Stress signals in core indicators",
  "counts": {
   "good": 11,
@@ -420,7 +426,8 @@
    ],
    "history_note": "last 20 published observations of 153 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "wpi",
@@ -594,7 +601,8 @@
    ],
    "history_note": "last 20 published observations of 30 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "repo",
@@ -730,7 +738,8 @@
    ],
    "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "m3",
@@ -910,7 +919,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "rm",
@@ -1090,7 +1100,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "credit",
@@ -1270,7 +1281,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "deposit",
@@ -1450,7 +1462,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "cdr",
@@ -1630,7 +1643,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "liquidity",
@@ -1810,7 +1824,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 0,
-   "stale": false
+   "stale": false,
+   "freq": "daily"
   },
   {
    "id": "callmoney",
@@ -1990,7 +2005,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "gsec",
@@ -2170,7 +2186,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "fxa",
@@ -2350,7 +2367,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "fca",
@@ -2530,7 +2548,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "tbill",
@@ -2710,7 +2729,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "cdout",
@@ -2890,7 +2910,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "cpout",
@@ -3070,7 +3091,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "turnover",
@@ -3250,7 +3272,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "yld91",
@@ -3430,7 +3453,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "fwd3m",
@@ -3610,7 +3634,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "wpifuel",
@@ -3784,7 +3809,8 @@
    ],
    "history_note": "last 20 published observations of 30 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "wpimanu",
@@ -3958,7 +3984,8 @@
    ],
    "history_note": "last 20 published observations of 30 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "wpiprim",
@@ -4132,7 +4159,8 @@
    ],
    "history_note": "last 20 published observations of 30 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "cpirural",
@@ -4312,7 +4340,8 @@
    ],
    "history_note": "last 20 published observations of 153 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "cpiurban",
@@ -4492,7 +4521,8 @@
    ],
    "history_note": "last 20 published observations of 153 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "monthly"
   },
   {
    "id": "m1",
@@ -4672,7 +4702,8 @@
    ],
    "history_note": "last 20 published observations of 220 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "moneymult",
@@ -4852,7 +4883,8 @@
    ],
    "history_note": "last 20 published observations of 220 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "bankdep",
@@ -5032,7 +5064,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "rbicredit",
@@ -5212,7 +5245,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 177,
-   "stale": true
+   "stale": true,
+   "freq": "weekly"
   },
   {
    "id": "rupeesec",
@@ -5392,7 +5426,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "crr",
@@ -5505,7 +5540,8 @@
    ],
    "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "slr",
@@ -5576,7 +5612,8 @@
    ],
    "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "usdinr",
@@ -5756,7 +5793,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "termspread",
@@ -5936,7 +5974,8 @@
    ],
    "history_note": "last 20 published observations of 260 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "gold",
@@ -6116,7 +6155,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   },
   {
    "id": "invest",
@@ -6296,7 +6336,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "nonfood",
@@ -6476,7 +6517,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "food",
@@ -6656,7 +6698,8 @@
    ],
    "history_note": "last 20 published observations of 200 stored",
    "stale_days": 11,
-   "stale": false
+   "stale": false,
+   "freq": "fortnightly"
   },
   {
    "id": "notes",
@@ -6836,7 +6879,8 @@
    ],
    "history_note": "last 20 published observations of 240 stored",
    "stale_days": 2,
-   "stale": false
+   "stale": false,
+   "freq": "weekly"
   }
  ],
  "dead_series": {
