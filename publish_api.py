@@ -196,6 +196,7 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
             "effective_from": (ind.get("setting") or {}).get("effective_from"),
             "previous": (ind.get("setting") or {}).get("previous"),
             "change_bp": (ind.get("setting") or {}).get("change_bp"),
+            "unchanged_in_window": (ind.get("setting") or {}).get("unchanged_in_window"),
             "history": doc.get("history", []), "history_note": ind.get("history_note"),
             "source": ind.get("source", ""),
         })

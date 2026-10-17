@@ -6,7 +6,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T16:41:27Z",
+  "retrieved_at": "2026-10-17T16:49:21Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -70,6 +70,7 @@
    "label": "Cash Reserve Ratio",
    "previous": 3.25,
    "source": "RBI r10",
+   "unchanged_in_window": false,
    "unit": "%",
    "value": 3.0
   },
@@ -156,6 +157,7 @@
    "label": "Policy repo rate",
    "previous": 5.25,
    "source": "RBI r10 (weekly WSS)",
+   "unchanged_in_window": false,
    "unit": "%",
    "value": 5.5
   },
@@ -176,6 +178,7 @@
    "label": "Statutory Liquidity Ratio",
    "previous": null,
    "source": "RBI r10",
+   "unchanged_in_window": true,
    "unit": "%",
    "value": 18.0
   }

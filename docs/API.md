@@ -133,7 +133,7 @@ date,value
   "settings": [
     { "id": "crr", "label": "Cash Reserve Ratio", "unit": "%", "value": 3.0,
       "as_published": "2026-10-02", "effective_from": "2025-12-05",
-      "previous": 3.25, "change_bp": -25.0,
+      "previous": 3.25, "change_bp": -25.0, "unchanged_in_window": false,
       "history": [ "...the 8 changes since 2021..." ],
       "source": "RBI r10" }
   ] }
