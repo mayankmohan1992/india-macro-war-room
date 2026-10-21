@@ -26,7 +26,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-17T19:36:36Z",
+  "retrieved_at": "2026-10-21T11:23:33Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -61,15 +61,15 @@
    "value": 5.75
   },
   {
-   "bp": -25.0,
+   "bp": 25.0,
    "date": "2026-10-09",
    "kind": "setting",
    "name": "Bank rate",
-   "prev": 5.75,
-   "since": "2025-12-05",
+   "prev": 5.5,
+   "since": "2026-10-09",
    "src": "weekly WSS",
    "unit": "%",
-   "value": 5.5
+   "value": 5.75
   },
   {
    "date": "2026-10-09",
