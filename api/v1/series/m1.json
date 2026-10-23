@@ -10,10 +10,10 @@
   "group": "Money",
   "history": [
    {
-    "change": 2.41,
+    "change": 2.42,
     "date": "2026-09-30",
     "prev": 14.6,
-    "value": 17.01
+    "value": 17.02
    },
    {
     "change": -0.77,
@@ -136,9 +136,9 @@
   "kind": "reading",
   "label": "M1 (narrow money) growth",
   "latest": {
-   "change": 2.41,
+   "change": 2.42,
    "date": "2026-09-30",
-   "value": 17.01
+   "value": 17.02
   },
   "links": {
    "csv": "series/m1.csv",
@@ -1023,7 +1023,7 @@
    ],
    [
     "2026-09-30",
-    17.01
+    17.02
    ]
   ],
   "scoring_rule": "Green 9-16%, watch 5-9 / >16, red <5%. M1 tracks transactions demand; M3 tracks savings too.",
@@ -1062,7 +1062,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-21T11:23:33Z",
+  "retrieved_at": "2026-10-23T11:16:58Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

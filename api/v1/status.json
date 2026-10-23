@@ -5,9 +5,9 @@
   "good": 12,
   "watch": 16
  },
- "dataset_sha256": "adeae27d651a02aa8c44c1fa640de4e5c8b95a04c89ffdc430dba4183ec39963",
+ "dataset_sha256": "e573715aea4061a8ca7d9e71f45844b6d1e68818abcd568edb6f1ee906b7105d",
  "files": 86,
- "generated_at": "2026-10-21T11:23:33Z",
+ "generated_at": "2026-10-23T11:16:58Z",
  "meta": {
   "api_version": "v1",
   "cross_checks": [
@@ -35,7 +35,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-21T11:23:33Z",
+  "retrieved_at": "2026-10-23T11:16:58Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },

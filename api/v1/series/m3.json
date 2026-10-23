@@ -10,10 +10,10 @@
   "group": "Money",
   "history": [
    {
-    "change": 0.22,
+    "change": 0.23,
     "date": "2026-09-30",
     "prev": 16.64,
-    "value": 16.86
+    "value": 16.87
    },
    {
     "change": -0.03,
@@ -136,9 +136,9 @@
   "kind": "reading",
   "label": "M3 (broad money) growth",
   "latest": {
-   "change": 0.22,
+   "change": 0.23,
    "date": "2026-09-30",
-   "value": 16.86
+   "value": 16.87
   },
   "links": {
    "csv": "series/m3.csv",
@@ -1103,7 +1103,7 @@
    ],
    [
     "2026-09-30",
-    16.86
+    16.87
    ]
   ],
   "scoring_rule": "Green 9-15%, watch 7-9 / >15, red <7 (no developed band exists; these are the customary read).",
@@ -1142,7 +1142,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-21T11:23:33Z",
+  "retrieved_at": "2026-10-23T11:16:58Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -109,9 +109,9 @@
    "kind": "reading",
    "label": "M3 (broad money) growth",
    "latest": {
-    "change": 0.22,
+    "change": 0.23,
     "date": "2026-09-30",
-    "value": 16.86
+    "value": 16.87
    },
    "links": {
     "csv": "series/m3.csv",
@@ -349,9 +349,9 @@
    "kind": "reading",
    "label": "Net FX assets (banking sector)",
    "latest": {
-    "change": -5.58,
+    "change": -2.98,
     "date": "2026-09-30",
-    "value": 15.17
+    "value": 17.77
    },
    "links": {
     "csv": "series/fxa.csv",
@@ -363,7 +363,7 @@
    "stale": false,
    "stale_days": 15,
    "status": "good",
-   "status_reason": "15.2% - net FX assets building",
+   "status_reason": "17.8% - net FX assets building",
    "unit": "%"
   },
   {
@@ -739,9 +739,9 @@
    "kind": "reading",
    "label": "M1 (narrow money) growth",
    "latest": {
-    "change": 2.41,
+    "change": 2.42,
     "date": "2026-09-30",
-    "value": 17.01
+    "value": 17.02
    },
    "links": {
     "csv": "series/m1.csv",
@@ -1186,7 +1186,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-21T11:23:33Z",
+  "retrieved_at": "2026-10-23T11:16:58Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**38 indicators** · dataset as-of **2026-10-15** · generated 2026-10-21 11:23 UTC
+**38 indicators** · dataset as-of **2026-10-15** · generated 2026-10-23 11:16 UTC
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -26,7 +26,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 |---|---|---|---|---|---:|---|---|---|
 | `fca` | RBI foreign currency assets | % | reading | weekly | 13.77 | 2026-10-09 | RBI r39 | [Foreign Currency Assets (FCA) and India's foreign exchange reserves](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 5 | 2026-10-09 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
-| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 15.17 | 2026-09-30 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
+| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 17.77 | 2026-09-30 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `gold` | RBI gold holdings | % | reading | weekly | 11.96 | 2026-10-09 | RBI r39 | [RBI gold holdings (gold component of the reserves)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `usdinr` | USD/INR | ₹ | reading | weekly | 95.07 | 2026-10-15 | RBI r10 (weekly) + DBIE key rates (daily) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
 
@@ -60,8 +60,8 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `m1` | M1 (narrow money) growth | % | reading | fortnightly | 17.01 | 2026-09-30 | RBI r13 | [M1 / narrow money](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `m3` | M3 (broad money) growth | % | reading | fortnightly | 16.86 | 2026-09-30 | RBI r13 | [M3 / broad money](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `m1` | M1 (narrow money) growth | % | reading | fortnightly | 17.02 | 2026-09-30 | RBI r13 | [M1 / narrow money](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `m3` | M3 (broad money) growth | % | reading | fortnightly | 16.87 | 2026-09-30 | RBI r13 | [M3 / broad money](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `moneymult` | Money multiplier | x | reading | fortnightly | 6.4 | 2026-09-30 | derived (r13 ÷ r7) | [Money multiplier (M3 ÷ reserve money)](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `notes` | Notes in circulation growth | % | reading | weekly | 13.82 | 2026-10-09 | RBI r39 | [Notes in circulation](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `rm` | Reserve money growth | % | reading | weekly | 8.69 | 2026-09-30 | RBI r7 | [Reserve money / base money (M0)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |

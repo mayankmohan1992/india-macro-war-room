@@ -233,7 +233,7 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-21 11:23 UTC",
+ "generated": "2026-10-23 11:16 UTC",
  "as_of": "2026-10-15",
  "as_of_by_frequency": {
   "daily": "2026-10-11",
@@ -668,14 +668,14 @@
    "series_key": "m3_yoy",
    "label": "M3 (broad money) growth",
    "group": "Money",
-   "value": 16.86,
+   "value": 16.87,
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
    "status": "watch",
    "reason": "16.9% - very fast money growth - inflation risk",
    "rule": "Green 9-15%, watch 7-9 / >15, red <7 (no developed band exists; these are the customary read).",
-   "change": 0.22,
+   "change": 0.23,
    "spark": [
     9.27,
     9.28,
@@ -712,16 +712,16 @@
     14.08,
     16.67,
     16.64,
-    16.86
+    16.87
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
      "date": "2026-09-30",
-     "value": 16.86,
+     "value": 16.87,
      "prev": 16.64,
-     "change": 0.22
+     "change": 0.23
     },
     {
      "date": "2026-09-15",
@@ -2116,14 +2116,14 @@
    "series_key": "fxa_yoy",
    "label": "Net FX assets (banking sector)",
    "group": "External",
-   "value": 15.17,
+   "value": 17.77,
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
    "status": "good",
-   "reason": "15.2% - net FX assets building",
+   "reason": "17.8% - net FX assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": -5.58,
+   "change": -2.98,
    "spark": [
     12.71,
     12.8,
@@ -2160,16 +2160,16 @@
     15.2,
     22.61,
     20.75,
-    15.17
+    17.77
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
      "date": "2026-09-30",
-     "value": 15.17,
+     "value": 17.77,
      "prev": 20.75,
-     "change": -5.58
+     "change": -2.98
     },
     {
      "date": "2026-09-15",
@@ -4451,14 +4451,14 @@
    "series_key": "m1_yoy",
    "label": "M1 (narrow money) growth",
    "group": "Money",
-   "value": 17.01,
+   "value": 17.02,
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
    "status": "watch",
    "reason": "17.0% - very fast - inflation risk",
    "rule": "Green 9-16%, watch 5-9 / >16, red <5%. M1 tracks transactions demand; M3 tracks savings too.",
-   "change": 2.41,
+   "change": 2.42,
    "spark": [
     12.02,
     11.54,
@@ -4495,16 +4495,16 @@
     13.55,
     15.37,
     14.6,
-    17.01
+    17.02
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
      "date": "2026-09-30",
-     "value": 17.01,
+     "value": 17.02,
      "prev": 14.6,
-     "change": 2.41
+     "change": 2.42
     },
     {
      "date": "2026-09-15",
@@ -9386,7 +9386,7 @@
     ],
     [
      "2025-10-17",
-     28714438.0
+     28714361.0
     ],
     [
      "2025-10-31",
@@ -9478,7 +9478,7 @@
     ],
     [
      "2026-09-30",
-     33766475.0
+     33769884.0
     ]
    ]
   },
@@ -10445,7 +10445,7 @@
     ],
     [
      "2026-09-30",
-     16.86
+     16.87
     ]
    ]
   },
@@ -11252,7 +11252,7 @@
     ],
     [
      "2026-09-30",
-     15.17
+     17.77
     ]
    ]
   },
@@ -14640,7 +14640,7 @@
     ],
     [
      "2026-09-30",
-     22994658.0
+     22994852.0
     ]
    ]
   },
@@ -52917,7 +52917,7 @@
     ],
     [
      "2025-10-17",
-     6962914.0
+     6962919.0
     ],
     [
      "2025-10-31",
@@ -53009,7 +53009,7 @@
     ],
     [
      "2026-09-30",
-     8224934.0
+     8225584.0
     ]
    ]
   },
@@ -53896,7 +53896,7 @@
     ],
     [
      "2026-09-30",
-     17.01
+     17.02
     ]
    ]
   },
