@@ -6,7 +6,7 @@ records changes to the *project*.
 
 ## [1.0.5] — 2026-10-24
 
-An audit-and-fix release. Most of the 27 defects were in the **gates** rather than the numbers, and
+An audit-and-fix release. Most of the 33 defects were in the **gates** rather than the numbers, and
 several were latent: they would have fired on the next real policy move, the next RBI outage, or the next
 CI run that mattered. Each is now fixed and asserted.
 
