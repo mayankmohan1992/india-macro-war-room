@@ -62,6 +62,9 @@ jobs:
       - name: Fetch the latest tables from RBI DBIE
         run: python fetch_series.py
 
+      - name: Verify the numbers against the RBI source tables
+        run: python tools/verify_provenance.py
+
       - name: Build the dataset and the dashboard
         run: python build_dashboard.py
 

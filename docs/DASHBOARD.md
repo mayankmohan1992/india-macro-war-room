@@ -10,7 +10,7 @@ A single self-contained page showing the health of the Indian economy at a glanc
 Open `dashboard/index.html` - it works offline over `file://`, with no server and no CDN.
 
 ```bash
-scripts/refresh.sh                 # fetch -> build -> publish API -> docs -> validate -> verify (~5 min)
+scripts/refresh.sh                 # fetch -> verify provenance -> build -> publish API -> docs -> validate -> verify (~5 min)
 scripts/refresh.sh --build-only    # re-render from the raw JSON already on disk
 ```
 
@@ -134,7 +134,7 @@ series_lib.py          shared table fetcher (paging, column alignment, version p
 build_dashboard.py     analysis + scoring + rendering -> dashboard/index.html + warroom_data.json
 template.html          the page (dark war-room styling, hand-rolled SVG charts, no dependencies)
 verify_dashboard.py    headless-Chromium render assertions + screenshot
-refresh.sh             fetch -> build -> publish_api -> gen_docs -> validate_api -> verify, logged to logs/
+refresh.sh             fetch -> verify_provenance -> build -> publish_api -> gen_docs -> validate_api -> verify, logged to logs/
 dashboard/index.html   THE DELIVERABLE (self-contained; data inlined)
 ```
 

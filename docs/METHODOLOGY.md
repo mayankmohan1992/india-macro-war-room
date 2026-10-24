@@ -169,8 +169,61 @@ index/latest/series/CSV against the dashboard payload (including `settings.json`
 `dataset.json`), type-checks every published point, verifies `status.json`'s own counts, and checks the
 manifest hashes and the `dataset_sha256`.
 
-## 3. Why the numbers can still be wrong, and what is done about it
+## 3. How each number is checked
 
+`tools/verify_provenance.py` re-reads `raw/` and checks the published figures against a property that is
+**independent of the build** — never against another published copy of themselves. It runs before the
+build in `ci.yml`, `daily.yml` and `refresh.sh`, and exits non-zero if any number does not reconcile.
+Everything it uses comes from RBI's own tables; there is no external or third-party source.
+
+**Tier 1 — accounting identity (11 checks, 15 indicators).** The same total is published two different
+ways inside one table, so a misread, shifted or wrongly-signed column breaks the identity immediately:
+
+| Identity | Indicators covered |
+|---|---|
+| M3 = currency with public + demand + time + other deposits | `m3`, `m1` |
+| M3 = net bank credit to govt + credit to commercial sector + net FX assets + govt currency liability − non-monetary liabilities (a **second, independent decomposition** of the same total) | `m3`, `fxa` |
+| M1 + time deposits = M3 (pins the computed M1 tile to the published M3) | `m1` |
+| Reserve money = currency in circulation + bankers' deposits + other deposits | `rm`, `bankdep` |
+| Reserve money = its four sources − non-monetary liabilities | `rm` |
+| food credit + non-food credit = bank credit | `credit`, `food`, `nonfood` |
+| demand + time deposits = aggregate deposits | `deposit` |
+| government securities + other approved securities = investments | `invest` |
+| notes in circulation + held in the banking department = notes issued | `notes` |
+| **double entry**: RBI liabilities total = assets total = the published total | `fca`, `gold`, `rupeesec`, `notes` |
+| each T-bill tenor total = banks + primary dealers + state govts + others | `tbill` |
+
+**Tier 2 — two RBI feeds for the same fact (4 checks).** `repo`, `crr` and `slr` appear in both the
+weekly WSS table and the portal's key-rates snapshot; `usdinr` appears as the weekly WSS row and as the
+daily FBIL reference rate. Different endpoints, so a transcription error in one shows as a disagreement.
+The FX pair are different observation dates, so equality is only asserted when the dates match and the
+difference is reported otherwise.
+
+**Tier 3 — published figure vs one recomputed from the index (1 check).** RBI's published CPI inflation
+against the y-o-y figure recomputed from the CPI index, 0.1pp tolerance (currently 0.05pp).
+
+Current result: **16/16 checks pass**, reconciling to ±₹1 lakh (rounding in the last printed unit), and
+**20 of 38 indicators are covered** by at least one passing check.
+
+### The other 18 are declared, not dressed up
+
+`api/v1/verification.json` records, per indicator, either the checks that passed or an explicit
+`single-source` status with the reason: `callmoney`, `gsec`, `yld91`, `fwd3m`, `cdout`, `cpout`,
+`turnover`, `wpi`, `wpifuel`, `wpimanu`, `wpiprim`, `cpirural`, `cpiurban`, `cdr`, `moneymult`,
+`termspread`, `liquidity`, `rbicredit`. Each `?` panel says so in words and the footer carries the
+counts, so the gap is visible without opening anything. The WPI and CPI component tiles *could* be
+checked against component weights, but those weights are published outside DBIE, so no check is
+claimed for them.
+
+Column resolution in the verifier is **independent of `build_dashboard.py`** — it reads the report
+headers itself — so a bug in the build's column map cannot hide in both places. It also asserts header
+length against row length (report 9 ships a non-data `Version` column), so a column shift is a hard
+error rather than a silent offset.
+
+## 4. Why the numbers can still be wrong
+
+- **Identities catch our mistakes, not the publisher's.** A transcription, column drift or wrong sign
+  breaks an identity; a publisher error that is internally consistent does not.
 - **The publisher revises.** Weekly and fortnightly figures are provisional and get revised; a value
   today may differ from the same date a month ago. Every API document carries both `dataset_as_of` and
   `retrieved_at`, and `status.json` carries a content hash, so a consumer can detect a revision.
@@ -182,7 +235,7 @@ manifest hashes and the `dataset_sha256`.
 - **Nothing is invented.** Where a figure cannot be sourced or derived, the UI says so ("definition
   pending", "stale Nd", "no data in this window") rather than showing something plausible.
 
-## 4. Reproducibility
+## 5. Reproducibility
 
 The committed `raw/` tables plus the committed code reproduce the committed `api/` and `dashboard/`
 byte-for-byte apart from retrieval timestamps; CI rebuilds them on every push and compares the

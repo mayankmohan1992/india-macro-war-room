@@ -25,6 +25,10 @@ else
   log "[INFO] --build-only: reusing raw/*.json"
 fi
 
+log "[INFO] verifying the numbers against the RBI source tables"
+python3 tools/verify_provenance.py >"$LOG_DIR/provenance_$STAMP.log" 2>&1 || { log "[ERROR] provenance verification failed - see $LOG_DIR/provenance_$STAMP.log"; exit 1; }
+grep -E "^  [0-9]+/[0-9]+ checks passed|indicators:" "$LOG_DIR/provenance_$STAMP.log" | sed 's/^ */        /' | tee -a "$LOG"
+
 log "[INFO] analysing + rendering"
 python3 build_dashboard.py >"$LOG_DIR/build_$STAMP.log" 2>&1 || { log "[ERROR] build failed - see $LOG_DIR/build_$STAMP.log"; exit 1; }
 tail -n 8 "$LOG_DIR/build_$STAMP.log" | sed 's/^/        /' | tee -a "$LOG"

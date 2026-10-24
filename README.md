@@ -93,7 +93,9 @@ Every indicator — id, definition, frequency, source table and current reading 
 ```mermaid
 flowchart LR
     A["RBI DBIE<br/>public tables"] -->|fetch_series.py<br/>completeness gate| B["raw/*.json<br/>committed"]
-    B -->|build_dashboard.py<br/>all maths in Python| C["dataset +<br/>dashboard/index.html"]
+    B -->|tools/verify_provenance.py<br/>accounting identities| P{"numbers<br/>reconcile?"}
+    P -->|pass| C["dataset +<br/>dashboard/index.html"]
+    B -->|build_dashboard.py<br/>all maths in Python| C
     C -->|publish_api.py| D["api/v1/*.json + *.csv"]
     C -->|verify_dashboard.py| E{"headless Chromium<br/>assertions"}
     D -->|validate_api.py| E
@@ -156,6 +158,7 @@ pip install -r requirements.txt
 python -m playwright install chromium        # only needed for the verification gate
 
 python fetch_series.py        # pull the newest tables from RBI (needs network)
+python tools/verify_provenance.py  # check the numbers against RBI's own accounting identities
 python build_dashboard.py     # derive everything, render dashboard/index.html
 python publish_api.py         # write api/v1/
 python tools/gen_docs.py      # regenerate the reference docs from the data

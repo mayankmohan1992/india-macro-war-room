@@ -236,6 +236,10 @@
   .def-body .pending{border:1px dashed var(--line2);padding:9px 11px;color:var(--ink2);font-size:11.5px;font-family:var(--mono)}
   .def-body .meta{border-top:1px solid var(--line);margin-top:11px;padding-top:9px;font-size:12px;color:var(--ink2)}
   .def-body .meta b{color:var(--ink);font-weight:600}
+  .def-body .meta code{font-family:var(--mono);font-size:11px}
+  .def-body .vrf-ok{color:var(--good);font-weight:600}
+  .def-body .vrf-single{color:var(--watch);font-weight:600}
+  .def-body .vrf-none{color:var(--bad);font-weight:600}
   .modal-panel.def{width:min(940px,96vw);max-height:88vh}
 
   /* ---------------- responsive: mobile = hamburger rail + scrolling charts ---------------- */
@@ -1047,6 +1051,15 @@ function openDef(keys, title, extra){
       hover any point to read the exact value for that date; click the chart to open it full size with zoom.<br><br>
       <b>Source table:</b> ${extra.chart.sources||'RBI Database on Indian Economy (DBIE) weekly/fortnightly statements'}.</div>`;
   }
+  if(extra && extra.tile){
+    const V=(DATA.verification&&DATA.verification.indicators&&DATA.verification.indicators[extra.tile.id])||null;
+    let line;
+    if(!V) line=`<span class="vrf-none">No provenance check declared for this indicator.</span>`;
+    else if(V.status==='verified') line=`<span class="vrf-ok">Verified</span> against ${V.checks.length} independent RBI check${V.checks.length>1?'s':''} — <code>${esc(V.checks.join(', '))}</code> (${esc(V.tier)}).`;
+    else if(V.status==='single-source') line=`<span class="vrf-single">Single source</span> — ${esc(V.note||'no second witness in the RBI tables we fetch')}. Not independently verifiable; the value is pinned to its source cell and checked for sanity only.`;
+    else line=`<span class="vrf-none">Unverified</span> — ${esc(V.note||'no check declared')}.`;
+    html+=`<div class="meta vrf"><b>Provenance:</b> ${line}</div>`;
+  }
   document.getElementById('d-body').innerHTML=html;
   defModal.hidden=false; document.body.classList.add('modal-open');
   document.getElementById('d-close').focus();
@@ -1189,6 +1202,10 @@ function renderHead(){
   }).join('');   /* end snapshot strip */
   if(footEl) footEl.innerHTML=
     `Built from RBI DBIE public data · tables used: ${DATA.sources.reports} · fetched by fetch_series.py, analysed and rendered by build_dashboard.py.<br>`+
+    (()=>{const V=DATA.verification||{}, s=V.summary||{};
+      if(!s.indicators_total) return '';
+      return `<b>Provenance:</b> ${s.indicators_verified} of ${s.indicators_total} indicators are independently verified against the RBI source tables (${s.passed}/${s.checks} checks passed at ${V.as_of}) · `+
+             `${s.indicators_single_source} are single-source, with no second witness in the tables we fetch, and are labelled as such in each ? panel.<br>`;})()+
     `All percentages, growth rates, spreads and moving averages are computed at build time; this page only draws them. `+
     `Definitions are carried from RBI / MoSPI / FBIL published pages. Typeface: Archivo (SIL Open Font License), embedded so the page works offline.`;
 }

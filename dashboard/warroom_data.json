@@ -1,4 +1,269 @@
 {
+ "verification": {
+  "as_of": "2026-10-16",
+  "summary": {
+   "checks": 16,
+   "passed": 16,
+   "failed": 0,
+   "indicators_verified": 20,
+   "indicators_single_source": 18,
+   "indicators_unverified": 0,
+   "indicators_total": 38
+  },
+  "indicators": {
+   "cpi": {
+    "status": "verified",
+    "checks": [
+     "cpi_published_vs_derived"
+    ],
+    "tier": "derived"
+   },
+   "wpi": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from the WPI index; no published growth series in the tables we fetch"
+   },
+   "repo": {
+    "status": "verified",
+    "checks": [
+     "repo_cross_feed"
+    ],
+    "tier": "cross-feed"
+   },
+   "m3": {
+    "status": "verified",
+    "checks": [
+     "m3_components",
+     "m3_sources"
+    ],
+    "tier": "identity"
+   },
+   "rm": {
+    "status": "verified",
+    "checks": [
+     "rm_components",
+     "rm_sources"
+    ],
+    "tier": "identity"
+   },
+   "credit": {
+    "status": "verified",
+    "checks": [
+     "scb_food_nonfood"
+    ],
+    "tier": "identity"
+   },
+   "deposit": {
+    "status": "verified",
+    "checks": [
+     "scb_deposits"
+    ],
+    "tier": "identity"
+   },
+   "cdr": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "ratio of credit to deposits; both inputs are identity-verified, the division is not"
+   },
+   "liquidity": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "22-working-day mean of net LAF; the mean is arithmetic, the input is single-source"
+   },
+   "callmoney": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the weekly WSS table (weighted-average call rate)"
+   },
+   "gsec": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the weekly WSS table (10-year par yield)"
+   },
+   "fxa": {
+    "status": "verified",
+    "checks": [
+     "m3_sources"
+    ],
+    "tier": "identity"
+   },
+   "fca": {
+    "status": "verified",
+    "checks": [
+     "rbi_balance_sheet"
+    ],
+    "tier": "identity"
+   },
+   "tbill": {
+    "status": "verified",
+    "checks": [
+     "tbill_tenors"
+    ],
+    "tier": "identity"
+   },
+   "cdout": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the CD table (amount outstanding)"
+   },
+   "cpout": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the CP table (amount outstanding)"
+   },
+   "turnover": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "sum of five columns in the money-market turnover table; no second witness"
+   },
+   "yld91": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the weekly WSS table (91-day T-bill primary yield)"
+   },
+   "fwd3m": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one cell in the weekly WSS table (3-month forward premia)"
+   },
+   "wpifuel": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from a WPI component index; component weights are published outside DBIE"
+   },
+   "wpimanu": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from a WPI component index; component weights are published outside DBIE"
+   },
+   "wpiprim": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from a WPI component index; component weights are published outside DBIE"
+   },
+   "cpirural": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from the CPI rural index; weights are published outside DBIE"
+   },
+   "cpiurban": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "computed from the CPI urban index; weights are published outside DBIE"
+   },
+   "m1": {
+    "status": "verified",
+    "checks": [
+     "m1_against_m3"
+    ],
+    "tier": "identity"
+   },
+   "moneymult": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "M3 / reserve money; both inputs are identity-verified, the division is not"
+   },
+   "bankdep": {
+    "status": "verified",
+    "checks": [
+     "rm_components"
+    ],
+    "tier": "identity"
+   },
+   "rbicredit": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "net RBI credit to the Centre - a sub-line of a verified parent, not verified itself"
+   },
+   "rupeesec": {
+    "status": "verified",
+    "checks": [
+     "rbi_balance_sheet"
+    ],
+    "tier": "identity"
+   },
+   "crr": {
+    "status": "verified",
+    "checks": [
+     "crr_cross_feed"
+    ],
+    "tier": "cross-feed"
+   },
+   "slr": {
+    "status": "verified",
+    "checks": [
+     "slr_cross_feed"
+    ],
+    "tier": "cross-feed"
+   },
+   "usdinr": {
+    "status": "verified",
+    "checks": [
+     "usdinr_cross_feed"
+    ],
+    "tier": "cross-feed"
+   },
+   "termspread": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "10y G-sec minus 91-day T-bill; both inputs are single-source"
+   },
+   "gold": {
+    "status": "verified",
+    "checks": [
+     "rbi_balance_sheet"
+    ],
+    "tier": "identity"
+   },
+   "invest": {
+    "status": "verified",
+    "checks": [
+     "scb_investments"
+    ],
+    "tier": "identity"
+   },
+   "nonfood": {
+    "status": "verified",
+    "checks": [
+     "scb_food_nonfood"
+    ],
+    "tier": "identity"
+   },
+   "food": {
+    "status": "verified",
+    "checks": [
+     "scb_food_nonfood"
+    ],
+    "tier": "identity"
+   },
+   "notes": {
+    "status": "verified",
+    "checks": [
+     "notes_split",
+     "rbi_balance_sheet"
+    ],
+    "tier": "identity"
+   }
+  }
+ },
  "definitions": {
   "exchange_rate": {
    "term": "USD/INR and EUR/INR spot exchange rates (Reference Rate)",
@@ -233,7 +498,7 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-24 16:07 IST",
+ "generated": "2026-10-24 17:11 IST",
  "as_of": "2026-10-18",
  "as_of_by_frequency": {
   "daily": "2026-10-18",

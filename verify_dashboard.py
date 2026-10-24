@@ -1012,6 +1012,43 @@ def check_history_modal(pw, problems):
             problems.append("gold: ? also opened the history modal")
         page.keyboard.press("Escape"); page.wait_for_timeout(180)
 
+        # PROVENANCE must be stated in the panel, and must agree with the payload. A verified
+        # indicator has to name its checks; a single-source one has to say so rather than stay silent,
+        # because silence reads as "verified" to a casual reader.
+        ver = (DATA.get("verification") or {}).get("indicators") or {}
+        for tid in ("m3", "callmoney"):
+            rec = ver.get(tid) or {}
+            el = page.query_selector(f'.tile[data-id="{tid}"]')
+            el.scroll_into_view_if_needed(); el.query_selector(".help").click()
+            page.wait_for_timeout(240)
+            body = page.inner_text("#d-body")
+            page.keyboard.press("Escape"); page.wait_for_timeout(150)
+            if "Provenance:" not in body:
+                problems.append(f"{tid}: the ? panel states no provenance")
+                continue
+            if rec.get("status") == "verified":
+                if "Verified" not in body:
+                    problems.append(f"{tid}: the payload says verified but the panel does not")
+                for c in rec.get("checks") or []:
+                    if c not in body:
+                        problems.append(f"{tid}: the panel omits its check {c!r}")
+            elif rec.get("status") == "single-source" and "Single source" not in body:
+                problems.append(f"{tid}: single-source indicator does not say so in its panel")
+            print(f"    provenance {tid}: {rec.get('status')} · {len(rec.get('checks') or [])} check(s)")
+
+        # the footer must carry the summary, so the gap is visible without opening any panel
+        foot = page.inner_text("#foot")
+        vsum = (DATA.get("verification") or {}).get("summary") or {}
+        if vsum.get("indicators_total"):
+            want = (f"{vsum['indicators_verified']} of {vsum['indicators_total']} indicators "
+                    f"are independently verified")
+            if "Provenance:" not in foot or want not in foot:
+                problems.append("the footer does not carry the provenance summary "
+                                f"(expected {want!r})")
+            print(f"    footer provenance: {want}")
+        else:
+            problems.append("the payload carries no verification summary")
+
         # the strip must date a SETTING by when it took effect, not by the snapshot timestamp.
         # Derived from the payload: a literal date here would break the deploy gate on the next move.
         strip = page.eval_on_selector_all("#strip .kv", "e => e.map(k => k.innerText.replace(/\\n/g, ' | '))")

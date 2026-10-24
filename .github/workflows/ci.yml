@@ -43,6 +43,9 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 
+      - name: Verify the numbers against the RBI source tables
+        run: python tools/verify_provenance.py
+
       - name: Rebuild the dataset from the committed raw tables
         run: |
           python build_dashboard.py

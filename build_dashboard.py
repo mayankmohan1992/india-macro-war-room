@@ -1234,7 +1234,24 @@ def main() -> int:
     else:
         log.warning("[WARN] [Build] no definitions.json - the ? panels will show 'pending'")
 
+    # Provenance verdict, produced by tools/verify_provenance.py from raw/ before this build runs.
+    # Inlined so every ? panel can state how its number was checked - or that it has no second
+    # witness - instead of leaving the reader to assume everything was verified.
+    verification = {}
+    vpath = ROOT / "api" / "v1" / "verification.json"
+    if vpath.exists():
+        try:
+            vdoc = json.loads(vpath.read_text())
+            verification = {"as_of": vdoc.get("as_of"), "summary": vdoc.get("summary", {}),
+                            "indicators": vdoc.get("indicators", {})}
+            log.info("[INFO] [Build] provenance: %s", verification["summary"])
+        except Exception:
+            log.error("[ERROR] [Build] verification.json is unreadable:\n%s", traceback.format_exc())
+    else:
+        log.warning("[WARN] [Build] no api/v1/verification.json - ? panels will not show provenance")
+
     payload = {
+        "verification": verification,
         "definitions": defs,
         "def_keys": DEF_KEYS,
         "generated": dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M %Z"),

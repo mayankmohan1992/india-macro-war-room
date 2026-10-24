@@ -161,9 +161,9 @@ The portal's own key-rates set plus the weekly market prices, each row carrying 
 source label (`key rates` / `weekly WSS`), because the two are different vintages and must not be
 silently compared. Settings carry `in force since` semantics via `since`.
 
-### `GET /dataset.json` — everything in one document
+### Cross-checks (inside `dataset.json`)
 
-(see below) It also carries **`cross_checks`** at the top level: for each indicator whose headline is
+`dataset.json` carries **`cross_checks`** at the top level: for each indicator whose headline is
 derived rather than published, the largest divergence between the derived and the published series, the
 month it occurred, and the tolerance the build enforces. Example:
 
@@ -188,6 +188,30 @@ history.
 
 The catalogue, every series' points and history, the snapshot and the definitions. Convenient for a
 one-shot fetch or an offline cache; ~1 MB, so prefer the smaller endpoints for frequent polling.
+
+### `GET /verification.json` — how each number was checked
+
+The one document that admits what is *not* verified. For every one of the 38 indicators it states how
+the number was checked against the RBI source tables, or that it has no second witness:
+
+```json
+"indicators": {
+  "m3":        { "status": "verified", "tier": "identity", "checks": ["m3_components", "m3_sources"] },
+  "repo":      { "status": "verified", "tier": "cross-feed", "checks": ["repo_cross_feed"] },
+  "callmoney": { "status": "single-source", "tier": "single-source",
+                 "note": "one cell in the weekly WSS table (weighted-average call rate)" }
+}
+```
+
+- `verified` — at least one independent check passed. The check ids are listed; `checks` at the top
+  level describes each one and the residual it measured.
+- `single-source` — one cell in one table, no second witness in the RBI tables we fetch. Stated rather
+  than dressed up as a check.
+- `unverified` — no check declared. Should be empty; the validator fails the build if it is not.
+
+Top-level `summary` carries `checks`, `passed`, `failed` and the three indicator counts, and `as_of` is
+the newest observation in the sources (never the wall clock, so this file does not change the dataset
+hash between builds). Currently **16 checks, 20 verified, 18 single-source**.
 
 ### `GET /status.json` — freshness and change detection
 

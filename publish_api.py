@@ -47,7 +47,7 @@ log = logging.getLogger("api")
 # The project version, published in status.json so a deployment can be identified at runtime
 # (`curl .../status.json | jq .project_version`). Kept in sync with CHANGELOG.md and the git tag.
 # status.json is excluded from dataset_sha256, so bumping this does not look like a data change.
-PROJECT_VERSION = "1.0.5"
+PROJECT_VERSION = "1.0.6"
 
 ROOT = pathlib.Path(__file__).resolve().parent
 API_VERSION = "v1"
@@ -280,6 +280,14 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
                                                                 "change", "kind", "label"]}}}}
     for name, doc in (("series", series_schema), ("index", index_schema), ("latest", latest_schema)):
         write_json(out / "schema" / f"{name}.schema.json", doc)
+
+    # The provenance verdict is produced from raw/ by tools/verify_provenance.py. Carry it into every
+    # output directory, so a rebuild into a temp dir (CI's --out /tmp/api_rebuild) hashes exactly the
+    # same set of files as the committed API - otherwise the reproducibility check compares like with
+    # unlike and fails for the wrong reason.
+    vpath = ROOT / "api" / API_VERSION / "verification.json"
+    if vpath.exists() and vpath.resolve() != (out / "verification.json").resolve():
+        (out / "verification.json").write_text(vpath.read_text())
 
     # ---- prune stale series files ---------------------------------------------------------------
     # Anything in series/ that the current payload no longer produces must go: a dropped indicator

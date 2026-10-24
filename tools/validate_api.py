@@ -247,6 +247,48 @@ def main() -> int:
                             f"(missing {sorted(want_ids - got_ids)[:4]}, "
                             f"extra {sorted(got_ids - want_ids)[:4]})")
 
+        # verification.json is the provenance verdict (tools/verify_provenance.py). Nothing else
+        # reads it, so without this it could ship a failed check or silently omit an indicator.
+        vpath = API / "verification.json"
+        if not vpath.exists():
+            problems.append("verification.json is missing")
+        else:
+            v = json.loads(vpath.read_text())
+            vsum = v.get("summary") or {}
+            checks = {c["id"]: c for c in v.get("checks") or []}
+            vi = v.get("indicators") or {}
+            if vsum.get("checks") != len(checks):
+                problems.append(f"verification.json summary.checks {vsum.get('checks')} != "
+                                f"{len(checks)} checks listed")
+            failed_checks = [c["id"] for c in checks.values() if c.get("status") != "pass"]
+            if failed_checks:
+                problems.append(f"verification.json carries failing check(s): {failed_checks}")
+            if set(vi) != {i["id"] for i in index["indicators"]}:
+                missing = {i["id"] for i in index["indicators"]} - set(vi)
+                extra = set(vi) - {i["id"] for i in index["indicators"]}
+                problems.append(f"verification.json does not cover index.json exactly "
+                                f"(missing {sorted(missing)[:4]}, extra {sorted(extra)[:4]})")
+            for iid, rec in vi.items():
+                if rec.get("status") == "verified":
+                    bad = [c for c in rec.get("checks") or []
+                           if c not in checks or checks[c].get("status") != "pass"]
+                    if not rec.get("checks"):
+                        problems.append(f"verification.json: {iid} claims verified with no checks")
+                    elif bad:
+                        problems.append(f"verification.json: {iid} cites check(s) that did not pass: "
+                                        f"{bad}")
+                elif rec.get("status") not in ("single-source", "unverified"):
+                    problems.append(f"verification.json: {iid} has unknown status "
+                                    f"{rec.get('status')!r}")
+            n_v = sum(1 for r in vi.values() if r.get("status") == "verified")
+            n_s = sum(1 for r in vi.values() if r.get("status") == "single-source")
+            if (vsum.get("indicators_verified"), vsum.get("indicators_single_source")) != (n_v, n_s):
+                problems.append(f"verification.json summary counts do not match its own indicator map "
+                                f"({vsum.get('indicators_verified')}/{vsum.get('indicators_single_source')}"
+                                f" vs {n_v}/{n_s})")
+            print(f"  provenance: {len(checks)} checks, {n_v} verified / {n_s} single-source / "
+                  f"{len(vi)} indicators")
+
         print(f"  consistency: {len(index['indicators'])} indicators cross-checked "
               f"(index/latest/series/CSV/payload, four-way `change`)")
 

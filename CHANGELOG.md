@@ -4,6 +4,75 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.6] — 2026-10-24
+
+Every gate until now compared the published documents **to each other** — `index.json` to
+`latest.json`, the CSV to the series, the tile to its own points. All of them pass if the build is
+consistently wrong, because none of them looks at the source table. This release adds the missing
+comparison: the numbers against **raw/**.
+
+### Added — `tools/verify_provenance.py`
+
+Sixteen checks in three tiers, using **RBI data only** — no external or third-party source:
+
+- **Accounting identity (11 checks, 15 indicators).** The same total is published two ways inside one
+  table, so a misread or shifted column breaks it immediately:
+  - M3 = currency with public + demand + time + other deposits, **and** M3 = net bank credit to govt +
+    credit to commercial sector + net FX assets + govt currency liability − non-monetary liabilities —
+    two independent decompositions of the same total
+  - M1 + time deposits = M3 (pins the computed M1 tile to the published M3)
+  - Reserve money = its three components **and** = its four sources − non-monetary liabilities
+  - food credit + non-food credit = bank credit · demand + time deposits = aggregate deposits ·
+    govt securities + other approved = investments
+  - notes in circulation + notes held by the banking department = notes issued
+  - **RBI balance sheet double entry**: liabilities total and assets total both equal the published
+    total — one check that validates four published columns at once
+  - each T-bill tenor total = banks + primary dealers + state govts + others
+- **Cross-feed (4 checks, 4 indicators).** The same fact in two RBI feeds: the weekly WSS table and the
+  portal's key-rates snapshot for repo, CRR and SLR; the weekly INR/US$ row against the daily FBIL
+  reference rate (compared on value, and only asserted equal when the observation dates match).
+- **Published vs derived (1 check).** RBI's published CPI inflation against the figure recomputed from
+  the CPI index, 0.1pp tolerance (currently 0.05pp).
+
+All sixteen pass on the current data, reconciling to ±₹1 lakh (rounding in the last printed unit).
+
+### Added — the gap is now published, not hidden
+
+`api/v1/verification.json` records, per indicator, how it was checked:
+
+| Status | Count | Meaning |
+|---|---|---|
+| `verified` | **20** | covered by at least one independent check, which passed |
+| `single-source` | **18** | one cell in one table, no second witness — **stated, not dressed up as a check** |
+
+The 18 single-source indicators name their own reason (`callmoney`, `gsec`, `yld91`, `fwd3m`, `cdout`,
+`cpout`, `turnover`, `wpi` and its three components, `cpirural`, `cpiurban`, `cdr`, `moneymult`,
+`termspread`, `liquidity`, `rbicredit`). The WPI/CPI components could be checked against component
+weights, but those are published outside DBIE, so no check is claimed for them.
+
+### Changed
+
+- **Every `?` panel now states its provenance** — "Verified against 2 independent RBI checks", or
+  "Single source — no second witness in the RBI tables we fetch" — and the footer carries the summary
+  (`20 of 38 indicators independently verified · 18 single-source`).
+- **The check runs before the build** in `ci.yml`, `daily.yml` and `refresh.sh`, and fails the pipeline
+  on any non-reconciling number. Verified both ways: perturbing one component of the M3 identity by
+  ₹5,000 exits 1 and drops that indicator to unverified; restoring it exits 0.
+- **`tools/validate_api.py`** now validates `verification.json` itself: summary counts against its own
+  arrays, exact coverage of `index.json`, no failing check, and no indicator claiming `verified` that
+  cites a check which did not pass.
+- **`publish_api.py`** carries `verification.json` into every output directory, so CI's rebuild into a
+  temp directory hashes the same file set as the committed API.
+
+### Notes
+
+- Column resolution in the verifier is **independent of `build_dashboard.py`** — it reads the report
+  headers itself — so a bug in the build's column map cannot hide in both. It also asserts header
+  length against row length (report 9 ships a non-data `Version` column), so a column shift is a hard
+  error rather than a silent offset.
+- Identity checks catch our mistakes (transcription, column drift, wrong sign), not RBI's. A publisher
+  error that is internally consistent would pass.
+
 ## [1.0.5] — 2026-10-24
 
 An audit-and-fix release. Most of the 33 defects were in the **gates** rather than the numbers, and

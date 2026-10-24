@@ -1,0 +1,453 @@
+{
+ "as_of": "2026-10-16",
+ "tolerance_pct": 0.01,
+ "summary": {
+  "checks": 16,
+  "passed": 16,
+  "failed": 0,
+  "indicators_verified": 20,
+  "indicators_single_source": 18,
+  "indicators_unverified": 0,
+  "indicators_total": 38
+ },
+ "source": "Reserve Bank of India, Database on Indian Economy (DBIE) - raw/ tables only",
+ "note": "Checks compare RBC-published totals against each other (accounting identities), against a second RBI feed, or a published figure against one recomputed from the index. An indicator marked single-source has one cell in one table and no second witness; that is stated rather than dressed up as a check.",
+ "checks": [
+  {
+   "id": "m3_components",
+   "tier": "identity",
+   "covers": [
+    "m3"
+   ],
+   "description": "currency with public + demand + time + other deposits = M3",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "33,300,300 vs 33,300,300"
+  },
+  {
+   "id": "m3_sources",
+   "tier": "identity",
+   "covers": [
+    "m3",
+    "fxa"
+   ],
+   "description": "net bank credit to govt + credit to commercial sector + net FX assets + govt currency liability - non-monetary liabilities = M3",
+   "status": "pass",
+   "residual": 3e-06,
+   "detail": "33,300,301 vs 33,300,300"
+  },
+  {
+   "id": "m1_against_m3",
+   "tier": "identity",
+   "covers": [
+    "m1"
+   ],
+   "description": "(currency with public + demand deposits + other deposits with RBI) + time deposits = M3",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "33,300,300 vs 33,300,300"
+  },
+  {
+   "id": "rm_components",
+   "tier": "identity",
+   "covers": [
+    "rm",
+    "bankdep"
+   ],
+   "description": "currency in circulation + bankers' deposits + other deposits = reserve money",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "5,324,881 vs 5,324,881"
+  },
+  {
+   "id": "rm_sources",
+   "tier": "identity",
+   "covers": [
+    "rm"
+   ],
+   "description": "net RBI credit to govt + RBI credit to banks & commercial sector + net FX assets + govt currency liabilities - non-monetary liabilities = reserve money",
+   "status": "pass",
+   "residual": 1.9e-05,
+   "detail": "5,324,882 vs 5,324,881"
+  },
+  {
+   "id": "scb_food_nonfood",
+   "tier": "identity",
+   "covers": [
+    "credit",
+    "food",
+    "nonfood"
+   ],
+   "description": "food credit + non-food credit = bank credit",
+   "status": "pass",
+   "residual": 4e-06,
+   "detail": "22,742,778 vs 22,742,777"
+  },
+  {
+   "id": "scb_deposits",
+   "tier": "identity",
+   "covers": [
+    "deposit"
+   ],
+   "description": "demand deposits + time deposits = aggregate deposits",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "27,875,910 vs 27,875,910"
+  },
+  {
+   "id": "scb_investments",
+   "tier": "identity",
+   "covers": [
+    "invest"
+   ],
+   "description": "government securities + other approved securities = investments",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "7,538,626 vs 7,538,626"
+  },
+  {
+   "id": "notes_split",
+   "tier": "identity",
+   "covers": [
+    "notes"
+   ],
+   "description": "notes in circulation + notes held in the banking department = notes issued",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "3,107,652 vs 3,107,652"
+  },
+  {
+   "id": "rbi_balance_sheet",
+   "tier": "identity",
+   "covers": [
+    "fca",
+    "gold",
+    "rupeesec",
+    "notes"
+   ],
+   "description": "double entry: liabilities total and assets total both equal the published total",
+   "status": "pass",
+   "residual": 1.6e-05,
+   "detail": "liabilities 6,261,480 vs 6,261,480; assets 6,261,481 vs 6,261,480"
+  },
+  {
+   "id": "tbill_tenors",
+   "tier": "identity",
+   "covers": [
+    "tbill"
+   ],
+   "description": "each tenor total = banks + primary dealers + state govts + others",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "91d: 229,857 vs 229,857; 182d: 228,823 vs 228,823; 364d: 358,490 vs 358,490"
+  },
+  {
+   "id": "repo_cross_feed",
+   "tier": "cross-feed",
+   "covers": [
+    "repo"
+   ],
+   "description": "weekly WSS policy repo rate = key-rates snapshot",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "6 vs 6"
+  },
+  {
+   "id": "crr_cross_feed",
+   "tier": "cross-feed",
+   "covers": [
+    "crr"
+   ],
+   "description": "weekly WSS cash reserve ratio = key-rates snapshot",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "3 vs 3"
+  },
+  {
+   "id": "slr_cross_feed",
+   "tier": "cross-feed",
+   "covers": [
+    "slr"
+   ],
+   "description": "weekly WSS statutory liquidity ratio = key-rates snapshot",
+   "status": "pass",
+   "residual": 0.0,
+   "detail": "18 vs 18"
+  },
+  {
+   "id": "usdinr_cross_feed",
+   "tier": "cross-feed",
+   "covers": [
+    "usdinr"
+   ],
+   "description": "weekly WSS INR/US$ = portal daily FBIL reference rate",
+   "status": "pass",
+   "residual": 0.051673,
+   "detail": "different observation dates (2026-10-16 weekly vs 2026-10-15 daily) - values 95.0200 vs 95.0691, consistent"
+  },
+  {
+   "id": "cpi_published_vs_derived",
+   "tier": "derived",
+   "covers": [
+    "cpi"
+   ],
+   "description": "RBI's published CPI inflation = the figure recomputed from the CPI index",
+   "status": "pass",
+   "residual": 0.053057,
+   "detail": "published 5.54% vs index-derived 5.59% for 2026-09-30 (0.053pp)"
+  }
+ ],
+ "indicators": {
+  "cpi": {
+   "status": "verified",
+   "checks": [
+    "cpi_published_vs_derived"
+   ],
+   "tier": "derived"
+  },
+  "wpi": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from the WPI index; no published growth series in the tables we fetch"
+  },
+  "repo": {
+   "status": "verified",
+   "checks": [
+    "repo_cross_feed"
+   ],
+   "tier": "cross-feed"
+  },
+  "m3": {
+   "status": "verified",
+   "checks": [
+    "m3_components",
+    "m3_sources"
+   ],
+   "tier": "identity"
+  },
+  "rm": {
+   "status": "verified",
+   "checks": [
+    "rm_components",
+    "rm_sources"
+   ],
+   "tier": "identity"
+  },
+  "credit": {
+   "status": "verified",
+   "checks": [
+    "scb_food_nonfood"
+   ],
+   "tier": "identity"
+  },
+  "deposit": {
+   "status": "verified",
+   "checks": [
+    "scb_deposits"
+   ],
+   "tier": "identity"
+  },
+  "cdr": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "ratio of credit to deposits; both inputs are identity-verified, the division is not"
+  },
+  "liquidity": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "22-working-day mean of net LAF; the mean is arithmetic, the input is single-source"
+  },
+  "callmoney": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the weekly WSS table (weighted-average call rate)"
+  },
+  "gsec": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the weekly WSS table (10-year par yield)"
+  },
+  "fxa": {
+   "status": "verified",
+   "checks": [
+    "m3_sources"
+   ],
+   "tier": "identity"
+  },
+  "fca": {
+   "status": "verified",
+   "checks": [
+    "rbi_balance_sheet"
+   ],
+   "tier": "identity"
+  },
+  "tbill": {
+   "status": "verified",
+   "checks": [
+    "tbill_tenors"
+   ],
+   "tier": "identity"
+  },
+  "cdout": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the CD table (amount outstanding)"
+  },
+  "cpout": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the CP table (amount outstanding)"
+  },
+  "turnover": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "sum of five columns in the money-market turnover table; no second witness"
+  },
+  "yld91": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the weekly WSS table (91-day T-bill primary yield)"
+  },
+  "fwd3m": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one cell in the weekly WSS table (3-month forward premia)"
+  },
+  "wpifuel": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from a WPI component index; component weights are published outside DBIE"
+  },
+  "wpimanu": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from a WPI component index; component weights are published outside DBIE"
+  },
+  "wpiprim": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from a WPI component index; component weights are published outside DBIE"
+  },
+  "cpirural": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from the CPI rural index; weights are published outside DBIE"
+  },
+  "cpiurban": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "computed from the CPI urban index; weights are published outside DBIE"
+  },
+  "m1": {
+   "status": "verified",
+   "checks": [
+    "m1_against_m3"
+   ],
+   "tier": "identity"
+  },
+  "moneymult": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "M3 / reserve money; both inputs are identity-verified, the division is not"
+  },
+  "bankdep": {
+   "status": "verified",
+   "checks": [
+    "rm_components"
+   ],
+   "tier": "identity"
+  },
+  "rbicredit": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "net RBI credit to the Centre - a sub-line of a verified parent, not verified itself"
+  },
+  "rupeesec": {
+   "status": "verified",
+   "checks": [
+    "rbi_balance_sheet"
+   ],
+   "tier": "identity"
+  },
+  "crr": {
+   "status": "verified",
+   "checks": [
+    "crr_cross_feed"
+   ],
+   "tier": "cross-feed"
+  },
+  "slr": {
+   "status": "verified",
+   "checks": [
+    "slr_cross_feed"
+   ],
+   "tier": "cross-feed"
+  },
+  "usdinr": {
+   "status": "verified",
+   "checks": [
+    "usdinr_cross_feed"
+   ],
+   "tier": "cross-feed"
+  },
+  "termspread": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "10y G-sec minus 91-day T-bill; both inputs are single-source"
+  },
+  "gold": {
+   "status": "verified",
+   "checks": [
+    "rbi_balance_sheet"
+   ],
+   "tier": "identity"
+  },
+  "invest": {
+   "status": "verified",
+   "checks": [
+    "scb_investments"
+   ],
+   "tier": "identity"
+  },
+  "nonfood": {
+   "status": "verified",
+   "checks": [
+    "scb_food_nonfood"
+   ],
+   "tier": "identity"
+  },
+  "food": {
+   "status": "verified",
+   "checks": [
+    "scb_food_nonfood"
+   ],
+   "tier": "identity"
+  },
+  "notes": {
+   "status": "verified",
+   "checks": [
+    "notes_split",
+    "rbi_balance_sheet"
+   ],
+   "tier": "identity"
+  }
+ }
+}
