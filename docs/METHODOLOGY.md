@@ -67,6 +67,18 @@ enforced by the build and asserted by the verifier:
    *"in force since &lt;date&gt;"*, and the size of the move is reported in basis points. (Where the
    portal's own snapshot timestamp and the published series disagree — they did, by a week, for CRR and
    SLR — the published series wins.)
+
+   That date is computed from the **whole fetched table**, never from the chart window, and every
+   surface reads the same field. It did not: the chart window is the last 260 weekly rows
+   (2021-10 onward) while the table holds 811 (2011 onward), so a step-detection run on the trimmed
+   window dated SLR *"in force since 2021-10-22"* — the window's first row — when the last real change
+   in the source was **2020-04-17**, and the snapshot strip, which reads the full table, said
+   2020-04-17 on the same screen. Settings therefore keep their entire history, `effective_from` is
+   always a date the published document contains, and the verifier fails if a tile and its strip chip
+   disagree about when the value took effect.
+
+   Scoring follows the same rule as before: the colour reads the **last move**, and a move older than
+   400 days is not today's stance, so such a setting is reported as unchanged and scored neutral.
 2. **A stale reading is labelled, not smoothed over.** Beyond ~60 days the tile shows `stale Nd` with
    its last reported date instead of a change figure — comparing an old observation with "three months
    ago" would compare it with itself. (Monthly series lag ~36 days by design and are not flagged.)
@@ -153,8 +165,9 @@ opens the full-size modal which zooms, pans, resets and closes; the theme toggle
 chart colours and persists; the mobile hamburger drawer opens and closes over a backdrop.
 
 `tools/validate_api.py` then validates every API document against its JSON Schema, cross-checks the
-index/latest/series/CSV against the dashboard payload, and verifies the manifest hashes and the
-`dataset_sha256`.
+index/latest/series/CSV against the dashboard payload (including `settings.json`, `snapshot.json` and
+`dataset.json`), type-checks every published point, verifies `status.json`'s own counts, and checks the
+manifest hashes and the `dataset_sha256`.
 
 ## 3. Why the numbers can still be wrong, and what is done about it
 

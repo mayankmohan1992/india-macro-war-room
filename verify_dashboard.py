@@ -93,6 +93,12 @@ def check_responsive(browser, problems):
     print("\nresponsive sweep:")
     for w in (1760, 1500, 1280, 1180, 980, 760, 480):
         pg = browser.new_page(viewport={"width": w, "height": 900})
+        # Capture console/page errors on the sweep pages too. They had none wired, so a script error
+        # thrown in exactly the band where the shell's @media block lives went unnoticed.
+        sweep_errs: list[str] = []
+        pg.on("console", lambda m, e=sweep_errs: e.append(f"{m.type}: {m.text}")
+              if m.type == "error" else None)
+        pg.on("pageerror", lambda exc, e=sweep_errs: e.append(f"pageerror: {exc}"))
         pg.goto(PAGE.as_uri())
         pg.wait_for_timeout(450)
         res = pg.evaluate("""() => ({
@@ -120,6 +126,8 @@ def check_responsive(browser, problems):
             problems.append(f"@{w}px dead space: {res['bad']}")
         if res["overflow"] > 0:
             problems.append(f"@{w}px: content overflows horizontally by {res['overflow']}px")
+        if sweep_errs:
+            problems.append(f"@{w}px console/page errors: {sweep_errs[:2]}")
         pg.close()
 
 
@@ -185,6 +193,12 @@ def check_shell(page, problems):
         return {tiles: per('.tiles'), charts: per('.charts')};
     }""")
     print(f"  columns: tiles {cols['tiles'][:6]}… · charts {cols['charts'][:6]}…")
+    # Assert the desktop grid actually REACHES two columns. The old check only rejected >2, so a
+    # single-column desktop - the shell's headline claim - passed everywhere.
+    if not cols["tiles"] or max(cols["tiles"]) != 2:
+        problems.append(f"the desktop tile grid never reaches 2 columns: {cols['tiles']}")
+    if not cols["charts"] or max(cols["charts"]) != 2:
+        problems.append(f"the desktop chart grid never reaches 2 columns: {cols['charts']}")
     if any(c > 2 for c in cols["tiles"]):
         problems.append(f"more than 2 tiles per row on desktop: {cols['tiles']}")
     if any(c > 2 for c in cols["charts"]):
@@ -418,21 +432,36 @@ def check_density_and_sort(page, problems):
     page.click("#sort-worst"); page.wait_for_timeout(320)
     groups = page.evaluate("""() => [...document.querySelectorAll('.tiles')].map(g =>
         [...g.children].filter(t => t.getBoundingClientRect().width > 0)
-          .map(t => ['bad','watch','good'].indexOf(t.dataset.status)))""")
+          .map(t => t.dataset.status))""")
     page.click("#sort-theme"); page.wait_for_timeout(260)
-    print(f"  worst-first, per group (0=bad): {groups}")
-    for g in groups:
-        if g != sorted(g):
-            problems.append(f"worst-first did not sort a group by status: {g}")
+    known = {"bad", "watch", "good"}
+    seen = {s for g in groups for s in g}
+    # If data-status is missing or renamed, indexOf() returns -1, which sorts before 'bad' - so the
+    # worst-first assertion passes vacuously on any page at all. Check the attribute really exists.
+    if seen - known:
+        problems.append(f"tiles carry an unknown data-status {sorted(seen - known)} - the worst-first "
+                        f"sort assertion would be vacuous")
+    else:
+        ranks = [[["bad", "watch", "good"].index(s) for s in g] for g in groups]
+        print(f"  worst-first, per group (0=bad): {ranks}")
+        for g in ranks:
+            if g != sorted(g):
+                problems.append(f"worst-first did not sort a group by status: {g}")
 
 
 def check_font(page, problems):
-    f = page.evaluate("""() => ({check: document.fonts.check('12px Archivo'),
-                                fam: getComputedStyle(document.body).fontFamily,
-                                faces: document.fonts.size})""")
-    print(f"  typeface: loaded={f['check']} faces={f['faces']} family={f['fam'][:38]}")
-    if not f["check"]:
-        problems.append("the embedded Archivo font did not load")
+    # document.fonts.check() returns TRUE for a family with no @font-face at all, so it cannot prove
+    # the embedded font loaded. Count the actually-LOADED faces instead.
+    f = page.evaluate("""() => {
+        const faces = [...document.fonts].filter(x => x.family.replace(/['"]/g, '') === 'Archivo');
+        return {loaded: faces.filter(x => x.status === 'loaded').length,
+                declared: faces.length, faces: document.fonts.size,
+                fam: getComputedStyle(document.body).fontFamily};}""")
+    print(f"  typeface: Archivo faces loaded {f['loaded']}/{f['declared']} "
+          f"(total faces {f['faces']}) family={f['fam'][:38]}")
+    if f["loaded"] < 1:
+        problems.append(f"the embedded Archivo font did not load (loaded {f['loaded']} of "
+                        f"{f['declared']} declared faces)")
     if "Archivo" not in f["fam"]:
         problems.append(f"body is not using Archivo: {f['fam']}")
 
@@ -809,6 +838,30 @@ def check_step_series(pw, problems):
         print(f"    {t['id']}: {t['value']}{t['unit']} in force since {t['effective_from']} "
               f"(prev {t.get('prev')}, {t.get('bp')}bp, {len(after)} rows)")
 
+    # ONE SETTING, ONE DATE. The tile read its start from the trimmed chart window while the snapshot
+    # strip read it from the whole table, so SLR claimed 2021-10-22 on the card and 2020-04-17 in the
+    # strip - on the same screen. Both must now quote the same date, and that date must be the last
+    # actual change in the SOURCE TABLE, not the first row of whatever window was kept.
+    snap = {c["name"]: c for c in DATA.get("snapshot") or []}
+    for tid, name in (("slr", "SLR"), ("crr", "CRR"), ("repo", "Policy repo rate")):
+        tile = next((t for t in DATA["tiles"] if t["id"] == tid), None)
+        chip = snap.get(name)
+        if not tile or not chip:
+            problems.append(f"{tid}: missing tile or snapshot chip")
+            continue
+        if tile["effective_from"] != chip["since"]:
+            problems.append(f"{tid}: the tile says 'in force since {tile['effective_from']}' but the "
+                            f"snapshot strip says '{chip['since']}' - one setting, two dates")
+        pts = DATA["series"][tile["series_key"]]["points"]
+        moves = [d for i, (d, v) in enumerate(pts) if i and v != pts[i - 1][1]]
+        if tile.get("bp") and moves and moves[-1] != tile["effective_from"]:
+            problems.append(f"{tid}: effective_from {tile['effective_from']} is not the last change in "
+                            f"the source table ({moves[-1]})")
+        if tile.get("unchanged_in_window") and tile.get("bp"):
+            problems.append(f"{tid}: claims 'unchanged in window' yet carries a {tile['bp']}bp move")
+        print(f"    {tid}: tile {tile['effective_from']} == strip {chip['since']} "
+              f"(last source change {moves[-1] if moves else '-'})")
+
     browser, page, errs = open_page(pw, 1440, 900)
     try:
         # the UI must SAY "in force since", and must not date a setting by the newest repeating row
@@ -825,7 +878,7 @@ def check_step_series(pw, problems):
             if f"in force since {t['effective_from']}" not in body:
                 problems.append(f"{t['id']}: definition panel does not date the setting by its effective "
                                 f"date")
-            if t.get("prev") is not None and f"previous setting {t['prev']}" not in body:
+            if t.get("prev") is not None and f"previous setting {t['prev']:g}" not in body:
                 problems.append(f"{t['id']}: definition panel does not show the previous setting")
             # the exact nonsense phrasing that was reported must be impossible
             bad = f"{t['value']:.2f}{t['unit']} for {t['period']}"
@@ -833,7 +886,10 @@ def check_step_series(pw, problems):
                 problems.append(f"{t['id']}: definition panel still dates the setting by the newest "
                                 f"table row ({bad!r})")
             if t["id"] == "crr":
-                print(f"    crr panel: {'in force since 2025-12-05' in body=}, "
+                # derive from the payload, never a literal: a hardcoded date freezes this gate the next
+                # time CRR actually moves, and then daily.yml stops before commit+deploy
+                in_force = f"in force since {t['effective_from']}" in body
+                print(f"    crr panel: in-force-date={in_force}, "
                       f"duplicate-value-check={'3.00% for 2026-10-02' not in body}")
         # non-step tiles must NOT claim an effective date
         for t in DATA["tiles"]:
@@ -915,12 +971,25 @@ def check_history_modal(pw, problems):
         print(f"  history tables checked: {checked}/{len(DATA['tiles'])} "
               f"(headers, newest row == tile value, close works)")
 
-        # a step tile's log must be the CHANGE history, e.g. CRR: 8 changes since 2021
-        crr = next(t for t in DATA["tiles"] if t["id"] == "crr")
-        print(f"  crr change log: {len(crr['history'])} changes, "
-              f"newest {crr['history'][0]['date']} {crr['history'][0]['value']}%")
-        if len(crr["history"]) != 8:
-            problems.append(f"crr change log has {len(crr['history'])} entries, expected 8")
+        # a step tile's log must be the CHANGE history, and its newest row must be the change that put
+        # the current value in force. (This used to assert "CRR: exactly 8 changes", a number that was
+        # only true while the series was trimmed to 260 rows - CRR has 15 changes back to 2011.)
+        for tid in ("crr", "slr", "repo"):
+            st = next(t for t in DATA["tiles"] if t["id"] == tid)
+            log = st["history"]
+            print(f"  {tid} change log: {len(log)} change(s), "
+                  f"newest {log[0]['date']} {log[0]['value']}{st['unit']} "
+                  f"(in force since {st['effective_from']})")
+            if log[0]["date"] != st["effective_from"]:
+                problems.append(f"{tid}: change log starts {log[0]['date']} != effective_from "
+                                f"{st['effective_from']}")
+            if log[0]["value"] != st["value"]:
+                problems.append(f"{tid}: change log's newest value {log[0]['value']} != tile value "
+                                f"{st['value']}")
+            if st.get("bp") and log[0].get("change") is None:
+                problems.append(f"{tid}: the change in force carries no bp move")
+            if not st.get("bp") and len(log) > 1 and log[0]["date"] <= log[1]["date"]:
+                problems.append(f"{tid}: change log is not newest-first")
 
         # tile body click opens the same modal; ? still opens the definition instead
         for tid in ("m3", "gsec", "gold", "food"):
@@ -937,13 +1006,16 @@ def check_history_modal(pw, problems):
             problems.append("gold: ? also opened the history modal")
         page.keyboard.press("Escape"); page.wait_for_timeout(180)
 
-        # the strip must date a SETTING by when it took effect, not by the snapshot timestamp
+        # the strip must date a SETTING by when it took effect, not by the snapshot timestamp.
+        # Derived from the payload: a literal date here would break the deploy gate on the next move.
         strip = page.eval_on_selector_all("#strip .kv", "e => e.map(k => k.innerText.replace(/\\n/g, ' | '))")
         for chip in strip:
             print(f"    strip: {chip}")
-        if not any("CRR" in c and "in force since 2025-12-05" in c for c in strip):
-            problems.append("the CRR chip in the strip does not carry its effective date (it used to say "
-                            "'2025-11-28', the snapshot stamp)")
+        crr_tile = next((t for t in DATA["tiles"] if t["id"] == "crr"), None)
+        want = f"in force since {crr_tile['effective_from']}" if crr_tile else "in force since "
+        if not any("CRR" in c and want in c for c in strip):
+            problems.append(f"the CRR chip in the strip does not carry its effective date "
+                            f"(expected {want!r}; it used to say '2025-11-28', the snapshot stamp)")
         if errs:
             problems.append(f"history modal console errors: {errs[:2]}")
     finally:
@@ -987,7 +1059,6 @@ def main() -> int:
             check_no_dead_space(page, problems, quiet=True)      # post-interaction sanity
             browser.close()
 
-            check_responsive(browser, problems) if False else None
             # a fresh browser for the width sweep (the previous one is closed)
             browser2 = pw.chromium.launch()
             check_responsive(browser2, problems)

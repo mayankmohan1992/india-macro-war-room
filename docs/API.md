@@ -78,7 +78,9 @@ Keyed by indicator id. The cheapest way to render a scoreboard.
 
 `change` is the step from the previous reading (same unit as `value`). For a **setting** it is `null`
 by design — the meaningful move is `setting.change_bp` in the series document, because a rate that
-holds for months has no weekly "change".
+holds for months has no weekly "change". The same rule holds in **`latest.csv`** and in
+`series/<id>.json`: a setting reports `change: null` everywhere, so the four published copies of that
+field can never disagree.
 
 ### `GET /series/<id>.json` — full history of one indicator
 
@@ -92,12 +94,12 @@ holds for months has no weekly "change".
     "kind": "setting", "frequency": "weekly",
     "status": "good", "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; ...",
     "series": "crr", "source": "RBI r10",
-    "latest": { "date": "2026-10-02", "value": 3.0, "change": null },
+    "latest": { "date": "2026-10-09", "value": 3.0, "change": null },
     "setting": { "effective_from": "2025-12-05", "previous": 3.25, "change_bp": -25.0 },
-    "points":  [["2021-10-15", 4.0], ["2021-10-22", 4.0], "..."],
-    "history": [{"date": "2025-12-05", "value": 3.0, "previous": 3.25, "change": -25.0}],
+    "points":  [["2011-04-01", 6.0], "…", ["2026-10-09", 3.0]],
+    "history": [{"date": "2025-12-05", "value": 3.0, "previous": 3.25, "prev": 3.25, "change": -25.0}],
     "history_kind": "setting",
-    "history_note": "260 published rows in the source table; the setting changed 8 time(s) ...",
+    "history_note": "811 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
     "definition": { "term": "Cash Reserve Ratio (CRR)", "definition": "…",
                     "source_name": "RBI Master Direction — CRR and SLR Directions, 2021",
                     "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131" }
@@ -105,10 +107,14 @@ holds for months has no weekly "change".
 }
 ```
 
-- **`points`** — every stored observation, oldest first, `[ISO date, numeric value]`.
-- **`history`** — newest first. For a **setting** it is the change log (`date`, `value`, `previous`,
-  `change` in basis points): *which rate prevailed from which date*. For a **reading** it is the last
-  20 observations with the step from the previous one.
+- **`points`** — every stored observation, oldest first, `[ISO date, numeric value]`. A **setting**
+  keeps its whole fetched history (the weekly `Ratios and Rates` table goes back to 2011): the change
+  that put the current value in force has to be inside the document, and `effective_from` has to be a
+  date the document actually contains.
+- **`history`** — newest first, at most 14 rows for a **setting** and 20 for a **reading**. For a
+  setting it is the change log (`date`, `value`, `previous`, `change` in basis points): *which rate
+  prevailed from which date*. For a reading it is the observations with the step from the previous one.
+  `previous` is the documented key; `prev` carries the same value as a compatibility alias.
 - **`frequency`** — derived from the median gap between observations: `daily`, `weekly`,
   `fortnightly`, `monthly`, `quarterly`, `irregular`.
 - **`stale` / `stale_days`** — the source table has published nothing newer for this line. When
@@ -136,7 +142,7 @@ date,value
     { "id": "crr", "label": "Cash Reserve Ratio", "unit": "%", "value": 3.0,
       "as_published": "2026-10-02", "effective_from": "2025-12-05",
       "previous": 3.25, "change_bp": -25.0, "unchanged_in_window": false,
-      "history": [ "...the 8 changes since 2021..." ],
+      "history": [ "...the change history, newest first..." ],
       "source": "RBI r10" }
   ] }
 ```
@@ -199,8 +205,15 @@ the tables publish daily (liquidity operations), weekly (the statistical supplem
 returns) and monthly (prices), so the newest observation always belongs to the fastest table. Use the
 per-frequency map — or an individual indicator's `latest.date` — when "how fresh is this number?" matters.
 
+Each entry reports the vintage of that series' **own source table**. A series that appends a fresher point
+from a faster feed — `usdinr` carries the weekly table plus the portal's daily FBIL rate — does not move
+the weekly calendar forward, so `weekly` always means the newest weekly statement.
+
 `dataset_sha256` hashes the data-bearing content **excluding timestamps**, so a client (or the
 workflow itself) can tell whether anything actually changed by polling this one small file.
+
+`project_version` is the release that built these files (matching `CHANGELOG.md` and the git tag), so you
+can confirm which build a deployment is serving without diffing hashes.
 
 ### `GET /manifest.json` — integrity
 
@@ -210,7 +223,8 @@ Every published file with its `bytes` and `sha256`. Verify a cached copy, or fet
 
 `index.schema.json`, `latest.schema.json`, `series.schema.json` (JSON Schema 2020-12). Validate your
 parsing against these; CI runs `tools/validate_api.py`, which enforces them plus cross-document
-consistency.
+consistency — including `settings.json`, `snapshot.json` and `dataset.json`, the `unit`/`label`/`status`
+fields, every point's type and date, every CSV row against its series, and `status.json`'s own counts.
 
 ## Recipes
 

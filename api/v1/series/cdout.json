@@ -13,120 +13,140 @@
     "change": 14521.0,
     "date": "2026-09-30",
     "prev": 559543.0,
+    "previous": 559543.0,
     "value": 574064.0
    },
    {
     "change": -76442.0,
     "date": "2026-09-15",
     "prev": 635985.0,
+    "previous": 635985.0,
     "value": 559543.0
    },
    {
     "change": -54157.0,
     "date": "2026-08-31",
     "prev": 690142.0,
+    "previous": 690142.0,
     "value": 635985.0
    },
    {
     "change": -13094.0,
     "date": "2026-08-15",
     "prev": 703236.0,
+    "previous": 703236.0,
     "value": 690142.0
    },
    {
     "change": 20168.0,
     "date": "2026-07-31",
     "prev": 683068.0,
+    "previous": 683068.0,
     "value": 703236.0
    },
    {
     "change": 16913.0,
     "date": "2026-07-15",
     "prev": 666155.0,
+    "previous": 666155.0,
     "value": 683068.0
    },
    {
     "change": -1186.0,
     "date": "2026-06-30",
     "prev": 667341.0,
+    "previous": 667341.0,
     "value": 666155.0
    },
    {
     "change": 10968.0,
     "date": "2026-06-15",
     "prev": 656373.0,
+    "previous": 656373.0,
     "value": 667341.0
    },
    {
     "change": -6956.0,
     "date": "2026-05-31",
     "prev": 663329.0,
+    "previous": 663329.0,
     "value": 656373.0
    },
    {
     "change": -23981.0,
     "date": "2026-05-15",
     "prev": 687310.0,
+    "previous": 687310.0,
     "value": 663329.0
    },
    {
     "change": 2503.0,
     "date": "2026-04-30",
     "prev": 684807.0,
+    "previous": 684807.0,
     "value": 687310.0
    },
    {
     "change": -7874.0,
     "date": "2026-04-15",
     "prev": 692681.0,
+    "previous": 692681.0,
     "value": 684807.0
    },
    {
     "change": 13290.0,
     "date": "2026-03-31",
     "prev": 679391.0,
+    "previous": 679391.0,
     "value": 692681.0
    },
    {
     "change": 15546.0,
     "date": "2026-03-15",
     "prev": 663845.0,
+    "previous": 663845.0,
     "value": 679391.0
    },
    {
     "change": 1430.0,
     "date": "2026-02-28",
     "prev": 662415.0,
+    "previous": 662415.0,
     "value": 663845.0
    },
    {
     "change": 73716.0,
     "date": "2026-02-15",
     "prev": 588699.0,
+    "previous": 588699.0,
     "value": 662415.0
    },
    {
     "change": 14113.0,
     "date": "2026-01-31",
     "prev": 574586.0,
+    "previous": 574586.0,
     "value": 588699.0
    },
    {
     "change": 6450.0,
     "date": "2026-01-15",
     "prev": 568136.0,
+    "previous": 568136.0,
     "value": 574586.0
    },
    {
     "change": 13168.0,
     "date": "2025-12-31",
     "prev": 554968.0,
+    "previous": 554968.0,
     "value": 568136.0
    },
    {
     "change": 2008.0,
     "date": "2025-12-15",
     "prev": 552960.0,
+    "previous": 552960.0,
     "value": 554968.0
    }
   ],
@@ -976,13 +996,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

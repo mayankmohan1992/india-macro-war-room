@@ -2,6 +2,18 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "properties": {
   "latest": {
+   "additionalProperties": {
+    "required": [
+     "value",
+     "unit",
+     "date",
+     "status",
+     "change",
+     "kind",
+     "label"
+    ],
+    "type": "object"
+   },
    "type": "object"
   },
   "meta": {

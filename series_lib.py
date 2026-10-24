@@ -86,7 +86,11 @@ def table_of(client, report_id: str) -> dict:
         first = client.report_page(report_id, tab, page_size=0, page_number=0)   # whole-table attempt
         body = (first.get("body") or {}).get("response") or {}
         rows = body_rows(body)
-        total = int(body.get("totalCount") or len(rows))
+        # If the portal omits totalCount, do NOT fall back to len(rows): that makes the completeness
+        # gate compare the table with itself and call any truncation "complete". Record what the
+        # portal actually reported and let the caller judge.
+        raw_total = body.get("totalCount")
+        total = int(raw_total) if raw_total not in (None, "") else len(rows)
         cols = leaf_columns(body.get("headers"))
 
         if not rows or len(rows) < total:                                       # page the remainder
@@ -113,7 +117,8 @@ def table_of(client, report_id: str) -> dict:
         if len(rows) != total:
             log.warning("[WARN] [Table] report %s: got %s rows but totalCount=%s", report_id, len(rows), total)
         log.info("[INFO] [Table] report %s rows=%s cols=%s", report_id, len(rows), len(cols))
-        return {"tab": tab, "rows": rows, "cols": cols, "total": total}
+        return {"tab": tab, "rows": rows, "cols": cols, "total": total,
+                "total_reported": raw_total}
     except Exception:
         log.error("[ERROR] [Table] report %s failed:\n%s", report_id, traceback.format_exc())
         raise
@@ -124,9 +129,13 @@ def to_series(rows: list[list[Any]], idx: int) -> list[tuple[str, float]]:
     out: list[tuple[str, float]] = []
     for r in rows:
         try:
+            if not r[0]:
+                continue                                        # a null date is skipped, not stringified
             d = str(r[0])[:10]
             v = float(r[idx])
-        except (TypeError, ValueError, IndexError):
+        except (TypeError, ValueError):
             continue                                            # nulls/non-numerics are skipped by design
+        # IndexError deliberately NOT caught: a vanished column is a bug in the caller's column map,
+        # and swallowing it returned a silently empty series.
         out.append((d, v))
     return out

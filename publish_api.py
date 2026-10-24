@@ -37,11 +37,17 @@ import json
 import logging
 import pathlib
 import sys
+import tempfile
 import traceback
 from typing import Any
 
 logging.basicConfig(level=logging.INFO, format="%(message)s", stream=sys.stderr)
 log = logging.getLogger("api")
+
+# The project version, published in status.json so a deployment can be identified at runtime
+# (`curl .../status.json | jq .project_version`). Kept in sync with CHANGELOG.md and the git tag.
+# status.json is excluded from dataset_sha256, so bumping this does not look like a data change.
+PROJECT_VERSION = "1.0.5"
 
 ROOT = pathlib.Path(__file__).resolve().parent
 API_VERSION = "v1"
@@ -156,26 +162,29 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
             indicator["setting"] = {"effective_from": t["effective_from"], "previous": t.get("prev"),
                                     "change_bp": t.get("bp"),
                                     "unchanged_in_window": bool(t.get("unchanged_in_window"))}
+        # a setting's week-on-week change is noise; the meaningful datum is the bp move, which is
+        # carried in `setting`. Leave `change` null so nobody reads "0.0" as an event - and do it BEFORE
+        # the document is written. This used to run after write_json(), so series/<id>.json shipped the
+        # raw tile change (repo: +0.25, crr/slr: 0.0) while index.json and latest.json shipped null:
+        # the same field, four files, two answers.
+        if indicator["kind"] == "setting":
+            indicator["latest"]["change"] = None
         indicator["points"] = pts
         indicator["history"] = t.get("history", [])
         indicator["history_kind"] = t.get("history_kind")
         indicator["history_note"] = t.get("history_note")
         write_json(out / "series" / f"{t['id']}.json", {"meta": meta, "indicator": indicator})
         write_csv(out / "series" / f"{t['id']}.csv", ["date", "value"], pts)
-
-        if indicator["kind"] == "setting":
-            # a setting's week-on-week change is noise; the meaningful datum is the bp move, which is
-            # carried in `setting`. Leave `change` null so nobody reads "0.0" as an event.
-            indicator["latest"]["change"] = None
         cat = {k: v for k, v in indicator.items() if k not in ("points", "history", "definition")}
         cat["definition"] = {"term": (indicator.get("definition") or {}).get("term"),
                              "source_url": (indicator.get("definition") or {}).get("source_url")}
         catalogue.append(cat)
-        latest_rows.append([t["id"], t["label"], t["value"], t["unit"], t["period"], t["status"],
-                            t["change"] if t["change"] is not None else ""])
-        # take `change` from the indicator document, not the raw tile: for a SETTING it is deliberately
-        # null (a rate that holds for months has no weekly change - the bp move is in `setting`), and
-        # latest.json must not disagree with index.json about that
+        # same source as latest.json: the indicator document, where a setting's change is null.
+        # status is not duplicated inside `latest`, so it stays the tile's own field.
+        chg = indicator["latest"]["change"]
+        latest_rows.append([t["id"], t["label"], indicator["latest"]["value"], t["unit"],
+                            indicator["latest"]["date"], t["status"],
+                            chg if chg is not None else ""])
         latest_map[t["id"]] = {"value": indicator["latest"]["value"], "unit": t["unit"],
                                "date": indicator["latest"]["date"], "status": t["status"],
                                "change": indicator["latest"]["change"],
@@ -263,9 +272,27 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
     latest_schema = {"$schema": "https://json-schema.org/draft/2020-12/schema",
                      "title": "Latest values (API v1)", "type": "object",
                      "required": ["meta", "latest"],
-                     "properties": {"meta": unit_meta, "latest": {"type": "object"}}}
+                     "properties": {"meta": unit_meta,
+                                    "latest": {"type": "object",
+                                               "additionalProperties": {
+                                                   "type": "object",
+                                                   "required": ["value", "unit", "date", "status",
+                                                                "change", "kind", "label"]}}}}
     for name, doc in (("series", series_schema), ("index", index_schema), ("latest", latest_schema)):
         write_json(out / "schema" / f"{name}.schema.json", doc)
+
+    # ---- prune stale series files ---------------------------------------------------------------
+    # Anything in series/ that the current payload no longer produces must go: a dropped indicator
+    # used to keep being served (and hashed, and CDN-cached) forever, and any stray file - a .bak, an
+    # editor temp - silently became part of the published manifest and the dataset hash.
+    series_dir = out / "series"
+    if series_dir.exists():
+        expected = {f"{t['id']}.json" for t in payload["tiles"]} | \
+                   {f"{t['id']}.csv" for t in payload["tiles"]}
+        for p in sorted(series_dir.glob("*")):
+            if p.is_file() and p.name not in expected:
+                log.warning("[WARN] [API] removing stale %s", p.name)
+                p.unlink()
 
     # ---- manifest + status --------------------------------------------------------------------
     files = sorted(p for p in out.rglob("*") if p.is_file()
@@ -278,13 +305,18 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
     # dataset hash: everything data-bearing, excluding volatile timestamps -> lets CI and the daily
     # workflow decide whether the DATA changed, so a no-op run does not create commit noise
     h = hashlib.sha256()
-    for p in sorted([f for f in files if "schema" not in f.parts and f.name != "manifest.json"]):
+    # Compare the path RELATIVE to `out`. Testing `"schema" not in f.parts` looked at the ABSOLUTE
+    # path, so checking out the repo under any directory named `schema` filtered out every file and
+    # produced the hash of nothing - which the daily workflow reads as "nothing changed".
+    for p in sorted([f for f in files
+                     if f.relative_to(out).parts[0] != "schema" and f.name != "manifest.json"]):
         h.update(str(p.relative_to(out)).encode())
         body = p.read_text() if p.suffix == ".json" else p.read_text()
         body = body.replace(generated, "")           # drop the retrieval timestamp
         h.update(body.encode())
     dataset_sha = h.hexdigest()
     status = {"meta": meta, "generated_at": generated, "dataset_sha256": dataset_sha,
+              "project_version": PROJECT_VERSION,
               "files": len(manifest["files"]),
               "bytes": sum(f["bytes"] for f in manifest["files"]),
               "series_points": sum(len(series[t["series_key"]]["points"]) for t in payload["tiles"]),
@@ -292,7 +324,7 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
     write_json(out / "status.json", status)
     return {"dataset_sha256": dataset_sha, "files": len(manifest["files"]),
             "bytes": status["bytes"], "indicators": len(catalogue),
-            "points": status["series_points"]}
+            "points": status["series_points"], "project_version": PROJECT_VERSION}
 
 
 def main() -> int:
@@ -304,26 +336,33 @@ def main() -> int:
     out = pathlib.Path(args.out)
     generated = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     try:
+        if args.check:
+            # --check must VERIFY, not write. The previous implementation built into `out` first and
+            # then re-read out/status.json, so it compared the fresh hash with itself, always claimed
+            # they matched, and overwrote the very artefacts it was supposed to be checking. Build
+            # into a throwaway directory and compare against what is committed.
+            committed = out / "status.json"
+            if not committed.exists():
+                log.error("[ERROR] [API] --check: no committed status.json at %s", committed)
+                return 1
+            old = json.loads(committed.read_text())["dataset_sha256"]
+            with tempfile.TemporaryDirectory() as tmp:
+                summary = build_api(pathlib.Path(tmp), generated)
+            if summary["dataset_sha256"] != old:
+                log.error("[ERROR] [API] --check: committed %s != rebuilt %s - the committed API does "
+                          "not reproduce from the committed raw tables",
+                          old[:16], summary["dataset_sha256"][:16])
+                return 1
+            log.info("[INFO] [API] --check: committed artefacts reproduce exactly (%s)", old[:16])
+            print(json.dumps(summary, indent=1))
+            return 0
+
         summary = build_api(out, generated)
         log.info("[INFO] [API] wrote %s files (%s KB) for %s indicators / %s points -> %s",
                  summary["files"], round(summary["bytes"] / 1024), summary["indicators"],
                  summary["points"], out)
         log.info("[INFO] [API] dataset_sha256=%s", summary["dataset_sha256"][:16])
         print(json.dumps(summary, indent=1))
-        if args.check:
-            committed = out / "status.json"
-            if not committed.exists():
-                log.error("[ERROR] [API] --check: no committed status.json")
-                return 1
-            old = json.loads(committed.read_text())["dataset_sha256"]
-            # --check runs against the working tree, so compare the hash it just computed with the
-            # hash recorded BEFORE this run by the caller (env), if provided
-            expected = None
-            try:
-                expected = json.loads((out / "status.json").read_text())["dataset_sha256"]
-            except Exception:
-                pass
-            log.info("[INFO] [API] --check: dataset hash %s (previous %s)", expected, old)
         return 0
     except Exception:
         log.error("[ERROR] [API] publishing failed:\n%s", traceback.format_exc())

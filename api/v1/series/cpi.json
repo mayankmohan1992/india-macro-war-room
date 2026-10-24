@@ -13,54 +13,63 @@
     "change": 0.71,
     "date": "2026-09-30",
     "prev": 4.83,
+    "previous": 4.83,
     "value": 5.54
    },
    {
     "change": 0.38,
     "date": "2026-08-31",
     "prev": 4.45,
+    "previous": 4.45,
     "value": 4.83
    },
    {
     "change": 0.07,
     "date": "2026-07-31",
     "prev": 4.38,
+    "previous": 4.38,
     "value": 4.45
    },
    {
     "change": 0.45,
     "date": "2026-06-30",
     "prev": 3.93,
+    "previous": 3.93,
     "value": 4.38
    },
    {
     "change": 0.45,
     "date": "2026-05-31",
     "prev": 3.48,
+    "previous": 3.48,
     "value": 3.93
    },
    {
     "change": 0.08,
     "date": "2026-04-30",
     "prev": 3.4,
+    "previous": 3.4,
     "value": 3.48
    },
    {
     "change": 0.19,
     "date": "2026-03-31",
     "prev": 3.21,
+    "previous": 3.21,
     "value": 3.4
    },
    {
     "change": 0.47,
     "date": "2026-02-28",
     "prev": 2.74,
+    "previous": 2.74,
     "value": 3.21
    },
    {
     "change": null,
     "date": "2026-01-31",
     "prev": null,
+    "previous": null,
     "value": 2.74
    }
   ],
@@ -146,13 +155,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

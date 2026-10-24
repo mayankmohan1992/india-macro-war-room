@@ -23,9 +23,8 @@ on:
         default: false
 
 permissions:
-  contents: write        # commit the refreshed data
-  pages: write           # deploy the site
-  id-token: write        # OIDC for the Pages deployment
+  contents: read         # least privilege by default; each job opts in below. The refresh job runs
+                         # `pip install` and repo code and has no business holding pages/id-token.
 
 concurrency:
   group: daily-refresh
@@ -35,6 +34,8 @@ jobs:
   refresh:
     name: Fetch, build, verify, commit
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # commit the refreshed data
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
@@ -125,6 +126,9 @@ jobs:
     name: Deploy to GitHub Pages
     needs: refresh
     runs-on: ubuntu-latest
+    permissions:
+      pages: write       # deploy the site
+      id-token: write    # OIDC for the Pages deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

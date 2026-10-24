@@ -68,7 +68,7 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
    "id": "repo",
    "kind": "setting",
    "label": "Policy repo rate",
@@ -829,7 +829,7 @@
    "kind": "reading",
    "label": "RBI credit to the Centre",
    "latest": {
-    "change": 0.0,
+    "change": -6882.0,
     "date": "2026-04-17",
     "value": 93392.0
    },
@@ -884,7 +884,7 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
    "id": "crr",
    "kind": "setting",
    "label": "Cash Reserve Ratio",
@@ -920,7 +920,7 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
    "id": "slr",
    "kind": "setting",
    "label": "Statutory Liquidity Ratio",
@@ -936,16 +936,16 @@
    "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "series": "slr",
    "setting": {
-    "change_bp": null,
-    "effective_from": "2021-10-22",
-    "previous": null,
-    "unchanged_in_window": true
+    "change_bp": -25.0,
+    "effective_from": "2020-04-17",
+    "previous": 18.25,
+    "unchanged_in_window": false
    },
    "source": "RBI r10",
    "stale": false,
    "stale_days": 6,
    "status": "watch",
-   "status_reason": "unchanged at 18.00% in every weekly row since 2021-10-22",
+   "status_reason": "a 25bp cut on 2020-04-17 took it from 18.25% to 18.00%; the rate has been unchanged in all 339 weekly rows published since",
    "unit": "%"
   },
   {
@@ -1180,13 +1180,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

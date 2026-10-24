@@ -1009,15 +1009,16 @@ document.addEventListener('keydown', e=>{
 /* ---------- definition modal ---------- */
 const defModal=document.getElementById('defmodal');
 let defLastFocus=null;
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function defBlock(key){
   const d=DEF[key];
   if(!d){
-    return `<h4>${key.replace(/_/g,' ')}</h4>
-      <div class="pending">Definition pending. This build has no sourced wording for “${key}”. Definitions are
+    return `<h4>${esc(key.replace(/_/g,' '))}</h4>
+      <div class="pending">Definition pending. This build has no sourced wording for “${esc(key)}”. Definitions are
       carried from RBI / MoSPI / FBIL pages and stored in definitions.json — nothing is written from memory.</div>`;
   }
-  return `<h4>${d.term||key}</h4><p>${d.definition||''}</p>
-    <div class="src">Source: ${d.source_name||'—'}${d.source_url?` · <a href="${d.source_url}" target="_blank" rel="noopener">${d.source_url}</a>`:''}</div>`;
+  return `<h4>${esc(d.term||key)}</h4><p>${esc(d.definition||'')}</p>
+    <div class="src">Source: ${esc(d.source_name||'—')}${d.source_url?` · <a href="${esc(d.source_url)}" target="_blank" rel="noopener">${esc(d.source_url)}</a>`:''}</div>`;
 }
 function openDef(keys, title, extra){
   defLastFocus=document.activeElement;
@@ -1064,9 +1065,16 @@ document.addEventListener('click', e=>{
   e.stopPropagation(); e.preventDefault();
   const keys=(b.dataset.defkeys||b.dataset.def||'').split(',').filter(Boolean);
   const key=keys[0];
-  const tile=T.find(t=>t.id===key);
+  // Resolve what was actually clicked: the ? sits inside a tile (.tile[data-id]) or a chart card
+  // (.card[data-chart]). `key` is a definitions.json key, NOT a tile id — looking the tile up by it
+  // matched only where the two names happened to coincide, so 22 of 38 tiles lost their "On this
+  // dashboard" block and the WPI chart opened CPI's value, colour and scoring rule.
+  const tileEl=b.closest('.tile');
+  const cardEl=b.closest('.card[data-chart]');
+  const tile=tileEl ? T.find(t=>t.id===tileEl.dataset.id) : null;
+  const chart=cardEl ? CHARTS.find(c=>c.id===cardEl.dataset.chart) : null;
   openDef(keys, b.dataset.deftitle || (tile && tile.label) || 'Definition',
-          tile ? {tile} : {chart:CHARTS.find(c=>c.defKeys[0]===key)});
+          tile ? {tile} : (chart ? {chart} : {}));
 }, true);
 document.addEventListener('keydown', e=>{
   if(e.key!=='Escape') return;
@@ -1147,8 +1155,11 @@ function renderHead(){
      fastest table's last row. */
   const byf = DATA.as_of_by_frequency || {};
   const parts = Object.entries(byf).map(([f,d])=>`${f} <b>${d}</b>`);
+  /* State the overall newest observation explicitly, then the per-calendar breakdown. Previously the
+     overall date appeared only when some bucket happened to equal it - so a daily point appended to a
+     weekly series was rendered as if it were the weekly calendar's date. */
   document.getElementById('asof').innerHTML =
-    `latest data: ${parts.length ? parts.join(' · ') : '<b>' + DATA.as_of + '</b>'}`;
+    `latest data: <b>${DATA.as_of}</b>${parts.length ? ' · ' + parts.join(' · ') : ''}`;
   document.getElementById('built').textContent=DATA.generated;
   document.getElementById('verdict').textContent=DATA.verdict;
   const vc=DATA.counts.bad?getComputedStyle(document.documentElement).getPropertyValue('--bad').trim()

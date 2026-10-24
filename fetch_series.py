@@ -47,30 +47,82 @@ def ist_date(ms: int | float) -> str:
 KNOWN_PARTIAL = {"6"}
 
 
+def _atomic_write(path, text: str) -> None:
+    """Write through a temp file + os.replace.
+
+    A truncated report_N.json is indistinguishable from a good one to every consumer, so a crash or
+    a short table must never leave a half-written (or silently short) table behind.
+    """
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def _pid_alive(pid: int) -> bool:
+    """Is `pid` a LIVE process (not a zombie, not a recycled pid we do not own)?
+
+    os.kill(pid, 0) alone is the wrong probe: it SUCCEEDS for a zombie left by a killed fetch, so the
+    stale-lock path never fired and every later run was refused forever; and it raises PermissionError
+    for a live process owned by someone else, which used to be read as "dead" and clobbered.
+    """
+    if pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True                       # exists, just not ours
+    except OSError:
+        return False
+    # os.kill succeeds for zombies; treat them as dead so a killed fetch cannot wedge the pipeline.
+    try:
+        stat = open(f"/proc/{pid}/stat", encoding="utf-8").read()
+        state = stat.rsplit(")", 1)[-1].split()[0]
+        if state == "Z":
+            return False
+    except OSError:
+        pass
+    return True
+
+
 def acquire_lock() -> None:
     """Refuse to run if another fetch is writing raw/ - two writers silently clobber each other.
 
     This is not theoretical: a slow fetch left running in the background finished AFTER a newer
     one and overwrote its output files with empty tables. Because every consumer reads raw/*.json
     by name, that produced a dashboard built on blank series with no error anywhere.
+
+    The lock is created ATOMICALLY and with its content already complete: the pid is written to a
+    private temp file first, then hard-linked into place. `os.link` fails if the target exists, so
+    exactly one process wins. Creating first with O_EXCL and writing the pid afterwards leaves a
+    window where the file exists but is EMPTY, which the reader interpreted as "stale pid 0" - and
+    two simultaneous fetches both proceeded (measured: 6 of 40 trials after that fix, 82% before).
     """
-    if LOCK.exists():
+    for _ in range(3):
+        tmp = LOCK.with_suffix(f".tmp.{os.getpid()}")
+        tmp.write_text(str(os.getpid()), encoding="utf-8")
         try:
-            pid = int((LOCK.read_text().strip() or "0"))
-        except ValueError:
-            pid = 0
-        alive = False
-        if pid > 0:
+            os.link(tmp, LOCK)            # atomic and exclusive: fails if LOCK already exists
+        except FileExistsError:
+            tmp.unlink(missing_ok=True)
             try:
-                os.kill(pid, 0)                       # signal 0 = liveness probe only
-                alive = True
-            except OSError:
-                alive = False
-        if alive:
-            raise SystemExit(f"[ERROR] [Lock] another fetch is already running (pid {pid}); "
-                             f"refusing to write raw/ concurrently")
-        log.warning("[WARN] [Lock] stale lock from dead pid %s - taking it over", pid)
-    LOCK.write_text(str(os.getpid()))
+                pid = int((LOCK.read_text().strip() or "0"))
+            except (ValueError, FileNotFoundError):
+                pid = 0
+            if _pid_alive(pid):
+                raise SystemExit(f"[ERROR] [Lock] another fetch is already running (pid {pid}); "
+                                 f"refusing to write raw/ concurrently")
+            log.warning("[WARN] [Lock] stale lock from dead pid %s - taking it over", pid)
+            try:
+                LOCK.unlink()             # only remove the lock we just judged dead
+            except FileNotFoundError:
+                pass
+            continue
+        finally:
+            tmp.unlink(missing_ok=True)
+        return
+    raise SystemExit("[ERROR] [Lock] could not acquire the fetch lock")
 
 
 def release_lock() -> None:
@@ -126,6 +178,10 @@ def fetch_named_series(c: "DBieClient") -> dict:
                 except Exception:
                     continue
             pts.sort()
+            if not pts:
+                # An error body and "no data" land in the same branch, and a 0-point series silently
+                # removed the published CPI figure downstream. Fail loudly instead.
+                raise RuntimeError(f"{spec['name']}: {len(rows)} row(s) but 0 usable points")
             out[spec["name"]] = {"why": spec["why"], "points": pts,
                                  "desc": (rows[0].get("wss_desc") if rows else None),
                                  "version": (rows[0].get("version_desc") if rows else None),
@@ -151,14 +207,14 @@ def _main_locked() -> int:
     c.warm_up()
     c.mint()
     summary = {}
+    payloads: dict[str, dict] = {}
 
     for rid, why in WANT.items():
         try:
             t = table_of(c, rid)
             dates = [r[0] for r in t["rows"] if r and r[0]]
-            payload = {"tab": t["tab"], "cols": t["cols"], "rows": t["rows"], "total": t["total"]}
-            (RAW / f"report_{rid}.json").write_text(json.dumps(payload, ensure_ascii=False))
-            complete = len(t["rows"]) == t["total"] and len(t["rows"]) > 0
+            complete = bool(t.get("total_reported") not in (None, "")) and \
+                len(t["rows"]) == t["total"] and len(t["rows"]) > 0
             summary[rid] = {"why": why, "rows": len(t["rows"]), "cols": len(t["cols"]),
                             "total": t["total"], "complete": complete,
                             "newest": max(dates)[:10] if dates else None,
@@ -166,6 +222,12 @@ def _main_locked() -> int:
             if not complete and rid not in KNOWN_PARTIAL:
                 log.error("[ERROR] [Fetch] report %s is SHORT (%s of %s) and is not a known partial "
                           "- downstream series would be wrong", rid, len(t["rows"]), t["total"])
+            elif complete or rid in KNOWN_PARTIAL:
+                # BUFFER, do not write. The file used to be written here, before the gate ran, so a
+                # short table overwrote the previous good one and any caller that ignored the exit
+                # code built a dashboard from a truncated series with no error anywhere.
+                payloads[rid] = {"tab": t["tab"], "cols": t["cols"], "rows": t["rows"],
+                                 "total": t["total"]}
             log.info("[INFO] [Fetch] %s rows=%s cols=%s %s..%s (%s)", rid, len(t["rows"]), len(t["cols"]),
                      summary[rid]["oldest"], summary[rid]["newest"], why)
             for i, col in enumerate(t["cols"]):
@@ -185,8 +247,15 @@ def _main_locked() -> int:
 
     (RAW / "survey.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1))
     named = fetch_named_series(c)
-    if named:
-        (RAW / "named_series.json").write_text(json.dumps(named, ensure_ascii=False, indent=1))
+    named_bad = [s["name"] for s in NAMED_SERIES
+                 if not (named.get(s["name"]) or {}).get("rows")]
+    if named and not named_bad:
+        _atomic_write(RAW / "named_series.json", json.dumps(named, ensure_ascii=False, indent=1))
+    elif named_bad:
+        # Never overwrite the last good file with an empty one - the published CPI figure would
+        # silently vanish while the build reported success.
+        log.error("[ERROR] [Named] no usable points for %s - keeping the previous named_series.json",
+                  named_bad)
     else:
         # a missing named series must not silently fall back to a computed figure without saying so
         log.warning("[WARN] [Named] no named series fetched - the published CPI figure will be absent")
@@ -202,11 +271,19 @@ def _main_locked() -> int:
         log.error("[ERROR] [Gate] %s report(s) failed outright: %s", len(errors), list(errors))
     if shorts:
         log.error("[ERROR] [Gate] %s report(s) came back SHORT: %s", len(shorts), list(shorts))
-    if errors or shorts:
-        log.error("[ERROR] [Gate] raw data is incomplete - do NOT build the dashboard from it")
+    if named_bad:
+        log.error("[ERROR] [Gate] %s named series returned no points: %s",
+                  len(named_bad), named_bad)
+    if errors or shorts or named_bad:
+        log.error("[ERROR] [Gate] raw data is incomplete - do NOT build the dashboard from it. "
+                  "raw/ is left untouched, so the previous complete tables stay in place.")
         return 1
-    log.info("[INFO] [Gate] all %s reports complete (partial-by-nature: %s)",
-             len(summary), sorted(KNOWN_PARTIAL))
+    # Only once every gate has passed are the tables committed to raw/ - atomically, so a crash
+    # mid-write can never leave a truncated report beside this week's other tables.
+    for rid, payload in payloads.items():
+        _atomic_write(RAW / f"report_{rid}.json", json.dumps(payload, ensure_ascii=False))
+    log.info("[INFO] [Gate] all %s reports complete (partial-by-nature: %s); wrote %s table(s) to raw/",
+             len(summary), sorted(KNOWN_PARTIAL), len(payloads))
     return 0
 
 

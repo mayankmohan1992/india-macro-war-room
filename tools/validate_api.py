@@ -114,6 +114,7 @@ def main() -> int:
                 problems.append(f"{iid}: not present in the dashboard payload")
                 continue
             doc = json.loads(sf.read_text())["indicator"]
+            pts = doc.get("points") or []
             if ind["kind"] == "setting":
                 if latest["latest"][iid]["change"] is not None:
                     problems.append(f"{iid}: a setting must carry change=null in latest.json "
@@ -124,14 +125,53 @@ def main() -> int:
             for label, a, b in (("index vs payload", ind["latest"]["value"], t["value"]),
                                 ("series vs payload", doc["latest"]["value"], t["value"]),
                                 ("latest vs payload", latest["latest"][iid]["value"], t["value"]),
-                                ("date vs payload", doc["latest"]["date"], t["period"])):
+                                ("date vs payload", doc["latest"]["date"], t["period"]),
+                                # unit / label / status are published in every document and used to be
+                                # compared in none, so a wrong status flipped the consumer-facing
+                                # verdict while the suite still said PASS.
+                                ("unit vs payload", ind["unit"], t["unit"]),
+                                ("label vs payload", ind["label"], t["label"]),
+                                ("status vs payload", ind["status"], t["status"]),
+                                ("latest status vs payload", latest["latest"][iid]["status"],
+                                 t["status"])):
                 if a != b:
                     problems.append(f"{iid}: {label} mismatch {a!r} != {b!r}")
             rows = list(csv.reader(cs.open()))
             if len(rows) < 2:
                 problems.append(f"{iid}: CSV has no data rows")
-            elif abs(float(rows[-1][1]) - t["value"]) > 1e-6:
-                problems.append(f"{iid}: CSV last value {rows[-1][1]} != payload {t['value']}")
+            else:
+                if abs(float(rows[-1][1]) - t["value"]) > 1e-6:
+                    problems.append(f"{iid}: CSV last value {rows[-1][1]} != payload {t['value']}")
+                # Compare EVERY row, not just the last one: a series document truncated to one point
+                # beside an untouched 811-row CSV used to pass, and so did a CSV that had drifted in
+                # the middle.
+                csv_pts = [[r[0], float(r[1])] for r in rows[1:] if len(r) >= 2 and r[0] != ""]
+                if [[p[0], float(p[1])] for p in pts] != csv_pts:
+                    problems.append(f"{iid}: CSV rows do not match the series points "
+                                    f"({len(csv_pts)} CSV vs {len(pts)} points)")
+            # points are the payload of the whole API: type-check them rather than trusting shape.
+            bad_pt = [p for p in pts
+                      if not isinstance(p, (list, tuple)) or len(p) != 2
+                      or not isinstance(p[1], (int, float))
+                      or not re.match(r"^\d{4}-\d{2}-\d{2}$", str(p[0]))]
+            if bad_pt:
+                problems.append(f"{iid}: {len(bad_pt)} malformed point(s), e.g. {bad_pt[0]!r}")
+            # `latest.change` must agree in ALL FOUR places it is published. It used to disagree: a
+            # setting shipped the raw tile change in series/<id>.json (repo +0.25, crr/slr 0.0) while
+            # index.json and latest.json shipped null, because the null-ing ran after the write.
+            if doc["latest"]["change"] != ind["latest"]["change"]:
+                problems.append(f"{iid}: series document change {doc['latest']['change']!r} != "
+                                f"index change {ind['latest']['change']!r}")
+            # `change` must equal the step the series itself reports. It was 0.0 for an indicator
+            # whose own history said -6882, because a "3 months ago" lookup found nothing and fell
+            # back to the current value - so `value - previous == change` was false on the published
+            # document and no comparison caught it.
+            if ind["kind"] == "reading" and len(pts) > 1:
+                step = round(pts[-1][1] - pts[-2][1], 6)
+                got = ind["latest"]["change"]
+                if got is None or abs(got - step) > 1e-3:
+                    problems.append(f"{iid}: latest.change {got!r} != step between the last two "
+                                    f"points {step!r}")
             if ind["kind"] == "setting" and "setting" not in ind:
                 problems.append(f"{iid}: a setting with no effective_from")
             # the catalogue is deliberately lean (no points/history), so history and the full
@@ -149,8 +189,66 @@ def main() -> int:
                 problems.append(f"{iid}: no definition source URL")
             if d.get("term") and d["term"] not in {v.get("term") for v in defs["definitions"].values()}:
                 problems.append(f"{iid}: definition term not found in definitions.json")
+        # latest.csv is a published endpoint too: every column must agree with latest.json
+        latest_map = latest["latest"]
+        csv_rows = {r[0]: r for r in csv.reader((API / "latest.csv").open()) if r and r[0] != "id"}
+        for iid, row in latest_map.items():
+            r = csv_rows.get(iid)
+            if not r:
+                problems.append(f"latest.csv is missing {iid}")
+                continue
+            if abs(float(r[2]) - row["value"]) > 1e-9:
+                problems.append(f"latest.csv {iid}: value {r[2]} != latest.json {row['value']}")
+            if r[4] != row["date"]:
+                problems.append(f"latest.csv {iid}: date {r[4]} != latest.json {row['date']}")
+            if r[5] != row["status"]:
+                problems.append(f"latest.csv {iid}: status {r[5]} != latest.json {row['status']}")
+            csv_chg = None if r[6] == "" else float(r[6])
+            if csv_chg != row["change"]:
+                problems.append(f"latest.csv {iid}: change {csv_chg!r} != latest.json "
+                                f"{row['change']!r}")
+        if len(csv_rows) != len(latest_map):
+            problems.append(f"latest.csv has {len(csv_rows)} rows, latest.json has {len(latest_map)}")
+
+        # settings.json / snapshot.json / dataset.json are documented endpoints that nothing checked,
+        # so a settings document could contradict the series about when a rate took effect - the exact
+        # disagreement class this project has already been bitten by - and still PASS.
+        settings = {s["id"]: s for s in json.loads((API / "settings.json").read_text())["settings"]}
+        index_by_id = {i["id"]: i for i in index["indicators"]}
+        for iid, s in settings.items():
+            ind = index_by_id.get(iid)
+            if ind is None:
+                problems.append(f"settings.json lists {iid} which is not in index.json")
+                continue
+            if ind["kind"] != "setting":
+                problems.append(f"settings.json lists {iid} which is not a setting")
+                continue
+            ind_s = ind.get("setting") or {}
+            for k in ("effective_from", "change_bp", "previous", "value"):
+                want = ind_s.get(k) if k != "value" else ind["latest"]["value"]
+                if s.get(k) != want:
+                    problems.append(f"settings.json {iid}: {k} {s.get(k)!r} != index {want!r}")
+
+        snaps = {c["name"]: c for c in json.loads((API / "snapshot.json").read_text())["snapshot"]}
+        for iid, name in (("repo", "Policy repo rate"), ("crr", "CRR"), ("slr", "SLR")):
+            chip = snaps.get(name)
+            if not chip:
+                problems.append(f"snapshot.json is missing the {name} chip")
+                continue
+            if iid in settings and chip.get("since") != settings[iid].get("effective_from"):
+                problems.append(f"snapshot.json {name}: since {chip.get('since')!r} != settings.json "
+                                f"effective_from {settings[iid].get('effective_from')!r}")
+
+        ds = json.loads((API / "dataset.json").read_text())
+        want_ids = {i["id"] for i in index["indicators"]}
+        got_ids = set(ds.get("series") or {})
+        if got_ids != want_ids:
+            problems.append(f"dataset.json series does not cover index.json exactly "
+                            f"(missing {sorted(want_ids - got_ids)[:4]}, "
+                            f"extra {sorted(got_ids - want_ids)[:4]})")
+
         print(f"  consistency: {len(index['indicators'])} indicators cross-checked "
-              f"(index/latest/series/CSV/payload)")
+              f"(index/latest/series/CSV/payload, four-way `change`)")
 
         # the reconciliation block must survive publishing (it disappeared once: it lived only in the
         # dashboard payload, not in the API documents)
@@ -175,9 +273,24 @@ def main() -> int:
             if hashlib.sha256(p.read_bytes()).hexdigest() != f["sha256"]:
                 problems.append(f"manifest sha256 mismatch for {f['path']}")
         status = json.loads((API / "status.json").read_text())
+        # status.json is excluded from its own hash, so nothing verified these numbers - yet the daily
+        # workflow prints the verdict and the dashboard copy reads the counts.
+        if status.get("counts") != payload.get("counts"):
+            problems.append(f"status.counts {status.get('counts')} != payload counts "
+                            f"{payload.get('counts')}")
+        if status.get("verdict") != payload.get("verdict"):
+            problems.append(f"status.verdict {status.get('verdict')!r} != payload verdict "
+                            f"{payload.get('verdict')!r}")
+        pts_on_disk = sum(len(json.loads((API / "series" / f"{i['id']}.json")
+                                         .read_text())["indicator"]["points"])
+                          for i in index["indicators"])
+        if status.get("series_points") != pts_on_disk:
+            problems.append(f"status.series_points {status.get('series_points')} != {pts_on_disk} "
+                            f"points on disk")
         h = hashlib.sha256()
         for p in sorted([f for f in (API).rglob("*") if f.is_file()
-                         and f.name not in ("manifest.json", "status.json") and "schema" not in f.parts]):
+                         and f.name not in ("manifest.json", "status.json")
+                         and f.relative_to(API).parts[0] != "schema"]):
             h.update(str(p.relative_to(API)).encode())
             h.update(p.read_text().replace(status["generated_at"], "").encode())
         if h.hexdigest() != status["dataset_sha256"]:

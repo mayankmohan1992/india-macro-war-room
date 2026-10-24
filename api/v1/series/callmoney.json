@@ -13,120 +13,140 @@
     "change": 0.11,
     "date": "2026-10-09",
     "prev": 5.12,
+    "previous": 5.12,
     "value": 5.23
    },
    {
     "change": -0.07,
     "date": "2026-10-02",
     "prev": 5.19,
+    "previous": 5.19,
     "value": 5.12
    },
    {
     "change": 0.14,
     "date": "2026-09-25",
     "prev": 5.05,
+    "previous": 5.05,
     "value": 5.19
    },
    {
     "change": 0.08,
     "date": "2026-09-18",
     "prev": 4.97,
+    "previous": 4.97,
     "value": 5.05
    },
    {
     "change": -0.1,
     "date": "2026-09-11",
     "prev": 5.07,
+    "previous": 5.07,
     "value": 4.97
    },
    {
     "change": -0.13,
     "date": "2026-09-04",
     "prev": 5.2,
+    "previous": 5.2,
     "value": 5.07
    },
    {
     "change": 0.04,
     "date": "2026-08-28",
     "prev": 5.16,
+    "previous": 5.16,
     "value": 5.2
    },
    {
     "change": 0.01,
     "date": "2026-08-21",
     "prev": 5.15,
+    "previous": 5.15,
     "value": 5.16
    },
    {
     "change": 0.06,
     "date": "2026-08-14",
     "prev": 5.09,
+    "previous": 5.09,
     "value": 5.15
    },
    {
     "change": -0.21,
     "date": "2026-08-07",
     "prev": 5.3,
+    "previous": 5.3,
     "value": 5.09
    },
    {
     "change": 0.02,
     "date": "2026-07-31",
     "prev": 5.28,
+    "previous": 5.28,
     "value": 5.3
    },
    {
     "change": -0.02,
     "date": "2026-07-24",
     "prev": 5.3,
+    "previous": 5.3,
     "value": 5.28
    },
    {
     "change": 0.01,
     "date": "2026-07-17",
     "prev": 5.29,
+    "previous": 5.29,
     "value": 5.3
    },
    {
     "change": -0.02,
     "date": "2026-07-10",
     "prev": 5.31,
+    "previous": 5.31,
     "value": 5.29
    },
    {
     "change": -0.05,
     "date": "2026-07-03",
     "prev": 5.36,
+    "previous": 5.36,
     "value": 5.31
    },
    {
     "change": 0.02,
     "date": "2026-06-26",
     "prev": 5.34,
+    "previous": 5.34,
     "value": 5.36
    },
    {
     "change": 0.06,
     "date": "2026-06-19",
     "prev": 5.28,
+    "previous": 5.28,
     "value": 5.34
    },
    {
     "change": 0.0,
     "date": "2026-06-12",
     "prev": 5.28,
+    "previous": 5.28,
     "value": 5.28
    },
    {
     "change": -0.1,
     "date": "2026-06-05",
     "prev": 5.38,
+    "previous": 5.38,
     "value": 5.28
    },
    {
     "change": 0.13,
     "date": "2026-05-29",
     "prev": 5.25,
+    "previous": 5.25,
     "value": 5.38
    }
   ],
@@ -1216,13 +1236,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

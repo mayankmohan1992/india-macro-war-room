@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: read        # jobs below request only what they actually need
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -67,6 +67,24 @@ jobs:
 
       - name: Validate the published API
         run: python tools/validate_api.py
+
+      - name: Reproducibility check - the committed dashboard must match the rebuild
+        run: |
+          python - <<'PY'
+          import pathlib, re, subprocess, sys
+          committed = subprocess.run(["git", "show", "HEAD:dashboard/index.html"],
+                                     capture_output=True, text=True, check=True).stdout
+          built = pathlib.Path("dashboard/index.html").read_text()
+          # The build stamp is the only field allowed to differ between two identical builds.
+          norm = lambda s: re.sub(r'"generated": "[^"]*"', '"generated": ""', s)
+          if norm(committed) != norm(built):
+              a, b = norm(committed), norm(built)
+              same = sum(1 for x, y in zip(a, b) if x == y)
+              sys.exit("FAIL: the committed dashboard does not reproduce from the committed raw "
+                       f"data (first difference near char {same}; committed {len(a)} vs rebuilt "
+                       f"{len(b)} chars) - re-run build_dashboard.py and commit the result")
+          print("PASS: the committed dashboard reproduces byte-for-byte (build stamp aside)")
+          PY
 
       - name: Check the Pages artifact assembles
         run: bash scripts/build-public.sh && test -f public/index.html && test -f public/api/v1/latest.json

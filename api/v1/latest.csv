@@ -1,7 +1,7 @@
 id,label,value,unit,date,status,change
 cpi,CPI inflation,5.54,%,2026-09-30,watch,0.71
 wpi,WPI inflation,11.39,%,2026-09-30,bad,1.47
-repo,Policy repo rate,5.5,%,2026-10-09,bad,0.25
+repo,Policy repo rate,5.5,%,2026-10-09,bad,
 m3,M3 (broad money) growth,16.87,%,2026-09-30,watch,0.23
 rm,Reserve money growth,8.69,%,2026-09-30,good,0.2
 credit,Bank credit growth,19.38,%,2026-09-30,watch,1.25
@@ -26,10 +26,10 @@ cpiurban,CPI urban,4.82,%,2026-09-30,watch,0.48
 m1,M1 (narrow money) growth,17.02,%,2026-09-30,watch,2.42
 moneymult,Money multiplier,6.4,x,2026-09-30,watch,0.13
 bankdep,Bankers' deposits with RBI,-6.04,%,2026-10-09,bad,-8.91
-rbicredit,RBI credit to the Centre,93392.0,₹ crore,2026-04-17,watch,0.0
+rbicredit,RBI credit to the Centre,93392.0,₹ crore,2026-04-17,watch,-6882.0
 rupeesec,RBI rupee securities,23.47,%,2026-10-09,watch,-0.2
-crr,Cash Reserve Ratio,3.0,%,2026-10-09,good,0.0
-slr,Statutory Liquidity Ratio,18.0,%,2026-10-09,watch,0.0
+crr,Cash Reserve Ratio,3.0,%,2026-10-09,good,
+slr,Statutory Liquidity Ratio,18.0,%,2026-10-09,watch,
 usdinr,USD/INR,95.0691,₹,2026-10-15,good,-1.541
 termspread,Term spread (10y − 91d),1.8,pp,2026-10-09,good,0.09
 gold,RBI gold holdings,11.96,%,2026-10-09,good,-4.89

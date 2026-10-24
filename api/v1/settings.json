@@ -20,13 +20,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -40,52 +40,102 @@
      "change": -25.0,
      "date": "2025-12-05",
      "prev": 3.25,
+     "previous": 3.25,
      "value": 3.0
     },
     {
      "change": -25.0,
      "date": "2025-11-07",
      "prev": 3.5,
+     "previous": 3.5,
      "value": 3.25
     },
     {
      "change": -25.0,
      "date": "2025-10-10",
      "prev": 3.75,
+     "previous": 3.75,
      "value": 3.5
     },
     {
      "change": -25.0,
      "date": "2025-09-12",
      "prev": 4.0,
+     "previous": 4.0,
      "value": 3.75
     },
     {
      "change": -25.0,
      "date": "2025-01-03",
      "prev": 4.25,
+     "previous": 4.25,
      "value": 4.0
     },
     {
      "change": -25.0,
      "date": "2024-12-20",
      "prev": 4.5,
+     "previous": 4.5,
      "value": 4.25
     },
     {
      "change": 50.0,
      "date": "2022-05-27",
      "prev": 4.0,
+     "previous": 4.0,
      "value": 4.5
     },
     {
-     "change": null,
-     "date": "2021-10-22",
-     "prev": null,
+     "change": 50.0,
+     "date": "2021-05-28",
+     "prev": 3.5,
+     "previous": 3.5,
      "value": 4.0
+    },
+    {
+     "change": 50.0,
+     "date": "2021-04-02",
+     "prev": 3.0,
+     "previous": 3.0,
+     "value": 3.5
+    },
+    {
+     "change": -100.0,
+     "date": "2020-04-03",
+     "prev": 4.0,
+     "previous": 4.0,
+     "value": 3.0
+    },
+    {
+     "change": -25.0,
+     "date": "2013-02-15",
+     "prev": 4.25,
+     "previous": 4.25,
+     "value": 4.0
+    },
+    {
+     "change": -25.0,
+     "date": "2012-11-09",
+     "prev": 4.5,
+     "previous": 4.5,
+     "value": 4.25
+    },
+    {
+     "change": -25.0,
+     "date": "2012-09-28",
+     "prev": 4.75,
+     "previous": 4.75,
+     "value": 4.5
+    },
+    {
+     "change": -75.0,
+     "date": "2012-03-16",
+     "prev": 5.5,
+     "previous": 5.5,
+     "value": 4.75
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
    "id": "crr",
    "label": "Cash Reserve Ratio",
    "previous": 3.25,
@@ -103,76 +153,102 @@
      "change": 25.0,
      "date": "2026-10-09",
      "prev": 5.25,
+     "previous": 5.25,
      "value": 5.5
     },
     {
      "change": -25.0,
      "date": "2025-12-05",
      "prev": 5.5,
+     "previous": 5.5,
      "value": 5.25
     },
     {
      "change": -50.0,
      "date": "2025-06-06",
      "prev": 6.0,
+     "previous": 6.0,
      "value": 5.5
     },
     {
      "change": -25.0,
      "date": "2025-04-11",
      "prev": 6.25,
+     "previous": 6.25,
      "value": 6.0
     },
     {
      "change": -25.0,
      "date": "2025-02-07",
      "prev": 6.5,
+     "previous": 6.5,
      "value": 6.25
     },
     {
      "change": 25.0,
      "date": "2023-02-10",
      "prev": 6.25,
+     "previous": 6.25,
      "value": 6.5
     },
     {
      "change": 35.0,
      "date": "2022-12-09",
      "prev": 5.9,
+     "previous": 5.9,
      "value": 6.25
     },
     {
      "change": 50.0,
      "date": "2022-09-30",
      "prev": 5.4,
+     "previous": 5.4,
      "value": 5.9
     },
     {
      "change": 50.0,
      "date": "2022-08-05",
      "prev": 4.9,
+     "previous": 4.9,
      "value": 5.4
     },
     {
      "change": 50.0,
      "date": "2022-06-10",
      "prev": 4.4,
+     "previous": 4.4,
      "value": 4.9
     },
     {
      "change": 40.0,
      "date": "2022-05-06",
      "prev": 4.0,
+     "previous": 4.0,
      "value": 4.4
     },
     {
-     "change": null,
-     "date": "2021-10-22",
-     "prev": null,
+     "change": -40.0,
+     "date": "2020-05-22",
+     "prev": 4.4,
+     "previous": 4.4,
      "value": 4.0
+    },
+    {
+     "change": -75.0,
+     "date": "2020-03-27",
+     "prev": 5.15,
+     "previous": 5.15,
+     "value": 4.4
+    },
+    {
+     "change": -25.0,
+     "date": "2019-10-04",
+     "prev": 5.4,
+     "previous": 5.4,
+     "value": 5.15
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
    "id": "repo",
    "label": "Policy repo rate",
    "previous": 5.25,
@@ -183,22 +259,114 @@
   },
   {
    "as_published": "2026-10-09",
-   "change_bp": null,
-   "effective_from": "2021-10-22",
+   "change_bp": -25.0,
+   "effective_from": "2020-04-17",
    "history": [
     {
-     "change": null,
-     "date": "2021-10-22",
-     "prev": null,
+     "change": -25.0,
+     "date": "2020-04-17",
+     "prev": 18.25,
+     "previous": 18.25,
      "value": 18.0
+    },
+    {
+     "change": -25.0,
+     "date": "2020-01-10",
+     "prev": 18.5,
+     "previous": 18.5,
+     "value": 18.25
+    },
+    {
+     "change": -25.0,
+     "date": "2019-10-18",
+     "prev": 18.75,
+     "previous": 18.75,
+     "value": 18.5
+    },
+    {
+     "change": -25.0,
+     "date": "2019-07-12",
+     "prev": 19.0,
+     "previous": 19.0,
+     "value": 18.75
+    },
+    {
+     "change": -25.0,
+     "date": "2019-04-19",
+     "prev": 19.25,
+     "previous": 19.25,
+     "value": 19.0
+    },
+    {
+     "change": -25.0,
+     "date": "2019-01-11",
+     "prev": 19.5,
+     "previous": 19.5,
+     "value": 19.25
+    },
+    {
+     "change": -50.0,
+     "date": "2017-10-20",
+     "prev": 20.0,
+     "previous": 20.0,
+     "value": 19.5
+    },
+    {
+     "change": -50.0,
+     "date": "2017-06-30",
+     "prev": 20.5,
+     "previous": 20.5,
+     "value": 20.0
+    },
+    {
+     "change": -25.0,
+     "date": "2017-01-13",
+     "prev": 20.75,
+     "previous": 20.75,
+     "value": 20.5
+    },
+    {
+     "change": -25.0,
+     "date": "2016-10-07",
+     "prev": 21.0,
+     "previous": 21.0,
+     "value": 20.75
+    },
+    {
+     "change": -25.0,
+     "date": "2016-07-15",
+     "prev": 21.25,
+     "previous": 21.25,
+     "value": 21.0
+    },
+    {
+     "change": -25.0,
+     "date": "2016-04-08",
+     "prev": 21.5,
+     "previous": 21.5,
+     "value": 21.25
+    },
+    {
+     "change": -50.0,
+     "date": "2015-02-13",
+     "prev": 22.0,
+     "previous": 22.0,
+     "value": 21.5
+    },
+    {
+     "change": -50.0,
+     "date": "2014-08-15",
+     "prev": 22.5,
+     "previous": 22.5,
+     "value": 22.0
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
    "id": "slr",
    "label": "Statutory Liquidity Ratio",
-   "previous": null,
+   "previous": 18.25,
    "source": "RBI r10",
-   "unchanged_in_window": true,
+   "unchanged_in_window": false,
    "unit": "%",
    "value": 18.0
   }

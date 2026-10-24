@@ -233,11 +233,11 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-23 11:16 UTC",
+ "generated": "2026-10-24 14:42 IST",
  "as_of": "2026-10-15",
  "as_of_by_frequency": {
   "daily": "2026-10-11",
-  "weekly": "2026-10-15",
+  "weekly": "2026-10-09",
   "fortnightly": "2026-09-30",
   "monthly": "2026-09-30"
  },
@@ -293,54 +293,63 @@
     {
      "date": "2026-09-30",
      "value": 5.54,
+     "previous": 4.83,
      "prev": 4.83,
      "change": 0.71
     },
     {
      "date": "2026-08-31",
      "value": 4.83,
+     "previous": 4.45,
      "prev": 4.45,
      "change": 0.38
     },
     {
      "date": "2026-07-31",
      "value": 4.45,
+     "previous": 4.38,
      "prev": 4.38,
      "change": 0.07
     },
     {
      "date": "2026-06-30",
      "value": 4.38,
+     "previous": 3.93,
      "prev": 3.93,
      "change": 0.45
     },
     {
      "date": "2026-05-31",
      "value": 3.93,
+     "previous": 3.48,
      "prev": 3.48,
      "change": 0.45
     },
     {
      "date": "2026-04-30",
      "value": 3.48,
+     "previous": 3.4,
      "prev": 3.4,
      "change": 0.08
     },
     {
      "date": "2026-03-31",
      "value": 3.4,
+     "previous": 3.21,
      "prev": 3.21,
      "change": 0.19
     },
     {
      "date": "2026-02-28",
      "value": 3.21,
+     "previous": 2.74,
      "prev": 2.74,
      "change": 0.47
     },
     {
      "date": "2026-01-31",
      "value": 2.74,
+     "previous": null,
      "prev": null,
      "change": null
     }
@@ -402,120 +411,140 @@
     {
      "date": "2026-09-30",
      "value": 11.39,
+     "previous": 9.92,
      "prev": 9.92,
      "change": 1.47
     },
     {
      "date": "2026-08-31",
      "value": 9.92,
+     "previous": 9.78,
      "prev": 9.78,
      "change": 0.14
     },
     {
      "date": "2026-07-31",
      "value": 9.78,
+     "previous": 9.97,
      "prev": 9.97,
      "change": -0.19
     },
     {
      "date": "2026-06-30",
      "value": 9.97,
+     "previous": 9.88,
      "prev": 9.88,
      "change": 0.09
     },
     {
      "date": "2026-05-31",
      "value": 9.88,
+     "previous": 8.36,
      "prev": 8.36,
      "change": 1.52
     },
     {
      "date": "2026-04-30",
      "value": 8.36,
+     "previous": 3.98,
      "prev": 3.98,
      "change": 4.38
     },
     {
      "date": "2026-03-31",
      "value": 3.98,
+     "previous": 2.18,
      "prev": 2.18,
      "change": 1.8
     },
     {
      "date": "2026-02-28",
      "value": 2.18,
+     "previous": 1.19,
      "prev": 1.19,
      "change": 0.99
     },
     {
      "date": "2026-01-31",
      "value": 1.19,
+     "previous": 0.3,
      "prev": 0.3,
      "change": 0.89
     },
     {
      "date": "2025-12-31",
      "value": 0.3,
+     "previous": -0.59,
      "prev": -0.59,
      "change": 0.89
     },
     {
      "date": "2025-11-30",
      "value": -0.59,
+     "previous": -1.18,
      "prev": -1.18,
      "change": 0.59
     },
     {
      "date": "2025-10-31",
      "value": -1.18,
+     "previous": -0.2,
      "prev": -0.2,
      "change": -0.98
     },
     {
      "date": "2025-09-30",
      "value": -0.2,
+     "previous": 0.0,
      "prev": 0.0,
      "change": -0.2
     },
     {
      "date": "2025-08-31",
      "value": 0.0,
+     "previous": -0.79,
      "prev": -0.79,
      "change": 0.79
     },
     {
      "date": "2025-07-31",
      "value": -0.79,
+     "previous": -0.4,
      "prev": -0.4,
      "change": -0.39
     },
     {
      "date": "2025-06-30",
      "value": -0.4,
+     "previous": -0.2,
      "prev": -0.2,
      "change": -0.2
     },
     {
      "date": "2025-05-31",
      "value": -0.2,
+     "previous": 0.6,
      "prev": 0.6,
      "change": -0.8
     },
     {
      "date": "2025-04-30",
      "value": 0.6,
+     "previous": 1.21,
      "prev": 1.21,
      "change": -0.61
     },
     {
      "date": "2025-03-31",
      "value": 1.21,
+     "previous": 1.61,
      "prev": 1.61,
      "change": -0.4
     },
     {
      "date": "2025-02-28",
      "value": 1.61,
+     "previous": 1.81,
      "prev": 1.81,
      "change": -0.2
     }
@@ -582,82 +611,109 @@
    "effective_from": "2026-10-09",
    "prev": 5.25,
    "bp": 25.0,
+   "unchanged_in_window": false,
    "history_kind": "setting",
    "history": [
     {
      "date": "2026-10-09",
      "value": 5.5,
+     "previous": 5.25,
      "prev": 5.25,
      "change": 25.0
     },
     {
      "date": "2025-12-05",
      "value": 5.25,
+     "previous": 5.5,
      "prev": 5.5,
      "change": -25.0
     },
     {
      "date": "2025-06-06",
      "value": 5.5,
+     "previous": 6.0,
      "prev": 6.0,
      "change": -50.0
     },
     {
      "date": "2025-04-11",
      "value": 6.0,
+     "previous": 6.25,
      "prev": 6.25,
      "change": -25.0
     },
     {
      "date": "2025-02-07",
      "value": 6.25,
+     "previous": 6.5,
      "prev": 6.5,
      "change": -25.0
     },
     {
      "date": "2023-02-10",
      "value": 6.5,
+     "previous": 6.25,
      "prev": 6.25,
      "change": 25.0
     },
     {
      "date": "2022-12-09",
      "value": 6.25,
+     "previous": 5.9,
      "prev": 5.9,
      "change": 35.0
     },
     {
      "date": "2022-09-30",
      "value": 5.9,
+     "previous": 5.4,
      "prev": 5.4,
      "change": 50.0
     },
     {
      "date": "2022-08-05",
      "value": 5.4,
+     "previous": 4.9,
      "prev": 4.9,
      "change": 50.0
     },
     {
      "date": "2022-06-10",
      "value": 4.9,
+     "previous": 4.4,
      "prev": 4.4,
      "change": 50.0
     },
     {
      "date": "2022-05-06",
      "value": 4.4,
+     "previous": 4.0,
      "prev": 4.0,
      "change": 40.0
     },
     {
-     "date": "2021-10-22",
+     "date": "2020-05-22",
      "value": 4.0,
-     "prev": null,
-     "change": null
+     "previous": 4.4,
+     "prev": 4.4,
+     "change": -40.0
+    },
+    {
+     "date": "2020-03-27",
+     "value": 4.4,
+     "previous": 5.15,
+     "prev": 5.15,
+     "change": -75.0
+    },
+    {
+     "date": "2019-10-04",
+     "value": 5.15,
+     "previous": 5.4,
+     "prev": 5.4,
+     "change": -25.0
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 12 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
    "stale_days": 6,
    "stale": false,
    "freq": "weekly"
@@ -720,120 +776,140 @@
     {
      "date": "2026-09-30",
      "value": 16.87,
+     "previous": 16.64,
      "prev": 16.64,
      "change": 0.23
     },
     {
      "date": "2026-09-15",
      "value": 16.64,
+     "previous": 16.67,
      "prev": 16.67,
      "change": -0.03
     },
     {
      "date": "2026-08-31",
      "value": 16.67,
+     "previous": 14.08,
      "prev": 14.08,
      "change": 2.59
     },
     {
      "date": "2026-08-15",
      "value": 14.08,
+     "previous": 14.7,
      "prev": 14.7,
      "change": -0.62
     },
     {
      "date": "2026-07-31",
      "value": 14.7,
+     "previous": 12.44,
      "prev": 12.44,
      "change": 2.26
     },
     {
      "date": "2026-07-15",
      "value": 12.44,
+     "previous": 12.97,
      "prev": 12.97,
      "change": -0.53
     },
     {
      "date": "2026-06-30",
      "value": 12.97,
+     "previous": 11.92,
      "prev": 11.92,
      "change": 1.05
     },
     {
      "date": "2026-06-15",
      "value": 11.92,
+     "previous": 12.05,
      "prev": 12.05,
      "change": -0.13
     },
     {
      "date": "2026-05-31",
      "value": 12.05,
+     "previous": 11.97,
      "prev": 11.97,
      "change": 0.08
     },
     {
      "date": "2026-05-15",
      "value": 11.97,
+     "previous": 12.0,
      "prev": 12.0,
      "change": -0.03
     },
     {
      "date": "2026-04-30",
      "value": 12.0,
+     "previous": 11.93,
      "prev": 11.93,
      "change": 0.07
     },
     {
      "date": "2026-04-15",
      "value": 11.93,
+     "previous": 15.27,
      "prev": 15.27,
      "change": -3.34
     },
     {
      "date": "2026-03-31",
      "value": 15.27,
+     "previous": 10.7,
      "prev": 10.7,
      "change": 4.57
     },
     {
      "date": "2026-03-15",
      "value": 10.7,
+     "previous": 11.53,
      "prev": 11.53,
      "change": -0.83
     },
     {
      "date": "2026-02-28",
      "value": 11.53,
+     "previous": 10.94,
      "prev": 10.94,
      "change": 0.59
     },
     {
      "date": "2026-02-15",
      "value": 10.94,
+     "previous": 11.03,
      "prev": 11.03,
      "change": -0.09
     },
     {
      "date": "2026-01-31",
      "value": 11.03,
+     "previous": 10.45,
      "prev": 10.45,
      "change": 0.58
     },
     {
      "date": "2026-01-15",
      "value": 10.45,
+     "previous": 12.11,
      "prev": 12.11,
      "change": -1.66
     },
     {
      "date": "2025-12-31",
      "value": 12.11,
+     "previous": 9.28,
      "prev": 9.28,
      "change": 2.83
     },
     {
      "date": "2025-12-15",
      "value": 9.28,
+     "previous": 9.88,
      "prev": 9.88,
      "change": -0.6
     }
@@ -901,120 +977,140 @@
     {
      "date": "2026-09-30",
      "value": 8.69,
+     "previous": 8.49,
      "prev": 8.49,
      "change": 0.2
     },
     {
      "date": "2026-09-15",
      "value": 8.49,
+     "previous": 6.79,
      "prev": 6.79,
      "change": 1.7
     },
     {
      "date": "2026-08-31",
      "value": 6.79,
+     "previous": 5.83,
      "prev": 5.83,
      "change": 0.96
     },
     {
      "date": "2026-08-15",
      "value": 5.83,
+     "previous": 6.17,
      "prev": 6.17,
      "change": -0.34
     },
     {
      "date": "2026-07-31",
      "value": 6.17,
+     "previous": 5.4,
      "prev": 5.4,
      "change": 0.77
     },
     {
      "date": "2026-07-15",
      "value": 5.4,
+     "previous": 6.77,
      "prev": 6.77,
      "change": -1.37
     },
     {
      "date": "2026-06-30",
      "value": 6.77,
+     "previous": 5.93,
      "prev": 5.93,
      "change": 0.84
     },
     {
      "date": "2026-06-15",
      "value": 5.93,
+     "previous": 6.26,
      "prev": 6.26,
      "change": -0.33
     },
     {
      "date": "2026-05-31",
      "value": 6.26,
+     "previous": 5.58,
      "prev": 5.58,
      "change": 0.68
     },
     {
      "date": "2026-05-15",
      "value": 5.58,
+     "previous": 6.39,
      "prev": 6.39,
      "change": -0.81
     },
     {
      "date": "2026-04-30",
      "value": 6.39,
+     "previous": 5.71,
      "prev": 5.71,
      "change": 0.68
     },
     {
      "date": "2026-04-15",
      "value": 5.71,
+     "previous": 5.77,
      "prev": 5.77,
      "change": -0.06
     },
     {
      "date": "2026-03-31",
      "value": 5.77,
+     "previous": 5.27,
      "prev": 5.27,
      "change": 0.5
     },
     {
      "date": "2026-03-15",
      "value": 5.27,
+     "previous": 5.02,
      "prev": 5.02,
      "change": 0.25
     },
     {
      "date": "2026-02-28",
      "value": 5.02,
+     "previous": 3.61,
      "prev": 3.61,
      "change": 1.41
     },
     {
      "date": "2026-02-15",
      "value": 3.61,
+     "previous": 4.99,
      "prev": 4.99,
      "change": -1.38
     },
     {
      "date": "2026-01-31",
      "value": 4.99,
+     "previous": 3.85,
      "prev": 3.85,
      "change": 1.14
     },
     {
      "date": "2026-01-15",
      "value": 3.85,
+     "previous": 3.6,
      "prev": 3.6,
      "change": 0.25
     },
     {
      "date": "2025-12-31",
      "value": 3.6,
+     "previous": 2.19,
      "prev": 2.19,
      "change": 1.41
     },
     {
      "date": "2025-12-15",
      "value": 2.19,
+     "previous": 1.57,
      "prev": 1.57,
      "change": 0.62
     }
@@ -1082,120 +1178,140 @@
     {
      "date": "2026-09-30",
      "value": 19.38,
+     "previous": 18.13,
      "prev": 18.13,
      "change": 1.25
     },
     {
      "date": "2026-09-15",
      "value": 18.13,
+     "previous": 19.08,
      "prev": 19.08,
      "change": -0.95
     },
     {
      "date": "2026-08-31",
      "value": 19.08,
+     "previous": 18.02,
      "prev": 18.02,
      "change": 1.06
     },
     {
      "date": "2026-08-15",
      "value": 18.02,
+     "previous": 19.33,
      "prev": 19.33,
      "change": -1.31
     },
     {
      "date": "2026-07-31",
      "value": 19.33,
+     "previous": 17.68,
      "prev": 17.68,
      "change": 1.65
     },
     {
      "date": "2026-07-15",
      "value": 17.68,
+     "previous": 18.63,
      "prev": 18.63,
      "change": -0.95
     },
     {
      "date": "2026-06-30",
      "value": 18.63,
+     "previous": 17.65,
      "prev": 17.65,
      "change": 0.98
     },
     {
      "date": "2026-06-15",
      "value": 17.65,
+     "previous": 17.65,
      "prev": 17.65,
      "change": 0.0
     },
     {
      "date": "2026-05-31",
      "value": 17.65,
+     "previous": 16.23,
      "prev": 16.23,
      "change": 1.42
     },
     {
      "date": "2026-05-15",
      "value": 16.23,
+     "previous": 16.0,
      "prev": 16.0,
      "change": 0.23
     },
     {
      "date": "2026-04-30",
      "value": 16.0,
+     "previous": 15.01,
      "prev": 15.01,
      "change": 0.99
     },
     {
      "date": "2026-04-15",
      "value": 15.01,
+     "previous": 16.07,
      "prev": 16.07,
      "change": -1.06
     },
     {
      "date": "2026-03-31",
      "value": 16.07,
+     "previous": 13.85,
      "prev": 13.85,
      "change": 2.22
     },
     {
      "date": "2026-03-15",
      "value": 13.85,
+     "previous": 14.49,
      "prev": 14.49,
      "change": -0.64
     },
     {
      "date": "2026-02-28",
      "value": 14.49,
+     "previous": 13.57,
      "prev": 13.57,
      "change": 0.92
     },
     {
      "date": "2026-02-15",
      "value": 13.57,
+     "previous": 13.98,
      "prev": 13.98,
      "change": -0.41
     },
     {
      "date": "2026-01-31",
      "value": 13.98,
+     "previous": 13.12,
      "prev": 13.12,
      "change": 0.86
     },
     {
      "date": "2026-01-15",
      "value": 13.12,
+     "previous": 14.53,
      "prev": 14.53,
      "change": -1.41
     },
     {
      "date": "2025-12-31",
      "value": 14.53,
+     "previous": 11.98,
      "prev": 11.98,
      "change": 2.55
     },
     {
      "date": "2025-12-15",
      "value": 11.98,
+     "previous": 11.54,
      "prev": 11.54,
      "change": 0.44
     }
@@ -1263,120 +1379,140 @@
     {
      "date": "2026-09-30",
      "value": 17.83,
+     "previous": 17.31,
      "prev": 17.31,
      "change": 0.52
     },
     {
      "date": "2026-09-15",
      "value": 17.31,
+     "previous": 17.76,
      "prev": 17.76,
      "change": -0.45
     },
     {
      "date": "2026-08-31",
      "value": 17.76,
+     "previous": 14.58,
      "prev": 14.58,
      "change": 3.18
     },
     {
      "date": "2026-08-15",
      "value": 14.58,
+     "previous": 15.37,
      "prev": 15.37,
      "change": -0.79
     },
     {
      "date": "2026-07-31",
      "value": 15.37,
+     "previous": 12.67,
      "prev": 12.67,
      "change": 2.7
     },
     {
      "date": "2026-07-15",
      "value": 12.67,
+     "previous": 13.31,
      "prev": 13.31,
      "change": -0.64
     },
     {
      "date": "2026-06-30",
      "value": 13.31,
+     "previous": 12.02,
      "prev": 12.02,
      "change": 1.29
     },
     {
      "date": "2026-06-15",
      "value": 12.02,
+     "previous": 12.21,
      "prev": 12.21,
      "change": -0.19
     },
     {
      "date": "2026-05-31",
      "value": 12.21,
+     "previous": 12.24,
      "prev": 12.24,
      "change": -0.03
     },
     {
      "date": "2026-05-15",
      "value": 12.24,
+     "previous": 12.3,
      "prev": 12.3,
      "change": -0.06
     },
     {
      "date": "2026-04-30",
      "value": 12.3,
+     "previous": 12.19,
      "prev": 12.19,
      "change": 0.11
     },
     {
      "date": "2026-04-15",
      "value": 12.19,
+     "previous": 13.47,
      "prev": 13.47,
      "change": -1.28
     },
     {
      "date": "2026-03-31",
      "value": 13.47,
+     "previous": 10.77,
      "prev": 10.77,
      "change": 2.7
     },
     {
      "date": "2026-03-15",
      "value": 10.77,
+     "previous": 11.91,
      "prev": 11.91,
      "change": -1.14
     },
     {
      "date": "2026-02-28",
      "value": 11.91,
+     "previous": 11.17,
      "prev": 11.17,
      "change": 0.74
     },
     {
      "date": "2026-02-15",
      "value": 11.17,
+     "previous": 11.45,
      "prev": 11.45,
      "change": -0.28
     },
     {
      "date": "2026-01-31",
      "value": 11.45,
+     "previous": 10.6,
      "prev": 10.6,
      "change": 0.85
     },
     {
      "date": "2026-01-15",
      "value": 10.6,
+     "previous": 12.67,
      "prev": 12.67,
      "change": -2.07
     },
     {
      "date": "2025-12-31",
      "value": 12.67,
+     "previous": 9.35,
      "prev": 9.35,
      "change": 3.32
     },
     {
      "date": "2025-12-15",
      "value": 9.35,
+     "previous": 10.19,
      "prev": 10.19,
      "change": -0.84
     }
@@ -1444,120 +1580,140 @@
     {
      "date": "2026-09-30",
      "value": 80.98,
+     "previous": 80.84,
      "prev": 80.84,
      "change": 0.14
     },
     {
      "date": "2026-09-15",
      "value": 80.84,
+     "previous": 80.32,
      "prev": 80.32,
      "change": 0.52
     },
     {
      "date": "2026-08-31",
      "value": 80.32,
+     "previous": 81.72,
      "prev": 81.72,
      "change": -1.4
     },
     {
      "date": "2026-08-15",
      "value": 81.72,
+     "previous": 81.96,
      "prev": 81.96,
      "change": -0.24
     },
     {
      "date": "2026-07-31",
      "value": 81.96,
+     "previous": 82.7,
      "prev": 82.7,
      "change": -0.74
     },
     {
      "date": "2026-07-15",
      "value": 82.7,
+     "previous": 82.62,
      "prev": 82.62,
      "change": 0.08
     },
     {
      "date": "2026-06-30",
      "value": 82.62,
+     "previous": 83.38,
      "prev": 83.38,
      "change": -0.76
     },
     {
      "date": "2026-06-15",
      "value": 83.38,
+     "previous": 82.74,
      "prev": 82.74,
      "change": 0.64
     },
     {
      "date": "2026-05-31",
      "value": 82.74,
+     "previous": 82.48,
      "prev": 82.48,
      "change": 0.26
     },
     {
      "date": "2026-05-15",
      "value": 82.48,
+     "previous": 81.99,
      "prev": 81.99,
      "change": 0.49
     },
     {
      "date": "2026-04-30",
      "value": 81.99,
+     "previous": 81.56,
      "prev": 81.56,
      "change": 0.43
     },
     {
      "date": "2026-04-15",
      "value": 81.56,
+     "previous": 81.44,
      "prev": 81.44,
      "change": 0.12
     },
     {
      "date": "2026-03-31",
      "value": 81.44,
+     "previous": 83.04,
      "prev": 83.04,
      "change": -1.6
     },
     {
      "date": "2026-03-15",
      "value": 83.04,
+     "previous": 82.38,
      "prev": 82.38,
      "change": 0.66
     },
     {
      "date": "2026-02-28",
      "value": 82.38,
+     "previous": 82.47,
      "prev": 82.47,
      "change": -0.09
     },
     {
      "date": "2026-02-15",
      "value": 82.47,
+     "previous": 82.29,
      "prev": 82.29,
      "change": 0.18
     },
     {
      "date": "2026-01-31",
      "value": 82.29,
+     "previous": 82.18,
      "prev": 82.18,
      "change": 0.11
     },
     {
      "date": "2026-01-15",
      "value": 82.18,
+     "previous": 81.75,
      "prev": 81.75,
      "change": 0.43
     },
     {
      "date": "2025-12-31",
      "value": 81.75,
+     "previous": 81.61,
      "prev": 81.61,
      "change": 0.14
     },
     {
      "date": "2025-12-15",
      "value": 81.61,
+     "previous": 80.5,
      "prev": 80.5,
      "change": 1.11
     }
@@ -1625,120 +1781,140 @@
     {
      "date": "2026-10-11",
      "value": -262642.0,
+     "previous": -260324.864,
      "prev": -260324.864,
      "change": -2317.136
     },
     {
      "date": "2026-10-10",
      "value": -260324.864,
+     "previous": -271363.727,
      "prev": -271363.727,
      "change": 11038.863
     },
     {
      "date": "2026-10-09",
      "value": -271363.727,
+     "previous": -276085.455,
      "prev": -276085.455,
      "change": 4721.728
     },
     {
      "date": "2026-10-08",
      "value": -276085.455,
+     "previous": -277619.227,
      "prev": -277619.227,
      "change": 1533.772
     },
     {
      "date": "2026-10-07",
      "value": -277619.227,
+     "previous": -288687.545,
      "prev": -288687.545,
      "change": 11068.318
     },
     {
      "date": "2026-10-06",
      "value": -288687.545,
+     "previous": -283328.591,
      "prev": -283328.591,
      "change": -5358.954
     },
     {
      "date": "2026-10-05",
      "value": -283328.591,
+     "previous": -278308.0,
      "prev": -278308.0,
      "change": -5020.591
     },
     {
      "date": "2026-10-04",
      "value": -278308.0,
+     "previous": -281842.045,
      "prev": -281842.045,
      "change": 3534.045
     },
     {
      "date": "2026-10-03",
      "value": -281842.045,
+     "previous": -303375.182,
      "prev": -303375.182,
      "change": 21533.137
     },
     {
      "date": "2026-10-02",
      "value": -303375.182,
+     "previous": -327033.636,
      "prev": -327033.636,
      "change": 23658.454
     },
     {
      "date": "2026-10-01",
      "value": -327033.636,
+     "previous": -343495.136,
      "prev": -343495.136,
      "change": 16461.5
     },
     {
      "date": "2026-09-30",
      "value": -343495.136,
+     "previous": -357719.636,
      "prev": -357719.636,
      "change": 14224.5
     },
     {
      "date": "2026-09-29",
      "value": -357719.636,
+     "previous": -377780.409,
      "prev": -377780.409,
      "change": 20060.773
     },
     {
      "date": "2026-09-28",
      "value": -377780.409,
+     "previous": -373685.364,
      "prev": -373685.364,
      "change": -4095.045
     },
     {
      "date": "2026-09-27",
      "value": -373685.364,
+     "previous": -376677.682,
      "prev": -376677.682,
      "change": 2992.318
     },
     {
      "date": "2026-09-26",
      "value": -376677.682,
+     "previous": -406145.273,
      "prev": -406145.273,
      "change": 29467.591
     },
     {
      "date": "2026-09-25",
      "value": -406145.273,
+     "previous": -427827.818,
      "prev": -427827.818,
      "change": 21682.545
     },
     {
      "date": "2026-09-24",
      "value": -427827.818,
+     "previous": -448935.318,
      "prev": -448935.318,
      "change": 21107.5
     },
     {
      "date": "2026-09-23",
      "value": -448935.318,
+     "previous": -468296.091,
      "prev": -468296.091,
      "change": 19360.773
     },
     {
      "date": "2026-09-22",
      "value": -468296.091,
+     "previous": -487321.0,
      "prev": -487321.0,
      "change": 19024.909
     }
@@ -1806,120 +1982,140 @@
     {
      "date": "2026-10-09",
      "value": 5.23,
+     "previous": 5.12,
      "prev": 5.12,
      "change": 0.11
     },
     {
      "date": "2026-10-02",
      "value": 5.12,
+     "previous": 5.19,
      "prev": 5.19,
      "change": -0.07
     },
     {
      "date": "2026-09-25",
      "value": 5.19,
+     "previous": 5.05,
      "prev": 5.05,
      "change": 0.14
     },
     {
      "date": "2026-09-18",
      "value": 5.05,
+     "previous": 4.97,
      "prev": 4.97,
      "change": 0.08
     },
     {
      "date": "2026-09-11",
      "value": 4.97,
+     "previous": 5.07,
      "prev": 5.07,
      "change": -0.1
     },
     {
      "date": "2026-09-04",
      "value": 5.07,
+     "previous": 5.2,
      "prev": 5.2,
      "change": -0.13
     },
     {
      "date": "2026-08-28",
      "value": 5.2,
+     "previous": 5.16,
      "prev": 5.16,
      "change": 0.04
     },
     {
      "date": "2026-08-21",
      "value": 5.16,
+     "previous": 5.15,
      "prev": 5.15,
      "change": 0.01
     },
     {
      "date": "2026-08-14",
      "value": 5.15,
+     "previous": 5.09,
      "prev": 5.09,
      "change": 0.06
     },
     {
      "date": "2026-08-07",
      "value": 5.09,
+     "previous": 5.3,
      "prev": 5.3,
      "change": -0.21
     },
     {
      "date": "2026-07-31",
      "value": 5.3,
+     "previous": 5.28,
      "prev": 5.28,
      "change": 0.02
     },
     {
      "date": "2026-07-24",
      "value": 5.28,
+     "previous": 5.3,
      "prev": 5.3,
      "change": -0.02
     },
     {
      "date": "2026-07-17",
      "value": 5.3,
+     "previous": 5.29,
      "prev": 5.29,
      "change": 0.01
     },
     {
      "date": "2026-07-10",
      "value": 5.29,
+     "previous": 5.31,
      "prev": 5.31,
      "change": -0.02
     },
     {
      "date": "2026-07-03",
      "value": 5.31,
+     "previous": 5.36,
      "prev": 5.36,
      "change": -0.05
     },
     {
      "date": "2026-06-26",
      "value": 5.36,
+     "previous": 5.34,
      "prev": 5.34,
      "change": 0.02
     },
     {
      "date": "2026-06-19",
      "value": 5.34,
+     "previous": 5.28,
      "prev": 5.28,
      "change": 0.06
     },
     {
      "date": "2026-06-12",
      "value": 5.28,
+     "previous": 5.28,
      "prev": 5.28,
      "change": 0.0
     },
     {
      "date": "2026-06-05",
      "value": 5.28,
+     "previous": 5.38,
      "prev": 5.38,
      "change": -0.1
     },
     {
      "date": "2026-05-29",
      "value": 5.38,
+     "previous": 5.25,
      "prev": 5.25,
      "change": 0.13
     }
@@ -1987,120 +2183,140 @@
     {
      "date": "2026-10-09",
      "value": 7.37,
+     "previous": 7.23,
      "prev": 7.23,
      "change": 0.14
     },
     {
      "date": "2026-10-02",
      "value": 7.23,
+     "previous": 7.14,
      "prev": 7.14,
      "change": 0.09
     },
     {
      "date": "2026-09-25",
      "value": 7.14,
+     "previous": 7.08,
      "prev": 7.08,
      "change": 0.06
     },
     {
      "date": "2026-09-18",
      "value": 7.08,
+     "previous": 7.05,
      "prev": 7.05,
      "change": 0.03
     },
     {
      "date": "2026-09-11",
      "value": 7.05,
+     "previous": 6.98,
      "prev": 6.98,
      "change": 0.07
     },
     {
      "date": "2026-09-04",
      "value": 6.98,
+     "previous": 6.92,
      "prev": 6.92,
      "change": 0.06
     },
     {
      "date": "2026-08-28",
      "value": 6.92,
+     "previous": 6.89,
      "prev": 6.89,
      "change": 0.03
     },
     {
      "date": "2026-08-21",
      "value": 6.89,
+     "previous": 6.77,
      "prev": 6.77,
      "change": 0.12
     },
     {
      "date": "2026-08-14",
      "value": 6.77,
+     "previous": 6.79,
      "prev": 6.79,
      "change": -0.02
     },
     {
      "date": "2026-08-07",
      "value": 6.79,
+     "previous": 6.84,
      "prev": 6.84,
      "change": -0.05
     },
     {
      "date": "2026-07-31",
      "value": 6.84,
+     "previous": 6.84,
      "prev": 6.84,
      "change": 0.0
     },
     {
      "date": "2026-07-24",
      "value": 6.84,
+     "previous": 6.78,
      "prev": 6.78,
      "change": 0.06
     },
     {
      "date": "2026-07-17",
      "value": 6.78,
+     "previous": 6.72,
      "prev": 6.72,
      "change": 0.06
     },
     {
      "date": "2026-07-10",
      "value": 6.72,
+     "previous": 6.72,
      "prev": 6.72,
      "change": 0.0
     },
     {
      "date": "2026-07-03",
      "value": 6.72,
+     "previous": 6.79,
      "prev": 6.79,
      "change": -0.07
     },
     {
      "date": "2026-06-26",
      "value": 6.79,
+     "previous": 6.87,
      "prev": 6.87,
      "change": -0.08
     },
     {
      "date": "2026-06-19",
      "value": 6.87,
+     "previous": 6.91,
      "prev": 6.91,
      "change": -0.04
     },
     {
      "date": "2026-06-12",
      "value": 6.91,
+     "previous": 6.98,
      "prev": 6.98,
      "change": -0.07
     },
     {
      "date": "2026-06-05",
      "value": 6.98,
+     "previous": 6.99,
      "prev": 6.99,
      "change": -0.01
     },
     {
      "date": "2026-05-29",
      "value": 6.99,
+     "previous": 7.06,
      "prev": 7.06,
      "change": -0.07
     }
@@ -2168,120 +2384,140 @@
     {
      "date": "2026-09-30",
      "value": 17.77,
+     "previous": 20.75,
      "prev": 20.75,
      "change": -2.98
     },
     {
      "date": "2026-09-15",
      "value": 20.75,
+     "previous": 22.61,
      "prev": 22.61,
      "change": -1.86
     },
     {
      "date": "2026-08-31",
      "value": 22.61,
+     "previous": 15.2,
      "prev": 15.2,
      "change": 7.41
     },
     {
      "date": "2026-08-15",
      "value": 15.2,
+     "previous": 12.63,
      "prev": 12.63,
      "change": 2.57
     },
     {
      "date": "2026-07-31",
      "value": 12.63,
+     "previous": 10.35,
      "prev": 10.35,
      "change": 2.28
     },
     {
      "date": "2026-07-15",
      "value": 10.35,
+     "previous": 6.7,
      "prev": 6.7,
      "change": 3.65
     },
     {
      "date": "2026-06-30",
      "value": 6.7,
+     "previous": 6.53,
      "prev": 6.53,
      "change": 0.17
     },
     {
      "date": "2026-06-15",
      "value": 6.53,
+     "previous": 12.29,
      "prev": 12.29,
      "change": -5.76
     },
     {
      "date": "2026-05-31",
      "value": 12.29,
+     "previous": 13.77,
      "prev": 13.77,
      "change": -1.48
     },
     {
      "date": "2026-05-15",
      "value": 13.77,
+     "previous": 13.82,
      "prev": 13.82,
      "change": -0.05
     },
     {
      "date": "2026-04-30",
      "value": 13.82,
+     "previous": 13.6,
      "prev": 13.6,
      "change": 0.22
     },
     {
      "date": "2026-04-15",
      "value": 13.6,
+     "previous": 15.9,
      "prev": 15.9,
      "change": -2.3
     },
     {
      "date": "2026-03-31",
      "value": 15.9,
+     "previous": 15.97,
      "prev": 15.97,
      "change": -0.07
     },
     {
      "date": "2026-03-15",
      "value": 15.97,
+     "previous": 19.03,
      "prev": 19.03,
      "change": -3.06
     },
     {
      "date": "2026-02-28",
      "value": 19.03,
+     "previous": 20.75,
      "prev": 20.75,
      "change": -1.72
     },
     {
      "date": "2026-02-15",
      "value": 20.75,
+     "previous": 19.58,
      "prev": 19.58,
      "change": 1.17
     },
     {
      "date": "2026-01-31",
      "value": 19.58,
+     "previous": 18.59,
      "prev": 18.59,
      "change": 0.99
     },
     {
      "date": "2026-01-15",
      "value": 18.59,
+     "previous": 15.47,
      "prev": 15.47,
      "change": 3.12
     },
     {
      "date": "2025-12-31",
      "value": 15.47,
+     "previous": 16.39,
      "prev": 16.39,
      "change": -0.92
     },
     {
      "date": "2025-12-15",
      "value": 16.39,
+     "previous": 13.4,
      "prev": 13.4,
      "change": 2.99
     }
@@ -2349,120 +2585,140 @@
     {
      "date": "2026-10-09",
      "value": 13.77,
+     "previous": 13.37,
      "prev": 13.37,
      "change": 0.4
     },
     {
      "date": "2026-10-02",
      "value": 13.37,
+     "previous": 14.11,
      "prev": 14.11,
      "change": -0.74
     },
     {
      "date": "2026-09-25",
      "value": 14.11,
+     "previous": 16.97,
      "prev": 16.97,
      "change": -2.86
     },
     {
      "date": "2026-09-18",
      "value": 16.97,
+     "previous": 18.88,
      "prev": 18.88,
      "change": -1.91
     },
     {
      "date": "2026-09-11",
      "value": 18.88,
+     "previous": 18.55,
      "prev": 18.55,
      "change": 0.33
     },
     {
      "date": "2026-09-04",
      "value": 18.55,
+     "previous": 11.06,
      "prev": 11.06,
      "change": 7.49
     },
     {
      "date": "2026-08-28",
      "value": 11.06,
+     "previous": 10.92,
      "prev": 10.92,
      "change": 0.14
     },
     {
      "date": "2026-08-21",
      "value": 10.92,
+     "previous": 8.11,
      "prev": 8.11,
      "change": 2.81
     },
     {
      "date": "2026-08-14",
      "value": 8.11,
+     "previous": 6.72,
      "prev": 6.72,
      "change": 1.39
     },
     {
      "date": "2026-08-07",
      "value": 6.72,
+     "previous": 5.67,
      "prev": 5.67,
      "change": 1.05
     },
     {
      "date": "2026-07-31",
      "value": 5.67,
+     "previous": 5.18,
      "prev": 5.18,
      "change": 0.49
     },
     {
      "date": "2026-07-24",
      "value": 5.18,
+     "previous": 4.65,
      "prev": 4.65,
      "change": 0.53
     },
     {
      "date": "2026-07-17",
      "value": 4.65,
+     "previous": 2.97,
      "prev": 2.97,
      "change": 1.68
     },
     {
      "date": "2026-07-10",
      "value": 2.97,
+     "previous": 2.77,
      "prev": 2.77,
      "change": 0.2
     },
     {
      "date": "2026-07-03",
      "value": 2.77,
+     "previous": 0.3,
      "prev": 0.3,
      "change": 2.47
     },
     {
      "date": "2026-06-26",
      "value": 0.3,
+     "previous": -0.02,
      "prev": -0.02,
      "change": 0.32
     },
     {
      "date": "2026-06-19",
      "value": -0.02,
+     "previous": 1.88,
      "prev": 1.88,
      "change": -1.9
     },
     {
      "date": "2026-06-12",
      "value": 1.88,
+     "previous": 2.33,
      "prev": 2.33,
      "change": -0.45
     },
     {
      "date": "2026-06-05",
      "value": 2.33,
+     "previous": 3.67,
      "prev": 3.67,
      "change": -1.34
     },
     {
      "date": "2026-05-29",
      "value": 3.67,
+     "previous": 4.0,
      "prev": 4.0,
      "change": -0.33
     }
@@ -2530,120 +2786,140 @@
     {
      "date": "2026-10-09",
      "value": 818107.0,
+     "previous": 819581.0,
      "prev": 819581.0,
      "change": -1474.0
     },
     {
      "date": "2026-10-02",
      "value": 819581.0,
+     "previous": 810086.0,
      "prev": 810086.0,
      "change": 9495.0
     },
     {
      "date": "2026-09-25",
      "value": 810086.0,
+     "previous": 802182.0,
      "prev": 802182.0,
      "change": 7904.0
     },
     {
      "date": "2026-09-18",
      "value": 802182.0,
+     "previous": 801665.0,
      "prev": 801665.0,
      "change": 517.0
     },
     {
      "date": "2026-09-11",
      "value": 801665.0,
+     "previous": 817817.0,
      "prev": 817817.0,
      "change": -16152.0
     },
     {
      "date": "2026-09-04",
      "value": 817817.0,
+     "previous": 821649.0,
      "prev": 821649.0,
      "change": -3832.0
     },
     {
      "date": "2026-08-28",
      "value": 821649.0,
+     "previous": 816039.0,
      "prev": 816039.0,
      "change": 5610.0
     },
     {
      "date": "2026-08-21",
      "value": 816039.0,
+     "previous": 817446.0,
      "prev": 817446.0,
      "change": -1407.0
     },
     {
      "date": "2026-08-14",
      "value": 817446.0,
+     "previous": 814093.0,
      "prev": 814093.0,
      "change": 3353.0
     },
     {
      "date": "2026-08-07",
      "value": 814093.0,
+     "previous": 795210.0,
      "prev": 795210.0,
      "change": 18883.0
     },
     {
      "date": "2026-07-31",
      "value": 795210.0,
+     "previous": 788522.0,
      "prev": 788522.0,
      "change": 6688.0
     },
     {
      "date": "2026-07-24",
      "value": 788522.0,
+     "previous": 808648.0,
      "prev": 808648.0,
      "change": -20126.0
     },
     {
      "date": "2026-07-17",
      "value": 808648.0,
+     "previous": 809647.0,
      "prev": 809647.0,
      "change": -999.0
     },
     {
      "date": "2026-07-10",
      "value": 809647.0,
+     "previous": 820089.0,
      "prev": 820089.0,
      "change": -10442.0
     },
     {
      "date": "2026-07-03",
      "value": 820089.0,
+     "previous": 798627.0,
      "prev": 798627.0,
      "change": 21462.0
     },
     {
      "date": "2026-06-26",
      "value": 798627.0,
+     "previous": 785239.0,
      "prev": 785239.0,
      "change": 13388.0
     },
     {
      "date": "2026-06-19",
      "value": 785239.0,
+     "previous": 783710.0,
      "prev": 783710.0,
      "change": 1529.0
     },
     {
      "date": "2026-06-12",
      "value": 783710.0,
+     "previous": 769867.0,
      "prev": 769867.0,
      "change": 13843.0
     },
     {
      "date": "2026-06-05",
      "value": 769867.0,
+     "previous": 783798.0,
      "prev": 783798.0,
      "change": -13931.0
     },
     {
      "date": "2026-05-29",
      "value": 783798.0,
+     "previous": 779158.0,
      "prev": 779158.0,
      "change": 4640.0
     }
@@ -2711,120 +2987,140 @@
     {
      "date": "2026-09-30",
      "value": 574064.0,
+     "previous": 559543.0,
      "prev": 559543.0,
      "change": 14521.0
     },
     {
      "date": "2026-09-15",
      "value": 559543.0,
+     "previous": 635985.0,
      "prev": 635985.0,
      "change": -76442.0
     },
     {
      "date": "2026-08-31",
      "value": 635985.0,
+     "previous": 690142.0,
      "prev": 690142.0,
      "change": -54157.0
     },
     {
      "date": "2026-08-15",
      "value": 690142.0,
+     "previous": 703236.0,
      "prev": 703236.0,
      "change": -13094.0
     },
     {
      "date": "2026-07-31",
      "value": 703236.0,
+     "previous": 683068.0,
      "prev": 683068.0,
      "change": 20168.0
     },
     {
      "date": "2026-07-15",
      "value": 683068.0,
+     "previous": 666155.0,
      "prev": 666155.0,
      "change": 16913.0
     },
     {
      "date": "2026-06-30",
      "value": 666155.0,
+     "previous": 667341.0,
      "prev": 667341.0,
      "change": -1186.0
     },
     {
      "date": "2026-06-15",
      "value": 667341.0,
+     "previous": 656373.0,
      "prev": 656373.0,
      "change": 10968.0
     },
     {
      "date": "2026-05-31",
      "value": 656373.0,
+     "previous": 663329.0,
      "prev": 663329.0,
      "change": -6956.0
     },
     {
      "date": "2026-05-15",
      "value": 663329.0,
+     "previous": 687310.0,
      "prev": 687310.0,
      "change": -23981.0
     },
     {
      "date": "2026-04-30",
      "value": 687310.0,
+     "previous": 684807.0,
      "prev": 684807.0,
      "change": 2503.0
     },
     {
      "date": "2026-04-15",
      "value": 684807.0,
+     "previous": 692681.0,
      "prev": 692681.0,
      "change": -7874.0
     },
     {
      "date": "2026-03-31",
      "value": 692681.0,
+     "previous": 679391.0,
      "prev": 679391.0,
      "change": 13290.0
     },
     {
      "date": "2026-03-15",
      "value": 679391.0,
+     "previous": 663845.0,
      "prev": 663845.0,
      "change": 15546.0
     },
     {
      "date": "2026-02-28",
      "value": 663845.0,
+     "previous": 662415.0,
      "prev": 662415.0,
      "change": 1430.0
     },
     {
      "date": "2026-02-15",
      "value": 662415.0,
+     "previous": 588699.0,
      "prev": 588699.0,
      "change": 73716.0
     },
     {
      "date": "2026-01-31",
      "value": 588699.0,
+     "previous": 574586.0,
      "prev": 574586.0,
      "change": 14113.0
     },
     {
      "date": "2026-01-15",
      "value": 574586.0,
+     "previous": 568136.0,
      "prev": 568136.0,
      "change": 6450.0
     },
     {
      "date": "2025-12-31",
      "value": 568136.0,
+     "previous": 554968.0,
      "prev": 554968.0,
      "change": 13168.0
     },
     {
      "date": "2025-12-15",
      "value": 554968.0,
+     "previous": 552960.0,
      "prev": 552960.0,
      "change": 2008.0
     }
@@ -2892,120 +3188,140 @@
     {
      "date": "2026-09-30",
      "value": 621596.0,
+     "previous": 652945.0,
      "prev": 652945.0,
      "change": -31349.0
     },
     {
      "date": "2026-09-15",
      "value": 652945.0,
+     "previous": 639857.0,
      "prev": 639857.0,
      "change": 13088.0
     },
     {
      "date": "2026-08-31",
      "value": 639857.0,
+     "previous": 618020.0,
      "prev": 618020.0,
      "change": 21837.0
     },
     {
      "date": "2026-08-15",
      "value": 618020.0,
+     "previous": 586897.0,
      "prev": 586897.0,
      "change": 31123.0
     },
     {
      "date": "2026-07-31",
      "value": 586897.0,
+     "previous": 565905.0,
      "prev": 565905.0,
      "change": 20992.0
     },
     {
      "date": "2026-07-15",
      "value": 565905.0,
+     "previous": 541805.0,
      "prev": 541805.0,
      "change": 24100.0
     },
     {
      "date": "2026-06-30",
      "value": 541805.0,
+     "previous": 557705.0,
      "prev": 557705.0,
      "change": -15900.0
     },
     {
      "date": "2026-06-15",
      "value": 557705.0,
+     "previous": 536186.0,
      "prev": 536186.0,
      "change": 21519.0
     },
     {
      "date": "2026-05-31",
      "value": 536186.0,
+     "previous": 539318.0,
      "prev": 539318.0,
      "change": -3132.0
     },
     {
      "date": "2026-05-15",
      "value": 539318.0,
+     "previous": 560941.0,
      "prev": 560941.0,
      "change": -21623.0
     },
     {
      "date": "2026-04-30",
      "value": 560941.0,
+     "previous": 526604.0,
      "prev": 526604.0,
      "change": 34337.0
     },
     {
      "date": "2026-04-15",
      "value": 526604.0,
+     "previous": 460152.0,
      "prev": 460152.0,
      "change": 66452.0
     },
     {
      "date": "2026-03-31",
      "value": 460152.0,
+     "previous": 476151.0,
      "prev": 476151.0,
      "change": -15999.0
     },
     {
      "date": "2026-03-15",
      "value": 476151.0,
+     "previous": 478434.0,
      "prev": 478434.0,
      "change": -2283.0
     },
     {
      "date": "2026-02-28",
      "value": 478434.0,
+     "previous": 481235.0,
      "prev": 481235.0,
      "change": -2801.0
     },
     {
      "date": "2026-02-15",
      "value": 481235.0,
+     "previous": 438787.0,
      "prev": 438787.0,
      "change": 42448.0
     },
     {
      "date": "2026-01-31",
      "value": 438787.0,
+     "previous": 453839.0,
      "prev": 453839.0,
      "change": -15052.0
     },
     {
      "date": "2026-01-15",
      "value": 453839.0,
+     "previous": 451053.0,
      "prev": 451053.0,
      "change": 2786.0
     },
     {
      "date": "2025-12-31",
      "value": 451053.0,
+     "previous": 473476.0,
      "prev": 473476.0,
      "change": -22423.0
     },
     {
      "date": "2025-12-15",
      "value": 473476.0,
+     "previous": 501649.0,
      "prev": 501649.0,
      "change": -28173.0
     }
@@ -3073,120 +3389,140 @@
     {
      "date": "2026-10-09",
      "value": 1547650.0,
+     "previous": 1850297.0,
      "prev": 1850297.0,
      "change": -302647.0
     },
     {
      "date": "2026-10-02",
      "value": 1850297.0,
+     "previous": 1558084.0,
      "prev": 1558084.0,
      "change": 292213.0
     },
     {
      "date": "2026-09-25",
      "value": 1558084.0,
+     "previous": 1820124.0,
      "prev": 1820124.0,
      "change": -262040.0
     },
     {
      "date": "2026-09-18",
      "value": 1820124.0,
+     "previous": 1456446.0,
      "prev": 1456446.0,
      "change": 363678.0
     },
     {
      "date": "2026-09-11",
      "value": 1456446.0,
+     "previous": 1402162.0,
      "prev": 1402162.0,
      "change": 54284.0
     },
     {
      "date": "2026-09-04",
      "value": 1402162.0,
+     "previous": 1758552.0,
      "prev": 1758552.0,
      "change": -356390.0
     },
     {
      "date": "2026-08-28",
      "value": 1758552.0,
+     "previous": 1655430.0,
      "prev": 1655430.0,
      "change": 103122.0
     },
     {
      "date": "2026-08-21",
      "value": 1655430.0,
+     "previous": 1562350.0,
      "prev": 1562350.0,
      "change": 93080.0
     },
     {
      "date": "2026-08-14",
      "value": 1562350.0,
+     "previous": 1374714.0,
      "prev": 1374714.0,
      "change": 187636.0
     },
     {
      "date": "2026-08-07",
      "value": 1374714.0,
+     "previous": 1769592.0,
      "prev": 1769592.0,
      "change": -394878.0
     },
     {
      "date": "2026-07-31",
      "value": 1769592.0,
+     "previous": 1444744.0,
      "prev": 1444744.0,
      "change": 324848.0
     },
     {
      "date": "2026-07-24",
      "value": 1444744.0,
+     "previous": 1727813.0,
      "prev": 1727813.0,
      "change": -283069.0
     },
     {
      "date": "2026-07-17",
      "value": 1727813.0,
+     "previous": 1435329.0,
      "prev": 1435329.0,
      "change": 292484.0
     },
     {
      "date": "2026-07-10",
      "value": 1435329.0,
+     "previous": 1719120.0,
      "prev": 1719120.0,
      "change": -283791.0
     },
     {
      "date": "2026-07-03",
      "value": 1719120.0,
+     "previous": 1406060.0,
      "prev": 1406060.0,
      "change": 313060.0
     },
     {
      "date": "2026-06-26",
      "value": 1406060.0,
+     "previous": 1724098.0,
      "prev": 1724098.0,
      "change": -318038.0
     },
     {
      "date": "2026-06-19",
      "value": 1724098.0,
+     "previous": 1534431.0,
      "prev": 1534431.0,
      "change": 189667.0
     },
     {
      "date": "2026-06-12",
      "value": 1534431.0,
+     "previous": 1556584.0,
      "prev": 1556584.0,
      "change": -22153.0
     },
     {
      "date": "2026-06-05",
      "value": 1556584.0,
+     "previous": 1848316.0,
      "prev": 1848316.0,
      "change": -291732.0
     },
     {
      "date": "2026-05-29",
      "value": 1848316.0,
+     "previous": 1554569.0,
      "prev": 1554569.0,
      "change": 293747.0
     }
@@ -3254,120 +3590,140 @@
     {
      "date": "2026-10-09",
      "value": 5.57,
+     "previous": 5.52,
      "prev": 5.52,
      "change": 0.05
     },
     {
      "date": "2026-10-02",
      "value": 5.52,
+     "previous": 5.39,
      "prev": 5.39,
      "change": 0.13
     },
     {
      "date": "2026-09-25",
      "value": 5.39,
+     "previous": 5.28,
      "prev": 5.28,
      "change": 0.11
     },
     {
      "date": "2026-09-18",
      "value": 5.28,
+     "previous": 5.21,
      "prev": 5.21,
      "change": 0.07
     },
     {
      "date": "2026-09-11",
      "value": 5.21,
+     "previous": 5.26,
      "prev": 5.26,
      "change": -0.05
     },
     {
      "date": "2026-09-04",
      "value": 5.26,
+     "previous": 5.26,
      "prev": 5.26,
      "change": 0.0
     },
     {
      "date": "2026-08-28",
      "value": 5.26,
+     "previous": 5.26,
      "prev": 5.26,
      "change": 0.0
     },
     {
      "date": "2026-08-21",
      "value": 5.26,
+     "previous": 5.26,
      "prev": 5.26,
      "change": 0.0
     },
     {
      "date": "2026-08-14",
      "value": 5.26,
+     "previous": 5.28,
      "prev": 5.28,
      "change": -0.02
     },
     {
      "date": "2026-08-07",
      "value": 5.28,
+     "previous": 5.34,
      "prev": 5.34,
      "change": -0.06
     },
     {
      "date": "2026-07-31",
      "value": 5.34,
+     "previous": 5.35,
      "prev": 5.35,
      "change": -0.01
     },
     {
      "date": "2026-07-24",
      "value": 5.35,
+     "previous": 5.33,
      "prev": 5.33,
      "change": 0.02
     },
     {
      "date": "2026-07-17",
      "value": 5.33,
+     "previous": 5.3,
      "prev": 5.3,
      "change": 0.03
     },
     {
      "date": "2026-07-10",
      "value": 5.3,
+     "previous": 5.25,
      "prev": 5.25,
      "change": 0.05
     },
     {
      "date": "2026-07-03",
      "value": 5.25,
+     "previous": 5.25,
      "prev": 5.25,
      "change": 0.0
     },
     {
      "date": "2026-06-26",
      "value": 5.25,
+     "previous": 5.26,
      "prev": 5.26,
      "change": -0.01
     },
     {
      "date": "2026-06-19",
      "value": 5.26,
+     "previous": 5.3,
      "prev": 5.3,
      "change": -0.04
     },
     {
      "date": "2026-06-12",
      "value": 5.3,
+     "previous": 5.56,
      "prev": 5.56,
      "change": -0.26
     },
     {
      "date": "2026-06-05",
      "value": 5.56,
+     "previous": 5.56,
      "prev": 5.56,
      "change": 0.0
     },
     {
      "date": "2026-05-29",
      "value": 5.56,
+     "previous": 5.52,
      "prev": 5.52,
      "change": 0.04
     }
@@ -3435,120 +3791,140 @@
     {
      "date": "2026-10-09",
      "value": 5.0,
+     "previous": 4.31,
      "prev": 4.31,
      "change": 0.69
     },
     {
      "date": "2026-10-02",
      "value": 4.31,
+     "previous": 3.61,
      "prev": 3.61,
      "change": 0.7
     },
     {
      "date": "2026-09-25",
      "value": 3.61,
+     "previous": 3.4,
      "prev": 3.4,
      "change": 0.21
     },
     {
      "date": "2026-09-18",
      "value": 3.4,
+     "previous": 3.41,
      "prev": 3.41,
      "change": -0.01
     },
     {
      "date": "2026-09-11",
      "value": 3.41,
+     "previous": 2.83,
      "prev": 2.83,
      "change": 0.58
     },
     {
      "date": "2026-09-04",
      "value": 2.83,
+     "previous": 2.81,
      "prev": 2.81,
      "change": 0.02
     },
     {
      "date": "2026-08-28",
      "value": 2.81,
+     "previous": 2.82,
      "prev": 2.82,
      "change": -0.01
     },
     {
      "date": "2026-08-21",
      "value": 2.82,
+     "previous": 2.58,
      "prev": 2.58,
      "change": 0.24
     },
     {
      "date": "2026-08-14",
      "value": 2.58,
+     "previous": 2.74,
      "prev": 2.74,
      "change": -0.16
     },
     {
      "date": "2026-08-07",
      "value": 2.74,
+     "previous": 3.21,
      "prev": 3.21,
      "change": -0.47
     },
     {
      "date": "2026-07-31",
      "value": 3.21,
+     "previous": 3.31,
      "prev": 3.31,
      "change": -0.1
     },
     {
      "date": "2026-07-24",
      "value": 3.31,
+     "previous": 3.12,
      "prev": 3.12,
      "change": 0.19
     },
     {
      "date": "2026-07-17",
      "value": 3.12,
+     "previous": 3.0,
      "prev": 3.0,
      "change": 0.12
     },
     {
      "date": "2026-07-10",
      "value": 3.0,
+     "previous": 2.75,
      "prev": 2.75,
      "change": 0.25
     },
     {
      "date": "2026-07-03",
      "value": 2.75,
+     "previous": 2.97,
      "prev": 2.97,
      "change": -0.22
     },
     {
      "date": "2026-06-26",
      "value": 2.97,
+     "previous": 2.94,
      "prev": 2.94,
      "change": 0.03
     },
     {
      "date": "2026-06-19",
      "value": 2.94,
+     "previous": 2.96,
      "prev": 2.96,
      "change": -0.02
     },
     {
      "date": "2026-06-12",
      "value": 2.96,
+     "previous": 3.31,
      "prev": 3.31,
      "change": -0.35
     },
     {
      "date": "2026-06-05",
      "value": 3.31,
+     "previous": 3.52,
      "prev": 3.52,
      "change": -0.21
     },
     {
      "date": "2026-05-29",
      "value": 3.52,
+     "previous": 3.81,
      "prev": 3.81,
      "change": -0.29
     }
@@ -3610,120 +3986,140 @@
     {
      "date": "2026-09-30",
      "value": 25.85,
+     "previous": 22.93,
      "prev": 22.93,
      "change": 2.92
     },
     {
      "date": "2026-08-31",
      "value": 22.93,
+     "previous": 19.82,
      "prev": 19.82,
      "change": 3.11
     },
     {
      "date": "2026-07-31",
      "value": 19.82,
+     "previous": 27.18,
      "prev": 27.18,
      "change": -7.36
     },
     {
      "date": "2026-06-30",
      "value": 27.18,
+     "previous": 30.8,
      "prev": 30.8,
      "change": -3.62
     },
     {
      "date": "2026-05-31",
      "value": 30.8,
+     "previous": 25.0,
      "prev": 25.0,
      "change": 5.8
     },
     {
      "date": "2026-04-30",
      "value": 25.0,
+     "previous": 3.2,
      "prev": 3.2,
      "change": 21.8
     },
     {
      "date": "2026-03-31",
      "value": 3.2,
+     "previous": -3.37,
      "prev": -3.37,
      "change": 6.57
     },
     {
      "date": "2026-02-28",
      "value": -3.37,
+     "previous": -3.83,
      "prev": -3.83,
      "change": 0.46
     },
     {
      "date": "2026-01-31",
      "value": -3.83,
+     "previous": -2.63,
      "prev": -2.63,
      "change": -1.2
     },
     {
      "date": "2025-12-31",
      "value": -2.63,
+     "previous": -2.96,
      "prev": -2.96,
      "change": 0.33
     },
     {
      "date": "2025-11-30",
      "value": -2.96,
+     "previous": -3.86,
      "prev": -3.86,
      "change": 0.9
     },
     {
      "date": "2025-10-31",
      "value": -3.86,
+     "previous": -2.55,
      "prev": -2.55,
      "change": -1.31
     },
     {
      "date": "2025-09-30",
      "value": -2.55,
+     "previous": -3.08,
      "prev": -3.08,
      "change": 0.53
     },
     {
      "date": "2025-08-31",
      "value": -3.08,
+     "previous": -3.73,
      "prev": -3.73,
      "change": 0.65
     },
     {
      "date": "2025-07-31",
      "value": -3.73,
+     "previous": -3.0,
      "prev": -3.0,
      "change": -0.73
     },
     {
      "date": "2025-06-30",
      "value": -3.0,
+     "previous": -5.45,
      "prev": -5.45,
      "change": 2.45
     },
     {
      "date": "2025-05-31",
      "value": -5.45,
+     "previous": -3.48,
      "prev": -3.48,
      "change": -1.97
     },
     {
      "date": "2025-04-30",
      "value": -3.48,
+     "previous": -2.89,
      "prev": -2.89,
      "change": -0.59
     },
     {
      "date": "2025-03-31",
      "value": -2.89,
+     "previous": -1.6,
      "prev": -1.6,
      "change": -1.29
     },
     {
      "date": "2025-02-28",
      "value": -1.6,
+     "previous": -2.35,
      "prev": -2.35,
      "change": 0.75
     }
@@ -3785,120 +4181,140 @@
     {
      "date": "2026-09-30",
      "value": 9.76,
+     "previous": 8.37,
      "prev": 8.37,
      "change": 1.39
     },
     {
      "date": "2026-08-31",
      "value": 8.37,
+     "previous": 8.29,
      "prev": 8.29,
      "change": 0.08
     },
     {
      "date": "2026-07-31",
      "value": 8.29,
+     "previous": 7.78,
      "prev": 7.78,
      "change": 0.51
     },
     {
      "date": "2026-06-30",
      "value": 7.78,
+     "previous": 7.68,
      "prev": 7.68,
      "change": 0.1
     },
     {
      "date": "2026-05-31",
      "value": 7.68,
+     "previous": 6.68,
      "prev": 6.68,
      "change": 1.0
     },
     {
      "date": "2026-04-30",
      "value": 6.68,
+     "previous": 4.8,
      "prev": 4.8,
      "change": 1.88
     },
     {
      "date": "2026-03-31",
      "value": 4.8,
+     "previous": 3.61,
      "prev": 3.61,
      "change": 1.19
     },
     {
      "date": "2026-02-28",
      "value": 3.61,
+     "previous": 2.82,
      "prev": 2.82,
      "change": 0.79
     },
     {
      "date": "2026-01-31",
      "value": 2.82,
+     "previous": 2.22,
      "prev": 2.22,
      "change": 0.6
     },
     {
      "date": "2025-12-31",
      "value": 2.22,
+     "previous": 1.41,
      "prev": 1.41,
      "change": 0.81
     },
     {
      "date": "2025-11-30",
      "value": 1.41,
+     "previous": 1.41,
      "prev": 1.41,
      "change": 0.0
     },
     {
      "date": "2025-10-31",
      "value": 1.41,
+     "previous": 1.83,
      "prev": 1.83,
      "change": -0.42
     },
     {
      "date": "2025-09-30",
      "value": 1.83,
+     "previous": 2.03,
      "prev": 2.03,
      "change": -0.2
     },
     {
      "date": "2025-08-31",
      "value": 2.03,
+     "previous": 1.32,
      "prev": 1.32,
      "change": 0.71
     },
     {
      "date": "2025-07-31",
      "value": 1.32,
+     "previous": 1.21,
      "prev": 1.21,
      "change": 0.11
     },
     {
      "date": "2025-06-30",
      "value": 1.21,
+     "previous": 1.42,
      "prev": 1.42,
      "change": -0.21
     },
     {
      "date": "2025-05-31",
      "value": 1.42,
+     "previous": 1.83,
      "prev": 1.83,
      "change": -0.41
     },
     {
      "date": "2025-04-30",
      "value": 1.83,
+     "previous": 2.25,
      "prev": 2.25,
      "change": -0.42
     },
     {
      "date": "2025-03-31",
      "value": 2.25,
+     "previous": 2.26,
      "prev": 2.26,
      "change": -0.01
     },
     {
      "date": "2025-02-28",
      "value": 2.26,
+     "previous": 1.54,
      "prev": 1.54,
      "change": 0.72
     }
@@ -3960,120 +4376,140 @@
     {
      "date": "2026-09-30",
      "value": 8.67,
+     "previous": 7.76,
      "prev": 7.76,
      "change": 0.91
     },
     {
      "date": "2026-08-31",
      "value": 7.76,
+     "previous": 8.61,
      "prev": 8.61,
      "change": -0.85
     },
     {
      "date": "2026-07-31",
      "value": 8.61,
+     "previous": 7.0,
      "prev": 7.0,
      "change": 1.61
     },
     {
      "date": "2026-06-30",
      "value": 7.0,
+     "previous": 5.26,
      "prev": 5.26,
      "change": 1.74
     },
     {
      "date": "2026-05-31",
      "value": 5.26,
+     "previous": 3.96,
      "prev": 3.96,
      "change": 1.3
     },
     {
      "date": "2026-04-30",
      "value": 3.96,
+     "previous": 2.58,
      "prev": 2.58,
      "change": 1.38
     },
     {
      "date": "2026-03-31",
      "value": 2.58,
+     "previous": 1.64,
      "prev": 1.64,
      "change": 0.94
     },
     {
      "date": "2026-02-28",
      "value": 1.64,
+     "previous": -0.09,
      "prev": -0.09,
      "change": 1.73
     },
     {
      "date": "2026-01-31",
      "value": -0.09,
+     "previous": -2.78,
      "prev": -2.78,
      "change": 2.69
     },
     {
      "date": "2025-12-31",
      "value": -2.78,
+     "previous": -4.1,
      "prev": -4.1,
      "change": 1.32
     },
     {
      "date": "2025-11-30",
      "value": -4.1,
+     "previous": -5.72,
      "prev": -5.72,
      "change": 1.62
     },
     {
      "date": "2025-10-31",
      "value": -5.72,
+     "previous": -4.07,
      "prev": -4.07,
      "change": -1.65
     },
     {
      "date": "2025-09-30",
      "value": -4.07,
+     "previous": -3.69,
      "prev": -3.69,
      "change": -0.38
     },
     {
      "date": "2025-08-31",
      "value": -3.69,
+     "previous": -4.51,
      "prev": -4.51,
      "change": 0.82
     },
     {
      "date": "2025-07-31",
      "value": -4.51,
+     "previous": -2.95,
      "prev": -2.95,
      "change": -1.56
     },
     {
      "date": "2025-06-30",
      "value": -2.95,
+     "previous": -1.63,
      "prev": -1.63,
      "change": -1.32
     },
     {
      "date": "2025-05-31",
      "value": -1.63,
+     "previous": -0.28,
      "prev": -0.28,
      "change": -1.35
     },
     {
      "date": "2025-04-30",
      "value": -0.28,
+     "previous": 0.46,
      "prev": 0.46,
      "change": -0.74
     },
     {
      "date": "2025-03-31",
      "value": 0.46,
+     "previous": 1.76,
      "prev": 1.76,
      "change": -1.3
     },
     {
      "date": "2025-02-28",
      "value": 1.76,
+     "previous": 4.47,
      "prev": 4.47,
      "change": -2.71
     }
@@ -4141,120 +4577,140 @@
     {
      "date": "2026-09-30",
      "value": 6.07,
+     "previous": 5.3,
      "prev": 5.3,
      "change": 0.77
     },
     {
      "date": "2026-08-31",
      "value": 5.3,
+     "previous": 4.84,
      "prev": 4.84,
      "change": 0.46
     },
     {
      "date": "2026-07-31",
      "value": 4.84,
+     "previous": 4.69,
      "prev": 4.69,
      "change": 0.15
     },
     {
      "date": "2026-06-30",
      "value": 4.69,
+     "previous": 4.22,
      "prev": 4.22,
      "change": 0.47
     },
     {
      "date": "2026-05-31",
      "value": 4.22,
+     "previous": 3.74,
      "prev": 3.74,
      "change": 0.48
     },
     {
      "date": "2026-04-30",
      "value": 3.74,
+     "previous": 3.65,
      "prev": 3.65,
      "change": 0.09
     },
     {
      "date": "2026-03-31",
      "value": 3.65,
+     "previous": 3.36,
      "prev": 3.36,
      "change": 0.29
     },
     {
      "date": "2026-02-28",
      "value": 3.36,
+     "previous": 2.75,
      "prev": 2.75,
      "change": 0.61
     },
     {
      "date": "2026-01-31",
      "value": 2.75,
+     "previous": 0.58,
      "prev": 0.58,
      "change": 2.17
     },
     {
      "date": "2025-12-31",
      "value": 0.58,
+     "previous": 0.1,
      "prev": 0.1,
      "change": 0.48
     },
     {
      "date": "2025-11-30",
      "value": 0.1,
+     "previous": -0.29,
      "prev": -0.29,
      "change": 0.39
     },
     {
      "date": "2025-10-31",
      "value": -0.29,
+     "previous": 1.07,
      "prev": 1.07,
      "change": -1.36
     },
     {
      "date": "2025-09-30",
      "value": 1.07,
+     "previous": 1.76,
      "prev": 1.76,
      "change": -0.69
     },
     {
      "date": "2025-08-31",
      "value": 1.76,
+     "previous": 1.27,
      "prev": 1.27,
      "change": 0.49
     },
     {
      "date": "2025-07-31",
      "value": 1.27,
+     "previous": 1.99,
      "prev": 1.99,
      "change": -0.72
     },
     {
      "date": "2025-06-30",
      "value": 1.99,
+     "previous": 2.93,
      "prev": 2.93,
      "change": -0.94
     },
     {
      "date": "2025-05-31",
      "value": 2.93,
+     "previous": 3.15,
      "prev": 3.15,
      "change": -0.22
     },
     {
      "date": "2025-04-30",
      "value": 3.15,
+     "previous": 3.26,
      "prev": 3.26,
      "change": -0.11
     },
     {
      "date": "2025-03-31",
      "value": 3.26,
+     "previous": 3.47,
      "prev": 3.47,
      "change": -0.21
     },
     {
      "date": "2025-02-28",
      "value": 3.47,
+     "previous": 4.09,
      "prev": 4.09,
      "change": -0.62
     }
@@ -4322,120 +4778,140 @@
     {
      "date": "2026-09-30",
      "value": 4.82,
+     "previous": 4.34,
      "prev": 4.34,
      "change": 0.48
     },
     {
      "date": "2026-08-31",
      "value": 4.34,
+     "previous": 3.97,
      "prev": 3.97,
      "change": 0.37
     },
     {
      "date": "2026-07-31",
      "value": 3.97,
+     "previous": 3.89,
      "prev": 3.89,
      "change": 0.08
     },
     {
      "date": "2026-06-30",
      "value": 3.89,
+     "previous": 3.53,
      "prev": 3.53,
      "change": 0.36
     },
     {
      "date": "2026-05-31",
      "value": 3.53,
+     "previous": 3.15,
      "prev": 3.15,
      "change": 0.38
     },
     {
      "date": "2026-04-30",
      "value": 3.15,
+     "previous": 3.05,
      "prev": 3.05,
      "change": 0.1
     },
     {
      "date": "2026-03-31",
      "value": 3.05,
+     "previous": 3.06,
      "prev": 3.06,
      "change": -0.01
     },
     {
      "date": "2026-02-28",
      "value": 3.06,
+     "previous": 2.76,
      "prev": 2.76,
      "change": 0.3
     },
     {
      "date": "2026-01-31",
      "value": 2.76,
+     "previous": 1.86,
      "prev": 1.86,
      "change": 0.9
     },
     {
      "date": "2025-12-31",
      "value": 1.86,
+     "previous": 0.97,
      "prev": 0.97,
      "change": 0.89
     },
     {
      "date": "2025-11-30",
      "value": 0.97,
+     "previous": 0.58,
      "prev": 0.58,
      "change": 0.39
     },
     {
      "date": "2025-10-31",
      "value": 0.58,
+     "previous": 1.87,
      "prev": 1.87,
      "change": -1.29
     },
     {
      "date": "2025-09-30",
      "value": 1.87,
+     "previous": 2.37,
      "prev": 2.37,
      "change": -0.5
     },
     {
      "date": "2025-08-31",
      "value": 2.37,
+     "previous": 2.17,
      "prev": 2.17,
      "change": 0.2
     },
     {
      "date": "2025-07-31",
      "value": 2.17,
+     "previous": 2.8,
      "prev": 2.8,
      "change": -0.63
     },
     {
      "date": "2025-06-30",
      "value": 2.8,
+     "previous": 3.34,
      "prev": 3.34,
      "change": -0.54
     },
     {
      "date": "2025-05-31",
      "value": 3.34,
+     "previous": 3.46,
      "prev": 3.46,
      "change": -0.12
     },
     {
      "date": "2025-04-30",
      "value": 3.46,
+     "previous": 3.89,
      "prev": 3.89,
      "change": -0.43
     },
     {
      "date": "2025-03-31",
      "value": 3.89,
+     "previous": 3.47,
      "prev": 3.47,
      "change": 0.42
     },
     {
      "date": "2025-02-28",
      "value": 3.47,
+     "previous": 4.0,
      "prev": 4.0,
      "change": -0.53
     }
@@ -4503,120 +4979,140 @@
     {
      "date": "2026-09-30",
      "value": 17.02,
+     "previous": 14.6,
      "prev": 14.6,
      "change": 2.42
     },
     {
      "date": "2026-09-15",
      "value": 14.6,
+     "previous": 15.37,
      "prev": 15.37,
      "change": -0.77
     },
     {
      "date": "2026-08-31",
      "value": 15.37,
+     "previous": 13.55,
      "prev": 13.55,
      "change": 1.82
     },
     {
      "date": "2026-08-15",
      "value": 13.55,
+     "previous": 15.52,
      "prev": 15.52,
      "change": -1.97
     },
     {
      "date": "2026-07-31",
      "value": 15.52,
+     "previous": 13.18,
      "prev": 13.18,
      "change": 2.34
     },
     {
      "date": "2026-07-15",
      "value": 13.18,
+     "previous": 13.75,
      "prev": 13.75,
      "change": -0.57
     },
     {
      "date": "2026-06-30",
      "value": 13.75,
+     "previous": 12.4,
      "prev": 12.4,
      "change": 1.35
     },
     {
      "date": "2026-06-15",
      "value": 12.4,
+     "previous": 11.88,
      "prev": 11.88,
      "change": 0.52
     },
     {
      "date": "2026-05-31",
      "value": 11.88,
+     "previous": 11.71,
      "prev": 11.71,
      "change": 0.17
     },
     {
      "date": "2026-05-15",
      "value": 11.71,
+     "previous": 12.41,
      "prev": 12.41,
      "change": -0.7
     },
     {
      "date": "2026-04-30",
      "value": 12.41,
+     "previous": 16.01,
      "prev": 16.01,
      "change": -3.6
     },
     {
      "date": "2026-04-15",
      "value": 16.01,
+     "previous": 22.15,
      "prev": 22.15,
      "change": -6.14
     },
     {
      "date": "2026-03-31",
      "value": 22.15,
+     "previous": 12.73,
      "prev": 12.73,
      "change": 9.42
     },
     {
      "date": "2026-03-15",
      "value": 12.73,
+     "previous": 17.17,
      "prev": 17.17,
      "change": -4.44
     },
     {
      "date": "2026-02-28",
      "value": 17.17,
+     "previous": 14.44,
      "prev": 14.44,
      "change": 2.73
     },
     {
      "date": "2026-02-15",
      "value": 14.44,
+     "previous": 16.42,
      "prev": 16.42,
      "change": -1.98
     },
     {
      "date": "2026-01-31",
      "value": 16.42,
+     "previous": 14.86,
      "prev": 14.86,
      "change": 1.56
     },
     {
      "date": "2026-01-15",
      "value": 14.86,
+     "previous": 17.44,
      "prev": 17.44,
      "change": -2.58
     },
     {
      "date": "2025-12-31",
      "value": 17.44,
+     "previous": 10.66,
      "prev": 10.66,
      "change": 6.78
     },
     {
      "date": "2025-12-15",
      "value": 10.66,
+     "previous": 12.49,
      "prev": 12.49,
      "change": -1.83
     }
@@ -4684,120 +5180,140 @@
     {
      "date": "2026-09-30",
      "value": 6.4,
+     "previous": 6.27,
      "prev": 6.27,
      "change": 0.13
     },
     {
      "date": "2026-09-15",
      "value": 6.27,
+     "previous": 6.3,
      "prev": 6.3,
      "change": -0.03
     },
     {
      "date": "2026-08-31",
      "value": 6.3,
+     "previous": 6.16,
      "prev": 6.16,
      "change": 0.14
     },
     {
      "date": "2026-08-15",
      "value": 6.16,
+     "previous": 6.12,
      "prev": 6.12,
      "change": 0.04
     },
     {
      "date": "2026-07-31",
      "value": 6.12,
+     "previous": 6.05,
      "prev": 6.05,
      "change": 0.07
     },
     {
      "date": "2026-07-15",
      "value": 6.05,
+     "previous": 6.07,
      "prev": 6.07,
      "change": -0.02
     },
     {
      "date": "2026-06-30",
      "value": 6.07,
+     "previous": 5.95,
      "prev": 5.95,
      "change": 0.12
     },
     {
      "date": "2026-06-15",
      "value": 5.95,
+     "previous": 5.95,
      "prev": 5.95,
      "change": 0.0
     },
     {
      "date": "2026-05-31",
      "value": 5.95,
+     "previous": 5.95,
      "prev": 5.95,
      "change": 0.0
     },
     {
      "date": "2026-05-15",
      "value": 5.95,
+     "previous": 5.96,
      "prev": 5.96,
      "change": -0.01
     },
     {
      "date": "2026-04-30",
      "value": 5.96,
+     "previous": 6.02,
      "prev": 6.02,
      "change": -0.06
     },
     {
      "date": "2026-04-15",
      "value": 6.02,
+     "previous": 6.16,
      "prev": 6.16,
      "change": -0.14
     },
     {
      "date": "2026-03-31",
      "value": 6.16,
+     "previous": 5.99,
      "prev": 5.99,
      "change": 0.17
     },
     {
      "date": "2026-03-15",
      "value": 5.99,
+     "previous": 6.07,
      "prev": 6.07,
      "change": -0.08
     },
     {
      "date": "2026-02-28",
      "value": 6.07,
+     "previous": 6.05,
      "prev": 6.05,
      "change": 0.02
     },
     {
      "date": "2026-02-15",
      "value": 6.05,
+     "previous": 6.07,
      "prev": 6.07,
      "change": -0.02
     },
     {
      "date": "2026-01-31",
      "value": 6.07,
+     "previous": 6.07,
      "prev": 6.07,
      "change": 0.0
     },
     {
      "date": "2026-01-15",
      "value": 6.07,
+     "previous": 6.21,
      "prev": 6.21,
      "change": -0.14
     },
     {
      "date": "2025-12-31",
      "value": 6.21,
+     "previous": 6.02,
      "prev": 6.02,
      "change": 0.19
     },
     {
      "date": "2025-12-15",
      "value": 6.02,
+     "previous": 6.05,
      "prev": 6.05,
      "change": -0.03
     }
@@ -4865,120 +5381,140 @@
     {
      "date": "2026-10-09",
      "value": -6.04,
+     "previous": 2.87,
      "prev": 2.87,
      "change": -8.91
     },
     {
      "date": "2026-10-02",
      "value": 2.87,
+     "previous": -8.47,
      "prev": -8.47,
      "change": 11.34
     },
     {
      "date": "2026-09-25",
      "value": -8.47,
+     "previous": -7.09,
      "prev": -7.09,
      "change": -1.38
     },
     {
      "date": "2026-09-18",
      "value": -7.09,
+     "previous": -12.42,
      "prev": -12.42,
      "change": 5.33
     },
     {
      "date": "2026-09-11",
      "value": -12.42,
+     "previous": -12.58,
      "prev": -12.58,
      "change": 0.16
     },
     {
      "date": "2026-09-04",
      "value": -12.58,
+     "previous": -13.94,
      "prev": -13.94,
      "change": 1.36
     },
     {
      "date": "2026-08-28",
      "value": -13.94,
+     "previous": -15.64,
      "prev": -15.64,
      "change": 1.7
     },
     {
      "date": "2026-08-21",
      "value": -15.64,
+     "previous": -19.11,
      "prev": -19.11,
      "change": 3.47
     },
     {
      "date": "2026-08-14",
      "value": -19.11,
+     "previous": -16.02,
      "prev": -16.02,
      "change": -3.09
     },
     {
      "date": "2026-08-07",
      "value": -16.02,
+     "previous": -18.18,
      "prev": -18.18,
      "change": 2.16
     },
     {
      "date": "2026-07-31",
      "value": -18.18,
+     "previous": -12.45,
      "prev": -12.45,
      "change": -5.73
     },
     {
      "date": "2026-07-24",
      "value": -12.45,
+     "previous": -12.67,
      "prev": -12.67,
      "change": 0.22
     },
     {
      "date": "2026-07-17",
      "value": -12.67,
+     "previous": -16.02,
      "prev": -16.02,
      "change": 3.35
     },
     {
      "date": "2026-07-10",
      "value": -16.02,
+     "previous": -12.54,
      "prev": -12.54,
      "change": -3.48
     },
     {
      "date": "2026-07-03",
      "value": -12.54,
+     "previous": -13.8,
      "prev": -13.8,
      "change": 1.26
     },
     {
      "date": "2026-06-26",
      "value": -13.8,
+     "previous": -13.59,
      "prev": -13.59,
      "change": -0.21
     },
     {
      "date": "2026-06-19",
      "value": -13.59,
+     "previous": -17.75,
      "prev": -17.75,
      "change": 4.16
     },
     {
      "date": "2026-06-12",
      "value": -17.75,
+     "previous": -14.3,
      "prev": -14.3,
      "change": -3.45
     },
     {
      "date": "2026-06-05",
      "value": -14.3,
+     "previous": -14.16,
      "prev": -14.16,
      "change": -0.14
     },
     {
      "date": "2026-05-29",
      "value": -14.16,
+     "previous": -16.03,
      "prev": -16.03,
      "change": 1.87
     }
@@ -5001,7 +5537,7 @@
    "status": "watch",
    "reason": "₹93,392 cr as last reported on 2026-04-17; the RBI table carries no value for this line on any later date (a nil balance is published as a blank cell)",
    "rule": "Loans and advances to the Central Government (Ways and Means Advances and overdrafts). Direction read: falling = green, rising = watch.",
-   "change": 0.0,
+   "change": -6882.0,
    "spark": [
     111985.0,
     165833.0,
@@ -5046,120 +5582,140 @@
     {
      "date": "2026-04-17",
      "value": 93392.0,
+     "previous": 100274.0,
      "prev": 100274.0,
      "change": -6882.0
     },
     {
      "date": "2026-04-10",
      "value": 100274.0,
+     "previous": 11131.0,
      "prev": 11131.0,
      "change": 89143.0
     },
     {
      "date": "2024-12-06",
      "value": 11131.0,
+     "previous": 11817.0,
      "prev": 11817.0,
      "change": -686.0
     },
     {
      "date": "2024-11-15",
      "value": 11817.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 11817.0
     },
     {
      "date": "2023-06-30",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-06-23",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-06-16",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-06-09",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-06-02",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-05-26",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-05-19",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-05-12",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2023-05-05",
      "value": 0.0,
+     "previous": 4666.0,
      "prev": 4666.0,
      "change": -4666.0
     },
     {
      "date": "2023-04-28",
      "value": 4666.0,
+     "previous": 3145.0,
      "prev": 3145.0,
      "change": 1521.0
     },
     {
      "date": "2023-04-21",
      "value": 3145.0,
+     "previous": 114380.0,
      "prev": 114380.0,
      "change": -111235.0
     },
     {
      "date": "2023-04-14",
      "value": 114380.0,
+     "previous": 122394.0,
      "prev": 122394.0,
      "change": -8014.0
     },
     {
      "date": "2023-04-07",
      "value": 122394.0,
+     "previous": 48677.0,
      "prev": 48677.0,
      "change": 73717.0
     },
     {
      "date": "2023-03-31",
      "value": 48677.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 48677.0
     },
     {
      "date": "2023-03-24",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     },
     {
      "date": "2022-06-17",
      "value": 0.0,
+     "previous": 0.0,
      "prev": 0.0,
      "change": 0.0
     }
@@ -5227,120 +5783,140 @@
     {
      "date": "2026-10-09",
      "value": 23.47,
+     "previous": 23.67,
      "prev": 23.67,
      "change": -0.2
     },
     {
      "date": "2026-10-02",
      "value": 23.67,
+     "previous": 25.87,
      "prev": 25.87,
      "change": -2.2
     },
     {
      "date": "2026-09-25",
      "value": 25.87,
+     "previous": 24.79,
      "prev": 24.79,
      "change": 1.08
     },
     {
      "date": "2026-09-18",
      "value": 24.79,
+     "previous": 28.35,
      "prev": 28.35,
      "change": -3.56
     },
     {
      "date": "2026-09-11",
      "value": 28.35,
+     "previous": 28.76,
      "prev": 28.76,
      "change": -0.41
     },
     {
      "date": "2026-09-04",
      "value": 28.76,
+     "previous": 29.35,
      "prev": 29.35,
      "change": -0.59
     },
     {
      "date": "2026-08-28",
      "value": 29.35,
+     "previous": 29.4,
      "prev": 29.4,
      "change": -0.05
     },
     {
      "date": "2026-08-21",
      "value": 29.4,
+     "previous": 29.56,
      "prev": 29.56,
      "change": -0.16
     },
     {
      "date": "2026-08-14",
      "value": 29.56,
+     "previous": 29.13,
      "prev": 29.13,
      "change": 0.43
     },
     {
      "date": "2026-08-07",
      "value": 29.13,
+     "previous": 28.4,
      "prev": 28.4,
      "change": 0.73
     },
     {
      "date": "2026-07-31",
      "value": 28.4,
+     "previous": 28.18,
      "prev": 28.18,
      "change": 0.22
     },
     {
      "date": "2026-07-24",
      "value": 28.18,
+     "previous": 28.29,
      "prev": 28.29,
      "change": -0.11
     },
     {
      "date": "2026-07-17",
      "value": 28.29,
+     "previous": 28.56,
      "prev": 28.56,
      "change": -0.27
     },
     {
      "date": "2026-07-10",
      "value": 28.56,
+     "previous": 28.37,
      "prev": 28.37,
      "change": 0.19
     },
     {
      "date": "2026-07-03",
      "value": 28.37,
+     "previous": 28.37,
      "prev": 28.37,
      "change": 0.0
     },
     {
      "date": "2026-06-26",
      "value": 28.37,
+     "previous": 27.86,
      "prev": 27.86,
      "change": 0.51
     },
     {
      "date": "2026-06-19",
      "value": 27.86,
+     "previous": 27.54,
      "prev": 27.54,
      "change": 0.32
     },
     {
      "date": "2026-06-12",
      "value": 27.54,
+     "previous": 25.24,
      "prev": 25.24,
      "change": 2.3
     },
     {
      "date": "2026-06-05",
      "value": 25.24,
+     "previous": 24.94,
      "prev": 24.94,
      "change": 0.3
     },
     {
      "date": "2026-05-29",
      "value": 24.94,
+     "previous": 24.51,
      "prev": 24.51,
      "change": 0.43
     }
@@ -5413,53 +5989,103 @@
     {
      "date": "2025-12-05",
      "value": 3.0,
+     "previous": 3.25,
      "prev": 3.25,
      "change": -25.0
     },
     {
      "date": "2025-11-07",
      "value": 3.25,
+     "previous": 3.5,
      "prev": 3.5,
      "change": -25.0
     },
     {
      "date": "2025-10-10",
      "value": 3.5,
+     "previous": 3.75,
      "prev": 3.75,
      "change": -25.0
     },
     {
      "date": "2025-09-12",
      "value": 3.75,
+     "previous": 4.0,
      "prev": 4.0,
      "change": -25.0
     },
     {
      "date": "2025-01-03",
      "value": 4.0,
+     "previous": 4.25,
      "prev": 4.25,
      "change": -25.0
     },
     {
      "date": "2024-12-20",
      "value": 4.25,
+     "previous": 4.5,
      "prev": 4.5,
      "change": -25.0
     },
     {
      "date": "2022-05-27",
      "value": 4.5,
+     "previous": 4.0,
      "prev": 4.0,
      "change": 50.0
     },
     {
-     "date": "2021-10-22",
+     "date": "2021-05-28",
      "value": 4.0,
-     "prev": null,
-     "change": null
+     "previous": 3.5,
+     "prev": 3.5,
+     "change": 50.0
+    },
+    {
+     "date": "2021-04-02",
+     "value": 3.5,
+     "previous": 3.0,
+     "prev": 3.0,
+     "change": 50.0
+    },
+    {
+     "date": "2020-04-03",
+     "value": 3.0,
+     "previous": 4.0,
+     "prev": 4.0,
+     "change": -100.0
+    },
+    {
+     "date": "2013-02-15",
+     "value": 4.0,
+     "previous": 4.25,
+     "prev": 4.25,
+     "change": -25.0
+    },
+    {
+     "date": "2012-11-09",
+     "value": 4.25,
+     "previous": 4.5,
+     "prev": 4.5,
+     "change": -25.0
+    },
+    {
+     "date": "2012-09-28",
+     "value": 4.5,
+     "previous": 4.75,
+     "prev": 4.75,
+     "change": -25.0
+    },
+    {
+     "date": "2012-03-16",
+     "value": 4.75,
+     "previous": 5.5,
+     "prev": 5.5,
+     "change": -75.0
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 8 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
    "stale_days": 6,
    "stale": false,
    "freq": "weekly"
@@ -5475,7 +6101,7 @@
    "fmt": "pct",
    "period": "2026-10-09",
    "status": "watch",
-   "reason": "unchanged at 18.00% in every weekly row since 2021-10-22",
+   "reason": "a 25bp cut on 2020-04-17 took it from 18.25% to 18.00%; the rate has been unchanged in all 339 weekly rows published since",
    "rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "change": 0.0,
    "spark": [
@@ -5518,20 +6144,112 @@
    ],
    "chart": "spark",
    "step": true,
-   "effective_from": "2021-10-22",
-   "prev": null,
-   "bp": null,
-   "unchanged_in_window": true,
+   "effective_from": "2020-04-17",
+   "prev": 18.25,
+   "bp": -25.0,
+   "unchanged_in_window": false,
    "history_kind": "setting",
    "history": [
     {
-     "date": "2021-10-22",
+     "date": "2020-04-17",
      "value": 18.0,
-     "prev": null,
-     "change": null
+     "previous": 18.25,
+     "prev": 18.25,
+     "change": -25.0
+    },
+    {
+     "date": "2020-01-10",
+     "value": 18.25,
+     "previous": 18.5,
+     "prev": 18.5,
+     "change": -25.0
+    },
+    {
+     "date": "2019-10-18",
+     "value": 18.5,
+     "previous": 18.75,
+     "prev": 18.75,
+     "change": -25.0
+    },
+    {
+     "date": "2019-07-12",
+     "value": 18.75,
+     "previous": 19.0,
+     "prev": 19.0,
+     "change": -25.0
+    },
+    {
+     "date": "2019-04-19",
+     "value": 19.0,
+     "previous": 19.25,
+     "prev": 19.25,
+     "change": -25.0
+    },
+    {
+     "date": "2019-01-11",
+     "value": 19.25,
+     "previous": 19.5,
+     "prev": 19.5,
+     "change": -25.0
+    },
+    {
+     "date": "2017-10-20",
+     "value": 19.5,
+     "previous": 20.0,
+     "prev": 20.0,
+     "change": -50.0
+    },
+    {
+     "date": "2017-06-30",
+     "value": 20.0,
+     "previous": 20.5,
+     "prev": 20.5,
+     "change": -50.0
+    },
+    {
+     "date": "2017-01-13",
+     "value": 20.5,
+     "previous": 20.75,
+     "prev": 20.75,
+     "change": -25.0
+    },
+    {
+     "date": "2016-10-07",
+     "value": 20.75,
+     "previous": 21.0,
+     "prev": 21.0,
+     "change": -25.0
+    },
+    {
+     "date": "2016-07-15",
+     "value": 21.0,
+     "previous": 21.25,
+     "prev": 21.25,
+     "change": -25.0
+    },
+    {
+     "date": "2016-04-08",
+     "value": 21.25,
+     "previous": 21.5,
+     "prev": 21.5,
+     "change": -25.0
+    },
+    {
+     "date": "2015-02-13",
+     "value": 21.5,
+     "previous": 22.0,
+     "prev": 22.0,
+     "change": -50.0
+    },
+    {
+     "date": "2014-08-15",
+     "value": 22.0,
+     "previous": 22.5,
+     "prev": 22.5,
+     "change": -50.0
     }
    ],
-   "history_note": "260 published rows in the source table; the setting changed 1 time(s) in that window",
+   "history_note": "811 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
    "stale_days": 6,
    "stale": false,
    "freq": "weekly"
@@ -5594,120 +6312,140 @@
     {
      "date": "2026-10-15",
      "value": 95.0691,
+     "previous": 96.61,
      "prev": 96.61,
      "change": -1.541
     },
     {
      "date": "2026-10-09",
      "value": 96.61,
+     "previous": 95.99,
      "prev": 95.99,
      "change": 0.62
     },
     {
      "date": "2026-10-02",
      "value": 95.99,
+     "previous": 95.89,
      "prev": 95.89,
      "change": 0.1
     },
     {
      "date": "2026-09-25",
      "value": 95.89,
+     "previous": 95.79,
      "prev": 95.79,
      "change": 0.1
     },
     {
      "date": "2026-09-18",
      "value": 95.79,
+     "previous": 95.72,
      "prev": 95.72,
      "change": 0.07
     },
     {
      "date": "2026-09-11",
      "value": 95.72,
+     "previous": 94.49,
      "prev": 94.49,
      "change": 1.23
     },
     {
      "date": "2026-09-04",
      "value": 94.49,
+     "previous": 95.56,
      "prev": 95.56,
      "change": -1.07
     },
     {
      "date": "2026-08-28",
      "value": 95.56,
+     "previous": 95.75,
      "prev": 95.75,
      "change": -0.19
     },
     {
      "date": "2026-08-21",
      "value": 95.75,
+     "previous": 95.43,
      "prev": 95.43,
      "change": 0.32
     },
     {
      "date": "2026-08-14",
      "value": 95.43,
+     "previous": 95.21,
      "prev": 95.21,
      "change": 0.22
     },
     {
      "date": "2026-08-07",
      "value": 95.21,
+     "previous": 95.37,
      "prev": 95.37,
      "change": -0.16
     },
     {
      "date": "2026-07-31",
      "value": 95.37,
+     "previous": 96.54,
      "prev": 96.54,
      "change": -1.17
     },
     {
      "date": "2026-07-24",
      "value": 96.54,
+     "previous": 96.37,
      "prev": 96.37,
      "change": 0.17
     },
     {
      "date": "2026-07-17",
      "value": 96.37,
+     "previous": 95.31,
      "prev": 95.31,
      "change": 1.06
     },
     {
      "date": "2026-07-10",
      "value": 95.31,
+     "previous": 95.24,
      "prev": 95.24,
      "change": 0.07
     },
     {
      "date": "2026-07-03",
      "value": 95.24,
+     "previous": 94.48,
      "prev": 94.48,
      "change": 0.76
     },
     {
      "date": "2026-06-26",
      "value": 94.48,
+     "previous": 94.47,
      "prev": 94.47,
      "change": 0.01
     },
     {
      "date": "2026-06-19",
      "value": 94.47,
+     "previous": 95.38,
      "prev": 95.38,
      "change": -0.91
     },
     {
      "date": "2026-06-12",
      "value": 95.38,
+     "previous": 95.4,
      "prev": 95.4,
      "change": -0.02
     },
     {
      "date": "2026-06-05",
      "value": 95.4,
+     "previous": 95.38,
      "prev": 95.38,
      "change": 0.02
     }
@@ -5775,120 +6513,140 @@
     {
      "date": "2026-10-09",
      "value": 1.8,
+     "previous": 1.71,
      "prev": 1.71,
      "change": 0.09
     },
     {
      "date": "2026-10-02",
      "value": 1.71,
+     "previous": 1.75,
      "prev": 1.75,
      "change": -0.04
     },
     {
      "date": "2026-09-25",
      "value": 1.75,
+     "previous": 1.8,
      "prev": 1.8,
      "change": -0.05
     },
     {
      "date": "2026-09-18",
      "value": 1.8,
+     "previous": 1.84,
      "prev": 1.84,
      "change": -0.04
     },
     {
      "date": "2026-09-11",
      "value": 1.84,
+     "previous": 1.72,
      "prev": 1.72,
      "change": 0.12
     },
     {
      "date": "2026-09-04",
      "value": 1.72,
+     "previous": 1.66,
      "prev": 1.66,
      "change": 0.06
     },
     {
      "date": "2026-08-28",
      "value": 1.66,
+     "previous": 1.63,
      "prev": 1.63,
      "change": 0.03
     },
     {
      "date": "2026-08-21",
      "value": 1.63,
+     "previous": 1.51,
      "prev": 1.51,
      "change": 0.12
     },
     {
      "date": "2026-08-14",
      "value": 1.51,
+     "previous": 1.51,
      "prev": 1.51,
      "change": 0.0
     },
     {
      "date": "2026-08-07",
      "value": 1.51,
+     "previous": 1.5,
      "prev": 1.5,
      "change": 0.01
     },
     {
      "date": "2026-07-31",
      "value": 1.5,
+     "previous": 1.49,
      "prev": 1.49,
      "change": 0.01
     },
     {
      "date": "2026-07-24",
      "value": 1.49,
+     "previous": 1.45,
      "prev": 1.45,
      "change": 0.04
     },
     {
      "date": "2026-07-17",
      "value": 1.45,
+     "previous": 1.42,
      "prev": 1.42,
      "change": 0.03
     },
     {
      "date": "2026-07-10",
      "value": 1.42,
+     "previous": 1.47,
      "prev": 1.47,
      "change": -0.05
     },
     {
      "date": "2026-07-03",
      "value": 1.47,
+     "previous": 1.54,
      "prev": 1.54,
      "change": -0.07
     },
     {
      "date": "2026-06-26",
      "value": 1.54,
+     "previous": 1.61,
      "prev": 1.61,
      "change": -0.07
     },
     {
      "date": "2026-06-19",
      "value": 1.61,
+     "previous": 1.61,
      "prev": 1.61,
      "change": 0.0
     },
     {
      "date": "2026-06-12",
      "value": 1.61,
+     "previous": 1.42,
      "prev": 1.42,
      "change": 0.19
     },
     {
      "date": "2026-06-05",
      "value": 1.42,
+     "previous": 1.43,
      "prev": 1.43,
      "change": -0.01
     },
     {
      "date": "2026-05-29",
      "value": 1.43,
+     "previous": 1.54,
      "prev": 1.54,
      "change": -0.11
     }
@@ -5956,120 +6714,140 @@
     {
      "date": "2026-10-09",
      "value": 11.96,
+     "previous": 16.85,
      "prev": 16.85,
      "change": -4.89
     },
     {
      "date": "2026-10-02",
      "value": 16.85,
+     "previous": 23.59,
      "prev": 23.59,
      "change": -6.74
     },
     {
      "date": "2026-09-25",
      "value": 23.59,
+     "previous": 30.54,
      "prev": 30.54,
      "change": -6.95
     },
     {
      "date": "2026-09-18",
      "value": 30.54,
+     "previous": 30.25,
      "prev": 30.25,
      "change": 0.29
     },
     {
      "date": "2026-09-11",
      "value": 30.25,
+     "previous": 34.95,
      "prev": 34.95,
      "change": -4.7
     },
     {
      "date": "2026-09-04",
      "value": 34.95,
+     "previous": 45.04,
      "prev": 45.04,
      "change": -10.09
     },
     {
      "date": "2026-08-28",
      "value": 45.04,
+     "previous": 46.94,
      "prev": 46.94,
      "change": -1.9
     },
     {
      "date": "2026-08-21",
      "value": 46.94,
+     "previous": 41.74,
      "prev": 41.74,
      "change": 5.2
     },
     {
      "date": "2026-08-14",
      "value": 41.74,
+     "previous": 37.07,
      "prev": 37.07,
      "change": 4.67
     },
     {
      "date": "2026-08-07",
      "value": 37.07,
+     "previous": 35.94,
      "prev": 35.94,
      "change": 1.13
     },
     {
      "date": "2026-07-31",
      "value": 35.94,
+     "previous": 34.18,
      "prev": 34.18,
      "change": 1.76
     },
     {
      "date": "2026-07-24",
      "value": 34.18,
+     "previous": 34.56,
      "prev": 34.56,
      "change": -0.38
     },
     {
      "date": "2026-07-17",
      "value": 34.56,
+     "previous": 38.6,
      "prev": 38.6,
      "change": -4.04
     },
     {
      "date": "2026-07-10",
      "value": 38.6,
+     "previous": 38.28,
      "prev": 38.28,
      "change": 0.32
     },
     {
      "date": "2026-07-03",
      "value": 38.28,
+     "previous": 33.97,
      "prev": 33.97,
      "change": 4.31
     },
     {
      "date": "2026-06-26",
      "value": 33.97,
+     "previous": 37.15,
      "prev": 37.15,
      "change": -3.18
     },
     {
      "date": "2026-06-19",
      "value": 37.15,
+     "previous": 32.88,
      "prev": 32.88,
      "change": 4.27
     },
     {
      "date": "2026-06-12",
      "value": 32.88,
+     "previous": 47.82,
      "prev": 47.82,
      "change": -14.94
     },
     {
      "date": "2026-06-05",
      "value": 47.82,
+     "previous": 48.33,
      "prev": 48.33,
      "change": -0.51
     },
     {
      "date": "2026-05-29",
      "value": 48.33,
+     "previous": 54.29,
      "prev": 54.29,
      "change": -5.96
     }
@@ -6137,120 +6915,140 @@
     {
      "date": "2026-09-30",
      "value": 8.64,
+     "previous": 6.85,
      "prev": 6.85,
      "change": 1.79
     },
     {
      "date": "2026-09-15",
      "value": 6.85,
+     "previous": 6.5,
      "prev": 6.5,
      "change": 0.35
     },
     {
      "date": "2026-08-31",
      "value": 6.5,
+     "previous": 6.43,
      "prev": 6.43,
      "change": 0.07
     },
     {
      "date": "2026-08-15",
      "value": 6.43,
+     "previous": 6.24,
      "prev": 6.24,
      "change": 0.19
     },
     {
      "date": "2026-07-15",
      "value": 6.24,
+     "previous": 5.84,
      "prev": 5.84,
      "change": 0.4
     },
     {
      "date": "2026-06-30",
      "value": 5.84,
+     "previous": 5.65,
      "prev": 5.65,
      "change": 0.19
     },
     {
      "date": "2026-06-15",
      "value": 5.65,
+     "previous": 4.89,
      "prev": 4.89,
      "change": 0.76
     },
     {
      "date": "2026-05-31",
      "value": 4.89,
+     "previous": 4.2,
      "prev": 4.2,
      "change": 0.69
     },
     {
      "date": "2026-05-15",
      "value": 4.2,
+     "previous": 3.17,
      "prev": 3.17,
      "change": 1.03
     },
     {
      "date": "2026-04-30",
      "value": 3.17,
+     "previous": 2.85,
      "prev": 2.85,
      "change": 0.32
     },
     {
      "date": "2026-04-15",
      "value": 2.85,
+     "previous": 4.45,
      "prev": 4.45,
      "change": -1.6
     },
     {
      "date": "2026-03-31",
      "value": 4.45,
+     "previous": 3.36,
      "prev": 3.36,
      "change": 1.09
     },
     {
      "date": "2026-03-15",
      "value": 3.36,
+     "previous": 3.25,
      "prev": 3.25,
      "change": 0.11
     },
     {
      "date": "2026-02-28",
      "value": 3.25,
+     "previous": 3.03,
      "prev": 3.03,
      "change": 0.22
     },
     {
      "date": "2026-02-15",
      "value": 3.03,
+     "previous": 2.01,
      "prev": 2.01,
      "change": 1.02
     },
     {
      "date": "2026-01-31",
      "value": 2.01,
+     "previous": 2.71,
      "prev": 2.71,
      "change": -0.7
     },
     {
      "date": "2026-01-15",
      "value": 2.71,
+     "previous": 4.39,
      "prev": 4.39,
      "change": -1.68
     },
     {
      "date": "2025-12-31",
      "value": 4.39,
+     "previous": 4.95,
      "prev": 4.95,
      "change": -0.56
     },
     {
      "date": "2025-12-15",
      "value": 4.95,
+     "previous": 5.32,
      "prev": 5.32,
      "change": -0.37
     },
     {
      "date": "2025-11-28",
      "value": 5.32,
+     "previous": 5.31,
      "prev": 5.31,
      "change": 0.01
     }
@@ -6318,120 +7116,140 @@
     {
      "date": "2026-09-30",
      "value": 19.15,
+     "previous": 17.83,
      "prev": 17.83,
      "change": 1.32
     },
     {
      "date": "2026-09-15",
      "value": 17.83,
+     "previous": 18.77,
      "prev": 18.77,
      "change": -0.94
     },
     {
      "date": "2026-08-31",
      "value": 18.77,
+     "previous": 17.73,
      "prev": 17.73,
      "change": 1.04
     },
     {
      "date": "2026-08-15",
      "value": 17.73,
+     "previous": 19.06,
      "prev": 19.06,
      "change": -1.33
     },
     {
      "date": "2026-07-31",
      "value": 19.06,
+     "previous": 17.4,
      "prev": 17.4,
      "change": 1.66
     },
     {
      "date": "2026-07-15",
      "value": 17.4,
+     "previous": 18.33,
      "prev": 18.33,
      "change": -0.93
     },
     {
      "date": "2026-06-30",
      "value": 18.33,
+     "previous": 17.36,
      "prev": 17.36,
      "change": 0.97
     },
     {
      "date": "2026-06-15",
      "value": 17.36,
+     "previous": 17.36,
      "prev": 17.36,
      "change": 0.0
     },
     {
      "date": "2026-05-31",
      "value": 17.36,
+     "previous": 16.03,
      "prev": 16.03,
      "change": 1.33
     },
     {
      "date": "2026-05-15",
      "value": 16.03,
+     "previous": 15.83,
      "prev": 15.83,
      "change": 0.2
     },
     {
      "date": "2026-04-30",
      "value": 15.83,
+     "previous": 14.84,
      "prev": 14.84,
      "change": 0.99
     },
     {
      "date": "2026-04-15",
      "value": 14.84,
+     "previous": 15.88,
      "prev": 15.88,
      "change": -1.04
     },
     {
      "date": "2026-03-31",
      "value": 15.88,
+     "previous": 13.66,
      "prev": 13.66,
      "change": 2.22
     },
     {
      "date": "2026-03-15",
      "value": 13.66,
+     "previous": 14.3,
      "prev": 14.3,
      "change": -0.64
     },
     {
      "date": "2026-02-28",
      "value": 14.3,
+     "previous": 13.4,
      "prev": 13.4,
      "change": 0.9
     },
     {
      "date": "2026-02-15",
      "value": 13.4,
+     "previous": 13.83,
      "prev": 13.83,
      "change": -0.43
     },
     {
      "date": "2026-01-31",
      "value": 13.83,
+     "previous": 12.99,
      "prev": 12.99,
      "change": 0.84
     },
     {
      "date": "2026-01-15",
      "value": 12.99,
+     "previous": 14.39,
      "prev": 14.39,
      "change": -1.4
     },
     {
      "date": "2025-12-31",
      "value": 14.39,
+     "previous": 11.84,
      "prev": 11.84,
      "change": 2.55
     },
     {
      "date": "2025-12-15",
      "value": 11.84,
+     "previous": 11.41,
      "prev": 11.41,
      "change": 0.43
     }
@@ -6499,120 +7317,140 @@
     {
      "date": "2026-09-30",
      "value": 125.71,
+     "previous": 142.3,
      "prev": 142.3,
      "change": -16.59
     },
     {
      "date": "2026-09-15",
      "value": 142.3,
+     "previous": 145.81,
      "prev": 145.81,
      "change": -3.51
     },
     {
      "date": "2026-08-31",
      "value": 145.81,
+     "previous": 126.21,
      "prev": 126.21,
      "change": 19.6
     },
     {
      "date": "2026-08-15",
      "value": 126.21,
+     "previous": 107.91,
      "prev": 107.91,
      "change": 18.3
     },
     {
      "date": "2026-07-31",
      "value": 107.91,
+     "previous": 104.65,
      "prev": 104.65,
      "change": 3.26
     },
     {
      "date": "2026-07-15",
      "value": 104.65,
+     "previous": 105.08,
      "prev": 105.08,
      "change": -0.43
     },
     {
      "date": "2026-06-30",
      "value": 105.08,
+     "previous": 98.05,
      "prev": 98.05,
      "change": 7.03
     },
     {
      "date": "2026-06-15",
      "value": 98.05,
+     "previous": 94.11,
      "prev": 94.11,
      "change": 3.94
     },
     {
      "date": "2026-05-31",
      "value": 94.11,
+     "previous": 70.46,
      "prev": 70.46,
      "change": 23.65
     },
     {
      "date": "2026-05-15",
      "value": 70.46,
+     "previous": 66.41,
      "prev": 66.41,
      "change": 4.05
     },
     {
      "date": "2026-04-30",
      "value": 66.41,
+     "previous": 113.19,
      "prev": 113.19,
      "change": -46.78
     },
     {
      "date": "2026-04-15",
      "value": 113.19,
+     "previous": 139.37,
      "prev": 139.37,
      "change": -26.18
     },
     {
      "date": "2026-03-31",
      "value": 139.37,
+     "previous": 104.89,
      "prev": 104.89,
      "change": 34.48
     },
     {
      "date": "2026-03-15",
      "value": 104.89,
+     "previous": 94.22,
      "prev": 94.22,
      "change": 10.67
     },
     {
      "date": "2026-02-28",
      "value": 94.22,
+     "previous": 79.79,
      "prev": 79.79,
      "change": 14.43
     },
     {
      "date": "2026-02-15",
      "value": 79.79,
+     "previous": 65.53,
      "prev": 65.53,
      "change": 14.26
     },
     {
      "date": "2026-01-31",
      "value": 65.53,
+     "previous": 52.75,
      "prev": 52.75,
      "change": 12.78
     },
     {
      "date": "2026-01-15",
      "value": 52.75,
+     "previous": 56.7,
      "prev": 56.7,
      "change": -3.95
     },
     {
      "date": "2025-12-31",
      "value": 56.7,
+     "previous": 60.49,
      "prev": 60.49,
      "change": -3.79
     },
     {
      "date": "2025-12-15",
      "value": 60.49,
+     "previous": 55.7,
      "prev": 55.7,
      "change": 4.79
     }
@@ -6680,120 +7518,140 @@
     {
      "date": "2026-10-09",
      "value": 13.82,
+     "previous": 13.4,
      "prev": 13.4,
      "change": 0.42
     },
     {
      "date": "2026-10-02",
      "value": 13.4,
+     "previous": 13.64,
      "prev": 13.64,
      "change": -0.24
     },
     {
      "date": "2026-09-25",
      "value": 13.64,
+     "previous": 13.14,
      "prev": 13.14,
      "change": 0.5
     },
     {
      "date": "2026-09-18",
      "value": 13.14,
+     "previous": 12.91,
      "prev": 12.91,
      "change": 0.23
     },
     {
      "date": "2026-09-11",
      "value": 12.91,
+     "previous": 12.58,
      "prev": 12.58,
      "change": 0.33
     },
     {
      "date": "2026-09-04",
      "value": 12.58,
+     "previous": 12.69,
      "prev": 12.69,
      "change": -0.11
     },
     {
      "date": "2026-08-28",
      "value": 12.69,
+     "previous": 12.52,
      "prev": 12.52,
      "change": 0.17
     },
     {
      "date": "2026-08-21",
      "value": 12.52,
+     "previous": 12.15,
      "prev": 12.15,
      "change": 0.37
     },
     {
      "date": "2026-08-14",
      "value": 12.15,
+     "previous": 12.32,
      "prev": 12.32,
      "change": -0.17
     },
     {
      "date": "2026-08-07",
      "value": 12.32,
+     "previous": 12.8,
      "prev": 12.8,
      "change": -0.48
     },
     {
      "date": "2026-07-31",
      "value": 12.8,
+     "previous": 12.78,
      "prev": 12.78,
      "change": 0.02
     },
     {
      "date": "2026-07-24",
      "value": 12.78,
+     "previous": 12.71,
      "prev": 12.71,
      "change": 0.07
     },
     {
      "date": "2026-07-17",
      "value": 12.71,
+     "previous": 12.58,
      "prev": 12.58,
      "change": 0.13
     },
     {
      "date": "2026-07-10",
      "value": 12.58,
+     "previous": 12.49,
      "prev": 12.49,
      "change": 0.09
     },
     {
      "date": "2026-07-03",
      "value": 12.49,
+     "previous": 12.73,
      "prev": 12.73,
      "change": -0.24
     },
     {
      "date": "2026-06-26",
      "value": 12.73,
+     "previous": 12.54,
      "prev": 12.54,
      "change": 0.19
     },
     {
      "date": "2026-06-19",
      "value": 12.54,
+     "previous": 12.29,
      "prev": 12.29,
      "change": 0.25
     },
     {
      "date": "2026-06-12",
      "value": 12.29,
+     "previous": 11.97,
      "prev": 11.97,
      "change": 0.32
     },
     {
      "date": "2026-06-05",
      "value": 11.97,
+     "previous": 12.07,
      "prev": 12.07,
      "change": -0.1
     },
     {
      "date": "2026-05-29",
      "value": 12.07,
+     "previous": 11.81,
      "prev": 11.81,
      "change": 0.26
     }
@@ -18117,6 +18975,2210 @@
    "unit": "%",
    "source": "RBI r10 (weekly WSS)",
    "points": [
+    [
+     "2011-04-01",
+     6.75
+    ],
+    [
+     "2011-04-08",
+     6.75
+    ],
+    [
+     "2011-04-15",
+     6.75
+    ],
+    [
+     "2011-04-22",
+     6.75
+    ],
+    [
+     "2011-04-29",
+     6.75
+    ],
+    [
+     "2011-05-06",
+     7.25
+    ],
+    [
+     "2011-05-13",
+     7.25
+    ],
+    [
+     "2011-05-20",
+     7.25
+    ],
+    [
+     "2011-05-27",
+     7.25
+    ],
+    [
+     "2011-06-03",
+     7.25
+    ],
+    [
+     "2011-06-10",
+     7.25
+    ],
+    [
+     "2011-06-17",
+     7.5
+    ],
+    [
+     "2011-06-24",
+     7.5
+    ],
+    [
+     "2011-07-01",
+     7.5
+    ],
+    [
+     "2011-07-08",
+     7.5
+    ],
+    [
+     "2011-07-15",
+     7.5
+    ],
+    [
+     "2011-07-22",
+     7.5
+    ],
+    [
+     "2011-07-29",
+     8.0
+    ],
+    [
+     "2011-08-05",
+     8.0
+    ],
+    [
+     "2011-08-12",
+     8.0
+    ],
+    [
+     "2011-08-19",
+     8.0
+    ],
+    [
+     "2011-08-26",
+     8.0
+    ],
+    [
+     "2011-09-02",
+     8.0
+    ],
+    [
+     "2011-09-09",
+     8.0
+    ],
+    [
+     "2011-09-16",
+     8.25
+    ],
+    [
+     "2011-09-23",
+     8.25
+    ],
+    [
+     "2011-09-30",
+     8.25
+    ],
+    [
+     "2011-10-07",
+     8.25
+    ],
+    [
+     "2011-10-14",
+     8.25
+    ],
+    [
+     "2011-10-21",
+     8.25
+    ],
+    [
+     "2011-10-28",
+     8.5
+    ],
+    [
+     "2011-11-04",
+     8.5
+    ],
+    [
+     "2011-11-11",
+     8.5
+    ],
+    [
+     "2011-11-18",
+     8.5
+    ],
+    [
+     "2011-11-25",
+     8.5
+    ],
+    [
+     "2011-12-02",
+     8.5
+    ],
+    [
+     "2011-12-09",
+     8.5
+    ],
+    [
+     "2011-12-16",
+     8.5
+    ],
+    [
+     "2011-12-23",
+     8.5
+    ],
+    [
+     "2011-12-30",
+     8.5
+    ],
+    [
+     "2012-01-06",
+     8.5
+    ],
+    [
+     "2012-01-13",
+     8.5
+    ],
+    [
+     "2012-01-20",
+     8.5
+    ],
+    [
+     "2012-01-27",
+     8.5
+    ],
+    [
+     "2012-02-03",
+     8.5
+    ],
+    [
+     "2012-02-10",
+     8.5
+    ],
+    [
+     "2012-02-17",
+     8.5
+    ],
+    [
+     "2012-02-24",
+     8.5
+    ],
+    [
+     "2012-03-02",
+     8.5
+    ],
+    [
+     "2012-03-09",
+     8.5
+    ],
+    [
+     "2012-03-16",
+     8.5
+    ],
+    [
+     "2012-03-23",
+     8.5
+    ],
+    [
+     "2012-03-30",
+     8.5
+    ],
+    [
+     "2012-04-06",
+     8.5
+    ],
+    [
+     "2012-04-13",
+     8.5
+    ],
+    [
+     "2012-04-20",
+     8.0
+    ],
+    [
+     "2012-04-27",
+     8.0
+    ],
+    [
+     "2012-05-04",
+     8.0
+    ],
+    [
+     "2012-05-11",
+     8.0
+    ],
+    [
+     "2012-05-18",
+     8.0
+    ],
+    [
+     "2012-05-25",
+     8.0
+    ],
+    [
+     "2012-06-01",
+     8.0
+    ],
+    [
+     "2012-06-08",
+     8.0
+    ],
+    [
+     "2012-06-15",
+     8.0
+    ],
+    [
+     "2012-06-22",
+     8.0
+    ],
+    [
+     "2012-06-29",
+     8.0
+    ],
+    [
+     "2012-07-06",
+     8.0
+    ],
+    [
+     "2012-07-13",
+     8.0
+    ],
+    [
+     "2012-07-20",
+     8.0
+    ],
+    [
+     "2012-07-27",
+     8.0
+    ],
+    [
+     "2012-08-03",
+     8.0
+    ],
+    [
+     "2012-08-10",
+     8.0
+    ],
+    [
+     "2012-08-17",
+     8.0
+    ],
+    [
+     "2012-08-24",
+     8.0
+    ],
+    [
+     "2012-08-31",
+     8.0
+    ],
+    [
+     "2012-09-07",
+     8.0
+    ],
+    [
+     "2012-09-14",
+     8.0
+    ],
+    [
+     "2012-09-21",
+     8.0
+    ],
+    [
+     "2012-09-28",
+     8.0
+    ],
+    [
+     "2012-10-05",
+     8.0
+    ],
+    [
+     "2012-10-12",
+     8.0
+    ],
+    [
+     "2012-10-19",
+     8.0
+    ],
+    [
+     "2012-10-26",
+     8.0
+    ],
+    [
+     "2012-11-02",
+     8.0
+    ],
+    [
+     "2012-11-09",
+     8.0
+    ],
+    [
+     "2012-11-16",
+     8.0
+    ],
+    [
+     "2012-11-23",
+     8.0
+    ],
+    [
+     "2012-11-30",
+     8.0
+    ],
+    [
+     "2012-12-07",
+     8.0
+    ],
+    [
+     "2012-12-14",
+     8.0
+    ],
+    [
+     "2012-12-21",
+     8.0
+    ],
+    [
+     "2012-12-28",
+     8.0
+    ],
+    [
+     "2013-01-04",
+     8.0
+    ],
+    [
+     "2013-01-11",
+     8.0
+    ],
+    [
+     "2013-01-18",
+     8.0
+    ],
+    [
+     "2013-01-25",
+     8.0
+    ],
+    [
+     "2013-02-01",
+     7.75
+    ],
+    [
+     "2013-02-08",
+     7.75
+    ],
+    [
+     "2013-02-15",
+     7.75
+    ],
+    [
+     "2013-02-22",
+     7.75
+    ],
+    [
+     "2013-03-01",
+     7.75
+    ],
+    [
+     "2013-03-08",
+     7.75
+    ],
+    [
+     "2013-03-15",
+     7.75
+    ],
+    [
+     "2013-03-22",
+     7.5
+    ],
+    [
+     "2013-03-29",
+     7.5
+    ],
+    [
+     "2013-04-05",
+     7.5
+    ],
+    [
+     "2013-04-12",
+     7.5
+    ],
+    [
+     "2013-04-19",
+     7.5
+    ],
+    [
+     "2013-04-26",
+     7.5
+    ],
+    [
+     "2013-05-03",
+     7.25
+    ],
+    [
+     "2013-05-10",
+     7.25
+    ],
+    [
+     "2013-05-17",
+     7.25
+    ],
+    [
+     "2013-05-24",
+     7.25
+    ],
+    [
+     "2013-05-31",
+     7.25
+    ],
+    [
+     "2013-06-07",
+     7.25
+    ],
+    [
+     "2013-06-14",
+     7.25
+    ],
+    [
+     "2013-06-21",
+     7.25
+    ],
+    [
+     "2013-06-28",
+     7.25
+    ],
+    [
+     "2013-07-05",
+     7.25
+    ],
+    [
+     "2013-07-12",
+     7.25
+    ],
+    [
+     "2013-07-19",
+     7.25
+    ],
+    [
+     "2013-07-26",
+     7.25
+    ],
+    [
+     "2013-08-02",
+     7.25
+    ],
+    [
+     "2013-08-09",
+     7.25
+    ],
+    [
+     "2013-08-16",
+     7.25
+    ],
+    [
+     "2013-08-23",
+     7.25
+    ],
+    [
+     "2013-08-30",
+     7.25
+    ],
+    [
+     "2013-09-06",
+     7.25
+    ],
+    [
+     "2013-09-13",
+     7.25
+    ],
+    [
+     "2013-09-20",
+     7.5
+    ],
+    [
+     "2013-09-27",
+     7.5
+    ],
+    [
+     "2013-10-04",
+     7.5
+    ],
+    [
+     "2013-10-11",
+     7.5
+    ],
+    [
+     "2013-10-18",
+     7.5
+    ],
+    [
+     "2013-10-25",
+     7.5
+    ],
+    [
+     "2013-11-01",
+     7.75
+    ],
+    [
+     "2013-11-08",
+     7.75
+    ],
+    [
+     "2013-11-15",
+     7.75
+    ],
+    [
+     "2013-11-22",
+     7.75
+    ],
+    [
+     "2013-11-29",
+     7.75
+    ],
+    [
+     "2013-12-06",
+     7.75
+    ],
+    [
+     "2013-12-13",
+     7.75
+    ],
+    [
+     "2013-12-20",
+     7.75
+    ],
+    [
+     "2013-12-27",
+     7.75
+    ],
+    [
+     "2014-01-03",
+     7.75
+    ],
+    [
+     "2014-01-10",
+     7.75
+    ],
+    [
+     "2014-01-17",
+     7.75
+    ],
+    [
+     "2014-01-24",
+     7.75
+    ],
+    [
+     "2014-01-31",
+     8.0
+    ],
+    [
+     "2014-02-07",
+     8.0
+    ],
+    [
+     "2014-02-14",
+     8.0
+    ],
+    [
+     "2014-02-21",
+     8.0
+    ],
+    [
+     "2014-02-28",
+     8.0
+    ],
+    [
+     "2014-03-07",
+     8.0
+    ],
+    [
+     "2014-03-14",
+     8.0
+    ],
+    [
+     "2014-03-21",
+     8.0
+    ],
+    [
+     "2014-03-28",
+     8.0
+    ],
+    [
+     "2014-04-04",
+     8.0
+    ],
+    [
+     "2014-04-11",
+     8.0
+    ],
+    [
+     "2014-04-18",
+     8.0
+    ],
+    [
+     "2014-04-25",
+     8.0
+    ],
+    [
+     "2014-05-02",
+     8.0
+    ],
+    [
+     "2014-05-09",
+     8.0
+    ],
+    [
+     "2014-05-16",
+     8.0
+    ],
+    [
+     "2014-05-23",
+     8.0
+    ],
+    [
+     "2014-05-30",
+     8.0
+    ],
+    [
+     "2014-06-06",
+     8.0
+    ],
+    [
+     "2014-06-13",
+     8.0
+    ],
+    [
+     "2014-06-20",
+     8.0
+    ],
+    [
+     "2014-06-27",
+     8.0
+    ],
+    [
+     "2014-07-04",
+     8.0
+    ],
+    [
+     "2014-07-11",
+     8.0
+    ],
+    [
+     "2014-07-18",
+     8.0
+    ],
+    [
+     "2014-07-25",
+     8.0
+    ],
+    [
+     "2014-08-01",
+     8.0
+    ],
+    [
+     "2014-08-08",
+     8.0
+    ],
+    [
+     "2014-08-15",
+     8.0
+    ],
+    [
+     "2014-08-22",
+     8.0
+    ],
+    [
+     "2014-08-29",
+     8.0
+    ],
+    [
+     "2014-09-05",
+     8.0
+    ],
+    [
+     "2014-09-12",
+     8.0
+    ],
+    [
+     "2014-09-19",
+     8.0
+    ],
+    [
+     "2014-09-26",
+     8.0
+    ],
+    [
+     "2014-10-03",
+     8.0
+    ],
+    [
+     "2014-10-10",
+     8.0
+    ],
+    [
+     "2014-10-17",
+     8.0
+    ],
+    [
+     "2014-10-24",
+     8.0
+    ],
+    [
+     "2014-10-31",
+     8.0
+    ],
+    [
+     "2014-11-07",
+     8.0
+    ],
+    [
+     "2014-11-14",
+     8.0
+    ],
+    [
+     "2014-11-21",
+     8.0
+    ],
+    [
+     "2014-11-28",
+     8.0
+    ],
+    [
+     "2014-12-05",
+     8.0
+    ],
+    [
+     "2014-12-12",
+     8.0
+    ],
+    [
+     "2014-12-19",
+     8.0
+    ],
+    [
+     "2014-12-26",
+     8.0
+    ],
+    [
+     "2015-01-02",
+     8.0
+    ],
+    [
+     "2015-01-09",
+     8.0
+    ],
+    [
+     "2015-01-16",
+     7.75
+    ],
+    [
+     "2015-01-23",
+     7.75
+    ],
+    [
+     "2015-01-30",
+     7.75
+    ],
+    [
+     "2015-02-06",
+     7.75
+    ],
+    [
+     "2015-02-13",
+     7.75
+    ],
+    [
+     "2015-02-20",
+     7.75
+    ],
+    [
+     "2015-02-27",
+     7.75
+    ],
+    [
+     "2015-03-06",
+     7.5
+    ],
+    [
+     "2015-03-13",
+     7.5
+    ],
+    [
+     "2015-03-20",
+     7.5
+    ],
+    [
+     "2015-03-27",
+     7.5
+    ],
+    [
+     "2015-04-03",
+     7.5
+    ],
+    [
+     "2015-04-10",
+     7.5
+    ],
+    [
+     "2015-04-17",
+     7.5
+    ],
+    [
+     "2015-04-24",
+     7.5
+    ],
+    [
+     "2015-05-01",
+     7.5
+    ],
+    [
+     "2015-05-08",
+     7.5
+    ],
+    [
+     "2015-05-15",
+     7.5
+    ],
+    [
+     "2015-05-22",
+     7.5
+    ],
+    [
+     "2015-05-29",
+     7.5
+    ],
+    [
+     "2015-06-05",
+     7.25
+    ],
+    [
+     "2015-06-12",
+     7.25
+    ],
+    [
+     "2015-06-19",
+     7.25
+    ],
+    [
+     "2015-06-26",
+     7.25
+    ],
+    [
+     "2015-07-03",
+     7.25
+    ],
+    [
+     "2015-07-10",
+     7.25
+    ],
+    [
+     "2015-07-17",
+     7.25
+    ],
+    [
+     "2015-07-24",
+     7.25
+    ],
+    [
+     "2015-07-31",
+     7.25
+    ],
+    [
+     "2015-08-07",
+     7.25
+    ],
+    [
+     "2015-08-14",
+     7.25
+    ],
+    [
+     "2015-08-21",
+     7.25
+    ],
+    [
+     "2015-08-28",
+     7.25
+    ],
+    [
+     "2015-09-04",
+     7.25
+    ],
+    [
+     "2015-09-11",
+     7.25
+    ],
+    [
+     "2015-09-18",
+     7.25
+    ],
+    [
+     "2015-09-25",
+     7.25
+    ],
+    [
+     "2015-10-02",
+     6.75
+    ],
+    [
+     "2015-10-09",
+     6.75
+    ],
+    [
+     "2015-10-16",
+     6.75
+    ],
+    [
+     "2015-10-23",
+     6.75
+    ],
+    [
+     "2015-10-30",
+     6.75
+    ],
+    [
+     "2015-11-06",
+     6.75
+    ],
+    [
+     "2015-11-13",
+     6.75
+    ],
+    [
+     "2015-11-20",
+     6.75
+    ],
+    [
+     "2015-11-27",
+     6.75
+    ],
+    [
+     "2015-12-04",
+     6.75
+    ],
+    [
+     "2015-12-11",
+     6.75
+    ],
+    [
+     "2015-12-18",
+     6.75
+    ],
+    [
+     "2015-12-25",
+     6.75
+    ],
+    [
+     "2016-01-01",
+     6.75
+    ],
+    [
+     "2016-01-08",
+     6.75
+    ],
+    [
+     "2016-01-15",
+     6.75
+    ],
+    [
+     "2016-01-22",
+     6.75
+    ],
+    [
+     "2016-01-29",
+     6.75
+    ],
+    [
+     "2016-02-05",
+     6.75
+    ],
+    [
+     "2016-02-12",
+     6.75
+    ],
+    [
+     "2016-02-19",
+     6.75
+    ],
+    [
+     "2016-02-26",
+     6.75
+    ],
+    [
+     "2016-03-04",
+     6.75
+    ],
+    [
+     "2016-03-11",
+     6.75
+    ],
+    [
+     "2016-03-18",
+     6.75
+    ],
+    [
+     "2016-03-25",
+     6.75
+    ],
+    [
+     "2016-04-01",
+     6.75
+    ],
+    [
+     "2016-04-08",
+     6.5
+    ],
+    [
+     "2016-04-15",
+     6.5
+    ],
+    [
+     "2016-04-22",
+     6.5
+    ],
+    [
+     "2016-04-29",
+     6.5
+    ],
+    [
+     "2016-05-06",
+     6.5
+    ],
+    [
+     "2016-05-13",
+     6.5
+    ],
+    [
+     "2016-05-20",
+     6.5
+    ],
+    [
+     "2016-05-27",
+     6.5
+    ],
+    [
+     "2016-06-03",
+     6.5
+    ],
+    [
+     "2016-06-10",
+     6.5
+    ],
+    [
+     "2016-06-17",
+     6.5
+    ],
+    [
+     "2016-06-24",
+     6.5
+    ],
+    [
+     "2016-07-01",
+     6.5
+    ],
+    [
+     "2016-07-08",
+     6.5
+    ],
+    [
+     "2016-07-15",
+     6.5
+    ],
+    [
+     "2016-07-22",
+     6.5
+    ],
+    [
+     "2016-07-29",
+     6.5
+    ],
+    [
+     "2016-08-05",
+     6.5
+    ],
+    [
+     "2016-08-12",
+     6.5
+    ],
+    [
+     "2016-08-19",
+     6.5
+    ],
+    [
+     "2016-08-26",
+     6.5
+    ],
+    [
+     "2016-09-02",
+     6.5
+    ],
+    [
+     "2016-09-09",
+     6.5
+    ],
+    [
+     "2016-09-16",
+     6.5
+    ],
+    [
+     "2016-09-23",
+     6.5
+    ],
+    [
+     "2016-09-30",
+     6.5
+    ],
+    [
+     "2016-10-07",
+     6.25
+    ],
+    [
+     "2016-10-14",
+     6.25
+    ],
+    [
+     "2016-10-21",
+     6.25
+    ],
+    [
+     "2016-10-28",
+     6.25
+    ],
+    [
+     "2016-11-04",
+     6.25
+    ],
+    [
+     "2016-11-11",
+     6.25
+    ],
+    [
+     "2016-11-18",
+     6.25
+    ],
+    [
+     "2016-11-25",
+     6.25
+    ],
+    [
+     "2016-12-02",
+     6.25
+    ],
+    [
+     "2016-12-09",
+     6.25
+    ],
+    [
+     "2016-12-16",
+     6.25
+    ],
+    [
+     "2016-12-23",
+     6.25
+    ],
+    [
+     "2016-12-30",
+     6.25
+    ],
+    [
+     "2017-01-06",
+     6.25
+    ],
+    [
+     "2017-01-13",
+     6.25
+    ],
+    [
+     "2017-01-20",
+     6.25
+    ],
+    [
+     "2017-01-27",
+     6.25
+    ],
+    [
+     "2017-02-03",
+     6.25
+    ],
+    [
+     "2017-02-10",
+     6.25
+    ],
+    [
+     "2017-02-17",
+     6.25
+    ],
+    [
+     "2017-02-24",
+     6.25
+    ],
+    [
+     "2017-03-03",
+     6.25
+    ],
+    [
+     "2017-03-10",
+     6.25
+    ],
+    [
+     "2017-03-17",
+     6.25
+    ],
+    [
+     "2017-03-24",
+     6.25
+    ],
+    [
+     "2017-03-31",
+     6.25
+    ],
+    [
+     "2017-04-07",
+     6.25
+    ],
+    [
+     "2017-04-14",
+     6.25
+    ],
+    [
+     "2017-04-21",
+     6.25
+    ],
+    [
+     "2017-04-28",
+     6.25
+    ],
+    [
+     "2017-05-05",
+     6.25
+    ],
+    [
+     "2017-05-12",
+     6.25
+    ],
+    [
+     "2017-05-19",
+     6.25
+    ],
+    [
+     "2017-05-26",
+     6.25
+    ],
+    [
+     "2017-06-02",
+     6.25
+    ],
+    [
+     "2017-06-09",
+     6.25
+    ],
+    [
+     "2017-06-16",
+     6.25
+    ],
+    [
+     "2017-06-23",
+     6.25
+    ],
+    [
+     "2017-06-30",
+     6.25
+    ],
+    [
+     "2017-07-07",
+     6.25
+    ],
+    [
+     "2017-07-14",
+     6.25
+    ],
+    [
+     "2017-07-21",
+     6.25
+    ],
+    [
+     "2017-07-28",
+     6.25
+    ],
+    [
+     "2017-08-04",
+     6.0
+    ],
+    [
+     "2017-08-11",
+     6.0
+    ],
+    [
+     "2017-08-18",
+     6.0
+    ],
+    [
+     "2017-08-25",
+     6.0
+    ],
+    [
+     "2017-09-01",
+     6.0
+    ],
+    [
+     "2017-09-08",
+     6.0
+    ],
+    [
+     "2017-09-15",
+     6.0
+    ],
+    [
+     "2017-09-22",
+     6.0
+    ],
+    [
+     "2017-09-29",
+     6.0
+    ],
+    [
+     "2017-10-06",
+     6.0
+    ],
+    [
+     "2017-10-13",
+     6.0
+    ],
+    [
+     "2017-10-20",
+     6.0
+    ],
+    [
+     "2017-10-27",
+     6.0
+    ],
+    [
+     "2017-11-03",
+     6.0
+    ],
+    [
+     "2017-11-10",
+     6.0
+    ],
+    [
+     "2017-11-17",
+     6.0
+    ],
+    [
+     "2017-11-24",
+     6.0
+    ],
+    [
+     "2017-12-01",
+     6.0
+    ],
+    [
+     "2017-12-08",
+     6.0
+    ],
+    [
+     "2017-12-15",
+     6.0
+    ],
+    [
+     "2017-12-22",
+     6.0
+    ],
+    [
+     "2017-12-29",
+     6.0
+    ],
+    [
+     "2018-01-05",
+     6.0
+    ],
+    [
+     "2018-01-12",
+     6.0
+    ],
+    [
+     "2018-01-19",
+     6.0
+    ],
+    [
+     "2018-01-26",
+     6.0
+    ],
+    [
+     "2018-02-02",
+     6.0
+    ],
+    [
+     "2018-02-09",
+     6.0
+    ],
+    [
+     "2018-02-16",
+     6.0
+    ],
+    [
+     "2018-02-23",
+     6.0
+    ],
+    [
+     "2018-03-02",
+     6.0
+    ],
+    [
+     "2018-03-09",
+     6.0
+    ],
+    [
+     "2018-03-16",
+     6.0
+    ],
+    [
+     "2018-03-23",
+     6.0
+    ],
+    [
+     "2018-03-30",
+     6.0
+    ],
+    [
+     "2018-04-06",
+     6.0
+    ],
+    [
+     "2018-04-13",
+     6.0
+    ],
+    [
+     "2018-04-20",
+     6.0
+    ],
+    [
+     "2018-04-27",
+     6.0
+    ],
+    [
+     "2018-05-04",
+     6.0
+    ],
+    [
+     "2018-05-11",
+     6.0
+    ],
+    [
+     "2018-05-18",
+     6.0
+    ],
+    [
+     "2018-05-25",
+     6.0
+    ],
+    [
+     "2018-06-01",
+     6.0
+    ],
+    [
+     "2018-06-08",
+     6.25
+    ],
+    [
+     "2018-06-15",
+     6.25
+    ],
+    [
+     "2018-06-22",
+     6.25
+    ],
+    [
+     "2018-06-29",
+     6.25
+    ],
+    [
+     "2018-07-06",
+     6.25
+    ],
+    [
+     "2018-07-13",
+     6.25
+    ],
+    [
+     "2018-07-20",
+     6.25
+    ],
+    [
+     "2018-07-27",
+     6.25
+    ],
+    [
+     "2018-08-03",
+     6.5
+    ],
+    [
+     "2018-08-10",
+     6.5
+    ],
+    [
+     "2018-08-17",
+     6.5
+    ],
+    [
+     "2018-08-24",
+     6.5
+    ],
+    [
+     "2018-08-31",
+     6.5
+    ],
+    [
+     "2018-09-07",
+     6.5
+    ],
+    [
+     "2018-09-14",
+     6.5
+    ],
+    [
+     "2018-09-21",
+     6.5
+    ],
+    [
+     "2018-09-28",
+     6.5
+    ],
+    [
+     "2018-10-05",
+     6.5
+    ],
+    [
+     "2018-10-12",
+     6.5
+    ],
+    [
+     "2018-10-19",
+     6.5
+    ],
+    [
+     "2018-10-26",
+     6.5
+    ],
+    [
+     "2018-11-02",
+     6.5
+    ],
+    [
+     "2018-11-09",
+     6.5
+    ],
+    [
+     "2018-11-16",
+     6.5
+    ],
+    [
+     "2018-11-23",
+     6.5
+    ],
+    [
+     "2018-11-30",
+     6.5
+    ],
+    [
+     "2018-12-07",
+     6.5
+    ],
+    [
+     "2018-12-14",
+     6.5
+    ],
+    [
+     "2018-12-21",
+     6.5
+    ],
+    [
+     "2018-12-28",
+     6.5
+    ],
+    [
+     "2019-01-04",
+     6.5
+    ],
+    [
+     "2019-01-11",
+     6.5
+    ],
+    [
+     "2019-01-18",
+     6.5
+    ],
+    [
+     "2019-01-25",
+     6.5
+    ],
+    [
+     "2019-02-01",
+     6.5
+    ],
+    [
+     "2019-02-08",
+     6.25
+    ],
+    [
+     "2019-02-15",
+     6.25
+    ],
+    [
+     "2019-02-22",
+     6.25
+    ],
+    [
+     "2019-03-01",
+     6.25
+    ],
+    [
+     "2019-03-08",
+     6.25
+    ],
+    [
+     "2019-03-15",
+     6.25
+    ],
+    [
+     "2019-03-22",
+     6.25
+    ],
+    [
+     "2019-03-29",
+     6.25
+    ],
+    [
+     "2019-04-05",
+     6.0
+    ],
+    [
+     "2019-04-12",
+     6.0
+    ],
+    [
+     "2019-04-19",
+     6.0
+    ],
+    [
+     "2019-04-26",
+     6.0
+    ],
+    [
+     "2019-05-03",
+     6.0
+    ],
+    [
+     "2019-05-10",
+     6.0
+    ],
+    [
+     "2019-05-17",
+     6.0
+    ],
+    [
+     "2019-05-24",
+     6.0
+    ],
+    [
+     "2019-05-31",
+     6.0
+    ],
+    [
+     "2019-06-07",
+     5.75
+    ],
+    [
+     "2019-06-14",
+     5.75
+    ],
+    [
+     "2019-06-21",
+     5.75
+    ],
+    [
+     "2019-06-28",
+     5.75
+    ],
+    [
+     "2019-07-05",
+     5.75
+    ],
+    [
+     "2019-07-12",
+     5.75
+    ],
+    [
+     "2019-07-19",
+     5.75
+    ],
+    [
+     "2019-07-26",
+     5.75
+    ],
+    [
+     "2019-08-02",
+     5.75
+    ],
+    [
+     "2019-08-09",
+     5.4
+    ],
+    [
+     "2019-08-16",
+     5.4
+    ],
+    [
+     "2019-08-23",
+     5.4
+    ],
+    [
+     "2019-08-30",
+     5.4
+    ],
+    [
+     "2019-09-06",
+     5.4
+    ],
+    [
+     "2019-09-13",
+     5.4
+    ],
+    [
+     "2019-09-20",
+     5.4
+    ],
+    [
+     "2019-09-27",
+     5.4
+    ],
+    [
+     "2019-10-04",
+     5.15
+    ],
+    [
+     "2019-10-11",
+     5.15
+    ],
+    [
+     "2019-10-18",
+     5.15
+    ],
+    [
+     "2019-10-25",
+     5.15
+    ],
+    [
+     "2019-11-01",
+     5.15
+    ],
+    [
+     "2019-11-08",
+     5.15
+    ],
+    [
+     "2019-11-15",
+     5.15
+    ],
+    [
+     "2019-11-22",
+     5.15
+    ],
+    [
+     "2019-11-29",
+     5.15
+    ],
+    [
+     "2019-12-06",
+     5.15
+    ],
+    [
+     "2019-12-13",
+     5.15
+    ],
+    [
+     "2019-12-20",
+     5.15
+    ],
+    [
+     "2019-12-27",
+     5.15
+    ],
+    [
+     "2020-01-03",
+     5.15
+    ],
+    [
+     "2020-01-10",
+     5.15
+    ],
+    [
+     "2020-01-17",
+     5.15
+    ],
+    [
+     "2020-01-24",
+     5.15
+    ],
+    [
+     "2020-01-31",
+     5.15
+    ],
+    [
+     "2020-02-07",
+     5.15
+    ],
+    [
+     "2020-02-14",
+     5.15
+    ],
+    [
+     "2020-02-21",
+     5.15
+    ],
+    [
+     "2020-02-28",
+     5.15
+    ],
+    [
+     "2020-03-06",
+     5.15
+    ],
+    [
+     "2020-03-13",
+     5.15
+    ],
+    [
+     "2020-03-20",
+     5.15
+    ],
+    [
+     "2020-03-27",
+     4.4
+    ],
+    [
+     "2020-04-03",
+     4.4
+    ],
+    [
+     "2020-04-10",
+     4.4
+    ],
+    [
+     "2020-04-17",
+     4.4
+    ],
+    [
+     "2020-04-24",
+     4.4
+    ],
+    [
+     "2020-05-01",
+     4.4
+    ],
+    [
+     "2020-05-08",
+     4.4
+    ],
+    [
+     "2020-05-15",
+     4.4
+    ],
+    [
+     "2020-05-22",
+     4.0
+    ],
+    [
+     "2020-05-29",
+     4.0
+    ],
+    [
+     "2020-06-05",
+     4.0
+    ],
+    [
+     "2020-06-12",
+     4.0
+    ],
+    [
+     "2020-06-19",
+     4.0
+    ],
+    [
+     "2020-06-26",
+     4.0
+    ],
+    [
+     "2020-07-03",
+     4.0
+    ],
+    [
+     "2020-07-10",
+     4.0
+    ],
+    [
+     "2020-07-17",
+     4.0
+    ],
+    [
+     "2020-07-24",
+     4.0
+    ],
+    [
+     "2020-07-31",
+     4.0
+    ],
+    [
+     "2020-08-07",
+     4.0
+    ],
+    [
+     "2020-08-14",
+     4.0
+    ],
+    [
+     "2020-08-21",
+     4.0
+    ],
+    [
+     "2020-08-28",
+     4.0
+    ],
+    [
+     "2020-09-04",
+     4.0
+    ],
+    [
+     "2020-09-11",
+     4.0
+    ],
+    [
+     "2020-09-18",
+     4.0
+    ],
+    [
+     "2020-09-25",
+     4.0
+    ],
+    [
+     "2020-10-02",
+     4.0
+    ],
+    [
+     "2020-10-09",
+     4.0
+    ],
+    [
+     "2020-10-16",
+     4.0
+    ],
+    [
+     "2020-10-23",
+     4.0
+    ],
+    [
+     "2020-10-30",
+     4.0
+    ],
+    [
+     "2020-11-06",
+     4.0
+    ],
+    [
+     "2020-11-13",
+     4.0
+    ],
+    [
+     "2020-11-20",
+     4.0
+    ],
+    [
+     "2020-11-27",
+     4.0
+    ],
+    [
+     "2020-12-04",
+     4.0
+    ],
+    [
+     "2020-12-11",
+     4.0
+    ],
+    [
+     "2020-12-18",
+     4.0
+    ],
+    [
+     "2020-12-25",
+     4.0
+    ],
+    [
+     "2021-01-01",
+     4.0
+    ],
+    [
+     "2021-01-08",
+     4.0
+    ],
+    [
+     "2021-01-15",
+     4.0
+    ],
+    [
+     "2021-01-22",
+     4.0
+    ],
+    [
+     "2021-01-29",
+     4.0
+    ],
+    [
+     "2021-02-05",
+     4.0
+    ],
+    [
+     "2021-02-12",
+     4.0
+    ],
+    [
+     "2021-02-19",
+     4.0
+    ],
+    [
+     "2021-02-26",
+     4.0
+    ],
+    [
+     "2021-03-05",
+     4.0
+    ],
+    [
+     "2021-03-12",
+     4.0
+    ],
+    [
+     "2021-03-19",
+     4.0
+    ],
+    [
+     "2021-03-26",
+     4.0
+    ],
+    [
+     "2021-04-02",
+     4.0
+    ],
+    [
+     "2021-04-09",
+     4.0
+    ],
+    [
+     "2021-04-16",
+     4.0
+    ],
+    [
+     "2021-04-23",
+     4.0
+    ],
+    [
+     "2021-04-30",
+     4.0
+    ],
+    [
+     "2021-05-07",
+     4.0
+    ],
+    [
+     "2021-05-14",
+     4.0
+    ],
+    [
+     "2021-05-21",
+     4.0
+    ],
+    [
+     "2021-05-28",
+     4.0
+    ],
+    [
+     "2021-06-04",
+     4.0
+    ],
+    [
+     "2021-06-11",
+     4.0
+    ],
+    [
+     "2021-06-18",
+     4.0
+    ],
+    [
+     "2021-06-25",
+     4.0
+    ],
+    [
+     "2021-07-02",
+     4.0
+    ],
+    [
+     "2021-07-09",
+     4.0
+    ],
+    [
+     "2021-07-16",
+     4.0
+    ],
+    [
+     "2021-07-23",
+     4.0
+    ],
+    [
+     "2021-07-30",
+     4.0
+    ],
+    [
+     "2021-08-06",
+     4.0
+    ],
+    [
+     "2021-08-13",
+     4.0
+    ],
+    [
+     "2021-08-20",
+     4.0
+    ],
+    [
+     "2021-08-27",
+     4.0
+    ],
+    [
+     "2021-09-03",
+     4.0
+    ],
+    [
+     "2021-09-10",
+     4.0
+    ],
+    [
+     "2021-09-17",
+     4.0
+    ],
+    [
+     "2021-09-24",
+     4.0
+    ],
+    [
+     "2021-10-01",
+     4.0
+    ],
+    [
+     "2021-10-08",
+     4.0
+    ],
+    [
+     "2021-10-15",
+     4.0
+    ],
     [
      "2021-10-22",
      4.0
@@ -57694,6 +60756,2210 @@
    "source": "RBI r10",
    "points": [
     [
+     "2011-04-01",
+     6.0
+    ],
+    [
+     "2011-04-08",
+     6.0
+    ],
+    [
+     "2011-04-15",
+     6.0
+    ],
+    [
+     "2011-04-22",
+     6.0
+    ],
+    [
+     "2011-04-29",
+     6.0
+    ],
+    [
+     "2011-05-06",
+     6.0
+    ],
+    [
+     "2011-05-13",
+     6.0
+    ],
+    [
+     "2011-05-20",
+     6.0
+    ],
+    [
+     "2011-05-27",
+     6.0
+    ],
+    [
+     "2011-06-03",
+     6.0
+    ],
+    [
+     "2011-06-10",
+     6.0
+    ],
+    [
+     "2011-06-17",
+     6.0
+    ],
+    [
+     "2011-06-24",
+     6.0
+    ],
+    [
+     "2011-07-01",
+     6.0
+    ],
+    [
+     "2011-07-08",
+     6.0
+    ],
+    [
+     "2011-07-15",
+     6.0
+    ],
+    [
+     "2011-07-22",
+     6.0
+    ],
+    [
+     "2011-07-29",
+     6.0
+    ],
+    [
+     "2011-08-05",
+     6.0
+    ],
+    [
+     "2011-08-12",
+     6.0
+    ],
+    [
+     "2011-08-19",
+     6.0
+    ],
+    [
+     "2011-08-26",
+     6.0
+    ],
+    [
+     "2011-09-02",
+     6.0
+    ],
+    [
+     "2011-09-09",
+     6.0
+    ],
+    [
+     "2011-09-16",
+     6.0
+    ],
+    [
+     "2011-09-23",
+     6.0
+    ],
+    [
+     "2011-09-30",
+     6.0
+    ],
+    [
+     "2011-10-07",
+     6.0
+    ],
+    [
+     "2011-10-14",
+     6.0
+    ],
+    [
+     "2011-10-21",
+     6.0
+    ],
+    [
+     "2011-10-28",
+     6.0
+    ],
+    [
+     "2011-11-04",
+     6.0
+    ],
+    [
+     "2011-11-11",
+     6.0
+    ],
+    [
+     "2011-11-18",
+     6.0
+    ],
+    [
+     "2011-11-25",
+     6.0
+    ],
+    [
+     "2011-12-02",
+     6.0
+    ],
+    [
+     "2011-12-09",
+     6.0
+    ],
+    [
+     "2011-12-16",
+     6.0
+    ],
+    [
+     "2011-12-23",
+     6.0
+    ],
+    [
+     "2011-12-30",
+     6.0
+    ],
+    [
+     "2012-01-06",
+     6.0
+    ],
+    [
+     "2012-01-13",
+     6.0
+    ],
+    [
+     "2012-01-20",
+     6.0
+    ],
+    [
+     "2012-01-27",
+     6.0
+    ],
+    [
+     "2012-02-03",
+     5.5
+    ],
+    [
+     "2012-02-10",
+     5.5
+    ],
+    [
+     "2012-02-17",
+     5.5
+    ],
+    [
+     "2012-02-24",
+     5.5
+    ],
+    [
+     "2012-03-02",
+     5.5
+    ],
+    [
+     "2012-03-09",
+     5.5
+    ],
+    [
+     "2012-03-16",
+     4.75
+    ],
+    [
+     "2012-03-23",
+     4.75
+    ],
+    [
+     "2012-03-30",
+     4.75
+    ],
+    [
+     "2012-04-06",
+     4.75
+    ],
+    [
+     "2012-04-13",
+     4.75
+    ],
+    [
+     "2012-04-20",
+     4.75
+    ],
+    [
+     "2012-04-27",
+     4.75
+    ],
+    [
+     "2012-05-04",
+     4.75
+    ],
+    [
+     "2012-05-11",
+     4.75
+    ],
+    [
+     "2012-05-18",
+     4.75
+    ],
+    [
+     "2012-05-25",
+     4.75
+    ],
+    [
+     "2012-06-01",
+     4.75
+    ],
+    [
+     "2012-06-08",
+     4.75
+    ],
+    [
+     "2012-06-15",
+     4.75
+    ],
+    [
+     "2012-06-22",
+     4.75
+    ],
+    [
+     "2012-06-29",
+     4.75
+    ],
+    [
+     "2012-07-06",
+     4.75
+    ],
+    [
+     "2012-07-13",
+     4.75
+    ],
+    [
+     "2012-07-20",
+     4.75
+    ],
+    [
+     "2012-07-27",
+     4.75
+    ],
+    [
+     "2012-08-03",
+     4.75
+    ],
+    [
+     "2012-08-10",
+     4.75
+    ],
+    [
+     "2012-08-17",
+     4.75
+    ],
+    [
+     "2012-08-24",
+     4.75
+    ],
+    [
+     "2012-08-31",
+     4.75
+    ],
+    [
+     "2012-09-07",
+     4.75
+    ],
+    [
+     "2012-09-14",
+     4.75
+    ],
+    [
+     "2012-09-21",
+     4.75
+    ],
+    [
+     "2012-09-28",
+     4.5
+    ],
+    [
+     "2012-10-05",
+     4.5
+    ],
+    [
+     "2012-10-12",
+     4.5
+    ],
+    [
+     "2012-10-19",
+     4.5
+    ],
+    [
+     "2012-10-26",
+     4.5
+    ],
+    [
+     "2012-11-02",
+     4.5
+    ],
+    [
+     "2012-11-09",
+     4.25
+    ],
+    [
+     "2012-11-16",
+     4.25
+    ],
+    [
+     "2012-11-23",
+     4.25
+    ],
+    [
+     "2012-11-30",
+     4.25
+    ],
+    [
+     "2012-12-07",
+     4.25
+    ],
+    [
+     "2012-12-14",
+     4.25
+    ],
+    [
+     "2012-12-21",
+     4.25
+    ],
+    [
+     "2012-12-28",
+     4.25
+    ],
+    [
+     "2013-01-04",
+     4.25
+    ],
+    [
+     "2013-01-11",
+     4.25
+    ],
+    [
+     "2013-01-18",
+     4.25
+    ],
+    [
+     "2013-01-25",
+     4.25
+    ],
+    [
+     "2013-02-01",
+     4.25
+    ],
+    [
+     "2013-02-08",
+     4.25
+    ],
+    [
+     "2013-02-15",
+     4.0
+    ],
+    [
+     "2013-02-22",
+     4.0
+    ],
+    [
+     "2013-03-01",
+     4.0
+    ],
+    [
+     "2013-03-08",
+     4.0
+    ],
+    [
+     "2013-03-15",
+     4.0
+    ],
+    [
+     "2013-03-22",
+     4.0
+    ],
+    [
+     "2013-03-29",
+     4.0
+    ],
+    [
+     "2013-04-05",
+     4.0
+    ],
+    [
+     "2013-04-12",
+     4.0
+    ],
+    [
+     "2013-04-19",
+     4.0
+    ],
+    [
+     "2013-04-26",
+     4.0
+    ],
+    [
+     "2013-05-03",
+     4.0
+    ],
+    [
+     "2013-05-10",
+     4.0
+    ],
+    [
+     "2013-05-17",
+     4.0
+    ],
+    [
+     "2013-05-24",
+     4.0
+    ],
+    [
+     "2013-05-31",
+     4.0
+    ],
+    [
+     "2013-06-07",
+     4.0
+    ],
+    [
+     "2013-06-14",
+     4.0
+    ],
+    [
+     "2013-06-21",
+     4.0
+    ],
+    [
+     "2013-06-28",
+     4.0
+    ],
+    [
+     "2013-07-05",
+     4.0
+    ],
+    [
+     "2013-07-12",
+     4.0
+    ],
+    [
+     "2013-07-19",
+     4.0
+    ],
+    [
+     "2013-07-26",
+     4.0
+    ],
+    [
+     "2013-08-02",
+     4.0
+    ],
+    [
+     "2013-08-09",
+     4.0
+    ],
+    [
+     "2013-08-16",
+     4.0
+    ],
+    [
+     "2013-08-23",
+     4.0
+    ],
+    [
+     "2013-08-30",
+     4.0
+    ],
+    [
+     "2013-09-06",
+     4.0
+    ],
+    [
+     "2013-09-13",
+     4.0
+    ],
+    [
+     "2013-09-20",
+     4.0
+    ],
+    [
+     "2013-09-27",
+     4.0
+    ],
+    [
+     "2013-10-04",
+     4.0
+    ],
+    [
+     "2013-10-11",
+     4.0
+    ],
+    [
+     "2013-10-18",
+     4.0
+    ],
+    [
+     "2013-10-25",
+     4.0
+    ],
+    [
+     "2013-11-01",
+     4.0
+    ],
+    [
+     "2013-11-08",
+     4.0
+    ],
+    [
+     "2013-11-15",
+     4.0
+    ],
+    [
+     "2013-11-22",
+     4.0
+    ],
+    [
+     "2013-11-29",
+     4.0
+    ],
+    [
+     "2013-12-06",
+     4.0
+    ],
+    [
+     "2013-12-13",
+     4.0
+    ],
+    [
+     "2013-12-20",
+     4.0
+    ],
+    [
+     "2013-12-27",
+     4.0
+    ],
+    [
+     "2014-01-03",
+     4.0
+    ],
+    [
+     "2014-01-10",
+     4.0
+    ],
+    [
+     "2014-01-17",
+     4.0
+    ],
+    [
+     "2014-01-24",
+     4.0
+    ],
+    [
+     "2014-01-31",
+     4.0
+    ],
+    [
+     "2014-02-07",
+     4.0
+    ],
+    [
+     "2014-02-14",
+     4.0
+    ],
+    [
+     "2014-02-21",
+     4.0
+    ],
+    [
+     "2014-02-28",
+     4.0
+    ],
+    [
+     "2014-03-07",
+     4.0
+    ],
+    [
+     "2014-03-14",
+     4.0
+    ],
+    [
+     "2014-03-21",
+     4.0
+    ],
+    [
+     "2014-03-28",
+     4.0
+    ],
+    [
+     "2014-04-04",
+     4.0
+    ],
+    [
+     "2014-04-11",
+     4.0
+    ],
+    [
+     "2014-04-18",
+     4.0
+    ],
+    [
+     "2014-04-25",
+     4.0
+    ],
+    [
+     "2014-05-02",
+     4.0
+    ],
+    [
+     "2014-05-09",
+     4.0
+    ],
+    [
+     "2014-05-16",
+     4.0
+    ],
+    [
+     "2014-05-23",
+     4.0
+    ],
+    [
+     "2014-05-30",
+     4.0
+    ],
+    [
+     "2014-06-06",
+     4.0
+    ],
+    [
+     "2014-06-13",
+     4.0
+    ],
+    [
+     "2014-06-20",
+     4.0
+    ],
+    [
+     "2014-06-27",
+     4.0
+    ],
+    [
+     "2014-07-04",
+     4.0
+    ],
+    [
+     "2014-07-11",
+     4.0
+    ],
+    [
+     "2014-07-18",
+     4.0
+    ],
+    [
+     "2014-07-25",
+     4.0
+    ],
+    [
+     "2014-08-01",
+     4.0
+    ],
+    [
+     "2014-08-08",
+     4.0
+    ],
+    [
+     "2014-08-15",
+     4.0
+    ],
+    [
+     "2014-08-22",
+     4.0
+    ],
+    [
+     "2014-08-29",
+     4.0
+    ],
+    [
+     "2014-09-05",
+     4.0
+    ],
+    [
+     "2014-09-12",
+     4.0
+    ],
+    [
+     "2014-09-19",
+     4.0
+    ],
+    [
+     "2014-09-26",
+     4.0
+    ],
+    [
+     "2014-10-03",
+     4.0
+    ],
+    [
+     "2014-10-10",
+     4.0
+    ],
+    [
+     "2014-10-17",
+     4.0
+    ],
+    [
+     "2014-10-24",
+     4.0
+    ],
+    [
+     "2014-10-31",
+     4.0
+    ],
+    [
+     "2014-11-07",
+     4.0
+    ],
+    [
+     "2014-11-14",
+     4.0
+    ],
+    [
+     "2014-11-21",
+     4.0
+    ],
+    [
+     "2014-11-28",
+     4.0
+    ],
+    [
+     "2014-12-05",
+     4.0
+    ],
+    [
+     "2014-12-12",
+     4.0
+    ],
+    [
+     "2014-12-19",
+     4.0
+    ],
+    [
+     "2014-12-26",
+     4.0
+    ],
+    [
+     "2015-01-02",
+     4.0
+    ],
+    [
+     "2015-01-09",
+     4.0
+    ],
+    [
+     "2015-01-16",
+     4.0
+    ],
+    [
+     "2015-01-23",
+     4.0
+    ],
+    [
+     "2015-01-30",
+     4.0
+    ],
+    [
+     "2015-02-06",
+     4.0
+    ],
+    [
+     "2015-02-13",
+     4.0
+    ],
+    [
+     "2015-02-20",
+     4.0
+    ],
+    [
+     "2015-02-27",
+     4.0
+    ],
+    [
+     "2015-03-06",
+     4.0
+    ],
+    [
+     "2015-03-13",
+     4.0
+    ],
+    [
+     "2015-03-20",
+     4.0
+    ],
+    [
+     "2015-03-27",
+     4.0
+    ],
+    [
+     "2015-04-03",
+     4.0
+    ],
+    [
+     "2015-04-10",
+     4.0
+    ],
+    [
+     "2015-04-17",
+     4.0
+    ],
+    [
+     "2015-04-24",
+     4.0
+    ],
+    [
+     "2015-05-01",
+     4.0
+    ],
+    [
+     "2015-05-08",
+     4.0
+    ],
+    [
+     "2015-05-15",
+     4.0
+    ],
+    [
+     "2015-05-22",
+     4.0
+    ],
+    [
+     "2015-05-29",
+     4.0
+    ],
+    [
+     "2015-06-05",
+     4.0
+    ],
+    [
+     "2015-06-12",
+     4.0
+    ],
+    [
+     "2015-06-19",
+     4.0
+    ],
+    [
+     "2015-06-26",
+     4.0
+    ],
+    [
+     "2015-07-03",
+     4.0
+    ],
+    [
+     "2015-07-10",
+     4.0
+    ],
+    [
+     "2015-07-17",
+     4.0
+    ],
+    [
+     "2015-07-24",
+     4.0
+    ],
+    [
+     "2015-07-31",
+     4.0
+    ],
+    [
+     "2015-08-07",
+     4.0
+    ],
+    [
+     "2015-08-14",
+     4.0
+    ],
+    [
+     "2015-08-21",
+     4.0
+    ],
+    [
+     "2015-08-28",
+     4.0
+    ],
+    [
+     "2015-09-04",
+     4.0
+    ],
+    [
+     "2015-09-11",
+     4.0
+    ],
+    [
+     "2015-09-18",
+     4.0
+    ],
+    [
+     "2015-09-25",
+     4.0
+    ],
+    [
+     "2015-10-02",
+     4.0
+    ],
+    [
+     "2015-10-09",
+     4.0
+    ],
+    [
+     "2015-10-16",
+     4.0
+    ],
+    [
+     "2015-10-23",
+     4.0
+    ],
+    [
+     "2015-10-30",
+     4.0
+    ],
+    [
+     "2015-11-06",
+     4.0
+    ],
+    [
+     "2015-11-13",
+     4.0
+    ],
+    [
+     "2015-11-20",
+     4.0
+    ],
+    [
+     "2015-11-27",
+     4.0
+    ],
+    [
+     "2015-12-04",
+     4.0
+    ],
+    [
+     "2015-12-11",
+     4.0
+    ],
+    [
+     "2015-12-18",
+     4.0
+    ],
+    [
+     "2015-12-25",
+     4.0
+    ],
+    [
+     "2016-01-01",
+     4.0
+    ],
+    [
+     "2016-01-08",
+     4.0
+    ],
+    [
+     "2016-01-15",
+     4.0
+    ],
+    [
+     "2016-01-22",
+     4.0
+    ],
+    [
+     "2016-01-29",
+     4.0
+    ],
+    [
+     "2016-02-05",
+     4.0
+    ],
+    [
+     "2016-02-12",
+     4.0
+    ],
+    [
+     "2016-02-19",
+     4.0
+    ],
+    [
+     "2016-02-26",
+     4.0
+    ],
+    [
+     "2016-03-04",
+     4.0
+    ],
+    [
+     "2016-03-11",
+     4.0
+    ],
+    [
+     "2016-03-18",
+     4.0
+    ],
+    [
+     "2016-03-25",
+     4.0
+    ],
+    [
+     "2016-04-01",
+     4.0
+    ],
+    [
+     "2016-04-08",
+     4.0
+    ],
+    [
+     "2016-04-15",
+     4.0
+    ],
+    [
+     "2016-04-22",
+     4.0
+    ],
+    [
+     "2016-04-29",
+     4.0
+    ],
+    [
+     "2016-05-06",
+     4.0
+    ],
+    [
+     "2016-05-13",
+     4.0
+    ],
+    [
+     "2016-05-20",
+     4.0
+    ],
+    [
+     "2016-05-27",
+     4.0
+    ],
+    [
+     "2016-06-03",
+     4.0
+    ],
+    [
+     "2016-06-10",
+     4.0
+    ],
+    [
+     "2016-06-17",
+     4.0
+    ],
+    [
+     "2016-06-24",
+     4.0
+    ],
+    [
+     "2016-07-01",
+     4.0
+    ],
+    [
+     "2016-07-08",
+     4.0
+    ],
+    [
+     "2016-07-15",
+     4.0
+    ],
+    [
+     "2016-07-22",
+     4.0
+    ],
+    [
+     "2016-07-29",
+     4.0
+    ],
+    [
+     "2016-08-05",
+     4.0
+    ],
+    [
+     "2016-08-12",
+     4.0
+    ],
+    [
+     "2016-08-19",
+     4.0
+    ],
+    [
+     "2016-08-26",
+     4.0
+    ],
+    [
+     "2016-09-02",
+     4.0
+    ],
+    [
+     "2016-09-09",
+     4.0
+    ],
+    [
+     "2016-09-16",
+     4.0
+    ],
+    [
+     "2016-09-23",
+     4.0
+    ],
+    [
+     "2016-09-30",
+     4.0
+    ],
+    [
+     "2016-10-07",
+     4.0
+    ],
+    [
+     "2016-10-14",
+     4.0
+    ],
+    [
+     "2016-10-21",
+     4.0
+    ],
+    [
+     "2016-10-28",
+     4.0
+    ],
+    [
+     "2016-11-04",
+     4.0
+    ],
+    [
+     "2016-11-11",
+     4.0
+    ],
+    [
+     "2016-11-18",
+     4.0
+    ],
+    [
+     "2016-11-25",
+     4.0
+    ],
+    [
+     "2016-12-02",
+     4.0
+    ],
+    [
+     "2016-12-09",
+     4.0
+    ],
+    [
+     "2016-12-16",
+     4.0
+    ],
+    [
+     "2016-12-23",
+     4.0
+    ],
+    [
+     "2016-12-30",
+     4.0
+    ],
+    [
+     "2017-01-06",
+     4.0
+    ],
+    [
+     "2017-01-13",
+     4.0
+    ],
+    [
+     "2017-01-20",
+     4.0
+    ],
+    [
+     "2017-01-27",
+     4.0
+    ],
+    [
+     "2017-02-03",
+     4.0
+    ],
+    [
+     "2017-02-10",
+     4.0
+    ],
+    [
+     "2017-02-17",
+     4.0
+    ],
+    [
+     "2017-02-24",
+     4.0
+    ],
+    [
+     "2017-03-03",
+     4.0
+    ],
+    [
+     "2017-03-10",
+     4.0
+    ],
+    [
+     "2017-03-17",
+     4.0
+    ],
+    [
+     "2017-03-24",
+     4.0
+    ],
+    [
+     "2017-03-31",
+     4.0
+    ],
+    [
+     "2017-04-07",
+     4.0
+    ],
+    [
+     "2017-04-14",
+     4.0
+    ],
+    [
+     "2017-04-21",
+     4.0
+    ],
+    [
+     "2017-04-28",
+     4.0
+    ],
+    [
+     "2017-05-05",
+     4.0
+    ],
+    [
+     "2017-05-12",
+     4.0
+    ],
+    [
+     "2017-05-19",
+     4.0
+    ],
+    [
+     "2017-05-26",
+     4.0
+    ],
+    [
+     "2017-06-02",
+     4.0
+    ],
+    [
+     "2017-06-09",
+     4.0
+    ],
+    [
+     "2017-06-16",
+     4.0
+    ],
+    [
+     "2017-06-23",
+     4.0
+    ],
+    [
+     "2017-06-30",
+     4.0
+    ],
+    [
+     "2017-07-07",
+     4.0
+    ],
+    [
+     "2017-07-14",
+     4.0
+    ],
+    [
+     "2017-07-21",
+     4.0
+    ],
+    [
+     "2017-07-28",
+     4.0
+    ],
+    [
+     "2017-08-04",
+     4.0
+    ],
+    [
+     "2017-08-11",
+     4.0
+    ],
+    [
+     "2017-08-18",
+     4.0
+    ],
+    [
+     "2017-08-25",
+     4.0
+    ],
+    [
+     "2017-09-01",
+     4.0
+    ],
+    [
+     "2017-09-08",
+     4.0
+    ],
+    [
+     "2017-09-15",
+     4.0
+    ],
+    [
+     "2017-09-22",
+     4.0
+    ],
+    [
+     "2017-09-29",
+     4.0
+    ],
+    [
+     "2017-10-06",
+     4.0
+    ],
+    [
+     "2017-10-13",
+     4.0
+    ],
+    [
+     "2017-10-20",
+     4.0
+    ],
+    [
+     "2017-10-27",
+     4.0
+    ],
+    [
+     "2017-11-03",
+     4.0
+    ],
+    [
+     "2017-11-10",
+     4.0
+    ],
+    [
+     "2017-11-17",
+     4.0
+    ],
+    [
+     "2017-11-24",
+     4.0
+    ],
+    [
+     "2017-12-01",
+     4.0
+    ],
+    [
+     "2017-12-08",
+     4.0
+    ],
+    [
+     "2017-12-15",
+     4.0
+    ],
+    [
+     "2017-12-22",
+     4.0
+    ],
+    [
+     "2017-12-29",
+     4.0
+    ],
+    [
+     "2018-01-05",
+     4.0
+    ],
+    [
+     "2018-01-12",
+     4.0
+    ],
+    [
+     "2018-01-19",
+     4.0
+    ],
+    [
+     "2018-01-26",
+     4.0
+    ],
+    [
+     "2018-02-02",
+     4.0
+    ],
+    [
+     "2018-02-09",
+     4.0
+    ],
+    [
+     "2018-02-16",
+     4.0
+    ],
+    [
+     "2018-02-23",
+     4.0
+    ],
+    [
+     "2018-03-02",
+     4.0
+    ],
+    [
+     "2018-03-09",
+     4.0
+    ],
+    [
+     "2018-03-16",
+     4.0
+    ],
+    [
+     "2018-03-23",
+     4.0
+    ],
+    [
+     "2018-03-30",
+     4.0
+    ],
+    [
+     "2018-04-06",
+     4.0
+    ],
+    [
+     "2018-04-13",
+     4.0
+    ],
+    [
+     "2018-04-20",
+     4.0
+    ],
+    [
+     "2018-04-27",
+     4.0
+    ],
+    [
+     "2018-05-04",
+     4.0
+    ],
+    [
+     "2018-05-11",
+     4.0
+    ],
+    [
+     "2018-05-18",
+     4.0
+    ],
+    [
+     "2018-05-25",
+     4.0
+    ],
+    [
+     "2018-06-01",
+     4.0
+    ],
+    [
+     "2018-06-08",
+     4.0
+    ],
+    [
+     "2018-06-15",
+     4.0
+    ],
+    [
+     "2018-06-22",
+     4.0
+    ],
+    [
+     "2018-06-29",
+     4.0
+    ],
+    [
+     "2018-07-06",
+     4.0
+    ],
+    [
+     "2018-07-13",
+     4.0
+    ],
+    [
+     "2018-07-20",
+     4.0
+    ],
+    [
+     "2018-07-27",
+     4.0
+    ],
+    [
+     "2018-08-03",
+     4.0
+    ],
+    [
+     "2018-08-10",
+     4.0
+    ],
+    [
+     "2018-08-17",
+     4.0
+    ],
+    [
+     "2018-08-24",
+     4.0
+    ],
+    [
+     "2018-08-31",
+     4.0
+    ],
+    [
+     "2018-09-07",
+     4.0
+    ],
+    [
+     "2018-09-14",
+     4.0
+    ],
+    [
+     "2018-09-21",
+     4.0
+    ],
+    [
+     "2018-09-28",
+     4.0
+    ],
+    [
+     "2018-10-05",
+     4.0
+    ],
+    [
+     "2018-10-12",
+     4.0
+    ],
+    [
+     "2018-10-19",
+     4.0
+    ],
+    [
+     "2018-10-26",
+     4.0
+    ],
+    [
+     "2018-11-02",
+     4.0
+    ],
+    [
+     "2018-11-09",
+     4.0
+    ],
+    [
+     "2018-11-16",
+     4.0
+    ],
+    [
+     "2018-11-23",
+     4.0
+    ],
+    [
+     "2018-11-30",
+     4.0
+    ],
+    [
+     "2018-12-07",
+     4.0
+    ],
+    [
+     "2018-12-14",
+     4.0
+    ],
+    [
+     "2018-12-21",
+     4.0
+    ],
+    [
+     "2018-12-28",
+     4.0
+    ],
+    [
+     "2019-01-04",
+     4.0
+    ],
+    [
+     "2019-01-11",
+     4.0
+    ],
+    [
+     "2019-01-18",
+     4.0
+    ],
+    [
+     "2019-01-25",
+     4.0
+    ],
+    [
+     "2019-02-01",
+     4.0
+    ],
+    [
+     "2019-02-08",
+     4.0
+    ],
+    [
+     "2019-02-15",
+     4.0
+    ],
+    [
+     "2019-02-22",
+     4.0
+    ],
+    [
+     "2019-03-01",
+     4.0
+    ],
+    [
+     "2019-03-08",
+     4.0
+    ],
+    [
+     "2019-03-15",
+     4.0
+    ],
+    [
+     "2019-03-22",
+     4.0
+    ],
+    [
+     "2019-03-29",
+     4.0
+    ],
+    [
+     "2019-04-05",
+     4.0
+    ],
+    [
+     "2019-04-12",
+     4.0
+    ],
+    [
+     "2019-04-19",
+     4.0
+    ],
+    [
+     "2019-04-26",
+     4.0
+    ],
+    [
+     "2019-05-03",
+     4.0
+    ],
+    [
+     "2019-05-10",
+     4.0
+    ],
+    [
+     "2019-05-17",
+     4.0
+    ],
+    [
+     "2019-05-24",
+     4.0
+    ],
+    [
+     "2019-05-31",
+     4.0
+    ],
+    [
+     "2019-06-07",
+     4.0
+    ],
+    [
+     "2019-06-14",
+     4.0
+    ],
+    [
+     "2019-06-21",
+     4.0
+    ],
+    [
+     "2019-06-28",
+     4.0
+    ],
+    [
+     "2019-07-05",
+     4.0
+    ],
+    [
+     "2019-07-12",
+     4.0
+    ],
+    [
+     "2019-07-19",
+     4.0
+    ],
+    [
+     "2019-07-26",
+     4.0
+    ],
+    [
+     "2019-08-02",
+     4.0
+    ],
+    [
+     "2019-08-09",
+     4.0
+    ],
+    [
+     "2019-08-16",
+     4.0
+    ],
+    [
+     "2019-08-23",
+     4.0
+    ],
+    [
+     "2019-08-30",
+     4.0
+    ],
+    [
+     "2019-09-06",
+     4.0
+    ],
+    [
+     "2019-09-13",
+     4.0
+    ],
+    [
+     "2019-09-20",
+     4.0
+    ],
+    [
+     "2019-09-27",
+     4.0
+    ],
+    [
+     "2019-10-04",
+     4.0
+    ],
+    [
+     "2019-10-11",
+     4.0
+    ],
+    [
+     "2019-10-18",
+     4.0
+    ],
+    [
+     "2019-10-25",
+     4.0
+    ],
+    [
+     "2019-11-01",
+     4.0
+    ],
+    [
+     "2019-11-08",
+     4.0
+    ],
+    [
+     "2019-11-15",
+     4.0
+    ],
+    [
+     "2019-11-22",
+     4.0
+    ],
+    [
+     "2019-11-29",
+     4.0
+    ],
+    [
+     "2019-12-06",
+     4.0
+    ],
+    [
+     "2019-12-13",
+     4.0
+    ],
+    [
+     "2019-12-20",
+     4.0
+    ],
+    [
+     "2019-12-27",
+     4.0
+    ],
+    [
+     "2020-01-03",
+     4.0
+    ],
+    [
+     "2020-01-10",
+     4.0
+    ],
+    [
+     "2020-01-17",
+     4.0
+    ],
+    [
+     "2020-01-24",
+     4.0
+    ],
+    [
+     "2020-01-31",
+     4.0
+    ],
+    [
+     "2020-02-07",
+     4.0
+    ],
+    [
+     "2020-02-14",
+     4.0
+    ],
+    [
+     "2020-02-21",
+     4.0
+    ],
+    [
+     "2020-02-28",
+     4.0
+    ],
+    [
+     "2020-03-06",
+     4.0
+    ],
+    [
+     "2020-03-13",
+     4.0
+    ],
+    [
+     "2020-03-20",
+     4.0
+    ],
+    [
+     "2020-03-27",
+     4.0
+    ],
+    [
+     "2020-04-03",
+     3.0
+    ],
+    [
+     "2020-04-10",
+     3.0
+    ],
+    [
+     "2020-04-17",
+     3.0
+    ],
+    [
+     "2020-04-24",
+     3.0
+    ],
+    [
+     "2020-05-01",
+     3.0
+    ],
+    [
+     "2020-05-08",
+     3.0
+    ],
+    [
+     "2020-05-15",
+     3.0
+    ],
+    [
+     "2020-05-22",
+     3.0
+    ],
+    [
+     "2020-05-29",
+     3.0
+    ],
+    [
+     "2020-06-05",
+     3.0
+    ],
+    [
+     "2020-06-12",
+     3.0
+    ],
+    [
+     "2020-06-19",
+     3.0
+    ],
+    [
+     "2020-06-26",
+     3.0
+    ],
+    [
+     "2020-07-03",
+     3.0
+    ],
+    [
+     "2020-07-10",
+     3.0
+    ],
+    [
+     "2020-07-17",
+     3.0
+    ],
+    [
+     "2020-07-24",
+     3.0
+    ],
+    [
+     "2020-07-31",
+     3.0
+    ],
+    [
+     "2020-08-07",
+     3.0
+    ],
+    [
+     "2020-08-14",
+     3.0
+    ],
+    [
+     "2020-08-21",
+     3.0
+    ],
+    [
+     "2020-08-28",
+     3.0
+    ],
+    [
+     "2020-09-04",
+     3.0
+    ],
+    [
+     "2020-09-11",
+     3.0
+    ],
+    [
+     "2020-09-18",
+     3.0
+    ],
+    [
+     "2020-09-25",
+     3.0
+    ],
+    [
+     "2020-10-02",
+     3.0
+    ],
+    [
+     "2020-10-09",
+     3.0
+    ],
+    [
+     "2020-10-16",
+     3.0
+    ],
+    [
+     "2020-10-23",
+     3.0
+    ],
+    [
+     "2020-10-30",
+     3.0
+    ],
+    [
+     "2020-11-06",
+     3.0
+    ],
+    [
+     "2020-11-13",
+     3.0
+    ],
+    [
+     "2020-11-20",
+     3.0
+    ],
+    [
+     "2020-11-27",
+     3.0
+    ],
+    [
+     "2020-12-04",
+     3.0
+    ],
+    [
+     "2020-12-11",
+     3.0
+    ],
+    [
+     "2020-12-18",
+     3.0
+    ],
+    [
+     "2020-12-25",
+     3.0
+    ],
+    [
+     "2021-01-01",
+     3.0
+    ],
+    [
+     "2021-01-08",
+     3.0
+    ],
+    [
+     "2021-01-15",
+     3.0
+    ],
+    [
+     "2021-01-22",
+     3.0
+    ],
+    [
+     "2021-01-29",
+     3.0
+    ],
+    [
+     "2021-02-05",
+     3.0
+    ],
+    [
+     "2021-02-12",
+     3.0
+    ],
+    [
+     "2021-02-19",
+     3.0
+    ],
+    [
+     "2021-02-26",
+     3.0
+    ],
+    [
+     "2021-03-05",
+     3.0
+    ],
+    [
+     "2021-03-12",
+     3.0
+    ],
+    [
+     "2021-03-19",
+     3.0
+    ],
+    [
+     "2021-03-26",
+     3.0
+    ],
+    [
+     "2021-04-02",
+     3.5
+    ],
+    [
+     "2021-04-09",
+     3.5
+    ],
+    [
+     "2021-04-16",
+     3.5
+    ],
+    [
+     "2021-04-23",
+     3.5
+    ],
+    [
+     "2021-04-30",
+     3.5
+    ],
+    [
+     "2021-05-07",
+     3.5
+    ],
+    [
+     "2021-05-14",
+     3.5
+    ],
+    [
+     "2021-05-21",
+     3.5
+    ],
+    [
+     "2021-05-28",
+     4.0
+    ],
+    [
+     "2021-06-04",
+     4.0
+    ],
+    [
+     "2021-06-11",
+     4.0
+    ],
+    [
+     "2021-06-18",
+     4.0
+    ],
+    [
+     "2021-06-25",
+     4.0
+    ],
+    [
+     "2021-07-02",
+     4.0
+    ],
+    [
+     "2021-07-09",
+     4.0
+    ],
+    [
+     "2021-07-16",
+     4.0
+    ],
+    [
+     "2021-07-23",
+     4.0
+    ],
+    [
+     "2021-07-30",
+     4.0
+    ],
+    [
+     "2021-08-06",
+     4.0
+    ],
+    [
+     "2021-08-13",
+     4.0
+    ],
+    [
+     "2021-08-20",
+     4.0
+    ],
+    [
+     "2021-08-27",
+     4.0
+    ],
+    [
+     "2021-09-03",
+     4.0
+    ],
+    [
+     "2021-09-10",
+     4.0
+    ],
+    [
+     "2021-09-17",
+     4.0
+    ],
+    [
+     "2021-09-24",
+     4.0
+    ],
+    [
+     "2021-10-01",
+     4.0
+    ],
+    [
+     "2021-10-08",
+     4.0
+    ],
+    [
+     "2021-10-15",
+     4.0
+    ],
+    [
      "2021-10-22",
      4.0
     ],
@@ -58740,6 +64006,2210 @@
    "unit": "%",
    "source": "RBI r10",
    "points": [
+    [
+     "2011-04-01",
+     24.0
+    ],
+    [
+     "2011-04-08",
+     24.0
+    ],
+    [
+     "2011-04-15",
+     24.0
+    ],
+    [
+     "2011-04-22",
+     24.0
+    ],
+    [
+     "2011-04-29",
+     24.0
+    ],
+    [
+     "2011-05-06",
+     24.0
+    ],
+    [
+     "2011-05-13",
+     24.0
+    ],
+    [
+     "2011-05-20",
+     24.0
+    ],
+    [
+     "2011-05-27",
+     24.0
+    ],
+    [
+     "2011-06-03",
+     24.0
+    ],
+    [
+     "2011-06-10",
+     24.0
+    ],
+    [
+     "2011-06-17",
+     24.0
+    ],
+    [
+     "2011-06-24",
+     24.0
+    ],
+    [
+     "2011-07-01",
+     24.0
+    ],
+    [
+     "2011-07-08",
+     24.0
+    ],
+    [
+     "2011-07-15",
+     24.0
+    ],
+    [
+     "2011-07-22",
+     24.0
+    ],
+    [
+     "2011-07-29",
+     24.0
+    ],
+    [
+     "2011-08-05",
+     24.0
+    ],
+    [
+     "2011-08-12",
+     24.0
+    ],
+    [
+     "2011-08-19",
+     24.0
+    ],
+    [
+     "2011-08-26",
+     24.0
+    ],
+    [
+     "2011-09-02",
+     24.0
+    ],
+    [
+     "2011-09-09",
+     24.0
+    ],
+    [
+     "2011-09-16",
+     24.0
+    ],
+    [
+     "2011-09-23",
+     24.0
+    ],
+    [
+     "2011-09-30",
+     24.0
+    ],
+    [
+     "2011-10-07",
+     24.0
+    ],
+    [
+     "2011-10-14",
+     24.0
+    ],
+    [
+     "2011-10-21",
+     24.0
+    ],
+    [
+     "2011-10-28",
+     24.0
+    ],
+    [
+     "2011-11-04",
+     24.0
+    ],
+    [
+     "2011-11-11",
+     24.0
+    ],
+    [
+     "2011-11-18",
+     24.0
+    ],
+    [
+     "2011-11-25",
+     24.0
+    ],
+    [
+     "2011-12-02",
+     24.0
+    ],
+    [
+     "2011-12-09",
+     24.0
+    ],
+    [
+     "2011-12-16",
+     24.0
+    ],
+    [
+     "2011-12-23",
+     24.0
+    ],
+    [
+     "2011-12-30",
+     24.0
+    ],
+    [
+     "2012-01-06",
+     24.0
+    ],
+    [
+     "2012-01-13",
+     24.0
+    ],
+    [
+     "2012-01-20",
+     24.0
+    ],
+    [
+     "2012-01-27",
+     24.0
+    ],
+    [
+     "2012-02-03",
+     24.0
+    ],
+    [
+     "2012-02-10",
+     24.0
+    ],
+    [
+     "2012-02-17",
+     24.0
+    ],
+    [
+     "2012-02-24",
+     24.0
+    ],
+    [
+     "2012-03-02",
+     24.0
+    ],
+    [
+     "2012-03-09",
+     24.0
+    ],
+    [
+     "2012-03-16",
+     24.0
+    ],
+    [
+     "2012-03-23",
+     24.0
+    ],
+    [
+     "2012-03-30",
+     24.0
+    ],
+    [
+     "2012-04-06",
+     24.0
+    ],
+    [
+     "2012-04-13",
+     24.0
+    ],
+    [
+     "2012-04-20",
+     24.0
+    ],
+    [
+     "2012-04-27",
+     24.0
+    ],
+    [
+     "2012-05-04",
+     24.0
+    ],
+    [
+     "2012-05-11",
+     24.0
+    ],
+    [
+     "2012-05-18",
+     24.0
+    ],
+    [
+     "2012-05-25",
+     24.0
+    ],
+    [
+     "2012-06-01",
+     24.0
+    ],
+    [
+     "2012-06-08",
+     24.0
+    ],
+    [
+     "2012-06-15",
+     24.0
+    ],
+    [
+     "2012-06-22",
+     24.0
+    ],
+    [
+     "2012-06-29",
+     24.0
+    ],
+    [
+     "2012-07-06",
+     24.0
+    ],
+    [
+     "2012-07-13",
+     24.0
+    ],
+    [
+     "2012-07-20",
+     24.0
+    ],
+    [
+     "2012-07-27",
+     24.0
+    ],
+    [
+     "2012-08-03",
+     24.0
+    ],
+    [
+     "2012-08-10",
+     24.0
+    ],
+    [
+     "2012-08-17",
+     23.0
+    ],
+    [
+     "2012-08-24",
+     23.0
+    ],
+    [
+     "2012-08-31",
+     23.0
+    ],
+    [
+     "2012-09-07",
+     23.0
+    ],
+    [
+     "2012-09-14",
+     23.0
+    ],
+    [
+     "2012-09-21",
+     23.0
+    ],
+    [
+     "2012-09-28",
+     23.0
+    ],
+    [
+     "2012-10-05",
+     23.0
+    ],
+    [
+     "2012-10-12",
+     23.0
+    ],
+    [
+     "2012-10-19",
+     23.0
+    ],
+    [
+     "2012-10-26",
+     23.0
+    ],
+    [
+     "2012-11-02",
+     23.0
+    ],
+    [
+     "2012-11-09",
+     23.0
+    ],
+    [
+     "2012-11-16",
+     23.0
+    ],
+    [
+     "2012-11-23",
+     23.0
+    ],
+    [
+     "2012-11-30",
+     23.0
+    ],
+    [
+     "2012-12-07",
+     23.0
+    ],
+    [
+     "2012-12-14",
+     23.0
+    ],
+    [
+     "2012-12-21",
+     23.0
+    ],
+    [
+     "2012-12-28",
+     23.0
+    ],
+    [
+     "2013-01-04",
+     23.0
+    ],
+    [
+     "2013-01-11",
+     23.0
+    ],
+    [
+     "2013-01-18",
+     23.0
+    ],
+    [
+     "2013-01-25",
+     23.0
+    ],
+    [
+     "2013-02-01",
+     23.0
+    ],
+    [
+     "2013-02-08",
+     23.0
+    ],
+    [
+     "2013-02-15",
+     23.0
+    ],
+    [
+     "2013-02-22",
+     23.0
+    ],
+    [
+     "2013-03-01",
+     23.0
+    ],
+    [
+     "2013-03-08",
+     23.0
+    ],
+    [
+     "2013-03-15",
+     23.0
+    ],
+    [
+     "2013-03-22",
+     23.0
+    ],
+    [
+     "2013-03-29",
+     23.0
+    ],
+    [
+     "2013-04-05",
+     23.0
+    ],
+    [
+     "2013-04-12",
+     23.0
+    ],
+    [
+     "2013-04-19",
+     23.0
+    ],
+    [
+     "2013-04-26",
+     23.0
+    ],
+    [
+     "2013-05-03",
+     23.0
+    ],
+    [
+     "2013-05-10",
+     23.0
+    ],
+    [
+     "2013-05-17",
+     23.0
+    ],
+    [
+     "2013-05-24",
+     23.0
+    ],
+    [
+     "2013-05-31",
+     23.0
+    ],
+    [
+     "2013-06-07",
+     23.0
+    ],
+    [
+     "2013-06-14",
+     23.0
+    ],
+    [
+     "2013-06-21",
+     23.0
+    ],
+    [
+     "2013-06-28",
+     23.0
+    ],
+    [
+     "2013-07-05",
+     23.0
+    ],
+    [
+     "2013-07-12",
+     23.0
+    ],
+    [
+     "2013-07-19",
+     23.0
+    ],
+    [
+     "2013-07-26",
+     23.0
+    ],
+    [
+     "2013-08-02",
+     23.0
+    ],
+    [
+     "2013-08-09",
+     23.0
+    ],
+    [
+     "2013-08-16",
+     23.0
+    ],
+    [
+     "2013-08-23",
+     23.0
+    ],
+    [
+     "2013-08-30",
+     23.0
+    ],
+    [
+     "2013-09-06",
+     23.0
+    ],
+    [
+     "2013-09-13",
+     23.0
+    ],
+    [
+     "2013-09-20",
+     23.0
+    ],
+    [
+     "2013-09-27",
+     23.0
+    ],
+    [
+     "2013-10-04",
+     23.0
+    ],
+    [
+     "2013-10-11",
+     23.0
+    ],
+    [
+     "2013-10-18",
+     23.0
+    ],
+    [
+     "2013-10-25",
+     23.0
+    ],
+    [
+     "2013-11-01",
+     23.0
+    ],
+    [
+     "2013-11-08",
+     23.0
+    ],
+    [
+     "2013-11-15",
+     23.0
+    ],
+    [
+     "2013-11-22",
+     23.0
+    ],
+    [
+     "2013-11-29",
+     23.0
+    ],
+    [
+     "2013-12-06",
+     23.0
+    ],
+    [
+     "2013-12-13",
+     23.0
+    ],
+    [
+     "2013-12-20",
+     23.0
+    ],
+    [
+     "2013-12-27",
+     23.0
+    ],
+    [
+     "2014-01-03",
+     23.0
+    ],
+    [
+     "2014-01-10",
+     23.0
+    ],
+    [
+     "2014-01-17",
+     23.0
+    ],
+    [
+     "2014-01-24",
+     23.0
+    ],
+    [
+     "2014-01-31",
+     23.0
+    ],
+    [
+     "2014-02-07",
+     23.0
+    ],
+    [
+     "2014-02-14",
+     23.0
+    ],
+    [
+     "2014-02-21",
+     23.0
+    ],
+    [
+     "2014-02-28",
+     23.0
+    ],
+    [
+     "2014-03-07",
+     23.0
+    ],
+    [
+     "2014-03-14",
+     23.0
+    ],
+    [
+     "2014-03-21",
+     23.0
+    ],
+    [
+     "2014-03-28",
+     23.0
+    ],
+    [
+     "2014-04-04",
+     23.0
+    ],
+    [
+     "2014-04-11",
+     23.0
+    ],
+    [
+     "2014-04-18",
+     23.0
+    ],
+    [
+     "2014-04-25",
+     23.0
+    ],
+    [
+     "2014-05-02",
+     23.0
+    ],
+    [
+     "2014-05-09",
+     23.0
+    ],
+    [
+     "2014-05-16",
+     23.0
+    ],
+    [
+     "2014-05-23",
+     23.0
+    ],
+    [
+     "2014-05-30",
+     23.0
+    ],
+    [
+     "2014-06-06",
+     23.0
+    ],
+    [
+     "2014-06-13",
+     23.0
+    ],
+    [
+     "2014-06-20",
+     22.5
+    ],
+    [
+     "2014-06-27",
+     22.5
+    ],
+    [
+     "2014-07-04",
+     22.5
+    ],
+    [
+     "2014-07-11",
+     22.5
+    ],
+    [
+     "2014-07-18",
+     22.5
+    ],
+    [
+     "2014-07-25",
+     22.5
+    ],
+    [
+     "2014-08-01",
+     22.5
+    ],
+    [
+     "2014-08-08",
+     22.5
+    ],
+    [
+     "2014-08-15",
+     22.0
+    ],
+    [
+     "2014-08-22",
+     22.0
+    ],
+    [
+     "2014-08-29",
+     22.0
+    ],
+    [
+     "2014-09-05",
+     22.0
+    ],
+    [
+     "2014-09-12",
+     22.0
+    ],
+    [
+     "2014-09-19",
+     22.0
+    ],
+    [
+     "2014-09-26",
+     22.0
+    ],
+    [
+     "2014-10-03",
+     22.0
+    ],
+    [
+     "2014-10-10",
+     22.0
+    ],
+    [
+     "2014-10-17",
+     22.0
+    ],
+    [
+     "2014-10-24",
+     22.0
+    ],
+    [
+     "2014-10-31",
+     22.0
+    ],
+    [
+     "2014-11-07",
+     22.0
+    ],
+    [
+     "2014-11-14",
+     22.0
+    ],
+    [
+     "2014-11-21",
+     22.0
+    ],
+    [
+     "2014-11-28",
+     22.0
+    ],
+    [
+     "2014-12-05",
+     22.0
+    ],
+    [
+     "2014-12-12",
+     22.0
+    ],
+    [
+     "2014-12-19",
+     22.0
+    ],
+    [
+     "2014-12-26",
+     22.0
+    ],
+    [
+     "2015-01-02",
+     22.0
+    ],
+    [
+     "2015-01-09",
+     22.0
+    ],
+    [
+     "2015-01-16",
+     22.0
+    ],
+    [
+     "2015-01-23",
+     22.0
+    ],
+    [
+     "2015-01-30",
+     22.0
+    ],
+    [
+     "2015-02-06",
+     22.0
+    ],
+    [
+     "2015-02-13",
+     21.5
+    ],
+    [
+     "2015-02-20",
+     21.5
+    ],
+    [
+     "2015-02-27",
+     21.5
+    ],
+    [
+     "2015-03-06",
+     21.5
+    ],
+    [
+     "2015-03-13",
+     21.5
+    ],
+    [
+     "2015-03-20",
+     21.5
+    ],
+    [
+     "2015-03-27",
+     21.5
+    ],
+    [
+     "2015-04-03",
+     21.5
+    ],
+    [
+     "2015-04-10",
+     21.5
+    ],
+    [
+     "2015-04-17",
+     21.5
+    ],
+    [
+     "2015-04-24",
+     21.5
+    ],
+    [
+     "2015-05-01",
+     21.5
+    ],
+    [
+     "2015-05-08",
+     21.5
+    ],
+    [
+     "2015-05-15",
+     21.5
+    ],
+    [
+     "2015-05-22",
+     21.5
+    ],
+    [
+     "2015-05-29",
+     21.5
+    ],
+    [
+     "2015-06-05",
+     21.5
+    ],
+    [
+     "2015-06-12",
+     21.5
+    ],
+    [
+     "2015-06-19",
+     21.5
+    ],
+    [
+     "2015-06-26",
+     21.5
+    ],
+    [
+     "2015-07-03",
+     21.5
+    ],
+    [
+     "2015-07-10",
+     21.5
+    ],
+    [
+     "2015-07-17",
+     21.5
+    ],
+    [
+     "2015-07-24",
+     21.5
+    ],
+    [
+     "2015-07-31",
+     21.5
+    ],
+    [
+     "2015-08-07",
+     21.5
+    ],
+    [
+     "2015-08-14",
+     21.5
+    ],
+    [
+     "2015-08-21",
+     21.5
+    ],
+    [
+     "2015-08-28",
+     21.5
+    ],
+    [
+     "2015-09-04",
+     21.5
+    ],
+    [
+     "2015-09-11",
+     21.5
+    ],
+    [
+     "2015-09-18",
+     21.5
+    ],
+    [
+     "2015-09-25",
+     21.5
+    ],
+    [
+     "2015-10-02",
+     21.5
+    ],
+    [
+     "2015-10-09",
+     21.5
+    ],
+    [
+     "2015-10-16",
+     21.5
+    ],
+    [
+     "2015-10-23",
+     21.5
+    ],
+    [
+     "2015-10-30",
+     21.5
+    ],
+    [
+     "2015-11-06",
+     21.5
+    ],
+    [
+     "2015-11-13",
+     21.5
+    ],
+    [
+     "2015-11-20",
+     21.5
+    ],
+    [
+     "2015-11-27",
+     21.5
+    ],
+    [
+     "2015-12-04",
+     21.5
+    ],
+    [
+     "2015-12-11",
+     21.5
+    ],
+    [
+     "2015-12-18",
+     21.5
+    ],
+    [
+     "2015-12-25",
+     21.5
+    ],
+    [
+     "2016-01-01",
+     21.5
+    ],
+    [
+     "2016-01-08",
+     21.5
+    ],
+    [
+     "2016-01-15",
+     21.5
+    ],
+    [
+     "2016-01-22",
+     21.5
+    ],
+    [
+     "2016-01-29",
+     21.5
+    ],
+    [
+     "2016-02-05",
+     21.5
+    ],
+    [
+     "2016-02-12",
+     21.5
+    ],
+    [
+     "2016-02-19",
+     21.5
+    ],
+    [
+     "2016-02-26",
+     21.5
+    ],
+    [
+     "2016-03-04",
+     21.5
+    ],
+    [
+     "2016-03-11",
+     21.5
+    ],
+    [
+     "2016-03-18",
+     21.5
+    ],
+    [
+     "2016-03-25",
+     21.5
+    ],
+    [
+     "2016-04-01",
+     21.5
+    ],
+    [
+     "2016-04-08",
+     21.25
+    ],
+    [
+     "2016-04-15",
+     21.25
+    ],
+    [
+     "2016-04-22",
+     21.25
+    ],
+    [
+     "2016-04-29",
+     21.25
+    ],
+    [
+     "2016-05-06",
+     21.25
+    ],
+    [
+     "2016-05-13",
+     21.25
+    ],
+    [
+     "2016-05-20",
+     21.25
+    ],
+    [
+     "2016-05-27",
+     21.25
+    ],
+    [
+     "2016-06-03",
+     21.25
+    ],
+    [
+     "2016-06-10",
+     21.25
+    ],
+    [
+     "2016-06-17",
+     21.25
+    ],
+    [
+     "2016-06-24",
+     21.25
+    ],
+    [
+     "2016-07-01",
+     21.25
+    ],
+    [
+     "2016-07-08",
+     21.25
+    ],
+    [
+     "2016-07-15",
+     21.0
+    ],
+    [
+     "2016-07-22",
+     21.0
+    ],
+    [
+     "2016-07-29",
+     21.0
+    ],
+    [
+     "2016-08-05",
+     21.0
+    ],
+    [
+     "2016-08-12",
+     21.0
+    ],
+    [
+     "2016-08-19",
+     21.0
+    ],
+    [
+     "2016-08-26",
+     21.0
+    ],
+    [
+     "2016-09-02",
+     21.0
+    ],
+    [
+     "2016-09-09",
+     21.0
+    ],
+    [
+     "2016-09-16",
+     21.0
+    ],
+    [
+     "2016-09-23",
+     21.0
+    ],
+    [
+     "2016-09-30",
+     21.0
+    ],
+    [
+     "2016-10-07",
+     20.75
+    ],
+    [
+     "2016-10-14",
+     20.75
+    ],
+    [
+     "2016-10-21",
+     20.75
+    ],
+    [
+     "2016-10-28",
+     20.75
+    ],
+    [
+     "2016-11-04",
+     20.75
+    ],
+    [
+     "2016-11-11",
+     20.75
+    ],
+    [
+     "2016-11-18",
+     20.75
+    ],
+    [
+     "2016-11-25",
+     20.75
+    ],
+    [
+     "2016-12-02",
+     20.75
+    ],
+    [
+     "2016-12-09",
+     20.75
+    ],
+    [
+     "2016-12-16",
+     20.75
+    ],
+    [
+     "2016-12-23",
+     20.75
+    ],
+    [
+     "2016-12-30",
+     20.75
+    ],
+    [
+     "2017-01-06",
+     20.75
+    ],
+    [
+     "2017-01-13",
+     20.5
+    ],
+    [
+     "2017-01-20",
+     20.5
+    ],
+    [
+     "2017-01-27",
+     20.5
+    ],
+    [
+     "2017-02-03",
+     20.5
+    ],
+    [
+     "2017-02-10",
+     20.5
+    ],
+    [
+     "2017-02-17",
+     20.5
+    ],
+    [
+     "2017-02-24",
+     20.5
+    ],
+    [
+     "2017-03-03",
+     20.5
+    ],
+    [
+     "2017-03-10",
+     20.5
+    ],
+    [
+     "2017-03-17",
+     20.5
+    ],
+    [
+     "2017-03-24",
+     20.5
+    ],
+    [
+     "2017-03-31",
+     20.5
+    ],
+    [
+     "2017-04-07",
+     20.5
+    ],
+    [
+     "2017-04-14",
+     20.5
+    ],
+    [
+     "2017-04-21",
+     20.5
+    ],
+    [
+     "2017-04-28",
+     20.5
+    ],
+    [
+     "2017-05-05",
+     20.5
+    ],
+    [
+     "2017-05-12",
+     20.5
+    ],
+    [
+     "2017-05-19",
+     20.5
+    ],
+    [
+     "2017-05-26",
+     20.5
+    ],
+    [
+     "2017-06-02",
+     20.5
+    ],
+    [
+     "2017-06-09",
+     20.5
+    ],
+    [
+     "2017-06-16",
+     20.5
+    ],
+    [
+     "2017-06-23",
+     20.5
+    ],
+    [
+     "2017-06-30",
+     20.0
+    ],
+    [
+     "2017-07-07",
+     20.0
+    ],
+    [
+     "2017-07-14",
+     20.0
+    ],
+    [
+     "2017-07-21",
+     20.0
+    ],
+    [
+     "2017-07-28",
+     20.0
+    ],
+    [
+     "2017-08-04",
+     20.0
+    ],
+    [
+     "2017-08-11",
+     20.0
+    ],
+    [
+     "2017-08-18",
+     20.0
+    ],
+    [
+     "2017-08-25",
+     20.0
+    ],
+    [
+     "2017-09-01",
+     20.0
+    ],
+    [
+     "2017-09-08",
+     20.0
+    ],
+    [
+     "2017-09-15",
+     20.0
+    ],
+    [
+     "2017-09-22",
+     20.0
+    ],
+    [
+     "2017-09-29",
+     20.0
+    ],
+    [
+     "2017-10-06",
+     20.0
+    ],
+    [
+     "2017-10-13",
+     20.0
+    ],
+    [
+     "2017-10-20",
+     19.5
+    ],
+    [
+     "2017-10-27",
+     19.5
+    ],
+    [
+     "2017-11-03",
+     19.5
+    ],
+    [
+     "2017-11-10",
+     19.5
+    ],
+    [
+     "2017-11-17",
+     19.5
+    ],
+    [
+     "2017-11-24",
+     19.5
+    ],
+    [
+     "2017-12-01",
+     19.5
+    ],
+    [
+     "2017-12-08",
+     19.5
+    ],
+    [
+     "2017-12-15",
+     19.5
+    ],
+    [
+     "2017-12-22",
+     19.5
+    ],
+    [
+     "2017-12-29",
+     19.5
+    ],
+    [
+     "2018-01-05",
+     19.5
+    ],
+    [
+     "2018-01-12",
+     19.5
+    ],
+    [
+     "2018-01-19",
+     19.5
+    ],
+    [
+     "2018-01-26",
+     19.5
+    ],
+    [
+     "2018-02-02",
+     19.5
+    ],
+    [
+     "2018-02-09",
+     19.5
+    ],
+    [
+     "2018-02-16",
+     19.5
+    ],
+    [
+     "2018-02-23",
+     19.5
+    ],
+    [
+     "2018-03-02",
+     19.5
+    ],
+    [
+     "2018-03-09",
+     19.5
+    ],
+    [
+     "2018-03-16",
+     19.5
+    ],
+    [
+     "2018-03-23",
+     19.5
+    ],
+    [
+     "2018-03-30",
+     19.5
+    ],
+    [
+     "2018-04-06",
+     19.5
+    ],
+    [
+     "2018-04-13",
+     19.5
+    ],
+    [
+     "2018-04-20",
+     19.5
+    ],
+    [
+     "2018-04-27",
+     19.5
+    ],
+    [
+     "2018-05-04",
+     19.5
+    ],
+    [
+     "2018-05-11",
+     19.5
+    ],
+    [
+     "2018-05-18",
+     19.5
+    ],
+    [
+     "2018-05-25",
+     19.5
+    ],
+    [
+     "2018-06-01",
+     19.5
+    ],
+    [
+     "2018-06-08",
+     19.5
+    ],
+    [
+     "2018-06-15",
+     19.5
+    ],
+    [
+     "2018-06-22",
+     19.5
+    ],
+    [
+     "2018-06-29",
+     19.5
+    ],
+    [
+     "2018-07-06",
+     19.5
+    ],
+    [
+     "2018-07-13",
+     19.5
+    ],
+    [
+     "2018-07-20",
+     19.5
+    ],
+    [
+     "2018-07-27",
+     19.5
+    ],
+    [
+     "2018-08-03",
+     19.5
+    ],
+    [
+     "2018-08-10",
+     19.5
+    ],
+    [
+     "2018-08-17",
+     19.5
+    ],
+    [
+     "2018-08-24",
+     19.5
+    ],
+    [
+     "2018-08-31",
+     19.5
+    ],
+    [
+     "2018-09-07",
+     19.5
+    ],
+    [
+     "2018-09-14",
+     19.5
+    ],
+    [
+     "2018-09-21",
+     19.5
+    ],
+    [
+     "2018-09-28",
+     19.5
+    ],
+    [
+     "2018-10-05",
+     19.5
+    ],
+    [
+     "2018-10-12",
+     19.5
+    ],
+    [
+     "2018-10-19",
+     19.5
+    ],
+    [
+     "2018-10-26",
+     19.5
+    ],
+    [
+     "2018-11-02",
+     19.5
+    ],
+    [
+     "2018-11-09",
+     19.5
+    ],
+    [
+     "2018-11-16",
+     19.5
+    ],
+    [
+     "2018-11-23",
+     19.5
+    ],
+    [
+     "2018-11-30",
+     19.5
+    ],
+    [
+     "2018-12-07",
+     19.5
+    ],
+    [
+     "2018-12-14",
+     19.5
+    ],
+    [
+     "2018-12-21",
+     19.5
+    ],
+    [
+     "2018-12-28",
+     19.5
+    ],
+    [
+     "2019-01-04",
+     19.5
+    ],
+    [
+     "2019-01-11",
+     19.25
+    ],
+    [
+     "2019-01-18",
+     19.25
+    ],
+    [
+     "2019-01-25",
+     19.25
+    ],
+    [
+     "2019-02-01",
+     19.25
+    ],
+    [
+     "2019-02-08",
+     19.25
+    ],
+    [
+     "2019-02-15",
+     19.25
+    ],
+    [
+     "2019-02-22",
+     19.25
+    ],
+    [
+     "2019-03-01",
+     19.25
+    ],
+    [
+     "2019-03-08",
+     19.25
+    ],
+    [
+     "2019-03-15",
+     19.25
+    ],
+    [
+     "2019-03-22",
+     19.25
+    ],
+    [
+     "2019-03-29",
+     19.25
+    ],
+    [
+     "2019-04-05",
+     19.25
+    ],
+    [
+     "2019-04-12",
+     19.25
+    ],
+    [
+     "2019-04-19",
+     19.0
+    ],
+    [
+     "2019-04-26",
+     19.0
+    ],
+    [
+     "2019-05-03",
+     19.0
+    ],
+    [
+     "2019-05-10",
+     19.0
+    ],
+    [
+     "2019-05-17",
+     19.0
+    ],
+    [
+     "2019-05-24",
+     19.0
+    ],
+    [
+     "2019-05-31",
+     19.0
+    ],
+    [
+     "2019-06-07",
+     19.0
+    ],
+    [
+     "2019-06-14",
+     19.0
+    ],
+    [
+     "2019-06-21",
+     19.0
+    ],
+    [
+     "2019-06-28",
+     19.0
+    ],
+    [
+     "2019-07-05",
+     19.0
+    ],
+    [
+     "2019-07-12",
+     18.75
+    ],
+    [
+     "2019-07-19",
+     18.75
+    ],
+    [
+     "2019-07-26",
+     18.75
+    ],
+    [
+     "2019-08-02",
+     18.75
+    ],
+    [
+     "2019-08-09",
+     18.75
+    ],
+    [
+     "2019-08-16",
+     18.75
+    ],
+    [
+     "2019-08-23",
+     18.75
+    ],
+    [
+     "2019-08-30",
+     18.75
+    ],
+    [
+     "2019-09-06",
+     18.75
+    ],
+    [
+     "2019-09-13",
+     18.75
+    ],
+    [
+     "2019-09-20",
+     18.75
+    ],
+    [
+     "2019-09-27",
+     18.75
+    ],
+    [
+     "2019-10-04",
+     18.75
+    ],
+    [
+     "2019-10-11",
+     18.75
+    ],
+    [
+     "2019-10-18",
+     18.5
+    ],
+    [
+     "2019-10-25",
+     18.5
+    ],
+    [
+     "2019-11-01",
+     18.5
+    ],
+    [
+     "2019-11-08",
+     18.5
+    ],
+    [
+     "2019-11-15",
+     18.5
+    ],
+    [
+     "2019-11-22",
+     18.5
+    ],
+    [
+     "2019-11-29",
+     18.5
+    ],
+    [
+     "2019-12-06",
+     18.5
+    ],
+    [
+     "2019-12-13",
+     18.5
+    ],
+    [
+     "2019-12-20",
+     18.5
+    ],
+    [
+     "2019-12-27",
+     18.5
+    ],
+    [
+     "2020-01-03",
+     18.5
+    ],
+    [
+     "2020-01-10",
+     18.25
+    ],
+    [
+     "2020-01-17",
+     18.25
+    ],
+    [
+     "2020-01-24",
+     18.25
+    ],
+    [
+     "2020-01-31",
+     18.25
+    ],
+    [
+     "2020-02-07",
+     18.25
+    ],
+    [
+     "2020-02-14",
+     18.25
+    ],
+    [
+     "2020-02-21",
+     18.25
+    ],
+    [
+     "2020-02-28",
+     18.25
+    ],
+    [
+     "2020-03-06",
+     18.25
+    ],
+    [
+     "2020-03-13",
+     18.25
+    ],
+    [
+     "2020-03-20",
+     18.25
+    ],
+    [
+     "2020-03-27",
+     18.25
+    ],
+    [
+     "2020-04-03",
+     18.25
+    ],
+    [
+     "2020-04-10",
+     18.25
+    ],
+    [
+     "2020-04-17",
+     18.0
+    ],
+    [
+     "2020-04-24",
+     18.0
+    ],
+    [
+     "2020-05-01",
+     18.0
+    ],
+    [
+     "2020-05-08",
+     18.0
+    ],
+    [
+     "2020-05-15",
+     18.0
+    ],
+    [
+     "2020-05-22",
+     18.0
+    ],
+    [
+     "2020-05-29",
+     18.0
+    ],
+    [
+     "2020-06-05",
+     18.0
+    ],
+    [
+     "2020-06-12",
+     18.0
+    ],
+    [
+     "2020-06-19",
+     18.0
+    ],
+    [
+     "2020-06-26",
+     18.0
+    ],
+    [
+     "2020-07-03",
+     18.0
+    ],
+    [
+     "2020-07-10",
+     18.0
+    ],
+    [
+     "2020-07-17",
+     18.0
+    ],
+    [
+     "2020-07-24",
+     18.0
+    ],
+    [
+     "2020-07-31",
+     18.0
+    ],
+    [
+     "2020-08-07",
+     18.0
+    ],
+    [
+     "2020-08-14",
+     18.0
+    ],
+    [
+     "2020-08-21",
+     18.0
+    ],
+    [
+     "2020-08-28",
+     18.0
+    ],
+    [
+     "2020-09-04",
+     18.0
+    ],
+    [
+     "2020-09-11",
+     18.0
+    ],
+    [
+     "2020-09-18",
+     18.0
+    ],
+    [
+     "2020-09-25",
+     18.0
+    ],
+    [
+     "2020-10-02",
+     18.0
+    ],
+    [
+     "2020-10-09",
+     18.0
+    ],
+    [
+     "2020-10-16",
+     18.0
+    ],
+    [
+     "2020-10-23",
+     18.0
+    ],
+    [
+     "2020-10-30",
+     18.0
+    ],
+    [
+     "2020-11-06",
+     18.0
+    ],
+    [
+     "2020-11-13",
+     18.0
+    ],
+    [
+     "2020-11-20",
+     18.0
+    ],
+    [
+     "2020-11-27",
+     18.0
+    ],
+    [
+     "2020-12-04",
+     18.0
+    ],
+    [
+     "2020-12-11",
+     18.0
+    ],
+    [
+     "2020-12-18",
+     18.0
+    ],
+    [
+     "2020-12-25",
+     18.0
+    ],
+    [
+     "2021-01-01",
+     18.0
+    ],
+    [
+     "2021-01-08",
+     18.0
+    ],
+    [
+     "2021-01-15",
+     18.0
+    ],
+    [
+     "2021-01-22",
+     18.0
+    ],
+    [
+     "2021-01-29",
+     18.0
+    ],
+    [
+     "2021-02-05",
+     18.0
+    ],
+    [
+     "2021-02-12",
+     18.0
+    ],
+    [
+     "2021-02-19",
+     18.0
+    ],
+    [
+     "2021-02-26",
+     18.0
+    ],
+    [
+     "2021-03-05",
+     18.0
+    ],
+    [
+     "2021-03-12",
+     18.0
+    ],
+    [
+     "2021-03-19",
+     18.0
+    ],
+    [
+     "2021-03-26",
+     18.0
+    ],
+    [
+     "2021-04-02",
+     18.0
+    ],
+    [
+     "2021-04-09",
+     18.0
+    ],
+    [
+     "2021-04-16",
+     18.0
+    ],
+    [
+     "2021-04-23",
+     18.0
+    ],
+    [
+     "2021-04-30",
+     18.0
+    ],
+    [
+     "2021-05-07",
+     18.0
+    ],
+    [
+     "2021-05-14",
+     18.0
+    ],
+    [
+     "2021-05-21",
+     18.0
+    ],
+    [
+     "2021-05-28",
+     18.0
+    ],
+    [
+     "2021-06-04",
+     18.0
+    ],
+    [
+     "2021-06-11",
+     18.0
+    ],
+    [
+     "2021-06-18",
+     18.0
+    ],
+    [
+     "2021-06-25",
+     18.0
+    ],
+    [
+     "2021-07-02",
+     18.0
+    ],
+    [
+     "2021-07-09",
+     18.0
+    ],
+    [
+     "2021-07-16",
+     18.0
+    ],
+    [
+     "2021-07-23",
+     18.0
+    ],
+    [
+     "2021-07-30",
+     18.0
+    ],
+    [
+     "2021-08-06",
+     18.0
+    ],
+    [
+     "2021-08-13",
+     18.0
+    ],
+    [
+     "2021-08-20",
+     18.0
+    ],
+    [
+     "2021-08-27",
+     18.0
+    ],
+    [
+     "2021-09-03",
+     18.0
+    ],
+    [
+     "2021-09-10",
+     18.0
+    ],
+    [
+     "2021-09-17",
+     18.0
+    ],
+    [
+     "2021-09-24",
+     18.0
+    ],
+    [
+     "2021-10-01",
+     18.0
+    ],
+    [
+     "2021-10-08",
+     18.0
+    ],
+    [
+     "2021-10-15",
+     18.0
+    ],
     [
      "2021-10-22",
      18.0
@@ -61717,19 +69187,25 @@
    "name": "Policy repo rate",
    "unit": "%",
    "kind": "setting",
-   "since": "2026-10-07",
    "value": 5.5,
-   "date": "2026-10-07",
-   "src": "key rates"
+   "date": "2026-10-09",
+   "src": "key rates + WSS setting in force",
+   "since": "2026-10-09",
+   "prev": 5.25,
+   "bp": 25.0,
+   "announced_from": "2026-10-07"
   },
   {
    "name": "SDF rate",
    "unit": "%",
    "kind": "setting",
-   "since": "2026-10-07",
    "value": 5.25,
-   "date": "2026-10-07",
-   "src": "key rates"
+   "date": "2026-10-09",
+   "src": "key rates + WSS setting in force",
+   "since": "2026-10-09",
+   "prev": 5.0,
+   "bp": 25.0,
+   "announced_from": "2026-10-07"
   },
   {
    "name": "MSF rate",

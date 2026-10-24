@@ -13,120 +13,140 @@
     "change": -6882.0,
     "date": "2026-04-17",
     "prev": 100274.0,
+    "previous": 100274.0,
     "value": 93392.0
    },
    {
     "change": 89143.0,
     "date": "2026-04-10",
     "prev": 11131.0,
+    "previous": 11131.0,
     "value": 100274.0
    },
    {
     "change": -686.0,
     "date": "2024-12-06",
     "prev": 11817.0,
+    "previous": 11817.0,
     "value": 11131.0
    },
    {
     "change": 11817.0,
     "date": "2024-11-15",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 11817.0
    },
    {
     "change": 0.0,
     "date": "2023-06-30",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-06-23",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-06-16",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-06-09",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-06-02",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-05-26",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-05-19",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2023-05-12",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": -4666.0,
     "date": "2023-05-05",
     "prev": 4666.0,
+    "previous": 4666.0,
     "value": 0.0
    },
    {
     "change": 1521.0,
     "date": "2023-04-28",
     "prev": 3145.0,
+    "previous": 3145.0,
     "value": 4666.0
    },
    {
     "change": -111235.0,
     "date": "2023-04-21",
     "prev": 114380.0,
+    "previous": 114380.0,
     "value": 3145.0
    },
    {
     "change": -8014.0,
     "date": "2023-04-14",
     "prev": 122394.0,
+    "previous": 122394.0,
     "value": 114380.0
    },
    {
     "change": 73717.0,
     "date": "2023-04-07",
     "prev": 48677.0,
+    "previous": 48677.0,
     "value": 122394.0
    },
    {
     "change": 48677.0,
     "date": "2023-03-31",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 48677.0
    },
    {
     "change": 0.0,
     "date": "2023-03-24",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    },
    {
     "change": 0.0,
     "date": "2022-06-17",
     "prev": 0.0,
+    "previous": 0.0,
     "value": 0.0
    }
   ],
@@ -136,7 +156,7 @@
   "kind": "reading",
   "label": "RBI credit to the Centre",
   "latest": {
-   "change": 0.0,
+   "change": -6882.0,
    "date": "2026-04-17",
    "value": 93392.0
   },
@@ -1136,13 +1156,13 @@
    "daily": "2026-10-11",
    "fortnightly": "2026-09-30",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-15"
+   "weekly": "2026-10-09"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-23T11:16:58Z",
+  "retrieved_at": "2026-10-24T09:12:16Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

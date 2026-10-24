@@ -220,6 +220,12 @@ class DBieClient:
                 status = (parsed.get("header") or {}).get("status")
                 code = (parsed.get("header") or {}).get("errorCode")
                 if status == "error" and code == "4311":
+                    if attempt >= retries:
+                        # Report the real cause instead of looping to exhaustion and then raising the
+                        # generic "unknown call failure".
+                        last_err = RuntimeError(f"{gateway}/{action}: 4311 unauthorized after "
+                                                f"{retries} attempt(s)")
+                        break
                     # Session died or token stale: re-mint once and retry the same call.
                     log.warning("[WARN] [Call] %s/%s -> 4311 unauthorized, re-minting (attempt %s)",
                              gateway, action, attempt)
@@ -227,10 +233,12 @@ class DBieClient:
                     self.mint()
                     continue
                 if status == "error":
-                    log.warning("[WARN] [Call] %s/%s gateway error code=%s msg=%s",
-                             gateway, action, code, (parsed.get("header") or {}).get("errorMessage"))
-                else:
-                    log.info("[INFO] [Call] %s/%s ok bytes=%s", gateway, action, len(r.text))
+                    # A gateway error is NOT a result. Returning it as data made callers treat it as a
+                    # real payload - a 0-point series or a 0-row table - and burned no retry on a
+                    # transient failure. Raising lets the retry loop below do its job.
+                    raise RuntimeError(f"{gateway}/{action} gateway error code={code}: "
+                                       f"{(parsed.get('header') or {}).get('errorMessage')!r}")
+                log.info("[INFO] [Call] %s/%s ok bytes=%s", gateway, action, len(r.text))
                 return parsed
             except Exception as exc:                        # network / parse failure
                 last_err = exc

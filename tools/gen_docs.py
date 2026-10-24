@@ -69,7 +69,10 @@ def main() -> int:
             d = defs.get(t["def_key"]) or {}
             freq = t.get("freq") or freq_of(series[t["series_key"]]["points"])
             val = t["value"]
-            val_s = f"{val:,.2f}".rstrip("0").rstrip(".") if isinstance(val, float) else str(val)
+            # 4dp, then strip trailing zeros. Two decimals truncated the published value: the data
+            # dictionary said 95.07 for USD/INR while the API and its CSV both said 95.0691, and this
+            # file's own contract is that it "must never drift" from the API.
+            val_s = f"{val:,.4f}".rstrip("0").rstrip(".") if isinstance(val, float) else str(val)
             stale = " *(stale)*" if t.get("stale") else ""
             lines.append(
                 f"| `{t['id']}` | {t['label']} | {t['unit']} | "

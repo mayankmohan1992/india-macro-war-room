@@ -92,8 +92,16 @@ def series(rep: dict, code: str, scale: float = 1.0, date_idx: int = 0) -> list[
     pts: list[list[Any]] = []
     for row in rep["rows"]:
         try:
-            d, v = str(row[date_idx])[:10], float(row[idx])
+            raw_d, v = row[date_idx], float(row[idx])
         except (TypeError, ValueError, IndexError):
+            continue
+        # A null date must be SKIPPED, not stringified. str(None)[:10] == "None", which never raises,
+        # so the except clause above does not catch it - report 6's null leading date column produced
+        # points dated the literal string "None" instead of being dropped.
+        if not raw_d:
+            continue
+        d = str(raw_d)[:10]
+        if len(d) != 10 or d[4] != "-" or d[7] != "-":
             continue
         pts.append([d, v * scale])
     pts.sort(key=lambda x: x[0])
@@ -195,6 +203,11 @@ def freq_of(points: list[list[Any]]) -> str:
     except Exception:
         log.warning("[WARN] [Freq] could not derive a frequency:\n%s", traceback.format_exc())
         return "unknown"
+
+
+# how long a policy move stays the "current stance" for the colour read (a cut older than this is not
+# today's policy: the setting is reported as unchanged and scored neutral)
+SCORING_MOVE_DAYS = 400
 
 
 def step_info(pts: list[list[Any]]) -> dict | None:
@@ -331,8 +344,10 @@ def build() -> dict:
     call = series(r10, "34")
     S["repo_wss"] = {"label": "RBI policy repo rate (weekly WSS)", "unit": "%",
                      "source": "RBI r10 (weekly WSS)", "points": trim(repo, 260)}
+    # `step` is derived from the WHOLE fetched table, never from the trimmed chart window: a setting
+    # that last moved BEFORE the window starts would otherwise be dated by the window's first row.
     S["repo"] = {"label": "RBI policy repo rate", "unit": "%", "source": "RBI r10 (weekly WSS)",
-                 "points": trim(repo, 260)}
+                 "points": repo, "step": step_info(repo)}
     S["call_rate"] = {"label": "Call money rate (weighted avg)", "unit": "%", "source": "RBI r10",
                       "points": trim(call, 260)}
     S["gsec10y"] = {"label": "10-year G-sec par yield", "unit": "%", "source": "RBI r10",
@@ -388,6 +403,9 @@ def build() -> dict:
         if not pts or d_usd > pts[-1][0]:
             S["inr_usd"] = {"label": "USD/INR (weekly table + latest daily rate)", "unit": "₹",
                             "source": "RBI r10 (weekly) + DBIE key rates (daily)",
+                            # The publication calendar reads `table_as_of`, so this daily append cannot
+                            # advertise the weekly table as fresher than it is.
+                            "table_as_of": pts[-1][0] if pts else d_usd,
                             "points": pts + [[d_usd, float(kr_usd["rate"])]]}
             log.info("[INFO] [FX] appended the daily key-rates exchange rate %.4f dated %s to the weekly "
                      "INR-US$ series", float(kr_usd["rate"]), d_usd)
@@ -473,8 +491,19 @@ def build() -> dict:
                          "source": "RBI r39", "points": trim(yoy(series(r39, "135"), tolerance_days=20), 240)}
 
     # --- policy instruments in force (step series; a change here IS the policy news) -------------
-    S["crr"] = {"label": "Cash Reserve Ratio", "unit": "%", "source": "RBI r10", "points": trim(series(r10, "19"), 260)}
-    S["slr"] = {"label": "Statutory Liquidity Ratio", "unit": "%", "source": "RBI r10", "points": trim(series(r10, "20"), 260)}
+    # TRAP (measured): r10 carries 811 weekly rows back to 2011-04, but the chart window is the last
+    # 260. Running step_info() on the window dated SLR "in force since 2021-10-22" - the first row the
+    # window happens to hold - when the table's own last change was 2020-04-17, and the snapshot strip
+    # (which reads the whole table) disagreed with the tile ON THE SAME SCREEN by 1,514 days. `step`
+    # is therefore computed from the full series and stored beside the trimmed chart points.
+    # A SETTING keeps its whole fetched history: the change log must contain the change that is in
+    # force (SLR last moved in Apr-2020), and `effective_from` must be a date the document actually
+    # contains. Trimming to 260 rows silently cut both away.
+    slr_full, crr_full = series(r10, "20"), series(r10, "19")
+    S["crr"] = {"label": "Cash Reserve Ratio", "unit": "%", "source": "RBI r10",
+                "points": crr_full, "step": step_info(crr_full)}
+    S["slr"] = {"label": "Statutory Liquidity Ratio", "unit": "%", "source": "RBI r10",
+                "points": slr_full, "step": step_info(slr_full)}
 
     # --- term spread: 10-year G-sec par yield minus the 91-day T-bill primary yield ---------------
     # Same table (r10), same weekly date, so the two legs are always the same vintage. A flattening
@@ -504,9 +533,15 @@ def build() -> dict:
         d = dt.datetime.fromtimestamp(k["timeDate"] / 1000, IST).strftime("%Y-%m-%d")
         pts = S[key]["points"] if key in S else []
         if not pts or d > pts[-1][0]:
-            pts = pts + [[d, float(k["rate"])]]
-            S[key] = {"label": f"{name} (latest announcement)", "unit": "%", "source": "DBIE key rates",
-                      "points": pts}
+            # UPDATE the series dict, never replace it: `S[key]` also carries `step` (the change in
+            # force, computed from the whole table). Rebuilding the dict here silently dropped it, so
+            # in the days after a real policy move - exactly when this branch fires - the tile lost
+            # its effective date and fell back to the first row of the table (2011-04-01).
+            ser = dict(S.get(key) or {})
+            ser.update({"label": f"{name} (latest announcement)", "unit": "%",
+                        "source": "DBIE key rates", "points": pts + [[d, float(k["rate"])]]})
+            ser["step"] = step_info(ser["points"]) or ser.get("step")
+            S[key] = ser
     # ---- point-in-time policy/market snapshot ---------------------------------
     # Built here, not in the browser: each value is the FRESHEST available, tagged with its own date
     # and source, so a mid-week announcement (key rates) and the weekly WSS table can sit side by side
@@ -542,11 +577,30 @@ def build() -> dict:
                 "since": si.get("effective_from"), "prev": si.get("prev"), "bp": si.get("bp")}
 
     snap = []
-    for label, key in (("Policy repo rate", "Policy Repo Rate"),
-                       ("SDF rate", "Standing Deposit Facility (SDF) Rate")):
-        v = kr_of(key)
-        if v:                                    # for an announcement, the announcement IS the date
-            snap.append({"name": label, "unit": "%", "kind": "setting", "since": v["date"], **v})
+    # A setting is dated ONE way on this page. The repo row used to take its date from the key-rates
+    # snapshot only, so the strip read "in force since 2026-10-07" while the repo tile - built from the
+    # weekly table, which is the documented authority - read 2026-10-09, two dates for one rate on one
+    # screen. Both now use the published series and disclose the portal's announcement date beside it,
+    # exactly as CRR and SLR already did.
+    for label, key, code in (("Policy repo rate", "Policy Repo Rate", "27"),
+                             ("SDF rate", "Standing Deposit Facility (SDF) Rate", "56")):
+        k, w = kr_of(key), wss_step(code)
+        if k and w and k["date"] > w["date"]:
+            # The announcement is NEWER than the last weekly statement, so it is the setting in force.
+            # The weekly table's `since`/`prev`/`bp` describe the move BEFORE it, so borrowing them
+            # produced a chip that dated a new rate to before it was announced, with `prev` equal to
+            # its own value and the previous move's basis points.
+            snap.append({"name": label, "unit": "%", "kind": "setting", "value": k["value"],
+                         "date": k["date"], "src": "key rates (announcement)",
+                         "since": k["date"], "prev": w["value"],
+                         "bp": round((k["value"] - w["value"]) * 100, 2)})
+        elif k and w:
+            snap.append({"name": label, "unit": "%", "kind": "setting", "value": k["value"],
+                         "date": w["date"], "src": "key rates + WSS setting in force",
+                         "since": w["since"], "prev": w["prev"], "bp": w["bp"],
+                         "announced_from": k["date"]})
+        elif k:
+            snap.append({"name": label, "unit": "%", "kind": "setting", "since": k["date"], **k})
     for label, code in (("MSF rate", "29"), ("Bank rate", "30")):
         v = wss_step(code)
         if v:
@@ -663,25 +717,32 @@ def tiles(S: dict) -> list[dict]:
 
     # policy stance --------------------------------------------------------
     rp = S["repo"]["points"]; rv = rp[-1][1]
-    # find the most recent actual change in the policy rate
-    move_i = next((i for i in range(len(rp) - 1, 0, -1) if rp[i][1] != rp[i - 1][1]), None)
-    if move_i:
-        bp = (rp[move_i][1] - rp[move_i - 1][1]) * 100
+    # the last actual move comes from the step computed on the WHOLE table (see S["repo"]["step"]),
+    # not from the trimmed chart window - the two disagree whenever the last change predates the window
+    si = S["repo"].get("step")
+    moved_days = (as_date(rp[-1][0]) - as_date(si["effective_from"])).days if si and si["bp"] else None
+    if si and si["bp"] and moved_days is not None and moved_days <= SCORING_MOVE_DAYS:
+        bp = si["bp"]
         st = "good" if bp < -1 else ("bad" if bp > 1 else "watch")
-        why = (f"{'cut' if bp < 0 else 'hiked'} {abs(bp):.0f} bp on {rp[move_i][0]} "
+        why = (f"{'cut' if bp < 0 else 'hiked'} {abs(bp):.0f} bp on {si['effective_from']} "
                f"({'supportive' if bp < 0 else 'tightening'})")
     else:
-        st, why = "watch", f"unchanged since {rp[0][0]}"
+        st, why = "watch", f"unchanged since {si['effective_from'] if si and si['bp'] else (si['first'] if si else rp[0][0])}"
     add("repo", "Policy repo rate", "Policy", "repo", "%", "pct", "level", st,
         f"{rv:.2f}% - {why}", "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.")
-    si = step_info(rp)
-    if si and si["bp"]:
-        mv = ("hike" if si["bp"] > 0 else "cut")
+    if si:
         out[-1].update({"step": True, "effective_from": si["effective_from"], "prev": si["prev"],
                         "bp": si["bp"],
-                        "reason": f"a {abs(si['bp']):.0f}bp {mv} on {si['effective_from']} took it from "
-                                  f"{si['prev']:.2f}% to {si['value']:.2f}%; the weekly table has not "
-                                  f"published a newer week yet"})
+                        # every setting carries the flag, so a consumer can tell "did not change inside
+                        # the fetched history" from "changed on this date"
+                        "unchanged_in_window": si["prev"] is None,
+                        "reason": (
+                            f"a {abs(si['bp']):.0f}bp {'hike' if si['bp'] > 0 else 'cut'} on "
+                            f"{si['effective_from']} took it from {si['prev']:.2f}% to "
+                            f"{si['value']:.2f}%; the weekly table has not published a newer week yet"
+                            if si["bp"] else
+                            f"unchanged at {si['value']:.2f}% in every weekly row of the fetched "
+                            f"history (back to {si['first']}); the true change date is earlier than that")})
 
     # money ---------------------------------------------------------------
     my = S["m3_yoy"]["points"]; mv = my[-1][1]
@@ -913,7 +974,7 @@ def tiles(S: dict) -> list[dict]:
         f"₹{v:,.0f} cr as last reported on {pts[-1][0]}; the RBI table carries no value for this line on "
         f"any later date (a nil balance is published as a blank cell)",
         "Loans and advances to the Central Government (Ways and Means Advances and overdrafts). "
-        "Direction read: falling = green, rising = watch.", change=v - v3)
+        "Direction read: falling = green, rising = watch.", change=delta(pts))
 
     pts = S["rupeesec_yoy"]["points"]; v = pts[-1][1]
     st, why = band_status(v, [(-99, 0.0, "watch", "RBI's rupee securities portfolio shrinking"),
@@ -926,18 +987,27 @@ def tiles(S: dict) -> list[dict]:
     # ---- new: policy instruments in force -----------------------------------------------
     for tid, key, lab in (("crr", "crr", "Cash Reserve Ratio"), ("slr", "slr", "Statutory Liquidity Ratio")):
         pts = S[key]["points"]; v = pts[-1][1]
-        mv = next((i for i in range(len(pts) - 1, 0, -1) if pts[i][1] != pts[i - 1][1]), None)
-        if mv:
-            d = pts[mv][0]; prev = pts[mv - 1][1]
-            st = "good" if v < prev else ("bad" if v > prev else "watch")
-            why = f"{'cut' if v < prev else 'raised'} from {prev:.2f}% on {d}"
+        si = S[key].get("step")            # computed on the FULL table in build(), not on this window
+        # score the last MOVE only while it is still the current stance: a cut six years ago is not
+        # today's policy read, so it stays neutral (the rule the pre-fix code applied by accident when
+        # the move fell outside the 260-row window)
+        moved_days = (as_date(pts[-1][0]) - as_date(si["effective_from"])).days if si and si["bp"] else None
+        if si and si["bp"] and moved_days is not None and moved_days <= SCORING_MOVE_DAYS:
+            st = "good" if si["bp"] < 0 else "bad"
+            why = (f"{'cut' if si['bp'] < 0 else 'raised'} from {si['prev']:.2f}% on "
+                   f"{si['effective_from']}")
         else:
-            st, why = "watch", f"unchanged since {pts[0][0]}"
+            st = "watch"
+            why = (f"unchanged at {v:.2f}% in every weekly row of the fetched history; the "
+                   f"{'last move' if si and si['bp'] else 'change that set it'} was on "
+                   f"{si['effective_from']}, {moved_days} days before the newest row"
+                   if si and si["bp"] and moved_days is not None else
+                   f"unchanged at {v:.2f}% throughout the fetched history, which starts "
+                   f"{si['first'] if si else pts[0][0]}")
         add(tid, lab, "Policy", key, "%", "pct", "level", st, f"{v:.2f}% - {why}",
             "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); "
             "unchanged is neutral/watch. Value is the rate in force.")
         # a policy SETTING is dated by when it took effect, not by the newest weekly row repeating it
-        si = step_info(pts)
         if si:
             if si["bp"]:
                 mv = "hike" if si["bp"] > 0 else "cut"
@@ -945,12 +1015,14 @@ def tiles(S: dict) -> list[dict]:
                           f"{si['prev']:.2f}% to {si['value']:.2f}%; the rate has been unchanged in all "
                           f"{si['rows']} weekly rows published since")
             else:
-                reason = f"unchanged at {si['value']:.2f}% in every weekly row since {si['first']}"
+                reason = (f"unchanged at {si['value']:.2f}% in every weekly row of the fetched history "
+                          f"(back to {si['first']}); the change that set it is older than that")
             out[-1].update({"step": True, "effective_from": si["effective_from"], "prev": si["prev"],
                             "bp": si["bp"], "reason": reason,
-                            # no change inside the fetched window: effective_from is then the window's
-                            # first observation, NOT a date the setting actually changed. Consumers must
-                            # be able to tell those apart, so the flag travels with the value.
+                            # no change inside the fetched window: effective_from is then the fetched
+                            # history's first observation, NOT a date the setting actually changed.
+                            # Consumers must be able to tell those apart, so the flag travels with the
+                            # value - and the change-log note repeats it in words.
                             "unchanged_in_window": si["prev"] is None})
 
     # ---- new: external / curve ----------------------------------------------------------
@@ -1047,19 +1119,28 @@ def main() -> int:
             rows, prev = [], None
             for i, (d, v) in enumerate(pts):
                 if i == 0 or pts[i - 1][1] != v:
-                    rows.append({"date": d, "value": v, "prev": prev,
+                    # `previous` is the name docs/API.md documents; `prev` is kept as an alias so a
+                    # consumer written against the old documents keeps working (it used to be the ONLY
+                    # key, which made the documented one a KeyError).
+                    rows.append({"date": d, "value": v, "previous": prev, "prev": prev,
                                  "change": None if prev is None else round((v - prev) * 100, 2)})
                     prev = v
             t["history_kind"] = "setting"
-            t["history"] = list(reversed(rows))[:14]        # newest change first
-            t["history_note"] = (f"{len(pts)} published rows in the source table; the setting changed "
-                                 f"{len(rows)} time(s) in that window")
+            # the first row is the value the window OPENS with, not a change
+            total_changes = sum(1 for r in rows if r["change"] is not None)
+            shown = rows[-14:]
+            t["history"] = list(reversed(shown))            # newest change first
+            t["history_note"] = (
+                f"{len(pts)} published rows in the source table; the setting changed "
+                f"{total_changes} time(s) in that window"
+                + (f", the newest {len(shown)} are listed" if total_changes > len(shown) else "")
+                + ("" if total_changes else " - the value in force predates the window"))
         else:
             rows, win = [], pts[-HIST_N:]
             base = len(pts) - len(win)
             for i, (d, v) in enumerate(win):
                 prev = pts[base + i - 1][1] if base + i > 0 else None
-                rows.append({"date": d, "value": v, "prev": prev,
+                rows.append({"date": d, "value": v, "previous": prev, "prev": prev,
                              "change": None if prev is None else round(v - prev, 3)})
             t["history_kind"] = "reading"
             t["history"] = list(reversed(rows))             # newest first
@@ -1112,8 +1193,13 @@ def main() -> int:
         t["freq"] = freq_of(S[t["series_key"]]["points"])
     by_freq: dict[str, str] = {}
     for t in T:
-        if t["period"] and t["period"] > by_freq.get(t["freq"], ""):
-            by_freq[t["freq"]] = t["period"]
+        # The publication calendar must come from each series' OWN table vintage. A series that appends
+        # a fresher point from a different feed (usdinr = weekly table + daily FBIL rate) would
+        # otherwise report that daily point as the newest WEEKLY observation, making the weekly
+        # calendar look days fresher than any weekly statement actually is - and fresher than "daily".
+        cal = (S.get(t["series_key"]) or {}).get("table_as_of") or t["period"]
+        if cal and cal > by_freq.get(t["freq"], ""):
+            by_freq[t["freq"]] = cal
     freq_rank = {"daily": 0, "weekly": 1, "fortnightly": 2, "monthly": 3, "quarterly": 4,
                  "irregular": 5, "unknown": 6}
     as_of_by_freq = dict(sorted(by_freq.items(), key=lambda kv: freq_rank.get(kv[0], 9)))
