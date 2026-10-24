@@ -1056,7 +1056,7 @@ function openDef(keys, title, extra){
     let line;
     if(!V) line=`<span class="vrf-none">No provenance check declared for this indicator.</span>`;
     else if(V.status==='verified') line=`<span class="vrf-ok">Verified</span> against ${V.checks.length} independent RBI check${V.checks.length>1?'s':''} — <code>${esc(V.checks.join(', '))}</code> (${esc(V.tier)}).`;
-    else if(V.status==='single-source') line=`<span class="vrf-single">Single source</span> — ${esc(V.note||'no second witness in the RBI tables we fetch')}. Not independently verifiable; the value is pinned to its source cell and checked for sanity only.`;
+    else if(V.status==='single-source') line=`<span class="vrf-single">Single source</span> — ${esc(V.note||'no second witness in the RBI tables we fetch')}. No other RBI table in this pipeline reports it, so it cannot be independently verified: a surprising move should be checked at the source before it drives a decision.`;
     else line=`<span class="vrf-none">Unverified</span> — ${esc(V.note||'no check declared')}.`;
     html+=`<div class="meta vrf"><b>Provenance:</b> ${line}</div>`;
   }

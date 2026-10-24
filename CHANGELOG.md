@@ -4,6 +4,17 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.7] — 2026-10-24
+
+Corrects an overclaim in 1.0.6's own wording. The single-source line in a `?` panel read "the value is
+pinned to its source cell and checked for sanity only" — that pinning and the sanity invariants are not
+built yet, so the panel was claiming a check that does not exist. It now says only what is true: no
+other RBI table in this pipeline reports the number, so it cannot be independently verified, and a
+surprising move should be checked at the source before it drives a decision.
+
+No numbers change. `dataset_sha256` is unchanged by the wording alone; the rebuild is otherwise
+identical.
+
 ## [1.0.6] — 2026-10-24
 
 Every gate until now compared the published documents **to each other** — `index.json` to

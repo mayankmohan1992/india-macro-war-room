@@ -7,7 +7,7 @@
  },
  "dataset_sha256": "d916da6ea67b02d132804035e180b57074a8e4b5176f13775b0cf4d1bdf3bc32",
  "files": 87,
- "generated_at": "2026-10-24T11:41:20Z",
+ "generated_at": "2026-10-24T11:52:31Z",
  "meta": {
   "api_version": "v1",
   "cross_checks": [
@@ -35,11 +35,11 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T11:41:20Z",
+  "retrieved_at": "2026-10-24T11:52:31Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
- "project_version": "1.0.6",
+ "project_version": "1.0.7",
  "series_points": 9211,
  "verdict": "Stress signals in core indicators"
 }

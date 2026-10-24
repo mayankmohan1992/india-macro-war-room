@@ -47,7 +47,7 @@ log = logging.getLogger("api")
 # The project version, published in status.json so a deployment can be identified at runtime
 # (`curl .../status.json | jq .project_version`). Kept in sync with CHANGELOG.md and the git tag.
 # status.json is excluded from dataset_sha256, so bumping this does not look like a data change.
-PROJECT_VERSION = "1.0.6"
+PROJECT_VERSION = "1.0.7"
 
 ROOT = pathlib.Path(__file__).resolve().parent
 API_VERSION = "v1"
