@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -1.92,
+    "date": "2026-10-16",
+    "prev": 13.77,
+    "previous": 13.77,
+    "value": 11.85
+   },
+   {
     "change": 0.4,
     "date": "2026-10-09",
     "prev": 13.37,
@@ -141,13 +148,6 @@
     "prev": 3.67,
     "previous": 3.67,
     "value": 2.33
-   },
-   {
-    "change": -0.33,
-    "date": "2026-05-29",
-    "prev": 4.0,
-    "previous": 4.0,
-    "value": 3.67
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "RBI foreign currency assets",
   "latest": {
-   "change": 0.4,
-   "date": "2026-10-09",
-   "value": 13.77
+   "change": -1.92,
+   "date": "2026-10-16",
+   "value": 11.85
   },
   "links": {
    "csv": "series/fca.csv",
    "self": "series/fca.json"
   },
   "points": [
-   [
-    "2022-03-18",
-    6.92
-   ],
    [
     "2022-03-25",
     7.49
@@ -1124,15 +1120,19 @@
    [
     "2026-10-09",
     13.77
+   ],
+   [
+    "2026-10-16",
+    11.85
    ]
   ],
   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
   "series": "fca_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 6,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "13.8% - foreign currency assets building",
+  "status_reason": "11.8% - foreign currency assets building",
   "unit": "%"
  },
  "meta": {
@@ -1151,18 +1151,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

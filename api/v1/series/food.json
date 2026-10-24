@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": -35.02,
+    "date": "2026-10-15",
+    "prev": 125.71,
+    "previous": 125.71,
+    "value": 90.69
+   },
+   {
     "change": -16.59,
     "date": "2026-09-30",
     "prev": 142.3,
@@ -141,13 +148,6 @@
     "prev": 60.49,
     "previous": 60.49,
     "value": 56.7
-   },
-   {
-    "change": 4.79,
-    "date": "2025-12-15",
-    "prev": 55.7,
-    "previous": 55.7,
-    "value": 60.49
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Food credit growth",
   "latest": {
-   "change": -16.59,
-   "date": "2026-09-30",
-   "value": 125.71
+   "change": -35.02,
+   "date": "2026-10-15",
+   "value": 90.69
   },
   "links": {
    "csv": "series/food.csv",
    "self": "series/food.json"
   },
   "points": [
-   [
-    "2019-01-04",
-    25.83
-   ],
    [
     "2019-01-18",
     21.06
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     125.71
+   ],
+   [
+    "2026-10-15",
+    90.69
    ]
   ],
   "scoring_rule": "Loose bands because this series is volatile and seasonal: green 0-20%, watch <0 or >20%.",
   "series": "food_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "watch",
-  "status_reason": "125.7% - food credit surging - heavy procurement financing",
+  "status_reason": "90.7% - food credit surging - heavy procurement financing",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": 1.11,
+    "date": "2026-10-16",
+    "prev": 5.0,
+    "previous": 5.0,
+    "value": 6.11
+   },
+   {
     "change": 0.69,
     "date": "2026-10-09",
     "prev": 4.31,
@@ -141,13 +148,6 @@
     "prev": 3.52,
     "previous": 3.52,
     "value": 3.31
-   },
-   {
-    "change": -0.29,
-    "date": "2026-05-29",
-    "prev": 3.81,
-    "previous": 3.81,
-    "value": 3.52
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "3-month US$ forward premia",
   "latest": {
-   "change": 0.69,
-   "date": "2026-10-09",
-   "value": 5.0
+   "change": 1.11,
+   "date": "2026-10-16",
+   "value": 6.11
   },
   "links": {
    "csv": "series/fwd3m.csv",
    "self": "series/fwd3m.json"
   },
   "points": [
-   [
-    "2021-10-22",
-    4.23
-   ],
    [
     "2021-10-29",
     4.39
@@ -1204,15 +1200,19 @@
    [
     "2026-10-09",
     5.0
+   ],
+   [
+    "2026-10-16",
+    6.11
    ]
   ],
   "scoring_rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
   "series": "fwd3m",
   "source": "RBI r10 (weekly WSS)",
   "stale": false,
-  "stale_days": 6,
-  "status": "watch",
-  "status_reason": "5.00% - premia elevated - hedging demand or depreciation expectations building",
+  "stale_days": 2,
+  "status": "bad",
+  "status_reason": "6.11% - premia very high - market pricing sharp rupee depreciation",
   "unit": "%"
  },
  "meta": {
@@ -1231,18 +1231,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

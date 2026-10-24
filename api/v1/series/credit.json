@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": -1.15,
+    "date": "2026-10-15",
+    "prev": 19.38,
+    "previous": 19.38,
+    "value": 18.23
+   },
+   {
     "change": 1.25,
     "date": "2026-09-30",
     "prev": 18.13,
@@ -141,13 +148,6 @@
     "prev": 11.98,
     "previous": 11.98,
     "value": 14.53
-   },
-   {
-    "change": 0.44,
-    "date": "2025-12-15",
-    "prev": 11.54,
-    "previous": 11.54,
-    "value": 11.98
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Bank credit growth",
   "latest": {
-   "change": 1.25,
-   "date": "2026-09-30",
-   "value": 19.38
+   "change": -1.15,
+   "date": "2026-10-15",
+   "value": 18.23
   },
   "links": {
    "csv": "series/credit.csv",
    "self": "series/credit.json"
   },
   "points": [
-   [
-    "2019-01-18",
-    14.62
-   ],
    [
     "2019-02-01",
     14.53
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     19.38
+   ],
+   [
+    "2026-10-15",
+    18.23
    ]
   ],
   "scoring_rule": "Green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
   "series": "credit_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "watch",
-  "status_reason": "19.4% - very fast credit growth",
+  "status_reason": "18.2% - very fast credit growth",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -1,39 +1,39 @@
 id,label,value,unit,date,status,change
 cpi,CPI inflation,5.54,%,2026-09-30,watch,0.71
 wpi,WPI inflation,11.39,%,2026-09-30,bad,1.47
-repo,Policy repo rate,5.5,%,2026-10-09,bad,
-m3,M3 (broad money) growth,16.87,%,2026-09-30,watch,0.23
-rm,Reserve money growth,8.69,%,2026-09-30,good,0.2
-credit,Bank credit growth,19.38,%,2026-09-30,watch,1.25
-deposit,Aggregate deposit growth,17.83,%,2026-09-30,watch,0.52
-cdr,Credit-to-deposit ratio,80.98,%,2026-09-30,good,0.14
-liquidity,Liquidity (1-month avg net ops),-262642.0,₹ crore,2026-10-11,bad,-2317.136
-callmoney,Call money rate,5.23,%,2026-10-09,watch,0.11
-gsec,10-year G-sec yield,7.37,%,2026-10-09,bad,0.14
-fxa,Net FX assets (banking sector),17.77,%,2026-09-30,good,-2.98
-fca,RBI foreign currency assets,13.77,%,2026-10-09,good,0.4
-tbill,T-bill outstanding,818107.0,₹ crore,2026-10-09,watch,-1474.0
-cdout,CD outstanding,574064.0,₹ crore,2026-09-30,good,14521.0
-cpout,Commercial paper outstanding,621596.0,₹ crore,2026-09-30,good,-31349.0
-turnover,Money-market turnover,1547650.0,₹ crore,2026-10-09,good,-302647.0
-yld91,91-day T-bill yield,5.57,%,2026-10-09,bad,0.05
-fwd3m,3-month US$ forward premia,5.0,%,2026-10-09,watch,0.69
+repo,Policy repo rate,5.5,%,2026-10-16,bad,
+m3,M3 (broad money) growth,15.97,%,2026-10-15,watch,-0.9
+rm,Reserve money growth,10.33,%,2026-10-15,good,1.64
+credit,Bank credit growth,18.23,%,2026-10-15,watch,-1.15
+deposit,Aggregate deposit growth,16.72,%,2026-10-15,watch,-1.11
+cdr,Credit-to-deposit ratio,81.59,%,2026-10-15,good,0.61
+liquidity,Liquidity (1-month avg net ops),-247136.818,₹ crore,2026-10-18,bad,2182.091
+callmoney,Call money rate,5.56,%,2026-10-16,good,0.33
+gsec,10-year G-sec yield,7.4,%,2026-10-16,bad,0.03
+fxa,Net FX assets (banking sector),14.82,%,2026-10-15,good,-2.95
+fca,RBI foreign currency assets,11.85,%,2026-10-16,good,-1.92
+tbill,T-bill outstanding,817170.0,₹ crore,2026-10-16,watch,-937.0
+cdout,CD outstanding,586426.0,₹ crore,2026-10-15,good,12362.0
+cpout,Commercial paper outstanding,660592.0,₹ crore,2026-10-15,watch,38996.0
+turnover,Money-market turnover,1827581.0,₹ crore,2026-10-16,good,279931.0
+yld91,91-day T-bill yield,5.73,%,2026-10-16,bad,0.16
+fwd3m,3-month US$ forward premia,6.11,%,2026-10-16,bad,1.11
 wpifuel,WPI fuel & power,25.85,%,2026-09-30,bad,2.92
 wpimanu,WPI manufactured products,9.76,%,2026-09-30,bad,1.39
 wpiprim,WPI primary articles,8.67,%,2026-09-30,bad,0.91
 cpirural,CPI rural,6.07,%,2026-09-30,bad,0.77
 cpiurban,CPI urban,4.82,%,2026-09-30,watch,0.48
-m1,M1 (narrow money) growth,17.02,%,2026-09-30,watch,2.42
-moneymult,Money multiplier,6.4,x,2026-09-30,watch,0.13
-bankdep,Bankers' deposits with RBI,-6.04,%,2026-10-09,bad,-8.91
+m1,M1 (narrow money) growth,12.56,%,2026-10-15,good,-4.46
+moneymult,Money multiplier,6.25,x,2026-10-15,watch,-0.15
+bankdep,Bankers' deposits with RBI,1.22,%,2026-10-16,watch,7.26
 rbicredit,RBI credit to the Centre,93392.0,₹ crore,2026-04-17,watch,-6882.0
-rupeesec,RBI rupee securities,23.47,%,2026-10-09,watch,-0.2
-crr,Cash Reserve Ratio,3.0,%,2026-10-09,good,
-slr,Statutory Liquidity Ratio,18.0,%,2026-10-09,watch,
-usdinr,USD/INR,95.0691,₹,2026-10-15,good,-1.541
-termspread,Term spread (10y − 91d),1.8,pp,2026-10-09,good,0.09
-gold,RBI gold holdings,11.96,%,2026-10-09,good,-4.89
-invest,SCB investments growth,8.64,%,2026-09-30,good,1.79
-nonfood,Non-food credit growth,19.15,%,2026-09-30,watch,1.32
-food,Food credit growth,125.71,%,2026-09-30,watch,-16.59
-notes,Notes in circulation growth,13.82,%,2026-10-09,watch,0.42
+rupeesec,RBI rupee securities,21.42,%,2026-10-16,watch,-2.05
+crr,Cash Reserve Ratio,3.0,%,2026-10-16,good,
+slr,Statutory Liquidity Ratio,18.0,%,2026-10-16,watch,
+usdinr,USD/INR,95.02,₹,2026-10-16,good,-1.59
+termspread,Term spread (10y − 91d),1.67,pp,2026-10-16,good,-0.13
+gold,RBI gold holdings,5.2,%,2026-10-16,good,-6.76
+invest,SCB investments growth,9.49,%,2026-10-15,good,0.85
+nonfood,Non-food credit growth,18.03,%,2026-10-15,watch,-1.12
+food,Food credit growth,90.69,%,2026-10-15,watch,-35.02
+notes,Notes in circulation growth,13.68,%,2026-10-16,watch,-0.14

@@ -96,6 +96,10 @@ CI run that mattered. Each is now fixed and asserted.
   at all; renaming the embedded family still passed. It now requires a genuinely `loaded` face.
 - **The responsive sweep wired no console/pageerror capture**, so a script error thrown in the 980px band
   — where the shell's `@media` block lives — went unnoticed.
+- **The history table's newest row was compared to the tile value with a fixed `0.011` tolerance**, so
+  any figure the page rounds for display — a ₹-crore value of −247,136.818 rendered as −2,47,137 — read
+  as a mismatch and blocked the deploy on the next data refresh. The tolerance now follows the displayed
+  precision (half of the last printed digit).
 - **An unknown or renamed `data-status` made the worst-first assertion vacuous** (`indexOf` returns −1,
   which sorts first). The attribute's values are asserted before the ordering is checked.
 - **CI never compared the committed dashboard to a rebuild.** Only the API hash was checked, so a broken

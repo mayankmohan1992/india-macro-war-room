@@ -109,13 +109,13 @@
    }
   ],
   "history_kind": "setting",
-  "history_note": "811 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
+  "history_note": "812 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
   "id": "crr",
   "kind": "setting",
   "label": "Cash Reserve Ratio",
   "latest": {
    "change": null,
-   "date": "2026-10-09",
+   "date": "2026-10-16",
    "value": 3.0
   },
   "links": {
@@ -3366,6 +3366,10 @@
    [
     "2026-10-09",
     3.0
+   ],
+   [
+    "2026-10-16",
+    3.0
    ]
   ],
   "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
@@ -3378,9 +3382,9 @@
   },
   "source": "RBI r10",
   "stale": false,
-  "stale_days": 6,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 45 weekly rows published since",
+  "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 46 weekly rows published since",
   "unit": "%"
  },
  "meta": {
@@ -3399,18 +3403,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

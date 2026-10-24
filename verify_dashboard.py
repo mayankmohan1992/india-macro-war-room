@@ -943,10 +943,16 @@ def check_history_modal(pw, problems):
             else:
                 # the newest row must be the value the card itself shows
                 first_val = rows[0][1].replace(",", "").replace("%", "").replace("x", "").replace("pp", "").strip()
+                # Tolerance must follow the DISPLAYED precision, not a fixed constant: the page rounds
+                # lakh/crore figures to whole numbers, so a fixed 0.011 rejected -2,47,137 against
+                # -247136.818 as if they disagreed. Half of the last displayed digit is the correct
+                # bound (0.5 with no decimals, 0.005 with two).
+                decimals = len(first_val.split(".")[1]) if "." in first_val else 0
+                tol = 0.5 * (10 ** -decimals)
                 try:
-                    if abs(float(first_val) - t["value"]) > 0.011:
+                    if abs(float(first_val) - t["value"]) > tol:
                         problems.append(f"{t['id']}: history newest row {rows[0][1]!r} != tile value "
-                                        f"{t['value']}")
+                                        f"{t['value']} (tolerance {tol})")
                 except ValueError:
                     problems.append(f"{t['id']}: history newest row value {rows[0][1]!r} is not numeric")
                 if t.get("step"):

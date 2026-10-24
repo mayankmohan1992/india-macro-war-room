@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": 0.85,
+    "date": "2026-10-15",
+    "prev": 8.64,
+    "previous": 8.64,
+    "value": 9.49
+   },
+   {
     "change": 1.79,
     "date": "2026-09-30",
     "prev": 6.85,
@@ -141,13 +148,6 @@
     "prev": 5.32,
     "previous": 5.32,
     "value": 4.95
-   },
-   {
-    "change": 0.01,
-    "date": "2025-11-28",
-    "prev": 5.31,
-    "previous": 5.31,
-    "value": 5.32
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "SCB investments growth",
   "latest": {
-   "change": 1.79,
-   "date": "2026-09-30",
-   "value": 8.64
+   "change": 0.85,
+   "date": "2026-10-15",
+   "value": 9.49
   },
   "links": {
    "csv": "series/invest.csv",
    "self": "series/invest.json"
   },
   "points": [
-   [
-    "2019-01-04",
-    -0.06
-   ],
    [
     "2019-01-18",
     -0.0
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     8.64
+   ],
+   [
+    "2026-10-15",
+    9.49
    ]
   ],
   "scoring_rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
   "series": "invest_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "good",
-  "status_reason": "8.6% - banks funding government borrowing at a normal pace",
+  "status_reason": "9.5% - banks funding government borrowing at a normal pace",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

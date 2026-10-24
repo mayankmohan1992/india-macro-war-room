@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -6.76,
+    "date": "2026-10-16",
+    "prev": 11.96,
+    "previous": 11.96,
+    "value": 5.2
+   },
+   {
     "change": -4.89,
     "date": "2026-10-09",
     "prev": 16.85,
@@ -141,13 +148,6 @@
     "prev": 48.33,
     "previous": 48.33,
     "value": 47.82
-   },
-   {
-    "change": -5.96,
-    "date": "2026-05-29",
-    "prev": 54.29,
-    "previous": 54.29,
-    "value": 48.33
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "RBI gold holdings",
   "latest": {
-   "change": -4.89,
-   "date": "2026-10-09",
-   "value": 11.96
+   "change": -6.76,
+   "date": "2026-10-16",
+   "value": 5.2
   },
   "links": {
    "csv": "series/gold.csv",
    "self": "series/gold.json"
   },
   "points": [
-   [
-    "2022-03-18",
-    26.85
-   ],
    [
     "2022-03-25",
     30.2
@@ -1124,15 +1120,19 @@
    [
     "2026-10-09",
     11.96
+   ],
+   [
+    "2026-10-16",
+    5.2
    ]
   ],
   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
   "series": "gold_growth",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 6,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "12.0% - RBI building its gold reserve",
+  "status_reason": "5.2% - RBI building its gold reserve",
   "unit": "%"
  },
  "meta": {
@@ -1151,18 +1151,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

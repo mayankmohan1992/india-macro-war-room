@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": -1.12,
+    "date": "2026-10-15",
+    "prev": 19.15,
+    "previous": 19.15,
+    "value": 18.03
+   },
+   {
     "change": 1.32,
     "date": "2026-09-30",
     "prev": 17.83,
@@ -141,13 +148,6 @@
     "prev": 11.84,
     "previous": 11.84,
     "value": 14.39
-   },
-   {
-    "change": 0.43,
-    "date": "2025-12-15",
-    "prev": 11.41,
-    "previous": 11.41,
-    "value": 11.84
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Non-food credit growth",
   "latest": {
-   "change": 1.32,
-   "date": "2026-09-30",
-   "value": 19.15
+   "change": -1.12,
+   "date": "2026-10-15",
+   "value": 18.03
   },
   "links": {
    "csv": "series/nonfood.csv",
    "self": "series/nonfood.json"
   },
   "points": [
-   [
-    "2019-01-04",
-    14.45
-   ],
    [
     "2019-01-18",
     14.58
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     19.15
+   ],
+   [
+    "2026-10-15",
+    18.03
    ]
   ],
   "scoring_rule": "Same bands as total bank credit: green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
   "series": "nonfood_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "watch",
-  "status_reason": "19.1% - very fast non-food credit growth",
+  "status_reason": "18.0% - very fast non-food credit growth",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

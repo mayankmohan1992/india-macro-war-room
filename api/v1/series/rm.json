@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 1.64,
+    "date": "2026-10-15",
+    "prev": 8.69,
+    "previous": 8.69,
+    "value": 10.33
+   },
+   {
     "change": 0.2,
     "date": "2026-09-30",
     "prev": 8.49,
@@ -141,13 +148,6 @@
     "prev": 2.19,
     "previous": 2.19,
     "value": 3.6
-   },
-   {
-    "change": 0.62,
-    "date": "2025-12-15",
-    "prev": 1.57,
-    "previous": 1.57,
-    "value": 2.19
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Reserve money growth",
   "latest": {
-   "change": 0.2,
-   "date": "2026-09-30",
-   "value": 8.69
+   "change": 1.64,
+   "date": "2026-10-15",
+   "value": 10.33
   },
   "links": {
    "csv": "series/rm.csv",
    "self": "series/rm.json"
   },
   "points": [
-   [
-    "2022-07-15",
-    10.47
-   ],
    [
     "2022-07-22",
     10.31
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     8.69
+   ],
+   [
+    "2026-10-15",
+    10.33
    ]
   ],
   "scoring_rule": "Green 8-14%, watch 5-8 / >14, red <5.",
   "series": "rm_yoy",
   "source": "RBI r7",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "good",
-  "status_reason": "8.7% - ample base-money expansion",
+  "status_reason": "10.3% - ample base-money expansion",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

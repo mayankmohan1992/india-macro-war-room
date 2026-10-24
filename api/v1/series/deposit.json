@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": -1.11,
+    "date": "2026-10-15",
+    "prev": 17.83,
+    "previous": 17.83,
+    "value": 16.72
+   },
+   {
     "change": 0.52,
     "date": "2026-09-30",
     "prev": 17.31,
@@ -141,13 +148,6 @@
     "prev": 9.35,
     "previous": 9.35,
     "value": 12.67
-   },
-   {
-    "change": -0.84,
-    "date": "2025-12-15",
-    "prev": 10.19,
-    "previous": 10.19,
-    "value": 9.35
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Aggregate deposit growth",
   "latest": {
-   "change": 0.52,
-   "date": "2026-09-30",
-   "value": 17.83
+   "change": -1.11,
+   "date": "2026-10-15",
+   "value": 16.72
   },
   "links": {
    "csv": "series/deposit.csv",
    "self": "series/deposit.json"
   },
   "points": [
-   [
-    "2019-01-18",
-    9.69
-   ],
    [
     "2019-02-01",
     9.63
@@ -964,15 +960,19 @@
    [
     "2026-09-30",
     17.83
+   ],
+   [
+    "2026-10-15",
+    16.72
    ]
   ],
   "scoring_rule": "Green 10-14%, watch 8-10 / >14, red <8.",
   "series": "deposit_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 15,
+  "stale_days": 3,
   "status": "watch",
-  "status_reason": "17.8% - deposit surge - could signal risk aversion",
+  "status_reason": "16.7% - deposit surge - could signal risk aversion",
   "unit": "%"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-15",
+  "dataset_as_of": "2026-10-18",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-11",
-   "fortnightly": "2026-09-30",
+   "daily": "2026-10-18",
+   "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-09"
+   "weekly": "2026-10-16"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T09:12:16Z",
+  "retrieved_at": "2026-10-24T10:37:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
