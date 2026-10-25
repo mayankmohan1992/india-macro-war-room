@@ -39,6 +39,7 @@ import argparse
 import html
 import json
 import logging
+import os
 import sys
 import time
 import traceback
@@ -76,9 +77,21 @@ log = logging.getLogger("dbie")
 #                iterations = 1000, PRF = SHA1)
 #   iv  = hex(TOKEN_RESPONSE)            cipher = AES-256-CBC, ciphertext = Base64
 # VERIFIED LIVE: decrypting `gFlctjwO2VrMgIC3C9JS8g==` yields `31-MAR-2009`.
-AES_TOKEN = "48d6b976d7135745b47b407cd8e659a45d8ebaca4ee95f87d5d939604f472268"
-AES_TOKEN_STATUS = "577bd45a17977269694908d80905c32a"
-AES_TOKEN_RESPONSE = "dc0da04af8fee58593442bf834b30739"
+# These are client-side obfuscation constants published by the portal, not
+# account credentials. They can be overridden via environment variables if RBI
+# rotates its bundle, without editing this file.
+AES_TOKEN = os.environ.get(
+    "DBIE_AES_TOKEN",
+    "48d6b976d7135745b47b407cd8e659a45d8ebaca4ee95f87d5d939604f472268",  # gitleaks:allow
+)
+AES_TOKEN_STATUS = os.environ.get(
+    "DBIE_AES_TOKEN_STATUS",
+    "577bd45a17977269694908d80905c32a",  # gitleaks:allow
+)
+AES_TOKEN_RESPONSE = os.environ.get(
+    "DBIE_AES_TOKEN_RESPONSE",
+    "dc0da04af8fee58593442bf834b30739",  # gitleaks:allow
+)
 
 
 def _aes_key() -> bytes:

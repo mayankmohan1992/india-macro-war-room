@@ -22,3 +22,19 @@ public/
 
 # Verification screenshots (regenerated on every run; the README uses docs/assets/)
 dashboard/*.png
+
+# Secrets and local credentials - never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+.npmrc
+.pypirc
+.netrc

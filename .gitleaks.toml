@@ -1,0 +1,13 @@
+title = "gitleaks config"
+
+# Keep the default rule set and add only the documented exceptions below.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public DBIE field-crypto constants (client-side obfuscation, not credentials)"
+regexes = [
+  '''48d6b976d7135745b47b407cd8e659a45d8ebaca4ee95f87d5d939604f472268''',
+  '''577bd45a17977269694908d80905c32a''',
+  '''dc0da04af8fee58593442bf834b30739''',
+]
