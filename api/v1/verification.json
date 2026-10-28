@@ -102,8 +102,8 @@
    ],
    "description": "government securities + other approved securities = investments",
    "status": "pass",
-   "residual": 0.0,
-   "detail": "7,538,626 vs 7,538,626"
+   "residual": 1.3e-05,
+   "detail": "7,538,268 vs 7,538,269"
   },
   {
    "id": "notes_split",

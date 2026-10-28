@@ -1265,7 +1265,7 @@
    "kind": "reading",
    "label": "SCB investments growth",
    "latest": {
-    "change": 0.85,
+    "change": 0.86,
     "date": "2026-10-15",
     "value": 9.49
    },
@@ -1400,7 +1400,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-24T11:52:31Z",
+  "retrieved_at": "2026-10-28T12:28:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -19879,18 +19879,18 @@
   "invest": {
    "history": [
     {
-     "change": 0.85,
+     "change": 0.86,
      "date": "2026-10-15",
-     "prev": 8.64,
-     "previous": 8.64,
+     "prev": 8.63,
+     "previous": 8.63,
      "value": 9.49
     },
     {
-     "change": 1.79,
+     "change": 1.78,
      "date": "2026-09-30",
      "prev": 6.85,
      "previous": 6.85,
-     "value": 8.64
+     "value": 8.63
     },
     {
      "change": 0.35,
@@ -20814,7 +20814,7 @@
     ],
     [
      "2026-09-30",
-     8.64
+     8.63
     ],
     [
      "2026-10-15",
