@@ -290,7 +290,7 @@
   "series": "wpi_manu_yoy",
   "source": "RBI r11",
   "stale": false,
-  "stale_days": 18,
+  "stale_days": 25,
   "status": "bad",
   "status_reason": "9.76% - very high - pushes the headline up",
   "unit": "%"
@@ -311,18 +311,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-18",
+  "dataset_as_of": "2026-10-25",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-18",
+   "daily": "2026-10-25",
    "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-16"
+   "weekly": "2026-10-23"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-28T12:28:35Z",
+  "retrieved_at": "2026-10-30T12:27:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

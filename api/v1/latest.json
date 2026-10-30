@@ -10,13 +10,13 @@
    "value": 1.22
   },
   "callmoney": {
-   "change": 0.33,
-   "date": "2026-10-16",
+   "change": 0.12,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "Call money rate",
    "status": "good",
    "unit": "%",
-   "value": 5.56
+   "value": 5.68
   },
   "cdout": {
    "change": 12362.0,
@@ -83,7 +83,7 @@
   },
   "crr": {
    "change": null,
-   "date": "2026-10-16",
+   "date": "2026-10-23",
    "kind": "setting",
    "label": "Cash Reserve Ratio",
    "status": "good",
@@ -118,13 +118,13 @@
    "value": 90.69
   },
   "fwd3m": {
-   "change": 1.11,
-   "date": "2026-10-16",
+   "change": -0.87,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "3-month US$ forward premia",
-   "status": "bad",
+   "status": "watch",
    "unit": "%",
-   "value": 6.11
+   "value": 5.24
   },
   "fxa": {
    "change": -2.95,
@@ -145,13 +145,13 @@
    "value": 5.2
   },
   "gsec": {
-   "change": 0.03,
-   "date": "2026-10-16",
+   "change": 0.12,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "10-year G-sec yield",
    "status": "bad",
    "unit": "%",
-   "value": 7.4
+   "value": 7.52
   },
   "invest": {
    "change": 0.86,
@@ -163,13 +163,13 @@
    "value": 9.49
   },
   "liquidity": {
-   "change": 2182.091,
-   "date": "2026-10-18",
+   "change": 1672.636,
+   "date": "2026-10-25",
    "kind": "reading",
    "label": "Liquidity (1-month avg net ops)",
    "status": "bad",
    "unit": "₹ crore",
-   "value": -247136.818
+   "value": -200411.591
   },
   "m1": {
    "change": -4.46,
@@ -227,7 +227,7 @@
   },
   "repo": {
    "change": null,
-   "date": "2026-10-16",
+   "date": "2026-10-23",
    "kind": "setting",
    "label": "Policy repo rate",
    "status": "bad",
@@ -254,7 +254,7 @@
   },
   "slr": {
    "change": null,
-   "date": "2026-10-16",
+   "date": "2026-10-23",
    "kind": "setting",
    "label": "Statutory Liquidity Ratio",
    "status": "watch",
@@ -262,13 +262,13 @@
    "value": 18.0
   },
   "tbill": {
-   "change": -937.0,
-   "date": "2026-10-16",
+   "change": -42427.0,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "T-bill outstanding",
    "status": "watch",
    "unit": "₹ crore",
-   "value": 817170.0
+   "value": 774743.0
   },
   "termspread": {
    "change": -0.13,
@@ -280,22 +280,22 @@
    "value": 1.67
   },
   "turnover": {
-   "change": 279931.0,
-   "date": "2026-10-16",
+   "change": -364841.0,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "Money-market turnover",
    "status": "good",
    "unit": "₹ crore",
-   "value": 1827581.0
+   "value": 1462740.0
   },
   "usdinr": {
-   "change": -1.59,
-   "date": "2026-10-16",
+   "change": -0.08,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "USD/INR",
    "status": "good",
    "unit": "₹",
-   "value": 95.02
+   "value": 94.94
   },
   "wpi": {
    "change": 1.47,
@@ -359,18 +359,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-18",
+  "dataset_as_of": "2026-10-25",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-18",
+   "daily": "2026-10-25",
    "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-16"
+   "weekly": "2026-10-23"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-28T12:28:35Z",
+  "retrieved_at": "2026-10-30T12:27:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

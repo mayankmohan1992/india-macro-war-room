@@ -109,13 +109,13 @@
    }
   ],
   "history_kind": "setting",
-  "history_note": "812 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
+  "history_note": "813 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
   "id": "repo",
   "kind": "setting",
   "label": "Policy repo rate",
   "latest": {
    "change": null,
-   "date": "2026-10-16",
+   "date": "2026-10-23",
    "value": 5.5
   },
   "links": {
@@ -3370,6 +3370,10 @@
    [
     "2026-10-16",
     5.5
+   ],
+   [
+    "2026-10-23",
+    5.5
    ]
   ],
   "scoring_rule": "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.",
@@ -3403,18 +3407,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-18",
+  "dataset_as_of": "2026-10-25",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-18",
+   "daily": "2026-10-25",
    "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-16"
+   "weekly": "2026-10-23"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-28T12:28:35Z",
+  "retrieved_at": "2026-10-30T12:27:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

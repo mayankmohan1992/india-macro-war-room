@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": 0.12,
+    "date": "2026-10-23",
+    "prev": 7.4,
+    "previous": 7.4,
+    "value": 7.52
+   },
+   {
     "change": 0.03,
     "date": "2026-10-16",
     "prev": 7.37,
@@ -141,13 +148,6 @@
     "prev": 6.98,
     "previous": 6.98,
     "value": 6.91
-   },
-   {
-    "change": -0.01,
-    "date": "2026-06-05",
-    "prev": 6.99,
-    "previous": 6.99,
-    "value": 6.98
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "10-year G-sec yield",
   "latest": {
-   "change": 0.03,
-   "date": "2026-10-16",
-   "value": 7.4
+   "change": 0.12,
+   "date": "2026-10-23",
+   "value": 7.52
   },
   "links": {
    "csv": "series/gsec.csv",
    "self": "series/gsec.json"
   },
   "points": [
-   [
-    "2021-10-29",
-    6.43
-   ],
    [
     "2021-11-05",
     6.36
@@ -1204,6 +1200,10 @@
    [
     "2026-10-16",
     7.4
+   ],
+   [
+    "2026-10-23",
+    7.52
    ]
   ],
   "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
@@ -1212,7 +1212,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "bad",
-  "status_reason": "7.40% (+62 bp over 3m) - yields rising, tightening conditions",
+  "status_reason": "7.52% (+68 bp over 3m) - yields rising, tightening conditions",
   "unit": "%"
  },
  "meta": {
@@ -1231,18 +1231,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-18",
+  "dataset_as_of": "2026-10-25",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-18",
+   "daily": "2026-10-25",
    "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-16"
+   "weekly": "2026-10-23"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-28T12:28:35Z",
+  "retrieved_at": "2026-10-30T12:27:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

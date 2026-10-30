@@ -10,6 +10,13 @@
   "group": "Policy",
   "history": [
    {
+    "change": 0.12,
+    "date": "2026-10-23",
+    "prev": 5.56,
+    "previous": 5.56,
+    "value": 5.68
+   },
+   {
     "change": 0.33,
     "date": "2026-10-16",
     "prev": 5.23,
@@ -141,13 +148,6 @@
     "prev": 5.28,
     "previous": 5.28,
     "value": 5.28
-   },
-   {
-    "change": -0.1,
-    "date": "2026-06-05",
-    "prev": 5.38,
-    "previous": 5.38,
-    "value": 5.28
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Call money rate",
   "latest": {
-   "change": 0.33,
-   "date": "2026-10-16",
-   "value": 5.56
+   "change": 0.12,
+   "date": "2026-10-23",
+   "value": 5.68
   },
   "links": {
    "csv": "series/callmoney.csv",
    "self": "series/callmoney.json"
   },
   "points": [
-   [
-    "2021-10-29",
-    3.28
-   ],
    [
     "2021-11-05",
     3.34
@@ -1204,6 +1200,10 @@
    [
     "2026-10-16",
     5.56
+   ],
+   [
+    "2026-10-23",
+    5.68
    ]
   ],
   "scoring_rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
@@ -1212,7 +1212,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "good",
-  "status_reason": "5.56% vs the same week's repo 5.50% (spread +0.06pp) - anchored to the repo rate",
+  "status_reason": "5.68% vs the same week's repo 5.50% (spread +0.18pp) - anchored to the repo rate",
   "unit": "%"
  },
  "meta": {
@@ -1231,18 +1231,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-18",
+  "dataset_as_of": "2026-10-25",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-18",
+   "daily": "2026-10-25",
    "fortnightly": "2026-10-15",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-16"
+   "weekly": "2026-10-23"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-28T12:28:35Z",
+  "retrieved_at": "2026-10-30T12:27:03Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
