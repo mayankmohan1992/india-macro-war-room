@@ -1,13 +1,13 @@
 {
  "latest": {
   "bankdep": {
-   "change": 7.26,
-   "date": "2026-10-16",
+   "change": 0.68,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "Bankers' deposits with RBI",
    "status": "watch",
    "unit": "%",
-   "value": 1.22
+   "value": 1.9
   },
   "callmoney": {
    "change": 0.12,
@@ -100,13 +100,13 @@
    "value": 16.72
   },
   "fca": {
-   "change": -1.92,
-   "date": "2026-10-16",
+   "change": 1.17,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "RBI foreign currency assets",
    "status": "good",
    "unit": "%",
-   "value": 11.85
+   "value": 13.02
   },
   "food": {
    "change": -35.02,
@@ -136,13 +136,13 @@
    "value": 14.82
   },
   "gold": {
-   "change": -6.76,
-   "date": "2026-10-16",
+   "change": 0.44,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "RBI gold holdings",
    "status": "good",
    "unit": "%",
-   "value": 5.2
+   "value": 5.64
   },
   "gsec": {
    "change": 0.12,
@@ -208,13 +208,13 @@
    "value": 18.03
   },
   "notes": {
-   "change": -0.14,
-   "date": "2026-10-16",
+   "change": 0.02,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "Notes in circulation growth",
    "status": "watch",
    "unit": "%",
-   "value": 13.68
+   "value": 13.7
   },
   "rbicredit": {
    "change": -6882.0,
@@ -244,13 +244,13 @@
    "value": 10.33
   },
   "rupeesec": {
-   "change": -2.05,
-   "date": "2026-10-16",
+   "change": -0.35,
+   "date": "2026-10-23",
    "kind": "reading",
    "label": "RBI rupee securities",
    "status": "watch",
    "unit": "%",
-   "value": 21.42
+   "value": 21.07
   },
   "slr": {
    "change": null,
@@ -370,7 +370,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-30T12:27:03Z",
+  "retrieved_at": "2026-10-31T11:55:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

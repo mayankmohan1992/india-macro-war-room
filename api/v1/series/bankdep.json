@@ -10,6 +10,13 @@
   "group": "Liquidity",
   "history": [
    {
+    "change": 0.68,
+    "date": "2026-10-23",
+    "prev": 1.22,
+    "previous": 1.22,
+    "value": 1.9
+   },
+   {
     "change": 7.26,
     "date": "2026-10-16",
     "prev": -6.04,
@@ -141,13 +148,6 @@
     "prev": -14.3,
     "previous": -14.3,
     "value": -17.75
-   },
-   {
-    "change": -0.14,
-    "date": "2026-06-05",
-    "prev": -14.16,
-    "previous": -14.16,
-    "value": -14.3
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Bankers' deposits with RBI",
   "latest": {
-   "change": 7.26,
-   "date": "2026-10-16",
-   "value": 1.22
+   "change": 0.68,
+   "date": "2026-10-23",
+   "value": 1.9
   },
   "links": {
    "csv": "series/bankdep.csv",
    "self": "series/bankdep.json"
   },
   "points": [
-   [
-    "2022-03-25",
-    25.93
-   ],
    [
     "2022-04-01",
     34.16
@@ -1124,15 +1120,19 @@
    [
     "2026-10-16",
     1.22
+   ],
+   [
+    "2026-10-23",
+    1.9
    ]
   ],
   "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
   "series": "bankers_dep_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
+  "stale_days": 2,
   "status": "watch",
-  "status_reason": "1.2% - broadly flat",
+  "status_reason": "1.9% - broadly flat",
   "unit": "%"
  },
  "meta": {
@@ -1162,7 +1162,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-30T12:27:03Z",
+  "retrieved_at": "2026-10-31T11:55:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

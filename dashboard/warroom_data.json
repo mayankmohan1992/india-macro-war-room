@@ -498,7 +498,7 @@
   "usdinr": "exchange_rate",
   "termspread": "term_spread"
  },
- "generated": "2026-10-30 12:27 UTC",
+ "generated": "2026-10-31 11:55 UTC",
  "as_of": "2026-10-25",
  "as_of_by_frequency": {
   "daily": "2026-10-25",
@@ -2798,16 +2798,15 @@
    "series_key": "fca_yoy",
    "label": "RBI foreign currency assets",
    "group": "External",
-   "value": 11.85,
+   "value": 13.02,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-16",
+   "period": "2026-10-23",
    "status": "good",
-   "reason": "11.8% - foreign currency assets building",
+   "reason": "13.0% - foreign currency assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": -1.92,
+   "change": 1.17,
    "spark": [
-    10.76,
     10.26,
     9.41,
     6.52,
@@ -2842,11 +2841,19 @@
     14.11,
     13.37,
     13.77,
-    11.85
+    11.85,
+    13.02
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-23",
+     "value": 13.02,
+     "previous": 11.85,
+     "prev": 11.85,
+     "change": 1.17
+    },
     {
      "date": "2026-10-16",
      "value": 11.85,
@@ -2979,17 +2986,10 @@
      "previous": 2.33,
      "prev": 2.33,
      "change": -0.45
-    },
-    {
-     "date": "2026-06-05",
-     "value": 2.33,
-     "previous": 3.67,
-     "prev": 3.67,
-     "change": -1.34
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 9,
+   "stale_days": 2,
    "stale": false,
    "freq": "weekly"
   },
@@ -5594,16 +5594,15 @@
    "series_key": "bankers_dep_yoy",
    "label": "Bankers' deposits with RBI",
    "group": "Liquidity",
-   "value": 1.22,
+   "value": 1.9,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-16",
+   "period": "2026-10-23",
    "status": "watch",
-   "reason": "1.2% - broadly flat",
+   "reason": "1.9% - broadly flat",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": 7.26,
+   "change": 0.68,
    "spark": [
-    -24.58,
     -12.37,
     -20.25,
     -14.06,
@@ -5638,11 +5637,19 @@
     -8.47,
     2.87,
     -6.04,
-    1.22
+    1.22,
+    1.9
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-23",
+     "value": 1.9,
+     "previous": 1.22,
+     "prev": 1.22,
+     "change": 0.68
+    },
     {
      "date": "2026-10-16",
      "value": 1.22,
@@ -5775,17 +5782,10 @@
      "previous": -14.3,
      "prev": -14.3,
      "change": -3.45
-    },
-    {
-     "date": "2026-06-05",
-     "value": -14.3,
-     "previous": -14.16,
-     "prev": -14.16,
-     "change": -0.14
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 9,
+   "stale_days": 2,
    "stale": false,
    "freq": "weekly"
   },
@@ -5996,16 +5996,15 @@
    "series_key": "rupeesec_yoy",
    "label": "RBI rupee securities",
    "group": "Fiscal",
-   "value": 21.42,
+   "value": 21.07,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-16",
+   "period": "2026-10-23",
    "status": "watch",
-   "reason": "21.4% - fast growth - heavy government paper absorption",
+   "reason": "21.1% - fast growth - heavy government paper absorption",
    "rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
-   "change": -2.05,
+   "change": -0.35,
    "spark": [
-    55.83,
     51.34,
     52.48,
     56.11,
@@ -6040,11 +6039,19 @@
     25.87,
     23.67,
     23.47,
-    21.42
+    21.42,
+    21.07
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-23",
+     "value": 21.07,
+     "previous": 21.42,
+     "prev": 21.42,
+     "change": -0.35
+    },
     {
      "date": "2026-10-16",
      "value": 21.42,
@@ -6177,17 +6184,10 @@
      "previous": 25.24,
      "prev": 25.24,
      "change": 2.3
-    },
-    {
-     "date": "2026-06-05",
-     "value": 25.24,
-     "previous": 24.94,
-     "prev": 24.94,
-     "change": 0.3
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 9,
+   "stale_days": 2,
    "stale": false,
    "freq": "weekly"
   },
@@ -6927,16 +6927,15 @@
    "series_key": "gold_growth",
    "label": "RBI gold holdings",
    "group": "External",
-   "value": 5.2,
+   "value": 5.64,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-16",
+   "period": "2026-10-23",
    "status": "good",
-   "reason": "5.2% - RBI building its gold reserve",
+   "reason": "5.6% - RBI building its gold reserve",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
-   "change": -6.76,
+   "change": 0.44,
    "spark": [
-    80.87,
     79.38,
     86.76,
     84.69,
@@ -6971,11 +6970,19 @@
     23.59,
     16.85,
     11.96,
-    5.2
+    5.2,
+    5.64
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-23",
+     "value": 5.64,
+     "previous": 5.2,
+     "prev": 5.2,
+     "change": 0.44
+    },
     {
      "date": "2026-10-16",
      "value": 5.2,
@@ -7108,17 +7115,10 @@
      "previous": 47.82,
      "prev": 47.82,
      "change": -14.94
-    },
-    {
-     "date": "2026-06-05",
-     "value": 47.82,
-     "previous": 48.33,
-     "prev": 48.33,
-     "change": -0.51
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 9,
+   "stale_days": 2,
    "stale": false,
    "freq": "weekly"
   },
@@ -7731,16 +7731,15 @@
    "series_key": "notes_yoy",
    "label": "Notes in circulation growth",
    "group": "Money",
-   "value": 13.68,
+   "value": 13.7,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-16",
+   "period": "2026-10-23",
    "status": "watch",
    "reason": "13.7% - elevated cash preference",
    "rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
-   "change": -0.14,
+   "change": 0.02,
    "spark": [
-    11.04,
     11.01,
     11.6,
     11.24,
@@ -7775,11 +7774,19 @@
     13.64,
     13.4,
     13.82,
-    13.68
+    13.68,
+    13.7
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-23",
+     "value": 13.7,
+     "previous": 13.68,
+     "prev": 13.68,
+     "change": 0.02
+    },
     {
      "date": "2026-10-16",
      "value": 13.68,
@@ -7912,17 +7919,10 @@
      "previous": 11.97,
      "prev": 11.97,
      "change": 0.32
-    },
-    {
-     "date": "2026-06-05",
-     "value": 11.97,
-     "previous": 12.07,
-     "prev": 12.07,
-     "change": -0.1
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
-   "stale_days": 9,
+   "stale_days": 2,
    "stale": false,
    "freq": "weekly"
   }
@@ -29669,10 +29669,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-25",
-     9.74
-    ],
-    [
      "2022-04-01",
      9.82
     ],
@@ -30627,6 +30623,10 @@
     [
      "2026-10-16",
      13.68
+    ],
+    [
+     "2026-10-23",
+     13.7
     ]
    ]
   },
@@ -30635,10 +30635,6 @@
    "unit": "₹ crore",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-03-25",
-     4222780.0
-    ],
     [
      "2022-04-01",
      4113436.0
@@ -31594,6 +31590,10 @@
     [
      "2026-10-16",
      5645875.0
+    ],
+    [
+     "2026-10-23",
+     5658316.0
     ]
    ]
   },
@@ -31602,10 +31602,6 @@
    "unit": "%",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-03-25",
-     7.49
-    ],
     [
      "2022-04-01",
      4.14
@@ -32561,6 +32557,10 @@
     [
      "2026-10-16",
      11.85
+    ],
+    [
+     "2026-10-23",
+     13.02
     ]
    ]
   },
@@ -32569,10 +32569,6 @@
    "unit": "₹ crore",
    "source": "RBI r39",
    "points": [
-    [
-     "2022-12-30",
-     341827.0
-    ],
     [
      "2023-01-06",
      345658.0
@@ -33368,6 +33364,10 @@
     [
      "2026-10-16",
      1004583.0
+    ],
+    [
+     "2026-10-23",
+     979339.0
     ]
    ]
   },
@@ -51056,10 +51056,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-25",
-     30.2
-    ],
-    [
      "2022-04-01",
      30.08
     ],
@@ -52014,6 +52010,10 @@
     [
      "2026-10-16",
      5.2
+    ],
+    [
+     "2026-10-23",
+     5.64
     ]
    ]
   },
@@ -58124,10 +58124,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-25",
-     25.93
-    ],
-    [
      "2022-04-01",
      34.16
     ],
@@ -59082,6 +59078,10 @@
     [
      "2026-10-16",
      1.22
+    ],
+    [
+     "2026-10-23",
+     1.9
     ]
    ]
   },
@@ -60058,10 +60058,6 @@
    "source": "RBI r39",
    "points": [
     [
-     "2022-03-25",
-     11.98
-    ],
-    [
      "2022-04-01",
      11.67
     ],
@@ -61016,6 +61012,10 @@
     [
      "2026-10-16",
      21.42
+    ],
+    [
+     "2026-10-23",
+     21.07
     ]
    ]
   },

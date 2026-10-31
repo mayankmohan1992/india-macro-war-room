@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 0.02,
+    "date": "2026-10-23",
+    "prev": 13.68,
+    "previous": 13.68,
+    "value": 13.7
+   },
+   {
     "change": -0.14,
     "date": "2026-10-16",
     "prev": 13.82,
@@ -141,13 +148,6 @@
     "prev": 11.97,
     "previous": 11.97,
     "value": 12.29
-   },
-   {
-    "change": -0.1,
-    "date": "2026-06-05",
-    "prev": 12.07,
-    "previous": 12.07,
-    "value": 11.97
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Notes in circulation growth",
   "latest": {
-   "change": -0.14,
-   "date": "2026-10-16",
-   "value": 13.68
+   "change": 0.02,
+   "date": "2026-10-23",
+   "value": 13.7
   },
   "links": {
    "csv": "series/notes.csv",
    "self": "series/notes.json"
   },
   "points": [
-   [
-    "2022-03-25",
-    9.74
-   ],
    [
     "2022-04-01",
     9.82
@@ -1124,13 +1120,17 @@
    [
     "2026-10-16",
     13.68
+   ],
+   [
+    "2026-10-23",
+    13.7
    ]
   ],
   "scoring_rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
   "series": "notes_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
+  "stale_days": 2,
   "status": "watch",
   "status_reason": "13.7% - elevated cash preference",
   "unit": "%"
@@ -1162,7 +1162,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-30T12:27:03Z",
+  "retrieved_at": "2026-10-31T11:55:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
