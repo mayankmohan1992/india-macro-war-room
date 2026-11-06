@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": 667.0,
+    "date": "2026-10-31",
+    "prev": 660592.0,
+    "previous": 660592.0,
+    "value": 661259.0
+   },
+   {
     "change": 38996.0,
     "date": "2026-10-15",
     "prev": 621596.0,
@@ -141,13 +148,6 @@
     "prev": 451053.0,
     "previous": 451053.0,
     "value": 453839.0
-   },
-   {
-    "change": -22423.0,
-    "date": "2025-12-31",
-    "prev": 473476.0,
-    "previous": 473476.0,
-    "value": 451053.0
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Commercial paper outstanding",
   "latest": {
-   "change": 38996.0,
-   "date": "2026-10-15",
-   "value": 660592.0
+   "change": 667.0,
+   "date": "2026-10-31",
+   "value": 661259.0
   },
   "links": {
    "csv": "series/cpout.csv",
    "self": "series/cpout.json"
   },
   "points": [
-   [
-    "2018-06-30",
-    491833.0
-   ],
    [
     "2018-07-15",
     563089.0
@@ -964,15 +960,19 @@
    [
     "2026-10-15",
     660592.0
+   ],
+   [
+    "2026-10-31",
+    661259.0
    ]
   ],
   "scoring_rule": "Green -20%..+30% y-o-y, watch outside that.",
   "series": "cp_out",
   "source": "RBI r5",
   "stale": false,
-  "stale_days": 10,
+  "stale_days": 1,
   "status": "watch",
-  "status_reason": "660,592 cr (+33% y-o-y) - surging CP issuance",
+  "status_reason": "661,259 cr (+38% y-o-y) - surging CP issuance",
   "unit": "₹ crore"
  },
  "meta": {
@@ -991,18 +991,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-25",
+  "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-25",
-   "fortnightly": "2026-10-15",
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-23"
+   "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-31T11:55:26Z",
+  "retrieved_at": "2026-11-06T13:57:59Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

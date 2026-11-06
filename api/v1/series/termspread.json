@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": -0.15,
+    "date": "2026-10-30",
+    "prev": 1.67,
+    "previous": 1.67,
+    "value": 1.52
+   },
+   {
     "change": -0.13,
     "date": "2026-10-16",
     "prev": 1.8,
@@ -141,13 +148,6 @@
     "prev": 1.42,
     "previous": 1.42,
     "value": 1.61
-   },
-   {
-    "change": -0.01,
-    "date": "2026-06-05",
-    "prev": 1.43,
-    "previous": 1.43,
-    "value": 1.42
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Term spread (10y − 91d)",
   "latest": {
-   "change": -0.13,
-   "date": "2026-10-16",
-   "value": 1.67
+   "change": -0.15,
+   "date": "2026-10-30",
+   "value": 1.52
   },
   "links": {
    "csv": "series/termspread.csv",
    "self": "series/termspread.json"
   },
   "points": [
-   [
-    "2021-09-10",
-    2.9
-   ],
    [
     "2021-09-17",
     2.89
@@ -1204,15 +1200,19 @@
    [
     "2026-10-16",
     1.67
+   ],
+   [
+    "2026-10-30",
+    1.52
    ]
   ],
   "scoring_rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
   "series": "term_spread",
   "source": "derived (r10)",
   "stale": false,
-  "stale_days": 9,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "+1.67pp - normally sloped",
+  "status_reason": "+1.52pp - normally sloped",
   "unit": "pp"
  },
  "meta": {
@@ -1231,18 +1231,18 @@
     "worst_month": "2026-02-28"
    }
   ],
-  "dataset_as_of": "2026-10-25",
+  "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-10-25",
-   "fortnightly": "2026-10-15",
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
-   "weekly": "2026-10-23"
+   "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-10-31T11:55:26Z",
+  "retrieved_at": "2026-11-06T13:57:59Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

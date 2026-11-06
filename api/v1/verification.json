@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-23",
+ "as_of": "2026-10-30",
  "tolerance_pct": 0.01,
  "summary": {
   "checks": 16,
@@ -138,8 +138,8 @@
    ],
    "description": "each tenor total = banks + primary dealers + state govts + others",
    "status": "pass",
-   "residual": 0.00048,
-   "detail": "91d: 214,580 vs 214,580; 182d: 208,422 vs 208,423; 364d: 351,740 vs 351,740"
+   "residual": 0.000471,
+   "detail": "91d: 218,121 vs 218,121; 182d: 212,412 vs 212,413; 364d: 354,014 vs 354,014"
   },
   {
    "id": "repo_cross_feed",
@@ -182,8 +182,8 @@
    ],
    "description": "weekly WSS INR/US$ = portal daily FBIL reference rate",
    "status": "pass",
-   "residual": 0.135981,
-   "detail": "different observation dates (2026-10-23 weekly vs 2026-10-15 daily) - values 94.9400 vs 95.0691, consistent"
+   "residual": 0.189921,
+   "detail": "different observation dates (2026-10-30 weekly vs 2026-10-15 daily) - values 95.2500 vs 95.0691, consistent"
   },
   {
    "id": "cpi_published_vs_derived",
