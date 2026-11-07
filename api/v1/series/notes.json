@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 0.48,
+    "date": "2026-10-30",
+    "prev": 13.7,
+    "previous": 13.7,
+    "value": 14.18
+   },
+   {
     "change": 0.02,
     "date": "2026-10-23",
     "prev": 13.68,
@@ -141,13 +148,6 @@
     "prev": 12.29,
     "previous": 12.29,
     "value": 12.54
-   },
-   {
-    "change": 0.32,
-    "date": "2026-06-12",
-    "prev": 11.97,
-    "previous": 11.97,
-    "value": 12.29
    }
   ],
   "history_kind": "reading",
@@ -156,19 +156,15 @@
   "kind": "reading",
   "label": "Notes in circulation growth",
   "latest": {
-   "change": 0.02,
-   "date": "2026-10-23",
-   "value": 13.7
+   "change": 0.48,
+   "date": "2026-10-30",
+   "value": 14.18
   },
   "links": {
    "csv": "series/notes.csv",
    "self": "series/notes.json"
   },
   "points": [
-   [
-    "2022-04-01",
-    9.82
-   ],
    [
     "2022-04-08",
     10.16
@@ -1124,15 +1120,19 @@
    [
     "2026-10-23",
     13.7
+   ],
+   [
+    "2026-10-30",
+    14.18
    ]
   ],
   "scoring_rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
   "series": "notes_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
-  "status": "watch",
-  "status_reason": "13.7% - elevated cash preference",
+  "stale_days": 2,
+  "status": "bad",
+  "status_reason": "14.2% - cash demand surging - outside money system",
   "unit": "%"
  },
  "meta": {
@@ -1162,7 +1162,7 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-06T13:57:59Z",
+  "retrieved_at": "2026-11-07T12:45:48Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

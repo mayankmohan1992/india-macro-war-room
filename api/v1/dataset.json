@@ -593,9 +593,9 @@
    "kind": "reading",
    "label": "RBI foreign currency assets",
    "latest": {
-    "change": 1.17,
-    "date": "2026-10-23",
-    "value": 13.02
+    "change": -1.18,
+    "date": "2026-10-30",
+    "value": 11.84
    },
    "links": {
     "csv": "series/fca.csv",
@@ -605,9 +605,9 @@
    "series": "fca_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "good",
-   "status_reason": "13.0% - foreign currency assets building",
+   "status_reason": "11.8% - foreign currency assets building",
    "unit": "%"
   },
   {
@@ -1013,9 +1013,9 @@
    "kind": "reading",
    "label": "Bankers' deposits with RBI",
    "latest": {
-    "change": 0.68,
-    "date": "2026-10-23",
-    "value": 1.9
+    "change": -1.29,
+    "date": "2026-10-30",
+    "value": 0.61
    },
    "links": {
     "csv": "series/bankdep.csv",
@@ -1025,9 +1025,9 @@
    "series": "bankers_dep_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "watch",
-   "status_reason": "1.9% - broadly flat",
+   "status_reason": "0.6% - broadly flat",
    "unit": "%"
   },
   {
@@ -1073,9 +1073,9 @@
    "kind": "reading",
    "label": "RBI rupee securities",
    "latest": {
-    "change": -0.35,
-    "date": "2026-10-23",
-    "value": 21.07
+    "change": 0.23,
+    "date": "2026-10-30",
+    "value": 21.3
    },
    "links": {
     "csv": "series/rupeesec.csv",
@@ -1085,9 +1085,9 @@
    "series": "rupeesec_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "watch",
-   "status_reason": "21.1% - fast growth - heavy government paper absorption",
+   "status_reason": "21.3% - fast growth - heavy government paper absorption",
    "unit": "%"
   },
   {
@@ -1235,9 +1235,9 @@
    "kind": "reading",
    "label": "RBI gold holdings",
    "latest": {
-    "change": 0.44,
-    "date": "2026-10-23",
-    "value": 5.64
+    "change": 2.23,
+    "date": "2026-10-30",
+    "value": 7.87
    },
    "links": {
     "csv": "series/gold.csv",
@@ -1247,9 +1247,9 @@
    "series": "gold_growth",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "good",
-   "status_reason": "5.6% - RBI building its gold reserve",
+   "status_reason": "7.9% - RBI building its gold reserve",
    "unit": "%"
   },
   {
@@ -1355,9 +1355,9 @@
    "kind": "reading",
    "label": "Notes in circulation growth",
    "latest": {
-    "change": 0.02,
-    "date": "2026-10-23",
-    "value": 13.7
+    "change": 0.48,
+    "date": "2026-10-30",
+    "value": 14.18
    },
    "links": {
     "csv": "series/notes.csv",
@@ -1367,9 +1367,9 @@
    "series": "notes_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
-   "status": "watch",
-   "status_reason": "13.7% - elevated cash preference",
+   "stale_days": 2,
+   "status": "bad",
+   "status_reason": "14.2% - cash demand surging - outside money system",
    "unit": "%"
   }
  ],
@@ -1400,13 +1400,20 @@
   "indicators": 38,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-06T13:57:59Z",
+  "retrieved_at": "2026-11-07T12:45:48Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
  "series": {
   "bankdep": {
    "history": [
+    {
+     "change": -1.29,
+     "date": "2026-10-30",
+     "prev": 1.9,
+     "previous": 1.9,
+     "value": 0.61
+    },
     {
      "change": 0.68,
      "date": "2026-10-23",
@@ -1539,20 +1546,9 @@
      "prev": -17.75,
      "previous": -17.75,
      "value": -13.59
-    },
-    {
-     "change": -3.45,
-     "date": "2026-06-12",
-     "prev": -14.3,
-     "previous": -14.3,
-     "value": -17.75
     }
    ],
    "points": [
-    [
-     "2022-04-01",
-     34.16
-    ],
     [
      "2022-04-08",
      25.74
@@ -2508,6 +2504,10 @@
     [
      "2026-10-23",
      1.9
+    ],
+    [
+     "2026-10-30",
+     0.61
     ]
    ]
   },
@@ -13411,6 +13411,13 @@
   "fca": {
    "history": [
     {
+     "change": -1.18,
+     "date": "2026-10-30",
+     "prev": 13.02,
+     "previous": 13.02,
+     "value": 11.84
+    },
+    {
      "change": 1.17,
      "date": "2026-10-23",
      "prev": 11.85,
@@ -13542,20 +13549,9 @@
      "prev": 1.88,
      "previous": 1.88,
      "value": -0.02
-    },
-    {
-     "change": -0.45,
-     "date": "2026-06-12",
-     "prev": 2.33,
-     "previous": 2.33,
-     "value": 1.88
     }
    ],
    "points": [
-    [
-     "2022-04-01",
-     4.14
-    ],
     [
      "2022-04-08",
      1.15
@@ -14511,6 +14507,10 @@
     [
      "2026-10-23",
      13.02
+    ],
+    [
+     "2026-10-30",
+     11.84
     ]
    ]
   },
@@ -17595,6 +17595,13 @@
   "gold": {
    "history": [
     {
+     "change": 2.23,
+     "date": "2026-10-30",
+     "prev": 5.64,
+     "previous": 5.64,
+     "value": 7.87
+    },
+    {
      "change": 0.44,
      "date": "2026-10-23",
      "prev": 5.2,
@@ -17726,20 +17733,9 @@
      "prev": 32.88,
      "previous": 32.88,
      "value": 37.15
-    },
-    {
-     "change": -14.94,
-     "date": "2026-06-12",
-     "prev": 47.82,
-     "previous": 47.82,
-     "value": 32.88
     }
    ],
    "points": [
-    [
-     "2022-04-01",
-     30.08
-    ],
     [
      "2022-04-08",
      22.25
@@ -18695,6 +18691,10 @@
     [
      "2026-10-23",
      5.64
+    ],
+    [
+     "2026-10-30",
+     7.87
     ]
    ]
   },
@@ -25883,6 +25883,13 @@
   "notes": {
    "history": [
     {
+     "change": 0.48,
+     "date": "2026-10-30",
+     "prev": 13.7,
+     "previous": 13.7,
+     "value": 14.18
+    },
+    {
      "change": 0.02,
      "date": "2026-10-23",
      "prev": 13.68,
@@ -26014,20 +26021,9 @@
      "prev": 12.29,
      "previous": 12.29,
      "value": 12.54
-    },
-    {
-     "change": 0.32,
-     "date": "2026-06-12",
-     "prev": 11.97,
-     "previous": 11.97,
-     "value": 12.29
     }
    ],
    "points": [
-    [
-     "2022-04-01",
-     9.82
-    ],
     [
      "2022-04-08",
      10.16
@@ -26983,6 +26979,10 @@
     [
      "2026-10-23",
      13.7
+    ],
+    [
+     "2026-10-30",
+     14.18
     ]
    ]
   },
@@ -32401,6 +32401,13 @@
   "rupeesec": {
    "history": [
     {
+     "change": 0.23,
+     "date": "2026-10-30",
+     "prev": 21.07,
+     "previous": 21.07,
+     "value": 21.3
+    },
+    {
      "change": -0.35,
      "date": "2026-10-23",
      "prev": 21.42,
@@ -32532,20 +32539,9 @@
      "prev": 27.54,
      "previous": 27.54,
      "value": 27.86
-    },
-    {
-     "change": 2.3,
-     "date": "2026-06-12",
-     "prev": 25.24,
-     "previous": 25.24,
-     "value": 27.54
     }
    ],
    "points": [
-    [
-     "2022-04-01",
-     11.67
-    ],
     [
      "2022-04-08",
      9.7
@@ -33501,6 +33497,10 @@
     [
      "2026-10-23",
      21.07
+    ],
+    [
+     "2026-10-30",
+     21.3
     ]
    ]
   },
