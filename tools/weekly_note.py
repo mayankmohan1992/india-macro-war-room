@@ -139,7 +139,7 @@ def repo_cell(asof: dt.date) -> dict | None:
         bp = float(h.get("change") or 0.0)
         prev = float(h.get("previous", h.get("prev", v - bp / 100)) or 0.0)
         delta = f"{bp:+.0f} bp on {short_date(str(h.get('date', d)))}, from {pct(prev)}"
-        clause = "the benchmark every other rate is priced off"
+        clause = "the benchmark for every other rate in the economy"
     else:
         delta, clause = "no change on record", f"in force on {short_date(d)}"
     return cell("repo", "Policy repo rate", pct(v), delta, short_date(d), clause, "series/repo.html", pts)
@@ -157,7 +157,7 @@ def cpi_cell(asof: dt.date) -> dict | None:
     gap = v - TARGET
     side = "above" if gap > 0 else "below"
     where = "inside" if BAND[0] <= v <= BAND[1] else "outside"
-    clause = f"{abs(gap):.2f} points {side} the {TARGET:.0f}% target, {where} the {BAND[0]:.0f}–{BAND[1]:.0f}% band"
+    clause = f"{abs(gap):.2f} pp {side} the {TARGET:.0f}% target, {where} the {BAND[0]:.0f}–{BAND[1]:.0f}% band"
     return cell("cpi", "CPI inflation", pct(v), delta, short_date(d), clause, "series/cpi.html", pts)
 
 
@@ -172,8 +172,8 @@ def wpi_cell(asof: dt.date) -> dict | None:
     cpi = load("cpi")
     if cpi:
         cv = latest(cpi)[1]
-        clause = (f"{abs(v - cv):.2f} points above retail inflation" if v > cv
-                  else f"{abs(v - cv):.2f} points below retail inflation")
+        clause = (f"{abs(v - cv):.2f} pp above retail inflation" if v > cv
+                  else f"{abs(v - cv):.2f} pp below retail inflation")
     else:
         clause = "wholesale price inflation"
     return cell("wpi", "WPI inflation", pct(v), delta, short_date(d), clause, "series/wpi.html", pts)
@@ -192,14 +192,14 @@ def liquidity_cell(asof: dt.date) -> dict | None:
     if month:
         then, now = abs(month[1]), abs(v)
         moved = now - then
-        delta = (f"net {side}, {crore(moved)} {'less' if moved < 0 else 'more'} than "
-                 f"{WINDOW_DAYS} days ago (then {crore(then)})")
+        delta = (f"{side} {'fell' if moved < 0 else 'rose'} to {crore(now)} from {crore(then)} "
+                 f"in {WINDOW_DAYS} days")
     else:
         delta = f"net {side}, no reading a month back to compare"
     c = cell("liquidity", "Liquidity (net LAF, 1-month avg)",
              ("\u2212" if v < 0 else "") + crore(v), delta, short_date(d),
              "1-month average of daily net RBI operations", "series/liquidity.html", pts)
-    c["delta_card"] = delta.replace(f"{WINDOW_DAYS} days ago", "4 weeks ago")
+    c["delta_card"] = delta.replace(f"in {WINDOW_DAYS} days", "in 4 weeks")
     return c
 
 
@@ -239,30 +239,41 @@ def gsec_cell(asof: dt.date) -> dict | None:
                 "what the market charges the government to borrow for ten years", "series/gsec.html", pts)
 
 
-def fx_line(asof: dt.date) -> str:
+def fx_cell(asof: dt.date) -> dict | None:
+    """The seventh number, kept structured so it cannot read as a stray paragraph."""
     ind = load("usdinr")
     if not ind:
-        return ""
+        return None
     pts = points(ind)
     d, v = latest(ind)
     month = at_or_before(pts, (asof - dt.timedelta(days=WINDOW_DAYS)).isoformat())
     if not month:
-        return f"USD/INR at {v:.2f} on {short_date(d)}."
+        return {"label": "Also · USD/INR", "value": f"{v:.2f}", "delta": "no reading a month back",
+                "obs": short_date(d), "clause": "rupees per US dollar"}
     move, base = v - month[1], month[1]
-    return (f"USD/INR at {v:.2f} on {short_date(d)}, {abs(move):.2f} "
-            f"{'lower' if move < 0 else 'higher'} than {WINDOW_DAYS} days earlier "
-            f"({move / base * 100:+.1f}%) — a {'stronger' if move < 0 else 'weaker'} rupee.").replace("-", "\u2212")
+    delta = (f"{(move):+.2f} ({(move) / base * 100:+.1f}%) in {WINDOW_DAYS} days").replace("-", "\u2212")
+    return {"label": "Also · USD/INR", "value": f"{v:.2f}", "delta": delta, "obs": short_date(d),
+            "clause": "rupees per US dollar, the rupee " + ("firmer" if move < 0 else "weaker") + " on the month"}
 
 
 def freshness_line(asof: dt.date) -> str:
-    """How old the oldest print behind the note is - the honest caveat, computed not guessed."""
+    """How old the oldest print behind the note is - measured to the day the note is written.
+
+    The API's own `stale_days` is relative to the dataset's as-of date, which is not the same thing as
+    "how old is this print today": on 2026-11-10 a 30 Sep print is 41 days old, not the 32 the dataset
+    reported on 2026-11-01. The note says the age the reader can check.
+    """
     rows = []
     for ind_id in ("cpi", "wpi", "credit", "gsec"):
         ind = load(ind_id)
         if not ind:
             continue
-        age = ind.get("stale_days")
-        if isinstance(age, int) and age > 0:
+        obs, _ = latest(ind)
+        try:
+            age = (asof - dt.date.fromisoformat(obs)).days
+        except ValueError:
+            continue
+        if age > 0:
             rows.append((age, ind.get("label", ind_id)))
     rows.sort(reverse=True)
     if not rows:
@@ -288,7 +299,7 @@ def build(asof: dt.date) -> dict:
             missing.append(cid.replace("_", " "))
 
     return {"cells": cells, "missing": missing, "counts": counts, "asof": asof,
-            "dataset_as_of": dataset_as_of, "fx": fx_line(asof), "fresh": freshness_line(asof),
+            "dataset_as_of": dataset_as_of, "fx_cell": fx_cell(asof), "fresh": freshness_line(asof),
             "sha": (status.get("dataset_sha256") or "")[:12]}
 
 
@@ -315,8 +326,10 @@ def render_md(note: dict) -> str:
         out.append(f"{i}. **{cell['label']} — {cell['value']}** ({cell['obs']}). "
                    f"{cell['delta'][0].upper() + cell['delta'][1:]}; {cell['clause']}.")
     out.append("")
-    if note["fx"]:
-        out.append(note["fx"])
+    if note["fx_cell"]:
+        fx = note["fx_cell"]
+        out.append(f"**{fx['label']} — {fx['value']}** ({fx['obs']}). "
+                   f"{fx['delta'][0].upper() + fx['delta'][1:]}; {fx['clause']}.")
         out.append("")
     if note["fresh"]:
         out.append(note["fresh"])
@@ -386,10 +399,108 @@ def render_card_html(note: dict) -> str:
 </div>
 <div class="grid">{cells}</div>
 <div class="strip">
-  <span>{c.get('good',0)} in range · {c.get('watch',0)} to watch · {c.get('bad',0)} in stress, of 38 tracked</span>
+  <span>{c.get('good',0)} in range · {c.get('watch',0)} to watch · {c.get('bad',0)} in stress, of 38 tracked{f" · USD/INR {note['fx_cell']['value']}" if note.get('fx_cell') else ""}</span>
   <span>RBI DBIE · mayankmohan1992.github.io/india-macro-war-room</span>
 </div>"""
 
+
+
+NOTE_CSS = """
+  :root{--bg:#f7f5f1;--ink:#17181a;--muted:#5f6065;--rule:#d9d4cb;--accent:#8a4b1f}
+  @media (prefers-color-scheme:dark){:root{--bg:#121312;--ink:#ece9e3;--muted:#b6b7ba;--rule:#3b3d3b;--accent:#e0a377}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,
+       "Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.62;font-size:17px}
+  .wrap{max-width:42rem;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+  h1{font-size:1.9rem;letter-spacing:-.02em;line-height:1.15;margin:0 0 .5rem;text-wrap:balance}
+  .sub{color:var(--muted);font-size:.95rem;margin:0 0 2rem}
+  .counts{font-size:.95rem;border-left:2px solid var(--rule);padding-left:1rem;color:var(--muted);margin:0 0 2.2rem}
+  ol{padding:0;margin:0;list-style:none;counter-reset:n}
+  li{counter-increment:n;padding:1.05rem 0;border-top:1px solid var(--rule)}
+  li:last-child{border-bottom:1px solid var(--rule)}
+  li.aside{counter-increment:none}
+  li.aside .lbl::before{content:""}
+  .lbl{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.08em;
+       text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.15rem}
+  .lbl::before{content:counter(n) ". ";color:var(--accent)}
+  li.aside .lbl{letter-spacing:.12em}
+  .val{font-size:1.45rem;font-weight:640;letter-spacing:-.015em}
+  .dlt{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--accent);margin-left:.5rem}
+  .note{display:block;font-size:.9rem;color:var(--muted);margin-top:.2rem}
+  p.fx,p.fresh{font-size:.95rem;color:var(--muted);text-wrap:pretty}
+  .fine{font-size:.88rem;line-height:1.5;display:inline-block;margin-top:.5rem;text-wrap:pretty}
+  a.src{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--rule)}
+  a.src:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  li.aside .lbl{color:var(--muted)}
+  footer{margin-top:2.6rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+         font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--muted);line-height:1.6}
+  footer a{color:var(--accent);text-underline-offset:3px}
+"""
+
+
+def tie_units(text: str) -> str:
+    """Keep a number with its unit, and short phrases unbroken, when a line wraps.
+
+    The card and the note are read in a feed, where an orphaned "pp" or a dangling "in" is the
+    difference between looking generated and looking written.
+    """
+    nbsp = "\u00a0"
+    out = esc(text)
+    out = re.sub(r"(\d[\d.,]*|−₹\d[\d.,]*)\s(lakh crore|pp|bp|points|%|days)",
+                 lambda m: m.group(1) + nbsp + m.group(2), out)
+    out = re.sub(r"\b(in|over|on)\s(\d+\u00a0days)", lambda m: m.group(1) + nbsp + m.group(2), out)
+    out = re.sub(r"\b(down|up)\s(\d[\d.]*\u00a0pp)", lambda m: m.group(1) + nbsp + m.group(2), out)
+    return out
+
+
+def render_note_html(note: dict) -> str:
+    week = note["asof"].isocalendar()
+    c = note["counts"]
+    items = "".join(
+        f'<li><span class="lbl">{tie_units(cell["label"])}</span>'
+        f'<span class="val">{tie_units(cell["value"])}</span>'
+        f'<span class="dlt">{tie_units(cell["delta"])}</span>'
+        f'<span class="note"><a class="src" href="../api/v1/series/'
+        f'{cell["id"].split("_")[0]}.csv" title="the series behind this number">'
+        f'{tie_units(cell["obs"])}</a> · {tie_units(cell["clause"])}</span></li>'
+        for cell in note["cells"])
+    fx = note.get("fx_cell")
+    fx_row = (f'<li class="aside"><span class="lbl">{tie_units(fx["label"])}</span>'
+              f'<span class="val">{tie_units(fx["value"])}</span>'
+              f'<span class="dlt">{tie_units(fx["delta"])}</span>'
+              f'<span class="note">{tie_units(fx["obs"])} · {tie_units(fx["clause"])}</span></li>'
+              if fx else "")
+    counts = (f'{c.get("good", 0)} in range · {c.get("watch", 0)} to watch · '
+              f'{c.get("bad", 0)} in stress, of 38 tracked') if c else ""
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The week in six numbers — {week.year}-W{week.week:02d}</title>
+<meta name="description" content="Six Indian macro numbers as published, with the date of each print and what it moved by.">
+<style>{NOTE_CSS}</style></head><body><div class="wrap">
+<h1>The week in six numbers</h1>
+<p class="sub">{week.year}-W{week.week:02d} · compiled {note['asof'].isoformat()} · data as of {esc(note['dataset_as_of'])}</p>
+<p class="counts">{counts}<br><span class="fine">"In range", "to watch" and "in stress" follow rules
+published with the data, not a judgement made here. Each figure below is the latest <em>published</em>
+print of that indicator, not one week's worth of it — the dates differ because the sources do.</span></p>
+<ol>{items}{fx_row}</ol>
+
+{f'<p class="fresh">{esc(note["fresh"])}</p>' if note['fresh'] else ''}
+<p class="fresh">A negative net LAF figure means the RBI is <em>absorbing</em> liquidity from the banking
+system; the sign carries the direction. Definitions for every term are in the
+<a href="https://github.com/mayankmohan1992/india-macro-war-room/blob/main/docs/DATA_DICTIONARY.md">data
+dictionary</a>.</p>
+<footer>
+  Every figure above is traceable to an RBI table: the
+  <a href="../">dashboard</a> draws the series, the <a href="../api/v1/">API</a> serves it, and the
+  build fails rather than publish a short table.<br>
+  <code>dataset_sha256 {note['sha']}…</code> · source: RBI DBIE · MIT
+</footer>
+</div></body></html>"""
+
+
+def esc(s) -> str:
+    return (str(s if s is not None else "")
+            .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;"))
 
 def update_index(note_files: list[pathlib.Path], where: pathlib.Path = NOTES) -> None:
     rows = ["# Notes", "",
@@ -398,9 +509,23 @@ def update_index(note_files: list[pathlib.Path], where: pathlib.Path = NOTES) ->
     for p in sorted(note_files, reverse=True):
         first = p.read_text(encoding="utf-8").splitlines()[0]
         rows.append(f"- [{first.lstrip('# ').strip()}]({p.name})")
-    rows += ["", f"Latest note, machine-readable: [`notes/`](.) is served at "
-                 f"https://mayankmohan1992.github.io/india-macro-war-room/notes/"]
+    rows += ["", "Machine-readable copy of each note sits beside its page (`YYYY-Www.md`), and the "
+                 "social card (`YYYY-Www.png`) is the same six numbers for posting."]
     (where / "index.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+    items = "".join(
+        f'<li><a href="{p.stem}.html">{esc(p.read_text(encoding="utf-8").splitlines()[0].lstrip("# ").strip())}</a>'
+        f' · <a href="{p.stem}.png">card</a></li>'
+        for p in sorted(note_files, reverse=True))
+    (where / "index.html").write_text(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes · India Macro War Room</title><style>{NOTE_CSS}</style></head><body><div class="wrap">
+<h1>Notes</h1>
+<p class="sub">One note a week: six numbers that describe the Indian macro picture, generated from the
+same API the dashboard serves, each figure carrying the date it was published.</p>
+<ol>{items}</ol>
+<footer><a href="../">Dashboard</a> · <a href="../api/v1/">API</a> · source: RBI DBIE · MIT</footer>
+</div></body></html>""", encoding="utf-8")
 
 
 def main(argv: list[str]) -> int:
@@ -425,6 +550,9 @@ def main(argv: list[str]) -> int:
     md = out_dir / f"{stem}.md"
     md.write_text(render_md(note), encoding="utf-8")
     print(f"[INFO] [Note] wrote {md} ({len(note['cells'])} of {len(SLOT_ORDER)} slots)")
+    page = out_dir / f"{stem}.html"
+    page.write_text(render_note_html(note), encoding="utf-8")
+    print(f"[INFO] [Note] wrote {page}")
 
     if args.png:
         args.card = True

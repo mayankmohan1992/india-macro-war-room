@@ -4,4 +4,4 @@ One note a week: the six numbers that describe the Indian macro picture, generat
 
 - [The week in six numbers — 2026-W46](2026-W46.md)
 
-Latest note, machine-readable: [`notes/`](.) is served at https://mayankmohan1992.github.io/india-macro-war-room/notes/
+Machine-readable copy of each note sits beside its page (`YYYY-Www.md`), and the social card (`YYYY-Www.png`) is the same six numbers for posting.

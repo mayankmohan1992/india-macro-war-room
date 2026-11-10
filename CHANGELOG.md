@@ -28,7 +28,21 @@ Four rules are enforced in the code, not in a style guide:
   not against last week. Each is handled where it is used, and the first two renderings were wrong
   before review (a "+25 pp" repo move, and a liquidity line that read as a positive number).
 
-Ships with a 1200×675 card, rendered by the Chromium that CI already installs, plus `notes/index.md`.
+Ships with a 1200×675 card, rendered by the Chromium CI already installs, an HTML page for each note
+and `notes/index.html` — GitHub Pages serves `index.html`, not `index.md`, so the directory 404'd until
+the rendered page existed.
+
+### Fixed while reading the generated output
+
+Reviewing the first note against the API caught four things the code could not have caught by passing:
+
+- the repo rate's move was rendered as **+25 pp** because the table stores basis points as `25.0`;
+- liquidity was shown as a positive number, hiding the fact that a positive/negative net LAF means
+  injection/absorption — the value now carries the sign and the prose says which it is;
+- "1.25 lakh crore less than 28 days ago" was arithmetically consistent but read as a sign error; it
+  now says "fell to ₹1.44 lakh crore from ₹2.69 lakh crore";
+- ages came from the API's `stale_days`, which is measured to the dataset's as-of date, not to the day
+  the note is written (30 Sep is 41 days old on 10 Nov, not 32).
 
 ### Changed
 
