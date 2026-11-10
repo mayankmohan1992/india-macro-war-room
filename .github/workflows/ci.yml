@@ -85,6 +85,8 @@ jobs:
               assert banned not in md.lower(), f"the note must not forecast (found {banned!r})"
           print("note ok:", len(md.split()), "words,", len(items), "numbers")
           PY
+
+      - name: Validate the published API
         run: python tools/validate_api.py
 
       - name: Reproducibility check - the committed dashboard must match the rebuild
@@ -117,8 +119,33 @@ jobs:
           python -c "import re,pathlib; s=pathlib.Path('public/embed.js').read_text(); assert 'data-imwr-series' in s and 'api/v1/' in s; print('embed.js ok', len(s), 'bytes')"
 
       - name: Validate the workflows themselves
+        # PyYAML silently keeps the LAST value of a duplicate key and reports success; GitHub reads the
+        # same file as invalid and refuses to run it (a step header lost in an edit put two `run:` keys
+        # in one step, and only the Actions parser noticed). So duplicates are checked here by hand.
         run: |
-          python -c "
-          import sys, yaml, pathlib
-          for p in pathlib.Path('.github/workflows').glob('*.yml'):
-              yaml.safe_load(p.read_text()); print('ok:', p)"
+          python - <<'PY'
+          import pathlib, sys, yaml
+
+          class Strict(yaml.SafeLoader):
+              pass
+
+          def no_duplicates(loader, node, deep=False):
+              seen = set()
+              for key_node, _ in node.value:
+                  key = loader.construct_object(key_node, deep=deep)
+                  if key in seen:
+                      raise yaml.YAMLError(f"duplicate key {key!r} at line {key_node.start_mark.line + 1}")
+                  seen.add(key)
+              return yaml.SafeLoader.construct_mapping(loader, node, deep)
+
+          Strict.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, no_duplicates)
+          bad = 0
+          for p in sorted(pathlib.Path(".github/workflows").glob("*.yml")):
+              try:
+                  yaml.load(p.read_text(), Loader=Strict)     # noqa: S506 - local repo files
+                  print("ok:", p)
+              except yaml.YAMLError as exc:
+                  bad += 1
+                  print(f"INVALID: {p}: {exc}")
+          sys.exit(1 if bad else 0)
+          PY
