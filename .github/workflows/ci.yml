@@ -71,7 +71,20 @@ jobs:
           python -m playwright install --with-deps chromium
           python verify_dashboard.py
 
-      - name: Validate the published API
+      - name: Generate a note from the committed API (does not touch notes/)
+        run: |
+          python tools/weekly_note.py --out /tmp/notecheck --card --date 2026-11-13
+          python - <<'PY'
+          import pathlib, re, sys
+          md = pathlib.Path("/tmp/notecheck/2026-W46.md").read_text()
+          items = re.findall(r"^\d\. \*\*", md, re.M)
+          assert len(items) == 6, f"expected 6 numbers, got {len(items)}\n{md}"
+          assert "dataset_sha256" in md, "the note must carry the dataset hash it was built from"
+          # the note's own disclaimer says "not forecast", so only forward-looking *claims* are banned
+          for banned in ("is expected to", "will rise", "will fall", "likely to", "should push"):
+              assert banned not in md.lower(), f"the note must not forecast (found {banned!r})"
+          print("note ok:", len(md.split()), "words,", len(items), "numbers")
+          PY
         run: python tools/validate_api.py
 
       - name: Reproducibility check - the committed dashboard must match the rebuild

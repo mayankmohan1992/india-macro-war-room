@@ -13,7 +13,11 @@ cp dashboard/index.html public/index.html
 cp -r api/v1 public/api/v1
 cp embed/embed.js public/embed.js        # the embeddable chart, served from the site root
 cp embed/demo.html public/embed.html     # live demo + copy-paste snippets, at /embed.html
+if [ -d notes ]; then
+  mkdir -p public/notes
+  cp notes/*.md notes/*.png notes/*.html public/notes/ 2>/dev/null || true   # weekly notes, at /notes/
+fi
 touch public/.nojekyll
 
 echo "[INFO] [Pages] assembled public/ ($(find public -type f | wc -l) files, $(du -sh public | cut -f1))"
-echo "[INFO] [Pages] dashboard -> /            API -> /api/v1/   embed -> /embed.js (demo /embed.html)"
+echo "[INFO] [Pages] dashboard -> /   API -> /api/v1/   embed -> /embed.js   notes -> /notes/"

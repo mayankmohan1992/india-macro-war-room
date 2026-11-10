@@ -4,6 +4,41 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.11] — 2026-11-10
+
+### Added — the weekly note, generated and publishable
+
+`tools/weekly_note.py` writes one short note a week: six numbers, each carrying the date it refers to,
+what it moved by, and the threshold it is measured against, plus the count of indicators in range / to
+watch / in stress. Published at
+**<https://mayankmohan1992.github.io/india-macro-war-room/notes/>**.
+
+It is meant to be a citable artefact rather than a repo: a reader can check any line against
+`api/v1/`, and a journalist can quote it without re-deriving anything.
+
+Four rules are enforced in the code, not in a style guide:
+
+- **No forecast, no causal claim.** "CPI is 1.54 points above the 4% target" is arithmetic; "food is
+  driving inflation" is an argument this file cannot make, so it does not try.
+- **No number without its publication date.** The note is written on a Friday and leans on prints up
+  to five weeks old; it says so in a line of its own rather than implying freshness.
+- **No padding.** A missing series drops the slot and the count, instead of being replaced.
+- **No unit confusion.** The repo rate moves in basis points and is stored as `25.0` for +25 bp;
+  liquidity is negative when the RBI absorbs; credit's `change` is against the previous *publication*,
+  not against last week. Each is handled where it is used, and the first two renderings were wrong
+  before review (a "+25 pp" repo move, and a liquidity line that read as a positive number).
+
+Ships with a 1200×675 card, rendered by the Chromium that CI already installs, plus `notes/index.md`.
+
+### Changed
+
+- `daily.yml` writes the note on Fridays after Chromium is available, commits it separately (the data
+  commit only fires when RBI published something), and refuses to let a note failure cost the day's
+  refresh. The "nothing changed, discard the churn" branch excludes `notes/`.
+- `scripts/build-public.sh` publishes `notes/` at `/notes/`.
+- CI generates a throwaway note from the committed API and asserts six numbers, a dataset hash, and no
+  forecasting language.
+
 ## [1.0.10] — 2026-11-10
 
 ### Fixed — the dashboard payload can no longer be read half-written

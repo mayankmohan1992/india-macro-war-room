@@ -97,6 +97,24 @@ jobs:
           python -m playwright install --with-deps chromium
           python verify_dashboard.py
 
+      - name: Write this week's note (Fridays, UTC)
+        id: note
+        # The note is generated, not handwritten, but it is still an editorial act: it goes out once a
+        # week whether or not RBI published anything, because the value is the weekly cadence. A
+        # failure here must not cost the day's data, so it warns and lets the refresh continue.
+        run: |
+          if [ "$(date -u +%u)" != "5" ]; then
+            echo "not Friday (UTC) - no note this run"
+            echo "wrote=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if python tools/weekly_note.py --card --png; then
+            echo "wrote=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "wrote=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::weekly note failed; the refresh continues without it"
+          fi
+
       - name: Validate the published API
         run: python tools/validate_api.py
 
@@ -113,7 +131,7 @@ jobs:
           echo "rebuilt   dataset=$NEW"
           if [ "$NEW" = "$OLD" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            git checkout -- . || true      # discard the timestamp-only churn
+            git checkout -- . ':(exclude)notes' || true   # timestamp churn only; keep the new note
             echo "RBI has published nothing new since the last run - nothing to commit."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -121,6 +139,20 @@ jobs:
             git commit -m "data: refresh from RBI DBIE ($(date -u +%Y-%m-%d))"
             git push
           fi
+
+      - name: Commit the weekly note
+        if: steps.note.outputs.wrote == 'true'
+        run: |
+          set -euo pipefail
+          git add notes
+          if git diff --cached --quiet; then
+            echo "note already committed - nothing to do"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "note: the week in six numbers ($(date -u +%G-W%V))"
+          git push
 
       # WHY THE ARTIFACT IS UPLOADED HERE and not in a later job: a second job runs
       # `actions/checkout` at the SHA of the triggering event, i.e. the commit from BEFORE this run
