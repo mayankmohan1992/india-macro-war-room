@@ -4,6 +4,42 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.9] — 2026-11-10
+
+### Added — `embed.js`: any indicator, on any page, in two lines
+
+A 12 KB dependency-free widget that draws one tracked indicator into someone else's page — a blog
+post, a class page, a company intranet — from the same static API:
+
+```html
+<div data-imwr-series="repo" data-imwr-range="10y" data-imwr-height="200"></div>
+<script src="https://mayankmohan1992.github.io/india-macro-war-room/embed.js" async></script>
+```
+
+- Reads `api/v1/series/<id>.json` (CORS-enabled, no key, no quota); renders SVG, so it stays sharp at
+  any size and needs no canvas or charting library.
+- Lives in a shadow root: the host page's CSS cannot break the chart, and the chart cannot leak styles
+  back. Light/dark follows the reader's preference; `--imwr-*` custom properties recolour it.
+- Re-renders on container resize; one fetch per series per page load; no cookies, storage or beacons.
+- Fails loudly in the same footprint — a missing series says so and links to the dashboard, rather
+  than rendering an empty plot that looks like a missing series.
+- The credit line is part of the licence and is not optional.
+
+### Added — the instructions, in two places
+
+- **[docs/EMBED.md](docs/EMBED.md)** — attributes, series ids, theming, the JS API (`IMWR.embed`,
+  `IMWR.render`), CSP entries, self-hosting a mirror, and a troubleshooting table for the five
+  failures people actually hit.
+- **<https://mayankmohan1992.github.io/india-macro-war-room/embed.html>** — a live demo: the charts
+  rendered, the snippet next to each one, and the theme override shown applied rather than described.
+
+### Changed
+
+- `scripts/build-public.sh` publishes `embed.js` at the site root and the demo at `/embed.html`.
+- CI asserts the Pages artifact contains both, and that the demo loads no third-party script.
+
+No numbers change; the dataset and its `dataset_sha256` are untouched by this release.
+
 ## [1.0.8] — 2026-11-10
 
 The 2026-11-09 refresh failed on a recoverable network blip: RBI's WAF closed every connection for

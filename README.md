@@ -14,7 +14,8 @@ macroeconomic indicators — built from the Reserve Bank of India's public publi
 | **Dashboard** | https://mayankmohan1992.github.io/india-macro-war-room/ |
 | **API base (CORS-enabled)** | `https://raw.githubusercontent.com/mayankmohan1992/india-macro-war-room/main/api/v1/` |
 | **API mirror (Pages)** | `https://mayankmohan1992.github.io/india-macro-war-room/api/v1/` |
-| **Reference** | [API](docs/API.md) · [Methodology](docs/METHODOLOGY.md) · [Data dictionary](docs/DATA_DICTIONARY.md) · [Sources](docs/SOURCES.md) · [Definitions](docs/DEFINITIONS.md) · [Dashboard guide](docs/DASHBOARD.md) |
+| **Embeddable chart** | <https://mayankmohan1992.github.io/india-macro-war-room/embed.html> · [docs](docs/EMBED.md) |
+| **Reference** | [API](docs/API.md) · [Embed](docs/EMBED.md) · [Methodology](docs/METHODOLOGY.md) · [Data dictionary](docs/DATA_DICTIONARY.md) · [Sources](docs/SOURCES.md) · [Definitions](docs/DEFINITIONS.md) · [Dashboard guide](docs/DASHBOARD.md) |
 
 ![The dashboard](docs/assets/screenshot-light.png)
 
@@ -68,6 +69,31 @@ print(df.tail(3))
 ```
 
 Full endpoint reference: **[docs/API.md](docs/API.md)**.
+
+## Put a chart on your own page
+
+Two lines, no key, no build step, no dependency:
+
+```html
+<div data-imwr-series="repo" data-imwr-range="10y" data-imwr-height="200"></div>
+<script src="https://mayankmohan1992.github.io/india-macro-war-room/embed.js" async></script>
+```
+
+That draws the policy repo rate over ten years with its latest reading, axis bounds, date range and a
+credit line — and re-renders itself when the container resizes. Any of the 38 indicators works
+(`data-imwr-series="cpi"`, `"usdinr"`, `"gsec"`, …), in five ranges from `1y` to `all`, in light or
+dark, recoloured with `--imwr-accent` and friends.
+
+Live demo with copy-paste blocks: **<https://mayankmohan1992.github.io/india-macro-war-room/embed.html>**
+· attributes, theming, the JS API, CSP and troubleshooting: **[docs/EMBED.md](docs/EMBED.md)**
+
+```html
+<!-- several charts on one page: the script tag goes once -->
+<div data-imwr-series="usdinr"   data-imwr-height="150"></div>
+<div data-imwr-series="gsec"     data-imwr-height="150"></div>
+<div data-imwr-series="liquidity" data-imwr-height="150"></div>
+<script src="https://mayankmohan1992.github.io/india-macro-war-room/embed.js" async></script>
+```
 
 ## What is tracked
 
@@ -183,10 +209,11 @@ publish_api.py           the static JSON/CSV API
 definitions.json         sourced definitions (33 terms, each with a source URL)
 tools/gen_docs.py        generates the data dictionary + definitions reference
 tools/validate_api.py    API schema + consistency + integrity checks
+embed/                   embed.js (the widget) + demo.html (live demo with copy-paste blocks)
 scripts/                 refresh.sh (local pipeline) · build-public.sh (Pages artifact)
 raw/                     committed source tables (reproducible offline builds)
 api/v1/                  published API      dashboard/  published site
-docs/                    API · methodology · data dictionary · sources · deployment · dashboard guide
+docs/                    API · embed · methodology · data dictionary · sources · deployment · dashboard guide
 .github/workflows/       daily.yml (refresh + deploy) · ci.yml (reproducibility + gates)
 ```
 

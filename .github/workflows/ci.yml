@@ -93,7 +93,15 @@ jobs:
           PY
 
       - name: Check the Pages artifact assembles
-        run: bash scripts/build-public.sh && test -f public/index.html && test -f public/api/v1/latest.json
+        run: |
+          bash scripts/build-public.sh
+          test -f public/index.html
+          test -f public/api/v1/latest.json
+          test -f public/embed.js
+          test -f public/embed.html
+          # the demo must not load any third-party script or stylesheet
+          python -c "import re,pathlib; h=pathlib.Path('embed/demo.html').read_text(); ext=[u for u in re.findall(r'src=\"([^\"]+)\"', h) if u.startswith('http') and 'mayankmohan1992.github.io' not in u]; assert not ext, ext; print('demo.html: no third-party src')"
+          python -c "import re,pathlib; s=pathlib.Path('public/embed.js').read_text(); assert 'data-imwr-series' in s and 'api/v1/' in s; print('embed.js ok', len(s), 'bytes')"
 
       - name: Validate the workflows themselves
         run: |
