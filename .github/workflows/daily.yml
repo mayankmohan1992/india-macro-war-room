@@ -60,7 +60,25 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 
       - name: Fetch the latest tables from RBI DBIE
-        run: python fetch_series.py
+        # RBI's WAF drops the connection pool entirely for 30-60s at a time (observed 2026-11-09:
+        # RemoteDisconnected on every call for ~40s, then healthy again). A single such blip used to
+        # cost the day's refresh and mail a false alarm, so the step retries as well as the client.
+        # fetch_series.py exits 1 only when its completeness gate rejects the data, and raw/ is
+        # written solely after that gate passes - so a retry re-fetches from scratch and can never
+        # half-publish. Three attempts, 60s apart, covers a WAF outage without masking a real break.
+        run: |
+          for attempt in 1 2 3; do
+            if python fetch_series.py; then
+              echo "fetch succeeded on attempt $attempt"
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::fetch attempt $attempt failed; retrying in 60s"
+              sleep 60
+            fi
+          done
+          echo "::error::fetch failed after 3 attempts; raw/ left untouched, published data unchanged"
+          exit 1
 
       - name: Verify the numbers against the RBI source tables
         run: python tools/verify_provenance.py

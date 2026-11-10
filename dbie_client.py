@@ -65,6 +65,19 @@ UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
 
 log = logging.getLogger("dbie")
 
+
+def _backoff(attempt: int, base: float = 2.0, cap: float = 30.0) -> float:
+    """Sleep before retry #attempt: exponential, capped, with jitter.
+
+    The cap used to be 10s with 3 attempts, i.e. a ~14s retry window. RBI's WAF drops connections
+    for 30-60s at a time, so every retry landed inside the same outage and the run failed on a
+    perfectly recoverable blip. The window is now ~60s, and the jitter stops a batch of parallel
+    calls from retrying in lockstep.
+    """
+    import random
+    raw = base * (2 ** (attempt - 1))
+    return min(raw * (0.75 + random.random() / 2), cap)
+
 # --------------------------------------------------------------------------- #
 # Field-level crypto
 # --------------------------------------------------------------------------- #
@@ -163,14 +176,43 @@ class DBieClient:
         })
 
     # -- step 1: sticky cookie -------------------------------------------------
-    def warm_up(self) -> None:
+    def warm_up(self, attempts: int = 3) -> None:
         """GET the SPA index so the WAF issues the TS01eeff17 sticky cookie."""
+        last: Exception | None = None
+        for attempt in range(1, attempts + 1):
+            try:
+                r = self.session.get(HOST + "/", timeout=self.timeout)
+                log.info("[INFO] [Session] warm-up %s cookies=%s", r.status_code, list(self.session.cookies))
+                return
+            except requests.RequestException as exc:
+                last = exc
+                log.warning("[WARN] [Session] warm-up attempt %s/%s failed: %s", attempt, attempts, exc)
+                if attempt < attempts:
+                    self._reset_session()
+                    time.sleep(_backoff(attempt))
+        log.error("[ERROR] [Session] warm-up failed:\n%s", traceback.format_exc())
+        raise last  # type: ignore[misc]
+
+    def _reset_session(self) -> None:
+        """Drop the connection pool and rebuild it, then re-earn the cookie + token.
+
+        A RemoteDisconnected on one call leaves the pool holding dead keep-alive sockets, and the
+        next few requests then fail the same way even though the network is healthy again. Retrying
+        on top of that pool just burns the retry budget, so the pool is what gets replaced.
+        """
         try:
-            r = self.session.get(HOST + "/", timeout=self.timeout)
-            log.info("[INFO] [Session] warm-up %s cookies=%s", r.status_code, list(self.session.cookies))
-        except requests.RequestException:
-            log.error("[ERROR] [Session] warm-up failed:\n%s", traceback.format_exc())
-            raise
+            self.session.close()
+        except Exception:                                # closing a broken pool must never raise
+            pass
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": UA,
+            "Origin": HOST,
+            "Referer": HOST + "/",
+            "Accept": "application/json, text/plain, */*",
+        })
+        self.token, self.token_ts = None, 0.0
+        log.info("[INFO] [Session] connection pool reset")
 
     # -- step 2: mint token ----------------------------------------------------
     def mint(self) -> str:
@@ -204,7 +246,7 @@ class DBieClient:
 
     # -- step 3: data calls ----------------------------------------------------
     def call(self, action: str, body: dict | None = None, gateway: str = "DBIE",
-             retries: int = 3, raw: bool = False) -> Any:
+             retries: int = 6, raw: bool = False) -> Any:
         """POST one gateway action and return parsed JSON (or the decoded text when raw=True)."""
         if gateway not in GATEWAYS:
             raise ValueError(f"unknown gateway {gateway!r}; expected one of {list(GATEWAYS)}")
@@ -255,8 +297,13 @@ class DBieClient:
                 return parsed
             except Exception as exc:                        # network / parse failure
                 last_err = exc
-                log.warning("[WARN] [Call] %s/%s attempt %s failed: %s", gateway, action, attempt, exc)
-                time.sleep(min(2 ** attempt, 10))           # exponential backoff, capped
+                log.warning("[WARN] [Call] %s/%s attempt %s/%s failed: %s",
+                            gateway, action, attempt, retries, exc)
+                if isinstance(exc, (requests.ConnectionError, requests.Timeout)):
+                    # Dead sockets in the pool, not a bad request: rebuild before trying again.
+                    self._reset_session()
+                if attempt < retries:
+                    time.sleep(_backoff(attempt))           # exponential, capped, jittered
         log.error("[ERROR] [Call] %s/%s gave up after %s attempts", gateway, action, retries)
         raise last_err if last_err else RuntimeError("unknown call failure")
 

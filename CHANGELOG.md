@@ -4,6 +4,38 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.8] — 2026-11-10
+
+The 2026-11-09 refresh failed on a recoverable network blip: RBI's WAF closed every connection for
+about 40 seconds, and the client's entire retry budget was ~14 seconds (3 attempts, backoff capped at
+10s). All three attempts landed inside the same outage, so report 6 was marked failed, the
+completeness gate correctly refused to write `raw/`, and the run exited 1 — a false alarm that cost
+the day's data. The gate behaved exactly as designed; the transport was too impatient to deserve it.
+
+### Fixed — retry budget sized for the failure it actually meets
+
+- `dbie_client.call()` now makes **6 attempts with a ~60s jittered, capped-backoff window**, instead
+  of 3 attempts inside 14s. Jitter keeps a batch of calls from retrying in lockstep.
+- A `ConnectionError`/`Timeout` now **rebuilds the connection pool** (`_reset_session()`) before the
+  next attempt. A WAF drop leaves dead keep-alive sockets behind, and retrying on top of that pool
+  burns the budget on failures that were already over.
+- `warm_up()` retries instead of aborting the run on the first refused connection.
+- The daily workflow retries the whole fetch step 3×, 60s apart. `fetch_series.py` exits 1 only when
+  the gate rejects the data and writes `raw/` only after the gate passes, so a retry re-fetches from
+  scratch and can never half-publish.
+
+**The completeness gate is unchanged.** A genuinely missing table still fails the run, still leaves
+`raw/` and the published dataset untouched, and still fails loudly — this release only stops a
+30-60s WAF outage from being reported as one.
+
+### Added — `tests/`
+
+`python -m unittest discover -s tests` (stdlib only, no network) pins the behaviour: recovery after
+N dropped connections, pool reset on connection errors, loud exhaustion at the budget, and a retry
+window that outlasts a 15s outage. CI runs it on every push.
+
+No numbers change beyond the normal daily refresh; `dataset_sha256` moves with the new observations.
+
 ## [1.0.7] — 2026-10-24
 
 Corrects an overclaim in 1.0.6's own wording. The single-source line in a `?` panel read "the value is
