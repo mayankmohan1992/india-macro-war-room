@@ -21,6 +21,10 @@ on:
         description: "Print extra diagnostics"
         type: boolean
         default: false
+      note:
+        description: "Also write the weekly note, even though today is not Friday"
+        type: boolean
+        default: false
 
 permissions:
   contents: read         # least privilege by default; each job opts in below. The refresh job runs
@@ -103,7 +107,7 @@ jobs:
         # week whether or not RBI published anything, because the value is the weekly cadence. A
         # failure here must not cost the day's data, so it warns and lets the refresh continue.
         run: |
-          if [ "$(date -u +%u)" != "5" ]; then
+          if [ "$(date -u +%u)" != "5" ] && [ "${{ inputs.note }}" != "true" ]; then
             echo "not Friday (UTC) - no note this run"
             echo "wrote=false" >> "$GITHUB_OUTPUT"
             exit 0
