@@ -23,6 +23,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import logging
+import os
 import pathlib
 import sys
 import traceback
@@ -30,6 +31,22 @@ from typing import Any
 
 logging.basicConfig(level=logging.INFO, format="%(message)s", stream=sys.stderr)
 log = logging.getLogger("build")
+
+
+def _atomic_write(path: pathlib.Path, text: str) -> None:
+    """Write through a temp file + os.replace.
+
+    The dashboard payload is read by other processes while it is being rebuilt - verify_dashboard.py
+    parses warroom_data.json, and so does anyone with the directory open - and a plain write_text()
+    leaves a window where the file is truncated. Measured on 2026-11-10: a verification run that
+    started mid-rebuild died with `JSONDecodeError: Expecting property name enclosed in double
+    quotes` at the point where the writer had got to. The build was fine; the file was torn.
+    os.replace is atomic on the same filesystem, so a reader sees either the old build or the new
+    one, never half of either.
+    """
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
 
 # Portal timestamps are midnight IST; reading them as UTC dates them one day early (2026-09-30 IST
 # midnight is 2026-09-29T18:30Z). Every portal timestamp here is read in IST.
@@ -1282,8 +1299,8 @@ def main() -> int:
     else:
         html = html.replace("/*__FONT_B64__*/", "")
         log.warning("[WARN] [Build] assets/archivo-var.b64 missing - falling back to system fonts")
-    (OUT / "index.html").write_text(html)
-    (OUT / "warroom_data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1))
+    _atomic_write(OUT / "index.html", html)
+    _atomic_write(OUT / "warroom_data.json", json.dumps(payload, ensure_ascii=False, indent=1))
     log.info("[INFO] [Build] %s tiles (%s good / %s watch / %s bad) -> dashboard/index.html (%.0f KB)",
              len(T), counts["good"], counts["watch"], counts["bad"], len(html) / 1024)
     print(json.dumps({"tiles": len(T), "counts": counts, "verdict": verdict, "as_of": asof}, indent=1))

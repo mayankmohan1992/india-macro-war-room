@@ -4,6 +4,26 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.0.10] — 2026-11-10
+
+### Fixed — the dashboard payload can no longer be read half-written
+
+While the embed work was being verified, a headless verification run that started *during* a rebuild
+died on `JSONDecodeError: Expecting property name enclosed in double quotes ... char 40020`. Nothing
+was wrong with the build: `build_dashboard.py` wrote `dashboard/index.html` and
+`dashboard/warroom_data.json` with a plain `write_text()`, which truncates the file before filling
+it, so any reader that looked in that window saw a partial document.
+
+That is the one failure a verification gate must never produce — a defect report for a defect that
+does not exist — and the same class of bug `fetch_series.py` already guards against with
+`_atomic_write`. Both dashboard artefacts now go through the same temp-file + `os.replace` path, so a
+reader sees either the previous build or the new one.
+
+`tests/test_atomic_write.py` pins it: a thread parses the file continuously while 120 payloads are
+written over it, and every read must parse.
+
+No numbers change; `dataset_sha256` is unchanged.
+
 ## [1.0.9] — 2026-11-10
 
 ### Added — `embed.js`: any indicator, on any page, in two lines
