@@ -164,6 +164,7 @@
    "csv": "series/wpi.csv",
    "self": "series/wpi.json"
   },
+  "period_label": null,
   "points": [
    [
     "2024-04-30",
@@ -323,7 +324,7 @@
   "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T06:50:14Z",
+  "retrieved_at": "2026-11-11T06:59:55Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

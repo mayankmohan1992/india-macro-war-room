@@ -152,6 +152,10 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
             "scoring_rule": t["rule"],
             "series": key,
             "source": series[key].get("source", ""),
+            # The period the PUBLISHER states ("Sep 2026", "Q1 FY2026-27"), as opposed to `latest.date`,
+            # which is the ISO date the series is keyed on (first of the month). A consumer quoting a
+            # figure should render this one; null where the publisher states no period.
+            "period_label": t.get("period_label"),
             "latest": {"date": t["period"], "value": t["value"], "change": t["change"]},
             "stale_days": t.get("stale_days"),
             "stale": bool(t.get("stale")),
