@@ -996,13 +996,14 @@
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 38,
+  "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-10T17:53:44Z",
+  "retrieved_at": "2026-11-11T06:50:14Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

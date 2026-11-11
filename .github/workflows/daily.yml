@@ -84,6 +84,29 @@ jobs:
           echo "::error::fetch failed after 3 attempts; raw/ left untouched, published data unchanged"
           exit 1
 
+      - name: Fetch the real-economy layer from MoSPI
+        # PLFS / IIP / NAS come from api.mospi.gov.in as JSON. Two things are deliberate here:
+        #   * the host negotiates with unsafe legacy renegotiation, which OpenSSL 3 refuses by default -
+        #     fetch_mospi.py sets ssl.OP_LEGACY_SERVER_CONNECT, so an SSL error here means the parameter
+        #     was lost, not that the endpoint died;
+        #   * this step is allowed to fail. raw/mospi.json is replaced only when the fetch gate passes,
+        #     so a MoSPI outage leaves the previous good file in place and the page keeps publishing it
+        #     with its stated reference period. Losing the RBI refresh over a MoSPI hiccup would be the
+        #     worse trade.
+        continue-on-error: true
+        run: |
+          for attempt in 1 2 3; do
+            if python fetch_mospi.py; then
+              echo "real-economy fetch succeeded on attempt $attempt"
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::MoSPI fetch attempt $attempt failed; retrying in 45s"
+              sleep 45
+            fi
+          done
+          echo "::warning::MoSPI fetch failed after 3 attempts; keeping the previous raw/mospi.json"
+
       - name: Verify the numbers against the RBI source tables
         run: python tools/verify_provenance.py
 

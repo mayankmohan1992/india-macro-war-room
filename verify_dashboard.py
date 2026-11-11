@@ -11,7 +11,7 @@ empty grid, a modal that never opens). Every promise the page makes is asserted 
            * NO DEAD SPACE: every row of every grid reaches its container's right edge, at every
              width in the sweep
   data     * every tile in the DOM with a status class, non-empty value and a ? that resolves to a
-             SOURCED definition; 26 chart cards; 38 sparklines; snapshot + rule tables complete
+             SOURCED definition; 30 chart cards; 43 sparklines; snapshot + rule tables complete
   charts   * every card has a visible legend and a visible expand control, and draws real geometry
            * every chart has a dated x axis and a labelled y axis
            * hover reads out the value for a date; multi-series charts read out every series
@@ -37,7 +37,7 @@ from playwright.sync_api import sync_playwright
 ROOT = pathlib.Path(__file__).resolve().parent
 PAGE = ROOT / "dashboard" / "index.html"
 DATA = json.loads((ROOT / "dashboard" / "warroom_data.json").read_text())
-N_CHARTS = 26
+N_CHARTS = 30
 GRIDS = [".tiles", ".charts", ".strip"]
 
 
@@ -1135,7 +1135,7 @@ def main() -> int:
             print(f"  * {p}")
         return 1
     print("PASS — fixed-viewport shell with independent panes, no dead space at 7 widths, "
-          "38 tiles + 26 charts, legend/expand/hover/zoom on every chart, 33 sourced definitions, "
+          "43 tiles + 30 charts, legend/expand/hover/zoom on every chart, 38 sourced definitions, "
           "worst-first sort, 3 densities, Archivo embedded, hamburger rail on mobile.")
     return 0
 

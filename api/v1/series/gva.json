@@ -1,0 +1,169 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas",
+   "term": "Gross Value Added (GVA) at basic prices, constant prices"
+  },
+  "frequency": "quarterly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": -0.46,
+    "date": "2026-04-01",
+    "prev": 8.69,
+    "previous": 8.69,
+    "value": 8.23
+   },
+   {
+    "change": 1.1,
+    "date": "2026-01-01",
+    "prev": 7.59,
+    "previous": 7.59,
+    "value": 8.69
+   },
+   {
+    "change": -0.72,
+    "date": "2025-10-01",
+    "prev": 8.31,
+    "previous": 8.31,
+    "value": 7.59
+   },
+   {
+    "change": 1.36,
+    "date": "2025-07-01",
+    "prev": 6.95,
+    "previous": 6.95,
+    "value": 8.31
+   },
+   {
+    "change": 0.4,
+    "date": "2025-04-01",
+    "prev": 6.55,
+    "previous": 6.55,
+    "value": 6.95
+   },
+   {
+    "change": -1.06,
+    "date": "2025-01-01",
+    "prev": 7.61,
+    "previous": 7.61,
+    "value": 6.55
+   },
+   {
+    "change": 0.6,
+    "date": "2024-10-01",
+    "prev": 7.01,
+    "previous": 7.01,
+    "value": 7.61
+   },
+   {
+    "change": -0.45,
+    "date": "2024-07-01",
+    "prev": 7.46,
+    "previous": 7.46,
+    "value": 7.01
+   },
+   {
+    "change": null,
+    "date": "2024-04-01",
+    "prev": null,
+    "previous": null,
+    "value": 7.46
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 9 published observations of 9 stored",
+  "id": "gva",
+  "kind": "reading",
+  "label": "GVA growth, y-o-y (computed)",
+  "latest": {
+   "change": -0.46,
+   "date": "2026-04-01",
+   "value": 8.23
+  },
+  "links": {
+   "csv": "series/gva.csv",
+   "self": "series/gva.json"
+  },
+  "points": [
+   [
+    "2024-04-01",
+    7.46
+   ],
+   [
+    "2024-07-01",
+    7.01
+   ],
+   [
+    "2024-10-01",
+    7.61
+   ],
+   [
+    "2025-01-01",
+    6.55
+   ],
+   [
+    "2025-04-01",
+    6.95
+   ],
+   [
+    "2025-07-01",
+    8.31
+   ],
+   [
+    "2025-10-01",
+    7.59
+   ],
+   [
+    "2026-01-01",
+    8.69
+   ],
+   [
+    "2026-04-01",
+    8.23
+   ]
+  ],
+  "scoring_rule": "Computed from published constant-price levels, not a published growth rate. Green 5-8%, watch 3-5% / >8%, red <3%.",
+  "series": "act_gva_yoyt",
+  "source": "MoSPI NAS quarterly (computed from published levels)",
+  "stale": false,
+  "stale_days": 214,
+  "status": "watch",
+  "status_reason": "8.2% - above-trend growth - check whether it is a base effect",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 43,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T06:50:14Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

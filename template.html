@@ -206,6 +206,8 @@
   table.rules td.mono{font-family:var(--mono);color:var(--ink2);font-size:11px}
   footer.foot{grid-column:1/-1;border-top:1px solid var(--line);margin-top:18px;padding-top:10px;
     color:var(--ink3);font-size:10.5px;font-family:var(--mono);line-height:1.6}
+  footer.foot .disclaim{margin-top:11px;padding-top:9px;border-top:1px dotted var(--line2);max-width:98ch}
+  footer.foot .disclaim b{color:var(--ink2)}
 
   /* ---------------- modals (chart + definition) ---------------- */
   .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
@@ -395,15 +397,21 @@ function yAxisTitle(cfg){
   if(cfg.opts&&cfg.opts.band) return '% y-o-y vs target';
   return cfg.yTitle || '%';
 }
-function tickLabel(iso, n){
+function tickLabel(iso, n, spanDays){
   const dt=new Date(iso+'T00:00:00Z');
   const m=dt.toLocaleString('en-GB',{month:'short',timeZone:'UTC'});
+  /* The month/day decision keys on the WINDOW'S SPAN, not on how many points are in it. A monthly
+     series carries few points but can still cross a year boundary - 17 points of PLFS run Apr 2025 to
+     Sep 2026, and "1 Apr ... 1 Sept" with no year is ambiguous on a page whose whole argument is that
+     dates matter. Sparse-but-long windows now carry the year. */
+  if(spanDays>330) return n>150 ? (m+" '"+String(dt.getUTCFullYear()).slice(2))
+                                : (m+' '+String(dt.getUTCFullYear()).slice(2));
   return n>150 ? (m+" '"+String(dt.getUTCFullYear()).slice(2))
        : n>60  ? (m+' '+String(dt.getUTCFullYear()).slice(2))
                : (dt.getUTCDate()+' '+m);
 }
 
-/* ---------- chart registry (26 charts) ---------- */
+/* ---------- chart registry (30 charts) ---------- */
 const CHARTS = [
   /* prices */
   {id:'cpi', section:'prices', title:'CPI inflation vs the 4% target', unit:'%',
@@ -537,7 +545,28 @@ const CHARTS = [
    cap:'% per annum · the top of the published issuance-rate range each fortnight',
    kind:'line', initial:80, defKeys:['certificate_of_deposit','commercial_paper'],
    keys:[{key:'cd_rate', color:'accent'},{key:'cp_rate', color:'accent2'}],
-   legend:[['CD max rate','accent'],['CP max rate','accent2']]}
+   legend:[['CD max rate','accent'],['CP max rate','accent2']]},
+
+  /* real economy — MoSPI API. The only charts here that are not money, credit or prices, and the only
+     ones whose x-axis carries the publisher's stated reference period rather than a market date. */
+  {id:'liveur', section:'activity', title:'Unemployment: all-India, rural and urban', unit:'%',
+   cap:'% of the labour force, 15+, current weekly status · MoSPI PLFS monthly · period as published',
+   kind:'line', initial:17, defKeys:['unemployment_rate'],
+   keys:[{key:'act_ur', color:'accent'},{key:'act_ur_rural', color:'accent2'},{key:'act_ur_urban', color:'bad'}],
+   legend:[['all-India','accent'],['rural','accent2'],['urban','bad']]},
+  {id:'livelfpr', section:'activity', title:'Labour force participation vs worker population ratio', unit:'%',
+   cap:'% of population 15+ · the gap between the two lines is the unemployment rate',
+   kind:'line', initial:17, defKeys:['labour_force_participation_rate','worker_population_ratio'],
+   keys:[{key:'act_lfpr', color:'accent'},{key:'act_wpr', color:'good'}],
+   legend:[['LFPR','accent'],['WPR','good']]},
+  {id:'liveiip', section:'activity', title:'Industrial production growth, y-o-y', unit:'%',
+   cap:'% y-o-y · IIP General, base 2022-23 · the growth figure MoSPI publishes, not one derived here',
+   kind:'line', initial:19, defKeys:['iip'], zeroLine:true,
+   keys:[{key:'act_iip_growth', color:'accent', fill:true}], legend:[['IIP growth','accent']]},
+  {id:'livegva', section:'activity', title:'Output growth: GVA, y-o-y (quarterly)', unit:'%',
+   cap:'% y-o-y · constant prices, 2022-23 base · computed from published levels by MoSPI industry total',
+   kind:'line', initial:13, defKeys:['gva'], zeroLine:true,
+   keys:[{key:'act_gva_yoyt', color:'accent2', fill:true}], legend:[['GVA growth','accent2']]}
 ];
 
 /* ---------- windowing ---------- */
@@ -590,6 +619,10 @@ function drawChart(wrap, cfg, n, pan, W, H){
 
   const maxTicks = Math.max(3, Math.round((W-L-R)/110));
   const stepT = Math.max(1, Math.ceil(nD/maxTicks));
+  /* How long the WINDOW is, in days - the tick label needs this, not the point count. */
+  const spanDays = (nD>1)
+    ? (new Date(dates[nD-1]+'T00:00:00Z') - new Date(dates[0]+'T00:00:00Z')) / 86400000
+    : 0;
   const ticks = [];
   for(let i=0;i<nD;i+=stepT) ticks.push(i);
   /* ALWAYS label the NEWEST observation: the regular grid can stop a whole interval short of the end,
@@ -603,7 +636,7 @@ function drawChart(wrap, cfg, n, pan, W, H){
   ticks.forEach(i=>{
     const xx = cfg.kind==='line' ? xD(dates[i]) : xI(i);
     g+=`<line x1="${xx.toFixed(1)}" y1="${(H-B).toFixed(1)}" x2="${xx.toFixed(1)}" y2="${(H-B+3).toFixed(1)}" stroke="${C.axis}"/>`;
-    g+=`<text x="${xx.toFixed(1)}" y="${(H-B+fs+5).toFixed(1)}" fill="${C.dim2}" font-size="${fs}" text-anchor="middle">${tickLabel(dates[i], nD)}</text>`;
+    g+=`<text x="${xx.toFixed(1)}" y="${(H-B+fs+5).toFixed(1)}" fill="${C.dim2}" font-size="${fs}" text-anchor="middle">${tickLabel(dates[i], nD, spanDays)}</text>`;
   });
   g+=`<line x1="${L}" y1="${(H-B).toFixed(1)}" x2="${W-R}" y2="${(H-B).toFixed(1)}" stroke="${C.axis}"/>`;
   // the x-axis title lives on its OWN row under the tick labels - at the right edge it collided with
@@ -736,7 +769,9 @@ const GROUPS = [
   {id:'external',no:'07', name:'External',             note:'reserves and the rupee',
    ids:['fxa','fca','gold','fwd3m','usdinr']},
   {id:'fiscal',  no:'08', name:'Fiscal & government paper', note:'who the government borrows from',
-   ids:['tbill','rbicredit','rupeesec']}
+   ids:['tbill','rbicredit','rupeesec']},
+  {id:'activity',no:'09', name:'Real economy',           note:'labour, industry, output · MoSPI',
+   ids:['ur','lfpr','wpr','iip','gva']}
 ];
 let sortMode='theme';
 function packSpans(n){
@@ -779,7 +814,8 @@ function tileHTML(t, span){
       </div>
     </div>
     <div class="t-foot"><span class="${cls}">${word}</span><span>${
-      t.effective_from ? 'in force since ' + t.effective_from : t.period.slice(0,10)}${
+      t.effective_from ? 'in force since ' + t.effective_from
+        : (t.period_label || t.period.slice(0,10))}${
       t.stale ? ' · last reported' : ''}</span></div>
   </div>`;
 }
@@ -802,7 +838,8 @@ const SECTIONS = [
   {id:'prices',   no:'01', name:'Prices',                    note:'what is moving, and by how much'},
   {id:'policy',   no:'02', name:'Policy, money & liquidity', note:'rate direction and system liquidity'},
   {id:'credit',   no:'03', name:'Credit & banking',          note:'credit growth and how it is funded'},
-  {id:'external', no:'04', name:'External, fiscal & markets',note:'reserves, government paper, market rates'}
+  {id:'external', no:'04', name:'External, fiscal & markets',note:'reserves, government paper, market rates'},
+  {id:'activity', no:'05', name:'Real economy',              note:'labour, industry and output · MoSPI PLFS / IIP / NAS'}
 ];
 function drawAll(){
   document.querySelectorAll('.card[data-chart] .chartwrap').forEach(w=>{
@@ -833,10 +870,10 @@ function renderCharts(){
              <span class="hint">click chart to expand · hover for values</span></div>
          </div>`).join('')}
       </div>
-      ${sec.id==='external' ? `<div class="sec"><span class="no">05</span><h2>Policy settings &amp; market prices</h2>
+      ${sec.id===SECTIONS[SECTIONS.length-1].id ? `<div class="sec"><span class="no">06</span><h2>Policy settings &amp; market prices</h2>
         <span class="note">point-in-time · each value carries its own date and source</span></div>
         <div class="strip" id="strip"></div>
-        <div class="sec"><span class="no">06</span><h2>How each colour is decided</h2>
+        <div class="sec"><span class="no">07</span><h2>How each colour is decided</h2>
         <span class="note">conventional market/RBI readings, not official verdicts</span></div>
         <div class="card wide"><table class="rules"><thead><tr><th>Indicator</th><th>Rule used</th></tr></thead>
         <tbody id="rules-body"></tbody></table></div>
@@ -1207,7 +1244,17 @@ function renderHead(){
       return `<b>Provenance:</b> ${s.indicators_verified} of ${s.indicators_total} indicators are independently verified against the RBI source tables (${s.passed}/${s.checks} checks passed at ${V.as_of}) · `+
              `${s.indicators_single_source} are single-source, with no second witness in the tables we fetch, and are labelled as such in each ? panel.<br>`;})()+
     `All percentages, growth rates, spreads and moving averages are computed at build time; this page only draws them. `+
-    `Definitions are carried from RBI / MoSPI / FBIL published pages. Typeface: Archivo (SIL Open Font License), embedded so the page works offline.`;
+    `Definitions are carried from RBI / MoSPI / FBIL published pages. Typeface: Archivo (SIL Open Font License), embedded so the page works offline.`+
+    `<div class="disclaim"><b>Dates, and how a figure reaches this page.</b> Every series here is an official
+     publication of the body named beside it (Reserve Bank of India, MoSPI/NSO, and others), reproduced
+     without alteration, and carries the <b>reference period that publisher states</b> — not the date this
+     page was built. Government bodies routinely announce a figure on one date and load it into their
+     database on a later one, following their own update cadence; where that happens, this page shows the
+     value as it appears in the publisher's database, with its stated period. <b>A figure announced but not
+     yet published to the database is not shown here</b>, and no date on this page should be read as the
+     announcement date. Where a publisher revises history, this page carries the current vintage, not the
+     vintage originally published — so a value can differ from the one reported in the press on the day it
+     was announced.</div>`;
 }
 
 /* ---------- go ----------

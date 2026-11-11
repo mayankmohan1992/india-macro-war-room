@@ -4,6 +4,61 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.1.0] — 2026-11-11
+
+### Added — the real-economy layer, from MoSPI's API
+
+The war room was a monetary and financial dashboard: every one of its 38 indicators was a price, a rate
+or a balance. It could not answer whether anything was actually being produced or whether anyone was
+working. Five indicators now do, from the Ministry of Statistics and Programme Implementation:
+
+- **PLFS monthly** — unemployment rate, labour force participation and worker population ratio
+  (persons 15+, current weekly status), plus the rural and urban splits.
+- **IIP monthly** — the General index (2022-23=100) and the y-o-y growth MoSPI publishes with it.
+- **NAS quarterly** — total gross value added at constant prices, and a y-o-y computed from those levels.
+
+`fetch_mospi.py` writes `raw/mospi.json`; `build_dashboard.py` loads it, adds five tiles and four charts
+under a new **Real economy** section, and `publish_api.py` publishes them like any other indicator. No
+scraper, no PDF, no key.
+
+### Changed — the stated reference period is shown, not inferred
+
+Every tile now carries `period_label` — the period its publisher states ("Sep 2026", "Q1 FY2026-27") —
+separately from the ISO date the series is keyed on. The tile footer renders the label, so the page
+never presents the first of the month as if it were the publisher's period.
+
+### Changed — staleness is judged per cadence
+
+The audit used one 60-day rule for everything, which made the whole new layer read "stale" on the day it
+was published (a monthly print arrives ~6 weeks behind the daily rates; a quarterly one is a season
+behind). Limits are now 60 days by default, 100 for monthly and 230 for quarterly series.
+
+### Fixed — sparse-but-long chart axes carry the year
+
+Tick labels chose between "1 Apr" and "Apr 25" by point count, so a 17-point monthly series spanning two
+years was labelled "1 Apr … 1 Sept" with no year. The decision now keys on the window's span.
+
+### Added — verification for the new layer
+
+Two provenance checks, both real second witnesses rather than restatements: `mospi_ur_identity`
+(UR = (LFPR − WPR) ÷ LFPR on all 17 published months, worst gap 0.135pp) and `mospi_iip_growth`
+(published y-o-y vs growth recomputed from MoSPI's own index, worst gap 0.05pp). GVA is declared
+single-source, not dressed up as verified. 18/18 checks now pass; 24 indicators verified.
+
+### Added — a footer disclaimer about announce-vs-publish dates
+
+The page states, at the end, that a publisher may announce a figure on one date and load it into its
+database later, that the page therefore shows the database value with its stated period, and that no
+date on the page should be read as an announcement date. Where a publisher revises history the page
+carries the current vintage, not the original.
+
+### Docs
+
+`SOURCES.md` gains the MoSPI section (endpoints, parameters, and the six traps — legacy TLS, calendar vs
+fiscal year, all-India-only monthly PLFS, Q4 of the next calendar year, pagination, no release date) and
+the list of sources rejected for being PDF-only. `README.md` gains the layer's rationale and rules.
+`GOVT_SOURCES_PLAN.md` records the recon and why ISP is absent.
+
 ## [1.0.11] — 2026-11-10
 
 ### Added — the weekly note, generated and publishable

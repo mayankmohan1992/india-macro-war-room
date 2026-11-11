@@ -21,6 +21,15 @@ BUILD_ONLY=0
 if [[ "$BUILD_ONLY" -eq 0 ]]; then
   log "[INFO] fetching report tables from data.rbi.org.in"
   python3 fetch_series.py >"$LOG_DIR/fetch_$STAMP.log" 2>&1 || { log "[ERROR] fetch failed - see $LOG_DIR/fetch_$STAMP.log"; exit 1; }
+  # The real-economy layer (MoSPI: PLFS / IIP / NAS) is refreshed alongside, but a MoSPI outage must not
+  # take down the RBI refresh: raw/mospi.json is only replaced when the fetch gate passes, so a failure
+  # here leaves the previous good file in place and the page keeps showing its stated period.
+  log "[INFO] fetching the real-economy layer from api.mospi.gov.in"
+  if python3 fetch_mospi.py >"$LOG_DIR/mospi_$STAMP.log" 2>&1; then
+    grep -E '^\[INFO\] \[(PLFS|IIP|NAS|Gate)\]' "$LOG_DIR/mospi_$STAMP.log" | sed 's/^\[INFO\] /        /' | tee -a "$LOG"
+  else
+    log "[WARN] MoSPI fetch failed - keeping the previous raw/mospi.json; see $LOG_DIR/mospi_$STAMP.log"
+  fi
 else
   log "[INFO] --build-only: reusing raw/*.json"
 fi

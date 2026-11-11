@@ -1,0 +1,279 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "The Index of Industrial Production measures short-term changes in the volume of production of a basket of industrial products relative to a chosen base period, here 2022-23 = 100. The General index combines mining and quarrying, manufacturing, and electricity. The growth rate published with each month is the percentage change over the same month a year earlier, and is quoted here as published rather than recomputed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP monthly release",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+   "term": "Index of Industrial Production (IIP), General — base 2022-23"
+  },
+  "frequency": "monthly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": -1.1,
+    "date": "2026-09-01",
+    "prev": 7.8,
+    "previous": 7.8,
+    "value": 6.7
+   },
+   {
+    "change": 0.4,
+    "date": "2026-08-01",
+    "prev": 7.4,
+    "previous": 7.4,
+    "value": 7.8
+   },
+   {
+    "change": -1.4,
+    "date": "2026-07-01",
+    "prev": 8.8,
+    "previous": 8.8,
+    "value": 7.4
+   },
+   {
+    "change": 3.8,
+    "date": "2026-06-01",
+    "prev": 5.0,
+    "previous": 5.0,
+    "value": 8.8
+   },
+   {
+    "change": 0.1,
+    "date": "2026-05-01",
+    "prev": 4.9,
+    "previous": 4.9,
+    "value": 5.0
+   },
+   {
+    "change": 1.9,
+    "date": "2026-04-01",
+    "prev": 3.0,
+    "previous": 3.0,
+    "value": 4.9
+   },
+   {
+    "change": -1.4,
+    "date": "2026-03-01",
+    "prev": 4.4,
+    "previous": 4.4,
+    "value": 3.0
+   },
+   {
+    "change": 0.3,
+    "date": "2026-02-01",
+    "prev": 4.1,
+    "previous": 4.1,
+    "value": 4.4
+   },
+   {
+    "change": -2.6,
+    "date": "2026-01-01",
+    "prev": 6.7,
+    "previous": 6.7,
+    "value": 4.1
+   },
+   {
+    "change": -0.3,
+    "date": "2025-12-01",
+    "prev": 7.0,
+    "previous": 7.0,
+    "value": 6.7
+   },
+   {
+    "change": 7.9,
+    "date": "2025-11-01",
+    "prev": -0.9,
+    "previous": -0.9,
+    "value": 7.0
+   },
+   {
+    "change": -7.0,
+    "date": "2025-10-01",
+    "prev": 6.1,
+    "previous": 6.1,
+    "value": -0.9
+   },
+   {
+    "change": 1.4,
+    "date": "2025-09-01",
+    "prev": 4.7,
+    "previous": 4.7,
+    "value": 6.1
+   },
+   {
+    "change": -0.7,
+    "date": "2025-08-01",
+    "prev": 5.4,
+    "previous": 5.4,
+    "value": 4.7
+   },
+   {
+    "change": 3.2,
+    "date": "2025-07-01",
+    "prev": 2.2,
+    "previous": 2.2,
+    "value": 5.4
+   },
+   {
+    "change": -1.2,
+    "date": "2025-06-01",
+    "prev": 3.4,
+    "previous": 3.4,
+    "value": 2.2
+   },
+   {
+    "change": -1.4,
+    "date": "2025-05-01",
+    "prev": 4.8,
+    "previous": 4.8,
+    "value": 3.4
+   },
+   {
+    "change": -1.0,
+    "date": "2025-04-01",
+    "prev": 5.8,
+    "previous": 5.8,
+    "value": 4.8
+   },
+   {
+    "change": null,
+    "date": "2025-03-01",
+    "prev": null,
+    "previous": null,
+    "value": 5.8
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 19 published observations of 19 stored",
+  "id": "iip",
+  "kind": "reading",
+  "label": "IIP growth, y-o-y",
+  "latest": {
+   "change": -1.1,
+   "date": "2026-09-01",
+   "value": 6.7
+  },
+  "links": {
+   "csv": "series/iip.csv",
+   "self": "series/iip.json"
+  },
+  "points": [
+   [
+    "2025-03-01",
+    5.8
+   ],
+   [
+    "2025-04-01",
+    4.8
+   ],
+   [
+    "2025-05-01",
+    3.4
+   ],
+   [
+    "2025-06-01",
+    2.2
+   ],
+   [
+    "2025-07-01",
+    5.4
+   ],
+   [
+    "2025-08-01",
+    4.7
+   ],
+   [
+    "2025-09-01",
+    6.1
+   ],
+   [
+    "2025-10-01",
+    -0.9
+   ],
+   [
+    "2025-11-01",
+    7.0
+   ],
+   [
+    "2025-12-01",
+    6.7
+   ],
+   [
+    "2026-01-01",
+    4.1
+   ],
+   [
+    "2026-02-01",
+    4.4
+   ],
+   [
+    "2026-03-01",
+    3.0
+   ],
+   [
+    "2026-04-01",
+    4.9
+   ],
+   [
+    "2026-05-01",
+    5.0
+   ],
+   [
+    "2026-06-01",
+    8.8
+   ],
+   [
+    "2026-07-01",
+    7.4
+   ],
+   [
+    "2026-08-01",
+    7.8
+   ],
+   [
+    "2026-09-01",
+    6.7
+   ]
+  ],
+  "scoring_rule": "The growth rate MoSPI publishes with each month, not one derived here. Green 4-10%, watch 0-4% / >10%, red <0%.",
+  "series": "act_iip_growth",
+  "source": "MoSPI IIP monthly",
+  "stale": false,
+  "stale_days": 61,
+  "status": "good",
+  "status_reason": "6.7% - healthy industrial growth",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 43,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T06:50:14Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

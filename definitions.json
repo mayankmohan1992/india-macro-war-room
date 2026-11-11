@@ -196,5 +196,35 @@
   "definition": "The term spread is the 10-year Government of India par yield minus the 91-day Treasury bill primary yield, computed here from two columns of the same RBI weekly 'Ratios and Rates' table so both legs share one vintage. It is derived by this dashboard and is not published as a series by RBI. A positive, normally-sloped curve is the usual state and reflects term and liquidity premia; a flattening or inverted curve (spread at or below zero) signals tight monetary conditions or expected slowdown; a very steep curve reflects easing expectations, heavy long-end government supply or inflation risk. It is used here as a compact read on the shape of the yield curve.",
   "source_name": "Derived in this dashboard from RBI WSS 'Ratios and Rates' — 10-Year G-Sec Par Yield (FBIL) and 91-Day Treasury Bill Primary Yield; the ratio/spread is not an RBI series",
   "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379"
+ },
+ "unemployment_rate": {
+  "term": "Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status",
+  "definition": "The unemployment rate is the percentage of persons in the labour force who are unemployed, where the labour force is the sum of employed and unemployed persons. Estimates here use the Current Weekly Status (CWS) approach: the activity status of a person is determined by the activities pursued during the seven days preceding the survey date. Figures refer to persons aged 15 years and above, at the all-India level, and are reproduced from the monthly bulletin for the reference month the bulletin states.",
+  "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+  "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+ },
+ "labour_force_participation_rate": {
+  "term": "Labour Force Participation Rate (LFPR)",
+  "definition": "The labour force participation rate is the percentage of the population that is in the labour force — that is, employed or seeking and available for work. PLFS reports it for persons aged 15 years and above using the Current Weekly Status (CWS) approach, separately for rural and urban areas and for all-India.",
+  "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+  "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+ },
+ "worker_population_ratio": {
+  "term": "Worker Population Ratio (WPR)",
+  "definition": "The worker population ratio is the percentage of employed persons in the population. PLFS reports it alongside LFPR and UR for the same reference period and population — persons aged 15 years and above, current weekly status — so that UR = (LFPR − WPR) ÷ LFPR.",
+  "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+  "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+ },
+ "iip": {
+  "term": "Index of Industrial Production (IIP), General — base 2022-23",
+  "definition": "The Index of Industrial Production measures short-term changes in the volume of production of a basket of industrial products relative to a chosen base period, here 2022-23 = 100. The General index combines mining and quarrying, manufacturing, and electricity. The growth rate published with each month is the percentage change over the same month a year earlier, and is quoted here as published rather than recomputed.",
+  "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP monthly release",
+  "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip"
+ },
+ "gva": {
+  "term": "Gross Value Added (GVA) at basic prices, constant prices",
+  "definition": "Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.",
+  "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics",
+  "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas"
  }
 }

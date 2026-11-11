@@ -2,7 +2,7 @@
 
 # Sourced definitions
 
-All 33 terms used by the dashboard and API, quoted from the publishing agency. Nothing here is written from memory: if a term has no sourced wording it is omitted, and the UI shows "definition pending" instead.
+All 38 terms used by the dashboard and API, quoted from the publishing agency. Nothing here is written from memory: if a term has no sourced wording it is omitted, and the UI shows "definition pending" instead.
 
 Machine-readable: `api/v1/definitions.json`.
 
@@ -142,6 +142,22 @@ The 10-year G-Sec par yield is the semi-annual par yield — the yield a hypothe
 
 <sub>key: `gsec10y`</sub>
 
+## Gross Value Added (GVA) at basic prices, constant prices
+
+Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics — <https://esankhyiki.mospi.gov.in/macroindicators?product=nas>
+
+<sub>key: `gva`</sub>
+
+## Index of Industrial Production (IIP), General — base 2022-23
+
+The Index of Industrial Production measures short-term changes in the volume of production of a basket of industrial products relative to a chosen base period, here 2022-23 = 100. The General index combines mining and quarrying, manufacturing, and electricity. The growth rate published with each month is the percentage change over the same month a year earlier, and is quoted here as published rather than recomputed.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — IIP monthly release — <https://esankhyiki.mospi.gov.in/macroindicators?product=iip>
+
+<sub>key: `iip`</sub>
+
 ## Incremental credit-deposit ratio
 
 Incremental credit-deposit ratio = incremental bank credit divided by incremental aggregate deposits, where the increments relate to the financial year so far. RBI publishes it alongside the outstanding ratio in the 'Ratios' table of the Weekly Statistical Supplement, using '**' or '&' markers where incremental deposits are negative and the ratio is undefined. A reading above 100 per cent means new lending exceeds fresh deposit mobilisation, so the gap must be funded from non-deposit sources; a low, zero or negative figure means deposit growth is keeping pace with or exceeding credit growth.
@@ -149,6 +165,14 @@ Incremental credit-deposit ratio = incremental bank credit divided by incrementa
 **Source:** Reserve Bank of India — Weekly Statistical Supplement, 'Ratios' table — <https://rbi.org.in/Scripts/WSSView.aspx?Id=28747>
 
 <sub>key: `incremental_cd_ratio`</sub>
+
+## Labour Force Participation Rate (LFPR)
+
+The labour force participation rate is the percentage of the population that is in the labour force — that is, employed or seeking and available for work. PLFS reports it for persons aged 15 years and above using the Current Weekly Status (CWS) approach, separately for rural and urban areas and for all-India.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin — <https://esankhyiki.mospi.gov.in/macroindicators?product=plfs>
+
+<sub>key: `labour_force_participation_rate`</sub>
 
 ## Liquidity Adjustment Facility: net injection (+) / absorption (-), SDF and MSF
 
@@ -261,6 +285,22 @@ Treasury bills are short-term money-market instruments issued by the Government 
 **Source:** Reserve Bank of India — Government Securities Market in India: A Primer (FAQs) — <https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79>
 
 <sub>key: `treasury_bills`</sub>
+
+## Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status
+
+The unemployment rate is the percentage of persons in the labour force who are unemployed, where the labour force is the sum of employed and unemployed persons. Estimates here use the Current Weekly Status (CWS) approach: the activity status of a person is determined by the activities pursued during the seven days preceding the survey date. Figures refer to persons aged 15 years and above, at the all-India level, and are reproduced from the monthly bulletin for the reference month the bulletin states.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin — <https://esankhyiki.mospi.gov.in/macroindicators?product=plfs>
+
+<sub>key: `unemployment_rate`</sub>
+
+## Worker Population Ratio (WPR)
+
+The worker population ratio is the percentage of employed persons in the population. PLFS reports it alongside LFPR and UR for the same reference period and population — persons aged 15 years and above, current weekly status — so that UR = (LFPR − WPR) ÷ LFPR.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin — <https://esankhyiki.mospi.gov.in/macroindicators?product=plfs>
+
+<sub>key: `worker_population_ratio`</sub>
 
 ## Wholesale Price Index (WPI) inflation
 

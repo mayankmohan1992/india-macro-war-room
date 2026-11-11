@@ -2,13 +2,13 @@
  "verification": {
   "as_of": "2026-10-30",
   "summary": {
-   "checks": 16,
-   "passed": 16,
+   "checks": 18,
+   "passed": 18,
    "failed": 0,
-   "indicators_verified": 20,
-   "indicators_single_source": 18,
+   "indicators_verified": 24,
+   "indicators_single_source": 19,
    "indicators_unverified": 0,
-   "indicators_total": 38
+   "indicators_total": 43
   },
   "indicators": {
    "cpi": {
@@ -261,6 +261,40 @@
      "rbi_balance_sheet"
     ],
     "tier": "identity"
+   },
+   "ur": {
+    "status": "verified",
+    "checks": [
+     "mospi_ur_identity"
+    ],
+    "tier": "identity"
+   },
+   "lfpr": {
+    "status": "verified",
+    "checks": [
+     "mospi_ur_identity"
+    ],
+    "tier": "identity"
+   },
+   "wpr": {
+    "status": "verified",
+    "checks": [
+     "mospi_ur_identity"
+    ],
+    "tier": "identity"
+   },
+   "iip": {
+    "status": "verified",
+    "checks": [
+     "mospi_iip_growth"
+    ],
+    "tier": "derived"
+   },
+   "gva": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed from those levels, so the level has a single witness and the growth has none"
    }
   }
  },
@@ -462,6 +496,36 @@
    "definition": "The term spread is the 10-year Government of India par yield minus the 91-day Treasury bill primary yield, computed here from two columns of the same RBI weekly 'Ratios and Rates' table so both legs share one vintage. It is derived by this dashboard and is not published as a series by RBI. A positive, normally-sloped curve is the usual state and reflects term and liquidity premia; a flattening or inverted curve (spread at or below zero) signals tight monetary conditions or expected slowdown; a very steep curve reflects easing expectations, heavy long-end government supply or inflation risk. It is used here as a compact read on the shape of the yield curve.",
    "source_name": "Derived in this dashboard from RBI WSS 'Ratios and Rates' — 10-Year G-Sec Par Yield (FBIL) and 91-Day Treasury Bill Primary Yield; the ratio/spread is not an RBI series",
    "source_url": "https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379"
+  },
+  "unemployment_rate": {
+   "term": "Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status",
+   "definition": "The unemployment rate is the percentage of persons in the labour force who are unemployed, where the labour force is the sum of employed and unemployed persons. Estimates here use the Current Weekly Status (CWS) approach: the activity status of a person is determined by the activities pursued during the seven days preceding the survey date. Figures refer to persons aged 15 years and above, at the all-India level, and are reproduced from the monthly bulletin for the reference month the bulletin states.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+  },
+  "labour_force_participation_rate": {
+   "term": "Labour Force Participation Rate (LFPR)",
+   "definition": "The labour force participation rate is the percentage of the population that is in the labour force — that is, employed or seeking and available for work. PLFS reports it for persons aged 15 years and above using the Current Weekly Status (CWS) approach, separately for rural and urban areas and for all-India.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+  },
+  "worker_population_ratio": {
+   "term": "Worker Population Ratio (WPR)",
+   "definition": "The worker population ratio is the percentage of employed persons in the population. PLFS reports it alongside LFPR and UR for the same reference period and population — persons aged 15 years and above, current weekly status — so that UR = (LFPR − WPR) ÷ LFPR.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs"
+  },
+  "iip": {
+   "term": "Index of Industrial Production (IIP), General — base 2022-23",
+   "definition": "The Index of Industrial Production measures short-term changes in the volume of production of a basket of industrial products relative to a chosen base period, here 2022-23 = 100. The General index combines mining and quarrying, manufacturing, and electricity. The growth rate published with each month is the percentage change over the same month a year earlier, and is quoted here as published rather than recomputed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP monthly release",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip"
+  },
+  "gva": {
+   "term": "Gross Value Added (GVA) at basic prices, constant prices",
+   "definition": "Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas"
   }
  },
  "def_keys": {
@@ -496,15 +560,21 @@
   "crr": "crr",
   "slr": "slr",
   "usdinr": "exchange_rate",
-  "termspread": "term_spread"
+  "termspread": "term_spread",
+  "ur": "unemployment_rate",
+  "lfpr": "labour_force_participation_rate",
+  "wpr": "worker_population_ratio",
+  "iip": "iip",
+  "gva": "gva"
  },
- "generated": "2026-11-10 17:17 IST",
+ "generated": "2026-11-11 12:20 IST",
  "as_of": "2026-11-01",
  "as_of_by_frequency": {
   "daily": "2026-11-01",
   "weekly": "2026-10-30",
   "fortnightly": "2026-10-31",
-  "monthly": "2026-09-30"
+  "monthly": "2026-09-30",
+  "quarterly": "2026-04-01"
  },
  "cross_checks": [
   {
@@ -522,8 +592,8 @@
  ],
  "verdict": "Stress signals in core indicators",
  "counts": {
-  "good": 12,
-  "watch": 17,
+  "good": 16,
+  "watch": 18,
   "bad": 9
  },
  "tiles": [
@@ -537,6 +607,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "watch",
    "reason": "5.54% - inside the band but above target (an index-derived y-o-y for the same month gives 5.59%; the two differ because the published index is rounded to one decimal)",
    "rule": "The figure the publisher prints (MoSPI/NSO, via the portal's indicator series), not a figure derived here. RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6. The chart draws the longer index-derived history, reconciled against this series to within 0.1pp (see cross_checks).",
@@ -620,9 +691,9 @@
     }
    ],
    "history_note": "last 9 published observations of 9 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "wpi",
@@ -634,6 +705,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "bad",
    "reason": "11.39% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
    "rule": "No formal target. Green 0-3, watch <0 or 3-6, red >6.",
@@ -815,9 +887,9 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "repo",
@@ -829,6 +901,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "bad",
    "reason": "a 25bp hike on 2026-10-09 took it from 5.25% to 5.50%; the weekly table has not published a newer week yet",
    "rule": "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.",
@@ -979,9 +1052,9 @@
     }
    ],
    "history_note": "814 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "m3",
@@ -993,6 +1066,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "16.0% - very fast money growth - inflation risk",
    "rule": "Green 9-15%, watch 7-9 / >15, red <7 (no developed band exists; these are the customary read).",
@@ -1180,9 +1254,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "rm",
@@ -1194,6 +1268,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "good",
    "reason": "10.3% - ample base-money expansion",
    "rule": "Green 8-14%, watch 5-8 / >14, red <5.",
@@ -1381,9 +1456,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "weekly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "credit",
@@ -1395,6 +1470,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "18.2% - very fast credit growth",
    "rule": "Green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
@@ -1582,9 +1658,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "deposit",
@@ -1596,6 +1672,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "16.7% - deposit surge - could signal risk aversion",
    "rule": "Green 10-14%, watch 8-10 / >14, red <8.",
@@ -1783,9 +1860,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "cdr",
@@ -1797,6 +1874,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "good",
    "reason": "81.6% - credit deployment in the usual range",
    "rule": "Green 70-85%, watch 65-70 / 85-95, red <65 or >95.",
@@ -1984,9 +2062,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "liquidity",
@@ -1998,6 +2076,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-11-01",
+   "period_label": null,
    "status": "watch",
    "reason": "-143,546 cr (-1.4 lakh cr), +6,008 cr vs 3 months ago - roughly steady versus a quarter ago",
    "rule": "Direction read: improving > +₹25k cr = green, within +/-₹25k cr = watch, deteriorating > ₹25k cr = red. A negative level alone is not scored as stress (SDF-era absorption is normal).",
@@ -2185,9 +2264,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "daily",
    "stale_days": 0,
-   "stale": false,
-   "freq": "daily"
+   "stale": false
   },
   {
    "id": "callmoney",
@@ -2199,6 +2278,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "5.69% vs the same week's repo 5.50% (spread +0.19pp) - anchored to the repo rate",
    "rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
@@ -2386,9 +2466,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "gsec",
@@ -2400,6 +2480,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "bad",
    "reason": "7.45% (+61 bp over 3m) - yields rising, tightening conditions",
    "rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
@@ -2587,9 +2668,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "fxa",
@@ -2601,6 +2682,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "good",
    "reason": "14.8% - net FX assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
@@ -2788,9 +2870,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "fca",
@@ -2802,6 +2884,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "11.8% - foreign currency assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
@@ -2989,9 +3072,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "tbill",
@@ -3003,6 +3086,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "784,548 cr (-1.3% over 3m) - stable short-term borrowing",
    "rule": "Green if 3-month change <= -5%, watch -5%..+10%, watch/red above +10% (more short-term borrowing).",
@@ -3190,9 +3274,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "cdout",
@@ -3204,6 +3288,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-10-31",
+   "period_label": null,
    "status": "good",
    "reason": "594,204 cr (+15% y-o-y) - CD market functioning normally",
    "rule": "Green -20%..+30% y-o-y; sharp rises flag deposit competition (watch).",
@@ -3391,9 +3476,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 1,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "cpout",
@@ -3405,6 +3490,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-10-31",
+   "period_label": null,
    "status": "watch",
    "reason": "661,259 cr (+38% y-o-y) - surging CP issuance",
    "rule": "Green -20%..+30% y-o-y, watch outside that.",
@@ -3592,9 +3678,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 1,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "turnover",
@@ -3606,6 +3692,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "1,857,855 cr/day (+7% y-o-y) - money-market turnover in line with last year",
    "rule": "Green within +/-20% y-o-y or expanding; watch on a >20% contraction.",
@@ -3793,9 +3880,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "yld91",
@@ -3807,6 +3894,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "bad",
    "reason": "5.93% (+59 bp over 3 months) - short-end yields rising, tighter funding conditions",
    "rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
@@ -3994,9 +4082,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "fwd3m",
@@ -4008,6 +4096,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "5.35% - premia elevated - hedging demand or depreciation expectations building",
    "rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
@@ -4195,9 +4284,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "wpifuel",
@@ -4209,6 +4298,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "bad",
    "reason": "25.85% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
@@ -4390,9 +4480,9 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "wpimanu",
@@ -4404,6 +4494,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "bad",
    "reason": "9.76% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-5%, red >5%.",
@@ -4585,9 +4676,9 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "wpiprim",
@@ -4599,6 +4690,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "bad",
    "reason": "8.67% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
@@ -4780,9 +4872,9 @@
     }
    ],
    "history_note": "last 20 published observations of 30 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "cpirural",
@@ -4794,6 +4886,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "bad",
    "reason": "6.07% - above the upper tolerance limit",
    "rule": "Same 2-6% tolerance band as headline CPI.",
@@ -4981,9 +5074,9 @@
     }
    ],
    "history_note": "last 20 published observations of 153 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "cpiurban",
@@ -4995,6 +5088,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-09-30",
+   "period_label": null,
    "status": "watch",
    "reason": "4.82% - above target",
    "rule": "Same 2-6% tolerance band as headline CPI.",
@@ -5182,9 +5276,9 @@
     }
    ],
    "history_note": "last 20 published observations of 153 stored",
+   "freq": "monthly",
    "stale_days": 32,
-   "stale": false,
-   "freq": "monthly"
+   "stale": false
   },
   {
    "id": "m1",
@@ -5196,6 +5290,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "good",
    "reason": "12.6% - healthy transactions demand",
    "rule": "Green 9-16%, watch 5-9 / >16, red <5%. M1 tracks transactions demand; M3 tracks savings too.",
@@ -5383,9 +5478,9 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "moneymult",
@@ -5397,6 +5492,7 @@
    "unit": "x",
    "fmt": "num",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "6.25x (+0.30 vs a year ago) - multiplier rising - banks creating money faster",
    "rule": "Derived as M3 ÷ reserve money. Green +/-0.15 of a year ago, watch outside that.",
@@ -5584,9 +5680,9 @@
     }
    ],
    "history_note": "last 20 published observations of 220 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "bankdep",
@@ -5598,6 +5694,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "0.6% - broadly flat",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
@@ -5785,9 +5882,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "rbicredit",
@@ -5799,6 +5896,7 @@
    "unit": "₹ crore",
    "fmt": "crore",
    "period": "2026-04-17",
+   "period_label": null,
    "status": "watch",
    "reason": "₹93,392 cr as last reported on 2026-04-17; the RBI table carries no value for this line on any later date (a nil balance is published as a blank cell)",
    "rule": "Loans and advances to the Central Government (Ways and Means Advances and overdrafts). Direction read: falling = green, rising = watch.",
@@ -5986,9 +6084,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 198,
-   "stale": true,
-   "freq": "weekly"
+   "stale": true
   },
   {
    "id": "rupeesec",
@@ -6000,6 +6098,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "21.3% - fast growth - heavy government paper absorption",
    "rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
@@ -6187,9 +6286,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "crr",
@@ -6201,6 +6300,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 48 weekly rows published since",
    "rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
@@ -6351,9 +6451,9 @@
     }
    ],
    "history_note": "814 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "slr",
@@ -6365,6 +6465,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "a 25bp cut on 2020-04-17 took it from 18.25% to 18.00%; the rate has been unchanged in all 342 weekly rows published since",
    "rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
@@ -6515,9 +6616,9 @@
     }
    ],
    "history_note": "814 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "usdinr",
@@ -6529,6 +6630,7 @@
    "unit": "₹",
    "fmt": "num",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "watch",
    "reason": "95.25 (-0.13% over 3m) - rupee broadly stable",
    "rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
@@ -6716,9 +6818,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "termspread",
@@ -6730,6 +6832,7 @@
    "unit": "pp",
    "fmt": "num",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "+1.52pp - normally sloped",
    "rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
@@ -6917,9 +7020,9 @@
     }
    ],
    "history_note": "last 20 published observations of 260 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "gold",
@@ -6931,6 +7034,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "good",
    "reason": "7.9% - RBI building its gold reserve",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
@@ -7118,9 +7222,9 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
   },
   {
    "id": "invest",
@@ -7132,6 +7236,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "good",
    "reason": "9.5% - banks funding government borrowing at a normal pace",
    "rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
@@ -7319,9 +7424,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "nonfood",
@@ -7333,6 +7438,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "18.0% - very fast non-food credit growth",
    "rule": "Same bands as total bank credit: green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
@@ -7520,9 +7626,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "food",
@@ -7534,6 +7640,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
+   "period_label": null,
    "status": "watch",
    "reason": "90.7% - food credit surging - heavy procurement financing",
    "rule": "Loose bands because this series is volatile and seasonal: green 0-20%, watch <0 or >20%.",
@@ -7721,9 +7828,9 @@
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
+   "freq": "fortnightly",
    "stale_days": 17,
-   "stale": false,
-   "freq": "fortnightly"
+   "stale": false
   },
   {
    "id": "notes",
@@ -7735,6 +7842,7 @@
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-30",
+   "period_label": null,
    "status": "bad",
    "reason": "14.2% - cash demand surging - outside money system",
    "rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
@@ -7922,9 +8030,771 @@
     }
    ],
    "history_note": "last 20 published observations of 240 stored",
+   "freq": "weekly",
    "stale_days": 2,
-   "stale": false,
-   "freq": "weekly"
+   "stale": false
+  },
+  {
+   "id": "ur",
+   "def_key": "unemployment_rate",
+   "series_key": "act_ur",
+   "label": "Unemployment rate (15+)",
+   "group": "Activity",
+   "value": 5.0,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-09-01",
+   "period_label": "Sep 2026",
+   "status": "good",
+   "reason": "5.0% - below 6% - inside India's recent structural range",
+   "rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
+   "change": 0.0,
+   "spark": [
+    5.1,
+    5.6,
+    5.6,
+    5.2,
+    5.1,
+    5.2,
+    5.2,
+    4.7,
+    4.8,
+    5.0,
+    4.9,
+    5.2,
+    5.5,
+    5.5,
+    5.1,
+    5.0,
+    5.0
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-09-01",
+     "value": 5.0,
+     "previous": 5.0,
+     "prev": 5.0,
+     "change": 0.0
+    },
+    {
+     "date": "2026-08-01",
+     "value": 5.0,
+     "previous": 5.1,
+     "prev": 5.1,
+     "change": -0.1
+    },
+    {
+     "date": "2026-07-01",
+     "value": 5.1,
+     "previous": 5.5,
+     "prev": 5.5,
+     "change": -0.4
+    },
+    {
+     "date": "2026-06-01",
+     "value": 5.5,
+     "previous": 5.5,
+     "prev": 5.5,
+     "change": 0.0
+    },
+    {
+     "date": "2026-05-01",
+     "value": 5.5,
+     "previous": 5.2,
+     "prev": 5.2,
+     "change": 0.3
+    },
+    {
+     "date": "2026-04-01",
+     "value": 5.2,
+     "previous": 4.9,
+     "prev": 4.9,
+     "change": 0.3
+    },
+    {
+     "date": "2026-02-01",
+     "value": 4.9,
+     "previous": 5.0,
+     "prev": 5.0,
+     "change": -0.1
+    },
+    {
+     "date": "2026-01-01",
+     "value": 5.0,
+     "previous": 4.8,
+     "prev": 4.8,
+     "change": 0.2
+    },
+    {
+     "date": "2025-12-01",
+     "value": 4.8,
+     "previous": 4.7,
+     "prev": 4.7,
+     "change": 0.1
+    },
+    {
+     "date": "2025-11-01",
+     "value": 4.7,
+     "previous": 5.2,
+     "prev": 5.2,
+     "change": -0.5
+    },
+    {
+     "date": "2025-10-01",
+     "value": 5.2,
+     "previous": 5.2,
+     "prev": 5.2,
+     "change": 0.0
+    },
+    {
+     "date": "2025-09-01",
+     "value": 5.2,
+     "previous": 5.1,
+     "prev": 5.1,
+     "change": 0.1
+    },
+    {
+     "date": "2025-08-01",
+     "value": 5.1,
+     "previous": 5.2,
+     "prev": 5.2,
+     "change": -0.1
+    },
+    {
+     "date": "2025-07-01",
+     "value": 5.2,
+     "previous": 5.6,
+     "prev": 5.6,
+     "change": -0.4
+    },
+    {
+     "date": "2025-06-01",
+     "value": 5.6,
+     "previous": 5.6,
+     "prev": 5.6,
+     "change": 0.0
+    },
+    {
+     "date": "2025-05-01",
+     "value": 5.6,
+     "previous": 5.1,
+     "prev": 5.1,
+     "change": 0.5
+    },
+    {
+     "date": "2025-04-01",
+     "value": 5.1,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 17 published observations of 17 stored",
+   "freq": "monthly",
+   "stale_days": 61,
+   "stale": false
+  },
+  {
+   "id": "lfpr",
+   "def_key": "labour_force_participation_rate",
+   "series_key": "act_lfpr",
+   "label": "Labour force participation (15+)",
+   "group": "Activity",
+   "value": 55.5,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-09-01",
+   "period_label": "Sep 2026",
+   "status": "good",
+   "reason": "55.5% - at or above the norm of the past year",
+   "rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
+   "change": -0.1,
+   "spark": [
+    55.6,
+    54.8,
+    54.2,
+    54.9,
+    55.0,
+    55.3,
+    55.4,
+    55.8,
+    56.1,
+    55.9,
+    55.9,
+    55.0,
+    54.4,
+    54.4,
+    55.4,
+    55.6,
+    55.5
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-09-01",
+     "value": 55.5,
+     "previous": 55.6,
+     "prev": 55.6,
+     "change": -0.1
+    },
+    {
+     "date": "2026-08-01",
+     "value": 55.6,
+     "previous": 55.4,
+     "prev": 55.4,
+     "change": 0.2
+    },
+    {
+     "date": "2026-07-01",
+     "value": 55.4,
+     "previous": 54.4,
+     "prev": 54.4,
+     "change": 1.0
+    },
+    {
+     "date": "2026-06-01",
+     "value": 54.4,
+     "previous": 54.4,
+     "prev": 54.4,
+     "change": 0.0
+    },
+    {
+     "date": "2026-05-01",
+     "value": 54.4,
+     "previous": 55.0,
+     "prev": 55.0,
+     "change": -0.6
+    },
+    {
+     "date": "2026-04-01",
+     "value": 55.0,
+     "previous": 55.9,
+     "prev": 55.9,
+     "change": -0.9
+    },
+    {
+     "date": "2026-02-01",
+     "value": 55.9,
+     "previous": 55.9,
+     "prev": 55.9,
+     "change": 0.0
+    },
+    {
+     "date": "2026-01-01",
+     "value": 55.9,
+     "previous": 56.1,
+     "prev": 56.1,
+     "change": -0.2
+    },
+    {
+     "date": "2025-12-01",
+     "value": 56.1,
+     "previous": 55.8,
+     "prev": 55.8,
+     "change": 0.3
+    },
+    {
+     "date": "2025-11-01",
+     "value": 55.8,
+     "previous": 55.4,
+     "prev": 55.4,
+     "change": 0.4
+    },
+    {
+     "date": "2025-10-01",
+     "value": 55.4,
+     "previous": 55.3,
+     "prev": 55.3,
+     "change": 0.1
+    },
+    {
+     "date": "2025-09-01",
+     "value": 55.3,
+     "previous": 55.0,
+     "prev": 55.0,
+     "change": 0.3
+    },
+    {
+     "date": "2025-08-01",
+     "value": 55.0,
+     "previous": 54.9,
+     "prev": 54.9,
+     "change": 0.1
+    },
+    {
+     "date": "2025-07-01",
+     "value": 54.9,
+     "previous": 54.2,
+     "prev": 54.2,
+     "change": 0.7
+    },
+    {
+     "date": "2025-06-01",
+     "value": 54.2,
+     "previous": 54.8,
+     "prev": 54.8,
+     "change": -0.6
+    },
+    {
+     "date": "2025-05-01",
+     "value": 54.8,
+     "previous": 55.6,
+     "prev": 55.6,
+     "change": -0.8
+    },
+    {
+     "date": "2025-04-01",
+     "value": 55.6,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 17 published observations of 17 stored",
+   "freq": "monthly",
+   "stale_days": 61,
+   "stale": false
+  },
+  {
+   "id": "wpr",
+   "def_key": "worker_population_ratio",
+   "series_key": "act_wpr",
+   "label": "Worker population ratio (15+)",
+   "group": "Activity",
+   "value": 52.7,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-09-01",
+   "period_label": "Sep 2026",
+   "status": "good",
+   "reason": "52.7% - at or above the recent norm",
+   "rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
+   "change": -0.1,
+   "spark": [
+    52.8,
+    51.7,
+    51.2,
+    52.0,
+    52.2,
+    52.4,
+    52.5,
+    53.2,
+    53.4,
+    53.1,
+    53.2,
+    52.2,
+    51.4,
+    51.4,
+    52.5,
+    52.8,
+    52.7
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-09-01",
+     "value": 52.7,
+     "previous": 52.8,
+     "prev": 52.8,
+     "change": -0.1
+    },
+    {
+     "date": "2026-08-01",
+     "value": 52.8,
+     "previous": 52.5,
+     "prev": 52.5,
+     "change": 0.3
+    },
+    {
+     "date": "2026-07-01",
+     "value": 52.5,
+     "previous": 51.4,
+     "prev": 51.4,
+     "change": 1.1
+    },
+    {
+     "date": "2026-06-01",
+     "value": 51.4,
+     "previous": 51.4,
+     "prev": 51.4,
+     "change": 0.0
+    },
+    {
+     "date": "2026-05-01",
+     "value": 51.4,
+     "previous": 52.2,
+     "prev": 52.2,
+     "change": -0.8
+    },
+    {
+     "date": "2026-04-01",
+     "value": 52.2,
+     "previous": 53.2,
+     "prev": 53.2,
+     "change": -1.0
+    },
+    {
+     "date": "2026-02-01",
+     "value": 53.2,
+     "previous": 53.1,
+     "prev": 53.1,
+     "change": 0.1
+    },
+    {
+     "date": "2026-01-01",
+     "value": 53.1,
+     "previous": 53.4,
+     "prev": 53.4,
+     "change": -0.3
+    },
+    {
+     "date": "2025-12-01",
+     "value": 53.4,
+     "previous": 53.2,
+     "prev": 53.2,
+     "change": 0.2
+    },
+    {
+     "date": "2025-11-01",
+     "value": 53.2,
+     "previous": 52.5,
+     "prev": 52.5,
+     "change": 0.7
+    },
+    {
+     "date": "2025-10-01",
+     "value": 52.5,
+     "previous": 52.4,
+     "prev": 52.4,
+     "change": 0.1
+    },
+    {
+     "date": "2025-09-01",
+     "value": 52.4,
+     "previous": 52.2,
+     "prev": 52.2,
+     "change": 0.2
+    },
+    {
+     "date": "2025-08-01",
+     "value": 52.2,
+     "previous": 52.0,
+     "prev": 52.0,
+     "change": 0.2
+    },
+    {
+     "date": "2025-07-01",
+     "value": 52.0,
+     "previous": 51.2,
+     "prev": 51.2,
+     "change": 0.8
+    },
+    {
+     "date": "2025-06-01",
+     "value": 51.2,
+     "previous": 51.7,
+     "prev": 51.7,
+     "change": -0.5
+    },
+    {
+     "date": "2025-05-01",
+     "value": 51.7,
+     "previous": 52.8,
+     "prev": 52.8,
+     "change": -1.1
+    },
+    {
+     "date": "2025-04-01",
+     "value": 52.8,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 17 published observations of 17 stored",
+   "freq": "monthly",
+   "stale_days": 61,
+   "stale": false
+  },
+  {
+   "id": "iip",
+   "def_key": "iip",
+   "series_key": "act_iip_growth",
+   "label": "IIP growth, y-o-y",
+   "group": "Activity",
+   "value": 6.7,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-09-01",
+   "period_label": "Sep 2026",
+   "status": "good",
+   "reason": "6.7% - healthy industrial growth",
+   "rule": "The growth rate MoSPI publishes with each month, not one derived here. Green 4-10%, watch 0-4% / >10%, red <0%.",
+   "change": -1.1,
+   "spark": [
+    5.8,
+    4.8,
+    3.4,
+    2.2,
+    5.4,
+    4.7,
+    6.1,
+    -0.9,
+    7.0,
+    6.7,
+    4.1,
+    4.4,
+    3.0,
+    4.9,
+    5.0,
+    8.8,
+    7.4,
+    7.8,
+    6.7
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-09-01",
+     "value": 6.7,
+     "previous": 7.8,
+     "prev": 7.8,
+     "change": -1.1
+    },
+    {
+     "date": "2026-08-01",
+     "value": 7.8,
+     "previous": 7.4,
+     "prev": 7.4,
+     "change": 0.4
+    },
+    {
+     "date": "2026-07-01",
+     "value": 7.4,
+     "previous": 8.8,
+     "prev": 8.8,
+     "change": -1.4
+    },
+    {
+     "date": "2026-06-01",
+     "value": 8.8,
+     "previous": 5.0,
+     "prev": 5.0,
+     "change": 3.8
+    },
+    {
+     "date": "2026-05-01",
+     "value": 5.0,
+     "previous": 4.9,
+     "prev": 4.9,
+     "change": 0.1
+    },
+    {
+     "date": "2026-04-01",
+     "value": 4.9,
+     "previous": 3.0,
+     "prev": 3.0,
+     "change": 1.9
+    },
+    {
+     "date": "2026-03-01",
+     "value": 3.0,
+     "previous": 4.4,
+     "prev": 4.4,
+     "change": -1.4
+    },
+    {
+     "date": "2026-02-01",
+     "value": 4.4,
+     "previous": 4.1,
+     "prev": 4.1,
+     "change": 0.3
+    },
+    {
+     "date": "2026-01-01",
+     "value": 4.1,
+     "previous": 6.7,
+     "prev": 6.7,
+     "change": -2.6
+    },
+    {
+     "date": "2025-12-01",
+     "value": 6.7,
+     "previous": 7.0,
+     "prev": 7.0,
+     "change": -0.3
+    },
+    {
+     "date": "2025-11-01",
+     "value": 7.0,
+     "previous": -0.9,
+     "prev": -0.9,
+     "change": 7.9
+    },
+    {
+     "date": "2025-10-01",
+     "value": -0.9,
+     "previous": 6.1,
+     "prev": 6.1,
+     "change": -7.0
+    },
+    {
+     "date": "2025-09-01",
+     "value": 6.1,
+     "previous": 4.7,
+     "prev": 4.7,
+     "change": 1.4
+    },
+    {
+     "date": "2025-08-01",
+     "value": 4.7,
+     "previous": 5.4,
+     "prev": 5.4,
+     "change": -0.7
+    },
+    {
+     "date": "2025-07-01",
+     "value": 5.4,
+     "previous": 2.2,
+     "prev": 2.2,
+     "change": 3.2
+    },
+    {
+     "date": "2025-06-01",
+     "value": 2.2,
+     "previous": 3.4,
+     "prev": 3.4,
+     "change": -1.2
+    },
+    {
+     "date": "2025-05-01",
+     "value": 3.4,
+     "previous": 4.8,
+     "prev": 4.8,
+     "change": -1.4
+    },
+    {
+     "date": "2025-04-01",
+     "value": 4.8,
+     "previous": 5.8,
+     "prev": 5.8,
+     "change": -1.0
+    },
+    {
+     "date": "2025-03-01",
+     "value": 5.8,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 19 published observations of 19 stored",
+   "freq": "monthly",
+   "stale_days": 61,
+   "stale": false
+  },
+  {
+   "id": "gva",
+   "def_key": "gva",
+   "series_key": "act_gva_yoyt",
+   "label": "GVA growth, y-o-y (computed)",
+   "group": "Activity",
+   "value": 8.23,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-04-01",
+   "period_label": "Q1 FY2026-27",
+   "status": "watch",
+   "reason": "8.2% - above-trend growth - check whether it is a base effect",
+   "rule": "Computed from published constant-price levels, not a published growth rate. Green 5-8%, watch 3-5% / >8%, red <3%.",
+   "change": -0.46,
+   "spark": [
+    7.46,
+    7.01,
+    7.61,
+    6.55,
+    6.95,
+    8.31,
+    7.59,
+    8.69,
+    8.23
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-04-01",
+     "value": 8.23,
+     "previous": 8.69,
+     "prev": 8.69,
+     "change": -0.46
+    },
+    {
+     "date": "2026-01-01",
+     "value": 8.69,
+     "previous": 7.59,
+     "prev": 7.59,
+     "change": 1.1
+    },
+    {
+     "date": "2025-10-01",
+     "value": 7.59,
+     "previous": 8.31,
+     "prev": 8.31,
+     "change": -0.72
+    },
+    {
+     "date": "2025-07-01",
+     "value": 8.31,
+     "previous": 6.95,
+     "prev": 6.95,
+     "change": 1.36
+    },
+    {
+     "date": "2025-04-01",
+     "value": 6.95,
+     "previous": 6.55,
+     "prev": 6.55,
+     "change": 0.4
+    },
+    {
+     "date": "2025-01-01",
+     "value": 6.55,
+     "previous": 7.61,
+     "prev": 7.61,
+     "change": -1.06
+    },
+    {
+     "date": "2024-10-01",
+     "value": 7.61,
+     "previous": 7.01,
+     "prev": 7.01,
+     "change": 0.6
+    },
+    {
+     "date": "2024-07-01",
+     "value": 7.01,
+     "previous": 7.46,
+     "prev": 7.46,
+     "change": -0.45
+    },
+    {
+     "date": "2024-04-01",
+     "value": 7.46,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 9 published observations of 9 stored",
+   "freq": "quarterly",
+   "stale_days": 214,
+   "stale": false
   }
  ],
  "dead_series": {
@@ -7935,6 +8805,949 @@
   }
  },
  "series": {
+  "act_ur_rural": {
+   "label": "Unemployment rate, 15+ (rural)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), rural",
+   "points": [
+    [
+     "2025-04-01",
+     4.5
+    ],
+    [
+     "2025-05-01",
+     5.1
+    ],
+    [
+     "2025-06-01",
+     4.9
+    ],
+    [
+     "2025-07-01",
+     4.4
+    ],
+    [
+     "2025-08-01",
+     4.3
+    ],
+    [
+     "2025-09-01",
+     4.6
+    ],
+    [
+     "2025-10-01",
+     4.4
+    ],
+    [
+     "2025-11-01",
+     3.9
+    ],
+    [
+     "2025-12-01",
+     3.9
+    ],
+    [
+     "2026-01-01",
+     4.2
+    ],
+    [
+     "2026-02-01",
+     4.2
+    ],
+    [
+     "2026-04-01",
+     4.6
+    ],
+    [
+     "2026-05-01",
+     5.1
+    ],
+    [
+     "2026-06-01",
+     5.0
+    ],
+    [
+     "2026-07-01",
+     4.5
+    ],
+    [
+     "2026-08-01",
+     4.1
+    ],
+    [
+     "2026-09-01",
+     4.2
+    ]
+   ]
+  },
+  "act_ur_urban": {
+   "label": "Unemployment rate, 15+ (urban)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), urban",
+   "points": [
+    [
+     "2025-04-01",
+     6.5
+    ],
+    [
+     "2025-05-01",
+     6.9
+    ],
+    [
+     "2025-06-01",
+     7.1
+    ],
+    [
+     "2025-07-01",
+     7.2
+    ],
+    [
+     "2025-08-01",
+     6.7
+    ],
+    [
+     "2025-09-01",
+     6.8
+    ],
+    [
+     "2025-10-01",
+     7.0
+    ],
+    [
+     "2025-11-01",
+     6.5
+    ],
+    [
+     "2025-12-01",
+     6.7
+    ],
+    [
+     "2026-01-01",
+     7.0
+    ],
+    [
+     "2026-02-01",
+     6.6
+    ],
+    [
+     "2026-04-01",
+     6.6
+    ],
+    [
+     "2026-05-01",
+     6.4
+    ],
+    [
+     "2026-06-01",
+     6.6
+    ],
+    [
+     "2026-07-01",
+     6.7
+    ],
+    [
+     "2026-08-01",
+     6.8
+    ],
+    [
+     "2026-09-01",
+     6.9
+    ]
+   ]
+  },
+  "act_ur": {
+   "label": "Unemployment rate, 15+ (all-India)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "points": [
+    [
+     "2025-04-01",
+     5.1
+    ],
+    [
+     "2025-05-01",
+     5.6
+    ],
+    [
+     "2025-06-01",
+     5.6
+    ],
+    [
+     "2025-07-01",
+     5.2
+    ],
+    [
+     "2025-08-01",
+     5.1
+    ],
+    [
+     "2025-09-01",
+     5.2
+    ],
+    [
+     "2025-10-01",
+     5.2
+    ],
+    [
+     "2025-11-01",
+     4.7
+    ],
+    [
+     "2025-12-01",
+     4.8
+    ],
+    [
+     "2026-01-01",
+     5.0
+    ],
+    [
+     "2026-02-01",
+     4.9
+    ],
+    [
+     "2026-04-01",
+     5.2
+    ],
+    [
+     "2026-05-01",
+     5.5
+    ],
+    [
+     "2026-06-01",
+     5.5
+    ],
+    [
+     "2026-07-01",
+     5.1
+    ],
+    [
+     "2026-08-01",
+     5.0
+    ],
+    [
+     "2026-09-01",
+     5.0
+    ]
+   ]
+  },
+  "act_lfpr_rural": {
+   "label": "Labour force participation rate (rural)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), rural",
+   "points": [
+    [
+     "2025-04-01",
+     58.0
+    ],
+    [
+     "2025-05-01",
+     56.9
+    ],
+    [
+     "2025-06-01",
+     56.1
+    ],
+    [
+     "2025-07-01",
+     56.9
+    ],
+    [
+     "2025-08-01",
+     57.0
+    ],
+    [
+     "2025-09-01",
+     57.4
+    ],
+    [
+     "2025-10-01",
+     57.8
+    ],
+    [
+     "2025-11-01",
+     58.6
+    ],
+    [
+     "2025-12-01",
+     59.0
+    ],
+    [
+     "2026-01-01",
+     58.7
+    ],
+    [
+     "2026-02-01",
+     58.7
+    ],
+    [
+     "2026-04-01",
+     57.5
+    ],
+    [
+     "2026-05-01",
+     56.6
+    ],
+    [
+     "2026-06-01",
+     56.6
+    ],
+    [
+     "2026-07-01",
+     58.0
+    ],
+    [
+     "2026-08-01",
+     58.2
+    ],
+    [
+     "2026-09-01",
+     58.0
+    ]
+   ]
+  },
+  "act_lfpr_urban": {
+   "label": "Labour force participation rate (urban)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), urban",
+   "points": [
+    [
+     "2025-04-01",
+     50.7
+    ],
+    [
+     "2025-05-01",
+     50.4
+    ],
+    [
+     "2025-06-01",
+     50.4
+    ],
+    [
+     "2025-07-01",
+     50.7
+    ],
+    [
+     "2025-08-01",
+     50.9
+    ],
+    [
+     "2025-09-01",
+     50.9
+    ],
+    [
+     "2025-10-01",
+     50.5
+    ],
+    [
+     "2025-11-01",
+     50.4
+    ],
+    [
+     "2025-12-01",
+     50.2
+    ],
+    [
+     "2026-01-01",
+     50.3
+    ],
+    [
+     "2026-02-01",
+     50.4
+    ],
+    [
+     "2026-04-01",
+     50.1
+    ],
+    [
+     "2026-05-01",
+     49.8
+    ],
+    [
+     "2026-06-01",
+     50.1
+    ],
+    [
+     "2026-07-01",
+     50.4
+    ],
+    [
+     "2026-08-01",
+     50.4
+    ],
+    [
+     "2026-09-01",
+     50.7
+    ]
+   ]
+  },
+  "act_lfpr": {
+   "label": "Labour force participation rate, 15+",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "points": [
+    [
+     "2025-04-01",
+     55.6
+    ],
+    [
+     "2025-05-01",
+     54.8
+    ],
+    [
+     "2025-06-01",
+     54.2
+    ],
+    [
+     "2025-07-01",
+     54.9
+    ],
+    [
+     "2025-08-01",
+     55.0
+    ],
+    [
+     "2025-09-01",
+     55.3
+    ],
+    [
+     "2025-10-01",
+     55.4
+    ],
+    [
+     "2025-11-01",
+     55.8
+    ],
+    [
+     "2025-12-01",
+     56.1
+    ],
+    [
+     "2026-01-01",
+     55.9
+    ],
+    [
+     "2026-02-01",
+     55.9
+    ],
+    [
+     "2026-04-01",
+     55.0
+    ],
+    [
+     "2026-05-01",
+     54.4
+    ],
+    [
+     "2026-06-01",
+     54.4
+    ],
+    [
+     "2026-07-01",
+     55.4
+    ],
+    [
+     "2026-08-01",
+     55.6
+    ],
+    [
+     "2026-09-01",
+     55.5
+    ]
+   ]
+  },
+  "act_wpr_rural": {
+   "label": "Worker population ratio (rural)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), rural",
+   "points": [
+    [
+     "2025-04-01",
+     55.4
+    ],
+    [
+     "2025-05-01",
+     54.1
+    ],
+    [
+     "2025-06-01",
+     53.3
+    ],
+    [
+     "2025-07-01",
+     54.4
+    ],
+    [
+     "2025-08-01",
+     54.5
+    ],
+    [
+     "2025-09-01",
+     54.8
+    ],
+    [
+     "2025-10-01",
+     55.2
+    ],
+    [
+     "2025-11-01",
+     56.3
+    ],
+    [
+     "2025-12-01",
+     56.7
+    ],
+    [
+     "2026-01-01",
+     56.2
+    ],
+    [
+     "2026-02-01",
+     56.3
+    ],
+    [
+     "2026-04-01",
+     54.9
+    ],
+    [
+     "2026-05-01",
+     53.8
+    ],
+    [
+     "2026-06-01",
+     53.8
+    ],
+    [
+     "2026-07-01",
+     55.4
+    ],
+    [
+     "2026-08-01",
+     55.8
+    ],
+    [
+     "2026-09-01",
+     55.5
+    ]
+   ]
+  },
+  "act_wpr_urban": {
+   "label": "Worker population ratio (urban)",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), urban",
+   "points": [
+    [
+     "2025-04-01",
+     47.4
+    ],
+    [
+     "2025-05-01",
+     46.9
+    ],
+    [
+     "2025-06-01",
+     46.8
+    ],
+    [
+     "2025-07-01",
+     47.0
+    ],
+    [
+     "2025-08-01",
+     47.5
+    ],
+    [
+     "2025-09-01",
+     47.4
+    ],
+    [
+     "2025-10-01",
+     47.0
+    ],
+    [
+     "2025-11-01",
+     47.1
+    ],
+    [
+     "2025-12-01",
+     46.8
+    ],
+    [
+     "2026-01-01",
+     46.8
+    ],
+    [
+     "2026-02-01",
+     47.0
+    ],
+    [
+     "2026-04-01",
+     46.8
+    ],
+    [
+     "2026-05-01",
+     46.6
+    ],
+    [
+     "2026-06-01",
+     46.8
+    ],
+    [
+     "2026-07-01",
+     47.0
+    ],
+    [
+     "2026-08-01",
+     47.0
+    ],
+    [
+     "2026-09-01",
+     47.2
+    ]
+   ]
+  },
+  "act_wpr": {
+   "label": "Worker population ratio, 15+",
+   "unit": "%",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "points": [
+    [
+     "2025-04-01",
+     52.8
+    ],
+    [
+     "2025-05-01",
+     51.7
+    ],
+    [
+     "2025-06-01",
+     51.2
+    ],
+    [
+     "2025-07-01",
+     52.0
+    ],
+    [
+     "2025-08-01",
+     52.2
+    ],
+    [
+     "2025-09-01",
+     52.4
+    ],
+    [
+     "2025-10-01",
+     52.5
+    ],
+    [
+     "2025-11-01",
+     53.2
+    ],
+    [
+     "2025-12-01",
+     53.4
+    ],
+    [
+     "2026-01-01",
+     53.1
+    ],
+    [
+     "2026-02-01",
+     53.2
+    ],
+    [
+     "2026-04-01",
+     52.2
+    ],
+    [
+     "2026-05-01",
+     51.4
+    ],
+    [
+     "2026-06-01",
+     51.4
+    ],
+    [
+     "2026-07-01",
+     52.5
+    ],
+    [
+     "2026-08-01",
+     52.8
+    ],
+    [
+     "2026-09-01",
+     52.7
+    ]
+   ]
+  },
+  "act_iip": {
+   "label": "Index of Industrial Production (General, 2022-23=100)",
+   "unit": "index",
+   "source": "MoSPI IIP monthly",
+   "points": [
+    [
+     "2025-03-01",
+     125.9
+    ],
+    [
+     "2025-04-01",
+     112.7
+    ],
+    [
+     "2025-05-01",
+     116.7
+    ],
+    [
+     "2025-06-01",
+     114.7
+    ],
+    [
+     "2025-07-01",
+     117.0
+    ],
+    [
+     "2025-08-01",
+     114.2
+    ],
+    [
+     "2025-09-01",
+     116.5
+    ],
+    [
+     "2025-10-01",
+     111.6
+    ],
+    [
+     "2025-11-01",
+     114.6
+    ],
+    [
+     "2025-12-01",
+     123.5
+    ],
+    [
+     "2026-01-01",
+     123.0
+    ],
+    [
+     "2026-02-01",
+     117.9
+    ],
+    [
+     "2026-03-01",
+     129.7
+    ],
+    [
+     "2026-04-01",
+     118.2
+    ],
+    [
+     "2026-05-01",
+     122.5
+    ],
+    [
+     "2026-06-01",
+     124.8
+    ],
+    [
+     "2026-07-01",
+     125.6
+    ],
+    [
+     "2026-08-01",
+     123.1
+    ],
+    [
+     "2026-09-01",
+     124.3
+    ]
+   ]
+  },
+  "act_iip_growth": {
+   "label": "IIP growth, y-o-y (as published)",
+   "unit": "%",
+   "source": "MoSPI IIP monthly",
+   "points": [
+    [
+     "2025-03-01",
+     5.8
+    ],
+    [
+     "2025-04-01",
+     4.8
+    ],
+    [
+     "2025-05-01",
+     3.4
+    ],
+    [
+     "2025-06-01",
+     2.2
+    ],
+    [
+     "2025-07-01",
+     5.4
+    ],
+    [
+     "2025-08-01",
+     4.7
+    ],
+    [
+     "2025-09-01",
+     6.1
+    ],
+    [
+     "2025-10-01",
+     -0.9
+    ],
+    [
+     "2025-11-01",
+     7.0
+    ],
+    [
+     "2025-12-01",
+     6.7
+    ],
+    [
+     "2026-01-01",
+     4.1
+    ],
+    [
+     "2026-02-01",
+     4.4
+    ],
+    [
+     "2026-03-01",
+     3.0
+    ],
+    [
+     "2026-04-01",
+     4.9
+    ],
+    [
+     "2026-05-01",
+     5.0
+    ],
+    [
+     "2026-06-01",
+     8.8
+    ],
+    [
+     "2026-07-01",
+     7.4
+    ],
+    [
+     "2026-08-01",
+     7.8
+    ],
+    [
+     "2026-09-01",
+     6.7
+    ]
+   ]
+  },
+  "act_gva": {
+   "label": "Gross value added, constant prices (total)",
+   "unit": "₹ crore",
+   "source": "MoSPI NAS quarterly (2022-23 base)",
+   "points": [
+    [
+     "2023-04-01",
+     5934914.0
+    ],
+    [
+     "2023-07-01",
+     5925094.0
+    ],
+    [
+     "2023-10-01",
+     6725870.0
+    ],
+    [
+     "2024-01-01",
+     7006773.0
+    ],
+    [
+     "2024-04-01",
+     6377608.0
+    ],
+    [
+     "2024-07-01",
+     6340472.0
+    ],
+    [
+     "2024-10-01",
+     7237664.0
+    ],
+    [
+     "2025-01-01",
+     7466025.0
+    ],
+    [
+     "2025-04-01",
+     6821121.0
+    ],
+    [
+     "2025-07-01",
+     6867255.0
+    ],
+    [
+     "2025-10-01",
+     7786828.0
+    ],
+    [
+     "2026-01-01",
+     8115125.0
+    ],
+    [
+     "2026-04-01",
+     7382453.0
+    ]
+   ]
+  },
+  "act_gva_yoyt": {
+   "label": "Gross value added, y-o-y (computed)",
+   "unit": "%",
+   "source": "MoSPI NAS quarterly (computed from published levels)",
+   "points": [
+    [
+     "2024-04-01",
+     7.46
+    ],
+    [
+     "2024-07-01",
+     7.01
+    ],
+    [
+     "2024-10-01",
+     7.61
+    ],
+    [
+     "2025-01-01",
+     6.55
+    ],
+    [
+     "2025-04-01",
+     6.95
+    ],
+    [
+     "2025-07-01",
+     8.31
+    ],
+    [
+     "2025-10-01",
+     7.59
+    ],
+    [
+     "2026-01-01",
+     8.69
+    ],
+    [
+     "2026-04-01",
+     8.23
+    ]
+   ]
+  },
   "cpi_level": {
    "label": "CPI (Combined, 2024=100)",
    "unit": "index",

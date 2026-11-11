@@ -1,0 +1,257 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "The worker population ratio is the percentage of employed persons in the population. PLFS reports it alongside LFPR and UR for the same reference period and population — persons aged 15 years and above, current weekly status — so that UR = (LFPR − WPR) ÷ LFPR.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Worker Population Ratio (WPR)"
+  },
+  "frequency": "monthly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": -0.1,
+    "date": "2026-09-01",
+    "prev": 52.8,
+    "previous": 52.8,
+    "value": 52.7
+   },
+   {
+    "change": 0.3,
+    "date": "2026-08-01",
+    "prev": 52.5,
+    "previous": 52.5,
+    "value": 52.8
+   },
+   {
+    "change": 1.1,
+    "date": "2026-07-01",
+    "prev": 51.4,
+    "previous": 51.4,
+    "value": 52.5
+   },
+   {
+    "change": 0.0,
+    "date": "2026-06-01",
+    "prev": 51.4,
+    "previous": 51.4,
+    "value": 51.4
+   },
+   {
+    "change": -0.8,
+    "date": "2026-05-01",
+    "prev": 52.2,
+    "previous": 52.2,
+    "value": 51.4
+   },
+   {
+    "change": -1.0,
+    "date": "2026-04-01",
+    "prev": 53.2,
+    "previous": 53.2,
+    "value": 52.2
+   },
+   {
+    "change": 0.1,
+    "date": "2026-02-01",
+    "prev": 53.1,
+    "previous": 53.1,
+    "value": 53.2
+   },
+   {
+    "change": -0.3,
+    "date": "2026-01-01",
+    "prev": 53.4,
+    "previous": 53.4,
+    "value": 53.1
+   },
+   {
+    "change": 0.2,
+    "date": "2025-12-01",
+    "prev": 53.2,
+    "previous": 53.2,
+    "value": 53.4
+   },
+   {
+    "change": 0.7,
+    "date": "2025-11-01",
+    "prev": 52.5,
+    "previous": 52.5,
+    "value": 53.2
+   },
+   {
+    "change": 0.1,
+    "date": "2025-10-01",
+    "prev": 52.4,
+    "previous": 52.4,
+    "value": 52.5
+   },
+   {
+    "change": 0.2,
+    "date": "2025-09-01",
+    "prev": 52.2,
+    "previous": 52.2,
+    "value": 52.4
+   },
+   {
+    "change": 0.2,
+    "date": "2025-08-01",
+    "prev": 52.0,
+    "previous": 52.0,
+    "value": 52.2
+   },
+   {
+    "change": 0.8,
+    "date": "2025-07-01",
+    "prev": 51.2,
+    "previous": 51.2,
+    "value": 52.0
+   },
+   {
+    "change": -0.5,
+    "date": "2025-06-01",
+    "prev": 51.7,
+    "previous": 51.7,
+    "value": 51.2
+   },
+   {
+    "change": -1.1,
+    "date": "2025-05-01",
+    "prev": 52.8,
+    "previous": 52.8,
+    "value": 51.7
+   },
+   {
+    "change": null,
+    "date": "2025-04-01",
+    "prev": null,
+    "previous": null,
+    "value": 52.8
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 17 published observations of 17 stored",
+  "id": "wpr",
+  "kind": "reading",
+  "label": "Worker population ratio (15+)",
+  "latest": {
+   "change": -0.1,
+   "date": "2026-09-01",
+   "value": 52.7
+  },
+  "links": {
+   "csv": "series/wpr.csv",
+   "self": "series/wpr.json"
+  },
+  "points": [
+   [
+    "2025-04-01",
+    52.8
+   ],
+   [
+    "2025-05-01",
+    51.7
+   ],
+   [
+    "2025-06-01",
+    51.2
+   ],
+   [
+    "2025-07-01",
+    52.0
+   ],
+   [
+    "2025-08-01",
+    52.2
+   ],
+   [
+    "2025-09-01",
+    52.4
+   ],
+   [
+    "2025-10-01",
+    52.5
+   ],
+   [
+    "2025-11-01",
+    53.2
+   ],
+   [
+    "2025-12-01",
+    53.4
+   ],
+   [
+    "2026-01-01",
+    53.1
+   ],
+   [
+    "2026-02-01",
+    53.2
+   ],
+   [
+    "2026-04-01",
+    52.2
+   ],
+   [
+    "2026-05-01",
+    51.4
+   ],
+   [
+    "2026-06-01",
+    51.4
+   ],
+   [
+    "2026-07-01",
+    52.5
+   ],
+   [
+    "2026-08-01",
+    52.8
+   ],
+   [
+    "2026-09-01",
+    52.7
+   ]
+  ],
+  "scoring_rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
+  "series": "act_wpr",
+  "source": "MoSPI PLFS monthly (CWS), both",
+  "stale": false,
+  "stale_days": 61,
+  "status": "good",
+  "status_reason": "52.7% - at or above the recent norm",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 43,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T06:50:14Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

@@ -1,0 +1,257 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "The labour force participation rate is the percentage of the population that is in the labour force — that is, employed or seeking and available for work. PLFS reports it for persons aged 15 years and above using the Current Weekly Status (CWS) approach, separately for rural and urban areas and for all-India.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Labour Force Participation Rate (LFPR)"
+  },
+  "frequency": "monthly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": -0.1,
+    "date": "2026-09-01",
+    "prev": 55.6,
+    "previous": 55.6,
+    "value": 55.5
+   },
+   {
+    "change": 0.2,
+    "date": "2026-08-01",
+    "prev": 55.4,
+    "previous": 55.4,
+    "value": 55.6
+   },
+   {
+    "change": 1.0,
+    "date": "2026-07-01",
+    "prev": 54.4,
+    "previous": 54.4,
+    "value": 55.4
+   },
+   {
+    "change": 0.0,
+    "date": "2026-06-01",
+    "prev": 54.4,
+    "previous": 54.4,
+    "value": 54.4
+   },
+   {
+    "change": -0.6,
+    "date": "2026-05-01",
+    "prev": 55.0,
+    "previous": 55.0,
+    "value": 54.4
+   },
+   {
+    "change": -0.9,
+    "date": "2026-04-01",
+    "prev": 55.9,
+    "previous": 55.9,
+    "value": 55.0
+   },
+   {
+    "change": 0.0,
+    "date": "2026-02-01",
+    "prev": 55.9,
+    "previous": 55.9,
+    "value": 55.9
+   },
+   {
+    "change": -0.2,
+    "date": "2026-01-01",
+    "prev": 56.1,
+    "previous": 56.1,
+    "value": 55.9
+   },
+   {
+    "change": 0.3,
+    "date": "2025-12-01",
+    "prev": 55.8,
+    "previous": 55.8,
+    "value": 56.1
+   },
+   {
+    "change": 0.4,
+    "date": "2025-11-01",
+    "prev": 55.4,
+    "previous": 55.4,
+    "value": 55.8
+   },
+   {
+    "change": 0.1,
+    "date": "2025-10-01",
+    "prev": 55.3,
+    "previous": 55.3,
+    "value": 55.4
+   },
+   {
+    "change": 0.3,
+    "date": "2025-09-01",
+    "prev": 55.0,
+    "previous": 55.0,
+    "value": 55.3
+   },
+   {
+    "change": 0.1,
+    "date": "2025-08-01",
+    "prev": 54.9,
+    "previous": 54.9,
+    "value": 55.0
+   },
+   {
+    "change": 0.7,
+    "date": "2025-07-01",
+    "prev": 54.2,
+    "previous": 54.2,
+    "value": 54.9
+   },
+   {
+    "change": -0.6,
+    "date": "2025-06-01",
+    "prev": 54.8,
+    "previous": 54.8,
+    "value": 54.2
+   },
+   {
+    "change": -0.8,
+    "date": "2025-05-01",
+    "prev": 55.6,
+    "previous": 55.6,
+    "value": 54.8
+   },
+   {
+    "change": null,
+    "date": "2025-04-01",
+    "prev": null,
+    "previous": null,
+    "value": 55.6
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 17 published observations of 17 stored",
+  "id": "lfpr",
+  "kind": "reading",
+  "label": "Labour force participation (15+)",
+  "latest": {
+   "change": -0.1,
+   "date": "2026-09-01",
+   "value": 55.5
+  },
+  "links": {
+   "csv": "series/lfpr.csv",
+   "self": "series/lfpr.json"
+  },
+  "points": [
+   [
+    "2025-04-01",
+    55.6
+   ],
+   [
+    "2025-05-01",
+    54.8
+   ],
+   [
+    "2025-06-01",
+    54.2
+   ],
+   [
+    "2025-07-01",
+    54.9
+   ],
+   [
+    "2025-08-01",
+    55.0
+   ],
+   [
+    "2025-09-01",
+    55.3
+   ],
+   [
+    "2025-10-01",
+    55.4
+   ],
+   [
+    "2025-11-01",
+    55.8
+   ],
+   [
+    "2025-12-01",
+    56.1
+   ],
+   [
+    "2026-01-01",
+    55.9
+   ],
+   [
+    "2026-02-01",
+    55.9
+   ],
+   [
+    "2026-04-01",
+    55.0
+   ],
+   [
+    "2026-05-01",
+    54.4
+   ],
+   [
+    "2026-06-01",
+    54.4
+   ],
+   [
+    "2026-07-01",
+    55.4
+   ],
+   [
+    "2026-08-01",
+    55.6
+   ],
+   [
+    "2026-09-01",
+    55.5
+   ]
+  ],
+  "scoring_rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
+  "series": "act_lfpr",
+  "source": "MoSPI PLFS monthly (CWS), both",
+  "stale": false,
+  "stale_days": 61,
+  "status": "good",
+  "status_reason": "55.5% - at or above the norm of the past year",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 43,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T06:50:14Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

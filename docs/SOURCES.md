@@ -85,6 +85,44 @@ directly rather than driving a browser:
 | index bases change (CPI 2012=100 → 2024=100, WPI → 2022-23) | a stale base silently publishes an outdated headline |
 | a **nil balance is published as a blank cell** | a series can be years out of date with nothing to indicate it |
 
+## The real-economy layer — MoSPI eSankhyiki API
+
+DBIE is a monetary and financial dataset. The activity side — labour, industrial output, national
+accounts — comes from the Ministry of Statistics and Programme Implementation (MoSPI), through the
+public API that backs the e-Sankhyiki portal (`https://api.mospi.gov.in`). 15 products expose an OpenAPI
+3.0 spec; three are used here.
+
+| series | endpoint | cadence | parameters used |
+|---|---|---|---|
+| unemployment rate, LFPR, WPR (national, 15+, by sector) | `/api/plfs/getData` | monthly | `indicator_code` 1/2/3, `frequency_code=3`, `year`, `month_code`, `sector_code=1,2,3`, `gender_code=3`, `age_code=1` |
+| IIP General index + published y-o-y | `/api/iip/getIIPData` | monthly | `frequency=Monthly`, `base_year=2022-23`, `year`, `type=General`, `category_code=4` |
+| total GVA, constant prices | `/api/nas/getNASData` | quarterly | `indicator_code=1`, `base_year=2022-23`, `series=Current`, `frequency_code=2`, `year=YYYY-YY` |
+
+The API is open — no key, no token, guest access — and paginated: `recordPerPage` is 10-20 depending on
+the product and `meta_data.totalRecords` is the only honest count, so `paged()` walks every page.
+
+### Traps encoded in `fetch_mospi.py` (each one measured)
+
+| trap | effect if ignored |
+|---|---|
+| the host negotiates with **unsafe legacy renegotiation** | OpenSSL 3 refuses it, so `requests`/`curl` fail with `SSLError: unsafe legacy renegotiation disabled`. The endpoint is fine — `ssl.OP_LEGACY_SERVER_CONNECT` fixes it. Read that error as "our TLS policy", never as "the API is gone". |
+| **`year` is the calendar year (`2026`), not the fiscal string** | the manual's example (`2026-27`) returns HTTP 200, `statusCode: true`, `"msg":"No Data Found"` — a silent empty that reads as "no data exists". |
+| PLFS monthly is **all-India only** | `state_code` on a monthly request returns zero rows; state detail lives in the quarterly/annual cuts. |
+| NAS/IIP years are **fiscal years** (`2026-27`), PLFS years are calendar years | mixing them silently drops a whole year of points. |
+| NAS Q4 is **Jan-Mar of the following calendar year** | dating FY2026-27 Q4 as 2026-01-01 shifts the y-o-y series a year early (covered by `tests/test_mospi.py`). |
+| the API publishes **no release date** | the publication date is left `null` and said so in the payload; the page shows the reference period instead of inventing a lag. |
+
+### Rule: API or XLSX only — no PDF parsing
+
+Checked, and rejected for publishing only PDFs or bare HTML tables: PPAC petroleum, Ministry of Coal,
+Ministry of Steel, CEA/Grid-India power, IPA ports (host DNS-dead), CWC reservoirs (live-table host
+retired), TRAI, DGCIS trade, GST revenue (PIB release), NPCI UPI (HTML table, no file), MGNREGA, CGA
+fiscal. Each has a revival condition in [GOVT_SOURCES_PLAN.md](GOVT_SOURCES_PLAN.md).
+
+**ISP (services production) is absent on purpose**: its API has no overall index row — `type_code=1` is
+documented as "no data at present" — so a headline services figure could only be produced by summing
+weighted sub-sectors whose weights MoSPI does not publish through this endpoint.
+
 ## Publishing and reuse
 
 The RBI publishes these figures for public consumption, and this project reproduces them with

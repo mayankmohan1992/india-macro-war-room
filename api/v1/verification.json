@@ -2,15 +2,15 @@
  "as_of": "2026-10-30",
  "tolerance_pct": 0.01,
  "summary": {
-  "checks": 16,
-  "passed": 16,
+  "checks": 18,
+  "passed": 18,
   "failed": 0,
-  "indicators_verified": 20,
-  "indicators_single_source": 18,
+  "indicators_verified": 24,
+  "indicators_single_source": 19,
   "indicators_unverified": 0,
-  "indicators_total": 38
+  "indicators_total": 43
  },
- "source": "Reserve Bank of India, Database on Indian Economy (DBIE) - raw/ tables only",
+ "source": "Reserve Bank of India DBIE report tables, plus MoSPI eSankhyiki API series - raw/ only, no network at check time",
  "note": "Checks compare RBC-published totals against each other (accounting identities), against a second RBI feed, or a published figure against one recomputed from the index. An indicator marked single-source has one cell in one table and no second witness; that is stated rather than dressed up as a check.",
  "checks": [
   {
@@ -195,6 +195,30 @@
    "status": "pass",
    "residual": 0.053057,
    "detail": "published 5.54% vs index-derived 5.59% for 2026-09-30 (0.053pp)"
+  },
+  {
+   "id": "mospi_ur_identity",
+   "tier": "identity",
+   "covers": [
+    "ur",
+    "lfpr",
+    "wpr"
+   ],
+   "description": "UR = (LFPR - WPR) / LFPR on every month the three PLFS bullets publish together",
+   "status": "pass",
+   "residual": 0.134657,
+   "detail": "17 months compared; worst gap 0.135pp at 2026-07-01"
+  },
+  {
+   "id": "mospi_iip_growth",
+   "tier": "derived",
+   "covers": [
+    "iip"
+   ],
+   "description": "MoSPI's published IIP growth = growth recomputed from MoSPI's own index",
+   "status": "pass",
+   "residual": 0.049573,
+   "detail": "7 months compared; worst gap 0.050pp at 2026-07-01"
   }
  ],
  "indicators": {
@@ -448,6 +472,40 @@
     "rbi_balance_sheet"
    ],
    "tier": "identity"
+  },
+  "ur": {
+   "status": "verified",
+   "checks": [
+    "mospi_ur_identity"
+   ],
+   "tier": "identity"
+  },
+  "lfpr": {
+   "status": "verified",
+   "checks": [
+    "mospi_ur_identity"
+   ],
+   "tier": "identity"
+  },
+  "wpr": {
+   "status": "verified",
+   "checks": [
+    "mospi_ur_identity"
+   ],
+   "tier": "identity"
+  },
+  "iip": {
+   "status": "verified",
+   "checks": [
+    "mospi_iip_growth"
+   ],
+   "tier": "derived"
+  },
+  "gva": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed from those levels, so the level has a single witness and the growth has none"
   }
  }
 }

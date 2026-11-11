@@ -1157,6 +1157,156 @@
    "status": "bad",
    "status_reason": "14.2% - cash demand surging - outside money system",
    "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+    "term": "Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 17 published observations of 17 stored",
+   "id": "ur",
+   "kind": "reading",
+   "label": "Unemployment rate (15+)",
+   "latest": {
+    "change": 0.0,
+    "date": "2026-09-01",
+    "value": 5.0
+   },
+   "links": {
+    "csv": "series/ur.csv",
+    "self": "series/ur.json"
+   },
+   "scoring_rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
+   "series": "act_ur",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "5.0% - below 6% - inside India's recent structural range",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+    "term": "Labour Force Participation Rate (LFPR)"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 17 published observations of 17 stored",
+   "id": "lfpr",
+   "kind": "reading",
+   "label": "Labour force participation (15+)",
+   "latest": {
+    "change": -0.1,
+    "date": "2026-09-01",
+    "value": 55.5
+   },
+   "links": {
+    "csv": "series/lfpr.csv",
+    "self": "series/lfpr.json"
+   },
+   "scoring_rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
+   "series": "act_lfpr",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "55.5% - at or above the norm of the past year",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+    "term": "Worker Population Ratio (WPR)"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 17 published observations of 17 stored",
+   "id": "wpr",
+   "kind": "reading",
+   "label": "Worker population ratio (15+)",
+   "latest": {
+    "change": -0.1,
+    "date": "2026-09-01",
+    "value": 52.7
+   },
+   "links": {
+    "csv": "series/wpr.csv",
+    "self": "series/wpr.json"
+   },
+   "scoring_rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
+   "series": "act_wpr",
+   "source": "MoSPI PLFS monthly (CWS), both",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "52.7% - at or above the recent norm",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+    "term": "Index of Industrial Production (IIP), General — base 2022-23"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 19 published observations of 19 stored",
+   "id": "iip",
+   "kind": "reading",
+   "label": "IIP growth, y-o-y",
+   "latest": {
+    "change": -1.1,
+    "date": "2026-09-01",
+    "value": 6.7
+   },
+   "links": {
+    "csv": "series/iip.csv",
+    "self": "series/iip.json"
+   },
+   "scoring_rule": "The growth rate MoSPI publishes with each month, not one derived here. Green 4-10%, watch 0-4% / >10%, red <0%.",
+   "series": "act_iip_growth",
+   "source": "MoSPI IIP monthly",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "6.7% - healthy industrial growth",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas",
+    "term": "Gross Value Added (GVA) at basic prices, constant prices"
+   },
+   "frequency": "quarterly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 9 published observations of 9 stored",
+   "id": "gva",
+   "kind": "reading",
+   "label": "GVA growth, y-o-y (computed)",
+   "latest": {
+    "change": -0.46,
+    "date": "2026-04-01",
+    "value": 8.23
+   },
+   "links": {
+    "csv": "series/gva.csv",
+    "self": "series/gva.json"
+   },
+   "scoring_rule": "Computed from published constant-price levels, not a published growth rate. Green 5-8%, watch 3-5% / >8%, red <3%.",
+   "series": "act_gva_yoyt",
+   "source": "MoSPI NAS quarterly (computed from published levels)",
+   "stale": false,
+   "stale_days": 214,
+   "status": "watch",
+   "status_reason": "8.2% - above-trend growth - check whether it is a base effect",
+   "unit": "%"
   }
  ],
  "meta": {
@@ -1180,13 +1330,14 @@
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 38,
+  "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-10T17:53:44Z",
+  "retrieved_at": "2026-11-11T06:50:14Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -287,6 +287,33 @@ def build() -> dict:
 
     S: dict[str, dict] = {}
 
+    # ---- real economy (MoSPI API) -------------------------------------------
+    # Labour, industry and national accounts. DBIE carries none of these, so this is the activity half
+    # of the picture rather than a second copy of the monetary half. Loaded from raw/mospi.json, which
+    # fetch_mospi.py writes; a MISSING file means an older checkout and the layer is simply absent
+    # (warned, not fatal), while a file whose series are too short raises - a half-filled activity layer
+    # would colour tiles from three data points.
+    mospi_path = RAW / "mospi.json"
+    if mospi_path.exists():
+        try:
+            mj = json.loads(mospi_path.read_text())
+        except Exception:
+            log.error("[ERROR] [MoSPI] raw/mospi.json is unreadable:\n%s", traceback.format_exc())
+            raise
+        for k, s in (mj.get("series") or {}).items():
+            pts = [list(p) for p in (s.get("points") or [])]
+            if len(pts) < 3:
+                raise RuntimeError(f"mospi series {k} carries only {len(pts)} point(s) - refusing to "
+                                   f"publish an activity tile with no history behind it")
+            S[k] = {"label": s["label"], "unit": s["unit"], "source": s["source"],
+                    "points": pts, "periods": s.get("periods") or {}}
+        log.info("[INFO] [MoSPI] %s real-economy series loaded (%s points, newest %s)",
+                 len(mj.get("series") or {}),
+                 sum(len(v["points"]) for v in S.values() if v.get("periods")),
+                 max((v["points"][-1][0] for k, v in S.items() if v.get("periods")), default="-"))
+    else:
+        log.warning("[WARN] [MoSPI] no raw/mospi.json - the real-economy layer will be absent")
+
     # ---- prices ------------------------------------------------------------
     # BASE CHANGE (measured): the 2012=100 CPI column ends 2025-12 and the 2012=100 WPI column
     # ends 2026-04; the current-published series are CPI 2024=100 and WPI 2023=100. Using the old
@@ -672,6 +699,9 @@ DEF_KEYS = {
     "m1": "m1", "moneymult": "money_multiplier", "bankdep": "bankers_deposits",
     "rbicredit": "rbi_credit_to_govt", "rupeesec": "rupee_securities",
     "crr": "crr", "slr": "slr", "usdinr": "exchange_rate", "termspread": "term_spread",
+    # real economy (MoSPI) — the tile ids are shorter than the definition keys
+    "ur": "unemployment_rate", "lfpr": "labour_force_participation_rate",
+    "wpr": "worker_population_ratio", "iip": "iip", "gva": "gva",
 }
 
 
@@ -690,7 +720,13 @@ def tiles(S: dict) -> list[dict]:
                     "label": label, "group": group, "value": v,                        # verifier prove
                                                                                       # tile == series
                     "unit": unit, "fmt": fmt,
-                    "period": d or period, "status": status, "reason": reason, "rule": rule,
+                    "period": d or period,
+                    # The publisher's OWN reference-period label ("Sep 2026", "Q1 FY2026-27"). Shown in
+                    # the tile footer so a reader sees the period the publisher states, not the first of
+                    # the month this project happens to key the point on. `period` stays ISO because the
+                    # verifier and the API use it to match a tile to its series.
+                    "period_label": (S[key].get("periods") or {}).get(d) if key in S else None,
+                    "status": status, "reason": reason, "rule": rule,
                     "change": change, "spark": spark(pts), "chart": chart})
 
     # inflation ------------------------------------------------------------
@@ -1106,6 +1142,65 @@ def tiles(S: dict) -> list[dict]:
     add("notes", "Notes in circulation growth", "Money", "notes_yoy", "%", "pct", "y-o-y", st,
         f"{nyv:.1f}% - {why}", "Green 3-10%, watch <3% / 10-14%, red >14%.")
 
+    # ---- real economy (MoSPI) ----------------------------------------------
+    # These five are the only tiles on the page that are NOT about money, credit or prices. No official
+    # target exists for any of them, so each band is a stated convention, not a policy threshold - and
+    # the tile footer carries the publisher's own reference period ("Sep 2026", "Q1 FY2026-27").
+    if "act_ur" in S:
+        p = S["act_ur"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 6.0, "good", "below 6% - inside India's recent structural range"),
+            (6.0, 8.0, "watch", "above the recent range"),
+            (8.0, 999, "bad", "8% or higher - the labour market is absorbing too little")])
+        add("ur", "Unemployment rate (15+)", "Activity", "act_ur", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's "
+            "own recent range, not an RBI or MoSPI threshold.")
+
+        p = S["act_lfpr"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 45.0, "bad", "very low participation - people have left the labour force"),
+            (45.0, 52.0, "watch", "below the norm of the past year"),
+            (52.0, 999, "good", "at or above the norm of the past year")])
+        add("lfpr", "Labour force participation (15+)", "Activity", "act_lfpr", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the "
+            "healthier reading, but a jump driven by distress (more people seeking work) is not.")
+
+        p = S["act_wpr"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 45.0, "bad", "fewer than 45% of working-age people are employed"),
+            (45.0, 50.0, "watch", "employment ratio below the recent norm"),
+            (50.0, 999, "good", "at or above the recent norm")])
+        add("wpr", "Worker population ratio (15+)", "Activity", "act_wpr", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so "
+            "read all three together.")
+
+    if "act_iip_growth" in S:
+        p = S["act_iip_growth"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 0.0, "bad", "industrial production contracting"),
+            (0.0, 4.0, "watch", "positive but weak growth"),
+            (4.0, 10.0, "good", "healthy industrial growth"),
+            (10.0, 999, "watch", "very fast - often a base effect rather than real momentum")])
+        add("iip", "IIP growth, y-o-y", "Activity", "act_iip_growth", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "The growth rate MoSPI publishes with each month, not one derived here. Green 4-10%, "
+            "watch 0-4% / >10%, red <0%.")
+
+    if "act_gva_yoyt" in S:
+        p = S["act_gva_yoyt"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 3.0, "bad", "output close to stalling"),
+            (3.0, 5.0, "watch", "below-trend growth"),
+            (5.0, 8.0, "good", "growth in the healthy range"),
+            (8.0, 999, "watch", "above-trend growth - check whether it is a base effect")])
+        add("gva", "GVA growth, y-o-y (computed)", "Activity", "act_gva_yoyt", "%", "pct", "quarter", st,
+            f"{v:.1f}% - {why}",
+            "Computed from published constant-price levels, not a published growth rate. Green 5-8%, "
+            "watch 3-5% / >8%, red <3%.")
+
     return out
 
 
@@ -1200,14 +1295,21 @@ def main() -> int:
     # last observation is; anything older than 60 days is surfaced in the UI, and a series with no
     # observation for over a year is marked permanently dead so no chart plots it.
     asof_d = dt.date.fromisoformat(asof)
+    # Staleness has to know the series' own cadence. A monthly release published on the 15th is already
+    # 6-7 weeks behind the newest DAILY figure on the page, and a quarterly accounts print is a full
+    # season behind. Judging every tile by one 60-day rule made the entire real-economy layer read
+    # "stale" on the day it was published - the false alarm this audit exists to prevent, inverted.
+    STALE_LIMIT = {"monthly": 100, "quarterly": 230, "annual": 400}
     for t in T:
+        t["freq"] = freq_of(S[t["series_key"]]["points"])
         try:
             t["stale_days"] = (asof_d - dt.date.fromisoformat(t["period"])).days
         except Exception:
             t["stale_days"] = None
-        t["stale"] = bool(t["stale_days"] is not None and t["stale_days"] > 60)
+        t["stale"] = bool(t["stale_days"] is not None
+                          and t["stale_days"] > STALE_LIMIT.get(t["freq"], 60))
     for t in T:
-        t["freq"] = freq_of(S[t["series_key"]]["points"])
+        pass  # freq is set above, before the staleness test that depends on it
     by_freq: dict[str, str] = {}
     for t in T:
         # The publication calendar must come from each series' OWN table vintage. A series that appends

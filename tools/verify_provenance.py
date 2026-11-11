@@ -276,6 +276,60 @@ def chk_cpi_published_vs_derived():
 
 
 # ---------------------------------------------------------------- registry
+# ---------------------------------------------------------------- tier: MoSPI real economy
+def _mospi() -> dict:
+    p = RAW / "mospi.json"
+    if not p.exists():
+        raise RuntimeError("raw/mospi.json is absent - the real-economy layer is not published")
+    return json.loads(p.read_text()).get("series") or {}
+
+
+def _pts(series: dict, key: str) -> dict:
+    return {d: v for d, v in ((series.get(key) or {}).get("points") or [])}
+
+
+def chk_mospi_ur_identity():
+    """UR must equal (LFPR - WPR) / LFPR for every month where all three are published.
+
+    These are three separately published bullets, so the identity is a real second witness: a
+    transcription error in any one of them breaks it. Each bullet is published to one decimal, so the
+    worst legitimate gap is ~0.15pp.
+    """
+    s = _mospi()
+    lf, wp, ur = _pts(s, "act_lfpr"), _pts(s, "act_wpr"), _pts(s, "act_ur")
+    worst, worst_date, n = 0.0, None, 0
+    for d, u in ur.items():
+        if d in lf and d in wp and lf[d]:
+            diff = abs((lf[d] - wp[d]) / lf[d] * 100 - u)
+            n += 1
+            if diff > worst:
+                worst, worst_date = diff, d
+    if not n:
+        return False, float("nan"), "no month carries all three labour bullets"
+    return worst <= 0.15, worst, f"{n} months compared; worst gap {worst:.3f}pp at {worst_date}"
+
+
+def chk_mospi_iip_growth():
+    """MoSPI's published y-o-y growth must equal the growth recomputed from MoSPI's own index.
+
+    Same discipline as the CPI check: quote the publisher's figure, then prove it against the level
+    series instead of trusting it.
+    """
+    s = _mospi()
+    idx, gr = _pts(s, "act_iip"), _pts(s, "act_iip_growth")
+    worst, worst_date, n = 0.0, None, 0
+    for d, v in gr.items():
+        prev = f"{int(d[:4]) - 1}-{d[5:7]}-01"
+        if prev in idx and idx[prev]:
+            diff = abs((idx[d] / idx[prev] - 1) * 100 - v)
+            n += 1
+            if diff > worst:
+                worst, worst_date = diff, d
+    if not n:
+        return False, float("nan"), "no year-earlier index point for any published growth figure"
+    return worst <= 0.2, worst, f"{n} months compared; worst gap {worst:.3f}pp at {worst_date}"
+
+
 CHECKS = [
     # (id, tier, indicators covered, description, fn)
     ("m3_components", "identity", ["m3"],
@@ -316,6 +370,12 @@ CHECKS = [
     ("cpi_published_vs_derived", "derived", ["cpi"],
      "RBI's published CPI inflation = the figure recomputed from the CPI index",
      chk_cpi_published_vs_derived),
+    ("mospi_ur_identity", "identity", ["ur", "lfpr", "wpr"],
+     "UR = (LFPR - WPR) / LFPR on every month the three PLFS bullets publish together",
+     chk_mospi_ur_identity),
+    ("mospi_iip_growth", "derived", ["iip"],
+     "MoSPI's published IIP growth = growth recomputed from MoSPI's own index",
+     chk_mospi_iip_growth),
 ]
 
 # Indicators with no second witness in the RBI tables we fetch. Declared, not faked.
@@ -338,6 +398,8 @@ SINGLE_SOURCE = {
     "termspread": "10y G-sec minus 91-day T-bill; both inputs are single-source",
     "liquidity": "22-working-day mean of net LAF; the mean is arithmetic, the input is single-source",
     "rbicredit": "net RBI credit to the Centre - a sub-line of a verified parent, not verified itself",
+    "gva": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed "
+           "from those levels, so the level has a single witness and the growth has none",
 }
 
 
@@ -397,7 +459,7 @@ def main() -> int:
         "summary": {"checks": len(results), "passed": len(results) - failed, "failed": failed,
                     "indicators_verified": n_verified, "indicators_single_source": n_single,
                     "indicators_unverified": n_unver, "indicators_total": len(indicators)},
-        "source": "Reserve Bank of India, Database on Indian Economy (DBIE) - raw/ tables only",
+        "source": ("Reserve Bank of India DBIE report tables, plus MoSPI eSankhyiki API series - raw/ only, no network at check time"),
         "note": ("Checks compare RBC-published totals against each other (accounting identities), "
                  "against a second RBI feed, or a published figure against one recomputed from the "
                  "index. An indicator marked single-source has one cell in one table and no second "

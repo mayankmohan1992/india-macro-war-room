@@ -1,0 +1,257 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "The unemployment rate is the percentage of persons in the labour force who are unemployed, where the labour force is the sum of employed and unemployed persons. Estimates here use the Current Weekly Status (CWS) approach: the activity status of a person is determined by the activities pursued during the seven days preceding the survey date. Figures refer to persons aged 15 years and above, at the all-India level, and are reproduced from the monthly bulletin for the reference month the bulletin states.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status"
+  },
+  "frequency": "monthly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": 0.0,
+    "date": "2026-09-01",
+    "prev": 5.0,
+    "previous": 5.0,
+    "value": 5.0
+   },
+   {
+    "change": -0.1,
+    "date": "2026-08-01",
+    "prev": 5.1,
+    "previous": 5.1,
+    "value": 5.0
+   },
+   {
+    "change": -0.4,
+    "date": "2026-07-01",
+    "prev": 5.5,
+    "previous": 5.5,
+    "value": 5.1
+   },
+   {
+    "change": 0.0,
+    "date": "2026-06-01",
+    "prev": 5.5,
+    "previous": 5.5,
+    "value": 5.5
+   },
+   {
+    "change": 0.3,
+    "date": "2026-05-01",
+    "prev": 5.2,
+    "previous": 5.2,
+    "value": 5.5
+   },
+   {
+    "change": 0.3,
+    "date": "2026-04-01",
+    "prev": 4.9,
+    "previous": 4.9,
+    "value": 5.2
+   },
+   {
+    "change": -0.1,
+    "date": "2026-02-01",
+    "prev": 5.0,
+    "previous": 5.0,
+    "value": 4.9
+   },
+   {
+    "change": 0.2,
+    "date": "2026-01-01",
+    "prev": 4.8,
+    "previous": 4.8,
+    "value": 5.0
+   },
+   {
+    "change": 0.1,
+    "date": "2025-12-01",
+    "prev": 4.7,
+    "previous": 4.7,
+    "value": 4.8
+   },
+   {
+    "change": -0.5,
+    "date": "2025-11-01",
+    "prev": 5.2,
+    "previous": 5.2,
+    "value": 4.7
+   },
+   {
+    "change": 0.0,
+    "date": "2025-10-01",
+    "prev": 5.2,
+    "previous": 5.2,
+    "value": 5.2
+   },
+   {
+    "change": 0.1,
+    "date": "2025-09-01",
+    "prev": 5.1,
+    "previous": 5.1,
+    "value": 5.2
+   },
+   {
+    "change": -0.1,
+    "date": "2025-08-01",
+    "prev": 5.2,
+    "previous": 5.2,
+    "value": 5.1
+   },
+   {
+    "change": -0.4,
+    "date": "2025-07-01",
+    "prev": 5.6,
+    "previous": 5.6,
+    "value": 5.2
+   },
+   {
+    "change": 0.0,
+    "date": "2025-06-01",
+    "prev": 5.6,
+    "previous": 5.6,
+    "value": 5.6
+   },
+   {
+    "change": 0.5,
+    "date": "2025-05-01",
+    "prev": 5.1,
+    "previous": 5.1,
+    "value": 5.6
+   },
+   {
+    "change": null,
+    "date": "2025-04-01",
+    "prev": null,
+    "previous": null,
+    "value": 5.1
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 17 published observations of 17 stored",
+  "id": "ur",
+  "kind": "reading",
+  "label": "Unemployment rate (15+)",
+  "latest": {
+   "change": 0.0,
+   "date": "2026-09-01",
+   "value": 5.0
+  },
+  "links": {
+   "csv": "series/ur.csv",
+   "self": "series/ur.json"
+  },
+  "points": [
+   [
+    "2025-04-01",
+    5.1
+   ],
+   [
+    "2025-05-01",
+    5.6
+   ],
+   [
+    "2025-06-01",
+    5.6
+   ],
+   [
+    "2025-07-01",
+    5.2
+   ],
+   [
+    "2025-08-01",
+    5.1
+   ],
+   [
+    "2025-09-01",
+    5.2
+   ],
+   [
+    "2025-10-01",
+    5.2
+   ],
+   [
+    "2025-11-01",
+    4.7
+   ],
+   [
+    "2025-12-01",
+    4.8
+   ],
+   [
+    "2026-01-01",
+    5.0
+   ],
+   [
+    "2026-02-01",
+    4.9
+   ],
+   [
+    "2026-04-01",
+    5.2
+   ],
+   [
+    "2026-05-01",
+    5.5
+   ],
+   [
+    "2026-06-01",
+    5.5
+   ],
+   [
+    "2026-07-01",
+    5.1
+   ],
+   [
+    "2026-08-01",
+    5.0
+   ],
+   [
+    "2026-09-01",
+    5.0
+   ]
+  ],
+  "scoring_rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
+  "series": "act_ur",
+  "source": "MoSPI PLFS monthly (CWS), both",
+  "stale": false,
+  "stale_days": 61,
+  "status": "good",
+  "status_reason": "5.0% - below 6% - inside India's recent structural range",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 43,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T06:50:14Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

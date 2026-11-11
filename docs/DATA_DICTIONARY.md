@@ -2,12 +2,22 @@
 
 # Data dictionary
 
-**38 indicators** · dataset as-of **2026-11-01** · generated 2026-11-10 17:17 IST
+**43 indicators** · dataset as-of **2026-11-01** · generated 2026-11-11 12:20 IST
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
 Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<id>.json` (full history), `api/v1/series/<id>.csv` (CSV).
 
+
+## Activity
+
+| id | indicator | unit | kind | frequency | latest | as at | source table | definition |
+|---|---|---|---|---|---:|---|---|---|
+| `gva` | GVA growth, y-o-y (computed) | % | reading | quarterly | 8.23 | 2026-04-01 | MoSPI NAS quarterly (computed from published levels) | [Gross Value Added (GVA) at basic prices, constant prices](https://esankhyiki.mospi.gov.in/macroindicators?product=nas) |
+| `iip` | IIP growth, y-o-y | % | reading | monthly | 6.7 | 2026-09-01 | MoSPI IIP monthly | [Index of Industrial Production (IIP), General — base 2022-23](https://esankhyiki.mospi.gov.in/macroindicators?product=iip) |
+| `lfpr` | Labour force participation (15+) | % | reading | monthly | 55.5 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Labour Force Participation Rate (LFPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
+| `ur` | Unemployment rate (15+) | % | reading | monthly | 5 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
+| `wpr` | Worker population ratio (15+) | % | reading | monthly | 52.7 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Worker Population Ratio (WPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
 
 ## Credit
 

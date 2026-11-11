@@ -37,3 +37,8 @@ invest,SCB investments growth,9.49,%,2026-10-15,good,0.86
 nonfood,Non-food credit growth,18.03,%,2026-10-15,watch,-1.12
 food,Food credit growth,90.69,%,2026-10-15,watch,-35.02
 notes,Notes in circulation growth,14.18,%,2026-10-30,bad,0.48
+ur,Unemployment rate (15+),5.0,%,2026-09-01,good,0.0
+lfpr,Labour force participation (15+),55.5,%,2026-09-01,good,-0.1
+wpr,Worker population ratio (15+),52.7,%,2026-09-01,good,-0.1
+iip,"IIP growth, y-o-y",6.7,%,2026-09-01,good,-1.1
+gva,"GVA growth, y-o-y (computed)",8.23,%,2026-04-01,watch,-0.46

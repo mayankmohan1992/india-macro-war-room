@@ -118,7 +118,16 @@ field can never disagree.
 - **`frequency`** — derived from the median gap between observations: `daily`, `weekly`,
   `fortnightly`, `monthly`, `quarterly`, `irregular`.
 - **`stale` / `stale_days`** — the source table has published nothing newer for this line. When
-  `stale` is true, treat `latest.date` as the last reported date, not as "now".
+  `stale` is true, treat `latest.date` as the last reported date, not as "now". The threshold follows
+  the series' own cadence (60 days by default, 100 for monthly, 230 for quarterly), because a monthly
+  release published on the 15th is already six weeks behind the daily rates on the same page.
+- **`period_label`** — the reference period the publisher **states**, e.g. `"Sep 2026"`,
+  `"Q1 FY2026-27"`, `"y-o-y"`, `"spot"`. Present on every indicator; use it when quoting a figure
+  rather than rendering `latest.date`, which is the ISO date the series is keyed on (the first of the
+  month for monthly series). `null` where the publisher states no period.
+- **`source`** — which table or API the series came from, verbatim: `RBI r11`, `RBI r10`,
+  `MoSPI PLFS monthly (CWS), both`, and so on. The real-economy indicators carry a MoSPI `source` and
+  are otherwise identical in shape — same fields, same CSV endpoints, same history.
 
 ### `GET /series/<id>.csv` — the same history as CSV
 

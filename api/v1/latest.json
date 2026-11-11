@@ -153,6 +153,24 @@
    "unit": "%",
    "value": 7.45
   },
+  "gva": {
+   "change": -0.46,
+   "date": "2026-04-01",
+   "kind": "reading",
+   "label": "GVA growth, y-o-y (computed)",
+   "status": "watch",
+   "unit": "%",
+   "value": 8.23
+  },
+  "iip": {
+   "change": -1.1,
+   "date": "2026-09-01",
+   "kind": "reading",
+   "label": "IIP growth, y-o-y",
+   "status": "good",
+   "unit": "%",
+   "value": 6.7
+  },
   "invest": {
    "change": 0.86,
    "date": "2026-10-15",
@@ -161,6 +179,15 @@
    "status": "good",
    "unit": "%",
    "value": 9.49
+  },
+  "lfpr": {
+   "change": -0.1,
+   "date": "2026-09-01",
+   "kind": "reading",
+   "label": "Labour force participation (15+)",
+   "status": "good",
+   "unit": "%",
+   "value": 55.5
   },
   "liquidity": {
    "change": -1975.591,
@@ -288,6 +315,15 @@
    "unit": "₹ crore",
    "value": 1857855.0
   },
+  "ur": {
+   "change": 0.0,
+   "date": "2026-09-01",
+   "kind": "reading",
+   "label": "Unemployment rate (15+)",
+   "status": "good",
+   "unit": "%",
+   "value": 5.0
+  },
   "usdinr": {
    "change": 0.31,
    "date": "2026-10-30",
@@ -333,6 +369,15 @@
    "unit": "%",
    "value": 8.67
   },
+  "wpr": {
+   "change": -0.1,
+   "date": "2026-09-01",
+   "kind": "reading",
+   "label": "Worker population ratio (15+)",
+   "status": "good",
+   "unit": "%",
+   "value": 52.7
+  },
   "yld91": {
    "change": 0.2,
    "date": "2026-10-30",
@@ -364,13 +409,14 @@
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 38,
+  "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-10T17:53:44Z",
+  "retrieved_at": "2026-11-11T06:50:14Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

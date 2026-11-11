@@ -102,11 +102,29 @@
    "source_url": "https://www.fbil.org.in/uploads/Newsletter_for_the_month_of_April_2024_ea8fe6cc8f.pdf",
    "term": "10-year Government of India benchmark G-Sec par yield (FBIL)"
   },
+  "gva": {
+   "definition": "Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas",
+   "term": "Gross Value Added (GVA) at basic prices, constant prices"
+  },
+  "iip": {
+   "definition": "The Index of Industrial Production measures short-term changes in the volume of production of a basket of industrial products relative to a chosen base period, here 2022-23 = 100. The General index combines mining and quarrying, manufacturing, and electricity. The growth rate published with each month is the percentage change over the same month a year earlier, and is quoted here as published rather than recomputed.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP monthly release",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+   "term": "Index of Industrial Production (IIP), General — base 2022-23"
+  },
   "incremental_cd_ratio": {
    "definition": "Incremental credit-deposit ratio = incremental bank credit divided by incremental aggregate deposits, where the increments relate to the financial year so far. RBI publishes it alongside the outstanding ratio in the 'Ratios' table of the Weekly Statistical Supplement, using '**' or '&' markers where incremental deposits are negative and the ratio is undefined. A reading above 100 per cent means new lending exceeds fresh deposit mobilisation, so the gap must be funded from non-deposit sources; a low, zero or negative figure means deposit growth is keeping pace with or exceeding credit growth.",
    "source_name": "Reserve Bank of India — Weekly Statistical Supplement, 'Ratios' table",
    "source_url": "https://rbi.org.in/Scripts/WSSView.aspx?Id=28747",
    "term": "Incremental credit-deposit ratio"
+  },
+  "labour_force_participation_rate": {
+   "definition": "The labour force participation rate is the percentage of the population that is in the labour force — that is, employed or seeking and available for work. PLFS reports it for persons aged 15 years and above using the Current Weekly Status (CWS) approach, separately for rural and urban areas and for all-India.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Labour Force Participation Rate (LFPR)"
   },
   "liquidity": {
    "definition": "The Liquidity Adjustment Facility covers the Reserve Bank's operations that inject liquidity into, or absorb liquidity from, the banking system: overnight and term repo/reverse repo (fixed and variable rate), the Standing Deposit Facility and the Marginal Standing Facility. Net injection (+)/absorption (-) is the net liquidity position — Repo + MSF + SLF less Reverse Repo less SDF — published daily in the 'Money Market Operations' release and weekly in the WSS 'Liquidity Operations by RBI' table. The SDF, at which RBI accepts uncollateralised overnight deposits from LAF participants, is the floor of the corridor (25 basis points below the repo rate) and replaced the fixed reverse repo as the floor in April 2022; the MSF, at which banks may borrow overnight by dipping into their SLR portfolio up to a limit, is the ceiling (25 basis points above the repo rate).",
@@ -192,6 +210,18 @@
    "source_url": "https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79",
    "term": "Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills"
   },
+  "unemployment_rate": {
+   "definition": "The unemployment rate is the percentage of persons in the labour force who are unemployed, where the labour force is the sum of employed and unemployed persons. Estimates here use the Current Weekly Status (CWS) approach: the activity status of a person is determined by the activities pursued during the seven days preceding the survey date. Figures refer to persons aged 15 years and above, at the all-India level, and are reproduced from the monthly bulletin for the reference month the bulletin states.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status"
+  },
+  "worker_population_ratio": {
+   "definition": "The worker population ratio is the percentage of employed persons in the population. PLFS reports it alongside LFPR and UR for the same reference period and population — persons aged 15 years and above, current weekly status — so that UR = (LFPR − WPR) ÷ LFPR.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — PLFS monthly bulletin",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=plfs",
+   "term": "Worker Population Ratio (WPR)"
+  },
   "wpi": {
    "definition": "WPI measures the average change in prices of commodities sold in bulk at the early stage of transactions; it covers goods only (no services) in three Major Groups — Primary Articles, Fuel and Power, and Manufactured Products. It is compiled and released monthly by the Office of the Economic Adviser, DPIIT, Ministry of Commerce and Industry. The current series has base year 2022-23 (released June 2026, replacing the 2011-12 series and expanding the item basket); the dashboard uses the 2022-23-based index and computes y-o-y inflation from it.",
    "source_name": "Office of the Economic Adviser, DPIIT, Ministry of Commerce & Industry — PIB press release on the new WPI series",
@@ -220,13 +250,14 @@
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
    "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 38,
+  "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-10T17:53:44Z",
+  "retrieved_at": "2026-11-11T06:50:14Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -1,6 +1,6 @@
 # India Macro War Room
 
-**A daily-refreshed dataset, static API and at-a-glance dashboard for 38 widely-watched Indian
+**A daily-refreshed dataset, static API and at-a-glance dashboard for 43 widely-watched Indian
 macroeconomic indicators — built from the Reserve Bank of India's public publications.**
 
 [![CI](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/ci.yml/badge.svg)](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/ci.yml)
@@ -31,7 +31,7 @@ A GitHub Actions job wakes up every morning, pulls the latest published tables f
   the same numbers;
 - a **dataset** with the provenance, definitions, methodology and caveats attached.
 
-**38 indicators · 26 charts · 33 sourced definitions · ~7,700 stored observations · 12 RBI tables ·
+**43 indicators · 30 charts · 38 sourced definitions · ~9,500 stored observations · 12 RBI tables + 3 MoSPI APIs ·
 refreshed daily · zero servers, zero cost.**
 
 ## Quick start (consume the API)
@@ -96,7 +96,7 @@ Two lines, no key, no build step, no dependency:
 ```
 
 That draws the policy repo rate over ten years with its latest reading, axis bounds, date range and a
-credit line — and re-renders itself when the container resizes. Any of the 38 indicators works
+credit line — and re-renders itself when the container resizes. Any of the 43 indicators works
 (`data-imwr-series="cpi"`, `"usdinr"`, `"gsec"`, …), in five ranges from `1y` to `all`, in light or
 dark, recoloured with `--imwr-accent` and friends.
 
@@ -113,7 +113,7 @@ Live demo with copy-paste blocks: **<https://mayankmohan1992.github.io/india-mac
 
 ## What is tracked
 
-38 indicators across eight groups. Each carries its unit, publication frequency, source table, the
+43 indicators across nine groups. Each carries its unit, publication frequency, source table, the
 sourced definition, a rule-based status and its own period.
 
 | group | indicators |
@@ -126,15 +126,45 @@ sourced definition, a rule-based status and its own period.
 | **Markets** | 10-year G-sec yield, 91-day T-bill yield, term spread, money-market turnover, CD and CP outstanding |
 | **External** | net FX assets, RBI foreign currency assets, gold, 3-month forward premia, USD/INR |
 | **Fiscal & government paper** | T-bill outstanding, RBI credit to the Centre, RBI rupee securities |
+| **Real economy (MoSPI)** | unemployment rate, labour force participation, worker population ratio, IIP growth, GVA growth |
 
 Every indicator — id, definition, frequency, source table and current reading — is in the
 **[data dictionary](docs/DATA_DICTIONARY.md)**.
+
+## Real-economy layer (MoSPI)
+
+RBI's DBIE answers "how is money priced?". It cannot answer "is anything actually being produced, and
+is anyone working?" — it carries no labour, no industrial output and no national accounts. MoSPI
+publishes all three, free, as JSON, so the page reads them directly:
+
+| source | endpoint | covers |
+|---|---|---|
+| PLFS (monthly) | `/api/plfs/getData` | unemployment rate, LFPR, WPR — national, 15+, by sector |
+| IIP (monthly) | `/api/iip/getIIPData` | industrial production index (2022-23=100) + published y-o-y |
+| NAS (quarterly) | `/api/nas/getNASData` | total GVA at constant prices |
+
+Three rules hold this layer together:
+
+- **API or XLSX only — no PDF parsing anywhere.** Sources that publish only PDFs (petroleum, coal,
+  steel, power, ports, reservoirs, TRAI, GST revenue) were checked and dropped rather than parsed
+  brittlely; see [SOURCES.md](docs/SOURCES.md) for what was rejected and why.
+- **The stated period is shown, not inferred.** Each tile footer carries the reference period the
+  publisher states — "Sep 2026", "Q1 FY2026-27" — rather than the first of the month the series is keyed
+  on, and the page never presents an announcement date as a publication date.
+- **Services (ISP) is deliberately absent.** Its API has no overall index row (`type_code=1` is
+  documented as "no data at present"), so an all-services figure could only be invented by summing
+  weighted sub-sectors whose weights we do not have.
+
+The footer disclaimer on the page says the same thing to a reader: a government body may announce a
+figure on one date and load it into its database on a later one, and this page shows the database value
+with its stated period, current vintage, not the announcement.
 
 ## How it works
 
 ```mermaid
 flowchart LR
     A["RBI DBIE<br/>public tables"] -->|fetch_series.py<br/>completeness gate| B["raw/*.json<br/>committed"]
+    M["MoSPI eSankhyiki API<br/>PLFS / IIP / NAS"] -->|fetch_mospi.py<br/>completeness gate| B
     B -->|tools/verify_provenance.py<br/>accounting identities| P{"numbers<br/>reconcile?"}
     P -->|pass| C["dataset +<br/>dashboard/index.html"]
     B -->|build_dashboard.py<br/>all maths in Python| C
@@ -145,7 +175,10 @@ flowchart LR
     F --> G["GitHub Pages<br/>+ raw.githubusercontent"]
 ```
 
-1. **Fetch** — 12 DBIE report tables plus the portal's key-rates snapshot. A table that comes back
+1. **Fetch** — 12 DBIE report tables plus the portal's key-rates snapshot, and the real-economy layer
+   from MoSPI's API (`fetch_mospi.py`: PLFS monthly, IIP monthly, NAS quarterly). MoSPI is fetched but
+   never *required*: it is a second publisher, so its failure leaves the previous good file in place
+   rather than taking the RBI refresh down with it. A table that comes back
    short of its own `totalCount` **fails the run** instead of shipping a partial series, and a PID
    lockfile stops two concurrent fetches from clobbering each other.
 2. **Build** — every derived figure (y-o-y growth, spreads, ratios, rolling averages, the money
