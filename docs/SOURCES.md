@@ -110,7 +110,9 @@ the product and `meta_data.totalRecords` is the only honest count, so `paged()` 
 | PLFS monthly is **all-India only** | `state_code` on a monthly request returns zero rows; state detail lives in the quarterly/annual cuts. |
 | NAS/IIP years are **fiscal years** (`2026-27`), PLFS years are calendar years | mixing them silently drops a whole year of points. |
 | NAS Q4 is **Jan-Mar of the following calendar year** | dating FY2026-27 Q4 as 2026-01-01 shifts the y-o-y series a year early (covered by `tests/test_mospi.py`). |
-| the API publishes **no release date** | the publication date is left `null` and said so in the payload; the page shows the reference period instead of inventing a lag. |
+| the data API publishes **no release date**, but its catalogue does | the API payload alone leaves nothing to date a release with. `fetch_mospi.py` therefore reads `ref_period` + `release_date` from `/api/esankhyiki/cms/golden-sheet/list` — observed dates, never a modelled lag. NAS is stated per financial year, so its quarters carry none rather than borrowing the year's. |
+| the catalogue endpoint **429s after ~10 rapid calls** and caps `limit` at 200 | pacing is 0.6s per catalogue page with `Retry-After` handling; a page past the end answers HTTP 200 with `data: []`, so stop on empty data, not on status. |
+| catalogue filters are **exact and case-sensitive** (`product=CPI` → 499, `product=cpi` → 0) and the vocabulary is mixed (`WMI`, `ESI`, `AIDIS` return 0; use the display names) | query by display name and treat zero rows as "no catalogue coverage", never as "no data" — WPI, ISP, OPPI and SPPI serve live JSON with no catalogue rows at all. |
 
 ### Rule: API or XLSX only — no PDF parsing
 

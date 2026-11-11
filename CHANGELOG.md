@@ -4,6 +4,37 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.1.1] — 2026-11-11
+
+### Added — observed release dates, from MoSPI's own catalogue
+
+The data API carries no publication date, and this project refuses to model a lag. The catalogue behind
+e-Sankhyiki does state one per table, and its CMS endpoint is queryable:
+`/api/esankhyiki/cms/golden-sheet/list` returns 4,876 rows with `ref_period` + `release_date`.
+`fetch_mospi.py` now reads them, so `ur` carries `released: 2026-10-15` (Sep 2026) and `iip`
+`2026-10-28` — observed, not inferred. Exposed as `release_date` in `api/v1/`, shown in the tile
+tooltip and in the history/definition panels. NAS is stated per financial year in the catalogue, so its
+quarters carry no release date rather than borrowing the year's.
+
+Two bugs found by doing this: `re` was never imported in the new catalogue helper (it raised, the
+helper swallowed it and returned no dates), and the host 429s after ~10 rapid calls — pacing is now
+0.6s per catalogue page with `Retry-After` handling.
+
+### Added — `docs/catalogue-survey/`
+
+Four parallel surveys covering all 4,876 catalogue datasets, merged into `SUMMARY.md`: the catalogue's
+machine-readable route, the adopt/defer/reject verdict per product, and nine traps that each produce a
+plausible wrong answer (integer-vs-name `indicator_code`, one endpoint serving two products,
+`Format=JSON` required on NSS 77, two spec vintages with different field names, fiscal-month codes in
+ISP, 200 responses on unknown paths).
+
+### Corrected
+
+- **ISP is not emptily published.** The overall index row is absent, but 19 broad sub-sector series run
+  monthly to Aug 2026 — the earlier "no data at present" read was a `type_code` artefact.
+- **The spec count was overstated.** 12 of the 33 catalogue products carry a real OpenAPI spec; 15 spec
+  files resolve on the host, but AISHE, UDISE and NFHS have none of their own catalogue rows.
+
 ## [1.1.0] — 2026-11-11
 
 ### Added — the real-economy layer, from MoSPI's API

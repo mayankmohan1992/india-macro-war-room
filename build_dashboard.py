@@ -306,7 +306,11 @@ def build() -> dict:
                 raise RuntimeError(f"mospi series {k} carries only {len(pts)} point(s) - refusing to "
                                    f"publish an activity tile with no history behind it")
             S[k] = {"label": s["label"], "unit": s["unit"], "source": s["source"],
-                    "points": pts, "periods": s.get("periods") or {}}
+                    "points": pts, "periods": s.get("periods") or {},
+                    # ref_period -> the date MoSPI actually published that period, observed from its
+                    # catalogue. Absent (not guessed) where the catalogue states a coarser period - NAS
+                    # rows are per financial year, so its quarters stay without a release date.
+                    "releases": s.get("releases") or {}}
         log.info("[INFO] [MoSPI] %s real-economy series loaded (%s points, newest %s)",
                  len(mj.get("series") or {}),
                  sum(len(v["points"]) for v in S.values() if v.get("periods")),
@@ -726,6 +730,8 @@ def tiles(S: dict) -> list[dict]:
                     # the month this project happens to key the point on. `period` stays ISO because the
                     # verifier and the API use it to match a tile to its series.
                     "period_label": (S[key].get("periods") or {}).get(d) if key in S else None,
+                    "released": ((S[key].get("releases") or {}).get(
+                        (S[key].get("periods") or {}).get(d)) if key in S else None),
                     "status": status, "reason": reason, "rule": rule,
                     "change": change, "spark": spark(pts), "chart": chart})
 

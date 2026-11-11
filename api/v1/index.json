@@ -22,6 +22,7 @@
     "self": "series/cpi.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "The figure the publisher prints (MoSPI/NSO, via the portal's indicator series), not a figure derived here. RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6. The chart draws the longer index-derived history, reconciled against this series to within 0.1pp (see cross_checks).",
    "series": "cpi_yoy_official",
    "source": "RBI DBIE indicator series (RBIB18)",
@@ -53,6 +54,7 @@
     "self": "series/wpi.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "No formal target. Green 0-3, watch <0 or 3-6, red >6.",
    "series": "wpi_yoy",
    "source": "RBI r11 (WPI 2023=100)",
@@ -84,6 +86,7 @@
     "self": "series/repo.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Direction read: a cut is supportive (green), no change is neutral (watch), a hike is tightening (red). Value is the latest announced rate.",
    "series": "repo",
    "setting": {
@@ -121,6 +124,7 @@
     "self": "series/m3.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 9-15%, watch 7-9 / >15, red <7 (no developed band exists; these are the customary read).",
    "series": "m3_yoy",
    "source": "RBI r13",
@@ -152,6 +156,7 @@
     "self": "series/rm.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 8-14%, watch 5-8 / >14, red <5.",
    "series": "rm_yoy",
    "source": "RBI r7",
@@ -183,6 +188,7 @@
     "self": "series/credit.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
    "series": "credit_yoy",
    "source": "RBI r9",
@@ -214,6 +220,7 @@
     "self": "series/deposit.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 10-14%, watch 8-10 / >14, red <8.",
    "series": "deposit_yoy",
    "source": "RBI r9",
@@ -245,6 +252,7 @@
     "self": "series/cdr.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 70-85%, watch 65-70 / 85-95, red <65 or >95.",
    "series": "cd_ratio",
    "source": "RBI r9",
@@ -276,6 +284,7 @@
     "self": "series/liquidity.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Direction read: improving > +₹25k cr = green, within +/-₹25k cr = watch, deteriorating > ₹25k cr = red. A negative level alone is not scored as stress (SDF-era absorption is normal).",
    "series": "laf_net_30d",
    "source": "RBI r8",
@@ -307,6 +316,7 @@
     "self": "series/callmoney.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green |spread| <= 0.25pp, watch 0.25-0.75pp, red > 0.75pp.",
    "series": "call_rate",
    "source": "RBI r10",
@@ -338,6 +348,7 @@
     "self": "series/gsec.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
    "series": "gsec10y",
    "source": "RBI r10",
@@ -369,6 +380,7 @@
     "self": "series/fxa.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
    "series": "fxa_yoy",
    "source": "RBI r13",
@@ -400,6 +412,7 @@
     "self": "series/fca.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
    "series": "fca_yoy",
    "source": "RBI r39",
@@ -431,6 +444,7 @@
     "self": "series/tbill.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green if 3-month change <= -5%, watch -5%..+10%, watch/red above +10% (more short-term borrowing).",
    "series": "tbill",
    "source": "RBI r2",
@@ -462,6 +476,7 @@
     "self": "series/cdout.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green -20%..+30% y-o-y; sharp rises flag deposit competition (watch).",
    "series": "cd_out",
    "source": "RBI r4",
@@ -493,6 +508,7 @@
     "self": "series/cpout.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green -20%..+30% y-o-y, watch outside that.",
    "series": "cp_out",
    "source": "RBI r5",
@@ -524,6 +540,7 @@
     "self": "series/turnover.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green within +/-20% y-o-y or expanding; watch on a >20% contraction.",
    "series": "turnover",
    "source": "RBI r12",
@@ -555,6 +572,7 @@
     "self": "series/yld91.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Direction read: -20bp or better in 3 months = green, +20bp or worse = red, else watch.",
    "series": "yld91",
    "source": "RBI r10 (weekly WSS)",
@@ -586,6 +604,7 @@
     "self": "series/fwd3m.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Interpretation bands: 0-4.5% normal, 4.5-6% watch, >6% stress, <0 unusual.",
    "series": "fwd3m",
    "source": "RBI r10 (weekly WSS)",
@@ -617,6 +636,7 @@
     "self": "series/wpifuel.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
    "series": "wpi_fuel_yoy",
    "source": "RBI r11",
@@ -648,6 +668,7 @@
     "self": "series/wpimanu.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-5%, red >5%.",
    "series": "wpi_manu_yoy",
    "source": "RBI r11",
@@ -679,6 +700,7 @@
     "self": "series/wpiprim.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
    "series": "wpi_primary_yoy",
    "source": "RBI r11",
@@ -710,6 +732,7 @@
     "self": "series/cpirural.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Same 2-6% tolerance band as headline CPI.",
    "series": "cpi_rural_yoy",
    "source": "RBI r11",
@@ -741,6 +764,7 @@
     "self": "series/cpiurban.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Same 2-6% tolerance band as headline CPI.",
    "series": "cpi_urban_yoy",
    "source": "RBI r11",
@@ -772,6 +796,7 @@
     "self": "series/m1.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 9-16%, watch 5-9 / >16, red <5%. M1 tracks transactions demand; M3 tracks savings too.",
    "series": "m1_yoy",
    "source": "RBI r13",
@@ -803,6 +828,7 @@
     "self": "series/moneymult.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Derived as M3 ÷ reserve money. Green +/-0.15 of a year ago, watch outside that.",
    "series": "money_mult",
    "source": "derived (r13 ÷ r7)",
@@ -834,6 +860,7 @@
     "self": "series/bankdep.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
    "series": "bankers_dep_yoy",
    "source": "RBI r39",
@@ -865,6 +892,7 @@
     "self": "series/rbicredit.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Loans and advances to the Central Government (Ways and Means Advances and overdrafts). Direction read: falling = green, rising = watch.",
    "series": "rbi_govt_level",
    "source": "RBI r39",
@@ -896,6 +924,7 @@
     "self": "series/rupeesec.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "RBI's holdings of government securities incl. treasury bills (balance-sheet item 3). Green 0-12% y-o-y, watch <0 or >12%.",
    "series": "rupeesec_yoy",
    "source": "RBI r39",
@@ -927,6 +956,7 @@
     "self": "series/crr.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "series": "crr",
    "setting": {
@@ -964,6 +994,7 @@
     "self": "series/slr.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "A cut releases lendable funds (supportive/green); a hike absorbs them (tightening/red); unchanged is neutral/watch. Value is the rate in force.",
    "series": "slr",
    "setting": {
@@ -1001,6 +1032,7 @@
     "self": "series/usdinr.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Direction read over 3 months: a weaker rupee (higher USD/INR) is a stress signal.",
    "series": "inr_usd",
    "source": "RBI r10 (weekly WSS)",
@@ -1032,6 +1064,7 @@
     "self": "series/termspread.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 0.5-2.5pp, watch 0-0.5 / >2.5, red <0 (inverted).",
    "series": "term_spread",
    "source": "derived (r10)",
@@ -1063,6 +1096,7 @@
     "self": "series/gold.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green >5% y-o-y, watch 0-5%, red <0% (valuation and purchases both feed this).",
    "series": "gold_growth",
    "source": "RBI r39",
@@ -1094,6 +1128,7 @@
     "self": "series/invest.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
    "series": "invest_yoy",
    "source": "RBI r9",
@@ -1125,6 +1160,7 @@
     "self": "series/nonfood.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Same bands as total bank credit: green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
    "series": "nonfood_yoy",
    "source": "RBI r9",
@@ -1156,6 +1192,7 @@
     "self": "series/food.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Loose bands because this series is volatile and seasonal: green 0-20%, watch <0 or >20%.",
    "series": "food_yoy",
    "source": "RBI r9",
@@ -1187,6 +1224,7 @@
     "self": "series/notes.json"
    },
    "period_label": null,
+   "release_date": null,
    "scoring_rule": "Green 3-10%, watch <3% / 10-14%, red >14%.",
    "series": "notes_yoy",
    "source": "RBI r39",
@@ -1218,6 +1256,7 @@
     "self": "series/ur.json"
    },
    "period_label": "Sep 2026",
+   "release_date": "2026-10-15",
    "scoring_rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
    "series": "act_ur",
    "source": "MoSPI PLFS monthly (CWS), both",
@@ -1249,6 +1288,7 @@
     "self": "series/lfpr.json"
    },
    "period_label": "Sep 2026",
+   "release_date": "2026-10-15",
    "scoring_rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
    "series": "act_lfpr",
    "source": "MoSPI PLFS monthly (CWS), both",
@@ -1280,6 +1320,7 @@
     "self": "series/wpr.json"
    },
    "period_label": "Sep 2026",
+   "release_date": "2026-10-15",
    "scoring_rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
    "series": "act_wpr",
    "source": "MoSPI PLFS monthly (CWS), both",
@@ -1311,6 +1352,7 @@
     "self": "series/iip.json"
    },
    "period_label": "Sep 2026",
+   "release_date": "2026-10-28",
    "scoring_rule": "The growth rate MoSPI publishes with each month, not one derived here. Green 4-10%, watch 0-4% / >10%, red <0%.",
    "series": "act_iip_growth",
    "source": "MoSPI IIP monthly",
@@ -1342,6 +1384,7 @@
     "self": "series/gva.json"
    },
    "period_label": "Q1 FY2026-27",
+   "release_date": null,
    "scoring_rule": "Computed from published constant-price levels, not a published growth rate. Green 5-8%, watch 3-5% / >8%, red <3%.",
    "series": "act_gva_yoyt",
    "source": "MoSPI NAS quarterly (computed from published levels)",
@@ -1380,7 +1423,7 @@
   "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T06:59:55Z",
+  "retrieved_at": "2026-11-11T07:24:34Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -1,0 +1,475 @@
+{
+  "catalogued_products": [
+    {
+      "short_name": "CPI",
+      "full_name": "Consumer Price Index",
+      "datasets": 499,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_cpi.yaml",
+      "spec_token": "cpi",
+      "first_path": "/api/cpi/getItemIndex"
+    },
+    {
+      "short_name": "IIP",
+      "full_name": "Consumer Price Index",
+      "datasets": 460,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_iip.yaml",
+      "spec_token": "iip",
+      "first_path": "/api/iip/getIIPAnnual"
+    },
+    {
+      "short_name": "NAS",
+      "full_name": "National Accounts Statistics",
+      "datasets": 1724,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_nas.yaml",
+      "spec_token": "nas",
+      "first_path": "/api/nas/getNASData"
+    },
+    {
+      "short_name": "PLFS",
+      "full_name": "Periodic Labour Force Surveys",
+      "datasets": 577,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_plfs.yaml",
+      "spec_token": "plfs",
+      "first_path": "/api/plfs/getData"
+    },
+    {
+      "short_name": "ASI",
+      "full_name": "Annual Survey of Industries",
+      "datasets": 11,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_asi.yaml",
+      "spec_token": "asi",
+      "first_path": "/api/asi/getASIData"
+    },
+    {
+      "short_name": "HCES",
+      "full_name": "Household Consumption Expenditure Survey",
+      "datasets": 79,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_hces.yaml",
+      "spec_token": "hces",
+      "first_path": "/api/hces/getHcesRecords"
+    },
+    {
+      "short_name": "MIS",
+      "full_name": "Multiple Indicator Survey",
+      "datasets": 55,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_nss78.yaml",
+      "spec_token": "nss78",
+      "first_path": "/api/nss-78/getNss78Records"
+    },
+    {
+      "short_name": "ASUSE",
+      "full_name": "Annual Survey of Unincorporated Sector Enterprises",
+      "datasets": 206,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_asuse.yaml",
+      "spec_token": "asuse",
+      "first_path": "/api/asuse/getAsuseRecords"
+    },
+    {
+      "short_name": "CAMS",
+      "full_name": "Comprehensive Annual Modular Survey",
+      "datasets": 35,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "WMI",
+      "full_name": "Women And Men In India",
+      "datasets": 273,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_gender.yaml",
+      "spec_token": "gender",
+      "first_path": "/api/gender/getGenderRecords"
+    },
+    {
+      "short_name": "ESI",
+      "full_name": "Energy Statistics of India",
+      "datasets": 62,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_energy.yaml",
+      "spec_token": "energy",
+      "first_path": "/api/energy/getEnergyRecords"
+    },
+    {
+      "short_name": "EI",
+      "full_name": "EnviStats India",
+      "datasets": 118,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "NII",
+      "full_name": "Nutrition Intake In India",
+      "datasets": 12,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "SOA",
+      "full_name": "Survey On Ayush",
+      "datasets": 8,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "TUS",
+      "full_name": "Time Use Survey",
+      "datasets": 15,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_tus.yaml",
+      "spec_token": "tus",
+      "first_path": "/api/tus/getTusRecords"
+    },
+    {
+      "short_name": "CMST",
+      "full_name": "Comprehensive Modular Survey Telecom",
+      "datasets": 20,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "PWDII",
+      "full_name": "Persons With Disabilities In India",
+      "datasets": 69,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "SAAHLL",
+      "full_name": "SITUATION ASSESSMENT OF AGRICULTURAL HOUSEHOLDS AND LAND & LIVESTOCK HOLDINGS, 2019",
+      "datasets": 59,
+      "api_spec": "https://api.mospi.gov.in/layout/swagger_user_nss77.yaml",
+      "spec_token": "nss77",
+      "first_path": "/api/nss-77/getNss77Records"
+    },
+    {
+      "short_name": "SCH",
+      "full_name": "SOCIAL CONSUMPTION IN INDIA: HEALTH",
+      "datasets": 37,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "SCE",
+      "full_name": "HOUSEHOLD SOCIAL CONSUMPTION ON EDUCATION IN INDIA",
+      "datasets": 47,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "CMSE",
+      "full_name": "COMPREHENSIVE MODULAR SURVEY : EDUCATION",
+      "datasets": 20,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "DWSHHC",
+      "full_name": "DRINKING WATER, SANITATION, HYGIENE AND HOUSING  CONDITION IN INDIA",
+      "datasets": 30,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "TRSSEI",
+      "full_name": "Technical Report on Services Sector Enterprises in India",
+      "datasets": 24,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "AIDIS",
+      "full_name": "ALL INDIA DEBT AND INVESTMENT SURVEY",
+      "datasets": 71,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "PSCUEH",
+      "full_name": "PILOT STUDY ON CONSTRUCTION ACTIVITIES IN UNINCORPORATED SECTOR ESTABLISHMENTS AND HOUSEHOLDS",
+      "datasets": 15,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "UNAEI",
+      "full_name": "UNINCORPORATED NON-AGRICULTURAL ENTERPRISES (EXCLUDING CONSTRUCTION) IN INDIA",
+      "datasets": 23,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "OCUAEI",
+      "full_name": "OPERATIONAL CHARACTERISTICS OF UNINCORPORATED NON-AGRICULTURAL ENTERPRISES (EXCLUDING CONSTRUCTION) IN INDIA",
+      "datasets": 15,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "DTI",
+      "full_name": "Domestic Tourism in India",
+      "datasets": 8,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "HII",
+      "full_name": "Health in India",
+      "datasets": 14,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "HESDG",
+      "full_name": "Household Expenditure on Services and Durable Goods",
+      "datasets": 11,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "EII",
+      "full_name": "Education in India",
+      "datasets": 70,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "CII",
+      "full_name": "Children in India",
+      "datasets": 128,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    },
+    {
+      "short_name": "YII",
+      "full_name": "Youth in India",
+      "datasets": 81,
+      "api_spec": null,
+      "spec_token": null,
+      "first_path": null
+    }
+  ],
+  "total_datasets": 4876,
+  "products_with_api": 12,
+  "api_specs": {
+    "CPI": "https://api.mospi.gov.in/layout/swagger_user_cpi.yaml",
+    "IIP": "https://api.mospi.gov.in/layout/swagger_user_iip.yaml",
+    "NAS": "https://api.mospi.gov.in/layout/swagger_user_nas.yaml",
+    "PLFS": "https://api.mospi.gov.in/layout/swagger_user_plfs.yaml",
+    "ASI": "https://api.mospi.gov.in/layout/swagger_user_asi.yaml",
+    "HCES": "https://api.mospi.gov.in/layout/swagger_user_hces.yaml",
+    "MIS": "https://api.mospi.gov.in/layout/swagger_user_nss78.yaml",
+    "ASUSE": "https://api.mospi.gov.in/layout/swagger_user_asuse.yaml",
+    "CAMS": null,
+    "WMI": "https://api.mospi.gov.in/layout/swagger_user_gender.yaml",
+    "ESI": "https://api.mospi.gov.in/layout/swagger_user_energy.yaml",
+    "EI": null,
+    "NII": null,
+    "SOA": null,
+    "TUS": "https://api.mospi.gov.in/layout/swagger_user_tus.yaml",
+    "CMST": null,
+    "PWDII": null,
+    "SAAHLL": "https://api.mospi.gov.in/layout/swagger_user_nss77.yaml",
+    "SCH": null,
+    "SCE": null,
+    "CMSE": null,
+    "DWSHHC": null,
+    "TRSSEI": null,
+    "AIDIS": null,
+    "PSCUEH": null,
+    "UNAEI": null,
+    "OCUAEI": null,
+    "DTI": null,
+    "HII": null,
+    "HESDG": null,
+    "EII": null,
+    "CII": null,
+    "YII": null
+  },
+  "first_path_lines": {
+    "CPI": "/api/cpi/getItemIndex",
+    "IIP": "/api/iip/getIIPAnnual",
+    "NAS": "/api/nas/getNASData",
+    "PLFS": "/api/plfs/getData",
+    "ASI": "/api/asi/getASIData",
+    "HCES": "/api/hces/getHcesRecords",
+    "MIS": "/api/nss-78/getNss78Records",
+    "ASUSE": "/api/asuse/getAsuseRecords",
+    "CAMS": null,
+    "WMI": "/api/gender/getGenderRecords",
+    "ESI": "/api/energy/getEnergyRecords",
+    "EI": null,
+    "NII": null,
+    "SOA": null,
+    "TUS": "/api/tus/getTusRecords",
+    "CMST": null,
+    "PWDII": null,
+    "SAAHLL": "/api/nss-77/getNss77Records",
+    "SCH": null,
+    "SCE": null,
+    "CMSE": null,
+    "DWSHHC": null,
+    "TRSSEI": null,
+    "AIDIS": null,
+    "PSCUEH": null,
+    "UNAEI": null,
+    "OCUAEI": null,
+    "DTI": null,
+    "HII": null,
+    "HESDG": null,
+    "EII": null,
+    "CII": null,
+    "YII": null
+  },
+  "all_spec_paths": {
+    "asi": [
+      "/api/asi/getASIData"
+    ],
+    "asuse": [
+      "/api/asuse/getAsuseRecords"
+    ],
+    "cpi": [
+      "/api/cpi/getItemIndex",
+      "/api/cpi/getCPIIndex"
+    ],
+    "cpialrl": [
+      "/api/cpialrl/getCpialrlRecords"
+    ],
+    "energy": [
+      "/api/energy/getEnergyRecords"
+    ],
+    "gender": [
+      "/api/gender/getGenderRecords"
+    ],
+    "hces": [
+      "/api/hces/getHcesRecords"
+    ],
+    "iip": [
+      "/api/iip/getIIPAnnual",
+      "/api/iip/getIIPMonthly"
+    ],
+    "nas": [
+      "/api/nas/getNASData"
+    ],
+    "nss77": [
+      "/api/nss-77/getNss77Records"
+    ],
+    "nss78": [
+      "/api/nss-78/getNss78Records"
+    ],
+    "plfs": [
+      "/api/plfs/getData"
+    ],
+    "tus": [
+      "/api/tus/getTusRecords"
+    ],
+    "wpi": [
+      "/api/wpi/getWpiRecords"
+    ]
+  },
+  "catalogue_query_route": "https://api.mospi.gov.in/api/esankhyiki/cms/golden-sheet/list?page=<n>&limit=<n>[&product=][&ref_period=][&keywords=][&table_name=][&unique_id=] -> 200 application/json, {'data':[4876 row objects], 'meta_data':{page,totalRecords,totalPages,recordPerPage}, 'msg':'Data fetched successfully', 'statusCode':true}; siblings: cms/golden-sheet/mappings (per-product counts, incl. the null-product ALL row), cms/golden-sheet/distinct-products (33 product labels + 7526 keywords + 2764 table_names + 4874 unique_ids + 15 ref_periods), cms/golden-sheet/products/<catalogue_code> (single row), file/download/<file_path minus leading slash><file_name> (xlsx, verified 200 application/vnd.openxmlformats-officedocument... 10184 bytes). Discovered in the SPA bundle /static/js/main.6cd44e15.js as base 'https://api.mospi.gov.in/api/esankhyiki/' + paths; full crawl page 1..25 at limit=200 returned 4876 rows == totalRecords, and per-product sums equal the published tile tooltips exactly.",
+  "pagination": {
+    "endpoint": "cms/golden-sheet/list",
+    "default_page": 1,
+    "default_limit": 10,
+    "max_limit": 200,
+    "over_max": "HTTP 400 {'success':false,'message':'Limit cannot be greater than 200'}",
+    "limit_le_0": "coerced to 1 (limit=0 and limit=-1 both return recordPerPage=1)",
+    "page_le_0": "coerced to 1 (page=0 returns page 1)",
+    "beyond_last_page": "HTTP 200, data:[], msg:'No Data Found', statusCode:true - no error, so a crawl must stop on empty data, not on status",
+    "meta_fields": [
+      "page",
+      "totalRecords",
+      "totalPages",
+      "recordPerPage"
+    ],
+    "observed": {
+      "limit=5": "totalPages 976",
+      "limit=10": "totalPages 488",
+      "limit=20": "244",
+      "limit=50": "98",
+      "limit=100": "49",
+      "limit=200": "25",
+      "page=1000&limit=5": "empty, msg No Data Found"
+    },
+    "ui": {
+      "url": "/catalogue-main/catalogue",
+      "rows_per_page_options": [
+        10,
+        25,
+        50,
+        100
+      ],
+      "default": 10,
+      "footer": "1-10 of 4876"
+    }
+  },
+  "product_filter_values": {
+    "NAS": 1724,
+    "PLFS": 577,
+    "CPI": 499,
+    "IIP": 460,
+    "Women and Men in India": 273,
+    "ASUSE": 206,
+    "Children in India": 128,
+    "EnviStats India": 118,
+    "Youth in India": 81,
+    "HCES": 79,
+    "All India Debt and Investment Survey (NSS 77th Round)": 71,
+    "Education in India (NSS71st Round)": 70,
+    "Persons with Disabilities in India (NSS 76th Round)": 69,
+    "Energy Statistics India": 62,
+    "SAS(NSS 77th Round)": 59,
+    "MIS": 55,
+    "Social Consumption-Education (NSS 75th Round)": 47,
+    "Social Consumption-Health (NSS 75th Round)": 37,
+    "CAMS": 35,
+    "DWSHHC (NSS 76th Round)": 30,
+    "Technical Report - Services Sector Enterprises in India (NSS 74th Round)": 24,
+    "Unincorporated Non-Agricultural Enterprises (Excluding Construction) in India (NSS 73rd Round)": 23,
+    "Comprehensive Modular Survey: Education (NSS 80th Round)": 20,
+    "Comprehensive Modular Survey: Telecom (NSS 80th Round)": 20,
+    "Pilot Study on Construction Activities in Unincorporated Sector Establishments and Households": 15,
+    "Time Use Survey": 15,
+    "Operational Characteristics - Unincorporated Non-Agricultural Enterprises (Excluding Construction) in India (NSS 73rd Round)": 15,
+    "Health In India": 14,
+    "Nutritional Intake in India": 12,
+    "ASI": 11,
+    "Household Expenditure on Services and Durables Goods (NSS 72nd Round)": 11,
+    "Survey on Ayush (NSS 79th Round)": 8,
+    "Domestic Tourism in India (NSS 72nd Round)": 8
+  },
+  "notes": [
+    "Counts are published on /catalogue-main as a tooltip on each tile (<span class='tooltiptext1'>499 Datasets</span>), not as visible body text: 33 product tiles + an 'ALL' tile = 4876. The page header renders 'more than 4800+ datasets' as floor(4876/100)*100.",
+    "The 33 tile counts sum exactly to 4876, and the API's cms/golden-sheet/mappings response carries the same numbers plus a final row with product='ALL', count=4876 and null short name - that row is the published total.",
+    "Only 12 of the 33 catalogued products have a real OpenAPI spec, and only 8 of those sit at swagger_user_<lowercase short name>.yaml (cpi, iip, nas, plfs, asi, hces, asuse, tus). Four need a differently-named token: MIS->swagger_user_nss78.yaml, SAAHLL->swagger_user_nss77.yaml, WMI->swagger_user_gender.yaml, ESI->swagger_user_energy.yaml.",
+    "I swept 71 tokens (every product short name, every product_id in cms/getMetaData, and every layout/swagger_user_*.yaml referenced by the SPA bundle): exactly 14 return YAML (asi, asuse, cpi, cpialrl, energy, gender, hces, iip, nas, nss77, nss78, plfs, tus, wpi). WPI and CPIALRL have specs but are not catalogue products at all - the catalogue and the API product set are not the same list.",
+    "A miss is HTTP 200 with a 486-byte swagger-ui SPA shell (title 'Ministry of Statistics and Program Implementation'), never a 404 - so a spec probe must test the body prefix 'openapi:', not the status code. Content-Type is text/yaml for real specs.",
+    "GOVT_SOURCES_PLAN.md lists AISHE, UDISE, NFHS, RBI and ISP as having real specs; all five are HTML fallbacks today (486 bytes). Those rows of the doc's table need correcting.",
+    "The nas spec's servers block points at a private address, http://10.24.89.9:5000/ - the spec's own base URL is wrong; the live base is https://api.mospi.gov.in/ (all other specs get this right).",
+    "The /catalogue-main/catalogue table paginates server-side through the same endpoint: '1-10 of 4876' at rows-per-page 10, with options 10/25/50/100 - the UI never exceeds the 200 API cap but does not reach it either.",
+    "Negative routes, all verified: /catalogue-main/api/catalogue, /api/catalogue, /catalogue-main/catalogue.json and /api/esankhyiki/... on the esankhyiki host all return the 1198-byte SPA index.html (HTTP 200 text/html); api.mospi.gov.in/api/catalogue and api.mospi.gov.in/api/esankhyiki return the 486-byte swagger shell. There is no JSON on the web host; the only JSON lives on the api host under /api/esankhyiki/.",
+    "Filter semantics are exact and case-sensitive with no fuzzy matching: product=CPI -> 499 but product=cpi -> 0; ref_period='Sept 2026' works for IIP while product=CPI&ref_period='2026' -> 36 (the distinct-products ref_periods list holds bare years, which do not match the row values such as 'Apr 2026'/'August 2026' - that list is not usable as a filter vocabulary). keywords does full-text (keywords=unemployment -> 69) and unique_id / table_name match exactly.",
+    "The product filter vocabulary is mixed and must be enumerated, never guessed: CPI, IIP, NAS, PLFS, ASI, HCES, MIS, ASUSE are filtered by short code, but WMI, ESI, SAAHLL and AIDIS are NOT valid filter values (0 rows each) - their rows are keyed by display names like 'Women and Men in India', 'Energy Statistics India', 'SAS(NSS 77th Round)', 'All India Debt and Investment Survey (NSS 77th Round)'. Use the product_filter_values map or cms/golden-sheet/distinct-products.",
+    "The 4876 published rows are not 4876 distinct tables: 356 rows share a catalogue_code with another row (NAS 176, Women and Men in India 148, ASUSE 28, PLFS 4), i.e. 178 redundant duplicates, leaving 4698 distinct catalogue_code and 4696 distinct unique_id. Dedupe on catalogue_code, not on the row count.",
+    "Row schema per dataset (22 fields): catalogue_code, product, table_name, year, keywords, category, geography, frequency, ref_period, release_date, data_source, description, data_wrapper_publish_link, data_wrapper_iframe_embeded_code, file_name, file_path, unique_id, flourish_link, viz_embeded_code, status, created_at, updated_at. file_path+file_name build the verified xlsx download URL.",
+    "Data bug carried into this file: the mappings API gives IIP the product_full_name 'Consumer Price Index' (product_code 9). The tile label and the row data are correct ('Index of Industrial Production'), so key off short_name, not full_name.",
+    "Discovered via /static/js/main.6cd44e15.js; the site also self-describes at /ai-catalog.json (24837 B), /.well-known/ard.json (24418 B) and /llms.txt (7028 B), which list product landing pages (macroindicators?product=<slug>) but no catalogue rows."
+  ]
+}

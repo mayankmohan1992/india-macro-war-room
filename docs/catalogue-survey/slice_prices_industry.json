@@ -1,0 +1,353 @@
+{
+  "slice": "prices-industry-corporate",
+  "recon_date": "2026-11-11",
+  "products_surveyed": 17,
+  "provenance": {
+    "product_list": "https://api.mospi.gov.in/api/esankhyiki/cms/getMetaData — 45 products, each with frequency, time_period, data_source, last_updated_date, future_release, swagger_link",
+    "dataset_counts": "https://api.mospi.gov.in/api/esankhyiki/cms/golden-sheet/mappings — 33 catalogued products + ALL=4876 (this is the endpoint behind the portal's '4800+ datasets' badge); cross-checked against /cms/golden-sheet/distinct-products, identical counts",
+    "api_specs": "https://esankhyiki.mospi.gov.in/layout/swagger_user_<product>.yaml (v2.0.0, labelled fields, getXRecords/getData) and https://api.mospi.gov.in/layout/swagger_user_<product>.yaml (v1.0.11, older endpoints e.g. /api/cpi/getCPIIndex, /api/iip/getIIPMonthly). Both vintages are live and both were probed.",
+    "tls": "api.mospi.gov.in needs ssl.OP_LEGACY_SERVER_CONNECT; without it requests/curl fail with 'unsafe legacy renegotiation disabled'",
+    "dataset_row_fields": "catalogue rows carry catalogue_code, product, table_name, year, category, geography, frequency, ref_period, release_date, data_source — ref_period+release_date are the point-in-time win the plan describes"
+  },
+  "traps": [
+    "The spec content-type is withheld: /layout/swagger_user_*.yaml returns text/html (SPA) or application/octet-stream unless Accept includes yaml. Validate the body, not the status.",
+    "Two spec generations exist for the same product (v1.0.11 on api host, v2.0.0 on portal host) with different paths and different field names for the same data (cpi getCPIIndex has baseyear/subgroup/status; getCPIData has base_year/division/imputation). Pin the version.",
+    "WPI, ISP, IPPI, OPPI, SPPI, CPI-AL/RL, BMW, MNRE, TASI and the Economic Censuses have ZERO rows in the dataset catalogue even though their APIs work — dataset_count is a catalogue count, not a data-availability count. Never read 0 as 'no data'.",
+    "ISP month_code is a fiscal month (1=April, 6=September), unlike every other product where month_code is calendar.",
+    "ISP type_code=1 (overall index) returns zero rows; the index lives in the broad-sub-sector rows. Omitting type_code is what returns data.",
+    "getMetaData is corrupted for two products: product_id=cpi carries the Biomedical Waste product name/category, and product_id=iip carries full_name 'Consumer Price Index'. The API works; the metadata row does not.",
+    "MNRE is labelled Monthly but every 2026 request returns 0 rows; latest data is Dec 2025. Metadata last_updated 2026-08-17 is the reliable signal, not the frequency label.",
+    "OPPI/CPI load month-by-month with gaps at the frontier (OPPI: Aug 2026 present, Sep 2026 empty) — a 200 with totalRecords=0 at a recent month is a not-yet-published, not a broken request.",
+    "Requests are rate-limited per IP with HTTP 429 + retryAfter (observed after ~10 rapid calls); pace at 1 req/s with backoff."
+  ],
+  "overlap_policy_note": "Existing dashboard series (api/v1/series): cpi, cpirural, cpiurban, wpi, wpiprim, wpimanu, wpifuel, iip, gva, invest, ur, lfpr, wpr + money/credit/rates/FX from DBIE. Anything reproducing those is rejected on overlap; adjacent-but-different (OPPI, SPPI, ASI, ISP) is adopted.",
+  "products": [
+    {
+      "product": "CPI",
+      "dataset_count": 499,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/cpi/getCPIData?base_year=2024&level=Group&year=2026&month_code=9&limit=10",
+      "sample_fields": [
+        "base_year",
+        "series",
+        "year",
+        "month",
+        "state",
+        "sector",
+        "division",
+        "group",
+        "class",
+        "sub_class",
+        "item",
+        "code",
+        "index",
+        "inflation",
+        "imputation"
+      ],
+      "overlap": "direct and total — dashboard already publishes cpi, cpirural, cpiurban from DBIE table 11 (Major Price Indices)",
+      "recommendation": "reject",
+      "reason": "Exact duplicate of a live DBIE series; two CPI vintages on one page (2024=100 here vs DBIE's series) is the failure the sources plan forbids. Probe: 68,804 records for Sep 2026 at level=Group, division 'CPI (General)' index 110.11, inflation 6.08.",
+      "evidence_url": "https://api.mospi.gov.in/api/cpi/getCPIData?base_year=2024&level=Group&year=2026&month_code=9&limit=10",
+      "latest_observed": "Sep 2026 (catalogue release_date 12 Oct 2026)"
+    },
+    {
+      "product": "WPI",
+      "dataset_count": 0,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/wpi/getWpiRecords?base_year=2022-23&year=2026&month_code=9&major_group_code=1000000000",
+      "sample_fields": [
+        "base_year",
+        "year",
+        "month",
+        "major_group",
+        "group",
+        "sub_group",
+        "sub_sub_group",
+        "item",
+        "index_value"
+      ],
+      "overlap": "partial — headline All-Commodities and the three major groups duplicate dashboard wpi/wpiprim/wpimanu/wpifuel (DBIE table 11); item- and sub-group-level rows do not",
+      "recommendation": "defer",
+      "reason": "Headline is a duplicate, but the endpoint returns the full 5-level WPI tree (major_group > group > sub_group > sub_sub_group > item), e.g. Sep 2026 Fuel & Power > Coal And Lignite > Coking Coal = 90.7 — commodity breadth DBIE does not carry. Worth it only if a commodity-spread panel is built; metadata gives next release 16 Nov 2026.",
+      "evidence_url": "https://api.mospi.gov.in/api/wpi/getWpiRecords?base_year=2022-23&year=2026&month_code=9&major_group_code=1000000000",
+      "latest_observed": "Sep 2026, all-commodities index 112.5"
+    },
+    {
+      "product": "IIP",
+      "dataset_count": 460,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/iip/getIIPData?frequency=Monthly&base_year=2022-23&year=2026&type=Use-based%20category",
+      "sample_fields": [
+        "base_year",
+        "year",
+        "month",
+        "type",
+        "category",
+        "sub_category",
+        "index",
+        "growth_rate"
+      ],
+      "overlap": "partial — General index and its published yoy are already the dashboard's iip series; the 6 use-based and 3 sectoral categories are not published anywhere on the page",
+      "recommendation": "adopt",
+      "reason": "Same endpoint already in fetch_mospi.py, so the capex/consumer split costs one parameter: Sep 2026 Capital Goods 153.4 (+10.4%), Consumer Durables 133.1 (+6.0%), Consumer Non-durables 111.8 (+1.4%). That capital-vs-consumption divergence is the panel's core read and is invisible at General level (124.3, +6.7%).",
+      "evidence_url": "https://api.mospi.gov.in/api/iip/getIIPData?frequency=Monthly&base_year=2022-23&year=2026&type=Use-based%20category&limit=12",
+      "latest_observed": "Sep 2026"
+    },
+    {
+      "product": "ASI",
+      "dataset_count": 11,
+      "cadence": "annual",
+      "endpoint": "GET https://api.mospi.gov.in/api/asi/getASIData?classification_year=2008&year=2023-24&indicator_code=1&state_code=99&sector_code=3",
+      "sample_fields": [
+        "nic_classification",
+        "year",
+        "state",
+        "sector",
+        "indicator",
+        "nic_code",
+        "nic_description",
+        "nic_type",
+        "value",
+        "unit"
+      ],
+      "overlap": "none — nothing factory-level exists on the dashboard, and DBIE carries no establishment data at all",
+      "recommendation": "adopt",
+      "reason": "Highest-value product in this slice: 57 indicators (GVA, net value added, GFCF, fixed capital, total persons engaged, wages, mandays, plus physical coal/electricity/petroleum consumed) x 16 years (2008-09 to 2023-24) x 39 states x NIC 2/3/4-digit (31/79/151 codes). The catalogue lists only 11 ASI tables; the API exposes the whole matrix (259 rows for one indicator-year at 3-digit NIC). Also recovers part of the physical-input story the no-PDF rule cut.",
+      "evidence_url": "https://api.mospi.gov.in/api/asi/getASIData?classification_year=2008&year=2023-24&indicator_code=1&state_code=99&sector_code=3",
+      "latest_observed": "FY2023-24 (catalogue release_date 30 Sep 2026)"
+    },
+    {
+      "product": "ISP",
+      "dataset_count": 0,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/isp/getISPRecords?frequency_code=2&year=2026-27",
+      "sample_fields": [
+        "base_year",
+        "frequency",
+        "year",
+        "month",
+        "broad_sub_sector",
+        "index",
+        "growth_rate"
+      ],
+      "overlap": "none — services output has no substitute on the dashboard or on DBIE",
+      "recommendation": "adopt",
+      "reason": "The prior 'dropped' verdict was a parameter artefact: type_code=1 (overall index) is still empty, but omitting type_code returns the 19 broad sub-sectors — 95 monthly rows for 2026-27, e.g. Aug 2026 Wholesale Trade 122.9 (+10.2%), Repair Services 130.7 (+17.6%). Trial series, base 2024-25, so label it provisional. TRAP: month_code is fiscal-month, 1=April (code 6 returns September).",
+      "evidence_url": "https://api.mospi.gov.in/api/isp/getISPRecords?frequency_code=2&year=2026-27",
+      "latest_observed": "Aug 2026"
+    },
+    {
+      "product": "OPPI",
+      "dataset_count": 0,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/oppi/getOppiRecords?base_year=2022-23&year=2026&month_code=8",
+      "sample_fields": [
+        "base_year",
+        "year",
+        "month",
+        "major_group",
+        "group",
+        "sut_product_category",
+        "index_value",
+        "unit"
+      ],
+      "overlap": "none — DBIE has CPI and WPI only; no producer output-price index is published there",
+      "recommendation": "adopt",
+      "reason": "161 rows per month, current to Aug 2026 (All Commodities 110.8), history from Apr 2023 on base 2022-23, with the SUT product-category tree for upstream cost-pressure reads. Pairs with WPI without duplicating it (WPI is a wholesale transaction price, OPPI is producer output).",
+      "evidence_url": "https://api.mospi.gov.in/api/oppi/getOppiRecords?base_year=2022-23&year=2026&month_code=8",
+      "latest_observed": "Aug 2026 (Sep 2026 not yet loaded)"
+    },
+    {
+      "product": "IPPI",
+      "dataset_count": 0,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/ippi/getIPPIRecords?year=2026&month_code=8",
+      "sample_fields": [
+        "year",
+        "month",
+        "industry_group",
+        "value",
+        "unit"
+      ],
+      "overlap": "none",
+      "recommendation": "defer",
+      "reason": "Trial series with 6 months of data only (Mar-Aug 2026, 23 industry groups, Aug 2026 food 114.7), base and weights still under revision. Revisit after 12 months of history; adopting a trial index now guarantees a rebase rewrite.",
+      "evidence_url": "https://api.mospi.gov.in/api/ippi/getIPPIRecords?year=2026&month_code=8",
+      "latest_observed": "Aug 2026 (series starts Mar 2026)"
+    },
+    {
+      "product": "SPPI",
+      "dataset_count": 0,
+      "cadence": "quarterly",
+      "endpoint": "GET https://api.mospi.gov.in/api/sppi/get-records?sppi_code=1&financial_year_code=4",
+      "sample_fields": [
+        "financial_year",
+        "service_producer_price_index",
+        "quarter",
+        "index",
+        "unit"
+      ],
+      "overlap": "none — no services price series exists on the dashboard",
+      "recommendation": "adopt",
+      "reason": "The only official services price index: 10 service indices from FY2023-24 to FY2026-27 Q1 (Securities Transaction SPI 89.9 in Q1 FY27). Read against ISP, it separates services volume from services price — the exact decomposition the dashboard cannot do today.",
+      "evidence_url": "https://api.mospi.gov.in/api/sppi/get-records?sppi_code=1&financial_year_code=4",
+      "latest_observed": "Q1 FY2026-27"
+    },
+    {
+      "product": "CPI-AL/RL",
+      "dataset_count": 0,
+      "cadence": "monthly",
+      "endpoint": "GET https://api.mospi.gov.in/api/cpialrl/getCpialrlRecords?indicator_code=1&base_year_code=2019&year=2026&month_code=9&state_code=99",
+      "sample_fields": [
+        "indicator",
+        "base_year",
+        "year",
+        "month",
+        "state",
+        "index_al",
+        "index_rl",
+        "inflation_al",
+        "inflation_rl"
+      ],
+      "overlap": "adjacent — measures rural/agri-labour inflation, which DBIE's CPI-R does not; it is not the same series",
+      "recommendation": "defer",
+      "reason": "Genuinely unique (Labour Bureau, base 2019=100, Sep 2026 All India AL 144.82 / +6.3%, RL 144.58 / +6.0%, 35 state rows) but it is still a CPI variant; it earns a place only when an agri-household or rural-wage panel exists. Cheap to add later — one endpoint, monthly, current.",
+      "evidence_url": "https://api.mospi.gov.in/api/cpialrl/getCpialrlRecords?indicator_code=1&base_year_code=2019&year=2026&month_code=9&state_code=99",
+      "latest_observed": "Sep 2026"
+    },
+    {
+      "product": "EI (EnviStats India, product_id envstat)",
+      "dataset_count": 118,
+      "cadence": "annual",
+      "endpoint": "GET https://api.mospi.gov.in/api/env/getEnvStatsRecords?indicator_code=1",
+      "sample_fields": [
+        "year",
+        "indicator",
+        "period",
+        "value",
+        "unit"
+      ],
+      "overlap": "none",
+      "recommendation": "defer",
+      "reason": "Large catalogue (118 datasets, 98 indicators incl. mean temperature, per-capita water, waste, forest cover) but annual and heterogeneous — 120 records for indicator 1, latest 2024, mixed units (°C, %, tonnes). Real but too slow and too wide for a monthly war room; harvest once a year if an environment tile is ever wanted.",
+      "evidence_url": "https://api.mospi.gov.in/api/env/getEnvStatsRecords?indicator_code=1",
+      "latest_observed": "2024 (metadata last_updated 2025-06-05)"
+    },
+    {
+      "product": "BMW (Inventory on Biomedical Waste Management)",
+      "dataset_count": 0,
+      "cadence": "annual",
+      "endpoint": "GET https://api.mospi.gov.in/api/bmw/getRecords?indicator_code=1&year=2024",
+      "sample_fields": [
+        "indicator",
+        "year",
+        "state",
+        "value",
+        "unit"
+      ],
+      "overlap": "none",
+      "recommendation": "reject",
+      "reason": "Single-purpose CPCB regulatory series (bio-medical waste generated/treated, kg/day by state; 324 rows for 2024, A&N 521.45 Kg/Day). No macro signal, and it is the reason the catalogue's CPI metadata row is corrupted — see traps.",
+      "evidence_url": "https://api.mospi.gov.in/api/bmw/getRecords?indicator_code=1&year=2024",
+      "latest_observed": "2024"
+    },
+    {
+      "product": "MNRE (Renewable Power Installed Capacity)",
+      "dataset_count": 0,
+      "cadence": "monthly (claimed) — annual in practice",
+      "endpoint": "GET https://api.mospi.gov.in/api/mnre/getDataByEnergy?type_of_renewable_energy_code=1&year=2025",
+      "sample_fields": [
+        "type_of_renewable_energy",
+        "year",
+        "month",
+        "state",
+        "category",
+        "value"
+      ],
+      "overlap": "none — installed capacity by source is absent from the dashboard and from DBIE",
+      "recommendation": "defer",
+      "reason": "Solar/wind/hydro/bio capacity by state and category is a real gap (2,280 rows for 2025; Dec 2025 ground-mounted solar 103,238.35 MW), but the monthly label is wrong: every 2026 request returns 0 rows and metadata last_updated is 2026-08-17. Treat as annual until the publisher catches up.",
+      "evidence_url": "https://api.mospi.gov.in/api/mnre/getDataByEnergy?type_of_renewable_energy_code=1&year=2025",
+      "latest_observed": "Dec 2025"
+    },
+    {
+      "product": "NII (Nutritional Intake in India)",
+      "dataset_count": 12,
+      "cadence": "one-off survey (2022-23)",
+      "endpoint": null,
+      "sample_fields": [
+        "catalogue_code",
+        "product",
+        "table_name",
+        "year",
+        "keywords"
+      ],
+      "overlap": "none",
+      "recommendation": "reject",
+      "reason": "No API: /nii/getRecords, /nii/getData and /nii/getNiiRecords all return the SPA fallback HTML, and no swagger_user_nii.yaml exists on either host. Only 12 catalogue tables (Statement 2: calorie-intake distribution by state/sector, 2022-23), i.e. a PDF/XLSX table set — fails the no-PDF rule.",
+      "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/cms/golden-sheet/list?product=Nutritional%20Intake%20in%20India",
+      "latest_observed": "2022-23 (catalogue year 2025)"
+    },
+    {
+      "product": "SOA (Survey on Ayush, NSS 79th)",
+      "dataset_count": 8,
+      "cadence": "one-off survey (2022-23)",
+      "endpoint": "GET https://api.mospi.gov.in/api/nss-79/getNSS79Records?survey_code=2&indicator_code=29",
+      "sample_fields": [
+        "indicator",
+        "state",
+        "sector",
+        "gender",
+        "age_group",
+        "value"
+      ],
+      "overlap": "none",
+      "recommendation": "defer",
+      "reason": "API does serve it (survey_code=2 'Survey on AYUSH', 7 indicators, 222 rows; e.g. Andhra Pradesh rural male awareness 939 per 1,000), but it is a single 2022-23 round with no refresh — a static tile, not a series.",
+      "evidence_url": "https://api.mospi.gov.in/api/nss-79/getNSS79Records?survey_code=2&indicator_code=29",
+      "latest_observed": "2022-23"
+    },
+    {
+      "product": "TASI (Test ASI)",
+      "dataset_count": 0,
+      "cadence": "annual",
+      "endpoint": null,
+      "sample_fields": [],
+      "overlap": "duplicates ASI if it ever ships",
+      "recommendation": "reject",
+      "reason": "Staging product named 'Test ASI': 0 catalogue rows, no swagger spec on either host, metadata points at a raw XLSX input sheet. ASI already covers the same ground.",
+      "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/cms/getMetaData",
+      "latest_observed": "1992-93 to 2023-24 per metadata, nothing served"
+    },
+    {
+      "product": "EC 4/5/6 (Economic Census establishments)",
+      "dataset_count": 0,
+      "cadence": "as and when requirement arises (last round 2013-14)",
+      "endpoint": null,
+      "sample_fields": [],
+      "overlap": "partial — establishment counts overlap ASUSE/ASI for the enterprise layer",
+      "recommendation": "reject",
+      "reason": "No API spec and no /ec/* endpoint (SPA fallback); every metadata link points to microdata.gov.in unit-level catalogues. Last round is 6th EC 2013-14, updated 2016 — too stale for a monthly read.",
+      "evidence_url": "https://microdata.gov.in/nada43/index.php/catalog/ECO",
+      "latest_observed": "2013-14"
+    },
+    {
+      "product": "RBI (RBI statistics republished by MoSPI)",
+      "dataset_count": 0,
+      "cadence": "annual/monthly/quarterly",
+      "endpoint": "GET https://api.mospi.gov.in/api/rbi/getRbiRecords?sub_indicator_code=1",
+      "sample_fields": [
+        "requestId",
+        "data",
+        "meta_data",
+        "msg",
+        "statusCode"
+      ],
+      "overlap": "total — money, credit, rates, FX, reserves and BoP are exactly what DBIE already owns",
+      "recommendation": "reject",
+      "reason": "A partial republication of DBIE with ~49 sub-indicators and weaker coverage; taking it would create a second owner for series the dashboard already has, which the one-owner rule forbids.",
+      "evidence_url": "https://api.mospi.gov.in/api/rbi/getRbiRecords?sub_indicator_code=1",
+      "latest_observed": "not probed beyond spec — rejected on overlap before ingest"
+    }
+  ]
+}

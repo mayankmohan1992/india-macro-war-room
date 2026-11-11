@@ -125,6 +125,10 @@ field can never disagree.
   `"Q1 FY2026-27"`, `"y-o-y"`, `"spot"`. Present on every indicator; use it when quoting a figure
   rather than rendering `latest.date`, which is the ISO date the series is keyed on (the first of the
   month for monthly series). `null` where the publisher states no period.
+- **`release_date`** — ISO date the publisher actually released that period, where it states one
+  (the real-economy layer reads it from MoSPI's catalogue: `ur` → `2026-10-15` for Sep 2026, `iip` →
+  `2026-10-28`). `null` where the publisher states no comparable period — NAS rows are per financial
+  year, so its quarters stay null rather than borrowing the year's date. Never a modelled lag.
 - **`source`** — which table or API the series came from, verbatim: `RBI r11`, `RBI r10`,
   `MoSPI PLFS monthly (CWS), both`, and so on. The real-economy indicators carry a MoSPI `source` and
   are otherwise identical in shape — same fields, same CSV endpoints, same history.

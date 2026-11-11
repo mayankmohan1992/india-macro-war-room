@@ -795,7 +795,7 @@ function tileHTML(t, span){
   const delta = fmtDelta(t.change, t.unit);
   const longVal = String(fmtVal(t.value, t.unit)).length > 7;
   return `<div class="tile ${t.status}" data-id="${t.id}" data-status="${t.status}" style="grid-column:span ${span}"
-       role="button" tabindex="0" title="${t.reason.replace(/"/g,'&quot;')}">
+       role="button" tabindex="0" title="${(t.reason + (t.released ? ` · published ${t.released}` : '')).replace(/"/g,'&quot;')}">
     <span class="edge"></span>
     <div class="t-head">
       <div class="t-label">${t.label}</div>
@@ -1003,7 +1003,7 @@ function openHist(t){
     });
     html+='</tbody></table>';
   } else {
-    html+=`<div class="hist-sum">Latest: <b>${fmtHistVal(t.value,unit)}</b> as at <b>${t.period.slice(0,10)}</b>`
+    html+=`<div class="hist-sum">Latest: <b>${fmtHistVal(t.value,unit)}</b> as at <b>${t.period.slice(0,10)}</b>${t.released?` · published ${t.released}`:''}`
         + (t.change!=null?` · change vs previous reading ${t.change>0?'+':''}${fmtHistVal(t.change,unit)}`:'')
         + `</div>`;
     html+=`<table class="hist"><thead><tr><th>Date</th><th>Value</th><th>Change vs previous</th></tr></thead><tbody>`;
@@ -1076,7 +1076,7 @@ function openDef(keys, title, extra){
     const reading = t.effective_from
       ? `<b>${val}</b> — in force since ${t.effective_from}${t.prev!=null?` (previous setting ${t.prev}${unit})`:''}
          · newest published row repeating it: ${t.period.slice(0,10)}`
-      : `<b>${val}</b> — as at ${t.period.slice(0,10)}${t.stale?` (no newer observation in the source table)`:''}`;
+      : `<b>${val}</b> — as at ${t.period.slice(0,10)}${t.released?` (published ${t.released})`:''}${t.stale?` (no newer observation in the source table)`:''}`;
     // drop a leading repeat of the value from the reason ("4.82% - inside the band" -> "inside the band")
     const lead = new RegExp('^' + val.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '\\s*[-–—]\\s*');
     const why = String(t.reason||'').replace(lead,'');

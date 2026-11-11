@@ -148,8 +148,8 @@ Three rules hold this layer together:
 - **API or XLSX only — no PDF parsing anywhere.** Sources that publish only PDFs (petroleum, coal,
   steel, power, ports, reservoirs, TRAI, GST revenue) were checked and dropped rather than parsed
   brittlely; see [SOURCES.md](docs/SOURCES.md) for what was rejected and why.
-- **The stated period is shown, not inferred.** Each tile footer carries the reference period the
-  publisher states — "Sep 2026", "Q1 FY2026-27" — rather than the first of the month the series is keyed
+- **The stated period is shown, not inferred, and so is the release date.** Each tile footer carries
+  the reference period the publisher states — "Sep 2026", "Q1 FY2026-27" — rather than the first of the month the series is keyed
   on, and the page never presents an announcement date as a publication date.
 - **Services (ISP) is deliberately absent.** Its API has no overall index row (`type_code=1` is
   documented as "no data at present"), so an all-services figure could only be invented by summing

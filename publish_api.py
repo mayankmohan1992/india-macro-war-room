@@ -47,7 +47,7 @@ log = logging.getLogger("api")
 # The project version, published in status.json so a deployment can be identified at runtime
 # (`curl .../status.json | jq .project_version`). Kept in sync with CHANGELOG.md and the git tag.
 # status.json is excluded from dataset_sha256, so bumping this does not look like a data change.
-PROJECT_VERSION = "1.1.0"
+PROJECT_VERSION = "1.1.1"
 
 ROOT = pathlib.Path(__file__).resolve().parent
 API_VERSION = "v1"
@@ -156,6 +156,9 @@ def build_api(out: pathlib.Path, generated: str) -> dict:
             # which is the ISO date the series is keyed on (first of the month). A consumer quoting a
             # figure should render this one; null where the publisher states no period.
             "period_label": t.get("period_label"),
+            # ISO date the publisher actually released this period (observed from MoSPI's catalogue for
+            # the real-economy layer); null where the publisher states no comparable period.
+            "release_date": t.get("released"),
             "latest": {"date": t["period"], "value": t["value"], "change": t["change"]},
             "stale_days": t.get("stale_days"),
             "stale": bool(t.get("stale")),

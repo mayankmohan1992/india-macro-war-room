@@ -1,0 +1,278 @@
+{
+  "Women and Men in India (WMI / Gender Statistics)": {
+    "dataset_count": 273,
+    "cadence": "Annual — catalogue frequency 'Annual' on all 273 tables; ref_period 2023/2024, latest release_date 05 Apr 2025",
+    "endpoint": "https://api.mospi.gov.in/api/gender/getGenderRecords?indicator_code=Unemployment%20Rate%20for%20Persons%20aged%2015%20years%20%26%20above&Format=JSON&page=1",
+    "sample_fields": [
+      "year",
+      "indicator",
+      "state/UT",
+      "sector",
+      "gender",
+      "age_group",
+      "education_level",
+      "value",
+      "unit"
+    ],
+    "overlap": "Partial and dangerous: 150+ indicator_code values include PLFS labour rates (UR/LFPR/WPR, 2025 vintage) and RBI bank deposits/NPA-by-bank-group — both already owned by the PLFS adapter and DBIE. Demographic indicators (TFR, IMR, MMR, life expectancy, sex ratio, age at marriage) have no other owner.",
+    "recommendation": "adopt (narrow slice: demographic indicators only)",
+    "reason": "Only API-served, state-wise, annually-maintained demography in the whole catalogue: 273 tables, all state/UT x rural/urban, OpenAPI spec at /layout/swagger_user_gender.yaml, filters for 33 dimensions. Live check: Unemployment Rate 15+ returns 333 records with year 2025 (proves the feed is curated, not archival); IMR runs 2008-2023 annually; Total Fertility Rate 135 records to 2019; Sex Ratio is decadal and stops at 2011 (no Census since). Take the 12-15 demographic/health indicators; exclude its labour and banking indicators explicitly, or the dashboard gets a second UR series that disagrees with PLFS in the second decimal.",
+    "sample_record": "{\"year\":\"2025\",\"indicator\":\"Unemployment Rate for Persons aged 15 years & above\",\"state/UT\":\"All India\",\"sector\":\"Rural\",\"gender\":\"Male\",\"value\":\"2.6\",\"unit\":\"%\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/gender/getGenderRecords?indicator_code=Sex%20Ratio&Format=JSON&page=1"
+  },
+  "Time Use Survey (TUS)": {
+    "dataset_count": 15,
+    "cadence": "Periodic round, not a series — catalogue frequency 'On completion of the year-round survey'; latest ref_period 2024, released 25 Feb 2025",
+    "endpoint": "https://api.mospi.gov.in/api/tus/getTusRecords?indicator_code=Percentage%20of%20persons%20in%20unpaid%20activities%2C%20paid%20activities%20and%20other%20activities%20as%20major%20activity%20(age%206%20years%20and%20above)&Format=JSON&page=1",
+    "sample_fields": [
+      "year",
+      "state",
+      "sector",
+      "gender",
+      "age_group",
+      "activity",
+      "indicator",
+      "value",
+      "unit"
+    ],
+    "overlap": "None in the current stack — PLFS measures participation, TUS measures hours inside the day, including unpaid care work that PLFS cannot see.",
+    "recommendation": "defer",
+    "reason": "Genuinely additive (paid/unpaid split by sex and state explains the female LFPR gap) and the API is live — 2024 data returned, spec at /layout/swagger_user_tus.yaml with ~40 indicator codes. But it is a quinquennial round (2019, 2024), so a monthly dashboard gains one observation per five years. Defer until the next round is announced, then ingest as a single cross-section rather than a series.",
+    "sample_record": "{\"year\":\"2024\",\"state\":\"All India\",\"indicator\":\"Percentage of persons in unpaid activities, paid activities and other activities as major activity (age 6 years and above)\",\"sector\":\"Rural\",\"gender\":\"Male\",\"age_group\":\"6-14 Years\",\"activity\":\"All Paid ( codes 13 to 18)\",\"value\":\"1.1\",\"unit\":\"%\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/tus/getTusRecords?indicator_code=Percentage%20of%20persons%20in%20unpaid%20activities%2C%20paid%20activities%20and%20other%20activities%20as%20major%20activity%20(age%206%20years%20and%20above)&Format=JSON&page=1"
+  },
+  "UDISE+ (school education)": {
+    "dataset_count": 0,
+    "cadence": "Annual — API returns years 2018-19 through 2024-25",
+    "endpoint": "https://api.mospi.gov.in/api/udise/getUdiseRecords?indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "year",
+      "state",
+      "value"
+    ],
+    "overlap": "Catalogue carries no UDISE rows at all (0 of 34 products); no other MoSPI product in the stack reports school counts. Children in India (2025) republishes UDISE school-facility tables.",
+    "recommendation": "defer",
+    "reason": "API exists and is current (2024-25, 36 states/UTs, 253 records for indicator 1; 46 indicators via /api/udise/getIndicatorList) but has no OpenAPI spec and no catalogue entry, so every field name was discovered by probing — enrolment/teacher/PTR counts, i.e. education-system capacity, not employment, consumption or demography. This is also the education/scholarship territory flagged as out of scope. Defer: it is a defensible human-capital state panel, not a war-room series.",
+    "sample_record": "{\"indicator\":\"Total number of School\",\"year\":\"2024-25\",\"state\":\"Andaman & Nicobar Islands\",\"value\":\"408\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/udise/getUdiseRecords?indicator_code=1&page=1"
+  },
+  "AISHE (higher education)": {
+    "dataset_count": 0,
+    "cadence": "Annual — API returns 2017-18 through 2021-22 only (4-year lag)",
+    "endpoint": "https://api.mospi.gov.in/api/aishe/getAisheRecords?indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "year",
+      "state",
+      "value"
+    ],
+    "overlap": "No catalogue rows; no overlap with PLFS/IIP/NAS/RBI. Overlaps UDISE only at the margin (both count institutions), and Children in India republishes education tables.",
+    "recommendation": "reject",
+    "reason": "Live endpoint (9 indicators: universities, colleges, enrolment, GER, GPI, PTR) but frozen at 2021-22 while AISHE has published 2022-23 and 2023-24 elsewhere — a four-year-stale series in a monthly dashboard is worse than none. It is also institution/enrolment counting, the scholarship-adjacent category explicitly out of scope. No spec, no catalogue entry.",
+    "sample_record": "{\"indicator\":\"Number of Universities \",\"year\":\"2021-22\",\"state\":\"Andhra Pradesh\",\"value\":\"47.00\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/aishe/getAisheRecords?indicator_code=1&page=1"
+  },
+  "NFHS (National Family Health Survey)": {
+    "dataset_count": 0,
+    "cadence": "Survey round, not a series — API carries nfhs-4 and nfhs-5 only",
+    "endpoint": "https://api.mospi.gov.in/api/nfhs/getNfhsRecords?indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "sub_indicator",
+      "state",
+      "sector",
+      "survey",
+      "value"
+    ],
+    "overlap": "Several WMI indicators (TFR, IMR, anaemia, maternity care, family planning) are NFHS-derived and already API-served there; Children in India republishes the child-nutrition and vaccination tables.",
+    "recommendation": "defer",
+    "reason": "Live and rich — 21 indicator families, 2,664 records for family 1 alone, both rounds side by side, state x rural/urban x sex. But two rounds (2015-16, 2019-21) is a cross-section, and NFHS-6 fieldwork is not in the API, so nothing to monitor. Defer as a static state benchmark (anaemia, stunting, out-of-pocket health) rather than a series.",
+    "sample_record": "{\"indicator\":\"Population and Household Profile\",\"state\":\"Andhra Pradesh\",\"sub_indicator\":\"Female population age 6 years and above who ever attended school (%)\",\"sector\":\"Rural\",\"survey\":\"nfhs-5\",\"value\":\"61.21\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/nfhs/getNfhsRecords?indicator_code=1&page=1"
+  },
+  "EnviStats India (EI)": {
+    "dataset_count": 118,
+    "cadence": "Annual — ref_period 2025, released 05 Jun 2025",
+    "endpoint": "none (no API; verified XLSX: https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/EnviStats/2025/1.02.xlsx → 200, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, 72,877 bytes)",
+    "sample_fields": [
+      "statement-level XLSX sheet (no JSON schema); statements seen: Statement 1.01 Annual and Seasonal Mean Temperature, 1.03 Annual and Monthly Rainfall, 3.05 Municipal Solid Waste Generation"
+    ],
+    "overlap": "None in the stack for environment. Rainfall overlaps IMD's own product (not ingested); subsidies statement overlaps CGA/DBIE fiscal.",
+    "recommendation": "defer (rainfall and temperature statements only)",
+    "reason": "118 annual statements, state-wise, fresh (2025), but XLSX-per-statement and no API — /api/envstat and /api/ei both fall through to the SPA, so there is nothing to poll. Most content (wetlands, Ramsar sites, soil, biodiversity, waste) has no macro signal; only the rainfall/temperature statements bear on the monsoon-agriculture channel, and those are cheaper from IMD. Defer, and if adopted take 2 statements by XLSX, not 118.",
+    "sample_record": "File header only — \"Statement 1.03:Annual and Monthly Rainfall\", unit Millimetre, geography \"All India, State/UT, Sector\" (catalogue record 167119).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=EnviStats%20India&page=1&rowsPerPage=10"
+  },
+  "Health In India (NSS 71st Round)": {
+    "dataset_count": 14,
+    "cadence": "One-off survey round — ref_period Jan-Jun 2014, released 01 Apr 2016",
+    "endpoint": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=1&page=1",
+    "sample_fields": [
+      "survey_period",
+      "indicator",
+      "state",
+      "sector",
+      "gender",
+      "value",
+      "unit"
+    ],
+    "overlap": "Social Consumption-Health (NSS 75th) is the same questionnaire five years later; WMI carries the health-system indicators (MMR, IMR, immunisation) that are still maintained.",
+    "recommendation": "reject",
+    "reason": "API is live and clean (46 indicators, output above is 2014) but the vintage is 2014 — twelve years stale for a dashboard that carries monthly PLFS. Every health signal that still updates (IMR, MMR, life expectancy, immunisation) arrives through WMI on a maintained annual feed. Take nothing here.",
+    "sample_record": "{\"survey_period\":\"January-June 2014\",\"indicator\":\"Literacy rate (in percent) among persons of age 7 years and above\",\"state\":\"All-India\",\"sector\":\"Rural\",\"gender\":\"Male\",\"value\":\"79.8\",\"unit\":\"%\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=1&page=1"
+  },
+  "Social Consumption-Health (NSS 75th Round)": {
+    "dataset_count": 37,
+    "cadence": "One-off survey round — ref_period 2017-18, released 23 Nov 2019",
+    "endpoint": "https://api.mospi.gov.in/api/nss-75/getNss75Records?survey_code=1&indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "state",
+      "sector",
+      "gender",
+      "age_group",
+      "value"
+    ],
+    "overlap": "NFHS (health/nutrition cross-section) and HCES (consumption) cover parts; WMI carries the maintained health indicators.",
+    "recommendation": "defer",
+    "reason": "The last full household health-expenditure round, and out-of-pocket health spending is a real consumption channel — inpatient/non-hospitalised rates by state, sector, gender and age, API live (/api/nss-75/getSurveyList → Health In India, Education). But one round, 2017-18, no cadence. Keep as a static baseline; do not put it on a monitoring page.",
+    "sample_record": "{\"indicator\":\"Hospitalisation cases (excluding childbirth) per 100,000 persons during the last 365 days by age-group\",\"state\":\"All India\",\"sector\":\"Rural\",\"gender\":\"Female\",\"age_group\":\"0-4\",\"value\":\"1664\"}",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Social%20Consumption-Health%20(NSS%2075th%20Round)&page=1&rowsPerPage=10"
+  },
+  "Social Consumption-Education (NSS 75th Round)": {
+    "dataset_count": 47,
+    "cadence": "One-off survey round — ref_period Jul 2017-Jun 2018, released 23 Nov 2019",
+    "endpoint": "https://api.mospi.gov.in/api/nss-75/getNss75Records?survey_code=2&indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "state",
+      "sector",
+      "gender",
+      "age_group",
+      "value"
+    ],
+    "overlap": "WMI carries literacy, GER/GPI, mean years of schooling on a maintained annual feed.",
+    "recommendation": "reject",
+    "reason": "Attendance and expenditure on education in one 2017-18 round; every series a dashboard would want (literacy, GER, GPI, dropout) is already in WMI with 2024-25 vintage. Education spending is scholarship-adjacent and out of scope. One trap worth recording: /api/nss-75/getSurveyList lists survey_code 1 (Health In India) and 2 (Education), but passing survey_code=2 to getNss75Records returns the health records unchanged, so the education tables cannot be isolated by that parameter alone.",
+    "sample_record": "{\"indicator\":\"Hospitalisation cases (excluding childbirth) per 100,000 persons during the last 365 days by age-group\",\"state\":\"All India\",\"sector\":\"Rural\",\"gender\":\"Female\",\"age_group\":\"0-4\",\"value\":\"1664\"} — same record returned for survey_code=2 as for survey_code=1, i.e. the records endpoint ignores survey_code (meta_data.totalRecords 3996 both ways); the education half is catalogue/XLSX-only until that filter is resolved.",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Social%20Consumption-Education%20(NSS%2075th%20Round)&page=1&rowsPerPage=10"
+  },
+  "Education in India (NSS 71st Round)": {
+    "dataset_count": 70,
+    "cadence": "One-off survey round — ref_period Jan-Jun 2014, released 10 Mar 2016",
+    "endpoint": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=1&page=1",
+    "sample_fields": [
+      "survey_period",
+      "indicator",
+      "state",
+      "sector",
+      "gender",
+      "value",
+      "unit"
+    ],
+    "overlap": "Entirely superseded by WMI's education block (literacy, GPI, enrolment, mean years of schooling) which is annual and current.",
+    "recommendation": "reject",
+    "reason": "2014 vintage, same endpoint family as Health In India, and fully superseded. Nothing unique survives the overlap test.",
+    "sample_record": "{\"survey_period\":\"January-June 2014\",\"indicator\":\"Literacy rate (in percent) among persons of age 7 years and above\",\"state\":\"All-India\",\"sector\":\"Rural\",\"gender\":\"Male\",\"value\":\"79.8\",\"unit\":\"%\"}",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Education%20in%20India%20(NSS71st%20Round)&page=1&rowsPerPage=10"
+  },
+  "Children in India": {
+    "dataset_count": 128,
+    "cadence": "Annual report — report year 2025, released 25 Sep 2025 (compilation, not a new survey)",
+    "endpoint": "none (no API; XLSX under /datacatalogue/Children in India/2025/)",
+    "sample_fields": [
+      "table-level XLSX (no JSON schema); tables seen: 2.1(a) State-wise Child Population 2011, 2.8 Infant Mortality Rate 2022/2023, 3.24 Vaccination coverage, 4.23 School facilities 2024-25"
+    ],
+    "overlap": "Almost total: SRS (IMR/U5MR/birth rate) and UDISE (school facilities) and NFHS (vaccination, nutrition) and WMI (sex ratio, child population). It is a republication product.",
+    "recommendation": "reject",
+    "reason": "128 tables that restate SRS, UDISE, NFHS and WMI. The one genuinely current number it carries — IMR 2023 — is already in WMI's annual API (verified: 2008-2023, 48 records). Ingesting a republication means a second IMR series that can silently diverge from the primary one. Reject on the one-owner rule.",
+    "sample_record": "Catalogue record 167118-class entry: \"Table 2.8-Infant Mortality Rate by sex and Residence in bigger States (2022, 2023)\", file /datacatalogue/Children in India/2025/3.24.xlsx (XLSX header only, not parsed).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Children%20in%20India&page=1&rowsPerPage=10"
+  },
+  "Youth in India": {
+    "dataset_count": 81,
+    "cadence": "One-off report — ref_period 2022, released 28 Jun 2022",
+    "endpoint": "none (no API; XLSX under /datacatalogue/Youth in India/2022/)",
+    "sample_fields": [
+      "statement-level XLSX (no JSON schema); statements seen: Statement 3 Statewise Population aged 15-29, Statement 7 exact age at first marriage, Statement 13 ASFR"
+    ],
+    "overlap": "WMI carries age at marriage, ASFR, adolescent fertility and population projections on an annual feed; the youth population share is a projection (2011-2036) restated here.",
+    "recommendation": "reject",
+    "reason": "2022 vintage, no API, and every statement is either a census projection or a WMI indicator. Nothing observes anything new.",
+    "sample_record": "Statement 4: \"Statewise projected youth population (aged 15-29 years) and their share in Total Population\" — catalogue ref_period 2022 (XLSX header only).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Youth%20in%20India&page=1&rowsPerPage=10"
+  },
+  "Persons with Disabilities in India (NSS 76th Round)": {
+    "dataset_count": 69,
+    "cadence": "One-off survey round — ref_period Jul-Dec 2018, released 23 Nov 2019",
+    "endpoint": "none (no API; XLSX under /datacatalogue/PWD/)",
+    "sample_fields": [
+      "table-level XLSX (no JSON schema); tables seen: 1.2 Percentage of persons with disability by State/UT, 4.1 broad type of disability, 6.1 literacy of PWD"
+    ],
+    "overlap": "WMI has a disability block (percentage disabled, by type) in its 150+ indicator list.",
+    "recommendation": "reject",
+    "reason": "One 2018 round, XLSX-only, and the summary indicators are already in WMI's API. Disability prevalence is a structural statistic, not a monitoring series.",
+    "sample_record": "Table 1.2: \"Percentage of persons with disability for each State/ UT\" — catalogue ref_period \"July-December, 2018\" (XLSX header only).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Persons%20with%20Disabilities%20in%20India%20(NSS%2076th%20Round)&page=1&rowsPerPage=10"
+  },
+  "DWSHHC (NSS 76th Round)": {
+    "dataset_count": 30,
+    "cadence": "One-off survey round — ref_period Jul-Dec 2018, released 23 Nov 2019",
+    "endpoint": "none (no API; XLSX under /datacatalogue/DWSH/)",
+    "sample_fields": [
+      "statement-level XLSX (no JSON schema); statements seen: Statement 10 households by access to bathroom, drinking-water source, housing condition"
+    ],
+    "overlap": "MIS (NSS 78th) repeats the drinking-water question in 2020-21; Mission Antyodaya/ Jal Jeevan dashboards own the live version outside MoSPI.",
+    "recommendation": "defer",
+    "reason": "The only state-wise household amenities cross-section in the catalogue, and water/sanitation access is a real consumption/divergence marker — but 2018, XLSX-only, one round. Defer as a static baseline; do not build an adapter.",
+    "sample_record": "Statement 10: \"Percentage distribution of households by access to bathroom\" — catalogue ref_period \"July-December, 2018\" (XLSX header only).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=DWSHHC%20(NSS%2076th%20Round)&page=1&rowsPerPage=10"
+  },
+  "Nutritional Intake in India (NSS)": {
+    "dataset_count": 12,
+    "cadence": "One-off survey round — ref_period 2022-23 & 2023-24, released 02 Jul 2025",
+    "endpoint": "none (no API; XLSX under /datacatalogue/Nutritional/)",
+    "sample_fields": [
+      "statement-level XLSX (no JSON schema); Statement 1 average daily calorie intake per capita and per consumer unit by State/UT and sector"
+    ],
+    "overlap": "Directly pairs with HCES (consumption) — calories per capita is the physical counterpart of the MPCE series.",
+    "recommendation": "defer",
+    "reason": "Fresh (Jul 2025) and the only calorie-intake series in the catalogue, 12 statements, state x sector. But XLSX-only, one round, and it is a nutrition cross-section rather than a monitoring series; revisit only if the dashboard builds a consumption-quality panel alongside HCES.",
+    "sample_record": "Statement 1: \"Average daily calorie intake per capita and per consumer unit by State/UT and sector: 2022-23 & 2023-24\" (XLSX header only).",
+    "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=Nutritional%20Intake%20in%20India&page=1&rowsPerPage=10"
+  },
+  "CAMS (NSS 79th Round)": {
+    "dataset_count": 35,
+    "cadence": "One-off survey round — ref_period 2022-23, released 09 Oct 2024",
+    "endpoint": "https://api.mospi.gov.in/api/nss-79/getNSS79Records?indicator_code=1&page=1",
+    "sample_fields": [
+      "indicator",
+      "state",
+      "sector",
+      "gender",
+      "age_group",
+      "value"
+    ],
+    "overlap": "Literacy/numeracy and digital-access indicators overlap WMI's education block and the Telecom CMST (NSS 80th) module.",
+    "recommendation": "defer",
+    "reason": "API live (verified record below) and it is the only source for functional literacy/numeracy and digital access by state — a genuine human-capital signal. But one round, all-India-only in the catalogue metadata (geography field: 'All India'), and no second observation to compare with. Defer until a repeat round.",
+    "sample_record": "{\"indicator\":\"Percentage of persons able to read and write short simple statements in their everyday life with understanding\",\"state\":\"Telangana\",\"sector\":\"All\",\"gender\":\"Male\",\"age_group\":\"15-29 years\",\"value\":\"99.2\"}",
+    "evidence_url": "https://api.mospi.gov.in/api/nss-79/getNSS79Records?indicator_code=1&page=1"
+  },
+  "MIS (Multiple Indicator Survey, NSS 78th Round)": {
+    "dataset_count": 55,
+    "cadence": "One-off survey round — ref_period 2020-21, released 07 Mar 2023",
+    "endpoint": "https://api.mospi.gov.in/api/nss-78/getNss78Records?indicator_code=1&page=1 (returns 500 'Database error'); indicator list at https://api.mospi.gov.in/api/nss-78/getIndicatorList works",
+    "sample_fields": [
+      "indicator",
+      "viz (indicator list only); record fields not retrievable — the records endpoint errors"
+    ],
+    "overlap": "Drinking water / sanitation / disability indicators duplicate DWSHHC and PWDII; SDG-style indicators duplicate WMI.",
+    "recommendation": "reject",
+    "reason": "The records endpoint is broken: /api/nss-78/getNss78Records returns 500 {'success': false, 'error': 'Database error'} while /api/nss-78/getIndicatorList returns the indicator list — so the data is catalogued but not served. 2020-21 vintage on top. Nothing ingestible without scraping the XLSX.",
+    "sample_record": "Endpoint failure (not a record): {\"success\": false, \"error\": \"Database error\"} from /api/nss-78/getNss78Records?indicator_code=1&page=1",
+    "evidence_url": "https://api.mospi.gov.in/api/nss-78/getNss78Records?indicator_code=1&page=1"
+  }
+}

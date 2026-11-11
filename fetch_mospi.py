@@ -33,6 +33,7 @@ import datetime as dt
 import json
 import logging
 import pathlib
+import re
 import ssl
 import sys
 import time
@@ -103,6 +104,11 @@ def get(path: str, *, _tries: int = 4, **params) -> dict:
     for attempt in range(1, _tries + 1):
         try:
             r = SESSION.get(BASE + path, params=params, timeout=45)
+            if r.status_code == 429:            # the host answers 429 + Retry-After after ~10 rapid calls
+                wait = int(r.headers.get("Retry-After") or 5)
+                log.warning("[WARN] [API] rate-limited on %s - waiting %ss", path, wait)
+                time.sleep(wait)
+                raise RuntimeError("HTTP 429 rate limited")
             if r.status_code != 200:
                 raise RuntimeError(f"HTTP {r.status_code}: {r.text[:160]}")
             return r.json()
@@ -132,6 +138,75 @@ def paged(path: str, **params) -> list[dict]:
             raise RuntimeError(f"{path}: {pages} pages - refusing to walk that far")
         page += 1
     return rows
+
+
+CATALOGUE = "/api/esankhyiki/cms/golden-sheet/list"
+
+
+def _iso_of(datestr: str) -> str | None:
+    """'15 Oct 2026' -> '2026-10-15'. The catalogue states dates in this form; anything else is null."""
+    try:
+        return dt.datetime.strptime(datestr.strip(), "%d %b %Y").date().isoformat()
+    except (AttributeError, ValueError):
+        return None
+
+
+def _canon_period(ref: str) -> str:
+    """Normalise a catalogue ref_period so it can be matched against our own labels.
+
+    The catalogue writes the same month several ways across tables ("Sep 2026", "Sept 2026",
+    "September 2026") because each table is maintained by a different division. Left unnormalised, the
+    lookup silently misses and every release date reads as absent.
+    """
+    s = " ".join((ref or "").split())
+    m = re.match(r"^([A-Za-z]{3})[a-z]*\.?\s+(\d{4})$", s)
+    if m:
+        mon = m.group(1).title()
+        mon = "Sep" if mon == "Sep" else mon
+        return f"{mon} {m.group(2)}"
+    return s
+
+
+def catalogue_releases(product: str, patterns: list[str]) -> dict[str, str]:
+    """ref_period -> release_date, straight from MoSPI's own catalogue.
+
+    WHY: the data API returns values but no publication date, and this project refuses to MODEL a lag
+    (that is how a backtest manufactures edge). The catalogue behind e-Sankhyiki does publish one per
+    table, and its CMS endpoint is queryable - so the release date is OBSERVED, not guessed.
+
+    `patterns` narrows to the tables we actually read (the catalogue carries hundreds of tables per
+    product, published on different days within the same period). Where several match, the EARLIEST
+    release for a period wins: that is when the period's figures first became public.
+
+    Best-effort by design: an empty result leaves release dates absent and the build still works.
+    """
+    out: dict[str, str] = {}
+    page, pages = 1, 1
+    while page <= pages:
+        try:
+            j = get(CATALOGUE, product=product, page=page, limit=200)
+        except Exception:
+            log.warning("[WARN] [Catalogue] %s page %s unavailable - release dates will be absent",
+                        product, page)
+            return out
+        meta = j.get("meta_data") or {}
+        pages = int(meta.get("totalPages") or 1)
+        for row in j.get("data") or []:
+            name = (row.get("table_name") or "")
+            if patterns and not any(p.lower() in name.lower() for p in patterns):
+                continue
+            rp, rd = row.get("ref_period"), row.get("release_date")
+            iso = _iso_of(rd) if rd else None
+            if not rp or not iso:
+                continue
+            key = _canon_period(rp)
+            prev = out.get(key)
+            out[key] = iso if prev is None else min(prev, iso)
+        page += 1
+        if pages > 60:                     # guard against a runaway walk
+            break
+        time.sleep(0.6)                    # the host 429s after ~10 rapid calls; measured here
+    return out
 
 
 def month_start(y: int, m: int) -> str:
@@ -202,10 +277,13 @@ def fetch_plfs() -> dict:
               "act_wpr": "Worker population ratio, 15+",
               "act_wpr_rural": "Worker population ratio (rural)",
               "act_wpr_urban": "Worker population ratio (urban)"}
+    rel = catalogue_releases("PLFS", ["Unemployment Rate (UR)", "Labour Force Participation Rate (LFPR)",
+                                      "Worker Population Ratio (WPR)"])
     for k, s in series.items():
         s["label"] = labels.get(k, k)
         s["points"].sort()
         s["unit"] = "%"
+        s["releases"] = rel          # ref_period -> observed release date (may be {})
     log.info("[INFO] [PLFS] %s series over %s months (%s..%s)", len(series), len(got_months),
              min(got_months) if got_months else "-", max(got_months) if got_months else "-")
     return series
@@ -254,6 +332,11 @@ def fetch_iip() -> dict:
                                  "unit": "%", "freq": "monthly", "source": "MoSPI IIP monthly",
                                  "endpoint": "/api/iip/getIIPData",
                                  "points": sorted(grow), "periods": dict(sorted(periods.items()))}
+    # No table-name filter: IIP tables are titled by NIC digit depth, not by type, and all of them for
+    # a month publish on the same day (the 28th, generally) - the earliest is that month's release.
+    rel = catalogue_releases("IIP", [])
+    for s in out.values():
+        s["releases"] = rel
     log.info("[INFO] [IIP] %s series, %s points", len(out), len(idx))
     return out
 
@@ -336,6 +419,9 @@ def fetch_nas() -> dict:
                                    "endpoint": "/api/nas/getNASData",
                                    "points": yoy,
                                    "periods": {d: periods[d] for d, _ in yoy if d in periods}}
+    rel = catalogue_releases("NAS", ["Gross Value Added"])
+    for s in out.values():
+        s["releases"] = rel
     log.info("[INFO] [NAS] %s quarters, %s series", len(lvl), len(out))
     return out
 
@@ -376,9 +462,10 @@ def main() -> int:
         "publisher": "Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
         "api": BASE,
         "release_date": None,
-        "release_date_note": ("MoSPI's API does not expose a publication date; the eSankhyiki catalogue "
-                              "publishes one per table, but only in a browser-rendered page. No lag is "
-                              "modelled or assumed here."),
+        "release_date_note": ("Release dates are OBSERVED from MoSPI's catalogue "
+                              "(/api/esankhyiki/cms/golden-sheet/list), which states one per table; no lag "
+                              "is modelled. Where a period has no catalogue row, its release date is absent "
+                              "rather than guessed."),
         "series": series,
     }
     _atomic_write(OUT, json.dumps(payload, ensure_ascii=False, indent=1))

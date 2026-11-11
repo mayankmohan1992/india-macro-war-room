@@ -126,6 +126,7 @@
     8.23
    ]
   ],
+  "release_date": null,
   "scoring_rule": "Computed from published constant-price levels, not a published growth rate. Green 5-8%, watch 3-5% / >8%, red <3%.",
   "series": "act_gva_yoyt",
   "source": "MoSPI NAS quarterly (computed from published levels)",
@@ -163,7 +164,7 @@
   "indicators": 43,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T06:59:55Z",
+  "retrieved_at": "2026-11-11T07:24:34Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

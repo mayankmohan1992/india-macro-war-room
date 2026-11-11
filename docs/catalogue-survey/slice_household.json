@@ -1,0 +1,720 @@
+{
+ "_meta": {
+  "recon_date": "2026-11-11",
+  "portal": "https://esankhyiki.mospi.gov.in",
+  "catalogue_api": "https://api.mospi.gov.in/api/esankhyiki/cms/golden-sheet/list?product=<product>&page=1&limit=100",
+  "product_index_api": "https://api.mospi.gov.in/api/esankhyiki/cms/golden-sheet/distinct-products (33 catalogue products, 4,876 datasets in total; 25 products / 1,152 datasets surveyed here)",
+  "products_surveyed": 25,
+  "datasets_surveyed": 1152,
+  "endpoints_working": 17,
+  "xlsx_only": [
+   "CMSE",
+   "PSCUEH",
+   "NII",
+   "SOA",
+   "DTI",
+   "HESDG",
+   "CII",
+   "YII"
+  ],
+  "adopt": [
+   "HCES",
+   "ASUSE",
+   "AIDIS"
+  ],
+  "defer": [
+   "SAAHLL",
+   "TUS",
+   "CAMS",
+   "CMST",
+   "CMSE",
+   "MIS",
+   "PSCUEH",
+   "NII"
+  ],
+  "reject": [
+   "SOA",
+   "SCH",
+   "SCE",
+   "DWSHHC",
+   "PWDII",
+   "TRSSEI",
+   "UNAEI",
+   "OCUAEI",
+   "DTI",
+   "HESDG",
+   "HII",
+   "EII",
+   "CII",
+   "YII"
+  ],
+  "tls_note": "api.mospi.gov.in needs ssl.OP_LEGACY_SERVER_CONNECT; curl fails with 'unsafe legacy renegotiation disabled' while the endpoint is fine.",
+  "api_traps": [
+   "indicator_code is an integer on some products and the exact indicator-name string on others (hces, tus, asuse, nss-77); pass 1 to a name-enum product and you get HTTP 200 statusCode:true data:[] - 'No Data Found'.",
+   "/api/nss-77/getNss77Records requires Format=JSON (declared required in its spec) or it returns 500 'Please check the input parameters passed'.",
+   "/api/nss-<round>/getNss<round>Records serves TWO catalogue products per round (71=EII+HII, 73=UNAEI+OCUAEI, 75=SCH+SCE, 76=PWDII+DWSHHC, 77=AIDIS+SAAHLL, 79=CAMS+SOA) with no product discriminator field - split on indicator name.",
+   "/api/tus/getTusRecords with indicator_code=1 times out past 120s; the name string returns 61,325 rows immediately.",
+   "/api/nss-78/getNss78Records?indicator_code=1 answers HTTP 200 with 'Database error'; indicator_code=2 works.",
+   "/api/nss-80/getNss80Records needs survey_code; only survey_code=1 (telecom) returns rows, and totalRecords is pinned at 999 for every indicator, i.e. a cap.",
+   "/api/hces/getHcesRecords with no indicator_code times out (full-table scan).",
+   "TUS returns '-' in the value column for nil cells - coerce before comparing.",
+   "No route: /api/nss-72/getNss72Records returns 'Invalid request: route not found'; every unknown path returns the SPA HTML with HTTP 200, so check content-type, not status."
+  ],
+  "xlsx_fallback": "Every catalogue row carries file_path + file_name; https://api.mospi.gov.in/api/esankhyiki/file/download<file_path><file_name> returns the real workbook (200, PK zip) for all 5 XLSX-only products tested. file_path already starts with /datacatalogue - do not prefix it twice.",
+  "overlap_baseline": "Published today: PLFS monthly labour, IIP monthly, NAS total GVA quarterly, plus RBI DBIE money/credit/rates/FX/reserves/prices."
+ },
+ "HCES": {
+  "product": "HCES — Household Consumption Expenditure Survey",
+  "dataset_count": 79,
+  "cadence": "Usually quinquennially (catalogue wording, all 79 rows); two rounds in catalogue: 2022-23 and 2023-24",
+  "endpoint": "https://api.mospi.gov.in/api/hces/getHcesRecords?indicator_code=Average%20monthly%20per%20capita%20consumption%20expenditure%20(MPCE)&year=2023-24",
+  "sample_fields": [
+   "year",
+   "state",
+   "indicator",
+   "sector",
+   "imputation_type",
+   "value",
+   "unit"
+  ],
+  "sample_record": {
+   "year": "2023-24",
+   "state": "All India",
+   "indicator": "Average monthly per capita consumption expenditure (MPCE)",
+   "sector": "Rural",
+   "imputation_type": "Without Imputation",
+   "value": "4122",
+   "unit": "₹"
+  },
+  "latest_ref_period": "2023-24",
+  "latest_release": "31 Jan 2025",
+  "overlap": "None on the dashboard. NAS carries PFCE only as an aggregate; HCES gives the distribution (MPCE by state/sector/fractile, Gini 0.237 rural 2023-24).",
+  "recommendation": "adopt",
+  "reason": "Only open source for household consumption level and inequality; JSON API returns labelled records (148 rows for the MPCE indicator). Must be presented as a round-based figure, not a live tile: two rounds, five years apart, latest released 31 Jan 2025.",
+  "evidence_url": "https://api.mospi.gov.in/api/hces/getHcesRecords?indicator_code=Average%20monthly%20per%20capita%20consumption%20expenditure%20(MPCE)&year=2023-24"
+ },
+ "ASUSE": {
+  "product": "ASUSE — Annual Survey of Unincorporated Sector Enterprises",
+  "dataset_count": 206,
+  "cadence": "Annual (198 catalogue tables) plus quarterly bulletins (8 tables, ref Jan-Mar 2025 to Jan-Mar 2026, latest released 21 May 2026)",
+  "endpoint": "https://api.mospi.gov.in/api/asuse/getAsuseRecords?indicator_code=1",
+  "sample_fields": [
+   "indicator",
+   "frequency",
+   "year",
+   "state/UT",
+   "sector",
+   "activity_category",
+   "establishment_type",
+   "establishments",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Estimated Number of Establishments Pursuing Mixed Activities for Each Activity Category",
+   "frequency": "Annually",
+   "year": "2025",
+   "state/UT": "All India",
+   "sector": "Rural",
+   "activity_category": "Cotton Ginning, Cleaning and Bailing",
+   "establishment_type": "Hired Worker Establishments(HWE)",
+   "establishments": "Estimated No. of Establishments",
+   "value": "46"
+  },
+  "latest_ref_period": "2025 (annual); Jan-Mar 2026 (quarterly bulletin)",
+  "latest_release": "21 May 2026",
+  "overlap": "None published. NAS absorbs unorganised-sector GVA inside total GVA without separating it; PLFS counts workers, not enterprises.",
+  "recommendation": "adopt",
+  "reason": "Best informal-sector source available: establishment counts, workers, GVA by activity and state, 2,250 rows for a single indicator. Use the annual API now; the quarterly QBUSE tables exist only as XLSX (frequency_code=2 returns 'No Data Found'), so a live quarterly tile would need the file path, and the newest bulletin is already ~6 months behind today.",
+  "evidence_url": "https://api.mospi.gov.in/api/asuse/getAsuseRecords?indicator_code=1"
+ },
+ "AIDIS": {
+  "product": "AIDIS — All India Debt and Investment Survey (NSS 77th Round)",
+  "dataset_count": 71,
+  "cadence": "As and when requirement arises; one round in catalogue (NSS 77th, ref Jan-Dec 2019, released 10 Sep 2021)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-77/getNss77Records?indicator_code=Distribution%20of%20Amount%20of%20Loan%20Outstanding%20by%20Source%20of%20Loan%20Taken&Format=JSON",
+  "sample_fields": [
+   "state",
+   "indicator",
+   "Land_Possessed(hectares)",
+   "loan_outstanding",
+   "value"
+  ],
+  "sample_record": {
+   "state": "All India",
+   "indicator": "1000 Distribution of Amount of Loan Outstanding by Source of Loan Taken for Different Size Classes of Land Possessed (ha.)",
+   "Land_Possessed(hectares)": "<0.01",
+   "loan_outstanding": "Commercial Bank",
+   "value": "36"
+  },
+  "latest_ref_period": "Jan-Dec 2019",
+  "latest_release": "10 Sep 2021",
+  "overlap": "Partial but not duplicative. DBIE's household credit is bank/SCB credit outstanding; AIDIS is the household stock of debt including non-institutional lenders, plus assets and debt-asset ratio.",
+  "recommendation": "adopt",
+  "reason": "Household debt and assets are the one real gap the dashboard has: no DBIE table gives debt-asset ratio or the non-institutional share. Served by the NSS-77 round endpoint (Format=JSON is mandatory; without it the call 500s). Static by nature one round, so it belongs in a 'household balance sheet' panel, never a live tile.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-77/getNss77Records?indicator_code=Distribution%20of%20Amount%20of%20Loan%20Outstanding%20by%20Source%20of%20Loan%20Taken&Format=JSON"
+ },
+ "SAAHLL": {
+  "product": "SAAHLL — Situation Assessment of Agricultural Households, Land & Livestock Holdings (SAS, NSS 77th Round)",
+  "dataset_count": 59,
+  "cadence": "As and when requirement arises; one round (NSS 77th, ref Jan-Dec 2019, released 10 Sep 2021)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-77/getNss77Records?indicator_code=Avg.%20Monthly%20Income%20(in%20Rs.)%20Per%20Agricultural%20Hh%20(only%20the%20Paid%20Out%20Expenditure)&Format=JSON",
+  "sample_fields": [
+   "state",
+   "indicator",
+   "sub_indicator",
+   "Social Group",
+   "season",
+   "Land_Possessed(hectares)",
+   "value"
+  ],
+  "sample_record": {
+   "state": "All India",
+   "indicator": "Average Monthly Income (in Rs.) Per Agricultural Household for Each Size Class of Land Possessed (considering Only the Paid Out Expenditure)",
+   "sub_indicator": "Income From Wages (rs.)",
+   "Social Group": "ST",
+   "season": "July 2018-June 2019",
+   "Land_Possessed(hectares)": "<0.01",
+   "value": "5400"
+  },
+  "latest_ref_period": "January-December 2019",
+  "latest_release": "10 Sep 2021",
+  "overlap": "None. Farm household income, crop loss, MSP awareness and leasing have no counterpart on the dashboard or on DBIE.",
+  "recommendation": "defer",
+  "reason": "Substantively new (agricultural household income by size class) and the same working endpoint as AIDIS, but it is a single 2019 round released in 2021 and never repeated; publishing 5-year-old farm income as a current reading would mislead. Pick up only if a 2024-25 SAS round is announced.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-77/getNss77Records?indicator_code=Avg.%20Monthly%20Income%20(in%20Rs.)%20Per%20Agricultural%20Hh%20(only%20the%20Paid%20Out%20Expenditure)&Format=JSON"
+ },
+ "TUS": {
+  "product": "TUS — Time Use Survey",
+  "dataset_count": 15,
+  "cadence": "On completion of the year-round survey; rounds 2019 and 2024 (2024 released 25 Feb 2025)",
+  "endpoint": "https://api.mospi.gov.in/api/tus/getTusRecords?indicator_code=Percentage%20of%20persons%20in%20different%20activity%20in%20a%20day%20as%20major%20activity%20(age%206%20years%20and%20above)",
+  "sample_fields": [
+   "year",
+   "state",
+   "indicator",
+   "sector",
+   "gender",
+   "age_group",
+   "icatus_activity",
+   "day_of_week",
+   "value",
+   "unit"
+  ],
+  "sample_record": {
+   "year": "2024",
+   "state": "All India",
+   "indicator": "Percentage of persons in different activity in a day as major activity (age 6 years and above)",
+   "sector": "Rural",
+   "gender": "Male",
+   "age_group": "6-14 Years",
+   "icatus_activity": "(110) Employment in corporations, government and non-profit institutions",
+   "day_of_week": "Normal Day",
+   "value": "-",
+   "unit": "%"
+  },
+  "latest_ref_period": "2024",
+  "latest_release": "25 Feb 2025",
+  "overlap": "None. Unpaid domestic/care work is invisible in PLFS (which counts only economic activity).",
+  "recommendation": "defer",
+  "reason": "Real gap (women's unpaid work share) but the endpoint is the heaviest on the API: 61,325 rows for one indicator, and indicator_code must be the name string, an integer code times out at 120s. Also only two rounds. Would need a narrow, pre-aggregated slice before it earns a tile.",
+  "evidence_url": "https://api.mospi.gov.in/api/tus/getTusRecords?indicator_code=Percentage%20of%20persons%20in%20different%20activity%20in%20a%20day%20as%20major%20activity%20(age%206%20years%20and%20above)"
+ },
+ "CAMS": {
+  "product": "CAMS — Comprehensive Annual Modular Survey (NSS 79th Round)",
+  "dataset_count": 35,
+  "cadence": "As and when released by Household Survey Division; one round (NSS 79th, ref 2022-23, released 09 Oct 2024)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-79/getNss79Records?indicator_code=1",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "gender",
+   "age_group",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Percentage of persons able to read and write short simple statements in their everyday life with understanding",
+   "state": "Telangana",
+   "sector": "All",
+   "gender": "Male",
+   "age_group": "15-29 years",
+   "value": "99.2"
+  },
+  "latest_ref_period": "2022-23",
+  "latest_release": "09 Oct 2024",
+  "overlap": "None directly; some literacy/education overlap with PLFS education tables if those are ever loaded.",
+  "recommendation": "defer",
+  "reason": "API is live and clean - ~30 literacy/education indicators reachable (indicator_code 1-30), each answering in a few hundred to ~2,000 rows - but CAMS is a one-off modular survey with no second round and no time series; a tile built from a single 2022-23 point adds a number without a signal.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-79/getNss79Records?indicator_code=1"
+ },
+ "CMST": {
+  "product": "CMST — Comprehensive Modular Survey: Telecom (NSS 80th Round)",
+  "dataset_count": 20,
+  "cadence": "As and when released; NSS 80th round, ref January-March 2025, released 29 May 2025",
+  "endpoint": "https://api.mospi.gov.in/api/nss-80/getNss80Records?indicator_code=1&survey_code=1",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "agegroup",
+   "gender",
+   "sector",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Percentage of persons who used mobile phone during last 3 months",
+   "state": "All-India",
+   "agegroup": "15-24 Years",
+   "gender": "Male",
+   "sector": "Rural",
+   "value": "98"
+  },
+  "latest_ref_period": "January-March 2025",
+  "latest_release": "29 May 2025",
+  "overlap": "None. Mobile/internet access is a genuine digital-inclusion gap; TRAI's subscriber data on DBIE-side does not measure household access.",
+  "recommendation": "defer",
+  "reason": "Works, but the round endpoint needs survey_code and only survey_code=1 (telecom) returns rows; the indicator probed reports totalRecords=999, so treat its count as unverified. Single round, no series, and the survey is still being rolled out in quarterly modules.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-80/getNss80Records?indicator_code=1&survey_code=1"
+ },
+ "CMSE": {
+  "product": "CMSE — Comprehensive Modular Survey: Education (NSS 80th Round)",
+  "dataset_count": 20,
+  "cadence": "As and when released; NSS 80th round, ref April-June 2025, released 31 Aug 2025",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/CMSE/Table%201.xlsx",
+  "sample_fields": [
+   "table-level XLSX (no JSON schema)"
+  ],
+  "sample_record": "No JSON record: /api/nss-80/getNss80Records returns 'No Data Found' for survey_code 2,3,4,5,6,7,8,9,10 (only survey_code=1, telecom, is populated).",
+  "latest_ref_period": "April-June 2025",
+  "latest_release": "31 Aug 2025",
+  "overlap": "None directly, but overlaps CAMS/SCE on education indicators.",
+  "recommendation": "defer",
+  "reason": "The round endpoint exists but has no working education branch, so this is XLSX-only - one file per table, published as a quarterly module with no series. Also duplicative of CAMS education indicators.",
+  "evidence_url": "https://esankhyiki.mospi.gov.in/catalogue-main/catalogue?product=CMSE&page=1&rowsPerPage=10"
+ },
+ "MIS": {
+  "product": "MIS — Multiple Indicator Survey (NSS 78th Round)",
+  "dataset_count": 55,
+  "cadence": "As and when released by NSO; one round (NSS 78th, ref 2020-21, released 07 Mar 2023)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-78/getNss78Records?indicator_code=2",
+  "sample_fields": [
+   "state",
+   "age_group",
+   "sector",
+   "gender",
+   "indicator",
+   "sub_indicator",
+   "internet_access",
+   "household",
+   "source_of_finance",
+   "main_reason_for_migration",
+   "value"
+  ],
+  "sample_record": {
+   "state": "Assam",
+   "age_group": null,
+   "sector": "Rural",
+   "gender": null,
+   "indicator": "Percentage of Persons Reported to Have Access to Piped Water into Dwelling or Yard/plot and Reported to Have Access to Improved Source of Drinking Water",
+   "sub_indicator": "Piped Water into Dwelling or Yard/plot",
+   "internet_access": null,
+   "household": null,
+   "source_of_finance": null,
+   "main_reason_for_migration": null,
+   "value": "3.3"
+  },
+  "latest_ref_period": "2020-21",
+  "latest_release": "07 Mar 2023",
+  "overlap": "Partial with DWSHHC (water/sanitation) and CMST (internet); no overlap with anything published.",
+  "recommendation": "defer",
+  "reason": "The richest single round on migration, internet and household assets (11 fields), but it is one 2020-21 round released 2023 and the requested code 'MIS NSS78' IS this product - one entry only, no alias. Trap-heavy too: indicator_code=1 returns HTTP 200 with 'Database error', and the schema is a sparse union where most fields are null per row.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-78/getNss78Records?indicator_code=2"
+ },
+ "PSCUEH": {
+  "product": "PSCUEH — Pilot Study on Construction Activities in Unincorporated Sector Establishments and Households",
+  "dataset_count": 15,
+  "cadence": "As and when released by NSO, MoSPI; pilot round ref 2023-24, released 10 Apr 2026",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Pilot%20Study-Constrction/1.xlsx",
+  "sample_fields": [
+   "table-level XLSX headers: State, FSUs alloted, FSUs Surveyed, No of FSUs Reported Casualty, Rural, Urban, Rural+Urban"
+  ],
+  "sample_record": "No JSON endpoint (/api/pscueh/getPscuehRecords falls through to the SPA). XLSX downloads 200, 14,935 B, sheets ['Sheet1','st_wise_allocation'].",
+  "latest_ref_period": "2023-24",
+  "latest_release": "10 Apr 2026",
+  "overlap": "Adjacent to ASUSE (construction is deliberately excluded from ASUSE), so it would close a known coverage hole.",
+  "recommendation": "defer",
+  "reason": "The freshest household/informal release on the portal and it fills ASUSE's construction gap, but it is explicitly a pilot, XLSX-only, and the first table is a sample-allocation table rather than estimates. Revisit when the full survey reports.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Pilot%20Study-Constrction/1.xlsx"
+ },
+ "NII": {
+  "product": "NII — Nutritional Intake in India",
+  "dataset_count": 12,
+  "cadence": "As and when released; ref 2022-23 & 2023-24, released 02 Jul 2025",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Nutritional/Statement%201.xlsx",
+  "sample_fields": [
+   "table-level XLSX (statement 1, nutritional intake)"
+  ],
+  "sample_record": "No JSON endpoint: /api/nii/getNiiRecords and /api/nutrition/getNutritionRecords both fall through to the SPA. XLSX downloads 200, 12,370 B.",
+  "latest_ref_period": "2022-23 & 2023-24",
+  "latest_release": "02 Jul 2025",
+  "overlap": "Adjacent to HCES (food consumption), no duplication of a published series.",
+  "recommendation": "defer",
+  "reason": "Genuinely new and recent (calorie/protein intake, 2022-24), but XLSX-only with 12 tables and no API or time series; would need a hand-built parser for a niche tile.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Nutritional/Statement%201.xlsx"
+ },
+ "SOA": {
+  "product": "SOA — Survey on Ayush (NSS 79th Round)",
+  "dataset_count": 8,
+  "cadence": "As and when released; one round (NSS 79th, ref 2022-23, released 13 Jun 2024)",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Ayush/Statement%201.xlsx",
+  "sample_fields": [
+   "table-level XLSX (statement 1, Ayush utilisation)"
+  ],
+  "sample_record": "No JSON branch found: /api/nss-79/getNss79Records returns 'No Data Found' at indicator codes 40, 60, 80 and 100, so the round endpoint covers CAMS education/literacy only. XLSX downloads 200, 12,768 B.",
+  "latest_ref_period": "2022-23",
+  "latest_release": "13 Jun 2024",
+  "overlap": "None.",
+  "recommendation": "reject",
+  "reason": "Eight Ayush-utilisation tables from a single round, no API branch, no cycle relevance to a macro dashboard.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Ayush/Statement%201.xlsx"
+ },
+ "SCH": {
+  "product": "SCH — Social Consumption: Health (NSS 75th Round)",
+  "dataset_count": 37,
+  "cadence": "As and when released; one round (NSS 75th, ref 2017-18, released 23 Nov 2019)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-75/getNss75Records?indicator_code=1",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "gender",
+   "age_group",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Hospitalisation cases (excluding childbirth) per 100,000 persons during the last 365 days by age-group",
+   "state": "All India",
+   "sector": "Rural",
+   "gender": "Female",
+   "age_group": "0-4",
+   "value": "1664"
+  },
+  "latest_ref_period": "2017-18",
+  "latest_release": "23 Nov 2019",
+  "overlap": "None, but out of scope for a macro cycle dashboard.",
+  "recommendation": "reject",
+  "reason": "API works (3,996 rows on indicator 1) but the reference period is 2017-18, released 2019 - seven years stale. Health financing belongs to a social-sector view this dashboard does not have.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-75/getNss75Records?indicator_code=1"
+ },
+ "SCE": {
+  "product": "SCE — Social Consumption: Education (NSS 75th Round)",
+  "dataset_count": 47,
+  "cadence": "As and when requirement arises; one round (NSS 75th, ref July 2017-June 2018, released 23 Nov 2019)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-75/getNss75Records?indicator_code=50",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "gender",
+   "type_of_course",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Percentage distribution of students by type of course pursuing (general course and technical/ professional course) for different States",
+   "state": "All India",
+   "sector": "Rural",
+   "gender": "Female",
+   "type_of_course": "General Course",
+   "value": "98.3"
+  },
+  "latest_ref_period": "July 2017 - June 2018",
+  "latest_release": "23 Nov 2019",
+  "overlap": "Overlaps CAMS (2022-23) and EII (2014) education indicators, both newer or equally irrelevant.",
+  "recommendation": "reject",
+  "reason": "Same 2017-18 round as SCH; education-spending/course shares from eight years ago have no cycle content, and CAMS (2022-23) is the newer vehicle for the same indicators. API branch confirmed at indicator_code=50 (612 rows).",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-75/getNss75Records?indicator_code=50"
+ },
+ "DWSHHC": {
+  "product": "DWSHHC — Drinking Water, Sanitation, Hygiene and Housing Condition (NSS 76th Round)",
+  "dataset_count": 30,
+  "cadence": "As and when released; one round (NSS 76th, ref July-December 2018, released 23 Nov 2019)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-76/getNss76Records?indicator_code=14",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "quintile_class",
+   "households_percentage",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Percentage of households having improved source of drinking water",
+   "state": "All India",
+   "sector": "Rural",
+   "quintile_class": "00-20",
+   "households_percentage": "Households having access to  improved source of drinking water",
+   "value": "93.8"
+  },
+  "latest_ref_period": "July-December 2018",
+  "latest_release": "23 Nov 2019",
+  "overlap": "None.",
+  "recommendation": "reject",
+  "reason": "2018 water/sanitation access, released 2019, single round, no series; Jal Jeevan Mission administrative data would be the live alternative, not this. Indicator codes 1-13 on the same endpoint are disability (PWDII), 14+ are water/sanitation.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-76/getNss76Records?indicator_code=14"
+ },
+ "PWDII": {
+  "product": "PWDII — Persons with Disabilities in India (NSS 76th Round)",
+  "dataset_count": 69,
+  "cadence": "As and when released; one round (NSS 76th, ref July-December 2018, released 23 Nov 2019)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-76/getNss76Records?indicator_code=1",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "gender",
+   "sector",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Percentage of persons with disability",
+   "state": "All India",
+   "gender": "Male",
+   "sector": "Rural",
+   "value": "2.6"
+  },
+  "latest_ref_period": "July-December 2018",
+  "latest_release": "23 Nov 2019",
+  "overlap": "None.",
+  "recommendation": "reject",
+  "reason": "Disability prevalence is a census-like structural statistic, not a cycle indicator; 2018 vintage, one round, and the same endpoint as DWSHHC (indicator codes 1-13 are disability, 14+ are water/sanitation) with no product field to split them.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-76/getNss76Records?indicator_code=1"
+ },
+ "TRSSEI": {
+  "product": "TRSSEI — Technical Report: Services Sector Enterprises in India (NSS 74th Round)",
+  "dataset_count": 24,
+  "cadence": "As and when released; one round (NSS 74th, ref July 2016-June 2017, released 01 May 2019)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-74/getNss74Records?indicator_code=1",
+  "sample_fields": [
+   "survey_period",
+   "indicator",
+   "state",
+   "broad_activity",
+   "frame",
+   "registration_status",
+   "value",
+   "unit"
+  ],
+  "sample_record": {
+   "survey_period": "July 2016 - June 2017",
+   "indicator": "Number of enterprises by status of registration for each Broad Activity Code(BAC) at All-India level",
+   "state": "All India",
+   "broad_activity": "Wholesale And Retail Trade And Repair Of Motor Vehicles And Motorcycles (10)",
+   "frame": "Economic Census (EC)",
+   "registration_status": "Not Registered",
+   "value": "6",
+   "unit": "Number"
+  },
+  "latest_ref_period": "July 2016-June 2017",
+  "latest_release": "01 May 2019",
+  "overlap": "Superseded by ASUSE for services-sector enterprises.",
+  "recommendation": "reject",
+  "reason": "A 2016-17 technical report on services-sector enterprises; ASUSE (same division, annual, to 2026) replaces its content entirely.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-74/getNss74Records?indicator_code=1"
+ },
+ "UNAEI": {
+  "product": "UNAEI — Unincorporated Non-Agricultural Enterprises excl. Construction (NSS 73rd Round)",
+  "dataset_count": 23,
+  "cadence": "As and when released; one round (NSS 73rd, ref July 2015-June 2016, released 01 Jul 2018)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-73/getNss73Records?indicator_code=1",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "broad_activity_category",
+   "enterprise_type",
+   "activity_category",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Number of Enterprises",
+   "state": "All-India",
+   "sector": "Rural",
+   "broad_activity_category": "Manufacturing",
+   "enterprise_type": "Own Account Enterprises",
+   "activity_category": "M1 - Cotton ginning, cleaning and bailing",
+   "value": "356"
+  },
+  "latest_ref_period": "July 2015-June 2016",
+  "latest_release": "01 Jul 2018",
+  "overlap": "Fully superseded by ASUSE.",
+  "recommendation": "reject",
+  "reason": "NSS 73rd round unincorporated enterprises is the predecessor ASUSE was built to replace; 16,317 rows, 6 indicators, 2015-16 data. No reason to publish a retired series beside a live one.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-73/getNss73Records?indicator_code=1"
+ },
+ "OCUAEI": {
+  "product": "OCUAEI — Operational Characteristics of Unincorporated Non-Agricultural Enterprises (NSS 73rd Round)",
+  "dataset_count": 15,
+  "cadence": "As and when requirement arises; one round (NSS 73rd, ref July 2015-June 2016, released 01 Mar 2018)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-73/getNss73Records?indicator_code=2",
+  "sample_fields": [
+   "indicator",
+   "state",
+   "sector",
+   "broad_activity_category",
+   "enterprise_type",
+   "enterprises_by_ownership",
+   "value"
+  ],
+  "sample_record": {
+   "indicator": "Type of Ownership",
+   "state": "All-India",
+   "sector": "Rural",
+   "broad_activity_category": "Manufacturing",
+   "enterprise_type": "Own Account Enterprises",
+   "enterprises_by_ownership": "Proprietary male",
+   "value": "470"
+  },
+  "latest_ref_period": "July 2015 - June 2016",
+  "latest_release": "01 Mar 2018",
+  "overlap": "Fully superseded by ASUSE.",
+  "recommendation": "reject",
+  "reason": "Operational characteristics cut of the same retired NSS 73rd round, sharing one endpoint with UNAEI and carrying no product discriminator.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-73/getNss73Records?indicator_code=2"
+ },
+ "DTI": {
+  "product": "DTI — Domestic Tourism in India (NSS 72nd Round)",
+  "dataset_count": 8,
+  "cadence": "As and when released; one round (NSS 72nd, ref July 2014-June 2015, released 30 Jun 2016)",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Tourism/Table1.xlsx",
+  "sample_fields": [
+   "table-level XLSX headers: State/UT, households, total no. of persons, number of households reporting overnight trips, number of overnight visitors, ..."
+  ],
+  "sample_record": "No JSON endpoint: /api/nss-72/getNss72Records returns 'Invalid request: route not found'; /api/dti/getDtiRecords falls through to the SPA. XLSX downloads 200, 24,567 B, sheet 'Sheet1'.",
+  "latest_ref_period": "July 2014-June 2015",
+  "latest_release": "30 Jun 2016",
+  "overlap": "None.",
+  "recommendation": "reject",
+  "reason": "2014-15 domestic tourism, XLSX-only, ten years old. Even if tourism mattered, the file would need per-table header mapping and the round was never repeated.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Tourism/Table1.xlsx"
+ },
+ "HESDG": {
+  "product": "HESDG — Household Expenditure on Services and Durable Goods (NSS 72nd Round)",
+  "dataset_count": 11,
+  "cadence": "As and when released; one round (NSS 72nd, ref July 2014-June 2015, released 01 Jun 2016)",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/HESDG/Statement%203.1.xlsx",
+  "sample_fields": [
+   "table-level XLSX (statement 3.1 on household expenditure on services and durables)"
+  ],
+  "sample_record": "No JSON endpoint (/api/hesdg/getHesdgRecords falls through to the SPA). XLSX downloads 200, 13,161 B.",
+  "latest_ref_period": "July 2014-June 2015",
+  "latest_release": "01 Jun 2016",
+  "overlap": "Overlaps HCES, which is newer and far richer.",
+  "recommendation": "reject",
+  "reason": "A one-off 2014-15 module on services and durables spending; HCES 2022-23/2023-24 covers the same ground with an API and a current vintage.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/HESDG/Statement%203.1.xlsx"
+ },
+ "HII": {
+  "product": "HII — Health in India (NSS 71st Round)",
+  "dataset_count": 14,
+  "cadence": "As and when released; one round (NSS 71st, ref Jan-June 2014, released 01 Apr 2016)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=20",
+  "sample_fields": [
+   "survey_period",
+   "indicator",
+   "state",
+   "sector",
+   "gender",
+   "broad_ailment_category",
+   "detailed_ailment_type",
+   "value",
+   "unit"
+  ],
+  "sample_record": {
+   "survey_period": "January-June 2014",
+   "indicator": "Per thousand distribution of hospitalised cases (EC) over detailed ailment types, separately for each gender and sector",
+   "state": "All-India",
+   "sector": "Rural",
+   "gender": "Male",
+   "broad_ailment_category": "All",
+   "detailed_ailment_type": null,
+   "value": "1000",
+   "unit": "Number"
+  },
+  "latest_ref_period": "Jan-Jun 2014",
+  "latest_release": "01 Apr 2016",
+  "overlap": "Replaced by SCH (2017-18), which is itself rejected.",
+  "recommendation": "reject",
+  "reason": "2014 health module, released 2016, superseded by the NSS 75th round (SCH). Shares one endpoint with EII: indicator 1 on NSS-71 is literacy, 20 is hospitalisation - the round endpoint has no product field.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=20"
+ },
+ "EII": {
+  "product": "EII — Education in India (NSS 71st Round)",
+  "dataset_count": 70,
+  "cadence": "As and when released; one round (NSS 71st, ref Jan-June 2014, released 10 Mar 2016)",
+  "endpoint": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=5",
+  "sample_fields": [
+   "survey_period",
+   "indicator",
+   "state",
+   "sector",
+   "gender",
+   "level_of_education",
+   "value",
+   "unit"
+  ],
+  "sample_record": {
+   "survey_period": "January-June 2014",
+   "indicator": "Gross Attendance Ratio (GAR) at different levels of education",
+   "state": "All-India",
+   "sector": "Rural",
+   "gender": "Male",
+   "level_of_education": "Primary",
+   "value": "102",
+   "unit": "-"
+  },
+  "latest_ref_period": "Jan-June 2014",
+  "latest_release": "10 Mar 2016",
+  "overlap": "Overlaps CAMS (2022-23), which is eight years newer.",
+  "recommendation": "reject",
+  "reason": "2014 education indicators; the same NSS-71 endpoint also serves HII (health), so adopting it would pull a mixed round for one stale product.",
+  "evidence_url": "https://api.mospi.gov.in/api/nss-71/getNss71Records?indicator_code=5"
+ },
+ "CII": {
+  "product": "CII — Children in India (Social Statistics Division compendium)",
+  "dataset_count": 128,
+  "cadence": "As and when released by Social Statistics Division; report year 2025, released 25 Sep 2025",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Children%20in%20India/2025/4.23b.xlsx",
+  "sample_fields": [
+   "table-level XLSX headers (bilingual Hindi/English): State/UT, electricity, functional electricity, computer facility, internet facility, drinking water, ..."
+  ],
+  "sample_record": "No JSON endpoint (/api/cii/getCiiRecords, /api/children/getChildrenRecords fall through to the SPA). XLSX downloads 200, 21,057 B, sheet '4.23b'.",
+  "latest_ref_period": "2025 report (table 4.23b quotes 2023-24)",
+  "latest_release": "25 Sep 2025",
+  "overlap": "Overlaps education/health statistics already rejected above.",
+  "recommendation": "reject",
+  "reason": "A 128-table compendium assembled from UDISE, NFHS and census sources, not a survey with its own estimates; XLSX-only and bilingual, so every table needs bespoke header handling for no cycle signal.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Children%20in%20India/2025/4.23b.xlsx"
+ },
+ "YII": {
+  "product": "YII — Youth in India (Social Statistics Division compendium)",
+  "dataset_count": 81,
+  "cadence": "As and when released by Social Statistics Division; report year 2022, released 28 Jun 2022",
+  "endpoint": null,
+  "xlsx_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Youth%20in%20India/2022/1.xlsx",
+  "sample_fields": [
+   "table-level XLSX headers: Year, Total Population, Youth Population (Age 15-29 years), Percent Share of Youth Population in Total Population, Person/Male/Female"
+  ],
+  "sample_record": "No JSON endpoint. XLSX downloads 200, 11,241 B; statement 1 sources Census 1991/2001/2011.",
+  "latest_ref_period": "2022 report; population tables stop at Census 2011",
+  "latest_release": "28 Jun 2022",
+  "overlap": "Demography already implicit in PLFS/NAS denominators.",
+  "recommendation": "reject",
+  "reason": "Compendium built on decennial Census data ending 2011, released 2022, XLSX-only. Nothing here is a time series you can update.",
+  "evidence_url": "https://api.mospi.gov.in/api/esankhyiki/file/download/datacatalogue/Youth%20in%20India/2022/1.xlsx"
+ }
+}

@@ -16,7 +16,9 @@ Recon date 2026-11-11. **Status column is what was actually observed**, not what
 The first pass found `api.mospi.gov.in`'s root page and its **CPI-only** user manual, and concluded
 "documented API = CPI only". That was wrong. The eSankhyiki portal runs a second, newer API layer
 (`portal v2.0`, Data Informatics & Innovation Division) that is **open, guest-accessible, paginated
-and documented per product**. 15 products carry a real OpenAPI 3.0 spec:
+and documented per product**. Read the count precisely: **12 of the 33 catalogue products**
+carry a real OpenAPI 3.0 spec (15 spec files resolve on the host — AISHE, UDISE and NFHS have one but
+no catalogue rows at all):
 
 | product | endpoint | product | endpoint |
 |---|---|---|---|
@@ -39,6 +41,11 @@ Rate)","year":"2026","month":"September","state":"All India","AgeGroup":"15 year
 
 This supersedes the XLSX route for every MoSPI product: **JSON with labels, server-side filtering,
 pagination, no token, no header-guessing.** The XLSX path in §3 stays as the offline fallback.
+
+One thing the data payload does not carry is a publication date — but the catalogue behind the portal
+does, and it is queryable (`/api/esankhyiki/cms/golden-sheet/list`, 4,876 rows, `ref_period` +
+`release_date` per table). That is where the observed release dates on the page come from; see §6 and
+`catalogue-survey/SUMMARY.md`.
 
 ### Decision — API or XLSX only, no PDF parsing
 
