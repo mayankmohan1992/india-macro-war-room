@@ -2,7 +2,7 @@
 
 # Sourced definitions
 
-All 38 terms used by the dashboard and API, quoted from the publishing agency. Nothing here is written from memory: if a term has no sourced wording it is omitted, and the UI shows "definition pending" instead.
+All 40 terms used by the dashboard and API, quoted from the publishing agency. Nothing here is written from memory: if a term has no sourced wording it is omitted, and the UI shows "definition pending" instead.
 
 Machine-readable: `api/v1/definitions.json`.
 
@@ -158,6 +158,14 @@ The Index of Industrial Production measures short-term changes in the volume of 
 
 <sub>key: `iip`</sub>
 
+## Index of Industrial Production — use-based classification
+
+The IIP is also published by use: primary goods, capital goods, intermediate goods, infrastructure/construction goods, consumer durables and consumer non-durables. The split matters because the same headline growth means different things — capital goods growth is investment, consumer durables growth is household demand. The growth rates quoted here are the ones MoSPI publishes for each category, not figures derived on this page.
+
+**Source:** Ministry of Statistics and Programme Implementation (MoSPI) — IIP use-based classification — <https://esankhyiki.mospi.gov.in/macroindicators?product=iip>
+
+<sub>key: `iip_use_based`</sub>
+
 ## Incremental credit-deposit ratio
 
 Incremental credit-deposit ratio = incremental bank credit divided by incremental aggregate deposits, where the increments relate to the financial year so far. RBI publishes it alongside the outstanding ratio in the 'Ratios' table of the Weekly Statistical Supplement, using '**' or '&' markers where incremental deposits are negative and the ratio is undefined. A reading above 100 per cent means new lending exceeds fresh deposit mobilisation, so the gap must be funded from non-deposit sources; a low, zero or negative figure means deposit growth is keeping pace with or exceeding credit growth.
@@ -229,6 +237,14 @@ Notes in circulation comprises currency notes issued by the Government of India 
 **Source:** Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'RBI – Liabilities and Assets' — <https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf>
 
 <sub>key: `notes_in_circulation`</sub>
+
+## Producer Price Index (OPPI), all commodities — base 2022-23
+
+The Office of the Economic Adviser's Producer Price Index measures the change in prices received by domestic producers for their output, indexed to 2022-23 = 100. Unlike the Wholesale Price Index, which counts wholesale transactions including imports, OPPI tracks producer output prices by product group. The all-commodities index is published monthly; the year-on-year rate shown here is computed from those published levels and labelled as computed.
+
+**Source:** Ministry of Commerce & Industry, Office of the Economic Adviser — OPPI (via MoSPI e-Sankhyiki) — <https://esankhyiki.mospi.gov.in/macroindicators?product=oppi>
+
+<sub>key: `oppi`</sub>
 
 ## RBI loans and advances to the Central Government
 

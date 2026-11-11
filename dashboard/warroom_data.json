@@ -2,13 +2,13 @@
  "verification": {
   "as_of": "2026-10-30",
   "summary": {
-   "checks": 18,
-   "passed": 18,
+   "checks": 19,
+   "passed": 19,
    "failed": 0,
-   "indicators_verified": 24,
-   "indicators_single_source": 19,
+   "indicators_verified": 25,
+   "indicators_single_source": 20,
    "indicators_unverified": 0,
-   "indicators_total": 43
+   "indicators_total": 45
   },
   "indicators": {
    "cpi": {
@@ -295,6 +295,19 @@
     "checks": [],
     "tier": "single-source",
     "note": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed from those levels, so the level has a single witness and the growth has none"
+   },
+   "oppi": {
+    "status": "verified",
+    "checks": [
+     "mospi_oppi_yoy"
+    ],
+    "tier": "derived"
+   },
+   "iipcap": {
+    "status": "single-source",
+    "checks": [],
+    "tier": "single-source",
+    "note": "one published use-based growth figure per month; MoSPI's IIP weights are not on this endpoint, so it cannot be tied back to the General index here"
    }
   }
  },
@@ -526,6 +539,18 @@
    "definition": "Gross value added is output minus intermediate consumption, measured at basic prices. At constant prices it is valued at the prices of the base year (2022-23), so a change reflects a change in volume rather than in prices. MoSPI publishes a Total Gross Value Added row together with its industry break-up in the National Accounts Statistics, quarterly and annually; the total is reproduced here as published, and the year-on-year figure on this page is computed from those published levels and labelled as computed.",
    "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — National Accounts Statistics",
    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=nas"
+  },
+  "oppi": {
+   "term": "Producer Price Index (OPPI), all commodities — base 2022-23",
+   "definition": "The Office of the Economic Adviser's Producer Price Index measures the change in prices received by domestic producers for their output, indexed to 2022-23 = 100. Unlike the Wholesale Price Index, which counts wholesale transactions including imports, OPPI tracks producer output prices by product group. The all-commodities index is published monthly; the year-on-year rate shown here is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Commerce & Industry, Office of the Economic Adviser — OPPI (via MoSPI e-Sankhyiki)",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=oppi"
+  },
+  "iip_use_based": {
+   "term": "Index of Industrial Production — use-based classification",
+   "definition": "The IIP is also published by use: primary goods, capital goods, intermediate goods, infrastructure/construction goods, consumer durables and consumer non-durables. The split matters because the same headline growth means different things — capital goods growth is investment, consumer durables growth is household demand. The growth rates quoted here are the ones MoSPI publishes for each category, not figures derived on this page.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP use-based classification",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip"
   }
  },
  "def_keys": {
@@ -565,9 +590,11 @@
   "lfpr": "labour_force_participation_rate",
   "wpr": "worker_population_ratio",
   "iip": "iip",
-  "gva": "gva"
+  "gva": "gva",
+  "oppi": "oppi",
+  "iipcap": "iip_use_based"
  },
- "generated": "2026-11-11 12:54 IST",
+ "generated": "2026-11-11 13:36 IST",
  "as_of": "2026-11-01",
  "as_of_by_frequency": {
   "daily": "2026-11-01",
@@ -592,8 +619,8 @@
  ],
  "verdict": "Stress signals in core indicators",
  "counts": {
-  "good": 16,
-  "watch": 18,
+  "good": 17,
+  "watch": 19,
   "bad": 9
  },
  "tiles": [
@@ -8838,6 +8865,285 @@
    "freq": "quarterly",
    "stale_days": 214,
    "stale": false
+  },
+  {
+   "id": "oppi",
+   "def_key": "oppi",
+   "series_key": "act_oppi_yoy",
+   "label": "Producer price inflation, y-o-y",
+   "group": "Activity",
+   "value": 9.81,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-08-01",
+   "period_label": "Aug 2026",
+   "released": null,
+   "status": "watch",
+   "reason": "9.8% - producer prices running hot",
+   "rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
+   "change": 0.24,
+   "spark": [
+    1.38,
+    2.28,
+    4.17,
+    8.26,
+    9.68,
+    9.67,
+    9.57,
+    9.81
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-08-01",
+     "value": 9.81,
+     "previous": 9.57,
+     "prev": 9.57,
+     "change": 0.24
+    },
+    {
+     "date": "2026-07-01",
+     "value": 9.57,
+     "previous": 9.67,
+     "prev": 9.67,
+     "change": -0.1
+    },
+    {
+     "date": "2026-06-01",
+     "value": 9.67,
+     "previous": 9.68,
+     "prev": 9.68,
+     "change": -0.01
+    },
+    {
+     "date": "2026-05-01",
+     "value": 9.68,
+     "previous": 8.26,
+     "prev": 8.26,
+     "change": 1.42
+    },
+    {
+     "date": "2026-04-01",
+     "value": 8.26,
+     "previous": 4.17,
+     "prev": 4.17,
+     "change": 4.09
+    },
+    {
+     "date": "2026-03-01",
+     "value": 4.17,
+     "previous": 2.28,
+     "prev": 2.28,
+     "change": 1.89
+    },
+    {
+     "date": "2026-02-01",
+     "value": 2.28,
+     "previous": 1.38,
+     "prev": 1.38,
+     "change": 0.9
+    },
+    {
+     "date": "2026-01-01",
+     "value": 1.38,
+     "previous": null,
+     "prev": null,
+     "change": null
+    }
+   ],
+   "history_note": "last 8 published observations of 8 stored",
+   "freq": "monthly",
+   "stale_days": 92,
+   "stale": false
+  },
+  {
+   "id": "iipcap",
+   "def_key": "iip_use_based",
+   "series_key": "act_iip_capital",
+   "label": "IIP capital goods growth, y-o-y",
+   "group": "Activity",
+   "value": 10.4,
+   "unit": "%",
+   "fmt": "pct",
+   "period": "2026-09-01",
+   "period_label": "Sep 2026",
+   "released": "2026-10-28",
+   "status": "good",
+   "reason": "10.4% - capital goods expanding - investment is running",
+   "rule": "The use-based category MoSPI publishes, not a figure derived here. Green 4-15%, watch 0-4% / >15%, red <0%.",
+   "change": -5.5,
+   "spark": [
+    8.3,
+    8.3,
+    14.2,
+    14.5,
+    9.5,
+    3.4,
+    5.9,
+    6.0,
+    13.2,
+    5.4,
+    16.6,
+    12.9,
+    12.4,
+    16.5,
+    8.5,
+    12.0,
+    15.5,
+    17.9,
+    19.0,
+    15.9,
+    10.4
+   ],
+   "chart": "spark",
+   "history_kind": "reading",
+   "history": [
+    {
+     "date": "2026-09-01",
+     "value": 10.4,
+     "previous": 15.9,
+     "prev": 15.9,
+     "change": -5.5
+    },
+    {
+     "date": "2026-08-01",
+     "value": 15.9,
+     "previous": 19.0,
+     "prev": 19.0,
+     "change": -3.1
+    },
+    {
+     "date": "2026-07-01",
+     "value": 19.0,
+     "previous": 17.9,
+     "prev": 17.9,
+     "change": 1.1
+    },
+    {
+     "date": "2026-06-01",
+     "value": 17.9,
+     "previous": 15.5,
+     "prev": 15.5,
+     "change": 2.4
+    },
+    {
+     "date": "2026-05-01",
+     "value": 15.5,
+     "previous": 12.0,
+     "prev": 12.0,
+     "change": 3.5
+    },
+    {
+     "date": "2026-04-01",
+     "value": 12.0,
+     "previous": 8.5,
+     "prev": 8.5,
+     "change": 3.5
+    },
+    {
+     "date": "2026-03-01",
+     "value": 8.5,
+     "previous": 16.5,
+     "prev": 16.5,
+     "change": -8.0
+    },
+    {
+     "date": "2026-02-01",
+     "value": 16.5,
+     "previous": 12.4,
+     "prev": 12.4,
+     "change": 4.1
+    },
+    {
+     "date": "2026-01-01",
+     "value": 12.4,
+     "previous": 12.9,
+     "prev": 12.9,
+     "change": -0.5
+    },
+    {
+     "date": "2025-12-01",
+     "value": 12.9,
+     "previous": 16.6,
+     "prev": 16.6,
+     "change": -3.7
+    },
+    {
+     "date": "2025-11-01",
+     "value": 16.6,
+     "previous": 5.4,
+     "prev": 5.4,
+     "change": 11.2
+    },
+    {
+     "date": "2025-10-01",
+     "value": 5.4,
+     "previous": 13.2,
+     "prev": 13.2,
+     "change": -7.8
+    },
+    {
+     "date": "2025-09-01",
+     "value": 13.2,
+     "previous": 6.0,
+     "prev": 6.0,
+     "change": 7.2
+    },
+    {
+     "date": "2025-08-01",
+     "value": 6.0,
+     "previous": 5.9,
+     "prev": 5.9,
+     "change": 0.1
+    },
+    {
+     "date": "2025-07-01",
+     "value": 5.9,
+     "previous": 3.4,
+     "prev": 3.4,
+     "change": 2.5
+    },
+    {
+     "date": "2025-06-01",
+     "value": 3.4,
+     "previous": 9.5,
+     "prev": 9.5,
+     "change": -6.1
+    },
+    {
+     "date": "2025-05-01",
+     "value": 9.5,
+     "previous": 14.5,
+     "prev": 14.5,
+     "change": -5.0
+    },
+    {
+     "date": "2025-04-01",
+     "value": 14.5,
+     "previous": 14.2,
+     "prev": 14.2,
+     "change": 0.3
+    },
+    {
+     "date": "2025-03-01",
+     "value": 14.2,
+     "previous": 8.3,
+     "prev": 8.3,
+     "change": 5.9
+    },
+    {
+     "date": "2025-02-01",
+     "value": 8.3,
+     "previous": 8.3,
+     "prev": 8.3,
+     "change": 0.0
+    }
+   ],
+   "history_note": "last 20 published observations of 21 stored",
+   "freq": "monthly",
+   "stale_days": 61,
+   "stale": false
   }
  ],
  "dead_series": {
@@ -9689,6 +9995,461 @@
     ]
    ]
   },
+  "act_iip_primary": {
+   "label": "IIP primary goods, y-o-y",
+   "unit": "%",
+   "source": "MoSPI IIP monthly, use-based: Primary Goods",
+   "points": [
+    [
+     "2025-01-01",
+     4.8
+    ],
+    [
+     "2025-02-01",
+     2.4
+    ],
+    [
+     "2025-03-01",
+     2.3
+    ],
+    [
+     "2025-04-01",
+     1.2
+    ],
+    [
+     "2025-05-01",
+     0.7
+    ],
+    [
+     "2025-06-01",
+     2.1
+    ],
+    [
+     "2025-07-01",
+     4.8
+    ],
+    [
+     "2025-08-01",
+     7.6
+    ],
+    [
+     "2025-09-01",
+     6.6
+    ],
+    [
+     "2025-10-01",
+     0.4
+    ],
+    [
+     "2025-11-01",
+     1.1
+    ],
+    [
+     "2025-12-01",
+     2.4
+    ],
+    [
+     "2026-01-01",
+     1.9
+    ],
+    [
+     "2026-02-01",
+     0.0
+    ],
+    [
+     "2026-03-01",
+     0.2
+    ],
+    [
+     "2026-04-01",
+     0.8
+    ],
+    [
+     "2026-05-01",
+     2.7
+    ],
+    [
+     "2026-06-01",
+     5.4
+    ],
+    [
+     "2026-07-01",
+     4.2
+    ],
+    [
+     "2026-08-01",
+     4.2
+    ],
+    [
+     "2026-09-01",
+     4.0
+    ]
+   ]
+  },
+  "act_iip_capital": {
+   "label": "IIP capital goods, y-o-y",
+   "unit": "%",
+   "source": "MoSPI IIP monthly, use-based: Capital Goods",
+   "points": [
+    [
+     "2025-01-01",
+     8.3
+    ],
+    [
+     "2025-02-01",
+     8.3
+    ],
+    [
+     "2025-03-01",
+     14.2
+    ],
+    [
+     "2025-04-01",
+     14.5
+    ],
+    [
+     "2025-05-01",
+     9.5
+    ],
+    [
+     "2025-06-01",
+     3.4
+    ],
+    [
+     "2025-07-01",
+     5.9
+    ],
+    [
+     "2025-08-01",
+     6.0
+    ],
+    [
+     "2025-09-01",
+     13.2
+    ],
+    [
+     "2025-10-01",
+     5.4
+    ],
+    [
+     "2025-11-01",
+     16.6
+    ],
+    [
+     "2025-12-01",
+     12.9
+    ],
+    [
+     "2026-01-01",
+     12.4
+    ],
+    [
+     "2026-02-01",
+     16.5
+    ],
+    [
+     "2026-03-01",
+     8.5
+    ],
+    [
+     "2026-04-01",
+     12.0
+    ],
+    [
+     "2026-05-01",
+     15.5
+    ],
+    [
+     "2026-06-01",
+     17.9
+    ],
+    [
+     "2026-07-01",
+     19.0
+    ],
+    [
+     "2026-08-01",
+     15.9
+    ],
+    [
+     "2026-09-01",
+     10.4
+    ]
+   ]
+  },
+  "act_iip_intermediate": {
+   "label": "IIP intermediate goods, y-o-y",
+   "unit": "%",
+   "source": "MoSPI IIP monthly, use-based: Intermediate Goods",
+   "points": [
+    [
+     "2025-01-01",
+     7.2
+    ],
+    [
+     "2025-02-01",
+     3.6
+    ],
+    [
+     "2025-03-01",
+     6.3
+    ],
+    [
+     "2025-04-01",
+     7.1
+    ],
+    [
+     "2025-05-01",
+     4.8
+    ],
+    [
+     "2025-06-01",
+     3.1
+    ],
+    [
+     "2025-07-01",
+     3.5
+    ],
+    [
+     "2025-08-01",
+     3.3
+    ],
+    [
+     "2025-09-01",
+     6.4
+    ],
+    [
+     "2025-10-01",
+     1.2
+    ],
+    [
+     "2025-11-01",
+     8.2
+    ],
+    [
+     "2025-12-01",
+     7.7
+    ],
+    [
+     "2026-01-01",
+     5.6
+    ],
+    [
+     "2026-02-01",
+     4.7
+    ],
+    [
+     "2026-03-01",
+     6.0
+    ],
+    [
+     "2026-04-01",
+     10.3
+    ],
+    [
+     "2026-05-01",
+     5.8
+    ],
+    [
+     "2026-06-01",
+     11.5
+    ],
+    [
+     "2026-07-01",
+     10.4
+    ],
+    [
+     "2026-08-01",
+     14.2
+    ],
+    [
+     "2026-09-01",
+     12.2
+    ]
+   ]
+  },
+  "act_iip_consdur": {
+   "label": "IIP consumer durables, y-o-y",
+   "unit": "%",
+   "source": "MoSPI IIP monthly, use-based: Consumer Durables",
+   "points": [
+    [
+     "2025-01-01",
+     7.9
+    ],
+    [
+     "2025-02-01",
+     1.3
+    ],
+    [
+     "2025-03-01",
+     5.3
+    ],
+    [
+     "2025-04-01",
+     5.2
+    ],
+    [
+     "2025-05-01",
+     1.9
+    ],
+    [
+     "2025-06-01",
+     1.4
+    ],
+    [
+     "2025-07-01",
+     3.9
+    ],
+    [
+     "2025-08-01",
+     0.9
+    ],
+    [
+     "2025-09-01",
+     4.6
+    ],
+    [
+     "2025-10-01",
+     -6.0
+    ],
+    [
+     "2025-11-01",
+     13.0
+    ],
+    [
+     "2025-12-01",
+     7.4
+    ],
+    [
+     "2026-01-01",
+     -0.2
+    ],
+    [
+     "2026-02-01",
+     4.2
+    ],
+    [
+     "2026-03-01",
+     2.4
+    ],
+    [
+     "2026-04-01",
+     5.6
+    ],
+    [
+     "2026-05-01",
+     8.0
+    ],
+    [
+     "2026-06-01",
+     10.3
+    ],
+    [
+     "2026-07-01",
+     12.0
+    ],
+    [
+     "2026-08-01",
+     10.5
+    ],
+    [
+     "2026-09-01",
+     6.0
+    ]
+   ]
+  },
+  "act_iip_consnon": {
+   "label": "IIP consumer non-durables, y-o-y",
+   "unit": "%",
+   "source": "MoSPI IIP monthly, use-based: Consumer Non-durables",
+   "points": [
+    [
+     "2025-01-01",
+     4.7
+    ],
+    [
+     "2025-02-01",
+     -0.5
+    ],
+    [
+     "2025-03-01",
+     4.8
+    ],
+    [
+     "2025-04-01",
+     3.3
+    ],
+    [
+     "2025-05-01",
+     3.3
+    ],
+    [
+     "2025-06-01",
+     -2.0
+    ],
+    [
+     "2025-07-01",
+     5.8
+    ],
+    [
+     "2025-08-01",
+     0.1
+    ],
+    [
+     "2025-09-01",
+     -0.5
+    ],
+    [
+     "2025-10-01",
+     -9.4
+    ],
+    [
+     "2025-11-01",
+     3.9
+    ],
+    [
+     "2025-12-01",
+     5.9
+    ],
+    [
+     "2026-01-01",
+     -1.2
+    ],
+    [
+     "2026-02-01",
+     1.6
+    ],
+    [
+     "2026-03-01",
+     -0.6
+    ],
+    [
+     "2026-04-01",
+     0.2
+    ],
+    [
+     "2026-05-01",
+     -0.4
+    ],
+    [
+     "2026-06-01",
+     5.6
+    ],
+    [
+     "2026-07-01",
+     -0.8
+    ],
+    [
+     "2026-08-01",
+     -1.1
+    ],
+    [
+     "2026-09-01",
+     1.4
+    ]
+   ]
+  },
   "act_gva": {
    "label": "Gross value added, constant prices (total)",
    "unit": "₹ crore",
@@ -9788,6 +10549,132 @@
     [
      "2026-04-01",
      8.23
+    ]
+   ]
+  },
+  "act_oppi": {
+   "label": "Producer price index (OPPI), all commodities",
+   "unit": "index",
+   "source": "MoSPI OPPI monthly (2022-23=100)",
+   "points": [
+    [
+     "2025-01-01",
+     101.2
+    ],
+    [
+     "2025-02-01",
+     101.0
+    ],
+    [
+     "2025-03-01",
+     100.7
+    ],
+    [
+     "2025-04-01",
+     100.5
+    ],
+    [
+     "2025-05-01",
+     100.2
+    ],
+    [
+     "2025-06-01",
+     100.3
+    ],
+    [
+     "2025-07-01",
+     100.3
+    ],
+    [
+     "2025-08-01",
+     100.9
+    ],
+    [
+     "2025-09-01",
+     101.0
+    ],
+    [
+     "2025-10-01",
+     101.1
+    ],
+    [
+     "2025-11-01",
+     101.7
+    ],
+    [
+     "2025-12-01",
+     102.1
+    ],
+    [
+     "2026-01-01",
+     102.6
+    ],
+    [
+     "2026-02-01",
+     103.3
+    ],
+    [
+     "2026-03-01",
+     104.9
+    ],
+    [
+     "2026-04-01",
+     108.8
+    ],
+    [
+     "2026-05-01",
+     109.9
+    ],
+    [
+     "2026-06-01",
+     110.0
+    ],
+    [
+     "2026-07-01",
+     109.9
+    ],
+    [
+     "2026-08-01",
+     110.8
+    ]
+   ]
+  },
+  "act_oppi_yoy": {
+   "label": "Producer price inflation, y-o-y (computed)",
+   "unit": "%",
+   "source": "MoSPI OPPI monthly (computed from published levels)",
+   "points": [
+    [
+     "2026-01-01",
+     1.38
+    ],
+    [
+     "2026-02-01",
+     2.28
+    ],
+    [
+     "2026-03-01",
+     4.17
+    ],
+    [
+     "2026-04-01",
+     8.26
+    ],
+    [
+     "2026-05-01",
+     9.68
+    ],
+    [
+     "2026-06-01",
+     9.67
+    ],
+    [
+     "2026-07-01",
+     9.57
+    ],
+    [
+     "2026-08-01",
+     9.81
     ]
    ]
   },

@@ -67,7 +67,8 @@ SECTOR_KEY = {"rural": "rural", "urban": "urban", "rural + urban": "both"}
 
 # Minimum points per series before raw/mospi.json is accepted. A monthly series needs half a year of
 # history to be worth a tile; the quarterly one needs three quarters. Tested in tests/test_mospi.py.
-REQUIRED = {"act_ur": 6, "act_lfpr": 6, "act_wpr": 6, "act_iip": 6, "act_gva": 3}
+REQUIRED = {"act_ur": 6, "act_lfpr": 6, "act_wpr": 6, "act_iip": 6, "act_gva": 3,
+            "act_oppi": 6, "act_iip_capital": 6}
 
 
 def _session() -> requests.Session:
@@ -426,6 +427,120 @@ def fetch_nas() -> dict:
     return out
 
 
+
+# --------------------------------------------------------------------------- #
+# OPPI - producer prices, monthly (all commodities)
+# --------------------------------------------------------------------------- #
+def fetch_oppi() -> dict:
+    """Producer price index, all commodities, monthly + a y-o-y computed from the levels.
+
+    OPPI needs `base_year` or it answers 400 "base year is required" - unlike every other product here,
+    where base_year is optional. `limit=200` is honoured on this endpoint (161 rows a month, one page),
+    which is why this walks month by month rather than paging.
+    """
+    rows = []
+    for year in (2025, 2026):
+        for m in range(1, 13):
+            try:
+                j = get("/api/oppi/getOppiRecords", base_year="2022-23", frequency="Monthly",
+                        year=str(year), month_code=str(m), limit="200")
+            except Exception:
+                log.warning("[WARN] [OPPI] %s-%02d unavailable", year, m)
+                continue
+            rows.extend(j.get("data") or [])
+    lvl, periods = [], {}
+    for r in rows:
+        if (r.get("major_group") or "").strip().lower() != "all commodities":
+            continue
+        m = MONTHS.get((r.get("month") or "").strip())
+        if not m or not r.get("year"):
+            continue
+        d = month_start(int(r["year"]), m)
+        try:
+            lvl.append([d, float(r["index_value"])])
+        except (KeyError, TypeError, ValueError):
+            continue
+        periods[d] = month_label(int(r["year"]), m)
+    lvl = sorted({d: v for d, v in lvl}.items())
+    out: dict[str, dict] = {}
+    if lvl:
+        out["act_oppi"] = {"label": "Producer price index (OPPI), all commodities",
+                           "unit": "index", "freq": "monthly",
+                           "source": "MoSPI OPPI monthly (2022-23=100)",
+                           "endpoint": "/api/oppi/getOppiRecords",
+                           "points": [[d, v] for d, v in lvl],
+                           "periods": {d: periods[d] for d, _ in lvl if d in periods}}
+        by_date = {d: v for d, v in lvl}
+        yoy = []
+        for d, v in lvl:
+            prev = by_date.get(f"{int(d[:4]) - 1}-{d[5:7]}-01")
+            if prev:
+                yoy.append([d, round((v / prev - 1) * 100, 2)])
+        if yoy:
+            out["act_oppi_yoy"] = {"label": "Producer price inflation, y-o-y (computed)",
+                                   "unit": "%", "freq": "monthly",
+                                   "source": "MoSPI OPPI monthly (computed from published levels)",
+                                   "endpoint": "/api/oppi/getOppiRecords",
+                                   "points": yoy,
+                                   "periods": {d: periods[d] for d, _ in yoy if d in periods}}
+    log.info("[INFO] [OPPI] %s months, %s series", len(lvl), len(out))
+    return out
+
+
+# --------------------------------------------------------------------------- #
+# IIP use-based categories - capital goods vs consumer durables
+# --------------------------------------------------------------------------- #
+USE_KEYS = {"capital goods": "capital", "consumer durables": "consdur", "primary goods": "primary",
+            "intermediate goods": "intermediate",
+            "infrastructure/construction goods": "infra",
+            "consumer non-durables": "consnon"}
+
+
+def fetch_iip_usebased() -> dict:
+    """IIP growth by use-based category, monthly.
+
+    The General index says industry grew; the split says whether that growth was investment (capital
+    goods) or consumption (durables) - which is the question a macro reader actually asks.
+    """
+    rows = []
+    for year in (2025, 2026):
+        for m in range(1, 13):
+            try:
+                j = get("/api/iip/getIIPData", frequency="Monthly", base_year="2022-23",
+                        year=str(year), month_code=str(m), type="Use-based category")
+            except Exception:
+                continue
+            rows.extend(j.get("data") or [])
+    out: dict[str, dict] = {}
+    for r in rows:
+        k = USE_KEYS.get((r.get("category") or "").strip().lower())
+        m = MONTHS.get((r.get("month") or "").strip())
+        if not k or not m or not r.get("year"):
+            continue
+        try:
+            val = float(r["growth_rate"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        d = month_start(int(r["year"]), m)
+        s = out.setdefault(f"act_iip_{k}", {
+            "label": "", "unit": "%", "freq": "monthly",
+            "source": f"MoSPI IIP monthly, use-based: {r['category']}",
+            "endpoint": "/api/iip/getIIPData", "points": [], "periods": {}})
+        s["points"].append([d, val])
+        s["periods"][d] = month_label(int(r["year"]), m)
+    rel = catalogue_releases("IIP", [])       # same catalogue rows as the General index
+    names = {"capital": "Capital goods", "consdur": "Consumer durables",
+             "primary": "Primary goods", "intermediate": "Intermediate goods",
+             "infra": "Infrastructure/construction goods", "consnon": "Consumer non-durables"}
+    for k, s in out.items():
+        s["points"].sort()
+        s["label"] = f"IIP {names[k.split('_')[-1]].lower()}, y-o-y"
+        s["releases"] = rel
+    log.info("[INFO] [IIP] use-based: %s categories, %s points", len(out),
+             sum(len(s["points"]) for s in out.values()))
+    return out
+
+
 def _atomic_write(path: pathlib.Path, text: str) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(text, encoding="utf-8")
@@ -438,7 +553,8 @@ def main() -> int:
     series: dict[str, dict] = {}
     failures: list[str] = []
 
-    for name, fn in (("PLFS", fetch_plfs), ("IIP", fetch_iip), ("NAS", fetch_nas)):
+    for name, fn in (("PLFS", fetch_plfs), ("IIP", fetch_iip), ("IIP-use", fetch_iip_usebased),
+                     ("NAS", fetch_nas), ("OPPI", fetch_oppi)):
         try:
             got = fn()
             if not got:

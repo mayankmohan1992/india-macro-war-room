@@ -31,7 +31,7 @@ A GitHub Actions job wakes up every morning, pulls the latest published tables f
   the same numbers;
 - a **dataset** with the provenance, definitions, methodology and caveats attached.
 
-**43 indicators · 30 charts · 38 sourced definitions · ~9,500 stored observations · 12 RBI tables + 3 MoSPI APIs ·
+**45 indicators · 32 charts · 40 sourced definitions · ~9,500 stored observations · 12 RBI tables + 3 MoSPI APIs ·
 refreshed daily · zero servers, zero cost.**
 
 ## Quick start (consume the API)
@@ -96,7 +96,7 @@ Two lines, no key, no build step, no dependency:
 ```
 
 That draws the policy repo rate over ten years with its latest reading, axis bounds, date range and a
-credit line — and re-renders itself when the container resizes. Any of the 43 indicators works
+credit line — and re-renders itself when the container resizes. Any of the 45 indicators works
 (`data-imwr-series="cpi"`, `"usdinr"`, `"gsec"`, …), in five ranges from `1y` to `all`, in light or
 dark, recoloured with `--imwr-accent` and friends.
 
@@ -113,7 +113,7 @@ Live demo with copy-paste blocks: **<https://mayankmohan1992.github.io/india-mac
 
 ## What is tracked
 
-43 indicators across nine groups. Each carries its unit, publication frequency, source table, the
+45 indicators across nine groups. Each carries its unit, publication frequency, source table, the
 sourced definition, a rule-based status and its own period.
 
 | group | indicators |
@@ -126,7 +126,7 @@ sourced definition, a rule-based status and its own period.
 | **Markets** | 10-year G-sec yield, 91-day T-bill yield, term spread, money-market turnover, CD and CP outstanding |
 | **External** | net FX assets, RBI foreign currency assets, gold, 3-month forward premia, USD/INR |
 | **Fiscal & government paper** | T-bill outstanding, RBI credit to the Centre, RBI rupee securities |
-| **Real economy (MoSPI)** | unemployment rate, labour force participation, worker population ratio, IIP growth, GVA growth |
+| **Real economy (MoSPI)** | unemployment rate, labour force participation, worker population ratio, IIP growth, IIP capital goods, producer price inflation, GVA growth |
 
 Every indicator — id, definition, frequency, source table and current reading — is in the
 **[data dictionary](docs/DATA_DICTIONARY.md)**.
@@ -140,7 +140,8 @@ publishes all three, free, as JSON, so the page reads them directly:
 | source | endpoint | covers |
 |---|---|---|
 | PLFS (monthly) | `/api/plfs/getData` | unemployment rate, LFPR, WPR — national, 15+, by sector |
-| IIP (monthly) | `/api/iip/getIIPData` | industrial production index (2022-23=100) + published y-o-y |
+| IIP (monthly) | `/api/iip/getIIPData` | industrial production index (2022-23=100), published y-o-y, and the use-based split |
+| OPPI (monthly) | `/api/oppi/getOppiRecords` | producer price index, all commodities |
 | NAS (quarterly) | `/api/nas/getNASData` | total GVA at constant prices |
 
 Three rules hold this layer together:

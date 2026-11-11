@@ -4,6 +4,36 @@ All notable changes to the pipeline, dataset and dashboard.
 The dataset itself changes daily (see `api/v1/status.json` for the current as-of date); this file
 records changes to the *project*.
 
+## [1.2.0] — 2026-11-11
+
+### Added — producer prices and the IIP use-based split
+
+Two of the survey's top three adopt candidates, both on the adapter that already existed:
+
+- **OPPI** (`/api/oppi/getOppiRecords`) — producer price index, all commodities, monthly to Aug 2026
+  (110.8), with a y-o-y computed from the published levels (9.8%). New tile + a chart plotting it
+  against CPI, which is the pipeline-vs-shelf spread the page was missing.
+- **IIP use-based categories** — capital goods, consumer durables, primary goods and the rest, monthly;
+  capital-goods growth gets its own tile because it is the investment read the General index hides.
+
+45 indicators, 32 charts, 40 sourced definitions. `mospi_oppi_yoy` joins the provenance checks
+(19/19, 25 verified); `iipcap` is declared single-source because MoSPI's IIP weights are not on the
+endpoint, so it cannot be tied back to the General index.
+
+### Changed — the right gutter, and a clipped axis label fixed for every chart
+
+The newest x-axis label is centre-anchored on the plot's right edge, and the gutter was 14px, so it hung
+2-5px outside the viewBox and was clipped — on all 32 charts, reading as a truncated date. The gutter is
+now 26px, which fits half a "Sept 26" label. The verifier's hover probe moved from 0.985 to 0.95 of the
+card width because 0.985 now lands in the gutter (the page was right; the probe was reading past the
+last observation).
+
+### Notes — ISP tried, and dropped again on evidence
+
+Monthly ISP exists (19 sub-sectors to Aug 2026) but publishes five months, has no overall index row, and
+ignores `limit`, `year` and `month_code` — so fetching it means 33 requests that trip the 429 wall for a
+five-point line. Removed rather than shipped thin; the parameter traps are recorded in `SOURCES.md`.
+
 ## [1.1.1] — 2026-11-11
 
 ### Added — observed release dates, from MoSPI's own catalogue

@@ -11,7 +11,7 @@ empty grid, a modal that never opens). Every promise the page makes is asserted 
            * NO DEAD SPACE: every row of every grid reaches its container's right edge, at every
              width in the sweep
   data     * every tile in the DOM with a status class, non-empty value and a ? that resolves to a
-             SOURCED definition; 30 chart cards; 43 sparklines; snapshot + rule tables complete
+             SOURCED definition; 32 chart cards; 45 sparklines; snapshot + rule tables complete
   charts   * every card has a visible legend and a visible expand control, and draws real geometry
            * every chart has a dated x axis and a labelled y axis
            * hover reads out the value for a date; multi-series charts read out every series
@@ -37,7 +37,7 @@ from playwright.sync_api import sync_playwright
 ROOT = pathlib.Path(__file__).resolve().parent
 PAGE = ROOT / "dashboard" / "index.html"
 DATA = json.loads((ROOT / "dashboard" / "warroom_data.json").read_text())
-N_CHARTS = 30
+N_CHARTS = 32
 GRIDS = [".tiles", ".charts", ".strip"]
 
 
@@ -718,7 +718,11 @@ def check_axes_and_latest(pw, problems):
         card = page.query_selector('.card[data-chart="rates"]')
         card.scroll_into_view_if_needed(); page.wait_for_timeout(200)
         box = card.query_selector(".chartwrap").bounding_box()
-        page.mouse.move(box["x"] + box["width"] * 0.985, box["y"] + box["height"] * 0.5)
+        # Probe INSIDE the plot, not at the wrap's edge. The chart reserves a 26px right gutter (R) so
+        # the newest tick label is not clipped, which puts the plot's right edge at (620-26)/620 of the
+        # 620-unit viewBox. 0.985 of the wrap now lands in the gutter and correctly returns no tooltip -
+        # the page is right, the probe was reading past the last observation.
+        page.mouse.move(box["x"] + box["width"] * 0.95, box["y"] + box["height"] * 0.5)
         page.wait_for_timeout(260)
         tip = page.inner_text('.card[data-chart="rates"] .tip')
         repo_tile = next(t for t in DATA["tiles"] if t["id"] == "repo")
@@ -1135,7 +1139,7 @@ def main() -> int:
             print(f"  * {p}")
         return 1
     print("PASS — fixed-viewport shell with independent panes, no dead space at 7 widths, "
-          "43 tiles + 30 charts, legend/expand/hover/zoom on every chart, 38 sourced definitions, "
+          "45 tiles + 32 charts, legend/expand/hover/zoom on every chart, 40 sourced definitions, "
           "worst-first sort, 3 densities, Archivo embedded, hamburger rail on mobile.")
     return 0
 

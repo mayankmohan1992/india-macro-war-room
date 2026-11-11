@@ -1,0 +1,160 @@
+{
+ "indicator": {
+  "definition": {
+   "definition": "The Office of the Economic Adviser's Producer Price Index measures the change in prices received by domestic producers for their output, indexed to 2022-23 = 100. Unlike the Wholesale Price Index, which counts wholesale transactions including imports, OPPI tracks producer output prices by product group. The all-commodities index is published monthly; the year-on-year rate shown here is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Commerce & Industry, Office of the Economic Adviser — OPPI (via MoSPI e-Sankhyiki)",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=oppi",
+   "term": "Producer Price Index (OPPI), all commodities — base 2022-23"
+  },
+  "frequency": "monthly",
+  "group": "Activity",
+  "history": [
+   {
+    "change": 0.24,
+    "date": "2026-08-01",
+    "prev": 9.57,
+    "previous": 9.57,
+    "value": 9.81
+   },
+   {
+    "change": -0.1,
+    "date": "2026-07-01",
+    "prev": 9.67,
+    "previous": 9.67,
+    "value": 9.57
+   },
+   {
+    "change": -0.01,
+    "date": "2026-06-01",
+    "prev": 9.68,
+    "previous": 9.68,
+    "value": 9.67
+   },
+   {
+    "change": 1.42,
+    "date": "2026-05-01",
+    "prev": 8.26,
+    "previous": 8.26,
+    "value": 9.68
+   },
+   {
+    "change": 4.09,
+    "date": "2026-04-01",
+    "prev": 4.17,
+    "previous": 4.17,
+    "value": 8.26
+   },
+   {
+    "change": 1.89,
+    "date": "2026-03-01",
+    "prev": 2.28,
+    "previous": 2.28,
+    "value": 4.17
+   },
+   {
+    "change": 0.9,
+    "date": "2026-02-01",
+    "prev": 1.38,
+    "previous": 1.38,
+    "value": 2.28
+   },
+   {
+    "change": null,
+    "date": "2026-01-01",
+    "prev": null,
+    "previous": null,
+    "value": 1.38
+   }
+  ],
+  "history_kind": "reading",
+  "history_note": "last 8 published observations of 8 stored",
+  "id": "oppi",
+  "kind": "reading",
+  "label": "Producer price inflation, y-o-y",
+  "latest": {
+   "change": 0.24,
+   "date": "2026-08-01",
+   "value": 9.81
+  },
+  "links": {
+   "csv": "series/oppi.csv",
+   "self": "series/oppi.json"
+  },
+  "period_label": "Aug 2026",
+  "points": [
+   [
+    "2026-01-01",
+    1.38
+   ],
+   [
+    "2026-02-01",
+    2.28
+   ],
+   [
+    "2026-03-01",
+    4.17
+   ],
+   [
+    "2026-04-01",
+    8.26
+   ],
+   [
+    "2026-05-01",
+    9.68
+   ],
+   [
+    "2026-06-01",
+    9.67
+   ],
+   [
+    "2026-07-01",
+    9.57
+   ],
+   [
+    "2026-08-01",
+    9.81
+   ]
+  ],
+  "release_date": null,
+  "scoring_rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
+  "series": "act_oppi_yoy",
+  "source": "MoSPI OPPI monthly (computed from published levels)",
+  "stale": false,
+  "stale_days": 92,
+  "status": "watch",
+  "status_reason": "9.8% - producer prices running hot",
+  "unit": "%"
+ },
+ "meta": {
+  "api_version": "v1",
+  "cross_checks": [
+   {
+    "computed": 3.26,
+    "computed_series": "cpi_yoy",
+    "indicator": "cpi",
+    "max_abs_diff_pp": 0.05,
+    "months_compared": 9,
+    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
+    "published": 3.21,
+    "published_series": "cpi_yoy_official",
+    "tolerance_pp": 0.1,
+    "worst_month": "2026-02-28"
+   }
+  ],
+  "dataset_as_of": "2026-11-01",
+  "dataset_as_of_by_frequency": {
+   "daily": "2026-11-01",
+   "fortnightly": "2026-10-31",
+   "monthly": "2026-09-30",
+   "quarterly": "2026-04-01",
+   "weekly": "2026-10-30"
+  },
+  "docs": "docs/API.md",
+  "indicators": 45,
+  "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
+  "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
+  "retrieved_at": "2026-11-11T08:06:01Z",
+  "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
+  "source_url": "https://data.rbi.org.in/"
+ }
+}

@@ -2,13 +2,13 @@
  "as_of": "2026-10-30",
  "tolerance_pct": 0.01,
  "summary": {
-  "checks": 18,
-  "passed": 18,
+  "checks": 19,
+  "passed": 19,
   "failed": 0,
-  "indicators_verified": 24,
-  "indicators_single_source": 19,
+  "indicators_verified": 25,
+  "indicators_single_source": 20,
   "indicators_unverified": 0,
-  "indicators_total": 43
+  "indicators_total": 45
  },
  "source": "Reserve Bank of India DBIE report tables, plus MoSPI eSankhyiki API series - raw/ only, no network at check time",
  "note": "Checks compare RBC-published totals against each other (accounting identities), against a second RBI feed, or a published figure against one recomputed from the index. An indicator marked single-source has one cell in one table and no second witness; that is stated rather than dressed up as a check.",
@@ -219,6 +219,17 @@
    "status": "pass",
    "residual": 0.049573,
    "detail": "7 months compared; worst gap 0.050pp at 2026-07-01"
+  },
+  {
+   "id": "mospi_oppi_yoy",
+   "tier": "derived",
+   "covers": [
+    "oppi"
+   ],
+   "description": "the stored producer-price y-o-y = growth recomputed from the stored OPPI index",
+   "status": "pass",
+   "residual": 0.003399,
+   "detail": "8 months compared; worst gap 0.003pp at 2026-01-01"
   }
  ],
  "indicators": {
@@ -506,6 +517,19 @@
    "checks": [],
    "tier": "single-source",
    "note": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed from those levels, so the level has a single witness and the growth has none"
+  },
+  "oppi": {
+   "status": "verified",
+   "checks": [
+    "mospi_oppi_yoy"
+   ],
+   "tier": "derived"
+  },
+  "iipcap": {
+   "status": "single-source",
+   "checks": [],
+   "tier": "single-source",
+   "note": "one published use-based growth figure per month; MoSPI's IIP weights are not on this endpoint, so it cannot be tied back to the General index here"
   }
  }
 }

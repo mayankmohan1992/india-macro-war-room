@@ -1393,6 +1393,70 @@
    "status": "watch",
    "status_reason": "8.2% - above-trend growth - check whether it is a base effect",
    "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=oppi",
+    "term": "Producer Price Index (OPPI), all commodities — base 2022-23"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 8 published observations of 8 stored",
+   "id": "oppi",
+   "kind": "reading",
+   "label": "Producer price inflation, y-o-y",
+   "latest": {
+    "change": 0.24,
+    "date": "2026-08-01",
+    "value": 9.81
+   },
+   "links": {
+    "csv": "series/oppi.csv",
+    "self": "series/oppi.json"
+   },
+   "period_label": "Aug 2026",
+   "release_date": null,
+   "scoring_rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
+   "series": "act_oppi_yoy",
+   "source": "MoSPI OPPI monthly (computed from published levels)",
+   "stale": false,
+   "stale_days": 92,
+   "status": "watch",
+   "status_reason": "9.8% - producer prices running hot",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+    "term": "Index of Industrial Production — use-based classification"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 21 stored",
+   "id": "iipcap",
+   "kind": "reading",
+   "label": "IIP capital goods growth, y-o-y",
+   "latest": {
+    "change": -5.5,
+    "date": "2026-09-01",
+    "value": 10.4
+   },
+   "links": {
+    "csv": "series/iipcap.csv",
+    "self": "series/iipcap.json"
+   },
+   "period_label": "Sep 2026",
+   "release_date": "2026-10-28",
+   "scoring_rule": "The use-based category MoSPI publishes, not a figure derived here. Green 4-15%, watch 0-4% / >15%, red <0%.",
+   "series": "act_iip_capital",
+   "source": "MoSPI IIP monthly, use-based: Capital Goods",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "10.4% - capital goods expanding - investment is running",
+   "unit": "%"
   }
  ],
  "meta": {
@@ -1420,10 +1484,10 @@
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 43,
+  "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T07:24:34Z",
+  "retrieved_at": "2026-11-11T08:06:01Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

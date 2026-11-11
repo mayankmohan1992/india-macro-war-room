@@ -161,10 +161,10 @@
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 43,
+  "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T07:24:34Z",
+  "retrieved_at": "2026-11-11T08:06:01Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

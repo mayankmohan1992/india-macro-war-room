@@ -330,6 +330,27 @@ def chk_mospi_iip_growth():
     return worst <= 0.2, worst, f"{n} months compared; worst gap {worst:.3f}pp at {worst_date}"
 
 
+def chk_mospi_oppi_yoy():
+    """The stored OPPI y-o-y must equal the growth recomputed from the stored index levels.
+
+    Not a second publisher, but it is the check that catches a parse or date-keying error: the two
+    series are built from different fields of the same records, so a mixed-up month breaks the identity.
+    """
+    s = _mospi()
+    idx, yoy = _pts(s, "act_oppi"), _pts(s, "act_oppi_yoy")
+    worst, worst_date, n = 0.0, None, 0
+    for d, v in yoy.items():
+        prev = f"{int(d[:4]) - 1}-{d[5:7]}-01"
+        if prev in idx and idx[prev]:
+            diff = abs((idx[d] / idx[prev] - 1) * 100 - v)
+            n += 1
+            if diff > worst:
+                worst, worst_date = diff, d
+    if not n:
+        return False, float("nan"), "no year-earlier OPPI index for any stored growth point"
+    return worst <= 0.05, worst, f"{n} months compared; worst gap {worst:.3f}pp at {worst_date}"
+
+
 CHECKS = [
     # (id, tier, indicators covered, description, fn)
     ("m3_components", "identity", ["m3"],
@@ -376,6 +397,9 @@ CHECKS = [
     ("mospi_iip_growth", "derived", ["iip"],
      "MoSPI's published IIP growth = growth recomputed from MoSPI's own index",
      chk_mospi_iip_growth),
+    ("mospi_oppi_yoy", "derived", ["oppi"],
+     "the stored producer-price y-o-y = growth recomputed from the stored OPPI index",
+     chk_mospi_oppi_yoy),
 ]
 
 # Indicators with no second witness in the RBI tables we fetch. Declared, not faked.
@@ -398,6 +422,8 @@ SINGLE_SOURCE = {
     "termspread": "10y G-sec minus 91-day T-bill; both inputs are single-source",
     "liquidity": "22-working-day mean of net LAF; the mean is arithmetic, the input is single-source",
     "rbicredit": "net RBI credit to the Centre - a sub-line of a verified parent, not verified itself",
+    "iipcap": "one published use-based growth figure per month; MoSPI's IIP weights are not on this "
+              "endpoint, so it cannot be tied back to the General index here",
     "gva": "one published 'Total Gross Value Added' row per quarter; the y-o-y on the page is computed "
            "from those levels, so the level has a single witness and the growth has none",
 }

@@ -563,6 +563,16 @@ const CHARTS = [
    cap:'% y-o-y · IIP General, base 2022-23 · the growth figure MoSPI publishes, not one derived here',
    kind:'line', initial:19, defKeys:['iip'], zeroLine:true,
    keys:[{key:'act_iip_growth', color:'accent', fill:true}], legend:[['IIP growth','accent']]},
+  {id:'liveoppi', section:'activity', title:'Producer prices vs retail: OPPI and CPI', unit:'%',
+   cap:'% y-o-y · OPPI all commodities computed from the published index · the gap is pipeline vs shelf',
+   kind:'line', initial:20, defKeys:['oppi','cpi'], zeroLine:true,
+   keys:[{key:'act_oppi_yoy', color:'accent2'},{key:'cpi_yoy', color:'accent'}],
+   legend:[['producer (OPPI)','accent2'],['retail (CPI)','accent']]},
+  {id:'liveiipuse', section:'activity', title:'Inside industry: what the IIP headline hides', unit:'%',
+   cap:'% y-o-y · use-based categories · capital goods = investment, durables = household demand',
+   kind:'line', initial:21, defKeys:['iip_use_based'], zeroLine:true,
+   keys:[{key:'act_iip_capital', color:'accent'},{key:'act_iip_consdur', color:'accent2'},{key:'act_iip_primary', color:'good'}],
+   legend:[['capital goods','accent'],['consumer durables','accent2'],['primary goods','good']]},
   {id:'livegva', section:'activity', title:'Output growth: GVA, y-o-y (quarterly)', unit:'%',
    cap:'% y-o-y · constant prices, 2022-23 base · computed from published levels by MoSPI industry total',
    kind:'line', initial:13, defKeys:['gva'], zeroLine:true,
@@ -601,7 +611,7 @@ function drawChart(wrap, cfg, n, pan, W, H){
   const pv=(hi-lo)*0.10||1; lo-=pv; hi+=pv;
 
   /* paddings scale with H, so the flat "fit all" density stays legible instead of crushing labels */
-  const L=Math.max(34, Math.round(W*0.098)), R=14, TP=Math.max(18, Math.round(H*0.085)),
+  const L=Math.max(34, Math.round(W*0.098)), R=26, TP=Math.max(18, Math.round(H*0.085)),
         B=Math.max(34, Math.round(H*0.24));   // room for the tick row AND the axis title row
   const xD=d=> L+(pos.get(d)/(nD-1||1))*(W-L-R);
   const xI=i=> L+(i+0.5)/nD*(W-L-R);
@@ -636,6 +646,10 @@ function drawChart(wrap, cfg, n, pan, W, H){
   ticks.forEach(i=>{
     const xx = cfg.kind==='line' ? xD(dates[i]) : xI(i);
     g+=`<line x1="${xx.toFixed(1)}" y1="${(H-B).toFixed(1)}" x2="${xx.toFixed(1)}" y2="${(H-B+3).toFixed(1)}" stroke="${C.axis}"/>`;
+    /* The newest tick sits on the plot's right edge and its label is centre-anchored, so half its
+       width used to hang outside the viewBox and get clipped (measured: 2-5px on every chart - a
+       truncated date rather than a layout choice). The gutter R was 14px; it is now 26px, which is
+       enough for half a "Sept 26" label. */
     g+=`<text x="${xx.toFixed(1)}" y="${(H-B+fs+5).toFixed(1)}" fill="${C.dim2}" font-size="${fs}" text-anchor="middle">${tickLabel(dates[i], nD, spanDays)}</text>`;
   });
   g+=`<line x1="${L}" y1="${(H-B).toFixed(1)}" x2="${W-R}" y2="${(H-B).toFixed(1)}" stroke="${C.axis}"/>`;
@@ -771,7 +785,7 @@ const GROUPS = [
   {id:'fiscal',  no:'08', name:'Fiscal & government paper', note:'who the government borrows from',
    ids:['tbill','rbicredit','rupeesec']},
   {id:'activity',no:'09', name:'Real economy',           note:'labour, industry, output · MoSPI',
-   ids:['ur','lfpr','wpr','iip','gva']}
+   ids:['ur','lfpr','wpr','iip','iipcap','oppi','gva']}
 ];
 let sortMode='theme';
 function packSpans(n){

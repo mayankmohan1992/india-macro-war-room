@@ -96,6 +96,7 @@ public API that backs the e-Sankhyiki portal (`https://api.mospi.gov.in`). 15 pr
 |---|---|---|---|
 | unemployment rate, LFPR, WPR (national, 15+, by sector) | `/api/plfs/getData` | monthly | `indicator_code` 1/2/3, `frequency_code=3`, `year`, `month_code`, `sector_code=1,2,3`, `gender_code=3`, `age_code=1` |
 | IIP General index + published y-o-y | `/api/iip/getIIPData` | monthly | `frequency=Monthly`, `base_year=2022-23`, `year`, `type=General`, `category_code=4` |
+| producer price index, all commodities | `/api/oppi/getOppiRecords` | monthly | `base_year=2022-23` (**required** — without it the endpoint answers 400 "base year is required"), `frequency=Monthly`, `year`, `month_code`, `limit=200` (honoured here: 161 rows a month fit one page) |
 | total GVA, constant prices | `/api/nas/getNASData` | quarterly | `indicator_code=1`, `base_year=2022-23`, `series=Current`, `frequency_code=2`, `year=YYYY-YY` |
 
 The API is open — no key, no token, guest access — and paginated: `recordPerPage` is 10-20 depending on
@@ -120,6 +121,12 @@ Checked, and rejected for publishing only PDFs or bare HTML tables: PPAC petrole
 Ministry of Steel, CEA/Grid-India power, IPA ports (host DNS-dead), CWC reservoirs (live-table host
 retired), TRAI, DGCIS trade, GST revenue (PIB release), NPCI UPI (HTML table, no file), MGNREGA, CGA
 fiscal. Each has a revival condition in [GOVT_SOURCES_PLAN.md](GOVT_SOURCES_PLAN.md).
+
+**ISP (services production) was tried and dropped again, on evidence.** It does return monthly rows
+(19 broad sub-sectors to Aug 2026), but only five months are published, `type_code=1` (the overall
+index) still serves nothing, and the endpoint ignores both `limit` and its own `year`/`month_code`
+filters — so getting the whole series means paging 33 requests that trip the rate limiter, to chart a
+five-point line with no headline. Not worth the fragility. The separate note below still stands:
 
 **ISP (services production) is absent on purpose**: its API has no overall index row — `type_code=1` is
 documented as "no data at present" — so a headline services figure could only be produced by summing

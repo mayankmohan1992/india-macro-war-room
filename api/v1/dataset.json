@@ -128,6 +128,12 @@
    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
    "term": "Index of Industrial Production (IIP), General — base 2022-23"
   },
+  "iip_use_based": {
+   "definition": "The IIP is also published by use: primary goods, capital goods, intermediate goods, infrastructure/construction goods, consumer durables and consumer non-durables. The split matters because the same headline growth means different things — capital goods growth is investment, consumer durables growth is household demand. The growth rates quoted here are the ones MoSPI publishes for each category, not figures derived on this page.",
+   "source_name": "Ministry of Statistics and Programme Implementation (MoSPI) — IIP use-based classification",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+   "term": "Index of Industrial Production — use-based classification"
+  },
   "incremental_cd_ratio": {
    "definition": "Incremental credit-deposit ratio = incremental bank credit divided by incremental aggregate deposits, where the increments relate to the financial year so far. RBI publishes it alongside the outstanding ratio in the 'Ratios' table of the Weekly Statistical Supplement, using '**' or '&' markers where incremental deposits are negative and the ratio is undefined. A reading above 100 per cent means new lending exceeds fresh deposit mobilisation, so the gap must be funded from non-deposit sources; a low, zero or negative figure means deposit growth is keeping pace with or exceeding credit growth.",
    "source_name": "Reserve Bank of India — Weekly Statistical Supplement, 'Ratios' table",
@@ -181,6 +187,12 @@
    "source_name": "Reserve Bank of India — Handbook on the Weekly Statistical Supplement, 'RBI – Liabilities and Assets'",
    "source_url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf",
    "term": "Notes in circulation"
+  },
+  "oppi": {
+   "definition": "The Office of the Economic Adviser's Producer Price Index measures the change in prices received by domestic producers for their output, indexed to 2022-23 = 100. Unlike the Wholesale Price Index, which counts wholesale transactions including imports, OPPI tracks producer output prices by product group. The all-commodities index is published monthly; the year-on-year rate shown here is computed from those published levels and labelled as computed.",
+   "source_name": "Ministry of Commerce & Industry, Office of the Economic Adviser — OPPI (via MoSPI e-Sankhyiki)",
+   "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=oppi",
+   "term": "Producer Price Index (OPPI), all commodities — base 2022-23"
   },
   "rbi_credit_to_govt": {
    "definition": "These are the Reserve Bank's direct loans and advances to the Central Government — Ways and Means Advances and any overdue WMA that becomes an overdraft — reported as item 4.1 'Central Government' under 'Loans and Advances' in the WSS 'RBI — Liabilities and Assets' table. Ways and Means Advances are provided by the RBI under Section 17(5) of the Reserve Bank of India Act, 1934, to bridge temporary mismatches between the government's receipts and payments; the limit is set in agreement with the Government, and they are meant to be temporary, so persistent borrowing here is read as a sign of fiscal pressure. This item covers the Central Government only; the State Government counterpart is a separate line.",
@@ -1637,6 +1649,70 @@
    "status": "watch",
    "status_reason": "8.2% - above-trend growth - check whether it is a base effect",
    "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=oppi",
+    "term": "Producer Price Index (OPPI), all commodities — base 2022-23"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 8 published observations of 8 stored",
+   "id": "oppi",
+   "kind": "reading",
+   "label": "Producer price inflation, y-o-y",
+   "latest": {
+    "change": 0.24,
+    "date": "2026-08-01",
+    "value": 9.81
+   },
+   "links": {
+    "csv": "series/oppi.csv",
+    "self": "series/oppi.json"
+   },
+   "period_label": "Aug 2026",
+   "release_date": null,
+   "scoring_rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
+   "series": "act_oppi_yoy",
+   "source": "MoSPI OPPI monthly (computed from published levels)",
+   "stale": false,
+   "stale_days": 92,
+   "status": "watch",
+   "status_reason": "9.8% - producer prices running hot",
+   "unit": "%"
+  },
+  {
+   "definition": {
+    "source_url": "https://esankhyiki.mospi.gov.in/macroindicators?product=iip",
+    "term": "Index of Industrial Production — use-based classification"
+   },
+   "frequency": "monthly",
+   "group": "Activity",
+   "history_kind": "reading",
+   "history_note": "last 20 published observations of 21 stored",
+   "id": "iipcap",
+   "kind": "reading",
+   "label": "IIP capital goods growth, y-o-y",
+   "latest": {
+    "change": -5.5,
+    "date": "2026-09-01",
+    "value": 10.4
+   },
+   "links": {
+    "csv": "series/iipcap.csv",
+    "self": "series/iipcap.json"
+   },
+   "period_label": "Sep 2026",
+   "release_date": "2026-10-28",
+   "scoring_rule": "The use-based category MoSPI publishes, not a figure derived here. Green 4-15%, watch 0-4% / >15%, red <0%.",
+   "series": "act_iip_capital",
+   "source": "MoSPI IIP monthly, use-based: Capital Goods",
+   "stale": false,
+   "stale_days": 61,
+   "status": "good",
+   "status_reason": "10.4% - capital goods expanding - investment is running",
+   "unit": "%"
   }
  ],
  "meta": {
@@ -1664,10 +1740,10 @@
    "weekly": "2026-10-30"
   },
   "docs": "docs/API.md",
-  "indicators": 43,
+  "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T07:24:34Z",
+  "retrieved_at": "2026-11-11T08:06:01Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -20471,6 +20547,236 @@
     ]
    ]
   },
+  "iipcap": {
+   "history": [
+    {
+     "change": -5.5,
+     "date": "2026-09-01",
+     "prev": 15.9,
+     "previous": 15.9,
+     "value": 10.4
+    },
+    {
+     "change": -3.1,
+     "date": "2026-08-01",
+     "prev": 19.0,
+     "previous": 19.0,
+     "value": 15.9
+    },
+    {
+     "change": 1.1,
+     "date": "2026-07-01",
+     "prev": 17.9,
+     "previous": 17.9,
+     "value": 19.0
+    },
+    {
+     "change": 2.4,
+     "date": "2026-06-01",
+     "prev": 15.5,
+     "previous": 15.5,
+     "value": 17.9
+    },
+    {
+     "change": 3.5,
+     "date": "2026-05-01",
+     "prev": 12.0,
+     "previous": 12.0,
+     "value": 15.5
+    },
+    {
+     "change": 3.5,
+     "date": "2026-04-01",
+     "prev": 8.5,
+     "previous": 8.5,
+     "value": 12.0
+    },
+    {
+     "change": -8.0,
+     "date": "2026-03-01",
+     "prev": 16.5,
+     "previous": 16.5,
+     "value": 8.5
+    },
+    {
+     "change": 4.1,
+     "date": "2026-02-01",
+     "prev": 12.4,
+     "previous": 12.4,
+     "value": 16.5
+    },
+    {
+     "change": -0.5,
+     "date": "2026-01-01",
+     "prev": 12.9,
+     "previous": 12.9,
+     "value": 12.4
+    },
+    {
+     "change": -3.7,
+     "date": "2025-12-01",
+     "prev": 16.6,
+     "previous": 16.6,
+     "value": 12.9
+    },
+    {
+     "change": 11.2,
+     "date": "2025-11-01",
+     "prev": 5.4,
+     "previous": 5.4,
+     "value": 16.6
+    },
+    {
+     "change": -7.8,
+     "date": "2025-10-01",
+     "prev": 13.2,
+     "previous": 13.2,
+     "value": 5.4
+    },
+    {
+     "change": 7.2,
+     "date": "2025-09-01",
+     "prev": 6.0,
+     "previous": 6.0,
+     "value": 13.2
+    },
+    {
+     "change": 0.1,
+     "date": "2025-08-01",
+     "prev": 5.9,
+     "previous": 5.9,
+     "value": 6.0
+    },
+    {
+     "change": 2.5,
+     "date": "2025-07-01",
+     "prev": 3.4,
+     "previous": 3.4,
+     "value": 5.9
+    },
+    {
+     "change": -6.1,
+     "date": "2025-06-01",
+     "prev": 9.5,
+     "previous": 9.5,
+     "value": 3.4
+    },
+    {
+     "change": -5.0,
+     "date": "2025-05-01",
+     "prev": 14.5,
+     "previous": 14.5,
+     "value": 9.5
+    },
+    {
+     "change": 0.3,
+     "date": "2025-04-01",
+     "prev": 14.2,
+     "previous": 14.2,
+     "value": 14.5
+    },
+    {
+     "change": 5.9,
+     "date": "2025-03-01",
+     "prev": 8.3,
+     "previous": 8.3,
+     "value": 14.2
+    },
+    {
+     "change": 0.0,
+     "date": "2025-02-01",
+     "prev": 8.3,
+     "previous": 8.3,
+     "value": 8.3
+    }
+   ],
+   "points": [
+    [
+     "2025-01-01",
+     8.3
+    ],
+    [
+     "2025-02-01",
+     8.3
+    ],
+    [
+     "2025-03-01",
+     14.2
+    ],
+    [
+     "2025-04-01",
+     14.5
+    ],
+    [
+     "2025-05-01",
+     9.5
+    ],
+    [
+     "2025-06-01",
+     3.4
+    ],
+    [
+     "2025-07-01",
+     5.9
+    ],
+    [
+     "2025-08-01",
+     6.0
+    ],
+    [
+     "2025-09-01",
+     13.2
+    ],
+    [
+     "2025-10-01",
+     5.4
+    ],
+    [
+     "2025-11-01",
+     16.6
+    ],
+    [
+     "2025-12-01",
+     12.9
+    ],
+    [
+     "2026-01-01",
+     12.4
+    ],
+    [
+     "2026-02-01",
+     16.5
+    ],
+    [
+     "2026-03-01",
+     8.5
+    ],
+    [
+     "2026-04-01",
+     12.0
+    ],
+    [
+     "2026-05-01",
+     15.5
+    ],
+    [
+     "2026-06-01",
+     17.9
+    ],
+    [
+     "2026-07-01",
+     19.0
+    ],
+    [
+     "2026-08-01",
+     15.9
+    ],
+    [
+     "2026-09-01",
+     10.4
+    ]
+   ]
+  },
   "invest": {
    "history": [
     {
@@ -27763,6 +28069,100 @@
     [
      "2026-10-30",
      14.18
+    ]
+   ]
+  },
+  "oppi": {
+   "history": [
+    {
+     "change": 0.24,
+     "date": "2026-08-01",
+     "prev": 9.57,
+     "previous": 9.57,
+     "value": 9.81
+    },
+    {
+     "change": -0.1,
+     "date": "2026-07-01",
+     "prev": 9.67,
+     "previous": 9.67,
+     "value": 9.57
+    },
+    {
+     "change": -0.01,
+     "date": "2026-06-01",
+     "prev": 9.68,
+     "previous": 9.68,
+     "value": 9.67
+    },
+    {
+     "change": 1.42,
+     "date": "2026-05-01",
+     "prev": 8.26,
+     "previous": 8.26,
+     "value": 9.68
+    },
+    {
+     "change": 4.09,
+     "date": "2026-04-01",
+     "prev": 4.17,
+     "previous": 4.17,
+     "value": 8.26
+    },
+    {
+     "change": 1.89,
+     "date": "2026-03-01",
+     "prev": 2.28,
+     "previous": 2.28,
+     "value": 4.17
+    },
+    {
+     "change": 0.9,
+     "date": "2026-02-01",
+     "prev": 1.38,
+     "previous": 1.38,
+     "value": 2.28
+    },
+    {
+     "change": null,
+     "date": "2026-01-01",
+     "prev": null,
+     "previous": null,
+     "value": 1.38
+    }
+   ],
+   "points": [
+    [
+     "2026-01-01",
+     1.38
+    ],
+    [
+     "2026-02-01",
+     2.28
+    ],
+    [
+     "2026-03-01",
+     4.17
+    ],
+    [
+     "2026-04-01",
+     8.26
+    ],
+    [
+     "2026-05-01",
+     9.68
+    ],
+    [
+     "2026-06-01",
+     9.67
+    ],
+    [
+     "2026-07-01",
+     9.57
+    ],
+    [
+     "2026-08-01",
+     9.81
     ]
    ]
   },

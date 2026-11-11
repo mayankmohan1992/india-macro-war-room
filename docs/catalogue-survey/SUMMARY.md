@@ -50,9 +50,9 @@ Rules measured, not assumed:
 
 | # | Product | Cadence | Why it is worth it | Overlap |
 |---|---|---|---|---|
-| 1 | **OPPI** (producer prices) | monthly, 161 rows/mo to Aug 2026 | The producer-price layer the page lacks; WPI is wholesale, OPPI is output-price based | None in DBIE/current layer |
-| 2 | **IIP use-based + sectoral detail** | monthly | One extra parameter on the adapter already shipped: capital goods vs consumer durables is the growth read that matters | Extends IIP we already publish |
-| 3 | **ISP broad sub-sectors** | monthly to Aug 2026 | 19 services series; no overall index exists, so chart 3-4 (trade, transport, telecom, IT) | None |
+| 1 | **OPPI** (producer prices) — **SHIPPED** | monthly, 161 rows/mo to Aug 2026 | The producer-price layer the page lacks; WPI is wholesale, OPPI is output-price based | None in DBIE/current layer |
+| 2 | **IIP use-based** — **SHIPPED** | monthly | One extra parameter on the adapter already shipped: capital goods vs consumer durables is the growth read that matters | Extends IIP we already publish |
+| 3 | ~~**ISP broad sub-sectors**~~ | monthly, 5 months only | **Tried, dropped:** no overall index, 5 published months, endpoint ignores `limit`/`year`/`month_code` so the whole series costs 33 requests. Recorded in SOURCES.md. | None |
 | 4 | **ASI** | annual, 57 indicators × 16 FY × 39 states × NIC 2/3/4-digit | Factory GVA, employment, wages, capex, physical coal/electricity consumed — the value/employment side of the IIP volume we show | None |
 | 5 | **ASUSE** | annual (quarterly QBUSE exists as XLSX only) | Informal-sector establishments, workers, GVA — the missing majority of employment | Partly with PLFS employment counts |
 | 6 | **AIDIS** (NSS 77) | survey round | Household debt and assets: the one real gap — no DBIE table covers it | None |

@@ -706,6 +706,7 @@ DEF_KEYS = {
     # real economy (MoSPI) — the tile ids are shorter than the definition keys
     "ur": "unemployment_rate", "lfpr": "labour_force_participation_rate",
     "wpr": "worker_population_ratio", "iip": "iip", "gva": "gva",
+    "oppi": "oppi", "iipcap": "iip_use_based",
 }
 
 
@@ -1206,6 +1207,29 @@ def tiles(S: dict) -> list[dict]:
             f"{v:.1f}% - {why}",
             "Computed from published constant-price levels, not a published growth rate. Green 5-8%, "
             "watch 3-5% / >8%, red <3%.")
+
+    if "act_oppi_yoy" in S:
+        p = S["act_oppi_yoy"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 0.0, "bad", "producer prices falling - margin squeeze and deflation risk"),
+            (0.0, 2.0, "watch", "very weak producer inflation"),
+            (2.0, 6.0, "good", "producer prices rising at a normal pace"),
+            (6.0, 999, "watch", "producer prices running hot")])
+        add("oppi", "Producer price inflation, y-o-y", "Activity", "act_oppi_yoy", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.")
+
+    if "act_iip_capital" in S:
+        p = S["act_iip_capital"]["points"]; v = p[-1][1]
+        st, why = band_status(v, [
+            (-99, 0.0, "bad", "capital goods output shrinking - investment is not happening"),
+            (0.0, 4.0, "watch", "weak investment-goods growth"),
+            (4.0, 15.0, "good", "capital goods expanding - investment is running"),
+            (15.0, 999, "watch", "very fast - check the base before reading it as a boom")])
+        add("iipcap", "IIP capital goods growth, y-o-y", "Activity", "act_iip_capital", "%", "pct", "month", st,
+            f"{v:.1f}% - {why}",
+            "The use-based category MoSPI publishes, not a figure derived here. Green 4-15%, watch "
+            "0-4% / >15%, red <0%.")
 
     return out
 
