@@ -1,13 +1,14 @@
 # India Macro War Room
 
-**A daily-refreshed dataset, static API and at-a-glance dashboard for 43 widely-watched Indian
-macroeconomic indicators — built from the Reserve Bank of India's public publications.**
+**A daily-refreshed dataset, static API and at-a-glance dashboard for 45 widely-watched Indian
+macroeconomic indicators — built from the Reserve Bank of India's DBIE tables and MoSPI's
+eSankhyiki API.**
 
 [![CI](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/ci.yml/badge.svg)](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/ci.yml)
 [![Daily refresh](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/daily.yml/badge.svg)](https://github.com/mayankmohan1992/india-macro-war-room/actions/workflows/daily.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Data: RBI DBIE](https://img.shields.io/badge/source-RBI%20DBIE-orange.svg)](https://data.rbi.org.in/)
+[![Data: RBI DBIE + MoSPI](https://img.shields.io/badge/source-RBI%20DBIE%20%2B%20MoSPI-orange.svg)](https://data.rbi.org.in/)
 
 | | |
 |---|---|
