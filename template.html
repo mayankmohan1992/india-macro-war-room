@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>India Macro War Room · RBI DBIE</title>
+<title>India Macro War Room · RBI DBIE + MoSPI</title>
 <script>
   /* THEME, applied before first paint so a dark-mode user never sees a light flash.
      Exactly two token blocks exist: :root = light, :root[data-theme="dark"] = dark. The stored choice
@@ -1252,7 +1252,7 @@ function renderHead(){
       <div class="d">${when} · ${k.src}</div></div>`;
   }).join('');   /* end snapshot strip */
   if(footEl) footEl.innerHTML=
-    `Built from RBI DBIE public data · tables used: ${DATA.sources.reports} · fetched by fetch_series.py, analysed and rendered by build_dashboard.py.<br>`+
+    `Built from RBI DBIE public data and MoSPI's e-Sankhyiki API · tables used: ${DATA.sources.reports} · fetched by fetch_series.py, analysed and rendered by build_dashboard.py.<br>`+
     (()=>{const V=DATA.verification||{}, s=V.summary||{};
       if(!s.indicators_total) return '';
       return `<b>Provenance:</b> ${s.indicators_verified} of ${s.indicators_total} indicators are independently verified against the RBI source tables (${s.passed}/${s.checks} checks passed at ${V.as_of}) · `+
