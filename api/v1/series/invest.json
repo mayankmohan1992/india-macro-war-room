@@ -38,11 +38,18 @@
     "value": 6.5
    },
    {
-    "change": 0.19,
+    "change": 0.04,
     "date": "2026-08-15",
+    "prev": 6.39,
+    "previous": 6.39,
+    "value": 6.43
+   },
+   {
+    "change": 0.15,
+    "date": "2026-07-31",
     "prev": 6.24,
     "previous": 6.24,
-    "value": 6.43
+    "value": 6.39
    },
    {
     "change": 0.4,
@@ -141,13 +148,6 @@
     "prev": 4.95,
     "previous": 4.95,
     "value": 4.39
-   },
-   {
-    "change": -0.37,
-    "date": "2025-12-15",
-    "prev": 5.32,
-    "previous": 5.32,
-    "value": 4.95
    }
   ],
   "history_kind": "reading",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-01-18",
-    -0.0
-   ],
    [
     "2019-02-01",
     -1.53
@@ -848,7 +844,7 @@
    ],
    [
     "2025-07-25",
-    -100.0
+    6.54
    ],
    [
     "2025-08-08",
@@ -947,6 +943,10 @@
     6.24
    ],
    [
+    "2026-07-31",
+    6.39
+   ],
+   [
     "2026-08-15",
     6.43
    ],
@@ -981,23 +981,23 @@
   "api_version": "v1",
   "cross_checks": [
    {
-    "computed": 3.26,
+    "computed": 6.17,
     "computed_series": "cpi_yoy",
     "indicator": "cpi",
-    "max_abs_diff_pp": 0.05,
-    "months_compared": 9,
+    "max_abs_diff_pp": 0.08,
+    "months_compared": 10,
     "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
-    "published": 3.21,
+    "published": 6.09,
     "published_series": "cpi_yoy_official",
     "tolerance_pp": 0.1,
-    "worst_month": "2026-02-28"
+    "worst_month": "2026-10-31"
    }
   ],
   "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
-   "monthly": "2026-09-30",
+   "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T08:14:45Z",
+  "retrieved_at": "2026-11-12T14:51:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

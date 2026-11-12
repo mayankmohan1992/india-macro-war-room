@@ -265,23 +265,23 @@
   "api_version": "v1",
   "cross_checks": [
    {
-    "computed": 3.26,
+    "computed": 6.17,
     "computed_series": "cpi_yoy",
     "indicator": "cpi",
-    "max_abs_diff_pp": 0.05,
-    "months_compared": 9,
+    "max_abs_diff_pp": 0.08,
+    "months_compared": 10,
     "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
-    "published": 3.21,
+    "published": 6.09,
     "published_series": "cpi_yoy_official",
     "tolerance_pp": 0.1,
-    "worst_month": "2026-02-28"
+    "worst_month": "2026-10-31"
    }
   ],
   "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
-   "monthly": "2026-09-30",
+   "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
@@ -289,7 +289,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T08:14:45Z",
+  "retrieved_at": "2026-11-12T14:51:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -1,16 +1,16 @@
 {
  "cross_checks": [
   {
-   "computed": 3.26,
+   "computed": 6.17,
    "computed_series": "cpi_yoy",
    "indicator": "cpi",
-   "max_abs_diff_pp": 0.05,
-   "months_compared": 9,
+   "max_abs_diff_pp": 0.08,
+   "months_compared": 10,
    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
-   "published": 3.21,
+   "published": 6.09,
    "published_series": "cpi_yoy_official",
    "tolerance_pp": 0.1,
-   "worst_month": "2026-02-28"
+   "worst_month": "2026-10-31"
   }
  ],
  "definitions": {
@@ -264,14 +264,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 9 published observations of 9 stored",
+   "history_note": "last 10 published observations of 10 stored",
    "id": "cpi",
    "kind": "reading",
    "label": "CPI inflation",
    "latest": {
-    "change": 0.71,
-    "date": "2026-09-30",
-    "value": 5.54
+    "change": 0.55,
+    "date": "2026-10-31",
+    "value": 6.09
    },
    "links": {
     "csv": "series/cpi.csv",
@@ -283,9 +283,9 @@
    "series": "cpi_yoy_official",
    "source": "RBI DBIE indicator series (RBIB18)",
    "stale": false,
-   "stale_days": 32,
-   "status": "watch",
-   "status_reason": "5.54% - inside the band but above target (an index-derived y-o-y for the same month gives 5.59%; the two differ because the published index is rounded to one decimal)",
+   "stale_days": 1,
+   "status": "bad",
+   "status_reason": "6.09% - above the 6% upper tolerance limit (an index-derived y-o-y for the same month gives 6.17%; the two differ because the published index is rounded to one decimal)",
    "unit": "%"
   },
   {
@@ -627,9 +627,9 @@
    "kind": "reading",
    "label": "Net FX assets (banking sector)",
    "latest": {
-    "change": -2.95,
+    "change": -4.07,
     "date": "2026-10-15",
-    "value": 14.82
+    "value": 13.7
    },
    "links": {
     "csv": "series/fxa.csv",
@@ -643,7 +643,7 @@
    "stale": false,
    "stale_days": 17,
    "status": "good",
-   "status_reason": "14.8% - net FX assets building",
+   "status_reason": "13.7% - net FX assets building",
    "unit": "%"
   },
   {
@@ -974,14 +974,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 153 stored",
+   "history_note": "last 20 published observations of 154 stored",
    "id": "cpirural",
    "kind": "reading",
    "label": "CPI rural",
    "latest": {
-    "change": 0.77,
-    "date": "2026-09-30",
-    "value": 6.07
+    "change": 0.47,
+    "date": "2026-10-31",
+    "value": 6.54
    },
    "links": {
     "csv": "series/cpirural.csv",
@@ -993,9 +993,9 @@
    "series": "cpi_rural_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 32,
+   "stale_days": 1,
    "status": "bad",
-   "status_reason": "6.07% - above the upper tolerance limit",
+   "status_reason": "6.54% - above the upper tolerance limit",
    "unit": "%"
   },
   {
@@ -1006,14 +1006,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 153 stored",
+   "history_note": "last 20 published observations of 154 stored",
    "id": "cpiurban",
    "kind": "reading",
    "label": "CPI urban",
    "latest": {
-    "change": 0.48,
-    "date": "2026-09-30",
-    "value": 4.82
+    "change": 0.59,
+    "date": "2026-10-31",
+    "value": 5.41
    },
    "links": {
     "csv": "series/cpiurban.csv",
@@ -1025,9 +1025,9 @@
    "series": "cpi_urban_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 32,
+   "stale_days": 1,
    "status": "watch",
-   "status_reason": "4.82% - above target",
+   "status_reason": "5.41% - above target",
    "unit": "%"
   },
   {
@@ -1719,23 +1719,23 @@
   "api_version": "v1",
   "cross_checks": [
    {
-    "computed": 3.26,
+    "computed": 6.17,
     "computed_series": "cpi_yoy",
     "indicator": "cpi",
-    "max_abs_diff_pp": 0.05,
-    "months_compared": 9,
+    "max_abs_diff_pp": 0.08,
+    "months_compared": 10,
     "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
-    "published": 3.21,
+    "published": 6.09,
     "published_series": "cpi_yoy_official",
     "tolerance_pp": 0.1,
-    "worst_month": "2026-02-28"
+    "worst_month": "2026-10-31"
    }
   ],
   "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
-   "monthly": "2026-09-30",
+   "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
@@ -1743,7 +1743,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T08:14:45Z",
+  "retrieved_at": "2026-11-12T14:51:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -3132,7 +3132,7 @@
     ],
     [
      "2022-07-01",
-     4.72
+     4.71
     ],
     [
      "2022-07-08",
@@ -5935,6 +5935,13 @@
   "cpi": {
    "history": [
     {
+     "change": 0.55,
+     "date": "2026-10-31",
+     "prev": 5.54,
+     "previous": 5.54,
+     "value": 6.09
+    },
+    {
      "change": 0.71,
      "date": "2026-09-30",
      "prev": 4.83,
@@ -6034,11 +6041,22 @@
     [
      "2026-09-30",
      5.54
+    ],
+    [
+     "2026-10-31",
+     6.09
     ]
    ]
   },
   "cpirural": {
    "history": [
+    {
+     "change": 0.47,
+     "date": "2026-10-31",
+     "prev": 6.07,
+     "previous": 6.07,
+     "value": 6.54
+    },
     {
      "change": 0.77,
      "date": "2026-09-30",
@@ -6171,13 +6189,6 @@
      "prev": 3.47,
      "previous": 3.47,
      "value": 3.26
-    },
-    {
-     "change": -0.62,
-     "date": "2025-02-28",
-     "prev": 4.09,
-     "previous": 4.09,
-     "value": 3.47
     }
    ],
    "points": [
@@ -6792,11 +6803,22 @@
     [
      "2026-09-30",
      6.07
+    ],
+    [
+     "2026-10-31",
+     6.54
     ]
    ]
   },
   "cpiurban": {
    "history": [
+    {
+     "change": 0.59,
+     "date": "2026-10-31",
+     "prev": 4.82,
+     "previous": 4.82,
+     "value": 5.41
+    },
     {
      "change": 0.48,
      "date": "2026-09-30",
@@ -6929,13 +6951,6 @@
      "prev": 3.47,
      "previous": 3.47,
      "value": 3.89
-    },
-    {
-     "change": -0.53,
-     "date": "2025-02-28",
-     "prev": 4.0,
-     "previous": 4.0,
-     "value": 3.47
     }
    ],
    "points": [
@@ -7550,6 +7565,10 @@
     [
      "2026-09-30",
      4.82
+    ],
+    [
+     "2026-10-31",
+     5.41
     ]
    ]
   },
@@ -15002,10 +15021,6 @@
    ],
    "points": [
     [
-     "2019-01-18",
-     21.06
-    ],
-    [
      "2019-02-01",
      29.31
     ],
@@ -15446,6 +15461,10 @@
      -47.38
     ],
     [
+     "2023-04-21",
+     -49.96
+    ],
+    [
      "2023-05-05",
      -40.19
     ],
@@ -15547,7 +15566,7 @@
     ],
     [
      "2024-04-19",
-     -13.71
+     -15.04
     ],
     [
      "2024-05-03",
@@ -16992,11 +17011,11 @@
   "fxa": {
    "history": [
     {
-     "change": -2.95,
+     "change": -4.07,
      "date": "2026-10-15",
      "prev": 17.77,
      "previous": 17.77,
-     "value": 14.82
+     "value": 13.7
     },
     {
      "change": -2.98,
@@ -17931,7 +17950,7 @@
     ],
     [
      "2026-10-15",
-     14.82
+     13.7
     ]
    ]
   },
@@ -20808,11 +20827,18 @@
      "value": 6.5
     },
     {
-     "change": 0.19,
+     "change": 0.04,
      "date": "2026-08-15",
+     "prev": 6.39,
+     "previous": 6.39,
+     "value": 6.43
+    },
+    {
+     "change": 0.15,
+     "date": "2026-07-31",
      "prev": 6.24,
      "previous": 6.24,
-     "value": 6.43
+     "value": 6.39
     },
     {
      "change": 0.4,
@@ -20911,20 +20937,9 @@
      "prev": 4.95,
      "previous": 4.95,
      "value": 4.39
-    },
-    {
-     "change": -0.37,
-     "date": "2025-12-15",
-     "prev": 5.32,
-     "previous": 5.32,
-     "value": 4.95
     }
    ],
    "points": [
-    [
-     "2019-01-18",
-     -0.0
-    ],
     [
      "2019-02-01",
      -1.53
@@ -21603,7 +21618,7 @@
     ],
     [
      "2025-07-25",
-     -100.0
+     6.54
     ],
     [
      "2025-08-08",
@@ -21700,6 +21715,10 @@
     [
      "2026-07-15",
      6.24
+    ],
+    [
+     "2026-07-31",
+     6.39
     ],
     [
      "2026-08-15",
@@ -26165,10 +26184,6 @@
    ],
    "points": [
     [
-     "2019-01-18",
-     14.58
-    ],
-    [
      "2019-02-01",
      14.43
     ],
@@ -26609,6 +26624,10 @@
      15.96
     ],
     [
+     "2023-04-21",
+     16.15
+    ],
+    [
      "2023-05-05",
      15.7
     ],
@@ -26710,7 +26729,7 @@
     ],
     [
      "2024-04-19",
-     19.12
+     19.05
     ],
     [
      "2024-05-03",

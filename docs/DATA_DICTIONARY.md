@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**45 indicators** · dataset as-of **2026-11-01** · generated 2026-11-11 13:44 IST
+**45 indicators** · dataset as-of **2026-11-01** · generated 2026-11-12 14:51 UTC
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -38,7 +38,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 |---|---|---|---|---|---:|---|---|---|
 | `fca` | RBI foreign currency assets | % | reading | weekly | 11.84 | 2026-10-30 | RBI r39 | [Foreign Currency Assets (FCA) and India's foreign exchange reserves](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 5.35 | 2026-10-30 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
-| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 14.82 | 2026-10-15 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
+| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 13.7 | 2026-10-15 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `gold` | RBI gold holdings | % | reading | weekly | 7.87 | 2026-10-30 | RBI r39 | [RBI gold holdings (gold component of the reserves)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `usdinr` | USD/INR | ₹ | reading | weekly | 95.25 | 2026-10-30 | RBI r10 (weekly WSS) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
 
@@ -91,9 +91,9 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `cpi` | CPI inflation | % | reading | monthly | 5.54 | 2026-09-30 | RBI DBIE indicator series (RBIB18) | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
-| `cpirural` | CPI rural | % | reading | monthly | 6.07 | 2026-09-30 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
-| `cpiurban` | CPI urban | % | reading | monthly | 4.82 | 2026-09-30 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
+| `cpi` | CPI inflation | % | reading | monthly | 6.09 | 2026-10-31 | RBI DBIE indicator series (RBIB18) | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
+| `cpirural` | CPI rural | % | reading | monthly | 6.54 | 2026-10-31 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
+| `cpiurban` | CPI urban | % | reading | monthly | 5.41 | 2026-10-31 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `wpi` | WPI inflation | % | reading | monthly | 11.39 | 2026-09-30 | RBI r11 (WPI 2023=100) | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
 | `wpifuel` | WPI fuel & power | % | reading | monthly | 25.85 | 2026-09-30 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
 | `wpimanu` | WPI manufactured products | % | reading | monthly | 9.76 | 2026-09-30 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |

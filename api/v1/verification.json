@@ -81,7 +81,7 @@
    "description": "food credit + non-food credit = bank credit",
    "status": "pass",
    "residual": 4e-06,
-   "detail": "22,742,778 vs 22,742,777"
+   "detail": "22,742,780 vs 22,742,779"
   },
   {
    "id": "scb_deposits",
@@ -193,8 +193,8 @@
    ],
    "description": "RBI's published CPI inflation = the figure recomputed from the CPI index",
    "status": "pass",
-   "residual": 0.053057,
-   "detail": "published 5.54% vs index-derived 5.59% for 2026-09-30 (0.053pp)"
+   "residual": 0.081649,
+   "detail": "published 6.09% vs index-derived 6.17% for 2026-10-31 (0.082pp)"
   },
   {
    "id": "mospi_ur_identity",

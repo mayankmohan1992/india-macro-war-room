@@ -1,5 +1,5 @@
 id,label,value,unit,date,status,change
-cpi,CPI inflation,5.54,%,2026-09-30,watch,0.71
+cpi,CPI inflation,6.09,%,2026-10-31,bad,0.55
 wpi,WPI inflation,11.39,%,2026-09-30,bad,1.47
 repo,Policy repo rate,5.5,%,2026-10-30,bad,
 m3,M3 (broad money) growth,15.97,%,2026-10-15,watch,-0.9
@@ -10,7 +10,7 @@ cdr,Credit-to-deposit ratio,81.59,%,2026-10-15,good,0.61
 liquidity,Liquidity (1-month avg net ops),-143546.227,₹ crore,2026-11-01,watch,-1975.591
 callmoney,Call money rate,5.69,%,2026-10-30,good,0.01
 gsec,10-year G-sec yield,7.45,%,2026-10-30,bad,-0.07
-fxa,Net FX assets (banking sector),14.82,%,2026-10-15,good,-2.95
+fxa,Net FX assets (banking sector),13.7,%,2026-10-15,good,-4.07
 fca,RBI foreign currency assets,11.84,%,2026-10-30,good,-1.18
 tbill,T-bill outstanding,784548.0,₹ crore,2026-10-30,watch,9805.0
 cdout,CD outstanding,594204.0,₹ crore,2026-10-31,good,7778.0
@@ -21,8 +21,8 @@ fwd3m,3-month US$ forward premia,5.35,%,2026-10-30,watch,0.11
 wpifuel,WPI fuel & power,25.85,%,2026-09-30,bad,2.92
 wpimanu,WPI manufactured products,9.76,%,2026-09-30,bad,1.39
 wpiprim,WPI primary articles,8.67,%,2026-09-30,bad,0.91
-cpirural,CPI rural,6.07,%,2026-09-30,bad,0.77
-cpiurban,CPI urban,4.82,%,2026-09-30,watch,0.48
+cpirural,CPI rural,6.54,%,2026-10-31,bad,0.47
+cpiurban,CPI urban,5.41,%,2026-10-31,watch,0.59
 m1,M1 (narrow money) growth,12.56,%,2026-10-15,good,-4.46
 moneymult,Money multiplier,6.25,x,2026-10-15,watch,-0.15
 bankdep,Bankers' deposits with RBI,0.61,%,2026-10-30,watch,-1.29

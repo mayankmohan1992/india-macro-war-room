@@ -1,11 +1,11 @@
 {
  "11": {
   "why": "Major Price Indices (CPI/WPI monthly)",
-  "rows": 246,
+  "rows": 247,
   "cols": 17,
-  "total": 246,
+  "total": 247,
   "complete": true,
-  "newest": "2026-09-30",
+  "newest": "2026-10-31",
   "oldest": "2006-04-30"
  },
  "13": {
@@ -37,9 +37,9 @@
  },
  "2": {
   "why": "GoI Treasury Bills Outstanding",
-  "rows": 1067,
+  "rows": 1066,
   "cols": 21,
-  "total": 1067,
+  "total": 1066,
   "complete": true,
   "newest": "2026-10-30",
   "oldest": "2006-05-12"

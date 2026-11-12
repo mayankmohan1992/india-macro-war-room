@@ -10,6 +10,13 @@
   "group": "Prices",
   "history": [
    {
+    "change": 0.55,
+    "date": "2026-10-31",
+    "prev": 5.54,
+    "previous": 5.54,
+    "value": 6.09
+   },
+   {
     "change": 0.71,
     "date": "2026-09-30",
     "prev": 4.83,
@@ -74,14 +81,14 @@
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 9 published observations of 9 stored",
+  "history_note": "last 10 published observations of 10 stored",
   "id": "cpi",
   "kind": "reading",
   "label": "CPI inflation",
   "latest": {
-   "change": 0.71,
-   "date": "2026-09-30",
-   "value": 5.54
+   "change": 0.55,
+   "date": "2026-10-31",
+   "value": 6.09
   },
   "links": {
    "csv": "series/cpi.csv",
@@ -124,6 +131,10 @@
    [
     "2026-09-30",
     5.54
+   ],
+   [
+    "2026-10-31",
+    6.09
    ]
   ],
   "release_date": null,
@@ -131,32 +142,32 @@
   "series": "cpi_yoy_official",
   "source": "RBI DBIE indicator series (RBIB18)",
   "stale": false,
-  "stale_days": 32,
-  "status": "watch",
-  "status_reason": "5.54% - inside the band but above target (an index-derived y-o-y for the same month gives 5.59%; the two differ because the published index is rounded to one decimal)",
+  "stale_days": 1,
+  "status": "bad",
+  "status_reason": "6.09% - above the 6% upper tolerance limit (an index-derived y-o-y for the same month gives 6.17%; the two differ because the published index is rounded to one decimal)",
   "unit": "%"
  },
  "meta": {
   "api_version": "v1",
   "cross_checks": [
    {
-    "computed": 3.26,
+    "computed": 6.17,
     "computed_series": "cpi_yoy",
     "indicator": "cpi",
-    "max_abs_diff_pp": 0.05,
-    "months_compared": 9,
+    "max_abs_diff_pp": 0.08,
+    "months_compared": 10,
     "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp.",
-    "published": 3.21,
+    "published": 6.09,
     "published_series": "cpi_yoy_official",
     "tolerance_pp": 0.1,
-    "worst_month": "2026-02-28"
+    "worst_month": "2026-10-31"
    }
   ],
   "dataset_as_of": "2026-11-01",
   "dataset_as_of_by_frequency": {
    "daily": "2026-11-01",
    "fortnightly": "2026-10-31",
-   "monthly": "2026-09-30",
+   "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
    "weekly": "2026-10-30"
   },
@@ -164,7 +175,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-11T08:14:45Z",
+  "retrieved_at": "2026-11-12T14:51:26Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -594,13 +594,13 @@
   "oppi": "oppi",
   "iipcap": "iip_use_based"
  },
- "generated": "2026-11-11 13:44 IST",
+ "generated": "2026-11-12 14:51 UTC",
  "as_of": "2026-11-01",
  "as_of_by_frequency": {
   "daily": "2026-11-01",
   "weekly": "2026-10-30",
   "fortnightly": "2026-10-31",
-  "monthly": "2026-09-30",
+  "monthly": "2026-10-31",
   "quarterly": "2026-04-01"
  },
  "cross_checks": [
@@ -608,11 +608,11 @@
    "indicator": "cpi",
    "computed_series": "cpi_yoy",
    "published_series": "cpi_yoy_official",
-   "months_compared": 9,
-   "max_abs_diff_pp": 0.05,
-   "worst_month": "2026-02-28",
-   "published": 3.21,
-   "computed": 3.26,
+   "months_compared": 10,
+   "max_abs_diff_pp": 0.08,
+   "worst_month": "2026-10-31",
+   "published": 6.09,
+   "computed": 6.17,
    "tolerance_pp": 0.1,
    "note": "The published figure is quoted on the headline; the index-derived series is the long history drawn on the chart. The index is published rounded to one decimal, so a computed y-o-y carries a quantisation of about +/-0.05pp."
   }
@@ -620,8 +620,8 @@
  "verdict": "Stress signals in core indicators",
  "counts": {
   "good": 17,
-  "watch": 19,
-  "bad": 9
+  "watch": 18,
+  "bad": 10
  },
  "tiles": [
   {
@@ -630,16 +630,16 @@
    "series_key": "cpi_yoy_official",
    "label": "CPI inflation",
    "group": "Prices",
-   "value": 5.54,
+   "value": 6.09,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
-   "status": "watch",
-   "reason": "5.54% - inside the band but above target (an index-derived y-o-y for the same month gives 5.59%; the two differ because the published index is rounded to one decimal)",
+   "status": "bad",
+   "reason": "6.09% - above the 6% upper tolerance limit (an index-derived y-o-y for the same month gives 6.17%; the two differ because the published index is rounded to one decimal)",
    "rule": "The figure the publisher prints (MoSPI/NSO, via the portal's indicator series), not a figure derived here. RBI flexible target 4% +/- 2% (2-6%). Green 2-4.5, watch 1.5-2 / 4.5-6, red <1.5 or >6. The chart draws the longer index-derived history, reconciled against this series to within 0.1pp (see cross_checks).",
-   "change": 0.71,
+   "change": 0.55,
    "spark": [
     2.74,
     3.21,
@@ -649,11 +649,19 @@
     4.38,
     4.45,
     4.83,
-    5.54
+    5.54,
+    6.09
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 6.09,
+     "previous": 5.54,
+     "prev": 5.54,
+     "change": 0.55
+    },
     {
      "date": "2026-09-30",
      "value": 5.54,
@@ -718,9 +726,9 @@
      "change": null
     }
    ],
-   "history_note": "last 9 published observations of 9 stored",
+   "history_note": "last 10 published observations of 10 stored",
    "freq": "monthly",
-   "stale_days": 32,
+   "stale_days": 1,
    "stale": false
   },
   {
@@ -2716,16 +2724,16 @@
    "series_key": "fxa_yoy",
    "label": "Net FX assets (banking sector)",
    "group": "External",
-   "value": 14.82,
+   "value": 13.7,
    "unit": "%",
    "fmt": "pct",
    "period": "2026-10-15",
    "period_label": null,
    "released": null,
    "status": "good",
-   "reason": "14.8% - net FX assets building",
+   "reason": "13.7% - net FX assets building",
    "rule": "Green >5% y-o-y, watch 0-5%, red <0%.",
-   "change": -2.95,
+   "change": -4.07,
    "spark": [
     12.8,
     13.09,
@@ -2762,17 +2770,17 @@
     22.61,
     20.75,
     17.77,
-    14.82
+    13.7
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
      "date": "2026-10-15",
-     "value": 14.82,
+     "value": 13.7,
      "previous": 17.77,
      "prev": 17.77,
-     "change": -2.95
+     "change": -4.07
     },
     {
      "date": "2026-09-30",
@@ -4931,18 +4939,17 @@
    "series_key": "cpi_rural_yoy",
    "label": "CPI rural",
    "group": "Prices",
-   "value": 6.07,
+   "value": 6.54,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "bad",
-   "reason": "6.07% - above the upper tolerance limit",
+   "reason": "6.54% - above the upper tolerance limit",
    "rule": "Same 2-6% tolerance band as headline CPI.",
-   "change": 0.77,
+   "change": 0.47,
    "spark": [
-    5.17,
     5.93,
     5.95,
     5.39,
@@ -4977,11 +4984,19 @@
     4.69,
     4.84,
     5.3,
-    6.07
+    6.07,
+    6.54
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 6.54,
+     "previous": 6.07,
+     "prev": 6.07,
+     "change": 0.47
+    },
     {
      "date": "2026-09-30",
      "value": 6.07,
@@ -5114,18 +5129,11 @@
      "previous": 3.47,
      "prev": 3.47,
      "change": -0.21
-    },
-    {
-     "date": "2025-02-28",
-     "value": 3.47,
-     "previous": 4.09,
-     "prev": 4.09,
-     "change": -0.62
     }
    ],
-   "history_note": "last 20 published observations of 153 stored",
+   "history_note": "last 20 published observations of 154 stored",
    "freq": "monthly",
-   "stale_days": 32,
+   "stale_days": 1,
    "stale": false
   },
   {
@@ -5134,18 +5142,17 @@
    "series_key": "cpi_urban_yoy",
    "label": "CPI urban",
    "group": "Prices",
-   "value": 4.82,
+   "value": 5.41,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "watch",
-   "reason": "4.82% - above target",
+   "reason": "5.41% - above target",
    "rule": "Same 2-6% tolerance band as headline CPI.",
-   "change": 0.48,
+   "change": 0.59,
    "spark": [
-    4.61,
     5.26,
     5.51,
     4.95,
@@ -5180,11 +5187,19 @@
     3.89,
     3.97,
     4.34,
-    4.82
+    4.82,
+    5.41
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 5.41,
+     "previous": 4.82,
+     "prev": 4.82,
+     "change": 0.59
+    },
     {
      "date": "2026-09-30",
      "value": 4.82,
@@ -5317,18 +5332,11 @@
      "previous": 3.47,
      "prev": 3.47,
      "change": 0.42
-    },
-    {
-     "date": "2025-02-28",
-     "value": 3.47,
-     "previous": 4.0,
-     "prev": 4.0,
-     "change": -0.53
     }
    ],
-   "history_note": "last 20 published observations of 153 stored",
+   "history_note": "last 20 published observations of 154 stored",
    "freq": "monthly",
-   "stale_days": 32,
+   "stale_days": 1,
    "stale": false
   },
   {
@@ -7304,13 +7312,12 @@
    "rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
    "change": 0.86,
    "spark": [
-    7.93,
     7.82,
     8.46,
     7.38,
     8.75,
     6.48,
-    -100.0,
+    6.54,
     6.67,
     6.15,
     6.81,
@@ -7335,6 +7342,7 @@
     5.65,
     5.84,
     6.24,
+    6.39,
     6.43,
     6.5,
     6.85,
@@ -7375,9 +7383,16 @@
     {
      "date": "2026-08-15",
      "value": 6.43,
+     "previous": 6.39,
+     "prev": 6.39,
+     "change": 0.04
+    },
+    {
+     "date": "2026-07-31",
+     "value": 6.39,
      "previous": 6.24,
      "prev": 6.24,
-     "change": 0.19
+     "change": 0.15
     },
     {
      "date": "2026-07-15",
@@ -7476,13 +7491,6 @@
      "previous": 4.95,
      "prev": 4.95,
      "change": -0.56
-    },
-    {
-     "date": "2025-12-15",
-     "value": 4.95,
-     "previous": 5.32,
-     "prev": 5.32,
-     "change": -0.37
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
@@ -11342,6 +11350,10 @@
     [
      "2026-09-30",
      109.5
+    ],
+    [
+     "2026-10-31",
+     110.1
     ]
    ]
   },
@@ -11961,6 +11973,10 @@
     [
      "2026-09-30",
      5.59
+    ],
+    [
+     "2026-10-31",
+     6.17
     ]
    ]
   },
@@ -12382,6 +12398,10 @@
     [
      "2026-09-30",
      5.54
+    ],
+    [
+     "2026-10-31",
+     6.09
     ]
    ]
   },
@@ -15122,7 +15142,7 @@
     ],
     [
      "2026-10-15",
-     14.82
+     13.7
     ]
    ]
   },
@@ -18154,7 +18174,7 @@
     ],
     [
      "2023-04-21",
-     13859394.0
+     13859447.0
     ],
     [
      "2023-05-05",
@@ -18510,7 +18530,7 @@
     ],
     [
      "2026-10-15",
-     22742777.0
+     22742779.0
     ]
    ]
   },
@@ -25384,7 +25404,7 @@
     ],
     [
      "2022-07-01",
-     4.72
+     4.71
     ],
     [
      "2022-07-08",
@@ -47718,10 +47738,6 @@
    "source": "RBI r9",
    "points": [
     [
-     "2019-01-18",
-     -0.0
-    ],
-    [
      "2019-02-01",
      -1.53
     ],
@@ -48399,7 +48415,7 @@
     ],
     [
      "2025-07-25",
-     -100.0
+     6.54
     ],
     [
      "2025-08-08",
@@ -48498,6 +48514,10 @@
      6.24
     ],
     [
+     "2026-07-31",
+     6.39
+    ],
+    [
      "2026-08-15",
      6.43
     ],
@@ -48524,10 +48544,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-01-18",
-     14.58
-    ],
     [
      "2019-02-01",
      14.43
@@ -48969,6 +48985,10 @@
      15.96
     ],
     [
+     "2023-04-21",
+     16.15
+    ],
+    [
      "2023-05-05",
      15.7
     ],
@@ -49070,7 +49090,7 @@
     ],
     [
      "2024-04-19",
-     19.12
+     19.05
     ],
     [
      "2024-05-03",
@@ -49331,10 +49351,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-01-18",
-     21.06
-    ],
     [
      "2019-02-01",
      29.31
@@ -49776,6 +49792,10 @@
      -47.38
     ],
     [
+     "2023-04-21",
+     -49.96
+    ],
+    [
      "2023-05-05",
      -40.19
     ],
@@ -49877,7 +49897,7 @@
     ],
     [
      "2024-04-19",
-     -13.71
+     -15.04
     ],
     [
      "2024-05-03",
@@ -57379,6 +57399,10 @@
     [
      "2026-09-30",
      6.07
+    ],
+    [
+     "2026-10-31",
+     6.54
     ]
    ]
   },
@@ -57998,6 +58022,10 @@
     [
      "2026-09-30",
      4.82
+    ],
+    [
+     "2026-10-31",
+     5.41
     ]
    ]
   },
