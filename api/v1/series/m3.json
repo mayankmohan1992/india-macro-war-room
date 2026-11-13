@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 0.48,
+    "date": "2026-10-31",
+    "prev": 15.97,
+    "previous": 15.97,
+    "value": 16.45
+   },
+   {
     "change": -0.9,
     "date": "2026-10-15",
     "prev": 16.87,
@@ -141,13 +148,6 @@
     "prev": 12.11,
     "previous": 12.11,
     "value": 10.45
-   },
-   {
-    "change": 2.83,
-    "date": "2025-12-31",
-    "prev": 9.28,
-    "previous": 9.28,
-    "value": 12.11
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "M3 (broad money) growth",
   "latest": {
-   "change": -0.9,
-   "date": "2026-10-15",
-   "value": 15.97
+   "change": 0.48,
+   "date": "2026-10-31",
+   "value": 16.45
   },
   "links": {
    "csv": "series/m3.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2017-11-10",
-    6.86
-   ],
    [
     "2017-11-24",
     8.37
@@ -1125,6 +1121,10 @@
    [
     "2026-10-15",
     15.97
+   ],
+   [
+    "2026-10-31",
+    16.45
    ]
   ],
   "release_date": null,
@@ -1132,9 +1132,9 @@
   "series": "m3_yoy",
   "source": "RBI r13",
   "stale": false,
-  "stale_days": 17,
+  "stale_days": 8,
   "status": "watch",
-  "status_reason": "16.0% - very fast money growth - inflation risk",
+  "status_reason": "16.4% - very fast money growth - inflation risk",
   "unit": "%"
  },
  "meta": {
@@ -1153,19 +1153,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

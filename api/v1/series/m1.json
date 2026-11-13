@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 0.83,
+    "date": "2026-10-31",
+    "prev": 12.56,
+    "previous": 12.56,
+    "value": 13.39
+   },
+   {
     "change": -4.46,
     "date": "2026-10-15",
     "prev": 17.02,
@@ -141,13 +148,6 @@
     "prev": 17.44,
     "previous": 17.44,
     "value": 14.86
-   },
-   {
-    "change": 6.78,
-    "date": "2025-12-31",
-    "prev": 10.66,
-    "previous": 10.66,
-    "value": 17.44
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "M1 (narrow money) growth",
   "latest": {
-   "change": -4.46,
-   "date": "2026-10-15",
-   "value": 12.56
+   "change": 0.83,
+   "date": "2026-10-31",
+   "value": 13.39
   },
   "links": {
    "csv": "series/m1.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2018-08-03",
-    17.07
-   ],
    [
     "2018-08-17",
     16.71
@@ -1045,6 +1041,10 @@
    [
     "2026-10-15",
     12.56
+   ],
+   [
+    "2026-10-31",
+    13.39
    ]
   ],
   "release_date": null,
@@ -1052,9 +1052,9 @@
   "series": "m1_yoy",
   "source": "RBI r13",
   "stale": false,
-  "stale_days": 17,
+  "stale_days": 8,
   "status": "good",
-  "status_reason": "12.6% - healthy transactions demand",
+  "status_reason": "13.4% - healthy transactions demand",
   "unit": "%"
  },
  "meta": {
@@ -1073,19 +1073,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

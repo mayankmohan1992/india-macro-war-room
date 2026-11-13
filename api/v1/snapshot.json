@@ -15,19 +15,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
@@ -35,7 +35,7 @@
   {
    "announced_from": "2026-10-07",
    "bp": 25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "Policy repo rate",
    "prev": 5.25,
@@ -47,7 +47,7 @@
   {
    "announced_from": "2026-10-07",
    "bp": 25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "SDF rate",
    "prev": 5.0,
@@ -58,7 +58,7 @@
   },
   {
    "bp": 25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "MSF rate",
    "prev": 5.5,
@@ -69,7 +69,7 @@
   },
   {
    "bp": 25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "Bank rate",
    "prev": 5.5,
@@ -79,12 +79,12 @@
    "value": 5.75
   },
   {
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "reading",
    "name": "Call money (wtd avg)",
    "src": "weekly WSS",
    "unit": "%",
-   "value": 5.69
+   "value": 5.54
   },
   {
    "date": "2026-10-15",
@@ -97,7 +97,7 @@
   {
    "announced_from": "2025-11-29",
    "bp": -25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "CRR",
    "prev": 3.25,
@@ -109,7 +109,7 @@
   {
    "announced_from": "2020-04-11",
    "bp": -25.0,
-   "date": "2026-10-30",
+   "date": "2026-11-06",
    "kind": "setting",
    "name": "SLR",
    "prev": 18.25,

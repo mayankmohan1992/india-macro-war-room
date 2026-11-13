@@ -10,6 +10,13 @@
   "group": "Money",
   "history": [
    {
+    "change": 0.0,
+    "date": "2026-10-31",
+    "prev": 6.25,
+    "previous": 6.25,
+    "value": 6.25
+   },
+   {
     "change": -0.15,
     "date": "2026-10-15",
     "prev": 6.4,
@@ -141,13 +148,6 @@
     "prev": 6.21,
     "previous": 6.21,
     "value": 6.07
-   },
-   {
-    "change": 0.19,
-    "date": "2025-12-31",
-    "prev": 6.02,
-    "previous": 6.02,
-    "value": 6.21
    }
   ],
   "history_kind": "reading",
@@ -156,8 +156,8 @@
   "kind": "reading",
   "label": "Money multiplier",
   "latest": {
-   "change": -0.15,
-   "date": "2026-10-15",
+   "change": 0.0,
+   "date": "2026-10-31",
    "value": 6.25
   },
   "links": {
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2018-08-03",
-    5.78
-   ],
    [
     "2018-08-17",
     5.75
@@ -1045,6 +1041,10 @@
    [
     "2026-10-15",
     6.25
+   ],
+   [
+    "2026-10-31",
+    6.25
    ]
   ],
   "release_date": null,
@@ -1052,9 +1052,9 @@
   "series": "money_mult",
   "source": "derived (r13 ÷ r7)",
   "stale": false,
-  "stale_days": 17,
+  "stale_days": 8,
   "status": "watch",
-  "status_reason": "6.25x (+0.30 vs a year ago) - multiplier rising - banks creating money faster",
+  "status_reason": "6.25x (+0.25 vs a year ago) - multiplier rising - banks creating money faster",
   "unit": "x"
  },
  "meta": {
@@ -1073,19 +1073,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

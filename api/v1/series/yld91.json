@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": -0.03,
+    "date": "2026-11-06",
+    "prev": 5.93,
+    "previous": 5.93,
+    "value": 5.9
+   },
+   {
     "change": 0.2,
     "date": "2026-10-30",
     "prev": 5.73,
@@ -141,13 +148,6 @@
     "prev": 5.3,
     "previous": 5.3,
     "value": 5.26
-   },
-   {
-    "change": -0.26,
-    "date": "2026-06-12",
-    "prev": 5.56,
-    "previous": 5.56,
-    "value": 5.3
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "91-day T-bill yield",
   "latest": {
-   "change": 0.2,
-   "date": "2026-10-30",
-   "value": 5.93
+   "change": -0.03,
+   "date": "2026-11-06",
+   "value": 5.9
   },
   "links": {
    "csv": "series/yld91.csv",
@@ -1051,10 +1051,6 @@
     5.31
    ],
    [
-    "2026-01-16",
-    5.34
-   ],
-   [
     "2026-01-23",
     5.49
    ],
@@ -1205,6 +1201,10 @@
    [
     "2026-10-30",
     5.93
+   ],
+   [
+    "2026-11-06",
+    5.9
    ]
   ],
   "release_date": null,
@@ -1214,7 +1214,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "bad",
-  "status_reason": "5.93% (+59 bp over 3 months) - short-end yields rising, tighter funding conditions",
+  "status_reason": "5.90% (+62 bp over 3 months) - short-end yields rising, tighter funding conditions",
   "unit": "%"
  },
  "meta": {
@@ -1233,19 +1233,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

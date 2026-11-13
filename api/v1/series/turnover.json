@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": -216172.0,
+    "date": "2026-11-06",
+    "prev": 1857855.0,
+    "previous": 1857855.0,
+    "value": 1641683.0
+   },
+   {
     "change": 395115.0,
     "date": "2026-10-30",
     "prev": 1462740.0,
@@ -141,13 +148,6 @@
     "prev": 1724098.0,
     "previous": 1724098.0,
     "value": 1406060.0
-   },
-   {
-    "change": 189667.0,
-    "date": "2026-06-19",
-    "prev": 1534431.0,
-    "previous": 1534431.0,
-    "value": 1724098.0
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Money-market turnover",
   "latest": {
-   "change": 395115.0,
-   "date": "2026-10-30",
-   "value": 1857855.0
+   "change": -216172.0,
+   "date": "2026-11-06",
+   "value": 1641683.0
   },
   "links": {
    "csv": "series/turnover.csv",
@@ -799,10 +799,6 @@
     1472069.0
    ],
    [
-    "2026-01-16",
-    1808149.0
-   ],
-   [
     "2026-01-23",
     1504840.0
    ],
@@ -965,6 +961,10 @@
    [
     "2026-10-30",
     1857855.0
+   ],
+   [
+    "2026-11-06",
+    1641683.0
    ]
   ],
   "release_date": null,
@@ -974,7 +974,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "good",
-  "status_reason": "1,857,855 cr/day (+7% y-o-y) - money-market turnover in line with last year",
+  "status_reason": "1,641,683 cr/day (+22% y-o-y) - money-market turnover expanding",
   "unit": "₹ crore"
  },
  "meta": {
@@ -993,19 +993,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

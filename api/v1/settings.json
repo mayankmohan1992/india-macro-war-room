@@ -15,25 +15,25 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
  "settings": [
   {
-   "as_published": "2026-10-30",
+   "as_published": "2026-11-06",
    "change_bp": -25.0,
    "effective_from": "2025-12-05",
    "history": [
@@ -146,7 +146,7 @@
    "value": 3.0
   },
   {
-   "as_published": "2026-10-30",
+   "as_published": "2026-11-06",
    "change_bp": 25.0,
    "effective_from": "2026-10-09",
    "history": [
@@ -259,7 +259,7 @@
    "value": 5.5
   },
   {
-   "as_published": "2026-10-30",
+   "as_published": "2026-11-06",
    "change_bp": -25.0,
    "effective_from": "2020-04-17",
    "history": [

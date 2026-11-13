@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": 0.19,
+    "date": "2026-10-31",
+    "prev": 13.7,
+    "previous": 13.7,
+    "value": 13.89
+   },
+   {
     "change": -4.07,
     "date": "2026-10-15",
     "prev": 17.77,
@@ -141,13 +148,6 @@
     "prev": 15.47,
     "previous": 15.47,
     "value": 18.59
-   },
-   {
-    "change": -0.92,
-    "date": "2025-12-31",
-    "prev": 16.39,
-    "previous": 16.39,
-    "value": 15.47
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Net FX assets (banking sector)",
   "latest": {
-   "change": -4.07,
-   "date": "2026-10-15",
-   "value": 13.7
+   "change": 0.19,
+   "date": "2026-10-31",
+   "value": 13.89
   },
   "links": {
    "csv": "series/fxa.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-04-26",
-    6.04
-   ],
    [
     "2019-05-10",
     6.03
@@ -965,6 +961,10 @@
    [
     "2026-10-15",
     13.7
+   ],
+   [
+    "2026-10-31",
+    13.89
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "fxa_yoy",
   "source": "RBI r13",
   "stale": false,
-  "stale_days": 17,
+  "stale_days": 8,
   "status": "good",
-  "status_reason": "13.7% - net FX assets building",
+  "status_reason": "13.9% - net FX assets building",
   "unit": "%"
  },
  "meta": {
@@ -993,19 +993,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

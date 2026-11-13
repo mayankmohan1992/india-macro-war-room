@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": -0.24,
+    "date": "2026-11-06",
+    "prev": 7.45,
+    "previous": 7.45,
+    "value": 7.21
+   },
+   {
     "change": -0.07,
     "date": "2026-10-30",
     "prev": 7.52,
@@ -141,13 +148,6 @@
     "prev": 6.87,
     "previous": 6.87,
     "value": 6.79
-   },
-   {
-    "change": -0.04,
-    "date": "2026-06-19",
-    "prev": 6.91,
-    "previous": 6.91,
-    "value": 6.87
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "10-year G-sec yield",
   "latest": {
-   "change": -0.07,
-   "date": "2026-10-30",
-   "value": 7.45
+   "change": -0.24,
+   "date": "2026-11-06",
+   "value": 7.21
   },
   "links": {
    "csv": "series/gsec.csv",
@@ -1039,10 +1039,6 @@
     6.71
    ],
    [
-    "2026-01-16",
-    6.75
-   ],
-   [
     "2026-01-23",
     6.74
    ],
@@ -1205,6 +1201,10 @@
    [
     "2026-10-30",
     7.45
+   ],
+   [
+    "2026-11-06",
+    7.21
    ]
   ],
   "release_date": null,
@@ -1214,7 +1214,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "bad",
-  "status_reason": "7.45% (+61 bp over 3m) - yields rising, tightening conditions",
+  "status_reason": "7.21% (+42 bp over 3m) - yields rising, tightening conditions",
   "unit": "%"
  },
  "meta": {
@@ -1233,19 +1233,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

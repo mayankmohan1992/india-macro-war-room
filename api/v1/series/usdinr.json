@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -1.11,
+    "date": "2026-11-06",
+    "prev": 95.25,
+    "previous": 95.25,
+    "value": 94.14
+   },
+   {
     "change": 0.31,
     "date": "2026-10-30",
     "prev": 94.94,
@@ -141,13 +148,6 @@
     "prev": 94.47,
     "previous": 94.47,
     "value": 94.48
-   },
-   {
-    "change": -0.91,
-    "date": "2026-06-19",
-    "prev": 95.38,
-    "previous": 95.38,
-    "value": 94.47
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "USD/INR",
   "latest": {
-   "change": 0.31,
-   "date": "2026-10-30",
-   "value": 95.25
+   "change": -1.11,
+   "date": "2026-11-06",
+   "value": 94.14
   },
   "links": {
    "csv": "series/usdinr.csv",
@@ -1039,10 +1039,6 @@
     90.14
    ],
    [
-    "2026-01-16",
-    90.65
-   ],
-   [
     "2026-01-23",
     91.62
    ],
@@ -1205,6 +1201,10 @@
    [
     "2026-10-30",
     95.25
+   ],
+   [
+    "2026-11-06",
+    94.14
    ]
   ],
   "release_date": null,
@@ -1213,8 +1213,8 @@
   "source": "RBI r10 (weekly WSS)",
   "stale": false,
   "stale_days": 2,
-  "status": "watch",
-  "status_reason": "95.25 (-0.13% over 3m) - rupee broadly stable",
+  "status": "good",
+  "status_reason": "94.14 (-1.12% over 3m) - rupee appreciating",
   "unit": "₹"
  },
  "meta": {
@@ -1233,19 +1233,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

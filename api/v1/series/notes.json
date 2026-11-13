@@ -167,6 +167,10 @@
   "period_label": null,
   "points": [
    [
+    "2022-04-01",
+    9.82
+   ],
+   [
     "2022-04-08",
     10.16
    ],
@@ -959,10 +963,6 @@
     10.52
    ],
    [
-    "2026-01-16",
-    10.77
-   ],
-   [
     "2026-01-23",
     11.11
    ],
@@ -1132,7 +1132,7 @@
   "series": "notes_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 2,
+  "stale_days": 9,
   "status": "bad",
   "status_reason": "14.2% - cash demand surging - outside money system",
   "unit": "%"
@@ -1153,19 +1153,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

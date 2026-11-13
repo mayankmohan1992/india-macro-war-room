@@ -10,6 +10,13 @@
   "group": "Fiscal",
   "history": [
    {
+    "change": -3084.0,
+    "date": "2026-11-06",
+    "prev": 784548.0,
+    "previous": 784548.0,
+    "value": 781464.0
+   },
+   {
     "change": 9805.0,
     "date": "2026-10-30",
     "prev": 774743.0,
@@ -141,13 +148,6 @@
     "prev": 785239.0,
     "previous": 785239.0,
     "value": 798627.0
-   },
-   {
-    "change": 1529.0,
-    "date": "2026-06-19",
-    "prev": 783710.0,
-    "previous": 783710.0,
-    "value": 785239.0
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "T-bill outstanding",
   "latest": {
-   "change": 9805.0,
-   "date": "2026-10-30",
-   "value": 784548.0
+   "change": -3084.0,
+   "date": "2026-11-06",
+   "value": 781464.0
   },
   "links": {
    "csv": "series/tbill.csv",
@@ -1039,10 +1039,6 @@
     743498.0
    ],
    [
-    "2026-01-16",
-    744781.0
-   ],
-   [
     "2026-01-23",
     741256.0
    ],
@@ -1205,6 +1201,10 @@
    [
     "2026-10-30",
     784548.0
+   ],
+   [
+    "2026-11-06",
+    781464.0
    ]
   ],
   "release_date": null,
@@ -1214,7 +1214,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "watch",
-  "status_reason": "784,548 cr (-1.3% over 3m) - stable short-term borrowing",
+  "status_reason": "781,464 cr (-4.0% over 3m) - stable short-term borrowing",
   "unit": "₹ crore"
  },
  "meta": {
@@ -1233,19 +1233,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

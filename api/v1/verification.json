@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-30",
+ "as_of": "2026-11-06",
  "tolerance_pct": 0.01,
  "summary": {
   "checks": 19,
@@ -21,8 +21,8 @@
    ],
    "description": "currency with public + demand + time + other deposits = M3",
    "status": "pass",
-   "residual": 0.0,
-   "detail": "33,300,300 vs 33,300,300"
+   "residual": 3e-06,
+   "detail": "33,768,415 vs 33,768,416"
   },
   {
    "id": "m3_sources",
@@ -34,7 +34,7 @@
    "description": "net bank credit to govt + credit to commercial sector + net FX assets + govt currency liability - non-monetary liabilities = M3",
    "status": "pass",
    "residual": 3e-06,
-   "detail": "33,300,301 vs 33,300,300"
+   "detail": "33,768,415 vs 33,768,416"
   },
   {
    "id": "m1_against_m3",
@@ -44,8 +44,8 @@
    ],
    "description": "(currency with public + demand deposits + other deposits with RBI) + time deposits = M3",
    "status": "pass",
-   "residual": 0.0,
-   "detail": "33,300,300 vs 33,300,300"
+   "residual": 3e-06,
+   "detail": "33,768,415 vs 33,768,416"
   },
   {
    "id": "rm_components",
@@ -57,7 +57,7 @@
    "description": "currency in circulation + bankers' deposits + other deposits = reserve money",
    "status": "pass",
    "residual": 0.0,
-   "detail": "5,324,881 vs 5,324,881"
+   "detail": "5,402,423 vs 5,402,423"
   },
   {
    "id": "rm_sources",
@@ -68,7 +68,7 @@
    "description": "net RBI credit to govt + RBI credit to banks & commercial sector + net FX assets + govt currency liabilities - non-monetary liabilities = reserve money",
    "status": "pass",
    "residual": 1.9e-05,
-   "detail": "5,324,882 vs 5,324,881"
+   "detail": "5,402,422 vs 5,402,423"
   },
   {
    "id": "scb_food_nonfood",
@@ -138,8 +138,8 @@
    ],
    "description": "each tenor total = banks + primary dealers + state govts + others",
    "status": "pass",
-   "residual": 0.000471,
-   "detail": "91d: 218,121 vs 218,121; 182d: 212,412 vs 212,413; 364d: 354,014 vs 354,014"
+   "residual": 0.0,
+   "detail": "91d: 219,907 vs 219,907; 182d: 206,413 vs 206,413; 364d: 355,144 vs 355,144"
   },
   {
    "id": "repo_cross_feed",
@@ -182,8 +182,8 @@
    ],
    "description": "weekly WSS INR/US$ = portal daily FBIL reference rate",
    "status": "pass",
-   "residual": 0.189921,
-   "detail": "different observation dates (2026-10-30 weekly vs 2026-10-15 daily) - values 95.2500 vs 95.0691, consistent"
+   "residual": 0.986934,
+   "detail": "different observation dates (2026-11-06 weekly vs 2026-10-15 daily) - values 94.1400 vs 95.0691, consistent"
   },
   {
    "id": "cpi_published_vs_derived",

@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -0.63,
+    "date": "2026-11-06",
+    "prev": 5.35,
+    "previous": 5.35,
+    "value": 4.72
+   },
+   {
     "change": 0.11,
     "date": "2026-10-30",
     "prev": 5.24,
@@ -141,13 +148,6 @@
     "prev": 2.94,
     "previous": 2.94,
     "value": 2.97
-   },
-   {
-    "change": -0.02,
-    "date": "2026-06-19",
-    "prev": 2.96,
-    "previous": 2.96,
-    "value": 2.94
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "3-month US$ forward premia",
   "latest": {
-   "change": 0.11,
-   "date": "2026-10-30",
-   "value": 5.35
+   "change": -0.63,
+   "date": "2026-11-06",
+   "value": 4.72
   },
   "links": {
    "csv": "series/fwd3m.csv",
@@ -1039,10 +1039,6 @@
     3.38
    ],
    [
-    "2026-01-16",
-    3.51
-   ],
-   [
     "2026-01-23",
     3.09
    ],
@@ -1205,6 +1201,10 @@
    [
     "2026-10-30",
     5.35
+   ],
+   [
+    "2026-11-06",
+    4.72
    ]
   ],
   "release_date": null,
@@ -1214,7 +1214,7 @@
   "stale": false,
   "stale_days": 2,
   "status": "watch",
-  "status_reason": "5.35% - premia elevated - hedging demand or depreciation expectations building",
+  "status_reason": "4.72% - premia elevated - hedging demand or depreciation expectations building",
   "unit": "%"
  },
  "meta": {
@@ -1233,19 +1233,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-01",
+  "dataset_as_of": "2026-11-08",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-01",
+   "daily": "2026-11-08",
    "fortnightly": "2026-10-31",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-10-30"
+   "weekly": "2026-11-06"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-12T14:51:26Z",
+  "retrieved_at": "2026-11-13T14:12:35Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
