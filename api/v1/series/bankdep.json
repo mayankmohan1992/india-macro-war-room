@@ -10,6 +10,13 @@
   "group": "Liquidity",
   "history": [
    {
+    "change": 8.38,
+    "date": "2026-11-06",
+    "prev": 0.61,
+    "previous": 0.61,
+    "value": 8.99
+   },
+   {
     "change": -1.29,
     "date": "2026-10-30",
     "prev": 1.9,
@@ -141,13 +148,6 @@
     "prev": -13.59,
     "previous": -13.59,
     "value": -13.8
-   },
-   {
-    "change": 4.16,
-    "date": "2026-06-19",
-    "prev": -17.75,
-    "previous": -17.75,
-    "value": -13.59
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Bankers' deposits with RBI",
   "latest": {
-   "change": -1.29,
-   "date": "2026-10-30",
-   "value": 0.61
+   "change": 8.38,
+   "date": "2026-11-06",
+   "value": 8.99
   },
   "links": {
    "csv": "series/bankdep.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2022-04-01",
-    34.16
-   ],
    [
     "2022-04-08",
     25.74
@@ -1125,6 +1121,10 @@
    [
     "2026-10-30",
     0.61
+   ],
+   [
+    "2026-11-06",
+    8.99
    ]
   ],
   "release_date": null,
@@ -1132,9 +1132,9 @@
   "series": "bankers_dep_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
-  "status": "watch",
-  "status_reason": "0.6% - broadly flat",
+  "stale_days": 2,
+  "status": "good",
+  "status_reason": "9.0% - bank reserves building - ample system liquidity",
   "unit": "%"
  },
  "meta": {
@@ -1165,7 +1165,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-13T14:12:35Z",
+  "retrieved_at": "2026-11-14T13:13:32Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

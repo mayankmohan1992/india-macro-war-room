@@ -403,9 +403,9 @@
    "kind": "reading",
    "label": "RBI foreign currency assets",
    "latest": {
-    "change": -1.18,
-    "date": "2026-10-30",
-    "value": 11.84
+    "change": -0.52,
+    "date": "2026-11-06",
+    "value": 11.32
    },
    "links": {
     "csv": "series/fca.csv",
@@ -417,9 +417,9 @@
    "series": "fca_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "good",
-   "status_reason": "11.8% - foreign currency assets building",
+   "status_reason": "11.3% - foreign currency assets building",
    "unit": "%"
   },
   {
@@ -851,9 +851,9 @@
    "kind": "reading",
    "label": "Bankers' deposits with RBI",
    "latest": {
-    "change": -1.29,
-    "date": "2026-10-30",
-    "value": 0.61
+    "change": 8.38,
+    "date": "2026-11-06",
+    "value": 8.99
    },
    "links": {
     "csv": "series/bankdep.csv",
@@ -865,9 +865,9 @@
    "series": "bankers_dep_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
-   "status": "watch",
-   "status_reason": "0.6% - broadly flat",
+   "stale_days": 2,
+   "status": "good",
+   "status_reason": "9.0% - bank reserves building - ample system liquidity",
    "unit": "%"
   },
   {
@@ -915,9 +915,9 @@
    "kind": "reading",
    "label": "RBI rupee securities",
    "latest": {
-    "change": 0.23,
-    "date": "2026-10-30",
-    "value": 21.3
+    "change": 2.17,
+    "date": "2026-11-06",
+    "value": 23.47
    },
    "links": {
     "csv": "series/rupeesec.csv",
@@ -929,9 +929,9 @@
    "series": "rupeesec_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "watch",
-   "status_reason": "21.3% - fast growth - heavy government paper absorption",
+   "status_reason": "23.5% - fast growth - heavy government paper absorption",
    "unit": "%"
   },
   {
@@ -1087,9 +1087,9 @@
    "kind": "reading",
    "label": "RBI gold holdings",
    "latest": {
-    "change": 2.23,
-    "date": "2026-10-30",
-    "value": 7.87
+    "change": 1.48,
+    "date": "2026-11-06",
+    "value": 9.35
    },
    "links": {
     "csv": "series/gold.csv",
@@ -1101,9 +1101,9 @@
    "series": "gold_growth",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "good",
-   "status_reason": "7.9% - RBI building its gold reserve",
+   "status_reason": "9.3% - RBI building its gold reserve",
    "unit": "%"
   },
   {
@@ -1215,9 +1215,9 @@
    "kind": "reading",
    "label": "Notes in circulation growth",
    "latest": {
-    "change": 0.48,
-    "date": "2026-10-30",
-    "value": 14.18
+    "change": 0.9,
+    "date": "2026-11-06",
+    "value": 15.08
    },
    "links": {
     "csv": "series/notes.csv",
@@ -1229,9 +1229,9 @@
    "series": "notes_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 9,
+   "stale_days": 2,
    "status": "bad",
-   "status_reason": "14.2% - cash demand surging - outside money system",
+   "status_reason": "15.1% - cash demand surging - outside money system",
    "unit": "%"
   },
   {
@@ -1487,7 +1487,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-13T14:12:35Z",
+  "retrieved_at": "2026-11-14T13:13:32Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
