@@ -10,11 +10,25 @@
   "group": "Activity",
   "history": [
    {
-    "change": 0.24,
+    "change": 0.68,
+    "date": "2026-10-01",
+    "prev": 11.39,
+    "previous": 11.39,
+    "value": 12.07
+   },
+   {
+    "change": 1.68,
+    "date": "2026-09-01",
+    "prev": 9.71,
+    "previous": 9.71,
+    "value": 11.39
+   },
+   {
+    "change": 0.14,
     "date": "2026-08-01",
     "prev": 9.57,
     "previous": 9.57,
-    "value": 9.81
+    "value": 9.71
    },
    {
     "change": -0.1,
@@ -67,20 +81,20 @@
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 8 published observations of 8 stored",
+  "history_note": "last 10 published observations of 10 stored",
   "id": "oppi",
   "kind": "reading",
   "label": "Producer price inflation, y-o-y",
   "latest": {
-   "change": 0.24,
-   "date": "2026-08-01",
-   "value": 9.81
+   "change": 0.68,
+   "date": "2026-10-01",
+   "value": 12.07
   },
   "links": {
    "csv": "series/oppi.csv",
    "self": "series/oppi.json"
   },
-  "period_label": "Aug 2026",
+  "period_label": "Oct 2026",
   "points": [
    [
     "2026-01-01",
@@ -112,7 +126,15 @@
    ],
    [
     "2026-08-01",
-    9.81
+    9.71
+   ],
+   [
+    "2026-09-01",
+    11.39
+   ],
+   [
+    "2026-10-01",
+    12.07
    ]
   ],
   "release_date": null,
@@ -120,9 +142,9 @@
   "series": "act_oppi_yoy",
   "source": "MoSPI OPPI monthly (computed from published levels)",
   "stale": false,
-  "stale_days": 99,
+  "stale_days": 38,
   "status": "watch",
-  "status_reason": "9.8% - producer prices running hot",
+  "status_reason": "12.1% - producer prices running hot",
   "unit": "%"
  },
  "meta": {
@@ -153,7 +175,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

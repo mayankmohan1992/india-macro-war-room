@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": 0.14,
+    "date": "2026-10-31",
+    "prev": 16.72,
+    "previous": 16.72,
+    "value": 16.86
+   },
+   {
     "change": -1.11,
     "date": "2026-10-15",
     "prev": 17.83,
@@ -141,13 +148,6 @@
     "prev": 12.67,
     "previous": 12.67,
     "value": 10.6
-   },
-   {
-    "change": 3.32,
-    "date": "2025-12-31",
-    "prev": 9.35,
-    "previous": 9.35,
-    "value": 12.67
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Aggregate deposit growth",
   "latest": {
-   "change": -1.11,
-   "date": "2026-10-15",
-   "value": 16.72
+   "change": 0.14,
+   "date": "2026-10-31",
+   "value": 16.86
   },
   "links": {
    "csv": "series/deposit.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-02-01",
-    9.63
-   ],
    [
     "2019-02-15",
     10.15
@@ -965,6 +961,10 @@
    [
     "2026-10-15",
     16.72
+   ],
+   [
+    "2026-10-31",
+    16.86
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "deposit_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 24,
+  "stale_days": 8,
   "status": "watch",
-  "status_reason": "16.7% - deposit surge - could signal risk aversion",
+  "status_reason": "16.9% - deposit surge - could signal risk aversion",
   "unit": "%"
  },
  "meta": {
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

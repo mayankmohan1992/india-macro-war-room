@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**45 indicators** · dataset as-of **2026-11-08** · generated 2026-11-14 13:13 UTC
+**45 indicators** · dataset as-of **2026-11-08** · generated 2026-11-16 15:10 UTC
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -16,21 +16,21 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 | `gva` | GVA growth, y-o-y (computed) | % | reading | quarterly | 8.23 | 2026-04-01 | MoSPI NAS quarterly (computed from published levels) | [Gross Value Added (GVA) at basic prices, constant prices](https://esankhyiki.mospi.gov.in/macroindicators?product=nas) |
 | `iip` | IIP growth, y-o-y | % | reading | monthly | 6.7 | 2026-09-01 | MoSPI IIP monthly | [Index of Industrial Production (IIP), General — base 2022-23](https://esankhyiki.mospi.gov.in/macroindicators?product=iip) |
 | `iipcap` | IIP capital goods growth, y-o-y | % | reading | monthly | 10.4 | 2026-09-01 | MoSPI IIP monthly, use-based: Capital Goods | [Index of Industrial Production — use-based classification](https://esankhyiki.mospi.gov.in/macroindicators?product=iip) |
-| `lfpr` | Labour force participation (15+) | % | reading | monthly | 55.5 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Labour Force Participation Rate (LFPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
-| `oppi` | Producer price inflation, y-o-y | % | reading | monthly | 9.81 | 2026-08-01 | MoSPI OPPI monthly (computed from published levels) | [Producer Price Index (OPPI), all commodities — base 2022-23](https://esankhyiki.mospi.gov.in/macroindicators?product=oppi) |
-| `ur` | Unemployment rate (15+) | % | reading | monthly | 5 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
-| `wpr` | Worker population ratio (15+) | % | reading | monthly | 52.7 | 2026-09-01 | MoSPI PLFS monthly (CWS), both | [Worker Population Ratio (WPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
+| `lfpr` | Labour force participation (15+) | % | reading | monthly | 55.7 | 2026-10-01 | MoSPI PLFS monthly (CWS), both | [Labour Force Participation Rate (LFPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
+| `oppi` | Producer price inflation, y-o-y | % | reading | monthly | 12.07 | 2026-10-01 | MoSPI OPPI monthly (computed from published levels) | [Producer Price Index (OPPI), all commodities — base 2022-23](https://esankhyiki.mospi.gov.in/macroindicators?product=oppi) |
+| `ur` | Unemployment rate (15+) | % | reading | monthly | 4.9 | 2026-10-01 | MoSPI PLFS monthly (CWS), both | [Unemployment Rate (UR), Periodic Labour Force Survey — current weekly status](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
+| `wpr` | Worker population ratio (15+) | % | reading | monthly | 53 | 2026-10-01 | MoSPI PLFS monthly (CWS), both | [Worker Population Ratio (WPR)](https://esankhyiki.mospi.gov.in/macroindicators?product=plfs) |
 
 ## Credit
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `cdr` | Credit-to-deposit ratio | % | reading | fortnightly | 81.59 | 2026-10-15 | RBI r9 | [Credit-deposit ratio (outstanding and incremental)](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
-| `credit` | Bank credit growth | % | reading | fortnightly | 18.23 | 2026-10-15 | RBI r9 | [Bank credit of scheduled commercial banks](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `deposit` | Aggregate deposit growth | % | reading | fortnightly | 16.72 | 2026-10-15 | RBI r9 | [Aggregate deposits with scheduled commercial banks](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
-| `food` | Food credit growth | % | reading | fortnightly | 90.69 | 2026-10-15 | RBI r9 | [Food credit (procurement credit to FCI and state agencies)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `invest` | SCB investments growth | % | reading | fortnightly | 9.49 | 2026-10-15 | RBI r9 | [Bank investments in government and other approved securities](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `nonfood` | Non-food credit growth | % | reading | fortnightly | 18.03 | 2026-10-15 | RBI r9 | [Bank credit of scheduled commercial banks](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `cdr` | Credit-to-deposit ratio | % | reading | fortnightly | 82.06 | 2026-10-31 | RBI r9 | [Credit-deposit ratio (outstanding and incremental)](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
+| `credit` | Bank credit growth | % | reading | fortnightly | 19.54 | 2026-10-31 | RBI r9 | [Bank credit of scheduled commercial banks](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `deposit` | Aggregate deposit growth | % | reading | fortnightly | 16.86 | 2026-10-31 | RBI r9 | [Aggregate deposits with scheduled commercial banks](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
+| `food` | Food credit growth | % | reading | fortnightly | 75.17 | 2026-10-31 | RBI r9 | [Food credit (procurement credit to FCI and state agencies)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `invest` | SCB investments growth | % | reading | fortnightly | 9.26 | 2026-10-31 | RBI r9 | [Bank investments in government and other approved securities](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
+| `nonfood` | Non-food credit growth | % | reading | fortnightly | 19.33 | 2026-10-31 | RBI r9 | [Bank credit of scheduled commercial banks](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 
 ## External
 
@@ -94,7 +94,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 | `cpi` | CPI inflation | % | reading | monthly | 6.09 | 2026-10-31 | RBI DBIE indicator series (RBIB18) | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `cpirural` | CPI rural | % | reading | monthly | 6.54 | 2026-10-31 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
 | `cpiurban` | CPI urban | % | reading | monthly | 5.41 | 2026-10-31 | RBI r11 | [Consumer Price Index (CPI) inflation, combined](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291051&lang=1&reg=48) |
-| `wpi` | WPI inflation | % | reading | monthly | 11.39 | 2026-09-30 | RBI r11 (WPI 2023=100) | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
-| `wpifuel` | WPI fuel & power | % | reading | monthly | 25.85 | 2026-09-30 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
-| `wpimanu` | WPI manufactured products | % | reading | monthly | 9.76 | 2026-09-30 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
-| `wpiprim` | WPI primary articles | % | reading | monthly | 8.67 | 2026-09-30 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
+| `wpi` | WPI inflation | % | reading | monthly | 12.29 | 2026-10-31 | RBI r11 (WPI 2023=100) | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
+| `wpifuel` | WPI fuel & power | % | reading | monthly | 32.84 | 2026-10-31 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
+| `wpimanu` | WPI manufactured products | % | reading | monthly | 9.54 | 2026-10-31 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |
+| `wpiprim` | WPI primary articles | % | reading | monthly | 9.24 | 2026-10-31 | RBI r11 | [Wholesale Price Index (WPI) inflation](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2272872&lang=2&reg=48) |

@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": -0.23,
+    "date": "2026-10-31",
+    "prev": 9.49,
+    "previous": 9.49,
+    "value": 9.26
+   },
+   {
     "change": 0.86,
     "date": "2026-10-15",
     "prev": 8.63,
@@ -59,6 +66,13 @@
     "value": 6.24
    },
    {
+    "change": 0.0,
+    "date": "2026-06-30",
+    "prev": 5.84,
+    "previous": 5.84,
+    "value": 5.84
+   },
+   {
     "change": 0.19,
     "date": "2026-06-30",
     "prev": 5.65,
@@ -85,6 +99,13 @@
     "prev": 3.17,
     "previous": 3.17,
     "value": 4.2
+   },
+   {
+    "change": 0.0,
+    "date": "2026-04-30",
+    "prev": 3.17,
+    "previous": 3.17,
+    "value": 3.17
    },
    {
     "change": 0.32,
@@ -115,39 +136,18 @@
     "value": 3.36
    },
    {
+    "change": 0.0,
+    "date": "2026-02-28",
+    "prev": 3.25,
+    "previous": 3.25,
+    "value": 3.25
+   },
+   {
     "change": 0.22,
     "date": "2026-02-28",
     "prev": 3.03,
     "previous": 3.03,
     "value": 3.25
-   },
-   {
-    "change": 1.02,
-    "date": "2026-02-15",
-    "prev": 2.01,
-    "previous": 2.01,
-    "value": 3.03
-   },
-   {
-    "change": -0.7,
-    "date": "2026-01-31",
-    "prev": 2.71,
-    "previous": 2.71,
-    "value": 2.01
-   },
-   {
-    "change": -1.68,
-    "date": "2026-01-15",
-    "prev": 4.39,
-    "previous": 4.39,
-    "value": 2.71
-   },
-   {
-    "change": -0.56,
-    "date": "2025-12-31",
-    "prev": 4.95,
-    "previous": 4.95,
-    "value": 4.39
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "SCB investments growth",
   "latest": {
-   "change": 0.86,
-   "date": "2026-10-15",
-   "value": 9.49
+   "change": -0.23,
+   "date": "2026-10-31",
+   "value": 9.26
   },
   "links": {
    "csv": "series/invest.csv",
@@ -166,38 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-02-01",
-    -1.53
-   ],
-   [
-    "2019-02-15",
-    -1.41
-   ],
-   [
-    "2019-03-01",
-    0.0
-   ],
-   [
-    "2019-03-15",
-    1.78
-   ],
-   [
-    "2019-03-29",
-    1.89
-   ],
-   [
-    "2019-04-12",
-    1.74
-   ],
-   [
-    "2019-04-26",
-    2.82
-   ],
-   [
-    "2019-05-10",
-    3.57
-   ],
    [
     "2019-05-24",
     4.39
@@ -883,8 +851,16 @@
     5.32
    ],
    [
+    "2025-11-28",
+    5.32
+   ],
+   [
     "2025-12-15",
     4.95
+   ],
+   [
+    "2025-12-31",
+    4.39
    ],
    [
     "2025-12-31",
@@ -895,12 +871,24 @@
     2.71
    ],
    [
+    "2026-01-15",
+    2.71
+   ],
+   [
+    "2026-01-31",
+    2.01
+   ],
+   [
     "2026-01-31",
     2.01
    ],
    [
     "2026-02-15",
     3.03
+   ],
+   [
+    "2026-02-28",
+    3.25
    ],
    [
     "2026-02-28",
@@ -923,6 +911,10 @@
     3.17
    ],
    [
+    "2026-04-30",
+    3.17
+   ],
+   [
     "2026-05-15",
     4.2
    ],
@@ -933,6 +925,10 @@
    [
     "2026-06-15",
     5.65
+   ],
+   [
+    "2026-06-30",
+    5.84
    ],
    [
     "2026-06-30",
@@ -965,6 +961,10 @@
    [
     "2026-10-15",
     9.49
+   ],
+   [
+    "2026-10-31",
+    9.26
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "invest_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 24,
+  "stale_days": 8,
   "status": "good",
-  "status_reason": "9.5% - banks funding government borrowing at a normal pace",
+  "status_reason": "9.3% - banks funding government borrowing at a normal pace",
   "unit": "%"
  },
  "meta": {
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

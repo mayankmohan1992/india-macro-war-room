@@ -80,8 +80,8 @@
    ],
    "description": "food credit + non-food credit = bank credit",
    "status": "pass",
-   "residual": 4e-06,
-   "detail": "22,742,780 vs 22,742,779"
+   "residual": 0.0,
+   "detail": "23,182,499 vs 23,182,499"
   },
   {
    "id": "scb_deposits",
@@ -92,7 +92,7 @@
    "description": "demand deposits + time deposits = aggregate deposits",
    "status": "pass",
    "residual": 0.0,
-   "detail": "27,875,910 vs 27,875,910"
+   "detail": "28,251,076 vs 28,251,076"
   },
   {
    "id": "scb_investments",
@@ -102,8 +102,8 @@
    ],
    "description": "government securities + other approved securities = investments",
    "status": "pass",
-   "residual": 1.3e-05,
-   "detail": "7,538,268 vs 7,538,269"
+   "residual": 0.0,
+   "detail": "7,527,600 vs 7,527,600"
   },
   {
    "id": "notes_split",
@@ -207,7 +207,7 @@
    "description": "UR = (LFPR - WPR) / LFPR on every month the three PLFS bullets publish together",
    "status": "pass",
    "residual": 0.134657,
-   "detail": "17 months compared; worst gap 0.135pp at 2026-07-01"
+   "detail": "18 months compared; worst gap 0.135pp at 2026-07-01"
   },
   {
    "id": "mospi_iip_growth",
@@ -228,8 +228,8 @@
    ],
    "description": "the stored producer-price y-o-y = growth recomputed from the stored OPPI index",
    "status": "pass",
-   "residual": 0.003399,
-   "detail": "8 months compared; worst gap 0.003pp at 2026-01-01"
+   "residual": 0.003861,
+   "detail": "10 months compared; worst gap 0.004pp at 2026-09-01"
   }
  ],
  "indicators": {

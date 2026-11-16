@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": 1.31,
+    "date": "2026-10-31",
+    "prev": 18.23,
+    "previous": 18.23,
+    "value": 19.54
+   },
+   {
     "change": -1.15,
     "date": "2026-10-15",
     "prev": 19.38,
@@ -141,13 +148,6 @@
     "prev": 14.53,
     "previous": 14.53,
     "value": 13.12
-   },
-   {
-    "change": 2.55,
-    "date": "2025-12-31",
-    "prev": 11.98,
-    "previous": 11.98,
-    "value": 14.53
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Bank credit growth",
   "latest": {
-   "change": -1.15,
-   "date": "2026-10-15",
-   "value": 18.23
+   "change": 1.31,
+   "date": "2026-10-31",
+   "value": 19.54
   },
   "links": {
    "csv": "series/credit.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-02-01",
-    14.53
-   ],
    [
     "2019-02-15",
     14.8
@@ -965,6 +961,10 @@
    [
     "2026-10-15",
     18.23
+   ],
+   [
+    "2026-10-31",
+    19.54
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "credit_yoy",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 24,
+  "stale_days": 8,
   "status": "watch",
-  "status_reason": "18.2% - very fast credit growth",
+  "status_reason": "19.5% - very fast credit growth",
   "unit": "%"
  },
  "meta": {
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

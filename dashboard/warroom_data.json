@@ -594,7 +594,7 @@
   "oppi": "oppi",
   "iipcap": "iip_use_based"
  },
- "generated": "2026-11-14 13:13 UTC",
+ "generated": "2026-11-16 15:10 UTC",
  "as_of": "2026-11-08",
  "as_of_by_frequency": {
   "daily": "2026-11-08",
@@ -737,16 +737,16 @@
    "series_key": "wpi_yoy",
    "label": "WPI inflation",
    "group": "Prices",
-   "value": 11.39,
+   "value": 12.29,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "bad",
-   "reason": "11.39% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
+   "reason": "12.29% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
    "rule": "No formal target. Green 0-3, watch <0 or 3-6, red >6.",
-   "change": 1.47,
+   "change": 0.9,
    "spark": [
     0.91,
     1.83,
@@ -777,11 +777,19 @@
     9.97,
     9.78,
     9.92,
-    11.39
+    11.39,
+    12.29
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 12.29,
+     "previous": 11.39,
+     "prev": 11.39,
+     "change": 0.9
+    },
     {
      "date": "2026-09-30",
      "value": 11.39,
@@ -914,18 +922,11 @@
      "previous": 1.61,
      "prev": 1.61,
      "change": -0.4
-    },
-    {
-     "date": "2025-02-28",
-     "value": 1.61,
-     "previous": 1.81,
-     "prev": 1.81,
-     "change": -0.2
     }
    ],
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "freq": "monthly",
-   "stale_days": 39,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -1506,18 +1507,17 @@
    "series_key": "credit_yoy",
    "label": "Bank credit growth",
    "group": "Credit",
-   "value": 18.23,
+   "value": 19.54,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "watch",
-   "reason": "18.2% - very fast credit growth",
+   "reason": "19.5% - very fast credit growth",
    "rule": "Green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
-   "change": -1.15,
+   "change": 1.31,
    "spark": [
-    9.8,
     8.96,
     9.62,
     9.48,
@@ -1552,11 +1552,19 @@
     19.08,
     18.13,
     19.38,
-    18.23
+    18.23,
+    19.54
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 19.54,
+     "previous": 18.23,
+     "prev": 18.23,
+     "change": 1.31
+    },
     {
      "date": "2026-10-15",
      "value": 18.23,
@@ -1689,18 +1697,11 @@
      "previous": 14.53,
      "prev": 14.53,
      "change": -1.41
-    },
-    {
-     "date": "2025-12-31",
-     "value": 14.53,
-     "previous": 11.98,
-     "prev": 11.98,
-     "change": 2.55
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -1709,18 +1710,17 @@
    "series_key": "deposit_yoy",
    "label": "Aggregate deposit growth",
    "group": "Credit",
-   "value": 16.72,
+   "value": 16.86,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "watch",
-   "reason": "16.7% - deposit surge - could signal risk aversion",
+   "reason": "16.9% - deposit surge - could signal risk aversion",
    "rule": "Green 10-14%, watch 8-10 / >14, red <8.",
-   "change": -1.11,
+   "change": 0.14,
    "spark": [
-    9.96,
     9.89,
     10.37,
     10.06,
@@ -1755,11 +1755,19 @@
     17.76,
     17.31,
     17.83,
-    16.72
+    16.72,
+    16.86
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 16.86,
+     "previous": 16.72,
+     "prev": 16.72,
+     "change": 0.14
+    },
     {
      "date": "2026-10-15",
      "value": 16.72,
@@ -1892,18 +1900,11 @@
      "previous": 12.67,
      "prev": 12.67,
      "change": -2.07
-    },
-    {
-     "date": "2025-12-31",
-     "value": 12.67,
-     "previous": 9.35,
-     "prev": 9.35,
-     "change": 3.32
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -1912,18 +1913,17 @@
    "series_key": "cd_ratio",
    "label": "Credit-to-deposit ratio",
    "group": "Credit",
-   "value": 81.59,
+   "value": 82.06,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "good",
-   "reason": "81.6% - credit deployment in the usual range",
+   "reason": "82.1% - credit deployment in the usual range",
    "rule": "Green 70-85%, watch 65-70 / 85-95, red <65 or >95.",
-   "change": 0.61,
+   "change": 0.47,
    "spark": [
-    79.64,
     78.92,
     79.38,
     78.91,
@@ -1958,11 +1958,19 @@
     80.32,
     80.84,
     80.98,
-    81.59
+    81.59,
+    82.06
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 82.06,
+     "previous": 81.59,
+     "prev": 81.59,
+     "change": 0.47
+    },
     {
      "date": "2026-10-15",
      "value": 81.59,
@@ -2095,18 +2103,11 @@
      "previous": 81.75,
      "prev": 81.75,
      "change": 0.43
-    },
-    {
-     "date": "2025-12-31",
-     "value": 81.75,
-     "previous": 81.61,
-     "prev": 81.61,
-     "change": 0.14
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -4348,16 +4349,16 @@
    "series_key": "wpi_fuel_yoy",
    "label": "WPI fuel & power",
    "group": "Prices",
-   "value": 25.85,
+   "value": 32.84,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "bad",
-   "reason": "25.85% - very high - pushes the headline up",
+   "reason": "32.84% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
-   "change": 2.92,
+   "change": 6.99,
    "spark": [
     -2.13,
     0.33,
@@ -4387,25 +4388,33 @@
     30.8,
     27.18,
     19.82,
-    22.93,
-    25.85
+    23.16,
+    25.85,
+    32.84
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
+     "date": "2026-10-31",
+     "value": 32.84,
+     "previous": 25.85,
+     "prev": 25.85,
+     "change": 6.99
+    },
+    {
      "date": "2026-09-30",
      "value": 25.85,
-     "previous": 22.93,
-     "prev": 22.93,
-     "change": 2.92
+     "previous": 23.16,
+     "prev": 23.16,
+     "change": 2.69
     },
     {
      "date": "2026-08-31",
-     "value": 22.93,
+     "value": 23.16,
      "previous": 19.82,
      "prev": 19.82,
-     "change": 3.11
+     "change": 3.34
     },
     {
      "date": "2026-07-31",
@@ -4525,18 +4534,11 @@
      "previous": -1.6,
      "prev": -1.6,
      "change": -1.29
-    },
-    {
-     "date": "2025-02-28",
-     "value": -1.6,
-     "previous": -2.35,
-     "prev": -2.35,
-     "change": 0.75
     }
    ],
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "freq": "monthly",
-   "stale_days": 39,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -4545,16 +4547,16 @@
    "series_key": "wpi_manu_yoy",
    "label": "WPI manufactured products",
    "group": "Prices",
-   "value": 9.76,
+   "value": 9.54,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "bad",
-   "reason": "9.76% - very high - pushes the headline up",
+   "reason": "9.54% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-5%, red >5%.",
-   "change": 1.39,
+   "change": -0.22,
    "spark": [
     -0.61,
     0.0,
@@ -4584,25 +4586,33 @@
     7.68,
     7.78,
     8.29,
-    8.37,
-    9.76
+    8.47,
+    9.76,
+    9.54
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
+     "date": "2026-10-31",
+     "value": 9.54,
+     "previous": 9.76,
+     "prev": 9.76,
+     "change": -0.22
+    },
+    {
      "date": "2026-09-30",
      "value": 9.76,
-     "previous": 8.37,
-     "prev": 8.37,
-     "change": 1.39
+     "previous": 8.47,
+     "prev": 8.47,
+     "change": 1.29
     },
     {
      "date": "2026-08-31",
-     "value": 8.37,
+     "value": 8.47,
      "previous": 8.29,
      "prev": 8.29,
-     "change": 0.08
+     "change": 0.18
     },
     {
      "date": "2026-07-31",
@@ -4722,18 +4732,11 @@
      "previous": 2.26,
      "prev": 2.26,
      "change": -0.01
-    },
-    {
-     "date": "2025-02-28",
-     "value": 2.26,
-     "previous": 1.54,
-     "prev": 1.54,
-     "change": 0.72
     }
    ],
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "freq": "monthly",
-   "stale_days": 39,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -4742,16 +4745,16 @@
    "series_key": "wpi_primary_yoy",
    "label": "WPI primary articles",
    "group": "Prices",
-   "value": 8.67,
+   "value": 9.24,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-30",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "bad",
-   "reason": "8.67% - very high - pushes the headline up",
+   "reason": "9.24% - very high - pushes the headline up",
    "rule": "Component of the WPI; bands green <=3%, watch 3-6%, red >6%.",
-   "change": 0.91,
+   "change": 0.57,
    "spark": [
     6.67,
     7.62,
@@ -4781,25 +4784,33 @@
     5.26,
     7.0,
     8.61,
-    7.76,
-    8.67
+    7.12,
+    8.67,
+    9.24
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
+     "date": "2026-10-31",
+     "value": 9.24,
+     "previous": 8.67,
+     "prev": 8.67,
+     "change": 0.57
+    },
+    {
      "date": "2026-09-30",
      "value": 8.67,
-     "previous": 7.76,
-     "prev": 7.76,
-     "change": 0.91
+     "previous": 7.12,
+     "prev": 7.12,
+     "change": 1.55
     },
     {
      "date": "2026-08-31",
-     "value": 7.76,
+     "value": 7.12,
      "previous": 8.61,
      "prev": 8.61,
-     "change": -0.85
+     "change": -1.49
     },
     {
      "date": "2026-07-31",
@@ -4919,18 +4930,11 @@
      "previous": 1.76,
      "prev": 1.76,
      "change": -1.3
-    },
-    {
-     "date": "2025-02-28",
-     "value": 1.76,
-     "previous": 4.47,
-     "prev": 4.47,
-     "change": -2.71
     }
    ],
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "freq": "monthly",
-   "stale_days": 39,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -7301,25 +7305,17 @@
    "series_key": "invest_yoy",
    "label": "SCB investments growth",
    "group": "Credit",
-   "value": 9.49,
+   "value": 9.26,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "good",
-   "reason": "9.5% - banks funding government borrowing at a normal pace",
+   "reason": "9.3% - banks funding government borrowing at a normal pace",
    "rule": "Green 6-12% y-o-y, watch 0-6% / >12%, red <0%.",
-   "change": 0.86,
+   "change": -0.23,
    "spark": [
-    7.82,
-    8.46,
-    7.38,
-    8.75,
-    6.48,
-    6.54,
-    6.67,
-    6.15,
     6.81,
     6.91,
     6.48,
@@ -7327,19 +7323,26 @@
     5.07,
     5.31,
     5.32,
+    5.32,
     4.95,
     4.39,
+    4.39,
+    2.71,
     2.71,
     2.01,
+    2.01,
     3.03,
+    3.25,
     3.25,
     3.36,
     4.45,
     2.85,
     3.17,
+    3.17,
     4.2,
     4.89,
     5.65,
+    5.84,
     5.84,
     6.24,
     6.39,
@@ -7347,11 +7350,19 @@
     6.5,
     6.85,
     8.63,
-    9.49
+    9.49,
+    9.26
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 9.26,
+     "previous": 9.49,
+     "prev": 9.49,
+     "change": -0.23
+    },
     {
      "date": "2026-10-15",
      "value": 9.49,
@@ -7404,6 +7415,13 @@
     {
      "date": "2026-06-30",
      "value": 5.84,
+     "previous": 5.84,
+     "prev": 5.84,
+     "change": 0.0
+    },
+    {
+     "date": "2026-06-30",
+     "value": 5.84,
      "previous": 5.65,
      "prev": 5.65,
      "change": 0.19
@@ -7428,6 +7446,13 @@
      "previous": 3.17,
      "prev": 3.17,
      "change": 1.03
+    },
+    {
+     "date": "2026-04-30",
+     "value": 3.17,
+     "previous": 3.17,
+     "prev": 3.17,
+     "change": 0.0
     },
     {
      "date": "2026-04-30",
@@ -7460,42 +7485,21 @@
     {
      "date": "2026-02-28",
      "value": 3.25,
+     "previous": 3.25,
+     "prev": 3.25,
+     "change": 0.0
+    },
+    {
+     "date": "2026-02-28",
+     "value": 3.25,
      "previous": 3.03,
      "prev": 3.03,
      "change": 0.22
-    },
-    {
-     "date": "2026-02-15",
-     "value": 3.03,
-     "previous": 2.01,
-     "prev": 2.01,
-     "change": 1.02
-    },
-    {
-     "date": "2026-01-31",
-     "value": 2.01,
-     "previous": 2.71,
-     "prev": 2.71,
-     "change": -0.7
-    },
-    {
-     "date": "2026-01-15",
-     "value": 2.71,
-     "previous": 4.39,
-     "prev": 4.39,
-     "change": -1.68
-    },
-    {
-     "date": "2025-12-31",
-     "value": 4.39,
-     "previous": 4.95,
-     "prev": 4.95,
-     "change": -0.56
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -7504,18 +7508,17 @@
    "series_key": "nonfood_yoy",
    "label": "Non-food credit growth",
    "group": "Credit",
-   "value": 18.03,
+   "value": 19.33,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "watch",
-   "reason": "18.0% - very fast non-food credit growth",
+   "reason": "19.3% - very fast non-food credit growth",
    "rule": "Same bands as total bank credit: green 10-16%, watch 8-10 / 16-20, red <8 or >20.",
-   "change": -1.12,
+   "change": 1.3,
    "spark": [
-    9.66,
     8.8,
     9.46,
     9.31,
@@ -7550,11 +7553,19 @@
     18.77,
     17.83,
     19.15,
-    18.03
+    18.03,
+    19.33
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 19.33,
+     "previous": 18.03,
+     "prev": 18.03,
+     "change": 1.3
+    },
     {
      "date": "2026-10-15",
      "value": 18.03,
@@ -7687,18 +7698,11 @@
      "previous": 14.39,
      "prev": 14.39,
      "change": -1.4
-    },
-    {
-     "date": "2025-12-31",
-     "value": 14.39,
-     "previous": 11.84,
-     "prev": 11.84,
-     "change": 2.55
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -7707,45 +7711,44 @@
    "series_key": "food_yoy",
    "label": "Food credit growth",
    "group": "Credit",
-   "value": 90.69,
+   "value": 75.17,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-10-15",
+   "period": "2026-10-31",
    "period_label": null,
    "released": null,
    "status": "watch",
-   "reason": "90.7% - food credit surging - heavy procurement financing",
+   "reason": "75.2% - food credit surging - heavy procurement financing",
    "rule": "Loose bands because this series is volatile and seasonal: green 0-20%, watch <0 or >20%.",
-   "change": -35.02,
+   "change": -15.52,
    "spark": [
-    64.95,
-    75.32,
-    83.1,
-    89.92,
-    94.93,
-    101.04,
-    87.18,
-    107.12,
-    111.97,
-    127.26,
-    139.64,
-    181.39,
     134.14,
     75.37,
+    75.37,
+    55.7,
     55.7,
     60.49,
+    60.49,
+    56.7,
     56.7,
     52.75,
+    52.75,
+    65.53,
     65.53,
     79.79,
+    79.79,
     94.22,
+    94.22,
+    104.89,
     104.89,
     139.37,
     113.19,
     66.41,
+    66.41,
     70.46,
     94.11,
     98.05,
+    105.08,
     105.08,
     104.65,
     107.91,
@@ -7753,11 +7756,19 @@
     145.81,
     142.3,
     125.71,
-    90.69
+    90.69,
+    75.17
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-31",
+     "value": 75.17,
+     "previous": 90.69,
+     "prev": 90.69,
+     "change": -15.52
+    },
     {
      "date": "2026-10-15",
      "value": 90.69,
@@ -7810,6 +7821,13 @@
     {
      "date": "2026-06-30",
      "value": 105.08,
+     "previous": 105.08,
+     "prev": 105.08,
+     "change": 0.0
+    },
+    {
+     "date": "2026-06-30",
+     "value": 105.08,
      "previous": 98.05,
      "prev": 98.05,
      "change": 7.03
@@ -7838,6 +7856,13 @@
     {
      "date": "2026-04-30",
      "value": 66.41,
+     "previous": 66.41,
+     "prev": 66.41,
+     "change": 0.0
+    },
+    {
+     "date": "2026-04-30",
+     "value": 66.41,
      "previous": 113.19,
      "prev": 113.19,
      "change": -46.78
@@ -7859,6 +7884,13 @@
     {
      "date": "2026-03-15",
      "value": 104.89,
+     "previous": 104.89,
+     "prev": 104.89,
+     "change": 0.0
+    },
+    {
+     "date": "2026-03-15",
+     "value": 104.89,
      "previous": 94.22,
      "prev": 94.22,
      "change": 10.67
@@ -7866,42 +7898,14 @@
     {
      "date": "2026-02-28",
      "value": 94.22,
-     "previous": 79.79,
-     "prev": 79.79,
-     "change": 14.43
-    },
-    {
-     "date": "2026-02-15",
-     "value": 79.79,
-     "previous": 65.53,
-     "prev": 65.53,
-     "change": 14.26
-    },
-    {
-     "date": "2026-01-31",
-     "value": 65.53,
-     "previous": 52.75,
-     "prev": 52.75,
-     "change": 12.78
-    },
-    {
-     "date": "2026-01-15",
-     "value": 52.75,
-     "previous": 56.7,
-     "prev": 56.7,
-     "change": -3.95
-    },
-    {
-     "date": "2025-12-31",
-     "value": 56.7,
-     "previous": 60.49,
-     "prev": 60.49,
-     "change": -3.79
+     "previous": 94.22,
+     "prev": 94.22,
+     "change": 0.0
     }
    ],
    "history_note": "last 20 published observations of 200 stored",
    "freq": "fortnightly",
-   "stale_days": 24,
+   "stale_days": 8,
    "stale": false
   },
   {
@@ -8113,16 +8117,16 @@
    "series_key": "act_ur",
    "label": "Unemployment rate (15+)",
    "group": "Activity",
-   "value": 5.0,
+   "value": 4.9,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-01",
-   "period_label": "Sep 2026",
-   "released": "2026-10-15",
+   "period": "2026-10-01",
+   "period_label": "Oct 2026",
+   "released": null,
    "status": "good",
-   "reason": "5.0% - below 6% - inside India's recent structural range",
+   "reason": "4.9% - below 6% - inside India's recent structural range",
    "rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
-   "change": 0.0,
+   "change": -0.1,
    "spark": [
     5.1,
     5.6,
@@ -8140,11 +8144,19 @@
     5.5,
     5.1,
     5.0,
-    5.0
+    5.0,
+    4.9
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-01",
+     "value": 4.9,
+     "previous": 5.0,
+     "prev": 5.0,
+     "change": -0.1
+    },
     {
      "date": "2026-09-01",
      "value": 5.0,
@@ -8265,9 +8277,9 @@
      "change": null
     }
    ],
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "freq": "monthly",
-   "stale_days": 68,
+   "stale_days": 38,
    "stale": false
   },
   {
@@ -8276,16 +8288,16 @@
    "series_key": "act_lfpr",
    "label": "Labour force participation (15+)",
    "group": "Activity",
-   "value": 55.5,
+   "value": 55.7,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-01",
-   "period_label": "Sep 2026",
-   "released": "2026-10-15",
+   "period": "2026-10-01",
+   "period_label": "Oct 2026",
+   "released": null,
    "status": "good",
-   "reason": "55.5% - at or above the norm of the past year",
+   "reason": "55.7% - at or above the norm of the past year",
    "rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
-   "change": -0.1,
+   "change": 0.2,
    "spark": [
     55.6,
     54.8,
@@ -8303,11 +8315,19 @@
     54.4,
     55.4,
     55.6,
-    55.5
+    55.5,
+    55.7
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-01",
+     "value": 55.7,
+     "previous": 55.5,
+     "prev": 55.5,
+     "change": 0.2
+    },
     {
      "date": "2026-09-01",
      "value": 55.5,
@@ -8428,9 +8448,9 @@
      "change": null
     }
    ],
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "freq": "monthly",
-   "stale_days": 68,
+   "stale_days": 38,
    "stale": false
   },
   {
@@ -8439,16 +8459,16 @@
    "series_key": "act_wpr",
    "label": "Worker population ratio (15+)",
    "group": "Activity",
-   "value": 52.7,
+   "value": 53.0,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-09-01",
-   "period_label": "Sep 2026",
-   "released": "2026-10-15",
+   "period": "2026-10-01",
+   "period_label": "Oct 2026",
+   "released": null,
    "status": "good",
-   "reason": "52.7% - at or above the recent norm",
+   "reason": "53.0% - at or above the recent norm",
    "rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
-   "change": -0.1,
+   "change": 0.3,
    "spark": [
     52.8,
     51.7,
@@ -8466,11 +8486,19 @@
     51.4,
     52.5,
     52.8,
-    52.7
+    52.7,
+    53.0
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
+    {
+     "date": "2026-10-01",
+     "value": 53.0,
+     "previous": 52.7,
+     "prev": 52.7,
+     "change": 0.3
+    },
     {
      "date": "2026-09-01",
      "value": 52.7,
@@ -8591,9 +8619,9 @@
      "change": null
     }
    ],
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "freq": "monthly",
-   "stale_days": 68,
+   "stale_days": 38,
    "stale": false
   },
   {
@@ -8880,16 +8908,16 @@
    "series_key": "act_oppi_yoy",
    "label": "Producer price inflation, y-o-y",
    "group": "Activity",
-   "value": 9.81,
+   "value": 12.07,
    "unit": "%",
    "fmt": "pct",
-   "period": "2026-08-01",
-   "period_label": "Aug 2026",
+   "period": "2026-10-01",
+   "period_label": "Oct 2026",
    "released": null,
    "status": "watch",
-   "reason": "9.8% - producer prices running hot",
+   "reason": "12.1% - producer prices running hot",
    "rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
-   "change": 0.24,
+   "change": 0.68,
    "spark": [
     1.38,
     2.28,
@@ -8898,17 +8926,33 @@
     9.68,
     9.67,
     9.57,
-    9.81
+    9.71,
+    11.39,
+    12.07
    ],
    "chart": "spark",
    "history_kind": "reading",
    "history": [
     {
+     "date": "2026-10-01",
+     "value": 12.07,
+     "previous": 11.39,
+     "prev": 11.39,
+     "change": 0.68
+    },
+    {
+     "date": "2026-09-01",
+     "value": 11.39,
+     "previous": 9.71,
+     "prev": 9.71,
+     "change": 1.68
+    },
+    {
      "date": "2026-08-01",
-     "value": 9.81,
+     "value": 9.71,
      "previous": 9.57,
      "prev": 9.57,
-     "change": 0.24
+     "change": 0.14
     },
     {
      "date": "2026-07-01",
@@ -8960,9 +9004,9 @@
      "change": null
     }
    ],
-   "history_note": "last 8 published observations of 8 stored",
+   "history_note": "last 10 published observations of 10 stored",
    "freq": "monthly",
-   "stale_days": 99,
+   "stale_days": 38,
    "stale": false
   },
   {
@@ -9234,6 +9278,10 @@
     [
      "2026-09-01",
      4.2
+    ],
+    [
+     "2026-10-01",
+     4.2
     ]
    ]
   },
@@ -9309,6 +9357,10 @@
     [
      "2026-09-01",
      6.9
+    ],
+    [
+     "2026-10-01",
+     6.7
     ]
    ]
   },
@@ -9384,6 +9436,10 @@
     [
      "2026-09-01",
      5.0
+    ],
+    [
+     "2026-10-01",
+     4.9
     ]
    ]
   },
@@ -9459,6 +9515,10 @@
     [
      "2026-09-01",
      58.0
+    ],
+    [
+     "2026-10-01",
+     58.4
     ]
    ]
   },
@@ -9534,6 +9594,10 @@
     [
      "2026-09-01",
      50.7
+    ],
+    [
+     "2026-10-01",
+     50.5
     ]
    ]
   },
@@ -9609,6 +9673,10 @@
     [
      "2026-09-01",
      55.5
+    ],
+    [
+     "2026-10-01",
+     55.7
     ]
    ]
   },
@@ -9684,6 +9752,10 @@
     [
      "2026-09-01",
      55.5
+    ],
+    [
+     "2026-10-01",
+     56.0
     ]
    ]
   },
@@ -9759,6 +9831,10 @@
     [
      "2026-09-01",
      47.2
+    ],
+    [
+     "2026-10-01",
+     47.1
     ]
    ]
   },
@@ -9834,6 +9910,10 @@
     [
      "2026-09-01",
      52.7
+    ],
+    [
+     "2026-10-01",
+     53.0
     ]
    ]
   },
@@ -10643,7 +10723,15 @@
     ],
     [
      "2026-08-01",
-     110.8
+     110.7
+    ],
+    [
+     "2026-09-01",
+     112.5
+    ],
+    [
+     "2026-10-01",
+     113.3
     ]
    ]
   },
@@ -10682,7 +10770,15 @@
     ],
     [
      "2026-08-01",
-     9.81
+     9.71
+    ],
+    [
+     "2026-09-01",
+     11.39
+    ],
+    [
+     "2026-10-01",
+     12.07
     ]
    ]
   },
@@ -12104,6 +12200,10 @@
     [
      "2026-09-30",
      11.39
+    ],
+    [
+     "2026-10-31",
+     12.29
     ]
    ]
   },
@@ -17733,10 +17833,6 @@
    "source": "RBI r9",
    "points": [
     [
-     "2019-02-01",
-     9429528.0
-    ],
-    [
      "2019-02-15",
      9440366.0
     ],
@@ -18531,6 +18627,10 @@
     [
      "2026-10-15",
      22742779.0
+    ],
+    [
+     "2026-10-31",
+     23182499.0
     ]
    ]
   },
@@ -18539,10 +18639,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-02-01",
-     14.53
-    ],
     [
      "2019-02-15",
      14.8
@@ -19338,6 +19434,10 @@
     [
      "2026-10-15",
      18.23
+    ],
+    [
+     "2026-10-31",
+     19.54
     ]
    ]
   },
@@ -19346,10 +19446,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-02-01",
-     9.63
-    ],
     [
      "2019-02-15",
      10.15
@@ -20145,6 +20241,10 @@
     [
      "2026-10-15",
      16.72
+    ],
+    [
+     "2026-10-31",
+     16.86
     ]
    ]
   },
@@ -20153,10 +20253,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-02-01",
-     77.78
-    ],
     [
      "2019-02-15",
      77.89
@@ -20952,6 +21048,10 @@
     [
      "2026-10-15",
      81.59
+    ],
+    [
+     "2026-10-31",
+     82.06
     ]
    ]
   },
@@ -47738,38 +47838,6 @@
    "source": "RBI r9",
    "points": [
     [
-     "2019-02-01",
-     -1.53
-    ],
-    [
-     "2019-02-15",
-     -1.41
-    ],
-    [
-     "2019-03-01",
-     0.0
-    ],
-    [
-     "2019-03-15",
-     1.78
-    ],
-    [
-     "2019-03-29",
-     1.89
-    ],
-    [
-     "2019-04-12",
-     1.74
-    ],
-    [
-     "2019-04-26",
-     2.82
-    ],
-    [
-     "2019-05-10",
-     3.57
-    ],
-    [
      "2019-05-24",
      4.39
     ],
@@ -48454,8 +48522,16 @@
      5.32
     ],
     [
+     "2025-11-28",
+     5.32
+    ],
+    [
      "2025-12-15",
      4.95
+    ],
+    [
+     "2025-12-31",
+     4.39
     ],
     [
      "2025-12-31",
@@ -48466,12 +48542,24 @@
      2.71
     ],
     [
+     "2026-01-15",
+     2.71
+    ],
+    [
+     "2026-01-31",
+     2.01
+    ],
+    [
      "2026-01-31",
      2.01
     ],
     [
      "2026-02-15",
      3.03
+    ],
+    [
+     "2026-02-28",
+     3.25
     ],
     [
      "2026-02-28",
@@ -48494,6 +48582,10 @@
      3.17
     ],
     [
+     "2026-04-30",
+     3.17
+    ],
+    [
      "2026-05-15",
      4.2
     ],
@@ -48504,6 +48596,10 @@
     [
      "2026-06-15",
      5.65
+    ],
+    [
+     "2026-06-30",
+     5.84
     ],
     [
      "2026-06-30",
@@ -48536,6 +48632,10 @@
     [
      "2026-10-15",
      9.49
+    ],
+    [
+     "2026-10-31",
+     9.26
     ]
    ]
   },
@@ -48544,10 +48644,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-02-01",
-     14.43
-    ],
     [
      "2019-02-15",
      14.71
@@ -49343,6 +49439,10 @@
     [
      "2026-10-15",
      18.03
+    ],
+    [
+     "2026-10-31",
+     19.33
     ]
    ]
   },
@@ -49351,54 +49451,6 @@
    "unit": "%",
    "source": "RBI r9",
    "points": [
-    [
-     "2019-02-01",
-     29.31
-    ],
-    [
-     "2019-02-15",
-     29.84
-    ],
-    [
-     "2019-03-01",
-     21.93
-    ],
-    [
-     "2019-03-15",
-     24.92
-    ],
-    [
-     "2019-03-29",
-     -0.9
-    ],
-    [
-     "2019-04-12",
-     12.38
-    ],
-    [
-     "2019-04-26",
-     -17.05
-    ],
-    [
-     "2019-05-10",
-     6.33
-    ],
-    [
-     "2019-05-24",
-     24.21
-    ],
-    [
-     "2019-06-07",
-     18.17
-    ],
-    [
-     "2019-06-21",
-     14.2
-    ],
-    [
-     "2019-07-05",
-     19.67
-    ],
     [
      "2019-07-19",
      30.33
@@ -50064,8 +50116,20 @@
      75.37
     ],
     [
+     "2025-11-14",
+     75.37
+    ],
+    [
      "2025-11-28",
      55.7
+    ],
+    [
+     "2025-11-28",
+     55.7
+    ],
+    [
+     "2025-12-15",
+     60.49
     ],
     [
      "2025-12-15",
@@ -50076,8 +50140,20 @@
      56.7
     ],
     [
+     "2025-12-31",
+     56.7
+    ],
+    [
      "2026-01-15",
      52.75
+    ],
+    [
+     "2026-01-15",
+     52.75
+    ],
+    [
+     "2026-01-31",
+     65.53
     ],
     [
      "2026-01-31",
@@ -50088,8 +50164,20 @@
      79.79
     ],
     [
+     "2026-02-15",
+     79.79
+    ],
+    [
      "2026-02-28",
      94.22
+    ],
+    [
+     "2026-02-28",
+     94.22
+    ],
+    [
+     "2026-03-15",
+     104.89
     ],
     [
      "2026-03-15",
@@ -50108,6 +50196,10 @@
      66.41
     ],
     [
+     "2026-04-30",
+     66.41
+    ],
+    [
      "2026-05-15",
      70.46
     ],
@@ -50118,6 +50210,10 @@
     [
      "2026-06-15",
      98.05
+    ],
+    [
+     "2026-06-30",
+     105.08
     ],
     [
      "2026-06-30",
@@ -50150,6 +50246,10 @@
     [
      "2026-10-15",
      90.69
+    ],
+    [
+     "2026-10-31",
+     75.17
     ]
    ]
   },
@@ -56521,11 +56621,15 @@
     ],
     [
      "2026-08-31",
-     7.76
+     7.12
     ],
     [
      "2026-09-30",
      8.67
+    ],
+    [
+     "2026-10-31",
+     9.24
     ]
    ]
   },
@@ -56648,11 +56752,15 @@
     ],
     [
      "2026-08-31",
-     22.93
+     23.16
     ],
     [
      "2026-09-30",
      25.85
+    ],
+    [
+     "2026-10-31",
+     32.84
     ]
    ]
   },
@@ -56775,11 +56883,15 @@
     ],
     [
      "2026-08-31",
-     8.37
+     8.47
     ],
     [
      "2026-09-30",
      9.76
+    ],
+    [
+     "2026-10-31",
+     9.54
     ]
    ]
   },
@@ -58148,11 +58260,15 @@
     ],
     [
      "2026-08-31",
-     22.93
+     23.16
     ],
     [
      "2026-09-30",
      25.85
+    ],
+    [
+     "2026-10-31",
+     32.84
     ]
    ]
   },

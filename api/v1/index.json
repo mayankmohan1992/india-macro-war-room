@@ -40,14 +40,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "id": "wpi",
    "kind": "reading",
    "label": "WPI inflation",
    "latest": {
-    "change": 1.47,
-    "date": "2026-09-30",
-    "value": 11.39
+    "change": 0.9,
+    "date": "2026-10-31",
+    "value": 12.29
    },
    "links": {
     "csv": "series/wpi.csv",
@@ -59,9 +59,9 @@
    "series": "wpi_yoy",
    "source": "RBI r11 (WPI 2023=100)",
    "stale": false,
-   "stale_days": 39,
+   "stale_days": 8,
    "status": "bad",
-   "status_reason": "11.39% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
+   "status_reason": "12.29% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
    "unit": "%"
   },
   {
@@ -179,9 +179,9 @@
    "kind": "reading",
    "label": "Bank credit growth",
    "latest": {
-    "change": -1.15,
-    "date": "2026-10-15",
-    "value": 18.23
+    "change": 1.31,
+    "date": "2026-10-31",
+    "value": 19.54
    },
    "links": {
     "csv": "series/credit.csv",
@@ -193,9 +193,9 @@
    "series": "credit_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "watch",
-   "status_reason": "18.2% - very fast credit growth",
+   "status_reason": "19.5% - very fast credit growth",
    "unit": "%"
   },
   {
@@ -211,9 +211,9 @@
    "kind": "reading",
    "label": "Aggregate deposit growth",
    "latest": {
-    "change": -1.11,
-    "date": "2026-10-15",
-    "value": 16.72
+    "change": 0.14,
+    "date": "2026-10-31",
+    "value": 16.86
    },
    "links": {
     "csv": "series/deposit.csv",
@@ -225,9 +225,9 @@
    "series": "deposit_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "watch",
-   "status_reason": "16.7% - deposit surge - could signal risk aversion",
+   "status_reason": "16.9% - deposit surge - could signal risk aversion",
    "unit": "%"
   },
   {
@@ -243,9 +243,9 @@
    "kind": "reading",
    "label": "Credit-to-deposit ratio",
    "latest": {
-    "change": 0.61,
-    "date": "2026-10-15",
-    "value": 81.59
+    "change": 0.47,
+    "date": "2026-10-31",
+    "value": 82.06
    },
    "links": {
     "csv": "series/cdr.csv",
@@ -257,9 +257,9 @@
    "series": "cd_ratio",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "good",
-   "status_reason": "81.6% - credit deployment in the usual range",
+   "status_reason": "82.1% - credit deployment in the usual range",
    "unit": "%"
   },
   {
@@ -622,14 +622,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "id": "wpifuel",
    "kind": "reading",
    "label": "WPI fuel & power",
    "latest": {
-    "change": 2.92,
-    "date": "2026-09-30",
-    "value": 25.85
+    "change": 6.99,
+    "date": "2026-10-31",
+    "value": 32.84
    },
    "links": {
     "csv": "series/wpifuel.csv",
@@ -641,9 +641,9 @@
    "series": "wpi_fuel_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 39,
+   "stale_days": 8,
    "status": "bad",
-   "status_reason": "25.85% - very high - pushes the headline up",
+   "status_reason": "32.84% - very high - pushes the headline up",
    "unit": "%"
   },
   {
@@ -654,14 +654,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "id": "wpimanu",
    "kind": "reading",
    "label": "WPI manufactured products",
    "latest": {
-    "change": 1.39,
-    "date": "2026-09-30",
-    "value": 9.76
+    "change": -0.22,
+    "date": "2026-10-31",
+    "value": 9.54
    },
    "links": {
     "csv": "series/wpimanu.csv",
@@ -673,9 +673,9 @@
    "series": "wpi_manu_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 39,
+   "stale_days": 8,
    "status": "bad",
-   "status_reason": "9.76% - very high - pushes the headline up",
+   "status_reason": "9.54% - very high - pushes the headline up",
    "unit": "%"
   },
   {
@@ -686,14 +686,14 @@
    "frequency": "monthly",
    "group": "Prices",
    "history_kind": "reading",
-   "history_note": "last 20 published observations of 30 stored",
+   "history_note": "last 20 published observations of 31 stored",
    "id": "wpiprim",
    "kind": "reading",
    "label": "WPI primary articles",
    "latest": {
-    "change": 0.91,
-    "date": "2026-09-30",
-    "value": 8.67
+    "change": 0.57,
+    "date": "2026-10-31",
+    "value": 9.24
    },
    "links": {
     "csv": "series/wpiprim.csv",
@@ -705,9 +705,9 @@
    "series": "wpi_primary_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 39,
+   "stale_days": 8,
    "status": "bad",
-   "status_reason": "8.67% - very high - pushes the headline up",
+   "status_reason": "9.24% - very high - pushes the headline up",
    "unit": "%"
   },
   {
@@ -1119,9 +1119,9 @@
    "kind": "reading",
    "label": "SCB investments growth",
    "latest": {
-    "change": 0.86,
-    "date": "2026-10-15",
-    "value": 9.49
+    "change": -0.23,
+    "date": "2026-10-31",
+    "value": 9.26
    },
    "links": {
     "csv": "series/invest.csv",
@@ -1133,9 +1133,9 @@
    "series": "invest_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "good",
-   "status_reason": "9.5% - banks funding government borrowing at a normal pace",
+   "status_reason": "9.3% - banks funding government borrowing at a normal pace",
    "unit": "%"
   },
   {
@@ -1151,9 +1151,9 @@
    "kind": "reading",
    "label": "Non-food credit growth",
    "latest": {
-    "change": -1.12,
-    "date": "2026-10-15",
-    "value": 18.03
+    "change": 1.3,
+    "date": "2026-10-31",
+    "value": 19.33
    },
    "links": {
     "csv": "series/nonfood.csv",
@@ -1165,9 +1165,9 @@
    "series": "nonfood_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "watch",
-   "status_reason": "18.0% - very fast non-food credit growth",
+   "status_reason": "19.3% - very fast non-food credit growth",
    "unit": "%"
   },
   {
@@ -1183,9 +1183,9 @@
    "kind": "reading",
    "label": "Food credit growth",
    "latest": {
-    "change": -35.02,
-    "date": "2026-10-15",
-    "value": 90.69
+    "change": -15.52,
+    "date": "2026-10-31",
+    "value": 75.17
    },
    "links": {
     "csv": "series/food.csv",
@@ -1197,9 +1197,9 @@
    "series": "food_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 24,
+   "stale_days": 8,
    "status": "watch",
-   "status_reason": "90.7% - food credit surging - heavy procurement financing",
+   "status_reason": "75.2% - food credit surging - heavy procurement financing",
    "unit": "%"
   },
   {
@@ -1242,28 +1242,28 @@
    "frequency": "monthly",
    "group": "Activity",
    "history_kind": "reading",
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "id": "ur",
    "kind": "reading",
    "label": "Unemployment rate (15+)",
    "latest": {
-    "change": 0.0,
-    "date": "2026-09-01",
-    "value": 5.0
+    "change": -0.1,
+    "date": "2026-10-01",
+    "value": 4.9
    },
    "links": {
     "csv": "series/ur.csv",
     "self": "series/ur.json"
    },
-   "period_label": "Sep 2026",
-   "release_date": "2026-10-15",
+   "period_label": "Oct 2026",
+   "release_date": null,
    "scoring_rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
    "series": "act_ur",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 68,
+   "stale_days": 38,
    "status": "good",
-   "status_reason": "5.0% - below 6% - inside India's recent structural range",
+   "status_reason": "4.9% - below 6% - inside India's recent structural range",
    "unit": "%"
   },
   {
@@ -1274,28 +1274,28 @@
    "frequency": "monthly",
    "group": "Activity",
    "history_kind": "reading",
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "id": "lfpr",
    "kind": "reading",
    "label": "Labour force participation (15+)",
    "latest": {
-    "change": -0.1,
-    "date": "2026-09-01",
-    "value": 55.5
+    "change": 0.2,
+    "date": "2026-10-01",
+    "value": 55.7
    },
    "links": {
     "csv": "series/lfpr.csv",
     "self": "series/lfpr.json"
    },
-   "period_label": "Sep 2026",
-   "release_date": "2026-10-15",
+   "period_label": "Oct 2026",
+   "release_date": null,
    "scoring_rule": "No official target. Green >=52%, watch 45-52%, red <45% - higher participation is the healthier reading, but a jump driven by distress (more people seeking work) is not.",
    "series": "act_lfpr",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 68,
+   "stale_days": 38,
    "status": "good",
-   "status_reason": "55.5% - at or above the norm of the past year",
+   "status_reason": "55.7% - at or above the norm of the past year",
    "unit": "%"
   },
   {
@@ -1306,28 +1306,28 @@
    "frequency": "monthly",
    "group": "Activity",
    "history_kind": "reading",
-   "history_note": "last 17 published observations of 17 stored",
+   "history_note": "last 18 published observations of 18 stored",
    "id": "wpr",
    "kind": "reading",
    "label": "Worker population ratio (15+)",
    "latest": {
-    "change": -0.1,
-    "date": "2026-09-01",
-    "value": 52.7
+    "change": 0.3,
+    "date": "2026-10-01",
+    "value": 53.0
    },
    "links": {
     "csv": "series/wpr.csv",
     "self": "series/wpr.json"
    },
-   "period_label": "Sep 2026",
-   "release_date": "2026-10-15",
+   "period_label": "Oct 2026",
+   "release_date": null,
    "scoring_rule": "No official target. Green >=50%, watch 45-50%, red <45%. UR = (LFPR - WPR) / LFPR, so read all three together.",
    "series": "act_wpr",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 68,
+   "stale_days": 38,
    "status": "good",
-   "status_reason": "52.7% - at or above the recent norm",
+   "status_reason": "53.0% - at or above the recent norm",
    "unit": "%"
   },
   {
@@ -1402,28 +1402,28 @@
    "frequency": "monthly",
    "group": "Activity",
    "history_kind": "reading",
-   "history_note": "last 8 published observations of 8 stored",
+   "history_note": "last 10 published observations of 10 stored",
    "id": "oppi",
    "kind": "reading",
    "label": "Producer price inflation, y-o-y",
    "latest": {
-    "change": 0.24,
-    "date": "2026-08-01",
-    "value": 9.81
+    "change": 0.68,
+    "date": "2026-10-01",
+    "value": 12.07
    },
    "links": {
     "csv": "series/oppi.csv",
     "self": "series/oppi.json"
    },
-   "period_label": "Aug 2026",
+   "period_label": "Oct 2026",
    "release_date": null,
    "scoring_rule": "Computed from the published all-commodities OPPI index: green 2-6%, watch 0-2% / >6%, red <0%.",
    "series": "act_oppi_yoy",
    "source": "MoSPI OPPI monthly (computed from published levels)",
    "stale": false,
-   "stale_days": 99,
+   "stale_days": 38,
    "status": "watch",
-   "status_reason": "9.8% - producer prices running hot",
+   "status_reason": "12.1% - producer prices running hot",
    "unit": "%"
   },
   {
@@ -1487,7 +1487,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

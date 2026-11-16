@@ -10,6 +10,13 @@
   "group": "Activity",
   "history": [
    {
+    "change": -0.1,
+    "date": "2026-10-01",
+    "prev": 5.0,
+    "previous": 5.0,
+    "value": 4.9
+   },
+   {
     "change": 0.0,
     "date": "2026-09-01",
     "prev": 5.0,
@@ -130,20 +137,20 @@
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 17 published observations of 17 stored",
+  "history_note": "last 18 published observations of 18 stored",
   "id": "ur",
   "kind": "reading",
   "label": "Unemployment rate (15+)",
   "latest": {
-   "change": 0.0,
-   "date": "2026-09-01",
-   "value": 5.0
+   "change": -0.1,
+   "date": "2026-10-01",
+   "value": 4.9
   },
   "links": {
    "csv": "series/ur.csv",
    "self": "series/ur.json"
   },
-  "period_label": "Sep 2026",
+  "period_label": "Oct 2026",
   "points": [
    [
     "2025-04-01",
@@ -212,16 +219,20 @@
    [
     "2026-09-01",
     5.0
+   ],
+   [
+    "2026-10-01",
+    4.9
    ]
   ],
-  "release_date": "2026-10-15",
+  "release_date": null,
   "scoring_rule": "No official target. Green <6%, watch 6-8%, red >=8% - a convention set against India's own recent range, not an RBI or MoSPI threshold.",
   "series": "act_ur",
   "source": "MoSPI PLFS monthly (CWS), both",
   "stale": false,
-  "stale_days": 68,
+  "stale_days": 38,
   "status": "good",
-  "status_reason": "5.0% - below 6% - inside India's recent structural range",
+  "status_reason": "4.9% - below 6% - inside India's recent structural range",
   "unit": "%"
  },
  "meta": {
@@ -252,7 +263,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

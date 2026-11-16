@@ -10,18 +10,25 @@
   "group": "Prices",
   "history": [
    {
-    "change": 0.91,
+    "change": 0.57,
+    "date": "2026-10-31",
+    "prev": 8.67,
+    "previous": 8.67,
+    "value": 9.24
+   },
+   {
+    "change": 1.55,
     "date": "2026-09-30",
-    "prev": 7.76,
-    "previous": 7.76,
+    "prev": 7.12,
+    "previous": 7.12,
     "value": 8.67
    },
    {
-    "change": -0.85,
+    "change": -1.49,
     "date": "2026-08-31",
     "prev": 8.61,
     "previous": 8.61,
-    "value": 7.76
+    "value": 7.12
    },
    {
     "change": 1.61,
@@ -141,24 +148,17 @@
     "prev": 1.76,
     "previous": 1.76,
     "value": 0.46
-   },
-   {
-    "change": -2.71,
-    "date": "2025-02-28",
-    "prev": 4.47,
-    "previous": 4.47,
-    "value": 1.76
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 20 published observations of 30 stored",
+  "history_note": "last 20 published observations of 31 stored",
   "id": "wpiprim",
   "kind": "reading",
   "label": "WPI primary articles",
   "latest": {
-   "change": 0.91,
-   "date": "2026-09-30",
-   "value": 8.67
+   "change": 0.57,
+   "date": "2026-10-31",
+   "value": 9.24
   },
   "links": {
    "csv": "series/wpiprim.csv",
@@ -280,11 +280,15 @@
    ],
    [
     "2026-08-31",
-    7.76
+    7.12
    ],
    [
     "2026-09-30",
     8.67
+   ],
+   [
+    "2026-10-31",
+    9.24
    ]
   ],
   "release_date": null,
@@ -292,9 +296,9 @@
   "series": "wpi_primary_yoy",
   "source": "RBI r11",
   "stale": false,
-  "stale_days": 39,
+  "stale_days": 8,
   "status": "bad",
-  "status_reason": "8.67% - very high - pushes the headline up",
+  "status_reason": "9.24% - very high - pushes the headline up",
   "unit": "%"
  },
  "meta": {
@@ -325,7 +329,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -10,6 +10,13 @@
   "group": "Credit",
   "history": [
    {
+    "change": 0.47,
+    "date": "2026-10-31",
+    "prev": 81.59,
+    "previous": 81.59,
+    "value": 82.06
+   },
+   {
     "change": 0.61,
     "date": "2026-10-15",
     "prev": 80.98,
@@ -141,13 +148,6 @@
     "prev": 81.75,
     "previous": 81.75,
     "value": 82.18
-   },
-   {
-    "change": 0.14,
-    "date": "2025-12-31",
-    "prev": 81.61,
-    "previous": 81.61,
-    "value": 81.75
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Credit-to-deposit ratio",
   "latest": {
-   "change": 0.61,
-   "date": "2026-10-15",
-   "value": 81.59
+   "change": 0.47,
+   "date": "2026-10-31",
+   "value": 82.06
   },
   "links": {
    "csv": "series/cdr.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-02-01",
-    77.78
-   ],
    [
     "2019-02-15",
     77.89
@@ -965,6 +961,10 @@
    [
     "2026-10-15",
     81.59
+   ],
+   [
+    "2026-10-31",
+    82.06
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "cd_ratio",
   "source": "RBI r9",
   "stale": false,
-  "stale_days": 24,
+  "stale_days": 8,
   "status": "good",
-  "status_reason": "81.6% - credit deployment in the usual range",
+  "status_reason": "82.1% - credit deployment in the usual range",
   "unit": "%"
  },
  "meta": {
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

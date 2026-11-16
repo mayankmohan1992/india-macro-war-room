@@ -10,6 +10,13 @@
   "group": "Prices",
   "history": [
    {
+    "change": 0.9,
+    "date": "2026-10-31",
+    "prev": 11.39,
+    "previous": 11.39,
+    "value": 12.29
+   },
+   {
     "change": 1.47,
     "date": "2026-09-30",
     "prev": 9.92,
@@ -141,24 +148,17 @@
     "prev": 1.61,
     "previous": 1.61,
     "value": 1.21
-   },
-   {
-    "change": -0.2,
-    "date": "2025-02-28",
-    "prev": 1.81,
-    "previous": 1.81,
-    "value": 1.61
    }
   ],
   "history_kind": "reading",
-  "history_note": "last 20 published observations of 30 stored",
+  "history_note": "last 20 published observations of 31 stored",
   "id": "wpi",
   "kind": "reading",
   "label": "WPI inflation",
   "latest": {
-   "change": 1.47,
-   "date": "2026-09-30",
-   "value": 11.39
+   "change": 0.9,
+   "date": "2026-10-31",
+   "value": 12.29
   },
   "links": {
    "csv": "series/wpi.csv",
@@ -285,6 +285,10 @@
    [
     "2026-09-30",
     11.39
+   ],
+   [
+    "2026-10-31",
+    12.29
    ]
   ],
   "release_date": null,
@@ -292,9 +296,9 @@
   "series": "wpi_yoy",
   "source": "RBI r11 (WPI 2023=100)",
   "stale": false,
-  "stale_days": 39,
+  "stale_days": 8,
   "status": "bad",
-  "status_reason": "11.39% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
+  "status_reason": "12.29% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
   "unit": "%"
  },
  "meta": {
@@ -325,7 +329,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

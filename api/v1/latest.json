@@ -28,13 +28,13 @@
    "value": 594204.0
   },
   "cdr": {
-   "change": 0.61,
-   "date": "2026-10-15",
+   "change": 0.47,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "Credit-to-deposit ratio",
    "status": "good",
    "unit": "%",
-   "value": 81.59
+   "value": 82.06
   },
   "cpi": {
    "change": 0.55,
@@ -73,13 +73,13 @@
    "value": 661259.0
   },
   "credit": {
-   "change": -1.15,
-   "date": "2026-10-15",
+   "change": 1.31,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "Bank credit growth",
    "status": "watch",
    "unit": "%",
-   "value": 18.23
+   "value": 19.54
   },
   "crr": {
    "change": null,
@@ -91,13 +91,13 @@
    "value": 3.0
   },
   "deposit": {
-   "change": -1.11,
-   "date": "2026-10-15",
+   "change": 0.14,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "Aggregate deposit growth",
    "status": "watch",
    "unit": "%",
-   "value": 16.72
+   "value": 16.86
   },
   "fca": {
    "change": -0.52,
@@ -109,13 +109,13 @@
    "value": 11.32
   },
   "food": {
-   "change": -35.02,
-   "date": "2026-10-15",
+   "change": -15.52,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "Food credit growth",
    "status": "watch",
    "unit": "%",
-   "value": 90.69
+   "value": 75.17
   },
   "fwd3m": {
    "change": -0.63,
@@ -181,22 +181,22 @@
    "value": 10.4
   },
   "invest": {
-   "change": 0.86,
-   "date": "2026-10-15",
+   "change": -0.23,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "SCB investments growth",
    "status": "good",
    "unit": "%",
-   "value": 9.49
+   "value": 9.26
   },
   "lfpr": {
-   "change": -0.1,
-   "date": "2026-09-01",
+   "change": 0.2,
+   "date": "2026-10-01",
    "kind": "reading",
    "label": "Labour force participation (15+)",
    "status": "good",
    "unit": "%",
-   "value": 55.5
+   "value": 55.7
   },
   "liquidity": {
    "change": -477.318,
@@ -235,13 +235,13 @@
    "value": 6.25
   },
   "nonfood": {
-   "change": -1.12,
-   "date": "2026-10-15",
+   "change": 1.3,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "Non-food credit growth",
    "status": "watch",
    "unit": "%",
-   "value": 18.03
+   "value": 19.33
   },
   "notes": {
    "change": 0.9,
@@ -253,13 +253,13 @@
    "value": 15.08
   },
   "oppi": {
-   "change": 0.24,
-   "date": "2026-08-01",
+   "change": 0.68,
+   "date": "2026-10-01",
    "kind": "reading",
    "label": "Producer price inflation, y-o-y",
    "status": "watch",
    "unit": "%",
-   "value": 9.81
+   "value": 12.07
   },
   "rbicredit": {
    "change": -6882.0,
@@ -334,13 +334,13 @@
    "value": 1641683.0
   },
   "ur": {
-   "change": 0.0,
-   "date": "2026-09-01",
+   "change": -0.1,
+   "date": "2026-10-01",
    "kind": "reading",
    "label": "Unemployment rate (15+)",
    "status": "good",
    "unit": "%",
-   "value": 5.0
+   "value": 4.9
   },
   "usdinr": {
    "change": -1.11,
@@ -352,49 +352,49 @@
    "value": 94.14
   },
   "wpi": {
-   "change": 1.47,
-   "date": "2026-09-30",
+   "change": 0.9,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "WPI inflation",
    "status": "bad",
    "unit": "%",
-   "value": 11.39
+   "value": 12.29
   },
   "wpifuel": {
-   "change": 2.92,
-   "date": "2026-09-30",
+   "change": 6.99,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "WPI fuel & power",
    "status": "bad",
    "unit": "%",
-   "value": 25.85
+   "value": 32.84
   },
   "wpimanu": {
-   "change": 1.39,
-   "date": "2026-09-30",
+   "change": -0.22,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "WPI manufactured products",
    "status": "bad",
    "unit": "%",
-   "value": 9.76
+   "value": 9.54
   },
   "wpiprim": {
-   "change": 0.91,
-   "date": "2026-09-30",
+   "change": 0.57,
+   "date": "2026-10-31",
    "kind": "reading",
    "label": "WPI primary articles",
    "status": "bad",
    "unit": "%",
-   "value": 8.67
+   "value": 9.24
   },
   "wpr": {
-   "change": -0.1,
-   "date": "2026-09-01",
+   "change": 0.3,
+   "date": "2026-10-01",
    "kind": "reading",
    "label": "Worker population ratio (15+)",
    "status": "good",
    "unit": "%",
-   "value": 52.7
+   "value": 53.0
   },
   "yld91": {
    "change": -0.03,
@@ -434,7 +434,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-14T13:13:32Z",
+  "retrieved_at": "2026-11-16T15:10:29Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
