@@ -10,6 +10,55 @@
   "group": "Liquidity",
   "history": [
    {
+    "change": 1562.818,
+    "date": "2026-11-15",
+    "prev": -163104.0,
+    "previous": -163104.0,
+    "value": -161541.182
+   },
+   {
+    "change": -793.864,
+    "date": "2026-11-14",
+    "prev": -162310.136,
+    "previous": -162310.136,
+    "value": -163104.0
+   },
+   {
+    "change": -3314.545,
+    "date": "2026-11-13",
+    "prev": -158995.591,
+    "previous": -158995.591,
+    "value": -162310.136
+   },
+   {
+    "change": -4802.727,
+    "date": "2026-11-12",
+    "prev": -154192.864,
+    "previous": -154192.864,
+    "value": -158995.591
+   },
+   {
+    "change": -3487.728,
+    "date": "2026-11-11",
+    "prev": -150705.136,
+    "previous": -150705.136,
+    "value": -154192.864
+   },
+   {
+    "change": -5175.727,
+    "date": "2026-11-10",
+    "prev": -145529.409,
+    "previous": -145529.409,
+    "value": -150705.136
+   },
+   {
+    "change": -643.409,
+    "date": "2026-11-09",
+    "prev": -144886.0,
+    "previous": -144886.0,
+    "value": -145529.409
+   },
+   {
     "change": -477.318,
     "date": "2026-11-08",
     "prev": -144408.682,
@@ -99,55 +148,6 @@
     "prev": -191857.545,
     "previous": -191857.545,
     "value": -181590.682
-   },
-   {
-    "change": 8554.046,
-    "date": "2026-10-26",
-    "prev": -200411.591,
-    "previous": -200411.591,
-    "value": -191857.545
-   },
-   {
-    "change": 1672.636,
-    "date": "2026-10-25",
-    "prev": -202084.227,
-    "previous": -202084.227,
-    "value": -200411.591
-   },
-   {
-    "change": -1765.727,
-    "date": "2026-10-24",
-    "prev": -200318.5,
-    "previous": -200318.5,
-    "value": -202084.227
-   },
-   {
-    "change": 8130.909,
-    "date": "2026-10-23",
-    "prev": -208449.409,
-    "previous": -208449.409,
-    "value": -200318.5
-   },
-   {
-    "change": 10918.909,
-    "date": "2026-10-22",
-    "prev": -219368.318,
-    "previous": -219368.318,
-    "value": -208449.409
-   },
-   {
-    "change": 12731.273,
-    "date": "2026-10-21",
-    "prev": -232099.591,
-    "previous": -232099.591,
-    "value": -219368.318
-   },
-   {
-    "change": 9940.273,
-    "date": "2026-10-20",
-    "prev": -242039.864,
-    "previous": -242039.864,
-    "value": -232099.591
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Liquidity (1-month avg net ops)",
   "latest": {
-   "change": -477.318,
-   "date": "2026-11-08",
-   "value": -144886.0
+   "change": 1562.818,
+   "date": "2026-11-15",
+   "value": -161541.182
   },
   "links": {
    "csv": "series/liquidity.csv",
@@ -166,34 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2026-04-23",
-    -392392.955
-   ],
-   [
-    "2026-04-24",
-    -385700.273
-   ],
-   [
-    "2026-04-25",
-    -381692.273
-   ],
-   [
-    "2026-04-26",
-    -375685.227
-   ],
-   [
-    "2026-04-27",
-    -371597.955
-   ],
-   [
-    "2026-04-28",
-    -361777.182
-   ],
-   [
-    "2026-04-29",
-    -349886.045
-   ],
    [
     "2026-04-30",
     -335688.0
@@ -965,6 +937,34 @@
    [
     "2026-11-08",
     -144886.0
+   ],
+   [
+    "2026-11-09",
+    -145529.409
+   ],
+   [
+    "2026-11-10",
+    -150705.136
+   ],
+   [
+    "2026-11-11",
+    -154192.864
+   ],
+   [
+    "2026-11-12",
+    -158995.591
+   ],
+   [
+    "2026-11-13",
+    -162310.136
+   ],
+   [
+    "2026-11-14",
+    -163104.0
+   ],
+   [
+    "2026-11-15",
+    -161541.182
    ]
   ],
   "release_date": null,
@@ -974,7 +974,7 @@
   "stale": false,
   "stale_days": 0,
   "status": "good",
-  "status_reason": "-144,886 cr (-1.4 lakh cr), +52,496 cr vs 3 months ago - liquidity easing - the 1-month average is over ₹25k cr less absorbed than a quarter ago",
+  "status_reason": "-161,541 cr (-1.6 lakh cr), +70,619 cr vs 3 months ago - liquidity easing - the 1-month average is over ₹25k cr less absorbed than a quarter ago",
   "unit": "₹ crore"
  },
  "meta": {
@@ -993,19 +993,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-08",
+  "dataset_as_of": "2026-11-15",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-08",
-   "fortnightly": "2026-10-31",
+   "daily": "2026-11-15",
+   "fortnightly": "2026-11-15",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-11-06"
+   "weekly": "2026-11-13"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-17T15:43:31Z",
+  "retrieved_at": "2026-11-20T15:07:54Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

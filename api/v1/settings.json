@@ -15,25 +15,25 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-08",
+  "dataset_as_of": "2026-11-15",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-08",
-   "fortnightly": "2026-10-31",
+   "daily": "2026-11-15",
+   "fortnightly": "2026-11-15",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-11-06"
+   "weekly": "2026-11-13"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-17T15:43:31Z",
+  "retrieved_at": "2026-11-20T15:07:54Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  },
  "settings": [
   {
-   "as_published": "2026-11-06",
+   "as_published": "2026-11-13",
    "change_bp": -25.0,
    "effective_from": "2025-12-05",
    "history": [
@@ -136,7 +136,7 @@
      "value": 4.75
     }
    ],
-   "history_note": "814 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
    "id": "crr",
    "label": "Cash Reserve Ratio",
    "previous": 3.25,
@@ -146,7 +146,7 @@
    "value": 3.0
   },
   {
-   "as_published": "2026-11-06",
+   "as_published": "2026-11-13",
    "change_bp": 25.0,
    "effective_from": "2026-10-09",
    "history": [
@@ -249,7 +249,7 @@
      "value": 5.15
     }
    ],
-   "history_note": "814 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
    "id": "repo",
    "label": "Policy repo rate",
    "previous": 5.25,
@@ -259,7 +259,7 @@
    "value": 5.5
   },
   {
-   "as_published": "2026-11-06",
+   "as_published": "2026-11-13",
    "change_bp": -25.0,
    "effective_from": "2020-04-17",
    "history": [
@@ -362,7 +362,7 @@
      "value": 22.0
     }
    ],
-   "history_note": "814 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
    "id": "slr",
    "label": "Statutory Liquidity Ratio",
    "previous": 18.25,

@@ -27,7 +27,7 @@
    "series": "cpi_yoy_official",
    "source": "RBI DBIE indicator series (RBIB18)",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "6.09% - above the 6% upper tolerance limit (an index-derived y-o-y for the same month gives 6.17%; the two differ because the published index is rounded to one decimal)",
    "unit": "%"
@@ -59,7 +59,7 @@
    "series": "wpi_yoy",
    "source": "RBI r11 (WPI 2023=100)",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "12.29% - high wholesale inflation. Caveat: the series carries an unusual +4% month-on-month step in Apr-2026 (both index bases show it), so treat the level as provisional.",
    "unit": "%"
@@ -72,13 +72,13 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "814 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 39 time(s) in that window, the newest 14 are listed",
    "id": "repo",
    "kind": "setting",
    "label": "Policy repo rate",
    "latest": {
     "change": null,
-    "date": "2026-11-06",
+    "date": "2026-11-13",
     "value": 5.5
    },
    "links": {
@@ -129,7 +129,7 @@
    "series": "m3_yoy",
    "source": "RBI r13",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "16.4% - very fast money growth - inflation risk",
    "unit": "%"
@@ -161,7 +161,7 @@
    "series": "rm_yoy",
    "source": "RBI r7",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "good",
    "status_reason": "11.8% - ample base-money expansion",
    "unit": "%"
@@ -193,7 +193,7 @@
    "series": "credit_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "19.5% - very fast credit growth",
    "unit": "%"
@@ -225,7 +225,7 @@
    "series": "deposit_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "16.9% - deposit surge - could signal risk aversion",
    "unit": "%"
@@ -257,7 +257,7 @@
    "series": "cd_ratio",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "good",
    "status_reason": "82.1% - credit deployment in the usual range",
    "unit": "%"
@@ -275,9 +275,9 @@
    "kind": "reading",
    "label": "Liquidity (1-month avg net ops)",
    "latest": {
-    "change": -477.318,
-    "date": "2026-11-08",
-    "value": -144886.0
+    "change": 1562.818,
+    "date": "2026-11-15",
+    "value": -161541.182
    },
    "links": {
     "csv": "series/liquidity.csv",
@@ -291,7 +291,7 @@
    "stale": false,
    "stale_days": 0,
    "status": "good",
-   "status_reason": "-144,886 cr (-1.4 lakh cr), +52,496 cr vs 3 months ago - liquidity easing - the 1-month average is over ₹25k cr less absorbed than a quarter ago",
+   "status_reason": "-161,541 cr (-1.6 lakh cr), +70,619 cr vs 3 months ago - liquidity easing - the 1-month average is over ₹25k cr less absorbed than a quarter ago",
    "unit": "₹ crore"
   },
   {
@@ -307,9 +307,9 @@
    "kind": "reading",
    "label": "Call money rate",
    "latest": {
-    "change": -0.15,
-    "date": "2026-11-06",
-    "value": 5.54
+    "change": 0.01,
+    "date": "2026-11-13",
+    "value": 5.55
    },
    "links": {
     "csv": "series/callmoney.csv",
@@ -323,7 +323,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "good",
-   "status_reason": "5.54% vs the same week's repo 5.50% (spread +0.04pp) - anchored to the repo rate",
+   "status_reason": "5.55% vs the same week's repo 5.50% (spread +0.05pp) - anchored to the repo rate",
    "unit": "%"
   },
   {
@@ -339,9 +339,9 @@
    "kind": "reading",
    "label": "10-year G-sec yield",
    "latest": {
-    "change": -0.24,
-    "date": "2026-11-06",
-    "value": 7.21
+    "change": 0.13,
+    "date": "2026-11-13",
+    "value": 7.34
    },
    "links": {
     "csv": "series/gsec.csv",
@@ -355,7 +355,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "bad",
-   "status_reason": "7.21% (+42 bp over 3m) - yields rising, tightening conditions",
+   "status_reason": "7.34% (+57 bp over 3m) - yields rising, tightening conditions",
    "unit": "%"
   },
   {
@@ -385,7 +385,7 @@
    "series": "fxa_yoy",
    "source": "RBI r13",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "good",
    "status_reason": "13.9% - net FX assets building",
    "unit": "%"
@@ -417,7 +417,7 @@
    "series": "fca_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 2,
+   "stale_days": 9,
    "status": "good",
    "status_reason": "11.3% - foreign currency assets building",
    "unit": "%"
@@ -435,9 +435,9 @@
    "kind": "reading",
    "label": "T-bill outstanding",
    "latest": {
-    "change": -3084.0,
-    "date": "2026-11-06",
-    "value": 781464.0
+    "change": 4060.0,
+    "date": "2026-11-13",
+    "value": 785524.0
    },
    "links": {
     "csv": "series/tbill.csv",
@@ -451,7 +451,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "watch",
-   "status_reason": "781,464 cr (-4.0% over 3m) - stable short-term borrowing",
+   "status_reason": "785,524 cr (-3.9% over 3m) - stable short-term borrowing",
    "unit": "₹ crore"
   },
   {
@@ -467,9 +467,9 @@
    "kind": "reading",
    "label": "CD outstanding",
    "latest": {
-    "change": 7778.0,
-    "date": "2026-10-31",
-    "value": 594204.0
+    "change": 15824.0,
+    "date": "2026-11-15",
+    "value": 610028.0
    },
    "links": {
     "csv": "series/cdout.csv",
@@ -481,9 +481,9 @@
    "series": "cd_out",
    "source": "RBI r4",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 0,
    "status": "good",
-   "status_reason": "594,204 cr (+15% y-o-y) - CD market functioning normally",
+   "status_reason": "610,028 cr (+14% y-o-y) - CD market functioning normally",
    "unit": "₹ crore"
   },
   {
@@ -499,9 +499,9 @@
    "kind": "reading",
    "label": "Commercial paper outstanding",
    "latest": {
-    "change": 667.0,
-    "date": "2026-10-31",
-    "value": 661259.0
+    "change": 657.0,
+    "date": "2026-11-15",
+    "value": 661916.0
    },
    "links": {
     "csv": "series/cpout.csv",
@@ -513,9 +513,9 @@
    "series": "cp_out",
    "source": "RBI r5",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 0,
    "status": "watch",
-   "status_reason": "661,259 cr (+38% y-o-y) - surging CP issuance",
+   "status_reason": "661,916 cr (+32% y-o-y) - surging CP issuance",
    "unit": "₹ crore"
   },
   {
@@ -531,9 +531,9 @@
    "kind": "reading",
    "label": "Money-market turnover",
    "latest": {
-    "change": -216172.0,
-    "date": "2026-11-06",
-    "value": 1641683.0
+    "change": -70681.0,
+    "date": "2026-11-13",
+    "value": 1571002.0
    },
    "links": {
     "csv": "series/turnover.csv",
@@ -547,7 +547,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "good",
-   "status_reason": "1,641,683 cr/day (+22% y-o-y) - money-market turnover expanding",
+   "status_reason": "1,571,002 cr/day (-7% y-o-y) - money-market turnover in line with last year",
    "unit": "₹ crore"
   },
   {
@@ -564,8 +564,8 @@
    "label": "91-day T-bill yield",
    "latest": {
     "change": -0.03,
-    "date": "2026-11-06",
-    "value": 5.9
+    "date": "2026-11-13",
+    "value": 5.87
    },
    "links": {
     "csv": "series/yld91.csv",
@@ -579,7 +579,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "bad",
-   "status_reason": "5.90% (+62 bp over 3 months) - short-end yields rising, tighter funding conditions",
+   "status_reason": "5.87% (+61 bp over 3 months) - short-end yields rising, tighter funding conditions",
    "unit": "%"
   },
   {
@@ -595,9 +595,9 @@
    "kind": "reading",
    "label": "3-month US$ forward premia",
    "latest": {
-    "change": -0.63,
-    "date": "2026-11-06",
-    "value": 4.72
+    "change": 0.4,
+    "date": "2026-11-13",
+    "value": 5.12
    },
    "links": {
     "csv": "series/fwd3m.csv",
@@ -611,7 +611,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "watch",
-   "status_reason": "4.72% - premia elevated - hedging demand or depreciation expectations building",
+   "status_reason": "5.12% - premia elevated - hedging demand or depreciation expectations building",
    "unit": "%"
   },
   {
@@ -641,7 +641,7 @@
    "series": "wpi_fuel_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "32.84% - very high - pushes the headline up",
    "unit": "%"
@@ -673,7 +673,7 @@
    "series": "wpi_manu_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "9.54% - very high - pushes the headline up",
    "unit": "%"
@@ -705,7 +705,7 @@
    "series": "wpi_primary_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "9.24% - very high - pushes the headline up",
    "unit": "%"
@@ -737,7 +737,7 @@
    "series": "cpi_rural_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "bad",
    "status_reason": "6.54% - above the upper tolerance limit",
    "unit": "%"
@@ -769,7 +769,7 @@
    "series": "cpi_urban_yoy",
    "source": "RBI r11",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "5.41% - above target",
    "unit": "%"
@@ -801,7 +801,7 @@
    "series": "m1_yoy",
    "source": "RBI r13",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "good",
    "status_reason": "13.4% - healthy transactions demand",
    "unit": "%"
@@ -833,7 +833,7 @@
    "series": "money_mult",
    "source": "derived (r13 ÷ r7)",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "6.25x (+0.25 vs a year ago) - multiplier rising - banks creating money faster",
    "unit": "x"
@@ -865,7 +865,7 @@
    "series": "bankers_dep_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 2,
+   "stale_days": 9,
    "status": "good",
    "status_reason": "9.0% - bank reserves building - ample system liquidity",
    "unit": "%"
@@ -897,7 +897,7 @@
    "series": "rbi_govt_level",
    "source": "RBI r39",
    "stale": true,
-   "stale_days": 205,
+   "stale_days": 212,
    "status": "watch",
    "status_reason": "₹93,392 cr as last reported on 2026-04-17; the RBI table carries no value for this line on any later date (a nil balance is published as a blank cell)",
    "unit": "₹ crore"
@@ -929,7 +929,7 @@
    "series": "rupeesec_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 2,
+   "stale_days": 9,
    "status": "watch",
    "status_reason": "23.5% - fast growth - heavy government paper absorption",
    "unit": "%"
@@ -942,13 +942,13 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "814 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 15 time(s) in that window, the newest 14 are listed",
    "id": "crr",
    "kind": "setting",
    "label": "Cash Reserve Ratio",
    "latest": {
     "change": null,
-    "date": "2026-11-06",
+    "date": "2026-11-13",
     "value": 3.0
    },
    "links": {
@@ -969,7 +969,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "good",
-   "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 48 weekly rows published since",
+   "status_reason": "a 25bp cut on 2025-12-05 took it from 3.25% to 3.00%; the rate has been unchanged in all 49 weekly rows published since",
    "unit": "%"
   },
   {
@@ -980,13 +980,13 @@
    "frequency": "weekly",
    "group": "Policy",
    "history_kind": "setting",
-   "history_note": "814 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
+   "history_note": "815 published rows in the source table; the setting changed 16 time(s) in that window, the newest 14 are listed",
    "id": "slr",
    "kind": "setting",
    "label": "Statutory Liquidity Ratio",
    "latest": {
     "change": null,
-    "date": "2026-11-06",
+    "date": "2026-11-13",
     "value": 18.0
    },
    "links": {
@@ -1007,7 +1007,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "watch",
-   "status_reason": "a 25bp cut on 2020-04-17 took it from 18.25% to 18.00%; the rate has been unchanged in all 342 weekly rows published since",
+   "status_reason": "a 25bp cut on 2020-04-17 took it from 18.25% to 18.00%; the rate has been unchanged in all 343 weekly rows published since",
    "unit": "%"
   },
   {
@@ -1023,9 +1023,9 @@
    "kind": "reading",
    "label": "USD/INR",
    "latest": {
-    "change": -1.11,
-    "date": "2026-11-06",
-    "value": 94.14
+    "change": 0.06,
+    "date": "2026-11-13",
+    "value": 94.2
    },
    "links": {
     "csv": "series/usdinr.csv",
@@ -1039,7 +1039,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "good",
-   "status_reason": "94.14 (-1.12% over 3m) - rupee appreciating",
+   "status_reason": "94.20 (-1.29% over 3m) - rupee appreciating",
    "unit": "₹"
   },
   {
@@ -1055,9 +1055,9 @@
    "kind": "reading",
    "label": "Term spread (10y − 91d)",
    "latest": {
-    "change": -0.21,
-    "date": "2026-11-06",
-    "value": 1.31
+    "change": 0.16,
+    "date": "2026-11-13",
+    "value": 1.47
    },
    "links": {
     "csv": "series/termspread.csv",
@@ -1071,7 +1071,7 @@
    "stale": false,
    "stale_days": 2,
    "status": "good",
-   "status_reason": "+1.31pp - normally sloped",
+   "status_reason": "+1.47pp - normally sloped",
    "unit": "pp"
   },
   {
@@ -1101,7 +1101,7 @@
    "series": "gold_growth",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 2,
+   "stale_days": 9,
    "status": "good",
    "status_reason": "9.3% - RBI building its gold reserve",
    "unit": "%"
@@ -1133,7 +1133,7 @@
    "series": "invest_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "good",
    "status_reason": "9.3% - banks funding government borrowing at a normal pace",
    "unit": "%"
@@ -1165,7 +1165,7 @@
    "series": "nonfood_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "19.3% - very fast non-food credit growth",
    "unit": "%"
@@ -1197,7 +1197,7 @@
    "series": "food_yoy",
    "source": "RBI r9",
    "stale": false,
-   "stale_days": 8,
+   "stale_days": 15,
    "status": "watch",
    "status_reason": "75.2% - food credit surging - heavy procurement financing",
    "unit": "%"
@@ -1229,7 +1229,7 @@
    "series": "notes_yoy",
    "source": "RBI r39",
    "stale": false,
-   "stale_days": 2,
+   "stale_days": 9,
    "status": "bad",
    "status_reason": "15.1% - cash demand surging - outside money system",
    "unit": "%"
@@ -1261,7 +1261,7 @@
    "series": "act_ur",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 38,
+   "stale_days": 45,
    "status": "good",
    "status_reason": "4.9% - below 6% - inside India's recent structural range",
    "unit": "%"
@@ -1293,7 +1293,7 @@
    "series": "act_lfpr",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 38,
+   "stale_days": 45,
    "status": "good",
    "status_reason": "55.7% - at or above the norm of the past year",
    "unit": "%"
@@ -1325,7 +1325,7 @@
    "series": "act_wpr",
    "source": "MoSPI PLFS monthly (CWS), both",
    "stale": false,
-   "stale_days": 38,
+   "stale_days": 45,
    "status": "good",
    "status_reason": "53.0% - at or above the recent norm",
    "unit": "%"
@@ -1357,7 +1357,7 @@
    "series": "act_iip_growth",
    "source": "MoSPI IIP monthly",
    "stale": false,
-   "stale_days": 68,
+   "stale_days": 75,
    "status": "good",
    "status_reason": "6.7% - healthy industrial growth",
    "unit": "%"
@@ -1389,7 +1389,7 @@
    "series": "act_gva_yoyt",
    "source": "MoSPI NAS quarterly (computed from published levels)",
    "stale": false,
-   "stale_days": 221,
+   "stale_days": 228,
    "status": "watch",
    "status_reason": "8.2% - above-trend growth - check whether it is a base effect",
    "unit": "%"
@@ -1421,7 +1421,7 @@
    "series": "act_oppi_yoy",
    "source": "MoSPI OPPI monthly (computed from published levels)",
    "stale": false,
-   "stale_days": 38,
+   "stale_days": 45,
    "status": "watch",
    "status_reason": "12.1% - producer prices running hot",
    "unit": "%"
@@ -1453,7 +1453,7 @@
    "series": "act_iip_capital",
    "source": "MoSPI IIP monthly, use-based: Capital Goods",
    "stale": false,
-   "stale_days": 68,
+   "stale_days": 75,
    "status": "good",
    "status_reason": "10.4% - capital goods expanding - investment is running",
    "unit": "%"
@@ -1475,19 +1475,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-08",
+  "dataset_as_of": "2026-11-15",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-08",
-   "fortnightly": "2026-10-31",
+   "daily": "2026-11-15",
+   "fortnightly": "2026-11-15",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-11-06"
+   "weekly": "2026-11-13"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-17T15:43:31Z",
+  "retrieved_at": "2026-11-20T15:07:54Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

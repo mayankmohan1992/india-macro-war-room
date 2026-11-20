@@ -10,6 +10,13 @@
   "group": "Markets",
   "history": [
    {
+    "change": 15824.0,
+    "date": "2026-11-15",
+    "prev": 594204.0,
+    "previous": 594204.0,
+    "value": 610028.0
+   },
+   {
     "change": 7778.0,
     "date": "2026-10-31",
     "prev": 586426.0,
@@ -141,13 +148,6 @@
     "prev": 574586.0,
     "previous": 574586.0,
     "value": 588699.0
-   },
-   {
-    "change": 6450.0,
-    "date": "2026-01-15",
-    "prev": 568136.0,
-    "previous": 568136.0,
-    "value": 574586.0
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "CD outstanding",
   "latest": {
-   "change": 7778.0,
-   "date": "2026-10-31",
-   "value": 594204.0
+   "change": 15824.0,
+   "date": "2026-11-15",
+   "value": 610028.0
   },
   "links": {
    "csv": "series/cdout.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2019-02-15",
-    200251.0
-   ],
    [
     "2019-03-01",
     208867.0
@@ -965,6 +961,10 @@
    [
     "2026-10-31",
     594204.0
+   ],
+   [
+    "2026-11-15",
+    610028.0
    ]
   ],
   "release_date": null,
@@ -972,9 +972,9 @@
   "series": "cd_out",
   "source": "RBI r4",
   "stale": false,
-  "stale_days": 8,
+  "stale_days": 0,
   "status": "good",
-  "status_reason": "594,204 cr (+15% y-o-y) - CD market functioning normally",
+  "status_reason": "610,028 cr (+14% y-o-y) - CD market functioning normally",
   "unit": "₹ crore"
  },
  "meta": {
@@ -993,19 +993,19 @@
     "worst_month": "2026-10-31"
    }
   ],
-  "dataset_as_of": "2026-11-08",
+  "dataset_as_of": "2026-11-15",
   "dataset_as_of_by_frequency": {
-   "daily": "2026-11-08",
-   "fortnightly": "2026-10-31",
+   "daily": "2026-11-15",
+   "fortnightly": "2026-11-15",
    "monthly": "2026-10-31",
    "quarterly": "2026-04-01",
-   "weekly": "2026-11-06"
+   "weekly": "2026-11-13"
   },
   "docs": "docs/API.md",
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-17T15:43:31Z",
+  "retrieved_at": "2026-11-20T15:07:54Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**45 indicators** · dataset as-of **2026-11-08** · generated 2026-11-17 15:43 UTC
+**45 indicators** · dataset as-of **2026-11-15** · generated 2026-11-20 15:07 UTC
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -37,10 +37,10 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
 | `fca` | RBI foreign currency assets | % | reading | weekly | 11.32 | 2026-11-06 | RBI r39 | [Foreign Currency Assets (FCA) and India's foreign exchange reserves](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 4.72 | 2026-11-06 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
+| `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 5.12 | 2026-11-13 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
 | `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 13.89 | 2026-10-31 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `gold` | RBI gold holdings | % | reading | weekly | 9.35 | 2026-11-06 | RBI r39 | [RBI gold holdings (gold component of the reserves)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `usdinr` | USD/INR | ₹ | reading | weekly | 94.14 | 2026-11-06 | RBI r10 (weekly WSS) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
+| `usdinr` | USD/INR | ₹ | reading | weekly | 94.2 | 2026-11-13 | RBI r10 (weekly WSS) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
 
 ## Fiscal
 
@@ -48,25 +48,25 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 |---|---|---|---|---|---:|---|---|---|
 | `rbicredit` | RBI credit to the Centre | ₹ crore | reading | weekly | 93,392 *(stale)* | 2026-04-17 | RBI r39 | [RBI loans and advances to the Central Government](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `rupeesec` | RBI rupee securities | % | reading | weekly | 23.47 | 2026-11-06 | RBI r39 | [RBI rupee securities (including treasury bills)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `tbill` | T-bill outstanding | ₹ crore | reading | weekly | 781,464 | 2026-11-06 | RBI r2 | [Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills](https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79) |
+| `tbill` | T-bill outstanding | ₹ crore | reading | weekly | 785,524 | 2026-11-13 | RBI r2 | [Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills](https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79) |
 
 ## Liquidity
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
 | `bankdep` | Bankers' deposits with RBI | % | reading | weekly | 8.99 | 2026-11-06 | RBI r39 | [Bankers' deposits with the Reserve Bank](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
-| `liquidity` | Liquidity (1-month avg net ops) | ₹ crore | reading | daily | -144,886 | 2026-11-08 | RBI r8 | [Liquidity Adjustment Facility: net injection (+) / absorption (-), SDF and MSF](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62917) |
+| `liquidity` | Liquidity (1-month avg net ops) | ₹ crore | reading | daily | -161,541.182 | 2026-11-15 | RBI r8 | [Liquidity Adjustment Facility: net injection (+) / absorption (-), SDF and MSF](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=62917) |
 
 ## Markets
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `cdout` | CD outstanding | ₹ crore | reading | fortnightly | 594,204 | 2026-10-31 | RBI r4 | [Certificate of Deposit (CD)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12108) |
-| `cpout` | Commercial paper outstanding | ₹ crore | reading | fortnightly | 661,259 | 2026-10-31 | RBI r5 | [Commercial Paper (CP)](https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12592) |
-| `gsec` | 10-year G-sec yield | % | reading | weekly | 7.21 | 2026-11-06 | RBI r10 | [10-year Government of India benchmark G-Sec par yield (FBIL)](https://www.fbil.org.in/uploads/Newsletter_for_the_month_of_April_2024_ea8fe6cc8f.pdf) |
-| `termspread` | Term spread (10y − 91d) | pp | reading | weekly | 1.31 | 2026-11-06 | derived (r10) | [Term spread (10-year G-sec par yield − 91-day T-bill yield)](https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379) |
-| `turnover` | Money-market turnover | ₹ crore | reading | weekly | 1,641,683 | 2026-11-06 | RBI r12 | [Money-market turnover (call, notice/term money, triparty repo, market repo)](https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379) |
-| `yld91` | 91-day T-bill yield | % | reading | weekly | 5.9 | 2026-11-06 | RBI r10 (weekly WSS) | [Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills](https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79) |
+| `cdout` | CD outstanding | ₹ crore | reading | fortnightly | 610,028 | 2026-11-15 | RBI r4 | [Certificate of Deposit (CD)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12108) |
+| `cpout` | Commercial paper outstanding | ₹ crore | reading | fortnightly | 661,916 | 2026-11-15 | RBI r5 | [Commercial Paper (CP)](https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12592) |
+| `gsec` | 10-year G-sec yield | % | reading | weekly | 7.34 | 2026-11-13 | RBI r10 | [10-year Government of India benchmark G-Sec par yield (FBIL)](https://www.fbil.org.in/uploads/Newsletter_for_the_month_of_April_2024_ea8fe6cc8f.pdf) |
+| `termspread` | Term spread (10y − 91d) | pp | reading | weekly | 1.47 | 2026-11-13 | derived (r10) | [Term spread (10-year G-sec par yield − 91-day T-bill yield)](https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379) |
+| `turnover` | Money-market turnover | ₹ crore | reading | weekly | 1,571,002 | 2026-11-13 | RBI r12 | [Money-market turnover (call, notice/term money, triparty repo, market repo)](https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28379) |
+| `yld91` | 91-day T-bill yield | % | reading | weekly | 5.87 | 2026-11-13 | RBI r10 (weekly WSS) | [Treasury bills (91-day, 182-day, 364-day) and Cash Management Bills](https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79) |
 
 ## Money
 
@@ -82,10 +82,10 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 
 | id | indicator | unit | kind | frequency | latest | as at | source table | definition |
 |---|---|---|---|---|---:|---|---|---|
-| `callmoney` | Call money rate | % | reading | weekly | 5.54 | 2026-11-06 | RBI r10 | [Call money rate (weighted average)](https://rbi.org.in/scripts/publicationsView.aspx?id=15762) |
-| `crr` | Cash Reserve Ratio | % | setting | weekly | 3 | 2026-11-06 | RBI r10 | [Cash Reserve Ratio (CRR)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
-| `repo` | Policy repo rate | % | setting | weekly | 5.5 | 2026-11-06 | RBI r10 (weekly WSS) | [Policy repo rate](https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc202566565201.pdf) |
-| `slr` | Statutory Liquidity Ratio | % | setting | weekly | 18 | 2026-11-06 | RBI r10 | [Statutory Liquidity Ratio (SLR)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
+| `callmoney` | Call money rate | % | reading | weekly | 5.55 | 2026-11-13 | RBI r10 | [Call money rate (weighted average)](https://rbi.org.in/scripts/publicationsView.aspx?id=15762) |
+| `crr` | Cash Reserve Ratio | % | setting | weekly | 3 | 2026-11-13 | RBI r10 | [Cash Reserve Ratio (CRR)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
+| `repo` | Policy repo rate | % | setting | weekly | 5.5 | 2026-11-13 | RBI r10 (weekly WSS) | [Policy repo rate](https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jun/doc202566565201.pdf) |
+| `slr` | Statutory Liquidity Ratio | % | setting | weekly | 18 | 2026-11-13 | RBI r10 | [Statutory Liquidity Ratio (SLR)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12131) |
 
 ## Prices
 
