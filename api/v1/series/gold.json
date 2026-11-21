@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -11.34,
+    "date": "2026-11-13",
+    "prev": 9.35,
+    "previous": 9.35,
+    "value": -1.99
+   },
+   {
     "change": 1.48,
     "date": "2026-11-06",
     "prev": 7.87,
@@ -141,13 +148,6 @@
     "prev": 33.97,
     "previous": 33.97,
     "value": 38.28
-   },
-   {
-    "change": -3.18,
-    "date": "2026-06-26",
-    "prev": 37.15,
-    "previous": 37.15,
-    "value": 33.97
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "RBI gold holdings",
   "latest": {
-   "change": 1.48,
-   "date": "2026-11-06",
-   "value": 9.35
+   "change": -11.34,
+   "date": "2026-11-13",
+   "value": -1.99
   },
   "links": {
    "csv": "series/gold.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2022-04-08",
-    22.25
-   ],
    [
     "2022-04-15",
     25.04
@@ -1125,6 +1121,10 @@
    [
     "2026-11-06",
     9.35
+   ],
+   [
+    "2026-11-13",
+    -1.99
    ]
   ],
   "release_date": null,
@@ -1132,9 +1132,9 @@
   "series": "gold_growth",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
-  "status": "good",
-  "status_reason": "9.3% - RBI building its gold reserve",
+  "stale_days": 2,
+  "status": "bad",
+  "status_reason": "-2.0% - RBI gold holdings shrinking",
   "unit": "%"
  },
  "meta": {
@@ -1165,7 +1165,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-20T15:07:54Z",
+  "retrieved_at": "2026-11-21T14:28:24Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

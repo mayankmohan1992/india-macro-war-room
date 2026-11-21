@@ -11,7 +11,7 @@ liquidity,Liquidity (1-month avg net ops),-161541.182,₹ crore,2026-11-15,good,
 callmoney,Call money rate,5.55,%,2026-11-13,good,0.01
 gsec,10-year G-sec yield,7.34,%,2026-11-13,bad,0.13
 fxa,Net FX assets (banking sector),13.89,%,2026-10-31,good,0.19
-fca,RBI foreign currency assets,11.32,%,2026-11-06,good,-0.52
+fca,RBI foreign currency assets,10.08,%,2026-11-13,good,-1.24
 tbill,T-bill outstanding,785524.0,₹ crore,2026-11-13,watch,4060.0
 cdout,CD outstanding,610028.0,₹ crore,2026-11-15,good,15824.0
 cpout,Commercial paper outstanding,661916.0,₹ crore,2026-11-15,watch,657.0
@@ -25,18 +25,18 @@ cpirural,CPI rural,6.54,%,2026-10-31,bad,0.47
 cpiurban,CPI urban,5.41,%,2026-10-31,watch,0.59
 m1,M1 (narrow money) growth,13.39,%,2026-10-31,good,0.83
 moneymult,Money multiplier,6.25,x,2026-10-31,watch,0.0
-bankdep,Bankers' deposits with RBI,8.99,%,2026-11-06,good,8.38
+bankdep,Bankers' deposits with RBI,7.98,%,2026-11-13,good,-1.01
 rbicredit,RBI credit to the Centre,93392.0,₹ crore,2026-04-17,watch,-6882.0
-rupeesec,RBI rupee securities,23.47,%,2026-11-06,watch,2.17
+rupeesec,RBI rupee securities,21.87,%,2026-11-13,watch,-1.6
 crr,Cash Reserve Ratio,3.0,%,2026-11-13,good,
 slr,Statutory Liquidity Ratio,18.0,%,2026-11-13,watch,
 usdinr,USD/INR,94.2,₹,2026-11-13,good,0.06
 termspread,Term spread (10y − 91d),1.47,pp,2026-11-13,good,0.16
-gold,RBI gold holdings,9.35,%,2026-11-06,good,1.48
+gold,RBI gold holdings,-1.99,%,2026-11-13,bad,-11.34
 invest,SCB investments growth,9.26,%,2026-10-31,good,-0.23
 nonfood,Non-food credit growth,19.33,%,2026-10-31,watch,1.3
 food,Food credit growth,75.17,%,2026-10-31,watch,-15.52
-notes,Notes in circulation growth,15.08,%,2026-11-06,bad,0.9
+notes,Notes in circulation growth,15.27,%,2026-11-13,bad,0.19
 ur,Unemployment rate (15+),4.9,%,2026-10-01,good,-0.1
 lfpr,Labour force participation (15+),55.7,%,2026-10-01,good,0.2
 wpr,Worker population ratio (15+),53.0,%,2026-10-01,good,0.3

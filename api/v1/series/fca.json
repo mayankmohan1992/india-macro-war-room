@@ -10,6 +10,13 @@
   "group": "External",
   "history": [
    {
+    "change": -1.24,
+    "date": "2026-11-13",
+    "prev": 11.32,
+    "previous": 11.32,
+    "value": 10.08
+   },
+   {
     "change": -0.52,
     "date": "2026-11-06",
     "prev": 11.84,
@@ -141,13 +148,6 @@
     "prev": 0.3,
     "previous": 0.3,
     "value": 2.77
-   },
-   {
-    "change": 0.32,
-    "date": "2026-06-26",
-    "prev": -0.02,
-    "previous": -0.02,
-    "value": 0.3
    }
   ],
   "history_kind": "reading",
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "RBI foreign currency assets",
   "latest": {
-   "change": -0.52,
-   "date": "2026-11-06",
-   "value": 11.32
+   "change": -1.24,
+   "date": "2026-11-13",
+   "value": 10.08
   },
   "links": {
    "csv": "series/fca.csv",
@@ -166,10 +166,6 @@
   },
   "period_label": null,
   "points": [
-   [
-    "2022-04-08",
-    1.15
-   ],
    [
     "2022-04-15",
     1.68
@@ -1125,6 +1121,10 @@
    [
     "2026-11-06",
     11.32
+   ],
+   [
+    "2026-11-13",
+    10.08
    ]
   ],
   "release_date": null,
@@ -1132,9 +1132,9 @@
   "series": "fca_yoy",
   "source": "RBI r39",
   "stale": false,
-  "stale_days": 9,
+  "stale_days": 2,
   "status": "good",
-  "status_reason": "11.3% - foreign currency assets building",
+  "status_reason": "10.1% - foreign currency assets building",
   "unit": "%"
  },
  "meta": {
@@ -1165,7 +1165,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-20T15:07:54Z",
+  "retrieved_at": "2026-11-21T14:28:24Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
