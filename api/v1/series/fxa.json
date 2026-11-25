@@ -17,18 +17,18 @@
     "value": 13.89
    },
    {
-    "change": -4.07,
+    "change": -3.97,
     "date": "2026-10-15",
-    "prev": 17.77,
-    "previous": 17.77,
+    "prev": 17.67,
+    "previous": 17.67,
     "value": 13.7
    },
    {
-    "change": -2.98,
+    "change": -3.08,
     "date": "2026-09-30",
     "prev": 20.75,
     "previous": 20.75,
-    "value": 17.77
+    "value": 17.67
    },
    {
     "change": -1.86,
@@ -956,7 +956,7 @@
    ],
    [
     "2026-09-30",
-    17.77
+    17.67
    ],
    [
     "2026-10-15",
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-21T14:28:24Z",
+  "retrieved_at": "2026-11-25T16:59:27Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }
