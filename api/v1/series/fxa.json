@@ -10,11 +10,11 @@
   "group": "External",
   "history": [
    {
-    "change": 0.19,
+    "change": 0.04,
     "date": "2026-10-31",
     "prev": 13.7,
     "previous": 13.7,
-    "value": 13.89
+    "value": 13.74
    },
    {
     "change": -3.97,
@@ -156,9 +156,9 @@
   "kind": "reading",
   "label": "Net FX assets (banking sector)",
   "latest": {
-   "change": 0.19,
+   "change": 0.04,
    "date": "2026-10-31",
-   "value": 13.89
+   "value": 13.74
   },
   "links": {
    "csv": "series/fxa.csv",
@@ -964,7 +964,7 @@
    ],
    [
     "2026-10-31",
-    13.89
+    13.74
    ]
   ],
   "release_date": null,
@@ -974,7 +974,7 @@
   "stale": false,
   "stale_days": 15,
   "status": "good",
-  "status_reason": "13.9% - net FX assets building",
+  "status_reason": "13.7% - net FX assets building",
   "unit": "%"
  },
  "meta": {
@@ -1005,7 +1005,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-25T16:59:27Z",
+  "retrieved_at": "2026-11-26T16:37:02Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

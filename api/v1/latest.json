@@ -127,13 +127,13 @@
    "value": 5.12
   },
   "fxa": {
-   "change": 0.19,
+   "change": 0.04,
    "date": "2026-10-31",
    "kind": "reading",
    "label": "Net FX assets (banking sector)",
    "status": "good",
    "unit": "%",
-   "value": 13.89
+   "value": 13.74
   },
   "gold": {
    "change": -11.34,
@@ -434,7 +434,7 @@
   "indicators": 45,
   "license": "Code: MIT. Data: compiled from RBI public publications, with attribution.",
   "provenance": "Compiled from RBI public publications. Not an official RBI product: verify anything critical at the source. Figures may be revised by the publisher without notice.",
-  "retrieved_at": "2026-11-25T16:59:27Z",
+  "retrieved_at": "2026-11-26T16:37:02Z",
   "source": "Reserve Bank of India — Database on Indian Economy (DBIE)",
   "source_url": "https://data.rbi.org.in/"
  }

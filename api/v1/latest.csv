@@ -10,7 +10,7 @@ cdr,Credit-to-deposit ratio,82.06,%,2026-10-31,good,0.47
 liquidity,Liquidity (1-month avg net ops),-161541.182,₹ crore,2026-11-15,good,1562.818
 callmoney,Call money rate,5.55,%,2026-11-13,good,0.01
 gsec,10-year G-sec yield,7.34,%,2026-11-13,bad,0.13
-fxa,Net FX assets (banking sector),13.89,%,2026-10-31,good,0.19
+fxa,Net FX assets (banking sector),13.74,%,2026-10-31,good,0.04
 fca,RBI foreign currency assets,10.08,%,2026-11-13,good,-1.24
 tbill,T-bill outstanding,785524.0,₹ crore,2026-11-13,watch,4060.0
 cdout,CD outstanding,610028.0,₹ crore,2026-11-15,good,15824.0

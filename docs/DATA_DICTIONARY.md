@@ -2,7 +2,7 @@
 
 # Data dictionary
 
-**45 indicators** · dataset as-of **2026-11-15** · generated 2026-11-25 16:59 UTC
+**45 indicators** · dataset as-of **2026-11-15** · generated 2026-11-26 16:37 UTC
 
 Every series is derived from a published RBI table; `kind` distinguishes a policy **setting** (a rate that changes occasionally, dated by when it took effect) from a **reading** (an observation dated by the period it covers). Values are in the unit shown; growth rates are year-on-year per cent unless stated otherwise.
 
@@ -38,7 +38,7 @@ Machine-readable equivalents: `api/v1/index.json` (catalogue), `api/v1/series/<i
 |---|---|---|---|---|---:|---|---|---|
 | `fca` | RBI foreign currency assets | % | reading | weekly | 10.08 | 2026-11-13 | RBI r39 | [Foreign Currency Assets (FCA) and India's foreign exchange reserves](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `fwd3m` | 3-month US$ forward premia | % | reading | weekly | 5.12 | 2026-11-13 | RBI r10 (weekly WSS) | [US dollar forward premia (1, 3 and 6 months), per cent per annum](https://www.fbil.org.in/uploads/REVISED_ETHODOLOGY_FOR_FORWARD_PREMIA_AND_MIFOR_CURVE_4b25a32468.pdf) |
-| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 13.89 | 2026-10-31 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
+| `fxa` | Net FX assets (banking sector) | % | reading | fortnightly | 13.74 | 2026-10-31 | RBI r13 | [Net foreign exchange assets of the banking sector](https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=17618) |
 | `gold` | RBI gold holdings | % | reading | weekly | -1.99 | 2026-11-13 | RBI r39 | [RBI gold holdings (gold component of the reserves)](https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/HWSSF170614.pdf) |
 | `usdinr` | USD/INR | ₹ | reading | weekly | 94.2 | 2026-11-13 | RBI r10 (weekly WSS) | [USD/INR and EUR/INR spot exchange rates (Reference Rate)](https://www.fbil.org.in/securities?mq=o&op=referencerate) |
 
